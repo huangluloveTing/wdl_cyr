@@ -51,6 +51,7 @@ func requestClosure(endPoint:Endpoint , done:MoyaProvider<API>.RequestResultClos
 
 struct MyPlugins: PluginType {
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
+        
         return request
     }
     func willSend(_ request: RequestType, target: TargetType) {
