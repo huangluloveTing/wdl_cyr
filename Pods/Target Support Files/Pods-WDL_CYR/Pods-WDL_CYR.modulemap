@@ -1,0 +1,6 @@
+module Pods_WDL_CYR {
+  umbrella header "Pods-WDL_CYR-umbrella.h"
+
+  export *
+  module * { export * }
+}
