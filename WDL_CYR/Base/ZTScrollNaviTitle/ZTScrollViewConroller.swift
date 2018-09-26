@@ -24,6 +24,13 @@ class ZTScrollViewConroller: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 11.0, *) {
+            self.collectionView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
         self.view.addSubview(self.collectionView)
         self.addNaviSelectView()
     }
@@ -53,6 +60,10 @@ class ZTScrollViewConroller: UIViewController {
         collectionView.register(UINib.init(nibName: "\(ZTScrollItemCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(ZTScrollItemCell.self)")
         return collectionView
     }()
+    
+    func setTitleTintColor(color:UIColor , state:UIControlState) -> Void {
+        self.naviSelectView?.setHeaderTintColor(color: color, state: state)
+    }
 }
 
 extension ZTScrollViewConroller : UICollectionViewDelegate , UICollectionViewDataSource {

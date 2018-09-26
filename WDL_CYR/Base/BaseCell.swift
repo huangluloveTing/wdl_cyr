@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class BaseCell: UITableViewCell {
 
@@ -56,4 +58,12 @@ extension BaseCell {
 // 处理ZTTagView 
 extension BaseCell {
     
+}
+
+// 添加图片
+extension BaseCell {
+    func toAddImageForImageView(imageUrl:String? , imageView:UIImageView) -> Void {
+        let resource = NSURL(string: imageUrl ?? "")!
+        imageView.kf.setImage(with: (resource as! Resource))
+    }
 }

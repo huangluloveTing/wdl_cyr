@@ -16,6 +16,7 @@ pod 'DZNEmptyDataSet'
 pod 'MJRefresh'
 pod 'SVProgressHUD'
 pod 'HTHorizontalSelectionList'
+pod 'Kingfisher'
 
 end
 

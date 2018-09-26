@@ -39,9 +39,9 @@ func requestClosure(endPoint:Endpoint , done:MoyaProvider<API>.RequestResultClos
     do {
      var request = try endPoint.urlRequest()
         request.timeoutInterval = 10.0
-        request.addValue(WDLCoreManager.shared().token ?? "", forHTTPHeaderField:"Token" )
+        request.addValue(WDLCoreManager.shared().userInfo?.token ?? "", forHTTPHeaderField:"Token" )
         request.addValue("", forHTTPHeaderField: "consignorToken")
-        print("parameters : \(String(describing: String(data: (request.httpBody)!, encoding: .utf8)))")
+        print("parameters : \(String(describing: String(data: request.httpBody ?? Data(), encoding: .utf8)))")
         done(.success(request))
     }
     catch let error {
@@ -51,7 +51,7 @@ func requestClosure(endPoint:Endpoint , done:MoyaProvider<API>.RequestResultClos
 
 struct MyPlugins: PluginType {
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
-        
+        print("headers: ",request.allHTTPHeaderFields ?? Dictionary())
         return request
     }
     func willSend(_ request: RequestType, target: TargetType) {

@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		5FF496CEBAEF90B26CAE9B21 /* libPods-WDL_CYR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */; };
+		706488F9215B458D00F53BFC /* FocusResourceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706488F7215B458D00F53BFC /* FocusResourceVC.swift */; };
+		706488FA215B458D00F53BFC /* FocusResourceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 706488F8215B458D00F53BFC /* FocusResourceVC.xib */; };
+		706488FD215B45BB00F53BFC /* ResourceHallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706488FB215B45BB00F53BFC /* ResourceHallVC.swift */; };
+		706488FE215B45BB00F53BFC /* ResourceHallVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 706488FC215B45BB00F53BFC /* ResourceHallVC.xib */; };
+		70648900215B45FA00F53BFC /* ResourceContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706488FF215B45FA00F53BFC /* ResourceContainerVC.swift */; };
+		70648902215B5F5A00F53BFC /* FocusEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70648901215B5F5A00F53BFC /* FocusEmptyView.xib */; };
+		70648904215B606A00F53BFC /* FocusEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70648903215B606A00F53BFC /* FocusEmptyView.swift */; };
+		70648907215B6BE400F53BFC /* FocusPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70648905215B6BE400F53BFC /* FocusPersonCell.swift */; };
+		70648908215B6BE400F53BFC /* FocusPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70648906215B6BE400F53BFC /* FocusPersonCell.xib */; };
+		7064890B215B87E300F53BFC /* FocusLinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70648909215B87E300F53BFC /* FocusLinesCell.swift */; };
+		7064890C215B87E300F53BFC /* FocusLinesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7064890A215B87E300F53BFC /* FocusLinesCell.xib */; };
 		70CF4EA4214B409E0051A7CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4EA3214B409E0051A7CA /* AppDelegate.swift */; };
 		70CF4EA6214B409E0051A7CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4EA5214B409E0051A7CA /* ViewController.swift */; };
 		70CF4EA9214B409E0051A7CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70CF4EA7214B409E0051A7CA /* Main.storyboard */; };
@@ -36,11 +47,9 @@
 		70CF4F6F214B41110051A7CA /* GSTimerShelveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CF4ECE214B410C0051A7CA /* GSTimerShelveCell.xib */; };
 		70CF4F70214B41110051A7CA /* GSDealedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CF4ECF214B410C0051A7CA /* GSDealedCell.xib */; };
 		70CF4F71214B41110051A7CA /* GSQutationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CF4ED0214B410C0051A7CA /* GSQutationCell.xib */; };
-		70CF4F72214B41110051A7CA /* GoodsSupplyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4ED1214B410C0051A7CA /* GoodsSupplyVC.swift */; };
 		70CF4F73214B41110051A7CA /* GoodSupplyBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4ED3214B410C0051A7CA /* GoodSupplyBean.swift */; };
 		70CF4F74214B41110051A7CA /* GoodsSupplyDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4ED5214B410C0051A7CA /* GoodsSupplyDetailVC.swift */; };
 		70CF4F75214B41110051A7CA /* GoodsSupplyDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CF4ED6214B410C0051A7CA /* GoodsSupplyDetailVC.xib */; };
-		70CF4F76214B41110051A7CA /* GoodsSupplyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CF4ED7214B410C0051A7CA /* GoodsSupplyVC.xib */; };
 		70CF4F77214B41110051A7CA /* GoodsSupplyFoldInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4ED9214B410C0051A7CA /* GoodsSupplyFoldInfoView.swift */; };
 		70CF4F78214B41110051A7CA /* GSDetailBidingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4EDA214B410C0051A7CA /* GSDetailBidingHeader.swift */; };
 		70CF4F79214B41110051A7CA /* DropPlaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CF4EDB214B410C0051A7CA /* DropPlaceView.xib */; };
@@ -148,6 +157,17 @@
 /* Begin PBXFileReference section */
 		3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WDL_CYR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C7F9C1660A78A3335660AB0 /* Pods-WDL_CYR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDL_CYR.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR.release.xcconfig"; sourceTree = "<group>"; };
+		706488F7215B458D00F53BFC /* FocusResourceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusResourceVC.swift; sourceTree = "<group>"; };
+		706488F8215B458D00F53BFC /* FocusResourceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusResourceVC.xib; sourceTree = "<group>"; };
+		706488FB215B45BB00F53BFC /* ResourceHallVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceHallVC.swift; sourceTree = "<group>"; };
+		706488FC215B45BB00F53BFC /* ResourceHallVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceHallVC.xib; sourceTree = "<group>"; };
+		706488FF215B45FA00F53BFC /* ResourceContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceContainerVC.swift; sourceTree = "<group>"; };
+		70648901215B5F5A00F53BFC /* FocusEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusEmptyView.xib; sourceTree = "<group>"; };
+		70648903215B606A00F53BFC /* FocusEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusEmptyView.swift; sourceTree = "<group>"; };
+		70648905215B6BE400F53BFC /* FocusPersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusPersonCell.swift; sourceTree = "<group>"; };
+		70648906215B6BE400F53BFC /* FocusPersonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusPersonCell.xib; sourceTree = "<group>"; };
+		70648909215B87E300F53BFC /* FocusLinesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusLinesCell.swift; sourceTree = "<group>"; };
+		7064890A215B87E300F53BFC /* FocusLinesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusLinesCell.xib; sourceTree = "<group>"; };
 		70CF4EA0214B409E0051A7CA /* WDL_CYR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDL_CYR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CF4EA3214B409E0051A7CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CF4EA5214B409E0051A7CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -178,11 +198,9 @@
 		70CF4ECE214B410C0051A7CA /* GSTimerShelveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GSTimerShelveCell.xib; sourceTree = "<group>"; };
 		70CF4ECF214B410C0051A7CA /* GSDealedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GSDealedCell.xib; sourceTree = "<group>"; };
 		70CF4ED0214B410C0051A7CA /* GSQutationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GSQutationCell.xib; sourceTree = "<group>"; };
-		70CF4ED1214B410C0051A7CA /* GoodsSupplyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsSupplyVC.swift; sourceTree = "<group>"; };
 		70CF4ED3214B410C0051A7CA /* GoodSupplyBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodSupplyBean.swift; sourceTree = "<group>"; };
 		70CF4ED5214B410C0051A7CA /* GoodsSupplyDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsSupplyDetailVC.swift; sourceTree = "<group>"; };
 		70CF4ED6214B410C0051A7CA /* GoodsSupplyDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsSupplyDetailVC.xib; sourceTree = "<group>"; };
-		70CF4ED7214B410C0051A7CA /* GoodsSupplyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsSupplyVC.xib; sourceTree = "<group>"; };
 		70CF4ED9214B410C0051A7CA /* GoodsSupplyFoldInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsSupplyFoldInfoView.swift; sourceTree = "<group>"; };
 		70CF4EDA214B410C0051A7CA /* GSDetailBidingHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSDetailBidingHeader.swift; sourceTree = "<group>"; };
 		70CF4EDB214B410C0051A7CA /* DropPlaceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropPlaceView.xib; sourceTree = "<group>"; };
@@ -402,11 +420,14 @@
 			isa = PBXGroup;
 			children = (
 				70CF4EC4214B410C0051A7CA /* Cells */,
-				70CF4ED1214B410C0051A7CA /* GoodsSupplyVC.swift */,
 				70CF4ED2214B410C0051A7CA /* Models */,
 				70CF4ED4214B410C0051A7CA /* VCS */,
-				70CF4ED7214B410C0051A7CA /* GoodsSupplyVC.xib */,
 				70CF4ED8214B410C0051A7CA /* Views */,
+				706488F7215B458D00F53BFC /* FocusResourceVC.swift */,
+				706488F8215B458D00F53BFC /* FocusResourceVC.xib */,
+				706488FB215B45BB00F53BFC /* ResourceHallVC.swift */,
+				706488FC215B45BB00F53BFC /* ResourceHallVC.xib */,
+				706488FF215B45FA00F53BFC /* ResourceContainerVC.swift */,
 			);
 			path = SupplyGoods;
 			sourceTree = "<group>";
@@ -426,6 +447,10 @@
 				70CF4ECE214B410C0051A7CA /* GSTimerShelveCell.xib */,
 				70CF4ECF214B410C0051A7CA /* GSDealedCell.xib */,
 				70CF4ED0214B410C0051A7CA /* GSQutationCell.xib */,
+				70648905215B6BE400F53BFC /* FocusPersonCell.swift */,
+				70648906215B6BE400F53BFC /* FocusPersonCell.xib */,
+				70648909215B87E300F53BFC /* FocusLinesCell.swift */,
+				7064890A215B87E300F53BFC /* FocusLinesCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -455,6 +480,8 @@
 				70CF4EDB214B410C0051A7CA /* DropPlaceView.xib */,
 				70CF4EDC214B410C0051A7CA /* DropPlaceChooiceView.swift */,
 				70CF4EDD214B410C0051A7CA /* GSDetailBidingHeader.xib */,
+				70648901215B5F5A00F53BFC /* FocusEmptyView.xib */,
+				70648903215B606A00F53BFC /* FocusEmptyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -835,6 +862,7 @@
 				70CF4F7D214B41120051A7CA /* PersonalInfoHeader.xib in Resources */,
 				70CF4FA4214B41120051A7CA /* good_star@3x.png in Resources */,
 				70CF4FA1214B41120051A7CA /* RegisterVC.xib in Resources */,
+				706488FE215B45BB00F53BFC /* ResourceHallVC.xib in Resources */,
 				70CF4F7B214B41110051A7CA /* GSDetailBidingHeader.xib in Resources */,
 				70CF4F6E214B41110051A7CA /* GSOffShelveCell.xib in Resources */,
 				70CF4EAE214B40A00051A7CA /* LaunchScreen.storyboard in Resources */,
@@ -844,18 +872,20 @@
 				70CF4F6F214B41110051A7CA /* GSTimerShelveCell.xib in Resources */,
 				70CF4F7E214B41120051A7CA /* PersonalExcuteCell.xib in Resources */,
 				70F40F24214B553D0054A175 /* ZTScrollItemCell.xib in Resources */,
+				70648908215B6BE400F53BFC /* FocusPersonCell.xib in Resources */,
 				70CF4FA7214B41120051A7CA /* bad_star@2x.png in Resources */,
 				70CF4F9B214B41120051A7CA /* DeliveryVC.xib in Resources */,
 				70CF4F89214B41120051A7CA /* WayBillDetailVC.xib in Resources */,
 				70CF4EA9214B409E0051A7CA /* Main.storyboard in Resources */,
 				70CF4F79214B41110051A7CA /* DropPlaceView.xib in Resources */,
 				70CF4FA3214B41120051A7CA /* LoginVC.xib in Resources */,
+				7064890C215B87E300F53BFC /* FocusLinesCell.xib in Resources */,
 				70CF4F6A214B41110051A7CA /* GSDetailInfoCell.xib in Resources */,
 				70CF4F86214B41120051A7CA /* WayBillCell.xib in Resources */,
 				70CF4F94214B41120051A7CA /* XIBViews.xib in Resources */,
 				70CF4F81214B41120051A7CA /* PersonalVC.xib in Resources */,
+				70648902215B5F5A00F53BFC /* FocusEmptyView.xib in Resources */,
 				70CF4F8C214B41120051A7CA /* WayBillVC.xib in Resources */,
-				70CF4F76214B41110051A7CA /* GoodsSupplyVC.xib in Resources */,
 				70CF4F8D214B41120051A7CA /* DeliveryTruckTypeCell.xib in Resources */,
 				70CF4FA8214B41120051A7CA /* bad_star@3x.png in Resources */,
 				70CF4FA5214B41120051A7CA /* good_star@2x.png in Resources */,
@@ -866,6 +896,7 @@
 				70CF4F84214B41120051A7CA /* WayBillDetailStatusCell.xib in Resources */,
 				70CF4F71214B41110051A7CA /* GSQutationCell.xib in Resources */,
 				70CF4F75214B41110051A7CA /* GoodsSupplyDetailVC.xib in Resources */,
+				706488FA215B458D00F53BFC /* FocusResourceVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -929,6 +960,7 @@
 				70CF4F97214B41120051A7CA /* PlaceChooiceView.swift in Sources */,
 				70CF4F95214B41120051A7CA /* DeliveryTruckTypeView.swift in Sources */,
 				70CF4FD2214B41120051A7CA /* Regx.swift in Sources */,
+				70648900215B45FA00F53BFC /* ResourceContainerVC.swift in Sources */,
 				70CF4FB6214B41120051A7CA /* UIColor+extension.swift in Sources */,
 				70F40F1E214B4E710054A175 /* ZTScrollVCType.swift in Sources */,
 				70CF4F8B214B41120051A7CA /* WayBillVC.swift in Sources */,
@@ -967,7 +999,6 @@
 				70F40F28214B5BCC0054A175 /* ZTScrollNaviBarView.swift in Sources */,
 				70CF4FD1214B41120051A7CA /* Util.swift in Sources */,
 				70CF4F62214B41110051A7CA /* API.swift in Sources */,
-				70CF4F72214B41110051A7CA /* GoodsSupplyVC.swift in Sources */,
 				70CF4F66214B41110051A7CA /* GSDetailInfoCell.swift in Sources */,
 				70CF4FB4214B41120051A7CA /* UITableView+RefreshExtension.swift in Sources */,
 				70CF4FC9214B41120051A7CA /* BaseCell.swift in Sources */,
@@ -992,7 +1023,9 @@
 				70CF4FAD214B41120051A7CA /* SKTagButton.m in Sources */,
 				70CF4EA4214B409E0051A7CA /* AppDelegate.swift in Sources */,
 				70CF4F7A214B41110051A7CA /* DropPlaceChooiceView.swift in Sources */,
+				706488FD215B45BB00F53BFC /* ResourceHallVC.swift in Sources */,
 				70CF4FAC214B41120051A7CA /* SKTagView.m in Sources */,
+				70648904215B606A00F53BFC /* FocusEmptyView.swift in Sources */,
 				70CF4F9C214B41120051A7CA /* UITextField+PlaceInput.swift in Sources */,
 				70CF4FCE214B41120051A7CA /* DropView.swift in Sources */,
 				70CF4FC1214B41120051A7CA /* UIView+ZTTagView.swift in Sources */,
@@ -1000,8 +1033,10 @@
 				70CF4F98214B41120051A7CA /* OneChooseInputView.swift in Sources */,
 				70CF4F6D214B41110051A7CA /* GSDealedCell.swift in Sources */,
 				70CF4F7F214B41120051A7CA /* PersonalInfoHeader.swift in Sources */,
+				706488F9215B458D00F53BFC /* FocusResourceVC.swift in Sources */,
 				70CF4F85214B41120051A7CA /* WayBillCell.swift in Sources */,
 				70CF4F5B214B41110051A7CA /* images.swift in Sources */,
+				7064890B215B87E300F53BFC /* FocusLinesCell.swift in Sources */,
 				70CF4FC2214B41120051A7CA /* UITextField+Extension.swift in Sources */,
 				70CF4F8E214B41120051A7CA /* DeliveryTruckTypeCell.swift in Sources */,
 				70CF4FB7214B41120051A7CA /* UIButton+Extension.swift in Sources */,
@@ -1015,6 +1050,7 @@
 				70CF4F92214B41120051A7CA /* DeliveryPlaceChooiceCell.swift in Sources */,
 				70CF4F67214B41110051A7CA /* GSOffShelveCell.swift in Sources */,
 				70CF4FAF214B41120051A7CA /* ZTTagView.m in Sources */,
+				70648907215B6BE400F53BFC /* FocusPersonCell.swift in Sources */,
 				70F40F26214B55E70054A175 /* ZTScrollItem.swift in Sources */,
 				70CF4F80214B41120051A7CA /* PersonalVC.swift in Sources */,
 				70CF4FC5214B41120051A7CA /* BaseVC.swift in Sources */,
@@ -1098,7 +1134,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
@@ -1153,7 +1189,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;

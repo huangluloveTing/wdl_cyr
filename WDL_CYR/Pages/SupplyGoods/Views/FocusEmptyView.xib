@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="9WP-jS-TEO" customClass="FocusEmptyView" customModule="WDL_CYR" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="赶紧去找找感兴趣的路线吧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ab1-VH-VMt">
+                    <rect key="frame" x="54" y="253.5" width="267.5" height="26.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                    <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYn-O1-7Rn">
+                    <rect key="frame" x="124.5" y="325" width="126" height="37"/>
+                    <color key="backgroundColor" red="0.023529411764705882" green="0.75294117647058822" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                    <state key="normal" title="添加关注路线">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="tapButtonAction:" destination="9WP-jS-TEO" eventType="touchUpInside" id="OJN-DD-Xya"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你还没有关注任何路线" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoa-7w-RHF">
+                    <rect key="frame" x="111.5" y="215.5" width="153" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Ab1-VH-VMt" firstAttribute="top" secondItem="zoa-7w-RHF" secondAttribute="bottom" constant="20" id="1fh-sy-v6B"/>
+                <constraint firstItem="Ab1-VH-VMt" firstAttribute="centerX" secondItem="vYn-O1-7Rn" secondAttribute="centerX" id="3uh-ZO-M3z"/>
+                <constraint firstItem="vYn-O1-7Rn" firstAttribute="centerY" secondItem="CVf-0m-Cgv" secondAttribute="centerY" id="FVC-AN-aux"/>
+                <constraint firstItem="vYn-O1-7Rn" firstAttribute="top" secondItem="Ab1-VH-VMt" secondAttribute="bottom" constant="45" id="gWf-Gp-na2"/>
+                <constraint firstItem="vYn-O1-7Rn" firstAttribute="centerX" secondItem="CVf-0m-Cgv" secondAttribute="centerX" id="lYC-bs-hnl"/>
+                <constraint firstItem="zoa-7w-RHF" firstAttribute="centerX" secondItem="vYn-O1-7Rn" secondAttribute="centerX" id="wkE-4X-4AQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="CVf-0m-Cgv"/>
+            <connections>
+                <outlet property="button" destination="vYn-O1-7Rn" id="B5d-MV-1l1"/>
+                <outlet property="descriptionLabel" destination="Ab1-VH-VMt" id="eV6-8G-T7K"/>
+                <outlet property="titleLabel" destination="zoa-7w-RHF" id="Wbv-Ys-1RN"/>
+            </connections>
+            <point key="canvasLocation" x="59.5" y="83.5"/>
+        </view>
+    </objects>
+</document>

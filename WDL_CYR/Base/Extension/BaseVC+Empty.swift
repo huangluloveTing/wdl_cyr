@@ -9,7 +9,7 @@
 import Foundation
 
 var emptyKey = "    "
-extension BaseVC : DZNEmptyDataSetSource {
+extension BaseVC : DZNEmptyDataSetSource , DZNEmptyDataSetDelegate {
     
     private var emptyTitle:String {
         set {

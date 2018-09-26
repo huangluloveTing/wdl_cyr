@@ -18,7 +18,7 @@ class ZTScrollNaviBarView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(self.titleView)
+        self.backgroundColor = UIColor.clear
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,12 +40,20 @@ class ZTScrollNaviBarView: UIView {
         hotiView.bottomTrimHidden = true
         hotiView.delegate = self
         hotiView.dataSource = self
+        hotiView.selectionIndicatorAnimationMode = .noBounce
+        hotiView.backgroundColor = UIColor.clear
         return hotiView
     }()
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.addSubview(self.titleView)
         self.titleView.frame = self.bounds
+    }
+    
+    func setHeaderTintColor(color:UIColor , state:UIControlState) -> Void {
+        self.titleView.setTitleColor(color, for: state)
+        self.titleView.selectionIndicatorColor = color
     }
 }
 

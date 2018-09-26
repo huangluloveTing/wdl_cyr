@@ -10,8 +10,20 @@ import Foundation
 import HandyJSON
 
 struct LoginInfo : HandyJSON {
-   public var userCode:String?
-   public var returnToken:String?
+    var token : String?
+    var id : String?
+    var carrierNo : String?
+    var carrierName : String?
+    var cellPhone : String?
+    var idCard : String?
+    var companyName : String?
+    var carrierType : String?
+    var vehicleAudited :String?
+    var vehicleUnaudited :  String?
+    var driverAudited : String?
+    var driverUnaudited : String?
+    var addedCount : String?
+    var isAuth : Bool?
 }
 
 class WDLCoreManager: NSObject {

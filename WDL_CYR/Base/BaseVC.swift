@@ -10,12 +10,6 @@ import UIKit
 import RxSwift
 
 // 页面操作  -> tableView 的相关操作
-enum SupplyGoodsCommand<T> {
-    case TapItem(IndexPath , GoodsSupplyVC) // 点击item
-    case ItemDelete(IndexPath)              // 删除item
-    case Refresh(items:[T])                 // 刷新数据
-    case LoadMore(items:[T])                // 加载更多
-}
 
 class BaseVC: UIViewController {
     

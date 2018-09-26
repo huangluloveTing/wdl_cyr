@@ -12,6 +12,7 @@ PODS:
   - HTHorizontalSelectionList (0.7.4):
     - M13BadgeView (~> 1.0.4)
   - IQKeyboardManager (6.1.1)
+  - Kingfisher (4.8.1)
   - M13BadgeView (1.0.4)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.15.3)
@@ -69,6 +70,7 @@ DEPENDENCIES:
   - HandyJSON
   - HTHorizontalSelectionList
   - IQKeyboardManager
+  - Kingfisher
   - MJRefresh
   - Moya/RxSwift (~> 11.0)
   - RxCocoa
@@ -90,6 +92,7 @@ SPEC REPOS:
     - HandyJSON
     - HTHorizontalSelectionList
     - IQKeyboardManager
+    - Kingfisher
     - M13BadgeView
     - MBProgressHUD
     - MJRefresh
@@ -116,6 +119,7 @@ SPEC CHECKSUMS:
   HandyJSON: bc81fbeb62d65ae5d5942ed29bc4a8265d18c1e8
   HTHorizontalSelectionList: c38792f4bc87f941ab6c07b02a40abf111c68249
   IQKeyboardManager: 79c57795f5c2408d259d37b9da2ed07efcbb5225
+  Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
   M13BadgeView: 700dd0714fdc837c0cf1c8c004454963ec22441f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
@@ -131,6 +135,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   ZTHExtension: 924db453c38d748321023af4d5d637eeae45828f
 
-PODFILE CHECKSUM: 397c3b54037c2a2b78ee284f5f728933e96da833
+PODFILE CHECKSUM: ba60843a2996dc92f6d58fc9494e7e9e97be9626
 
 COCOAPODS: 1.5.3
