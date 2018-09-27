@@ -23,11 +23,11 @@ class RootTabBarVC: UITabBarController {
     }
     
     func addControllers() {
-        let deliverVC = DeliveryVC()
+        let deliverVC = OfferContainerVC()
         let supplyVC = ResourceContainerVC()
         let wayBillVC = WayBillVC()
         let personalVC = PersonalVC()
-        let naviDeliverVC = self.childController(vc: deliverVC, normalImage: #imageLiteral(resourceName: "发货-灰"), selecteImage: #imageLiteral(resourceName: "发货-选中"), tabText: "发货")
+        let naviDeliverVC = self.childController(vc: deliverVC, normalImage: #imageLiteral(resourceName: "灰"), selecteImage: #imageLiteral(resourceName: "报价-选中"), tabText: "报价")
         let naviSupplyVC = self.childController(vc: supplyVC, normalImage: #imageLiteral(resourceName: "货源-灰"), selecteImage: #imageLiteral(resourceName: "货源-选中"), tabText: "货源")
         let naviBillVC = self.childController(vc: wayBillVC, normalImage: #imageLiteral(resourceName: "运单-灰"), selecteImage: #imageLiteral(resourceName: "运单-选中"), tabText: "运单")
         let naviPersonalVC = self.childController(vc: personalVC, normalImage: #imageLiteral(resourceName: "我的-灰"), selecteImage: #imageLiteral(resourceName: "我的-选中"), tabText: "我的")

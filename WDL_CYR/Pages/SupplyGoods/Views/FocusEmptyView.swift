@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class FocusEmptyView: UIView {
+    
+    let dispose = DisposeBag()
     
     typealias FocusEmptyViewTapButtonClosure = () -> ()
 
@@ -28,6 +32,16 @@ class FocusEmptyView: UIView {
         self.descriptionLabel.text = desc
         self.button.setTitle(buttonTitle, for: .normal)
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+    }
+    
     @IBAction func tapButtonAction(_ sender: Any) {
         if let closure = self.tapClosure {
             closure()

@@ -93,6 +93,8 @@ extension LoginVC {
                         WDLCoreManager.shared().userInfo = model.data
                         obser.onNext(model.data)
                         obser.onCompleted()
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.getAreaInfo()
                     },
                                onError:{(error) in
                         self.showFail(fail: error.localizedDescription, complete: nil)

@@ -11,6 +11,10 @@ import RxSwift
 
 // 页面操作  -> tableView 的相关操作
 
+typealias HandleExcute = (Any) -> ()
+typealias HandleError = (Error) -> ()
+typealias HandleComplete = () -> ()
+
 class BaseVC: UIViewController {
     
     public let dispose = DisposeBag()
@@ -89,6 +93,7 @@ extension BaseVC {
     func addDropView(drop:UIView,anchorView:UIView) -> DropViewContainer {
         return DropViewContainer(dropView: drop, anchorView: anchorView)
     }
+    
 }
 
 // navigationBar
@@ -110,5 +115,29 @@ extension BaseVC {
     // 隐藏tableViewCell分割线
     func hiddenTableViewSeperate(tableView:UITableView) {
         tableView.separatorStyle = .none
+    }
+}
+
+// 处理 observable
+extension BaseVC {
+    
+    func addObservable(observable:Observable<Any> ,
+                       handleExcute:HandleExcute? = nil ,
+                       handError:HandleError? = nil ,
+                       handleComplete:HandleComplete? = nil) {
+        observable.subscribe(onNext: { (excute) in
+                if  let handleExcute = handleExcute {
+                    handleExcute(excute)
+                }
+            }, onError: { (error) in
+                if let handleError = handError {
+                    handleError(error)
+                }
+            }, onCompleted: {
+                if let handleComplete = handleComplete {
+                    handleComplete()
+                }
+            })
+            .disposed(by: dispose)
     }
 }

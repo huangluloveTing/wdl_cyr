@@ -41,6 +41,12 @@ extension BaseVC {
         self.push(vc: wayBillDetail, title: "运单详情")
     }
     
+    // 添加关注路线
+    func toFocusLineVC() -> Void {
+        let lineVC = AddLinesVC()
+        self.push(vc: lineVC, title: "添加路线")
+    }
+    
     //TODO: todo
     func toDelivery() {
 //        let deliveryVC = DeliveryVC()

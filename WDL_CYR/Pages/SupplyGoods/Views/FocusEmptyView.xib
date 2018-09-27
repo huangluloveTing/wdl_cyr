@@ -17,25 +17,25 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="赶紧去找找感兴趣的路线吧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ab1-VH-VMt">
-                    <rect key="frame" x="54" y="253.5" width="267.5" height="26.5"/>
+                    <rect key="frame" x="54" y="253" width="267.5" height="26.5"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYn-O1-7Rn">
-                    <rect key="frame" x="124.5" y="325" width="126" height="37"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYn-O1-7Rn">
+                    <rect key="frame" x="121.5" y="324.5" width="132" height="38"/>
                     <color key="backgroundColor" red="0.023529411764705882" green="0.75294117647058822" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
                     <state key="normal" title="添加关注路线">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
-                        <action selector="tapButtonAction:" destination="9WP-jS-TEO" eventType="touchUpInside" id="OJN-DD-Xya"/>
+                        <action selector="tapButtonAction:" destination="9WP-jS-TEO" eventType="touchUpInside" id="duq-a1-e5B"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你还没有关注任何路线" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoa-7w-RHF">
-                    <rect key="frame" x="111.5" y="215.5" width="153" height="18"/>
+                    <rect key="frame" x="111.5" y="215" width="153" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>

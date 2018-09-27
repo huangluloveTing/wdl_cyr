@@ -28,6 +28,7 @@ class ZTScrollViewConroller: UIViewController {
             self.collectionView.contentInsetAdjustmentBehavior = .never
         } else {
             self.navigationController?.navigationBar.isTranslucent = false
+            self.tabBarController?.tabBar.isTranslucent = false
             self.automaticallyAdjustsScrollViewInsets = false
         }
         
@@ -57,6 +58,8 @@ class ZTScrollViewConroller: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(UINib.init(nibName: "\(ZTScrollItemCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(ZTScrollItemCell.self)")
         return collectionView
     }()
@@ -105,7 +108,7 @@ extension ZTScrollViewConroller : UICollectionViewDelegate , UICollectionViewDat
 // navi titles
 extension ZTScrollViewConroller {
     private func addNaviSelectView() {
-        let naviTitle = ZTScrollNaviBarView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 100, height: 44))
+        let naviTitle = ZTScrollNaviBarView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 120, height: 44))
         self.naviSelectView = naviTitle
         self.naviSelectView?.tapClosure = { (index) in
             self.isTapTab = true

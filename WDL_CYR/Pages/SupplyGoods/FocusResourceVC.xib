@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FocusResourceVC" customModule="WDL_CYR" customModuleProvider="target">
             <connections>
+                <outlet property="addLinesBtn" destination="3sB-JB-T8Y" id="aOj-aB-Kew"/>
                 <outlet property="focusLinesBtn" destination="aEN-sr-WAe" id="vgg-Gq-naU"/>
                 <outlet property="focusPersonBtn" destination="Gdp-7M-s0J" id="dsB-JE-ZPY"/>
                 <outlet property="tableView" destination="u7R-Gx-673" id="Xt7-C8-swc"/>
@@ -81,19 +82,35 @@
                     <rect key="frame" x="0.0" y="79" width="375" height="588"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sB-JB-T8Y">
+                    <rect key="frame" x="309" y="601" width="46" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="Fin-LC-ZB3"/>
+                        <constraint firstAttribute="width" constant="46" id="wcE-gj-Ija"/>
+                    </constraints>
+                    <state key="normal" image="关注路线"/>
+                    <connections>
+                        <action selector="addLinesAction:" destination="-1" eventType="touchUpInside" id="ZhI-k3-wRo"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3sB-JB-T8Y" secondAttribute="trailing" constant="20" id="8gl-jz-YhT"/>
                 <constraint firstItem="nNY-XR-EiH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9im-eU-rUt"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nNY-XR-EiH" secondAttribute="trailing" id="Dt9-Sf-75j"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="u7R-Gx-673" secondAttribute="trailing" id="SvS-kd-loR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="u7R-Gx-673" secondAttribute="bottom" id="Ulf-E1-aPg"/>
                 <constraint firstItem="u7R-Gx-673" firstAttribute="top" secondItem="nNY-XR-EiH" secondAttribute="bottom" constant="10" id="Uwp-qQ-VVS"/>
                 <constraint firstItem="nNY-XR-EiH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="t4P-Zm-mEP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3sB-JB-T8Y" secondAttribute="bottom" constant="20" id="tQN-hp-aD8"/>
                 <constraint firstItem="u7R-Gx-673" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uuu-Zn-PvG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="77.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="关注路线" width="52" height="52"/>
+    </resources>
 </document>
