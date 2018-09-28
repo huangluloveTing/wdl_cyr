@@ -61,6 +61,23 @@ class Util {
         }
         return false
     }
+    
+    // 保留浮点数的小数点位数
+    static func floatPoint(num:Int , floatValue:Float) -> String {
+        return String(format: "%.\(num)f", floatValue)
+    }
+    
+    // 富文本，行间距和字体大小
+    static func sepecialText(text:String? = "" , lineSpace:Float , font:UIFont , color:UIColor) -> NSAttributedString {
+        let targetValue = text ?? ""
+        let attribute = NSMutableAttributedString(string: targetValue)
+        attribute.addAttribute(NSAttributedStringKey.font, value: font, range: NSRangeFromString(targetValue))
+        let paragraphStye = NSMutableParagraphStyle()
+        paragraphStye.lineSpacing = CGFloat(lineSpace)
+        attribute.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStye, range: NSRangeFromString(targetValue))
+        attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSRangeFromString(targetValue))
+        return attribute
+    }
 }
 
 // 富文本 YYText

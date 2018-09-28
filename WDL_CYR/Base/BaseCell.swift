@@ -67,3 +67,22 @@ extension BaseCell {
         imageView.kf.setImage(with: (resource as! Resource))
     }
 }
+
+// 报价状态显示样式
+extension BaseCell {
+    
+    //TODO: 需要完善对应的报价 时的状态情况
+    func offerStatusStyle(status:Int? , to label:UILabel) -> Void {
+        
+    }
+    
+    //TODO: 报价的指派对应的展示
+    func offerDesignateStyle(designate:Int? , to label:UILabel) -> Void {
+        
+    }
+    
+    //TODO: 货源详情中，货源状态
+    func gsStatus(status:SourceStatus , to label:UILabel) -> Void {
+        
+    }
+}

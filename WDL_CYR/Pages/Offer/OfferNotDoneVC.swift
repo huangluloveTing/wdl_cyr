@@ -10,6 +10,7 @@ import UIKit
 
 class OfferNotDoneVC: NormalBaseVC , ZTScrollViewControllerType {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dropHintView: DropHintView!
     
     func willShow() {
@@ -23,12 +24,42 @@ class OfferNotDoneVC: NormalBaseVC , ZTScrollViewControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configDropView()
+        self.configTableView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+
+// tableView
+extension OfferNotDoneVC {
+    
+    func configTableView() -> Void {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.separatorStyle = .none
+        self.registerCell(nibName: "\(Offer_NotDoneCell.self)", for: self.tableView)
+    }
+}
+
+// UITableViewDelegate , UITableViewDataSource
+extension OfferNotDoneVC : UITableViewDelegate , UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(Offer_NotDoneCell.self)") as! Offer_NotDoneCell
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.contentView.shadowBorder(radius: 10, bgColor: UIColor.white, shadowColor: UIColor(hex: "C9C9C9"), shadowOpacity: 0.5, insets: UIEdgeInsetsMake(15, 15, 0, 15))
+    }
+    
 }
 
 // dropView

@@ -11,7 +11,7 @@ import RxSwift
 
 // 页面操作  -> tableView 的相关操作
 
-typealias HandleExcute = (Any) -> ()
+typealias HandleExcute<T> = (T) -> ()
 typealias HandleError = (Error) -> ()
 typealias HandleComplete = () -> ()
 
@@ -121,8 +121,8 @@ extension BaseVC {
 // 处理 observable
 extension BaseVC {
     
-    func addObservable(observable:Observable<Any> ,
-                       handleExcute:HandleExcute? = nil ,
+    func addObservable<T>(observable:Observable<T> ,
+                          handleExcute:HandleExcute<T>? = nil ,
                        handError:HandleError? = nil ,
                        handleComplete:HandleComplete? = nil) {
         observable.subscribe(onNext: { (excute) in

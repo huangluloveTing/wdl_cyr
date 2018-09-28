@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.swift
 //  WDL_CYR
 //
@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configIQKeyboard()
         self.configGAODEMap()
         self.configHUD()
+        self.mirro()
         
         return true
     }
@@ -85,4 +86,12 @@ extension AppDelegate {
         SVProgressHUD.setRingRadius(5)
     }
 }
+ 
+ // 联系 反射
+ extension AppDelegate {
+    
+    func mirro() {
+        
+    }
+ }
 
