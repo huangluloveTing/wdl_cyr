@@ -15,6 +15,7 @@ extension String {
             return self.count;
         }
     }
+    
     //MARK:-截取字符串从开始到 index
     func substring(to index: Int) -> String {
         guard let end_Index = validEndIndex(original: index) else {
@@ -60,6 +61,7 @@ extension String {
         return String(self[start_Index...end_Index])
         
     }
+    
     //MARK:-校验字符串位置 是否合理，并返回String.Index
     private func validIndex(original: Int) -> String.Index {
         
@@ -69,6 +71,7 @@ extension String {
         default                          : return index(startIndex, offsetBy: original)
         }
     }
+    
     //MARK:-校验是否是合法的起始位置
     private func validStartIndex(original: Int) -> String.Index? {
         guard original <= endIndex.encodedOffset else { return nil }

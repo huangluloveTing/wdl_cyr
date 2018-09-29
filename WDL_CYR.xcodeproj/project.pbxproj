@@ -174,6 +174,15 @@
 		70EA736C215E0E680020B8C3 /* GSDetail_notDealCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70EA736A215E0E680020B8C3 /* GSDetail_notDealCell.xib */; };
 		70EA736F215E12920020B8C3 /* GSDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA736D215E12920020B8C3 /* GSDetailVC.swift */; };
 		70EA7370215E12920020B8C3 /* GSDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70EA736E215E12920020B8C3 /* GSDetailVC.xib */; };
+		70EA7372215E63990020B8C3 /* WayBillContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA7371215E63990020B8C3 /* WayBillContainerVC.swift */; };
+		70EA7374215E63BF0020B8C3 /* WayBillBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA7373215E63BF0020B8C3 /* WayBillBaseVC.swift */; };
+		70EA7377215E650A0020B8C3 /* WayBillModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA7376215E650A0020B8C3 /* WayBillModels.swift */; };
+		70EA7379215F00A20020B8C3 /* UIResponder+Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA7378215F00A20020B8C3 /* UIResponder+Chain.swift */; };
+		70EA739B215F2F3D0020B8C3 /* WaybillBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA739A215F2F3D0020B8C3 /* WaybillBaseCell.swift */; };
+		70EA73A2215F47D00020B8C3 /* WaybillCarrierInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA73A0215F47D00020B8C3 /* WaybillCarrierInfoCell.swift */; };
+		70EA73A3215F47D10020B8C3 /* WaybillCarrierInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70EA73A1215F47D00020B8C3 /* WaybillCarrierInfoCell.xib */; };
+		70EA73A6215F48090020B8C3 /* WaybillSepecialInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA73A4215F48090020B8C3 /* WaybillSepecialInfoCell.swift */; };
+		70EA73A7215F48090020B8C3 /* WaybillSepecialInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70EA73A5215F48090020B8C3 /* WaybillSepecialInfoCell.xib */; };
 		70F40F1E214B4E710054A175 /* ZTScrollVCType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F40F1D214B4E710054A175 /* ZTScrollVCType.swift */; };
 		70F40F20214B535C0054A175 /* ZTScrollViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F40F1F214B535C0054A175 /* ZTScrollViewConroller.swift */; };
 		70F40F23214B553D0054A175 /* ZTScrollItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F40F21214B553D0054A175 /* ZTScrollItemCell.swift */; };
@@ -364,6 +373,15 @@
 		70EA736A215E0E680020B8C3 /* GSDetail_notDealCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GSDetail_notDealCell.xib; sourceTree = "<group>"; };
 		70EA736D215E12920020B8C3 /* GSDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSDetailVC.swift; sourceTree = "<group>"; };
 		70EA736E215E12920020B8C3 /* GSDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GSDetailVC.xib; sourceTree = "<group>"; };
+		70EA7371215E63990020B8C3 /* WayBillContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayBillContainerVC.swift; sourceTree = "<group>"; };
+		70EA7373215E63BF0020B8C3 /* WayBillBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayBillBaseVC.swift; sourceTree = "<group>"; };
+		70EA7376215E650A0020B8C3 /* WayBillModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayBillModels.swift; sourceTree = "<group>"; };
+		70EA7378215F00A20020B8C3 /* UIResponder+Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Chain.swift"; sourceTree = "<group>"; };
+		70EA739A215F2F3D0020B8C3 /* WaybillBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaybillBaseCell.swift; sourceTree = "<group>"; };
+		70EA73A0215F47D00020B8C3 /* WaybillCarrierInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillCarrierInfoCell.swift; sourceTree = "<group>"; };
+		70EA73A1215F47D00020B8C3 /* WaybillCarrierInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillCarrierInfoCell.xib; sourceTree = "<group>"; };
+		70EA73A4215F48090020B8C3 /* WaybillSepecialInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillSepecialInfoCell.swift; sourceTree = "<group>"; };
+		70EA73A5215F48090020B8C3 /* WaybillSepecialInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillSepecialInfoCell.xib; sourceTree = "<group>"; };
 		70F40F1B214B4A350054A175 /* WDL_CYR-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WDL_CYR-Bridging-Header.h"; sourceTree = "<group>"; };
 		70F40F1D214B4E710054A175 /* ZTScrollVCType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTScrollVCType.swift; sourceTree = "<group>"; };
 		70F40F1F214B535C0054A175 /* ZTScrollViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTScrollViewConroller.swift; sourceTree = "<group>"; };
@@ -648,11 +666,14 @@
 		70CF4EE9214B410C0051A7CA /* WayBill */ = {
 			isa = PBXGroup;
 			children = (
+				70EA7375215E64F90020B8C3 /* models */,
 				70CF4EEA214B410C0051A7CA /* Cells */,
 				70CF4EEF214B410C0051A7CA /* VCS */,
 				70CF4EF2214B410C0051A7CA /* Views */,
 				70CF4EF4214B410C0051A7CA /* WayBillVC.swift */,
 				70CF4EF5214B410C0051A7CA /* WayBillVC.xib */,
+				70EA7371215E63990020B8C3 /* WayBillContainerVC.swift */,
+				70EA7373215E63BF0020B8C3 /* WayBillBaseVC.swift */,
 			);
 			path = WayBill;
 			sourceTree = "<group>";
@@ -660,10 +681,15 @@
 		70CF4EEA214B410C0051A7CA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				70EA739A215F2F3D0020B8C3 /* WaybillBaseCell.swift */,
+				70CF4EEE214B410C0051A7CA /* WayBillDetailStatusCell.swift */,
 				70CF4EEB214B410C0051A7CA /* WayBillDetailStatusCell.xib */,
 				70CF4EEC214B410C0051A7CA /* WayBillCell.swift */,
 				70CF4EED214B410C0051A7CA /* WayBillCell.xib */,
-				70CF4EEE214B410C0051A7CA /* WayBillDetailStatusCell.swift */,
+				70EA73A0215F47D00020B8C3 /* WaybillCarrierInfoCell.swift */,
+				70EA73A1215F47D00020B8C3 /* WaybillCarrierInfoCell.xib */,
+				70EA73A4215F48090020B8C3 /* WaybillSepecialInfoCell.swift */,
+				70EA73A5215F48090020B8C3 /* WaybillSepecialInfoCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -852,6 +878,7 @@
 				70CF4F41214B410D0051A7CA /* UITextField+Extension.swift */,
 				70CF4F42214B410D0051A7CA /* BaseVC+router.swift */,
 				70CF4F43214B410D0051A7CA /* MyButton.swift */,
+				70EA7378215F00A20020B8C3 /* UIResponder+Chain.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -903,6 +930,14 @@
 				70CF4F5A214B41110051A7CA /* RegisterAgreeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		70EA7375215E64F90020B8C3 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				70EA7376215E650A0020B8C3 /* WayBillModels.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		70F40F1C214B4E270054A175 /* ZTScrollNaviTitle */ = {
@@ -1030,6 +1065,7 @@
 				704DD0A1215CEC6600E6AD6F /* OfferNotDoneVC.xib in Resources */,
 				70CF4FA8214B41120051A7CA /* bad_star@3x.png in Resources */,
 				70EA7360215E07C40020B8C3 /* GSDetail_GoodsInfoCell.xib in Resources */,
+				70EA73A3215F47D10020B8C3 /* WaybillCarrierInfoCell.xib in Resources */,
 				70EA7364215E0A640020B8C3 /* GSDetail_canceledOfferCell.xib in Resources */,
 				70CF4FA5214B41120051A7CA /* good_star@2x.png in Resources */,
 				70CF4FD5214B41120051A7CA /* RegisterAgreeView.xib in Resources */,
@@ -1037,6 +1073,7 @@
 				70CF4FA2214B41120051A7CA /* ForgetPwdVC.xib in Resources */,
 				70CF4F90214B41120051A7CA /* DeliveryPlaceChooiceCell.xib in Resources */,
 				70CF4F84214B41120051A7CA /* WayBillDetailStatusCell.xib in Resources */,
+				70EA73A7215F48090020B8C3 /* WaybillSepecialInfoCell.xib in Resources */,
 				70CF4F71214B41110051A7CA /* GSQutationCell.xib in Resources */,
 				70CF4F75214B41110051A7CA /* GoodsSupplyDetailVC.xib in Resources */,
 				706488FA215B458D00F53BFC /* FocusResourceVC.xib in Resources */,
@@ -1101,6 +1138,7 @@
 				70CF4FB9214B41120051A7CA /* UIView+Extension.swift in Sources */,
 				704DD087215BB55E00E6AD6F /* AddLinesVC.swift in Sources */,
 				70CF4F96214B41120051A7CA /* OnTimePostView.swift in Sources */,
+				70EA7379215F00A20020B8C3 /* UIResponder+Chain.swift in Sources */,
 				70CF4F97214B41120051A7CA /* PlaceChooiceView.swift in Sources */,
 				70CF4F95214B41120051A7CA /* DeliveryTruckTypeView.swift in Sources */,
 				70CF4FD2214B41120051A7CA /* Regx.swift in Sources */,
@@ -1112,9 +1150,11 @@
 				70CF4F83214B41120051A7CA /* NormalBaseVC.swift in Sources */,
 				70CF4F88214B41120051A7CA /* WayBillDetailVC.swift in Sources */,
 				70F40F20214B535C0054A175 /* ZTScrollViewConroller.swift in Sources */,
+				70EA739B215F2F3D0020B8C3 /* WaybillBaseCell.swift in Sources */,
 				70CF4F9F214B41120051A7CA /* ForgetPwdVC.swift in Sources */,
 				70CF4FCB214B41120051A7CA /* ZTFoldTableView.swift in Sources */,
 				70CF4F78214B41110051A7CA /* GSDetailBidingHeader.swift in Sources */,
+				70EA73A2215F47D00020B8C3 /* WaybillCarrierInfoCell.swift in Sources */,
 				70CF4F61214B41110051A7CA /* BaseModel.swift in Sources */,
 				704DD08D215CA44000E6AD6F /* ResourceHallCell.swift in Sources */,
 				70CF4F91214B41120051A7CA /* DeliveryPlaceTabHeader.swift in Sources */,
@@ -1150,6 +1190,7 @@
 				70CF4F62214B41110051A7CA /* API.swift in Sources */,
 				70CF4F66214B41110051A7CA /* GSDetailInfoCell.swift in Sources */,
 				70CF4FB4214B41120051A7CA /* UITableView+RefreshExtension.swift in Sources */,
+				70EA7372215E63990020B8C3 /* WayBillContainerVC.swift in Sources */,
 				70CF4FC9214B41120051A7CA /* BaseCell.swift in Sources */,
 				70CF4FC7214B41120051A7CA /* ZTTransition.swift in Sources */,
 				70EA7367215E0AE00020B8C3 /* GSDetail_rejectCell.swift in Sources */,
@@ -1182,6 +1223,7 @@
 				70648904215B606A00F53BFC /* FocusEmptyView.swift in Sources */,
 				70CF4F9C214B41120051A7CA /* UITextField+PlaceInput.swift in Sources */,
 				70CF4FCE214B41120051A7CA /* DropView.swift in Sources */,
+				70EA7377215E650A0020B8C3 /* WayBillModels.swift in Sources */,
 				70CF4FC1214B41120051A7CA /* UIView+ZTTagView.swift in Sources */,
 				70CF4FD3214B41120051A7CA /* DropViewManage.swift in Sources */,
 				704DD0A0215CEC6600E6AD6F /* OfferNotDoneVC.swift in Sources */,
@@ -1207,6 +1249,7 @@
 				70EA7354215DEE380020B8C3 /* GSDetailBaseVC.swift in Sources */,
 				70F40F23214B553D0054A175 /* ZTScrollItemCell.swift in Sources */,
 				70CF4F92214B41120051A7CA /* DeliveryPlaceChooiceCell.swift in Sources */,
+				70EA7374215E63BF0020B8C3 /* WayBillBaseVC.swift in Sources */,
 				70CF4F67214B41110051A7CA /* GSOffShelveCell.swift in Sources */,
 				70EA7351215DCF170020B8C3 /* Offer_DoneCell.swift in Sources */,
 				70CF4FAF214B41120051A7CA /* ZTTagView.m in Sources */,
@@ -1217,6 +1260,7 @@
 				70CF4FBA214B41120051A7CA /* UIViewController+navigation.swift in Sources */,
 				70CF4F5E214B41110051A7CA /* BaseApi.swift in Sources */,
 				70CF4F77214B41110051A7CA /* GoodsSupplyFoldInfoView.swift in Sources */,
+				70EA73A6215F48090020B8C3 /* WaybillSepecialInfoCell.swift in Sources */,
 				70CF4F7C214B41120051A7CA /* PersonalExcuteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

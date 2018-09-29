@@ -141,3 +141,14 @@ extension BaseVC {
             .disposed(by: dispose)
     }
 }
+
+// 添加 searchBar 到 tableView 上
+extension BaseVC {
+    
+    func addSearchBar(to tableView:UITableView , placeHolder:String? = "搜索驾驶员姓名、电话") -> Void {
+        let searchBar = UISearchBar(frame: CGRect(x: 15, y: -40, width: IPHONE_WIDTH - 15, height: 40))
+        searchBar.placeholder = placeHolder
+        tableView.addSubview(searchBar)
+        tableView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0)
+    }
+}
