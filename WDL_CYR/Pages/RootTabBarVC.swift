@@ -25,7 +25,7 @@ class RootTabBarVC: UITabBarController {
     func addControllers() {
         let deliverVC = OfferContainerVC()
         let supplyVC = ResourceContainerVC()
-        let wayBillVC = WayBillVC()
+        let wayBillVC = WayBillContainerVC()
         let personalVC = PersonalVC()
         let naviDeliverVC = self.childController(vc: deliverVC, normalImage: #imageLiteral(resourceName: "灰"), selecteImage: #imageLiteral(resourceName: "报价-选中"), tabText: "报价")
         let naviSupplyVC = self.childController(vc: supplyVC, normalImage: #imageLiteral(resourceName: "货源-灰"), selecteImage: #imageLiteral(resourceName: "货源-选中"), tabText: "货源")

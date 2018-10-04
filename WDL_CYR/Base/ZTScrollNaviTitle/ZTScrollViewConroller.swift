@@ -24,11 +24,11 @@ class ZTScrollViewConroller: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.tabBarController?.tabBar.isTranslucent = false
         if #available(iOS 11.0, *) {
             self.collectionView.contentInsetAdjustmentBehavior = .never
         } else {
-            self.navigationController?.navigationBar.isTranslucent = false
-            self.tabBarController?.tabBar.isTranslucent = false
             self.automaticallyAdjustsScrollViewInsets = false
         }
         

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OfferDealVC: NormalBaseVC , ZTScrollViewControllerType {
+class OfferDealVC: MainBaseVC , ZTScrollViewControllerType {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dropHintView: DropHintView!
     

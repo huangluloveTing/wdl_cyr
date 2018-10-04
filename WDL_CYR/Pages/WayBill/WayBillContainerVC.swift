@@ -8,28 +8,35 @@
 
 import UIKit
 
-class WayBillContainerVC: MainBaseVC {
+class WayBillContainerVC: ZTScrollViewConroller  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.wr_setStatusBarStyle(UIStatusBarStyle.lightContent)
+        self.wr_setNavBarBarTintColor(UIColor(hex: "06C06F"))
+        self.wr_setNavBarTintColor(UIColor.white)
+        self.wr_setNavBarTitleColor(UIColor.white)
+        self.setTitleTintColor(color: UIColor.white.withAlphaComponent(0.7), state: .normal)
+        self.setTitleTintColor(color: UIColor.white, state: .selected)
+        self.addWaybillVCs()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+
+}
+
+extension WayBillContainerVC {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func addWaybillVCs() -> Void {
+        let unassemble = WaybillUnAssembleVC()
+        let notDoneVC = WaybillNotDoneVC()
+        let doneVC = WaybillDoneVC()
+        
+        let subItem1 = ZTScrollItem(viewController: unassemble, title: "未配载")
+        let subItem2 = ZTScrollItem(viewController: notDoneVC, title: "未完成")
+        let subItem3 = ZTScrollItem(viewController: doneVC, title: "已完成")
+        self.scrollSubItems(items: [subItem1 , subItem2 , subItem3])
     }
-    */
-
 }

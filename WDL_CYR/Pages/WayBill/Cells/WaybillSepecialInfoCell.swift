@@ -9,7 +9,26 @@
 import UIKit
 
 class WaybillSepecialInfoCell: WaybillBaseCell {
-
+    
+    
+    @IBOutlet weak var statusImageView: UIImageView!
+    @IBOutlet weak var avatorImageView: UIImageView!
+    
+    @IBOutlet weak var desiginLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var desginDescLabel: UILabel!
+    @IBOutlet weak var startLabel: UILabel!
+    @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet weak var goodsInfoLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet weak var twoHandleButton_2: UIButton!
+    @IBOutlet weak var twoHandleButton_1: UIButton!
+    @IBOutlet weak var oneHandleButton: UIButton!
+    
+    @IBOutlet weak var oneHandleView: UIView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

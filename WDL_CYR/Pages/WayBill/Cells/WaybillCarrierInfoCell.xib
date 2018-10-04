@@ -192,6 +192,13 @@
                             <constraint firstItem="Izm-ga-2hH" firstAttribute="leading" secondItem="QLT-Z1-IFa" secondAttribute="leading" id="JRa-y3-yR1"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s9I-zn-8ZF">
+                        <rect key="frame" x="15" y="15" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="Isi-R2-z5p"/>
+                            <constraint firstAttribute="width" constant="35" id="uV7-xf-efi"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="CQD-9N-r3G" firstAttribute="leading" secondItem="eKc-LL-UbZ" secondAttribute="leading" id="5EV-xB-3Ln"/>
@@ -212,6 +219,7 @@
                     <constraint firstAttribute="trailing" secondItem="quQ-7b-YmV" secondAttribute="trailing" constant="15" id="Oft-qz-0FJ"/>
                     <constraint firstItem="UmF-YU-30c" firstAttribute="leading" secondItem="eKc-LL-UbZ" secondAttribute="leading" id="Ogn-7i-YXt"/>
                     <constraint firstItem="dEt-G7-qaV" firstAttribute="top" secondItem="UmF-YU-30c" secondAttribute="bottom" constant="10" id="PxH-Ix-K0S"/>
+                    <constraint firstItem="s9I-zn-8ZF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="QY4-MQ-zD2"/>
                     <constraint firstAttribute="bottom" secondItem="2QC-53-mdn" secondAttribute="bottom" id="R0T-MQ-owC"/>
                     <constraint firstItem="H6G-zG-g5f" firstAttribute="leading" secondItem="7ap-Cj-BVd" secondAttribute="trailing" constant="5" id="TQW-Rf-6gE"/>
                     <constraint firstItem="QLT-Z1-IFa" firstAttribute="leading" secondItem="2QC-53-mdn" secondAttribute="leading" id="TqE-2R-r51"/>
@@ -229,6 +237,7 @@
                     <constraint firstItem="2QC-53-mdn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="go6-kf-pHW"/>
                     <constraint firstAttribute="trailing" secondItem="2QC-53-mdn" secondAttribute="trailing" constant="15" id="jSy-eI-fnb"/>
                     <constraint firstItem="r77-7c-EXg" firstAttribute="centerY" secondItem="nkH-Xq-CDJ" secondAttribute="centerY" id="k43-N8-6Hw"/>
+                    <constraint firstItem="s9I-zn-8ZF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="kgm-Aj-a91"/>
                     <constraint firstItem="WxH-3R-Owb" firstAttribute="leading" secondItem="eKc-LL-UbZ" secondAttribute="leading" id="lbA-ZD-VaV"/>
                     <constraint firstItem="HZ4-V1-Gu9" firstAttribute="centerY" secondItem="ng3-7j-5eW" secondAttribute="centerY" id="lfR-rt-xih"/>
                     <constraint firstItem="HZ4-V1-Gu9" firstAttribute="leading" secondItem="ng3-7j-5eW" secondAttribute="trailing" constant="5" id="mu1-Ad-5LX"/>
@@ -247,7 +256,23 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="avatorImageView" destination="eKc-LL-UbZ" id="R0a-Oi-AwH"/>
+                <outlet property="dealTimeLabel" destination="HZ4-V1-Gu9" id="lVB-IL-mNS"/>
                 <outlet property="desiginNameLabel" destination="ip5-uX-IxN" id="AnA-OU-ztE"/>
+                <outlet property="desiginTypeLabel" destination="nkH-Xq-CDJ" id="PkT-8q-MT6"/>
+                <outlet property="endLabel" destination="7Ee-V0-aOt" id="AoS-il-387"/>
+                <outlet property="goodsInfoLabel" destination="UmF-YU-30c" id="07f-52-zNJ"/>
+                <outlet property="oneHandleButton" destination="Izm-ga-2hH" id="tyY-hC-k1u"/>
+                <outlet property="oneHandleView" destination="QLT-Z1-IFa" id="azE-Iy-uvO"/>
+                <outlet property="startLabel" destination="WxH-3R-Owb" id="geg-cF-aBG"/>
+                <outlet property="statusImageView" destination="s9I-zn-8ZF" id="ot3-kA-RLy"/>
+                <outlet property="totalPriceLabel" destination="Uyh-G6-gXS" id="dZD-OK-EMp"/>
+                <outlet property="truckInfoLabel" destination="CQD-9N-r3G" id="bx9-xQ-liq"/>
+                <outlet property="twoHandleButton_1" destination="J07-fh-bqO" id="edx-Eb-1VM"/>
+                <outlet property="twoHandleButton_2" destination="Vf5-L6-jom" id="ycB-lp-mPN"/>
+                <outlet property="twoHandleView" destination="2QC-53-mdn" id="u2p-0d-NQO"/>
+                <outlet property="unitPriceLabel" destination="H6G-zG-g5f" id="WyE-aR-hP7"/>
+                <outlet property="waybillNoLabel" destination="rnc-Zs-G5W" id="RkY-sV-QBq"/>
+                <outlet property="waybillTypeDescLabel" destination="r77-7c-EXg" id="Z13-bJ-m3X"/>
             </connections>
             <point key="canvasLocation" x="127.5" y="185"/>
         </tableViewCell>

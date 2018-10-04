@@ -32,12 +32,16 @@
 
 - (void) awakeFromNib {
     [super awakeFromNib];
-    self.allTags = [NSMutableArray array];
+    if (!self.allTags) {
+        self.allTags = [NSMutableArray array];
+    }
 }
 
 - (void) showTags:(NSArray <ZTTagItem *> *)tags {
     self.allTags = [NSMutableArray arrayWithArray:tags];
     [self invalidateIntrinsicContentSize];
+//    CGSize size = self.intrinsicContentSize;
+//    NSLog(@"size : %.2f , %.2f" ,size.width , size.height);
 }
 
 - (void) addTags:(NSArray <ZTTagItem *> *)tags {

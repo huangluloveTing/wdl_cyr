@@ -143,12 +143,45 @@ extension BaseVC {
 }
 
 // 添加 searchBar 到 tableView 上
-extension BaseVC {
+extension BaseVC : UISearchBarDelegate {
     
     func addSearchBar(to tableView:UITableView , placeHolder:String? = "搜索驾驶员姓名、电话") -> Void {
-        let searchBar = UISearchBar(frame: CGRect(x: 15, y: -40, width: IPHONE_WIDTH - 15, height: 40))
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: -40, width: IPHONE_WIDTH, height: 40))
+        searchBar.searchBarStyle = .minimal
+        searchBar.barStyle = .default
+        searchBar.backgroundColor = UIColor.clear
+        searchBar.barTintColor = UIColor(hex: TEXTCOLOR_EMPTY)
         searchBar.placeholder = placeHolder
         tableView.addSubview(searchBar)
+        searchBar.delegate = self
         tableView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print(searchBar.frame)
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print(searchBar.frame)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchBar.frame)
+    }
+}
+
+// 添加导航栏上面的 选项卡
+extension BaseVC {
+    
+    func addNaviSelectTitles(titles:[String]) {
+        let naviTitle = ZTScrollNaviBarView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 120, height: 44))
+        naviTitle.updateTitles(titles: titles)
+        naviTitle.tapClosure = { [weak self](index) in
+            self?.tapNaviHandler(index: index)
+        }
+        self.navigationItem.titleView = naviTitle
+    }
+    
+    @objc func tapNaviHandler(index:Int) -> Void {
+        
     }
 }
