@@ -16,6 +16,12 @@ extension String {
         }
     }
     
+    //MARK: 拼接字符串
+    func concat(one:String? , hiera:String? = "") -> String {
+        let st = self + (one ?? "") + (hiera ?? "")
+        return st
+    }
+    
     //MARK:-截取字符串从开始到 index
     func substring(to index: Int) -> String {
         guard let end_Index = validEndIndex(original: index) else {

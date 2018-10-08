@@ -11,7 +11,7 @@ import Foundation
 extension UIResponder {
     
     // 通过响应者链传递数据
-    public func routeName(routeName:String , dataInfo:Any) {
+    @objc public func routeName(routeName:String , dataInfo:Any?) {
         self.next?.routeName(routeName: routeName, dataInfo: dataInfo)
     }
     

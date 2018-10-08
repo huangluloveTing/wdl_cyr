@@ -18,7 +18,10 @@ enum API {
     case loadTaskInfo()             // 获取省市区
     case getCreateHallDictionary()  // 获取数据字典
     case releaseSource(ReleaseDeliverySourceModel)       // 发布货源
-    case ownOrderHall(GoodsSupplyQueryBean) // 我的货源接口
+    case ownOrderHall(GoodsSupplyQueryBean)     // 我的关注的货源接口
+    case findAllOrderHall(GoodsSupplyQueryBean) // 获取货源大厅数据
+    case findOrderByFollowShipper() //查询我已经关注线路线下的货源信息
+    case findOrderByFollowLine()  //
 }
 
 
@@ -39,6 +42,12 @@ func apiPath(api:API) -> String {
         return "/orderHall/releaseSource"
     case .ownOrderHall(_):
         return "/orderHall/ownOrderHall"
+    case .findAllOrderHall(_):
+        return "/carrierOrderHall/findAllOrderHall"
+    case .findOrderByFollowShipper():
+        return "/followShipper/findOrderByFollowShipper"
+    case .findOrderByFollowLine():
+        return "/followLine/findOrderByFollowLine"
     }
 }
 
@@ -59,6 +68,12 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: resource.toJSON()!, encoding: JSONEncoding.default)
     case .ownOrderHall(let query):
         return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
+    case .findAllOrderHall(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String : String](), encoding: JSONEncoding.default)
+    case .findOrderByFollowShipper():
+        return .requestParameters(parameters: [String : String](), encoding: JSONEncoding.default)
+    case .findOrderByFollowLine():
+        return .requestParameters(parameters: [String : String](), encoding: JSONEncoding.default)
     }
 }
 

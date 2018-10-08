@@ -49,6 +49,8 @@ extension RechargeInlineVC {
 extension RechargeInlineVC {
     func toRecharge(num:Float) -> Void {
         print("recharge money : " + String(num))
+        let paymentVC = PaymentTypeVC()
+        self.push(vc: paymentVC, title: "支付方式")
     }
 }
 

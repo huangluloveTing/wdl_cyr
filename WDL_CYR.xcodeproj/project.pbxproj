@@ -168,6 +168,32 @@
 		70D8BC072165BAA1000522E0 /* RechargeInlineVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC052165BAA0000522E0 /* RechargeInlineVC.xib */; };
 		70D8BC0A2165BAC3000522E0 /* InLineMoneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC082165BAC3000522E0 /* InLineMoneyCell.swift */; };
 		70D8BC0B2165BAC3000522E0 /* InLineMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC092165BAC3000522E0 /* InLineMoneyCell.xib */; };
+		70D8BC0E2166E99C000522E0 /* PaymentTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC0C2166E99C000522E0 /* PaymentTypeVC.swift */; };
+		70D8BC0F2166E99C000522E0 /* PaymentTypeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC0D2166E99C000522E0 /* PaymentTypeVC.xib */; };
+		70D8BC122166EA6A000522E0 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC102166EA6A000522E0 /* PaymentCell.swift */; };
+		70D8BC132166EA6A000522E0 /* PaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC112166EA6A000522E0 /* PaymentCell.xib */; };
+		70D8BC162166EEEE000522E0 /* PaymentCommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC142166EEEE000522E0 /* PaymentCommitCell.swift */; };
+		70D8BC172166EEEE000522E0 /* PaymentCommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC152166EEEE000522E0 /* PaymentCommitCell.xib */; };
+		70D8BC1A216724CE000522E0 /* TransportCapacityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC18216724CE000522E0 /* TransportCapacityVC.swift */; };
+		70D8BC1B216724CE000522E0 /* TransportCapacityVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC19216724CE000522E0 /* TransportCapacityVC.xib */; };
+		70D8BC1E21672D2B000522E0 /* TransportTruckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC1C21672D2B000522E0 /* TransportTruckCell.swift */; };
+		70D8BC1F21672D2B000522E0 /* TransportTruckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC1D21672D2B000522E0 /* TransportTruckCell.xib */; };
+		70D8BC2221672D3C000522E0 /* TransportDriverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC2021672D3C000522E0 /* TransportDriverCell.swift */; };
+		70D8BC2321672D3C000522E0 /* TransportDriverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC2121672D3C000522E0 /* TransportDriverCell.xib */; };
+		70D8BC2621673956000522E0 /* TransactionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC2421673955000522E0 /* TransactionDetailsVC.swift */; };
+		70D8BC2721673956000522E0 /* TransactionDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC2521673956000522E0 /* TransactionDetailsVC.xib */; };
+		70D8BC2A21673973000522E0 /* TransactionDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC2821673973000522E0 /* TransactionDetailsCell.swift */; };
+		70D8BC2B21673973000522E0 /* TransactionDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC2921673973000522E0 /* TransactionDetailsCell.xib */; };
+		70D8BC2E2167405F000522E0 /* MyAuthenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC2C2167405F000522E0 /* MyAuthenVC.swift */; };
+		70D8BC2F2167405F000522E0 /* MyAuthenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC2D2167405F000522E0 /* MyAuthenVC.xib */; };
+		70D8BC32216748E5000522E0 /* AuthenIndividualInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC30216748E5000522E0 /* AuthenIndividualInfoVC.swift */; };
+		70D8BC33216748E5000522E0 /* AuthenIndividualInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC31216748E5000522E0 /* AuthenIndividualInfoVC.xib */; };
+		70D8BC3621675699000522E0 /* AuthenFailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC3421675699000522E0 /* AuthenFailVC.swift */; };
+		70D8BC3721675699000522E0 /* AuthenFailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC3521675699000522E0 /* AuthenFailVC.xib */; };
+		70D8BC3A21675801000522E0 /* AuthenEnterpriseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC3821675801000522E0 /* AuthenEnterpriseVC.swift */; };
+		70D8BC3B21675801000522E0 /* AuthenEnterpriseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BC3921675801000522E0 /* AuthenEnterpriseVC.xib */; };
+		70D8BC48216B1607000522E0 /* CarrierQueryOrderHallResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC47216B1607000522E0 /* CarrierQueryOrderHallResult.swift */; };
+		70D8BC4A216B1863000522E0 /* ResponseBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BC49216B1863000522E0 /* ResponseBaseModel.swift */; };
 		70EA734B215DB2CB0020B8C3 /* Offer_NotDoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA7349215DB2CB0020B8C3 /* Offer_NotDoneCell.swift */; };
 		70EA734C215DB2CB0020B8C3 /* Offer_NotDoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70EA734A215DB2CB0020B8C3 /* Offer_NotDoneCell.xib */; };
 		70EA734E215DBB600020B8C3 /* OfferUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA734D215DBB600020B8C3 /* OfferUIModel.swift */; };
@@ -381,6 +407,32 @@
 		70D8BC052165BAA0000522E0 /* RechargeInlineVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RechargeInlineVC.xib; sourceTree = "<group>"; };
 		70D8BC082165BAC3000522E0 /* InLineMoneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InLineMoneyCell.swift; sourceTree = "<group>"; };
 		70D8BC092165BAC3000522E0 /* InLineMoneyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InLineMoneyCell.xib; sourceTree = "<group>"; };
+		70D8BC0C2166E99C000522E0 /* PaymentTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTypeVC.swift; sourceTree = "<group>"; };
+		70D8BC0D2166E99C000522E0 /* PaymentTypeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentTypeVC.xib; sourceTree = "<group>"; };
+		70D8BC102166EA6A000522E0 /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
+		70D8BC112166EA6A000522E0 /* PaymentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCell.xib; sourceTree = "<group>"; };
+		70D8BC142166EEEE000522E0 /* PaymentCommitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCommitCell.swift; sourceTree = "<group>"; };
+		70D8BC152166EEEE000522E0 /* PaymentCommitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCommitCell.xib; sourceTree = "<group>"; };
+		70D8BC18216724CE000522E0 /* TransportCapacityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportCapacityVC.swift; sourceTree = "<group>"; };
+		70D8BC19216724CE000522E0 /* TransportCapacityVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransportCapacityVC.xib; sourceTree = "<group>"; };
+		70D8BC1C21672D2B000522E0 /* TransportTruckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportTruckCell.swift; sourceTree = "<group>"; };
+		70D8BC1D21672D2B000522E0 /* TransportTruckCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransportTruckCell.xib; sourceTree = "<group>"; };
+		70D8BC2021672D3C000522E0 /* TransportDriverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportDriverCell.swift; sourceTree = "<group>"; };
+		70D8BC2121672D3C000522E0 /* TransportDriverCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransportDriverCell.xib; sourceTree = "<group>"; };
+		70D8BC2421673955000522E0 /* TransactionDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsVC.swift; sourceTree = "<group>"; };
+		70D8BC2521673956000522E0 /* TransactionDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionDetailsVC.xib; sourceTree = "<group>"; };
+		70D8BC2821673973000522E0 /* TransactionDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsCell.swift; sourceTree = "<group>"; };
+		70D8BC2921673973000522E0 /* TransactionDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionDetailsCell.xib; sourceTree = "<group>"; };
+		70D8BC2C2167405F000522E0 /* MyAuthenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAuthenVC.swift; sourceTree = "<group>"; };
+		70D8BC2D2167405F000522E0 /* MyAuthenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyAuthenVC.xib; sourceTree = "<group>"; };
+		70D8BC30216748E5000522E0 /* AuthenIndividualInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenIndividualInfoVC.swift; sourceTree = "<group>"; };
+		70D8BC31216748E5000522E0 /* AuthenIndividualInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenIndividualInfoVC.xib; sourceTree = "<group>"; };
+		70D8BC3421675699000522E0 /* AuthenFailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenFailVC.swift; sourceTree = "<group>"; };
+		70D8BC3521675699000522E0 /* AuthenFailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenFailVC.xib; sourceTree = "<group>"; };
+		70D8BC3821675801000522E0 /* AuthenEnterpriseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenEnterpriseVC.swift; sourceTree = "<group>"; };
+		70D8BC3921675801000522E0 /* AuthenEnterpriseVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenEnterpriseVC.xib; sourceTree = "<group>"; };
+		70D8BC47216B1607000522E0 /* CarrierQueryOrderHallResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrierQueryOrderHallResult.swift; sourceTree = "<group>"; };
+		70D8BC49216B1863000522E0 /* ResponseBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBaseModel.swift; sourceTree = "<group>"; };
 		70EA7349215DB2CB0020B8C3 /* Offer_NotDoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer_NotDoneCell.swift; sourceTree = "<group>"; };
 		70EA734A215DB2CB0020B8C3 /* Offer_NotDoneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Offer_NotDoneCell.xib; sourceTree = "<group>"; };
 		70EA734D215DBB600020B8C3 /* OfferUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferUIModel.swift; sourceTree = "<group>"; };
@@ -527,6 +579,7 @@
 		70CF4EA2214B409E0051A7CA /* WDL_CYR */ = {
 			isa = PBXGroup;
 			children = (
+				70D8BC45216B15AE000522E0 /* Models */,
 				70CF4EB9214B410B0051A7CA /* API */,
 				70CF4F14214B410D0051A7CA /* Base */,
 				70CF4F51214B410F0051A7CA /* Commons */,
@@ -684,6 +737,16 @@
 				70D8BC012165B236000522E0 /* WalletMoneyCell.xib */,
 				70D8BC082165BAC3000522E0 /* InLineMoneyCell.swift */,
 				70D8BC092165BAC3000522E0 /* InLineMoneyCell.xib */,
+				70D8BC102166EA6A000522E0 /* PaymentCell.swift */,
+				70D8BC112166EA6A000522E0 /* PaymentCell.xib */,
+				70D8BC142166EEEE000522E0 /* PaymentCommitCell.swift */,
+				70D8BC152166EEEE000522E0 /* PaymentCommitCell.xib */,
+				70D8BC1C21672D2B000522E0 /* TransportTruckCell.swift */,
+				70D8BC1D21672D2B000522E0 /* TransportTruckCell.xib */,
+				70D8BC2021672D3C000522E0 /* TransportDriverCell.swift */,
+				70D8BC2121672D3C000522E0 /* TransportDriverCell.xib */,
+				70D8BC2821673973000522E0 /* TransactionDetailsCell.swift */,
+				70D8BC2921673973000522E0 /* TransactionDetailsCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -695,6 +758,20 @@
 				70D8BBFD2165B1F8000522E0 /* WalletVC.xib */,
 				70D8BC042165BAA0000522E0 /* RechargeInlineVC.swift */,
 				70D8BC052165BAA0000522E0 /* RechargeInlineVC.xib */,
+				70D8BC0C2166E99C000522E0 /* PaymentTypeVC.swift */,
+				70D8BC0D2166E99C000522E0 /* PaymentTypeVC.xib */,
+				70D8BC18216724CE000522E0 /* TransportCapacityVC.swift */,
+				70D8BC19216724CE000522E0 /* TransportCapacityVC.xib */,
+				70D8BC2421673955000522E0 /* TransactionDetailsVC.swift */,
+				70D8BC2521673956000522E0 /* TransactionDetailsVC.xib */,
+				70D8BC2C2167405F000522E0 /* MyAuthenVC.swift */,
+				70D8BC2D2167405F000522E0 /* MyAuthenVC.xib */,
+				70D8BC30216748E5000522E0 /* AuthenIndividualInfoVC.swift */,
+				70D8BC31216748E5000522E0 /* AuthenIndividualInfoVC.xib */,
+				70D8BC3421675699000522E0 /* AuthenFailVC.swift */,
+				70D8BC3521675699000522E0 /* AuthenFailVC.xib */,
+				70D8BC3821675801000522E0 /* AuthenEnterpriseVC.swift */,
+				70D8BC3921675801000522E0 /* AuthenEnterpriseVC.xib */,
 			);
 			path = VCS;
 			sourceTree = "<group>";
@@ -974,6 +1051,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		70D8BC45216B15AE000522E0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				70D8BC46216B15B5000522E0 /* ResourceHall */,
+				70D8BC49216B1863000522E0 /* ResponseBaseModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		70D8BC46216B15B5000522E0 /* ResourceHall */ = {
+			isa = PBXGroup;
+			children = (
+				70D8BC47216B1607000522E0 /* CarrierQueryOrderHallResult.swift */,
+			);
+			path = ResourceHall;
+			sourceTree = "<group>";
+		};
 		70EA7375215E64F90020B8C3 /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1069,6 +1163,7 @@
 				70EA734C215DB2CB0020B8C3 /* Offer_NotDoneCell.xib in Resources */,
 				70CF4F7D214B41120051A7CA /* PersonalInfoHeader.xib in Resources */,
 				70EA736C215E0E680020B8C3 /* GSDetail_notDealCell.xib in Resources */,
+				70D8BC2721673956000522E0 /* TransactionDetailsVC.xib in Resources */,
 				70D8BBD521605141000522E0 /* WaybillNotDoneVC.xib in Resources */,
 				70CF4FA4214B41120051A7CA /* good_star@3x.png in Resources */,
 				70EA735C215E00460020B8C3 /* GSDetail_OfferInfoCell.xib in Resources */,
@@ -1080,11 +1175,13 @@
 				70CF4EAE214B40A00051A7CA /* LaunchScreen.storyboard in Resources */,
 				70CF4F70214B41110051A7CA /* GSDealedCell.xib in Resources */,
 				70CF4F68214B41110051A7CA /* GoodsSupplyCell.xib in Resources */,
+				70D8BC2B21673973000522E0 /* TransactionDetailsCell.xib in Resources */,
 				70D8BBD921605153000522E0 /* WaybillDoneVC.xib in Resources */,
 				70CF4EAB214B40A00051A7CA /* Assets.xcassets in Resources */,
 				70CF4F6F214B41110051A7CA /* GSTimerShelveCell.xib in Resources */,
 				70CF4F7E214B41120051A7CA /* PersonalExcuteCell.xib in Resources */,
 				70F40F24214B553D0054A175 /* ZTScrollItemCell.xib in Resources */,
+				70D8BC3721675699000522E0 /* AuthenFailVC.xib in Resources */,
 				704DD088215BB55E00E6AD6F /* AddLinesVC.xib in Resources */,
 				704DD08E215CA44000E6AD6F /* ResourceHallCell.xib in Resources */,
 				704DD0A5215CEC8400E6AD6F /* OfferDealVC.xib in Resources */,
@@ -1094,6 +1191,7 @@
 				70CF4F9B214B41120051A7CA /* DeliveryVC.xib in Resources */,
 				70CF4F89214B41120051A7CA /* WayBillDetailVC.xib in Resources */,
 				70EA7368215E0AE00020B8C3 /* GSDetail_rejectCell.xib in Resources */,
+				70D8BC132166EA6A000522E0 /* PaymentCell.xib in Resources */,
 				70CF4EA9214B409E0051A7CA /* Main.storyboard in Resources */,
 				70EA7358215DFE720020B8C3 /* OfferDealTimerCell.xib in Resources */,
 				70CF4F79214B41110051A7CA /* DropPlaceView.xib in Resources */,
@@ -1101,28 +1199,36 @@
 				70EA7352215DCF170020B8C3 /* Offer_DoneCell.xib in Resources */,
 				7064890C215B87E300F53BFC /* FocusLinesCell.xib in Resources */,
 				70CF4F6A214B41110051A7CA /* GSDetailInfoCell.xib in Resources */,
+				70D8BC0F2166E99C000522E0 /* PaymentTypeVC.xib in Resources */,
 				70CF4F86214B41120051A7CA /* WayBillCell.xib in Resources */,
 				70D8BC032165B236000522E0 /* WalletMoneyCell.xib in Resources */,
 				70CF4F94214B41120051A7CA /* XIBViews.xib in Resources */,
 				70CF4F81214B41120051A7CA /* PersonalVC.xib in Resources */,
 				70648902215B5F5A00F53BFC /* FocusEmptyView.xib in Resources */,
+				70D8BC33216748E5000522E0 /* AuthenIndividualInfoVC.xib in Resources */,
 				70D8BC072165BAA1000522E0 /* RechargeInlineVC.xib in Resources */,
 				70CF4F8C214B41120051A7CA /* WayBillVC.xib in Resources */,
 				70CF4F8D214B41120051A7CA /* DeliveryTruckTypeCell.xib in Resources */,
 				704DD0A1215CEC6600E6AD6F /* OfferNotDoneVC.xib in Resources */,
 				70CF4FA8214B41120051A7CA /* bad_star@3x.png in Resources */,
+				70D8BC2321672D3C000522E0 /* TransportDriverCell.xib in Resources */,
+				70D8BC2F2167405F000522E0 /* MyAuthenVC.xib in Resources */,
 				70EA7360215E07C40020B8C3 /* GSDetail_GoodsInfoCell.xib in Resources */,
 				70EA73A3215F47D10020B8C3 /* WaybillCarrierInfoCell.xib in Resources */,
 				70EA7364215E0A640020B8C3 /* GSDetail_canceledOfferCell.xib in Resources */,
+				70D8BC1F21672D2B000522E0 /* TransportTruckCell.xib in Resources */,
 				70CF4FA5214B41120051A7CA /* good_star@2x.png in Resources */,
 				70D8BBFF2165B1F8000522E0 /* WalletVC.xib in Resources */,
 				70CF4FD5214B41120051A7CA /* RegisterAgreeView.xib in Resources */,
 				70CF4F8F214B41120051A7CA /* DeliveryPlaceTabHeader.xib in Resources */,
+				70D8BC172166EEEE000522E0 /* PaymentCommitCell.xib in Resources */,
 				70CF4FA2214B41120051A7CA /* ForgetPwdVC.xib in Resources */,
+				70D8BC1B216724CE000522E0 /* TransportCapacityVC.xib in Resources */,
 				70CF4F90214B41120051A7CA /* DeliveryPlaceChooiceCell.xib in Resources */,
 				70CF4F84214B41120051A7CA /* WayBillDetailStatusCell.xib in Resources */,
 				70EA73A7215F48090020B8C3 /* WaybillSepecialInfoCell.xib in Resources */,
 				70D8BBD121605126000522E0 /* WaybillUnAssembleVC.xib in Resources */,
+				70D8BC3B21675801000522E0 /* AuthenEnterpriseVC.xib in Resources */,
 				70CF4F71214B41110051A7CA /* GSQutationCell.xib in Resources */,
 				70CF4F75214B41110051A7CA /* GoodsSupplyDetailVC.xib in Resources */,
 				706488FA215B458D00F53BFC /* FocusResourceVC.xib in Resources */,
@@ -1188,11 +1294,14 @@
 				704DD087215BB55E00E6AD6F /* AddLinesVC.swift in Sources */,
 				70CF4F96214B41120051A7CA /* OnTimePostView.swift in Sources */,
 				70EA7379215F00A20020B8C3 /* UIResponder+Chain.swift in Sources */,
+				70D8BC1A216724CE000522E0 /* TransportCapacityVC.swift in Sources */,
+				70D8BC2221672D3C000522E0 /* TransportDriverCell.swift in Sources */,
 				70CF4F97214B41120051A7CA /* PlaceChooiceView.swift in Sources */,
 				70CF4F95214B41120051A7CA /* DeliveryTruckTypeView.swift in Sources */,
 				70CF4FD2214B41120051A7CA /* Regx.swift in Sources */,
 				70648900215B45FA00F53BFC /* ResourceContainerVC.swift in Sources */,
 				70CF4FB6214B41120051A7CA /* UIColor+extension.swift in Sources */,
+				70D8BC2621673956000522E0 /* TransactionDetailsVC.swift in Sources */,
 				70F40F1E214B4E710054A175 /* ZTScrollVCType.swift in Sources */,
 				70CF4F8B214B41120051A7CA /* WayBillVC.swift in Sources */,
 				70CF4FAB214B41120051A7CA /* SKTag.m in Sources */,
@@ -1206,6 +1315,7 @@
 				70CF4F78214B41110051A7CA /* GSDetailBidingHeader.swift in Sources */,
 				70EA73A2215F47D00020B8C3 /* WaybillCarrierInfoCell.swift in Sources */,
 				70CF4F61214B41110051A7CA /* BaseModel.swift in Sources */,
+				70D8BC122166EA6A000522E0 /* PaymentCell.swift in Sources */,
 				704DD08D215CA44000E6AD6F /* ResourceHallCell.swift in Sources */,
 				70CF4F91214B41120051A7CA /* DeliveryPlaceTabHeader.swift in Sources */,
 				70CF4FB8214B41120051A7CA /* BaseVC+Alert.swift in Sources */,
@@ -1217,8 +1327,10 @@
 				70CF4F9D214B41120051A7CA /* RegisterVC.swift in Sources */,
 				70CF4FBD214B41120051A7CA /* UIView+Border.swift in Sources */,
 				70D8BC062165BAA1000522E0 /* RechargeInlineVC.swift in Sources */,
+				70D8BC4A216B1863000522E0 /* ResponseBaseModel.swift in Sources */,
 				70CF4F6B214B41110051A7CA /* GSTimerShelveCell.swift in Sources */,
 				70CF4F73214B41110051A7CA /* GoodSupplyBean.swift in Sources */,
+				70D8BC162166EEEE000522E0 /* PaymentCommitCell.swift in Sources */,
 				70EA736F215E12920020B8C3 /* GSDetailVC.swift in Sources */,
 				70CF4FBE214B41120051A7CA /* UITableView+ProxyDelegate.swift in Sources */,
 				70CF4FCC214B41120051A7CA /* DropViewContainer.swift in Sources */,
@@ -1245,10 +1357,12 @@
 				70EA7372215E63990020B8C3 /* WayBillContainerVC.swift in Sources */,
 				70CF4FC9214B41120051A7CA /* BaseCell.swift in Sources */,
 				70CF4FC7214B41120051A7CA /* ZTTransition.swift in Sources */,
+				70D8BC1E21672D2B000522E0 /* TransportTruckCell.swift in Sources */,
 				70EA7367215E0AE00020B8C3 /* GSDetail_rejectCell.swift in Sources */,
 				70CF4F99214B41120051A7CA /* DeliveryPlaceChooiceView.swift in Sources */,
 				70CF4FCD214B41120051A7CA /* BageView.swift in Sources */,
 				70CF4F5F214B41110051A7CA /* Response+serial.swift in Sources */,
+				70D8BC32216748E5000522E0 /* AuthenIndividualInfoVC.swift in Sources */,
 				70CF4FD0214B41120051A7CA /* AMapHandleManager.swift in Sources */,
 				70CF4FA9214B41120051A7CA /* XHStarRateView.m in Sources */,
 				70EA735F215E07C40020B8C3 /* GSDetail_GoodsInfoCell.swift in Sources */,
@@ -1259,9 +1373,11 @@
 				70CF4F69214B41110051A7CA /* GoodsSupplyCell.swift in Sources */,
 				70CF4FC8214B41120051A7CA /* ZTTransitionManager.swift in Sources */,
 				70EA734E215DBB600020B8C3 /* OfferUIModel.swift in Sources */,
+				70D8BC3621675699000522E0 /* AuthenFailVC.swift in Sources */,
 				70D8BBD421605141000522E0 /* WaybillNotDoneVC.swift in Sources */,
 				70EA7363215E0A640020B8C3 /* GSDetail_canceledOfferCell.swift in Sources */,
 				70F40F2A214B63120054A175 /* DemoViewViewController.swift in Sources */,
+				70D8BC2A21673973000522E0 /* TransactionDetailsCell.swift in Sources */,
 				70CF4F5C214B41110051A7CA /* const.swift in Sources */,
 				70CF4FB0214B41120051A7CA /* ZTTagItem.m in Sources */,
 				70CF4FD6214B41120051A7CA /* RegisterAgreeView.swift in Sources */,
@@ -1271,6 +1387,8 @@
 				70CF4F82214B41120051A7CA /* InputBaseVC.swift in Sources */,
 				70CF4FAD214B41120051A7CA /* SKTagButton.m in Sources */,
 				70CF4EA4214B409E0051A7CA /* AppDelegate.swift in Sources */,
+				70D8BC3A21675801000522E0 /* AuthenEnterpriseVC.swift in Sources */,
+				70D8BC2E2167405F000522E0 /* MyAuthenVC.swift in Sources */,
 				70CF4F7A214B41110051A7CA /* DropPlaceChooiceView.swift in Sources */,
 				706488FD215B45BB00F53BFC /* ResourceHallVC.swift in Sources */,
 				70CF4FAC214B41120051A7CA /* SKTagView.m in Sources */,
@@ -1278,6 +1396,7 @@
 				70CF4F9C214B41120051A7CA /* UITextField+PlaceInput.swift in Sources */,
 				70CF4FCE214B41120051A7CA /* DropView.swift in Sources */,
 				70EA7377215E650A0020B8C3 /* WayBillModels.swift in Sources */,
+				70D8BC0E2166E99C000522E0 /* PaymentTypeVC.swift in Sources */,
 				70CF4FC1214B41120051A7CA /* UIView+ZTTagView.swift in Sources */,
 				70CF4FD3214B41120051A7CA /* DropViewManage.swift in Sources */,
 				704DD0A0215CEC6600E6AD6F /* OfferNotDoneVC.swift in Sources */,
@@ -1317,6 +1436,7 @@
 				70CF4F77214B41110051A7CA /* GoodsSupplyFoldInfoView.swift in Sources */,
 				70EA73A6215F48090020B8C3 /* WaybillSepecialInfoCell.swift in Sources */,
 				70CF4F7C214B41120051A7CA /* PersonalExcuteCell.swift in Sources */,
+				70D8BC48216B1607000522E0 /* CarrierQueryOrderHallResult.swift in Sources */,
 				70D8BC022165B236000522E0 /* WalletMoneyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

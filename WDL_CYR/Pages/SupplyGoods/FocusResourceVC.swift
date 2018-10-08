@@ -26,6 +26,8 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
     private var currentTopIndex:Int = 0
     
     private var displayType:FocusResourceDisplay = .focusPerson
+    private var list_tyr:[FollowShipperOrderHall] = []  //   关注的托运人的数据
+    private var list_path:[FollowLineOrderHallResult] = [] //   关注的线路的数据
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,10 +119,15 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
         let displayType = self.currentDisplayContentType()
         if displayType == .focusPerson {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(FocusPersonCell.self)") as! FocusPersonCell
+            let info = self.list_tyr[indexPath.row]
+            cell.focusPersonInfo(image: nil, title: info.consignorName, badge: info.total)
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(FocusLinesCell.self)") as! FocusLinesCell
+            let info = self.list_path[indexPath.row]
+            cell.showInfo(start: info.startProvince+info.startCity,
+                          end: info.endProvince+info.endCity)
             return cell
         }
     }
@@ -128,13 +135,42 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let type = self.currentDisplayContentType()
         if type == .focusLines {
-            return 0
+            return self.list_path.count
         }
-        return 5
+        return self.list_tyr.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+}
+
+extension FocusResourceVC {
+    // 获取关注的托运人的货源
+    func loadResourceByAttentionCarrier() -> Void {
+        self.showLoading()
+        BaseApi.request(target: API.findOrderByFollowShipper(), type: BaseResponseModel<[FollowShipperOrderHall]>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess()
+                self?.list_tyr = data.data ?? []
+                self?.tableView.reloadData()
+            }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription)
+            })
+            .disposed(by: dispose)
+    }
+    // 获取关注的线路的货源
+    func loadResourceByAttentionPath() -> Void {
+        self.showLoading()
+        BaseApi.request(target: API.findOrderByFollowShipper(), type: BaseResponseModel<[FollowLineOrderHallResult]>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess()
+                self?.list_path = data.data ?? []
+                self?.tableView.reloadData()
+            }, onError: {[weak self] (error) in
+                self?.showFail(fail: error.localizedDescription)
+            })
+            .disposed(by: dispose)
     }
 }
 

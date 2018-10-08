@@ -22,6 +22,9 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
     private var startModel:SupplyPlaceModel = SupplyPlaceModel()
     private var endModel:SupplyPlaceModel = SupplyPlaceModel()
     private var listStatus:GoodsSupplyStatus?
+    private var query : GoodsSupplyQueryBean = GoodsSupplyQueryBean()
+    
+    private var hallLists:[CarrierQueryOrderHallResult] = []
     
     func willShow() {
         
@@ -35,6 +38,7 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
         super.viewDidLoad()
         self.registerCells()
         self.configTableView()
+        self.queryResourceHall(quey: query)
     }
 
     override func didReceiveMemoryWarning() {
@@ -141,7 +145,7 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return self.hallLists.count
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
@@ -151,6 +155,13 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(ResourceHallCell.self)") as! ResourceHallCell
+        let hall = self.hallLists[indexPath.section]
+        
+        let truckInfo = Util.dateFormatter(date: hall.loadingTime, formatter: "mm-dd") + "装货" + " 玻璃"
+        let goodsInfo = Util.contact(strs: [String(format: "%.f", hall.goodsWeight)+"吨" , hall.vehicleWidth , hall.vehicleType , hall.goodsType], seperate: " | ")
+        let uiModel = ResourceHallUIModel(start: hall.startProvince + hall.startCity,
+                                          end: hall.endProvince + hall.endCity, truckInfo: truckInfo, goodsInfo: goodsInfo, isSelf: true, company: hall.companyName, isAttention: hall.shipperCode.count > 0, unitPrice: hall.dealUnitPrice, reportNum: hall.offerNumber)
+        cell.showInfo(info: uiModel)
         return cell
     }
 }
@@ -159,6 +170,29 @@ extension ResourceHallVC {
     //MARK:
     func initialProinve() -> [PlaceChooiceItem] {
         return Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [])
+    }
+}
+
+//MARK: load data
+extension ResourceHallVC {
+    
+    // 获取数据
+    func queryResourceHall(quey:GoodsSupplyQueryBean) -> Void {
+        self.showLoading(title: "", canInterface: true)
+        BaseApi.request(target: API.findAllOrderHall(quey), type: BaseResponseModel<ResponsePagesModel<CarrierQueryOrderHallResult>>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess(success: nil)
+                self?.configNetDataToUI(lists: data.data?.list ?? [])
+            }, onError: {[weak self] (error) in
+                self?.showFail(fail: error.localizedDescription)
+            })
+            .disposed(by: dispose)
+    }
+    
+    // 根据获取数据,组装列表
+    func configNetDataToUI(lists:[CarrierQueryOrderHallResult]) -> Void {
+        self.hallLists = lists
+        self.tableView.reloadData()
     }
 }
 

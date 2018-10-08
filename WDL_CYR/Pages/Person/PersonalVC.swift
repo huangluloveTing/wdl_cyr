@@ -106,14 +106,33 @@ extension PersonalVC : UITableViewDelegate , UITableViewDataSource {
             if indexPath.row == 0  {
                 self.toWalletVC()
             }
+            if indexPath.row == 1 {
+                self.toTransportCapacity()
+            }
+            if indexPath.row == 2 {
+                self.toMyAuthenVC()
+            }
         }
     }
 }
 
 extension PersonalVC {
     
+    // 钱包
     func toWalletVC() -> Void {
         let walletVC = WalletVC()
         self.push(vc: walletVC, title: "钱包")
+    }
+    
+    // 我的运力
+    func toTransportCapacity() -> Void {
+        let tansportCapacityVC = TransportCapacityVC()
+        self.push(vc: tansportCapacityVC, title: nil)
+    }
+    
+    // 去我的认证
+    func toMyAuthenVC() -> Void {
+        let authenVC = MyAuthenVC()
+        self.push(vc: authenVC, title: "我的认证")
     }
 }

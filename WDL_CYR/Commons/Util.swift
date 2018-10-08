@@ -78,6 +78,18 @@ class Util {
         attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSRangeFromString(targetValue))
         return attribute
     }
+    
+    static func contact(strs:[String] , seperate:String = "") -> String {
+        var newStr = ""
+        strs.enumerated().forEach { (offset , st) in
+            if offset < strs.count - 1 {
+                newStr = newStr + st + seperate
+            } else {
+                newStr = newStr + st
+            }
+        }
+        return newStr
+    }
 }
 
 // 富文本 YYText

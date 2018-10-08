@@ -72,6 +72,12 @@ extension WalletVC : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            self.toTransactionDetails()
+        }
+    }
 }
 
 // handles
@@ -82,8 +88,15 @@ extension WalletVC {
         
     }
     
+    // 去充值
     func toRecharge() -> Void {
         let rechargeVC = RechargeInlineVC()
         self.push(vc: rechargeVC, title: nil)
+    }
+    
+    // 去交易明细
+    func toTransactionDetails() -> Void {
+        let transactionDetailsVC = TransactionDetailsVC()
+        self.push(vc: transactionDetailsVC, title: "交易明细")
     }
 }

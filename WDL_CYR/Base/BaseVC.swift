@@ -112,9 +112,26 @@ extension BaseVC {
         tableView.register(UINib(nibName: nibName, bundle: nil), forCellReuseIdentifier: nibName)
     }
     
+    func registerForNibCell<T:UITableViewCell>(className: T.Type, for tableView:UITableView) {
+        tableView.register(UINib(nibName: "\(className)", bundle: nil), forCellReuseIdentifier: "\(className)")
+    }
+    
+    // 获取注册的cell
+    func dequeueReusableCell<T:UITableViewCell>(className:T.Type , for tableView:UITableView) -> T {
+        return tableView.dequeueReusableCell(withIdentifier: "\(className)") as! T
+    }
+    
     // 隐藏tableViewCell分割线
     func hiddenTableViewSeperate(tableView:UITableView) {
         tableView.separatorStyle = .none
+    }
+    
+    // 分割线贯通
+    func fullSeperate(for tableView:UITableView) -> Void {
+        var insets = tableView.separatorInset
+        insets.right -= insets.right
+        insets.left -= insets.left
+        tableView.separatorInset = insets
     }
 }
 

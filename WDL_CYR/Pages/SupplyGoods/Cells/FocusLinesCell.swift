@@ -9,7 +9,10 @@
 import UIKit
 
 class FocusLinesCell: BaseCell {
-
+    
+    @IBOutlet weak var startLabel: UILabel!
+    @IBOutlet weak var endLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +24,11 @@ class FocusLinesCell: BaseCell {
         // Configure the view for the selected state
     }
     
+}
+
+extension FocusLinesCell {
+    func showInfo(start:String? , end:String?) -> Void {
+        self.startLabel.text = start
+        self.endLabel.text = end
+    }
 }
