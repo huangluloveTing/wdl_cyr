@@ -202,3 +202,16 @@ extension BaseVC {
         
     }
 }
+
+extension BaseVC {
+    //MARK: 配置省市区
+    func initialPlace() -> Observable<[PlaceChooiceItem]> {
+        let observable = Observable<[PlaceChooiceItem]>.create { (obser) -> Disposable in
+            let areas = Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [])
+            obser.onNext(areas)
+            obser.onCompleted()
+            return Disposables.create()
+        }
+        return observable
+    }
+}

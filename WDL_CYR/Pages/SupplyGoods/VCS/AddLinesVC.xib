@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddLinesVC" customModule="WDL_CYR" customModuleProvider="target">
             <connections>
+                <outlet property="commitButton" destination="XMs-Fw-w0s" id="vtE-LR-DJt"/>
                 <outlet property="endTextField" destination="fZ9-SC-EGb" id="iGD-B0-fed"/>
                 <outlet property="startTextField" destination="wYg-TI-XS0" id="l7O-3j-hGl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,34 +24,34 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择 (必选)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wYg-TI-XS0">
-                    <rect key="frame" x="0.0" y="30" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="30" width="375" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="dfk-yj-xpf"/>
+                        <constraint firstAttribute="height" constant="50" id="dfk-yj-xpf"/>
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择 (必选)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZ9-SC-EGb">
-                    <rect key="frame" x="0.0" y="74.5" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="80.5" width="375" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="htG-EW-E1I"/>
+                        <constraint firstAttribute="height" constant="50" id="htG-EW-E1I"/>
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9E-TK-JLy">
-                    <rect key="frame" x="0.0" y="74" width="375" height="0.5"/>
+                    <rect key="frame" x="0.0" y="80" width="375" height="0.5"/>
                     <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="XpB-vo-8V4"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMs-Fw-w0s">
-                    <rect key="frame" x="20" y="148.5" width="335" height="44"/>
+                    <rect key="frame" x="20" y="160.5" width="335" height="44"/>
                     <color key="backgroundColor" red="0.023529411764705882" green="0.75294117647058822" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="bVi-vN-NMJ"/>

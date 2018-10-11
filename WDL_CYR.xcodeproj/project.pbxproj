@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -579,7 +579,6 @@
 		70CF4EA2214B409E0051A7CA /* WDL_CYR */ = {
 			isa = PBXGroup;
 			children = (
-				70D8BC45216B15AE000522E0 /* Models */,
 				70CF4EB9214B410B0051A7CA /* API */,
 				70CF4F14214B410D0051A7CA /* Base */,
 				70CF4F51214B410F0051A7CA /* Commons */,
@@ -684,6 +683,7 @@
 		70CF4ED2214B410C0051A7CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				70D8BC47216B1607000522E0 /* CarrierQueryOrderHallResult.swift */,
 				70CF4ED3214B410C0051A7CA /* GoodSupplyBean.swift */,
 				704DD089215C9A8200E6AD6F /* FocusResourceModel.swift */,
 			);
@@ -916,6 +916,7 @@
 				70CF4F31214B410D0051A7CA /* Extension */,
 				70CF4F44214B410D0051A7CA /* BaseVC.swift */,
 				70CF4F45214B410D0051A7CA /* BaseBean.swift */,
+				70D8BC49216B1863000522E0 /* ResponseBaseModel.swift */,
 				70CF4F49214B410D0051A7CA /* BaseCell.swift */,
 			);
 			path = Base;
@@ -1051,23 +1052,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		70D8BC45216B15AE000522E0 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				70D8BC46216B15B5000522E0 /* ResourceHall */,
-				70D8BC49216B1863000522E0 /* ResponseBaseModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		70D8BC46216B15B5000522E0 /* ResourceHall */ = {
-			isa = PBXGroup;
-			children = (
-				70D8BC47216B1607000522E0 /* CarrierQueryOrderHallResult.swift */,
-			);
-			path = ResourceHall;
-			sourceTree = "<group>";
-		};
 		70EA7375215E64F90020B8C3 /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1128,7 +1112,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = yingli;
+				ORGANIZATIONNAME = yinli;
 				TargetAttributes = {
 					70CF4E9F214B409E0051A7CA = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -1136,7 +1120,7 @@
 				};
 			};
 			buildConfigurationList = 70CF4E9B214B409E0051A7CA /* Build configuration list for PBXProject "WDL_CYR" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

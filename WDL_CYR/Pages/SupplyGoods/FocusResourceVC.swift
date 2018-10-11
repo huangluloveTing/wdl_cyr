@@ -95,18 +95,20 @@ extension FocusResourceVC { // 关注托运人或者关注线路 切换
     func toTapHeader(index:Int) -> Void {
         self.currentTopIndex = index
         if index == 0 {
-            self.addLinesBtn.isHidden = true
+            self.displayType = .focusPerson
             self.focusPersonBtn.isSelected = true
             self.focusLinesBtn.isSelected = false
             self.focusPersonBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
             self.focusLinesBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+            self.loadResourceByAttentionCarrier()
         }
         else {
-            self.addLinesBtn.isHidden = false
+            self.displayType = .focusLines
             self.focusPersonBtn.isSelected = false
             self.focusLinesBtn.isSelected = true
             self.focusLinesBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
             self.focusPersonBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+            self.loadResourceByAttentionPath()
         }
         self.tableView.reloadEmptyDataSet()
     }
@@ -154,6 +156,7 @@ extension FocusResourceVC {
                 self?.showSuccess()
                 self?.list_tyr = data.data ?? []
                 self?.tableView.reloadData()
+                self?.showAddButton()
             }, onError: { [weak self](error) in
                 self?.showFail(fail: error.localizedDescription)
             })
@@ -166,11 +169,42 @@ extension FocusResourceVC {
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess()
                 self?.list_path = data.data ?? []
+                self?.showAddButton()
                 self?.tableView.reloadData()
             }, onError: {[weak self] (error) in
                 self?.showFail(fail: error.localizedDescription)
             })
             .disposed(by: dispose)
+    }
+    
+    func showAddButton() -> Void {
+        switch self.displayType {
+        case .focusPerson:
+            if self.list_tyr.count > 0 {
+                self.addLinesBtn.isHidden = false
+            }
+            else {
+                self.addLinesBtn.isHidden = true
+            }
+            break
+        default:
+            if self.list_path.count > 0 {
+                self.addLinesBtn.isHidden = false
+            }
+            else {
+                self.addLinesBtn.isHidden = true
+            }
+        }
+    }
+    
+    func toAddAction() -> Void {
+        switch self.displayType {
+        case .focusPerson:
+            
+            break
+        default:
+            self.toFocusLineVC()
+        }
     }
 }
 
@@ -179,17 +213,21 @@ extension FocusResourceVC { // EmptyDatasource
         let view = Bundle.main.loadNibNamed("\(FocusEmptyView.self)", owner: nil, options: nil)?.first as! FocusEmptyView
         let type = self.currentDisplayContentType()
         if type == .focusPerson {
-            view.empty(title: "你还没有关注任何托运人", desc: "赶紧去找找感兴趣的托运人吧", buttonTitle: "添加关注托运人")
+            view.empty(title: "你还没有关注任何托运人",
+                       desc: "赶紧去找找感兴趣的托运人吧",
+                       buttonTitle: "添加关注托运人")
         }
         else {
-            view.empty(title: "你还没有关注任何路线", desc: "赶紧去找找感兴趣的路线吧", buttonTitle: "添加关注线路")
+            view.empty(title: "你还没有关注任何路线",
+                       desc: "赶紧去找找感兴趣的路线吧",
+                       buttonTitle: "添加关注线路")
         }
         // 自定义的view 的高度为0，需要加上高度约束
         view.snp.makeConstraints { [weak self](maker) in
             maker.height.equalTo((self?.tableView.zt_height)!)
         }
-        view.tapClosure = { () in
-            print("tap button")
+        view.tapClosure = { [weak self]() in
+            self?.toAddAction()
         }
         return view
     }

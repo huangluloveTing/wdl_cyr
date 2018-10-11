@@ -21,6 +21,7 @@ enum API {
     case ownOrderHall(GoodsSupplyQueryBean)     // 我的关注的货源接口
     case findAllOrderHall(GoodsSupplyQueryBean) // 获取货源大厅数据
     case findOrderByFollowShipper() //查询我已经关注线路线下的货源信息
+    case addFollowLine(String,String,String,String) //添加关注线路
     case findOrderByFollowLine()  //
 }
 
@@ -48,6 +49,8 @@ func apiPath(api:API) -> String {
         return "/followShipper/findOrderByFollowShipper"
     case .findOrderByFollowLine():
         return "/followLine/findOrderByFollowLine"
+    case .addFollowLine(_, _, _, _):
+        return "/followLine/addFollowLine"
     }
 }
 
@@ -74,6 +77,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: [String : String](), encoding: JSONEncoding.default)
     case .findOrderByFollowLine():
         return .requestParameters(parameters: [String : String](), encoding: JSONEncoding.default)
+    case .addFollowLine(let startProvince, let startCity, let endProvince, let endCity):
+        return .requestParameters(parameters: ["startPointProvince":startProvince , "startPointCity":startCity , "endPointProvince":endProvince,"endPointCity":endCity], encoding: JSONEncoding.default)
     }
 }
 
