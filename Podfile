@@ -2,7 +2,7 @@ platform:ios ,'8.0'
 
 target 'WDL_CYR' do
 
-pod 'Moya/RxSwift', '~> 11.0'
+pod 'Moya/RxSwift'
 pod 'RxCocoa'
 pod 'HandyJSON'
 pod 'RxDataSources'
