@@ -157,12 +157,23 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(ResourceHallCell.self)") as! ResourceHallCell
         let hall = self.hallLists[indexPath.section]
         
-        let truckInfo = Util.dateFormatter(date: hall.loadingTime, formatter: "mm-dd") + "装货" + " 玻璃"
+        let truckInfo = Util.dateFormatter(date: hall.loadingTime, formatter: "mm-dd") + " 装货" + " 玻璃"
         let goodsInfo = Util.contact(strs: [String(format: "%.f", hall.goodsWeight)+"吨" , hall.vehicleWidth , hall.vehicleType , hall.goodsType], seperate: " | ")
         let uiModel = ResourceHallUIModel(start: hall.startProvince + hall.startCity,
-                                          end: hall.endProvince + hall.endCity, truckInfo: truckInfo, goodsInfo: goodsInfo, isSelf: true, company: hall.companyName, isAttention: hall.shipperCode.count > 0, unitPrice: hall.dealUnitPrice, reportNum: hall.offerNumber)
+                                          end: hall.endProvince + hall.endCity,
+                                          truckInfo: truckInfo,
+                                          goodsInfo: goodsInfo,
+                                          isSelf: true,
+                                          company: hall.companyName,
+                                          isAttention: hall.shipperCode.count > 0,
+                                          unitPrice: hall.dealUnitPrice,
+                                          reportNum: hall.offerNumber)
         cell.showInfo(info: uiModel)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.toResourceDetail()
     }
 }
 
@@ -170,6 +181,12 @@ extension ResourceHallVC {
     //MARK:
     func initialProinve() -> [PlaceChooiceItem] {
         return Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [])
+    }
+    
+    // 去货源详情
+    func toResourceDetail() -> Void {
+        let vc = ResourceDetailVC()
+        self.push(vc: vc, title: "货源详情")
     }
 }
 

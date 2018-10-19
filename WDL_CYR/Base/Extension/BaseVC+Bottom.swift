@@ -37,6 +37,7 @@ extension BaseVC {
                     closure(index)
                 }
             }
+            self.bottomHandleView?.shadow(color: UIColor(hex: COLOR_SHADOW), offset: CGSize(width: 0, height: -2), opacity: 0.5, radius: 2)
             targetView.superview?.insertSubview(self.bottomHandleView!, aboveSubview: targetView)
         }
         if titles.count >= 2 {

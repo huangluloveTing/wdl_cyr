@@ -13,6 +13,7 @@ class ZTScrollNaviBarView: UIView {
     typealias ZTNaviScrollClosure = (Int) -> ()
     
     private var titleItems:[String]?
+    private var currentSelectedIndex:Int = 0
     
     public var tapClosure:ZTNaviScrollClosure?
     
@@ -49,6 +50,7 @@ class ZTScrollNaviBarView: UIView {
         super.layoutSubviews()
         self.addSubview(self.titleView)
         self.titleView.frame = self.bounds
+        self.titleView.selectedButtonIndex = self.currentSelectedIndex
     }
     
     func setHeaderTintColor(color:UIColor , state:UIControlState) -> Void {
@@ -66,6 +68,7 @@ extension ZTScrollNaviBarView {
     }
     
     func toSelected(index:Int) {
+        self.currentSelectedIndex = index
         self.titleView.setSelectedButtonIndex(index, animated: true)
     }
 }
@@ -73,6 +76,7 @@ extension ZTScrollNaviBarView {
 extension ZTScrollNaviBarView : HTHorizontalSelectionListDelegate , HTHorizontalSelectionListDataSource {
     
     func selectionList(_ selectionList: HTHorizontalSelectionList, didSelectButtonWith index: Int) {
+        self.currentSelectedIndex = index
         if let closure = self.tapClosure {
             closure(index)
         }

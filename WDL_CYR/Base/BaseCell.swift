@@ -14,13 +14,26 @@ class BaseCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.configSubViews()
         self.selectionStyle = .none
     }
-
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.configSubViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    // 待重写的方法，配置子视图
+    func configSubViews() -> Void {
+        
     }
 }
 
@@ -63,8 +76,8 @@ extension BaseCell {
 // 添加图片
 extension BaseCell {
     func toAddImageForImageView(imageUrl:String? , imageView:UIImageView) -> Void {
-        let resource = NSURL(string: imageUrl ?? "")!
-        imageView.kf.setImage(with: (resource as! Resource))
+        let resource = URL(string: imageUrl ?? "")
+        imageView.kf.setImage(with: (resource))
     }
 }
 

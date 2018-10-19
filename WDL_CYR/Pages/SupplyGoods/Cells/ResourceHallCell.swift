@@ -10,6 +10,8 @@ import UIKit
 
 class ResourceHallCell: BaseCell {
     
+    typealias ResourceOfferClosure = () -> ()
+    
     @IBOutlet weak var avatorView: UIImageView!
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
@@ -22,6 +24,8 @@ class ResourceHallCell: BaseCell {
     @IBOutlet weak var tyNameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     
+    public var offerClosure:ResourceOfferClosure?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.reportButton.addBorder(color: nil, width: 0, radius: 15)
@@ -30,10 +34,13 @@ class ResourceHallCell: BaseCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    @IBAction func offerAction(_ sender: Any) {
+        if let closure = self.offerClosure {
+            closure()
+        }
+    }
 }
 
 extension ResourceHallCell {

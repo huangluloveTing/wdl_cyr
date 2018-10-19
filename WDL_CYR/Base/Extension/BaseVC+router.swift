@@ -47,6 +47,26 @@ extension BaseVC {
         self.push(vc: lineVC, title: "添加路线")
     }
     
+    // 添加关注的托运人(去搜索托运人界面)
+    func toResearchConsignor() -> Void {
+        let consignorVC = ResearchConsignorVC()
+        self.push(vc: consignorVC, title: "")
+    }
+    
+    // 跳转到关注线路详情
+    func toAttentionLineDetail(info:FollowLineOrderHallResult) -> Void {
+        let lineVC = PathDetailVC()
+        lineVC.lineHall = info
+        self.push(vc: lineVC, title: nil)
+    }
+    
+    // 跳转到关注托运人详情
+    func toAttentionConsignorDetail(consignor:FollowShipperOrderHall) -> Void {
+        let consignorVC = ConsignorDetailVC()
+        consignorVC.followShipper = consignor
+        self.push(vc: consignorVC, title: nil)
+    }
+    
     //TODO: todo
     func toDelivery() {
 //        let deliveryVC = DeliveryVC()

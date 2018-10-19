@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="XDj-pz-vsJ" customClass="ConsignorResearchHeader" customModule="WDL_CYR" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="407" height="168"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推荐托运人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlK-wq-9Xl">
+                    <rect key="frame" x="15" y="15" width="377" height="138"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="uL6-eS-Yic" firstAttribute="bottom" secondItem="jlK-wq-9Xl" secondAttribute="bottom" constant="15" id="BwS-0Z-kiX"/>
+                <constraint firstItem="uL6-eS-Yic" firstAttribute="trailing" secondItem="jlK-wq-9Xl" secondAttribute="trailing" constant="15" id="N5c-39-nYx"/>
+                <constraint firstItem="jlK-wq-9Xl" firstAttribute="top" secondItem="uL6-eS-Yic" secondAttribute="top" constant="15" id="Z0d-65-NFn"/>
+                <constraint firstItem="jlK-wq-9Xl" firstAttribute="leading" secondItem="uL6-eS-Yic" secondAttribute="leading" constant="15" id="nY3-PG-xQ4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="uL6-eS-Yic"/>
+            <connections>
+                <outlet property="label" destination="jlK-wq-9Xl" id="kdO-NR-sCt"/>
+            </connections>
+            <point key="canvasLocation" x="-5.5999999999999996" y="-62.968515742128943"/>
+        </view>
+    </objects>
+</document>

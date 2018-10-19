@@ -80,6 +80,8 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
+        self.tableView.pullRefresh()
+        self.tableView.upRefresh()
     }
 }
 
@@ -143,7 +145,15 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let displayType = self.currentDisplayContentType()
+        if displayType == .focusPerson {
+            let shipper = self.list_tyr[indexPath.row]
+            self.toAttentionConsignorDetail(consignor: shipper)
+        }
+        else {
+            let line = self.list_path[indexPath.row]
+            self.toAttentionLineDetail(info: line)
+        }
     }
 }
 
@@ -177,6 +187,7 @@ extension FocusResourceVC {
             .disposed(by: dispose)
     }
     
+    // 展示添加 按钮
     func showAddButton() -> Void {
         switch self.displayType {
         case .focusPerson:
@@ -197,10 +208,11 @@ extension FocusResourceVC {
         }
     }
     
+    // emptyView button Handle
     func toAddAction() -> Void {
         switch self.displayType {
         case .focusPerson:
-            
+            self.toResearchConsignor()
             break
         default:
             self.toFocusLineVC()

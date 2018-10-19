@@ -51,6 +51,11 @@ class BaseVC: UIViewController {
     override func zt_leftBarButtonAction(_ sender: UIBarButtonItem!) {
         self.pop()
     }
+    
+    // 搜索框的当前的输入内容回调，可重写
+    func searchBarInput(search:String) -> Void {
+        print("current search content : " + search)
+    }
 }
 
 
@@ -58,18 +63,20 @@ class BaseVC: UIViewController {
 extension BaseVC {
     
     // 添加头部搜索条
-    func addNaviHeader() {
+    func addNaviHeader(placeholer:String = "搜索我的运单(运单号、承运人、车牌号、线路)") {
         let contentView = UIView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 70, height: 44))
         let searchBar = MySearchBar(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 70, height: 44))
         searchBar.contentInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 0)
         searchBar.barStyle = UIBarStyle.default
         searchBar.rx.text.orEmpty
-            .subscribe(onNext: { (text) in
-                print("search text ： \(text)")
+            .share(replay: 1)
+            .throttle(0.5, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self](text) in
+                self?.searchBarInput(search: text)
             })
             .disposed(by: dispose)
         contentView.addSubview(searchBar)
-        searchBar.placeholder = "搜索我的运单(运单号、承运人、车牌号、线路)"
+        searchBar.placeholder = placeholer
         contentView.backgroundColor = UIColor.clear
         self.navigationItem.titleView = contentView
     }
@@ -116,9 +123,19 @@ extension BaseVC {
         tableView.register(UINib(nibName: "\(className)", bundle: nil), forCellReuseIdentifier: "\(className)")
     }
     
+    //注册 header footer
+    func registerHeaderFooterForNib<T:UITableViewHeaderFooterView>(className:T.Type , for tableView:UITableView) -> Void {
+        tableView.register(UINib(nibName: "\(className)", bundle: nil), forHeaderFooterViewReuseIdentifier: "\(className)")
+    }
+    
     // 获取注册的cell
     func dequeueReusableCell<T:UITableViewCell>(className:T.Type , for tableView:UITableView) -> T {
         return tableView.dequeueReusableCell(withIdentifier: "\(className)") as! T
+    }
+    
+    // 获取注册的 header footer
+    func dequeueReusableHeaderFooter<T:UITableViewHeaderFooterView>(className:T.Type , for tableView:UITableView) -> T {
+        return tableView.dequeueReusableHeaderFooterView(withIdentifier: "\(className)") as! T
     }
     
     // 隐藏tableViewCell分割线
@@ -132,6 +149,12 @@ extension BaseVC {
         insets.right -= insets.right
         insets.left -= insets.left
         tableView.separatorInset = insets
+    }
+    
+    // 获取xib视图
+    func loadNibView<T:UIView>(nibName:T.Type) -> T {
+        let view = Bundle.main.loadNibNamed("\(nibName)", owner: nil, options: nil)?.first as! T
+        return view
     }
 }
 
@@ -213,5 +236,13 @@ extension BaseVC {
             return Disposables.create()
         }
         return observable
+    }
+}
+
+// navigation item
+extension BaseVC {
+    // 删除左边的item
+    func removeRightBarButton() -> Void {
+        self.addLeftBarbuttonItem(with: UIView(frame: .zero))
     }
 }

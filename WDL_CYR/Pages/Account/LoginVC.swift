@@ -71,8 +71,7 @@ class LoginVC: BaseVC {
 
     // 点击我是承运人
     @IBAction func toCYRAction(_ sender: Any) {
-        let container = ContainerVC()
-        self.push(vc: container, title: nil)
+        
     }
     
     // 点击联系客服

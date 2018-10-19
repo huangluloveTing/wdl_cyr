@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,6 +58,9 @@
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="报价"/>
+                        <connections>
+                            <action selector="offerAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UlA-Xj-nX8"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="成都市新都区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8G-61-xDe">
                         <rect key="frame" x="15" y="15" width="104" height="20.5"/>
@@ -90,7 +93,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_to" translatesAutoresizingMaskIntoConstraints="NO" id="gEg-YS-fOC">
-                        <rect key="frame" x="129" y="20.5" width="17" height="11"/>
+                        <rect key="frame" x="129" y="20" width="17" height="11"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KaX-fB-s5S">
                         <rect key="frame" x="15" y="245.5" width="30" height="30"/>
@@ -100,7 +103,7 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="800" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVv-nb-JZZ">
-                        <rect key="frame" x="388.5" y="255.5" width="50" height="11"/>
+                        <rect key="frame" x="388.5" y="255" width="50" height="11"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="Osq-Ys-9s7"/>
                             <constraint firstAttribute="height" constant="11" id="UWI-Mq-dXN"/>
@@ -112,8 +115,8 @@
                         </state>
                         <state key="selected" title="已关注" image="attention"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WD0-sf-joY">
-                        <rect key="frame" x="15" y="77.5" width="35.5" height="153"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WD0-sf-joY">
+                        <rect key="frame" x="15" y="77.5" width="453.5" height="153"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -151,6 +154,7 @@
                     <constraint firstItem="KaX-fB-s5S" firstAttribute="top" secondItem="WD0-sf-joY" secondAttribute="bottom" constant="15" id="gbK-se-R2i"/>
                     <constraint firstItem="Rls-1x-SOa" firstAttribute="leading" secondItem="LeD-eI-gkb" secondAttribute="trailing" id="ijd-5J-mca"/>
                     <constraint firstItem="H99-2d-38V" firstAttribute="leading" secondItem="gEg-YS-fOC" secondAttribute="trailing" constant="10" id="izM-YF-zmh"/>
+                    <constraint firstItem="LeD-eI-gkb" firstAttribute="leading" secondItem="WD0-sf-joY" secondAttribute="trailing" id="lyz-7s-W7z"/>
                     <constraint firstAttribute="trailing" secondItem="fhh-14-Vja" secondAttribute="trailing" id="nN4-GJ-C7O"/>
                     <constraint firstItem="rAc-gT-FfG" firstAttribute="leading" secondItem="KaX-fB-s5S" secondAttribute="trailing" constant="10" id="owL-25-Epn"/>
                     <constraint firstItem="Yrc-XS-7Pg" firstAttribute="leading" secondItem="LeD-eI-gkb" secondAttribute="trailing" constant="10" id="qt3-Bk-qb5"/>
