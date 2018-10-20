@@ -24,7 +24,7 @@ enum API {
     case addFollowLine(String,String,String,String) //添加关注线路
     case findOrderByFollowLine()  //
     case selectZbnConsignor(String) //获取所有的未关注运人信息
-//    case addFollowShipper(Add)
+    case addFollowShipper(AddShipperQueryModel) // 关注托运人
 }
 
 
@@ -55,6 +55,8 @@ func apiPath(api:API) -> String {
         return "/followLine/addFollowLine"
     case .selectZbnConsignor(_):
         return "/followShipper/selectZbnConsignor"
+    case .addFollowShipper(_):
+        return "/followShipper/addFollowShipper"
     }
 }
 
@@ -85,6 +87,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["startPointProvince":startProvince , "startPointCity":startCity , "endPointProvince":endProvince,"endPointCity":endCity], encoding: JSONEncoding.default)
     case .selectZbnConsignor(let query):
         return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["queryParams":query])
+    case .addFollowShipper(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     }
 }
 

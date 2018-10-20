@@ -19,6 +19,7 @@ class AttentionDetailBaseVC: NormalBaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = self.pageTitle()
     }
     
     //MARK: 常用接口
@@ -58,7 +59,7 @@ extension AttentionDetailBaseVC : UITableViewDelegate , UITableViewDataSource {
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return self.items?.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: ResourceHallCell.self)

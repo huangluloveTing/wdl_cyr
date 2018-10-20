@@ -42,13 +42,15 @@ class BaseCell: UITableViewCell {
 extension BaseCell {
     
     // cell上 气泡的设置
-    func rightBadgeValue(value:String? , to label:UILabel) {
+    func rightBadgeValue(value:String? , to label:UILabel , bgColor:UIColor? = UIColor(hex: "FF5363")) {
         if Int(value ?? "") != nil {
             label.text = value
             label.textColor = .white
             label.font = UIFont.systemFont(ofSize: 11)
             label.sizeToFit()
+            label.backgroundColor = bgColor
             let height = label.zt_height
+            label.zt_size = CGSize(width: height, height: height)
             label.addBorder(color: UIColor(hex: BADGE_VALUE_COLOR) , radius:Float(height / 2.0))
         }
     }

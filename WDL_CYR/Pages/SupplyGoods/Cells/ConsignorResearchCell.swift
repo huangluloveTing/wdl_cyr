@@ -15,6 +15,7 @@ class ConsignorResearchCell: BaseCell {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var companyNameLabel: UILabel!
     @IBOutlet weak var attentionButton: UIButton!
+    @IBOutlet weak var attentionedView: UIView!
     
     public var tapAttentionClosure:ConsignorTapAttentionClosure?
 
@@ -24,6 +25,7 @@ class ConsignorResearchCell: BaseCell {
     
     override func configSubViews() {
         self.attentionButton.addBorder(color: nil, width: 0, radius: 14)
+        self.attentionedView.addBorder(color: UIColor(hex: "DDDDDD"), width: 0.5, radius: 14)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,8 +41,9 @@ class ConsignorResearchCell: BaseCell {
 }
 
 extension ConsignorResearchCell {
-    func showInfo(logoImage:String? , companyName:String?) -> Void {
+    func showInfo(logoImage:String? , companyName:String? , focused:Bool? = false) -> Void {
         self.toAddImageForImageView(imageUrl: logoImage, imageView: self.logoImageView)
         self.companyNameLabel.text = companyName
+        self.attentionedView.isHidden = !(focused ?? false)
     }
 }

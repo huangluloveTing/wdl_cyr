@@ -21,6 +21,13 @@
 		7041298E21784DB60078A46F /* ConsignorDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7041298C21784DB60078A46F /* ConsignorDetailVC.swift */; };
 		7041298F21784DB60078A46F /* ConsignorDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7041298D21784DB60078A46F /* ConsignorDetailVC.xib */; };
 		704129912178D0A60078A46F /* SearchConsignorModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704129902178D0A60078A46F /* SearchConsignorModels.swift */; };
+		704129A62179B6410078A46F /* BaseInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704129A52179B6410078A46F /* BaseInputCell.swift */; };
+		704129A92179B7980078A46F /* OfferInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704129A72179B7980078A46F /* OfferInputCell.swift */; };
+		704129AA2179B7980078A46F /* OfferInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704129A82179B7980078A46F /* OfferInputCell.xib */; };
+		704129AD2179C1590078A46F /* OfferFeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704129AB2179C1590078A46F /* OfferFeeCell.swift */; };
+		704129AE2179C1590078A46F /* OfferFeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704129AC2179C1590078A46F /* OfferFeeCell.xib */; };
+		704129B12179E6840078A46F /* CommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704129AF2179E6840078A46F /* CommitCell.swift */; };
+		704129B22179E6840078A46F /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704129B02179E6840078A46F /* CommitCell.xib */; };
 		704DD087215BB55E00E6AD6F /* AddLinesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DD085215BB55E00E6AD6F /* AddLinesVC.swift */; };
 		704DD088215BB55E00E6AD6F /* AddLinesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704DD086215BB55E00E6AD6F /* AddLinesVC.xib */; };
 		704DD08A215C9A8200E6AD6F /* FocusResourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DD089215C9A8200E6AD6F /* FocusResourceModel.swift */; };
@@ -272,6 +279,13 @@
 		7041298C21784DB60078A46F /* ConsignorDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsignorDetailVC.swift; sourceTree = "<group>"; };
 		7041298D21784DB60078A46F /* ConsignorDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConsignorDetailVC.xib; sourceTree = "<group>"; };
 		704129902178D0A60078A46F /* SearchConsignorModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConsignorModels.swift; sourceTree = "<group>"; };
+		704129A52179B6410078A46F /* BaseInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInputCell.swift; sourceTree = "<group>"; };
+		704129A72179B7980078A46F /* OfferInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferInputCell.swift; sourceTree = "<group>"; };
+		704129A82179B7980078A46F /* OfferInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferInputCell.xib; sourceTree = "<group>"; };
+		704129AB2179C1590078A46F /* OfferFeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferFeeCell.swift; sourceTree = "<group>"; };
+		704129AC2179C1590078A46F /* OfferFeeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferFeeCell.xib; sourceTree = "<group>"; };
+		704129AF2179E6840078A46F /* CommitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCell.swift; sourceTree = "<group>"; };
+		704129B02179E6840078A46F /* CommitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommitCell.xib; sourceTree = "<group>"; };
 		704DD085215BB55E00E6AD6F /* AddLinesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinesVC.swift; sourceTree = "<group>"; };
 		704DD086215BB55E00E6AD6F /* AddLinesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddLinesVC.xib; sourceTree = "<group>"; };
 		704DD089215C9A8200E6AD6F /* FocusResourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusResourceModel.swift; sourceTree = "<group>"; };
@@ -730,6 +744,12 @@
 				70412976217782B00078A46F /* ConsignorResearchHeader.xib */,
 				7041297C2178160A0078A46F /* ConsignorResearchCell.swift */,
 				7041297D2178160A0078A46F /* ConsignorResearchCell.xib */,
+				704129A72179B7980078A46F /* OfferInputCell.swift */,
+				704129A82179B7980078A46F /* OfferInputCell.xib */,
+				704129AB2179C1590078A46F /* OfferFeeCell.swift */,
+				704129AC2179C1590078A46F /* OfferFeeCell.xib */,
+				704129AF2179E6840078A46F /* CommitCell.swift */,
+				704129B02179E6840078A46F /* CommitCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -986,6 +1006,7 @@
 				70CF4F45214B410D0051A7CA /* BaseBean.swift */,
 				70D8BC49216B1863000522E0 /* ResponseBaseModel.swift */,
 				70CF4F49214B410D0051A7CA /* BaseCell.swift */,
+				704129A52179B6410078A46F /* BaseInputCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1256,6 +1277,7 @@
 				70D8BC0F2166E99C000522E0 /* PaymentTypeVC.xib in Resources */,
 				707B7208216F3C60000F78F6 /* Resource_GoodsInfoCell.xib in Resources */,
 				70CF4F86214B41120051A7CA /* WayBillCell.xib in Resources */,
+				704129AA2179B7980078A46F /* OfferInputCell.xib in Resources */,
 				70D8BC032165B236000522E0 /* WalletMoneyCell.xib in Resources */,
 				7041297F2178160A0078A46F /* ConsignorResearchCell.xib in Resources */,
 				70CF4F94214B41120051A7CA /* XIBViews.xib in Resources */,
@@ -1263,8 +1285,10 @@
 				70648902215B5F5A00F53BFC /* FocusEmptyView.xib in Resources */,
 				70D8BC33216748E5000522E0 /* AuthenIndividualInfoVC.xib in Resources */,
 				70D8BC072165BAA1000522E0 /* RechargeInlineVC.xib in Resources */,
+				704129AE2179C1590078A46F /* OfferFeeCell.xib in Resources */,
 				70CF4F8C214B41120051A7CA /* WayBillVC.xib in Resources */,
 				70412977217782B00078A46F /* ConsignorResearchHeader.xib in Resources */,
+				704129B22179E6840078A46F /* CommitCell.xib in Resources */,
 				707B720C216F3C87000F78F6 /* Resource_ShipperInfoCell.xib in Resources */,
 				70CF4F8D214B41120051A7CA /* DeliveryTruckTypeCell.xib in Resources */,
 				7041296D217775320078A46F /* ResearchConsignorVC.xib in Resources */,
@@ -1394,6 +1418,7 @@
 				70EA735B215E00460020B8C3 /* GSDetail_OfferInfoCell.swift in Sources */,
 				70CF4F74214B41110051A7CA /* GoodsSupplyDetailVC.swift in Sources */,
 				70CF4F9D214B41120051A7CA /* RegisterVC.swift in Sources */,
+				704129A62179B6410078A46F /* BaseInputCell.swift in Sources */,
 				70CF4FBD214B41120051A7CA /* UIView+Border.swift in Sources */,
 				70D8BC062165BAA1000522E0 /* RechargeInlineVC.swift in Sources */,
 				70D8BC4A216B1863000522E0 /* ResponseBaseModel.swift in Sources */,
@@ -1403,6 +1428,7 @@
 				70EA736F215E12920020B8C3 /* GSDetailVC.swift in Sources */,
 				70CF4FBE214B41120051A7CA /* UITableView+ProxyDelegate.swift in Sources */,
 				70CF4FCC214B41120051A7CA /* DropViewContainer.swift in Sources */,
+				704129AD2179C1590078A46F /* OfferFeeCell.swift in Sources */,
 				70CF4EA6214B409E0051A7CA /* ViewController.swift in Sources */,
 				70CF4FBF214B41120051A7CA /* BaseVC+Toast.swift in Sources */,
 				70CF4F5D214B41110051A7CA /* colors.swift in Sources */,
@@ -1425,11 +1451,13 @@
 				70C7CB28216F74ED00C10AC4 /* ChooseOfferTypeVC.swift in Sources */,
 				70CF4FB4214B41120051A7CA /* UITableView+RefreshExtension.swift in Sources */,
 				70EA7372215E63990020B8C3 /* WayBillContainerVC.swift in Sources */,
+				704129B12179E6840078A46F /* CommitCell.swift in Sources */,
 				70CF4FC9214B41120051A7CA /* BaseCell.swift in Sources */,
 				70CF4FC7214B41120051A7CA /* ZTTransition.swift in Sources */,
 				70D8BC1E21672D2B000522E0 /* TransportTruckCell.swift in Sources */,
 				70EA7367215E0AE00020B8C3 /* GSDetail_rejectCell.swift in Sources */,
 				70CF4F99214B41120051A7CA /* DeliveryPlaceChooiceView.swift in Sources */,
+				704129A92179B7980078A46F /* OfferInputCell.swift in Sources */,
 				70CF4FCD214B41120051A7CA /* BageView.swift in Sources */,
 				70CF4F5F214B41110051A7CA /* Response+serial.swift in Sources */,
 				70D8BC32216748E5000522E0 /* AuthenIndividualInfoVC.swift in Sources */,

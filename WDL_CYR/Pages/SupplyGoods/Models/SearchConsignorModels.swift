@@ -16,6 +16,7 @@ struct ConsignorFollowShipper : HandyJSON {
     var consignorType:String? // (string, optional),
     var logParh:String?         // (string, optional),
     var orderNumer:String? // (string, optional)
+    var focus:Bool = false
 }
 
 //关注托运人的query模型

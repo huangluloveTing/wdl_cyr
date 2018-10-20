@@ -69,6 +69,7 @@ extension BaseVC {
         searchBar.contentInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 0)
         searchBar.barStyle = UIBarStyle.default
         searchBar.rx.text.orEmpty
+            .skip(1)
             .share(replay: 1)
             .throttle(0.5, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self](text) in

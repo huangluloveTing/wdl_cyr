@@ -44,6 +44,19 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
         
     }
     
+    override func bindViewModel() {
+        self.tableView.refreshState.share(replay: 1)
+            .filter({(state) -> Bool in
+                return state != .EndRefresh
+            })
+            .asDriver(onErrorJustReturn: .EndRefresh)
+            .drive(onNext: { [weak self](state) in
+                self?.tableView.endRefresh()
+                self?.toLoadDataByTableViewHandle(state: state)
+            })
+            .disposed(by: dispose)
+    }
+    
     //MARK:
     func willShow() {
         
@@ -51,19 +64,6 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
     
     func didShow() {
         
-    }
-    
-    //MARK: 切换
-    @IBAction func focusPersonAction(_ sender: UIButton) {
-        self.toTapHeader(index: 0)
-        self.tableView.reloadData()
-    }
-    @IBAction func focusLineAction(_ sender: UIButton) {
-        self.toTapHeader(index: 1)
-        self.tableView.reloadData()
-    }
-    @IBAction func addLinesAction(_ sender: Any) {
-        self.toFocusLineVC()
     }
     
     
@@ -82,6 +82,19 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
         self.tableView.separatorStyle = .none
         self.tableView.pullRefresh()
         self.tableView.upRefresh()
+    }
+    
+    //MARK: 切换
+    @IBAction func focusPersonAction(_ sender: UIButton) {
+        self.toTapHeader(index: 0)
+        self.tableView.reloadData()
+    }
+    @IBAction func focusLineAction(_ sender: UIButton) {
+        self.toTapHeader(index: 1)
+        self.tableView.reloadData()
+    }
+    @IBAction func addLinesAction(_ sender: Any) {
+        self.toAddAction()
     }
 }
 
@@ -115,6 +128,13 @@ extension FocusResourceVC { // 关注托运人或者关注线路 切换
         self.tableView.reloadEmptyDataSet()
     }
     
+    // 根据刷新的数据
+    func toLoadDataByTableViewHandle(state:TableViewState) -> Void {
+        let type = self.currentDisplayContentType()
+        let index = type == .focusPerson ? 0 : 1
+        self.toTapHeader(index: index)
+    }
+    
 }
 
 extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
@@ -124,7 +144,7 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
         if displayType == .focusPerson {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(FocusPersonCell.self)") as! FocusPersonCell
             let info = self.list_tyr[indexPath.row]
-            cell.focusPersonInfo(image: nil, title: info.consignorName, badge: info.total)
+            cell.focusPersonInfo(image: nil, title: info.consignorName, badge: info.hall.count)
             return cell
         }
         else {
@@ -172,6 +192,7 @@ extension FocusResourceVC {
             })
             .disposed(by: dispose)
     }
+    
     // 获取关注的线路的货源
     func loadResourceByAttentionPath() -> Void {
         self.showLoading()
@@ -243,6 +264,7 @@ extension FocusResourceVC { // EmptyDatasource
         }
         return view
     }
+    
     func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
         return true
     }

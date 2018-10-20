@@ -15,6 +15,7 @@ class ResearchConsignorVC: NormalBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.fd_interactivePopDisabled = false
         self.addResearchBar()
         self.configTableView()
         self.registerAllComponents()
@@ -23,6 +24,10 @@ class ResearchConsignorVC: NormalBaseVC {
     // 搜索框输入内容
     override func searchBarInput(search: String) {
         self.searchConsignors(input: search)
+    }
+    
+    override func zt_rightBarButtonAction(_ sender: UIBarButtonItem!) {
+        self.pop()
     }
 }
 
@@ -64,8 +69,26 @@ extension ResearchConsignorVC {
             .disposed(by: dispose)
     }
     
+    // 刷新tableView
     func toRenderTableView() {
         self.tableView.reloadData()
+    }
+    
+    // 关注托运人
+    func attentionConsignor(index:Int) -> Void {
+        let consignor = self.consignors![index]
+        var query = AddShipperQueryModel()
+        query.shipperId = consignor.consignorCode ?? ""
+        query.shipperType = consignor.consignorType ?? ""
+        self.showLoading()
+        BaseApi.request(target: API.addFollowShipper(query), type: BaseResponseModel<String>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess(success: "添加成功", complete: nil)
+                self?.toRefreshTableView(row: index)
+            }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
     }
 }
 
@@ -78,9 +101,12 @@ extension ResearchConsignorVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: ConsignorResearchCell.self)
         let consignor = self.consignors![indexPath.row]
-        cell.showInfo(logoImage: consignor.logParh, companyName: consignor.consignorName)
+        cell.showInfo(logoImage: consignor.logParh,
+                      companyName: consignor.consignorName ,
+                      focused: consignor.focus)
         cell.tapAttentionClosure = {[weak self]() in
             print("tap attention + ")
+            self?.attentionConsignor(index: indexPath.row)
         }
         return cell
     }
@@ -98,4 +124,11 @@ extension ResearchConsignorVC : UITableViewDelegate , UITableViewDataSource {
 //        let height = headerView?.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height ?? 40
 //        return height
 //    }
+    
+    func toRefreshTableView(row:Int) -> Void {
+        var consignor = self.consignors![row]
+        consignor.focus = true
+        self.consignors![row] = consignor
+        self.toRenderTableView()
+    }
 }

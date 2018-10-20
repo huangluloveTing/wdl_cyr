@@ -47,6 +47,32 @@
                             <constraint firstAttribute="height" constant="0.5" id="GSA-wH-mgI"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bwa-xf-Ux7">
+                        <rect key="frame" x="304" y="19" width="64" height="28"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="搜索页-关注" translatesAutoresizingMaskIntoConstraints="NO" id="tXB-3n-pCK">
+                                <rect key="frame" x="5" y="6.5" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="apH-I8-tbI"/>
+                                    <constraint firstAttribute="width" constant="15" id="hwT-RF-VKe"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已关注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejb-2R-Ce0">
+                                <rect key="frame" x="22" y="7" width="42" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tXB-3n-pCK" firstAttribute="leading" secondItem="Bwa-xf-Ux7" secondAttribute="leading" constant="5" id="Y2l-Pp-2KR"/>
+                            <constraint firstAttribute="trailing" secondItem="ejb-2R-Ce0" secondAttribute="trailing" id="cde-Va-ykv"/>
+                            <constraint firstItem="ejb-2R-Ce0" firstAttribute="centerY" secondItem="tXB-3n-pCK" secondAttribute="centerY" id="ifX-C7-rT7"/>
+                            <constraint firstItem="tXB-3n-pCK" firstAttribute="centerY" secondItem="Bwa-xf-Ux7" secondAttribute="centerY" id="n0j-ju-yKe"/>
+                            <constraint firstItem="ejb-2R-Ce0" firstAttribute="leading" secondItem="tXB-3n-pCK" secondAttribute="trailing" constant="2" id="vem-AQ-h9s"/>
+                        </constraints>
+                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o0o-uj-RDP">
                         <rect key="frame" x="15" y="15" width="36" height="36"/>
                         <constraints>
@@ -57,12 +83,16 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="o0o-uj-RDP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="7D4-SH-TpH"/>
+                    <constraint firstItem="Bwa-xf-Ux7" firstAttribute="width" secondItem="LOs-mf-hbh" secondAttribute="width" id="7NH-iH-ZIP"/>
+                    <constraint firstItem="Bwa-xf-Ux7" firstAttribute="centerX" secondItem="LOs-mf-hbh" secondAttribute="centerX" id="7ls-hd-ygn"/>
                     <constraint firstItem="2C0-yM-gXZ" firstAttribute="leading" secondItem="o0o-uj-RDP" secondAttribute="trailing" constant="15" id="AiR-N5-IFz"/>
                     <constraint firstAttribute="trailing" secondItem="ehb-w1-yc8" secondAttribute="trailing" id="Djm-YB-nzk"/>
                     <constraint firstItem="ehb-w1-yc8" firstAttribute="top" secondItem="o0o-uj-RDP" secondAttribute="bottom" constant="15" id="LCa-iA-GPc"/>
                     <constraint firstItem="ehb-w1-yc8" firstAttribute="leading" secondItem="2C0-yM-gXZ" secondAttribute="leading" id="NUc-EJ-cJe"/>
                     <constraint firstItem="LOs-mf-hbh" firstAttribute="centerY" secondItem="2C0-yM-gXZ" secondAttribute="centerY" id="Obn-ra-C8y"/>
                     <constraint firstAttribute="trailing" secondItem="LOs-mf-hbh" secondAttribute="trailing" constant="15" id="Zoi-Mi-TJQ"/>
+                    <constraint firstItem="Bwa-xf-Ux7" firstAttribute="centerY" secondItem="LOs-mf-hbh" secondAttribute="centerY" id="aKA-7C-Pkw"/>
+                    <constraint firstItem="Bwa-xf-Ux7" firstAttribute="height" secondItem="LOs-mf-hbh" secondAttribute="height" id="etQ-2J-XEs"/>
                     <constraint firstItem="o0o-uj-RDP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="g1U-ZJ-Qj3"/>
                     <constraint firstItem="2C0-yM-gXZ" firstAttribute="centerY" secondItem="o0o-uj-RDP" secondAttribute="centerY" id="uRo-ce-ibV"/>
                 </constraints>
@@ -70,10 +100,14 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="attentionButton" destination="LOs-mf-hbh" id="rFD-2C-FbA"/>
+                <outlet property="attentionedView" destination="Bwa-xf-Ux7" id="O3N-Rs-bV2"/>
                 <outlet property="companyNameLabel" destination="2C0-yM-gXZ" id="DeT-lL-Kov"/>
                 <outlet property="logoImageView" destination="o0o-uj-RDP" id="4L8-SA-Lxk"/>
             </connections>
             <point key="canvasLocation" x="188" y="164.6176911544228"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="搜索页-关注" width="11" height="10"/>
+    </resources>
 </document>

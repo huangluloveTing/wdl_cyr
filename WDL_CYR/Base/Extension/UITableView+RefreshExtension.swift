@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-enum TableViewState {
+enum TableViewState:Int {
     case Refresh
     case LoadMore
     case EndRefresh

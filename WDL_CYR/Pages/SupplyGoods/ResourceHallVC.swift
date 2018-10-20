@@ -173,7 +173,8 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.toResourceDetail()
+//        let resource =
+        self.toResourceDetail(resource: ResourceHallUIModel())
     }
 }
 
@@ -184,9 +185,8 @@ extension ResourceHallVC {
     }
     
     // 去货源详情
-    func toResourceDetail() -> Void {
-        let vc = ResourceDetailVC()
-        self.push(vc: vc, title: "货源详情")
+    func toResourceDetail(resource:ResourceHallUIModel) -> Void {
+        self.toResouceDetail()
     }
 }
 

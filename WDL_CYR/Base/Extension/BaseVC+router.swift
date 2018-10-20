@@ -41,6 +41,12 @@ extension BaseVC {
         self.push(vc: wayBillDetail, title: "运单详情")
     }
     
+    // t去货源详情
+    func toResouceDetail() -> Void {
+        let vc = ResourceDetailVC()
+        self.push(vc: vc, title: "货源详情")
+    }
+    
     // 添加关注路线
     func toFocusLineVC() -> Void {
         let lineVC = AddLinesVC()
