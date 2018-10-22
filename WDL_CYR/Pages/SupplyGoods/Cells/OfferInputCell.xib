@@ -38,18 +38,28 @@
                             <constraint firstAttribute="width" constant="15" id="mrb-7m-35w"/>
                         </constraints>
                     </imageView>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1B6-K5-cMI">
-                        <rect key="frame" x="120" y="69" width="349" height="30"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1B6-K5-cMI">
+                        <rect key="frame" x="120" y="75.5" width="349" height="17"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUO-Tu-L65">
+                        <rect key="frame" x="0.0" y="167" width="504" height="0.5"/>
+                        <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="fyH-rl-kPp"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="bUO-Tu-L65" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="7P6-GT-vkq"/>
+                    <constraint firstAttribute="trailing" secondItem="bUO-Tu-L65" secondAttribute="trailing" id="Esv-Wr-mMw"/>
                     <constraint firstItem="4pb-XX-Pcw" firstAttribute="leading" secondItem="9Wn-Kc-Tkn" secondAttribute="trailing" id="Hti-p8-tnk"/>
                     <constraint firstAttribute="bottom" secondItem="9Wn-Kc-Tkn" secondAttribute="bottom" constant="15" id="LjM-cT-0T0"/>
                     <constraint firstItem="4pb-XX-Pcw" firstAttribute="centerY" secondItem="9Wn-Kc-Tkn" secondAttribute="centerY" constant="2" id="P1p-zH-MuC"/>
                     <constraint firstItem="1B6-K5-cMI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="120" id="RkC-gP-Gd5"/>
+                    <constraint firstAttribute="bottom" secondItem="bUO-Tu-L65" secondAttribute="bottom" id="TWk-zI-PKO"/>
                     <constraint firstItem="1B6-K5-cMI" firstAttribute="centerY" secondItem="9Wn-Kc-Tkn" secondAttribute="centerY" id="blx-OT-oNM"/>
                     <constraint firstItem="9Wn-Kc-Tkn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="db8-sq-DjX"/>
                     <constraint firstAttribute="trailing" secondItem="iGe-is-whF" secondAttribute="trailing" constant="15" id="iVG-pt-IZg"/>
@@ -61,6 +71,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="indicatorView" destination="iGe-is-whF" id="8vr-7A-sxi"/>
+                <outlet property="seperateLine" destination="bUO-Tu-L65" id="Go4-Uz-gdJ"/>
                 <outlet property="textField" destination="1B6-K5-cMI" id="bi6-QE-1T9"/>
                 <outlet property="titleLabel" destination="9Wn-Kc-Tkn" id="bF2-rU-t9Y"/>
                 <outlet property="unitLabel" destination="4pb-XX-Pcw" id="y9Q-kC-ACh"/>

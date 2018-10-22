@@ -53,4 +53,11 @@ extension ChooseOfferTypeVC : UITableViewDelegate , UITableViewDataSource {
         return 50
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        if row == 0 {
+            let offerTruckVC = OfferWithTruckVC()
+            self.push(vc: offerTruckVC, title: "报价")
+        }
+    }
 }

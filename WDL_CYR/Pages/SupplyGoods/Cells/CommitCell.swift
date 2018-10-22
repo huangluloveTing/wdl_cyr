@@ -7,18 +7,34 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CommitCell: BaseCell {
-
+    
+    private let dispose = DisposeBag()
+    
+    typealias CommitClosure = () -> ()
+    
+    @IBOutlet weak var commitButton: UIButton!
+    
+    public var commitClosure:CommitClosure?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.commitButton.addBorder(color: nil, width: 0, radius: 4)
+        self.commitButton.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self]() in
+                if let closure = self?.commitClosure {
+                    closure()
+                }
+            })
+            .disposed(by: dispose)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
     
 }

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5FF496CEBAEF90B26CAE9B21 /* libPods-WDL_CYR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */; };
+		701F10CA217CC6C600693936 /* OfferModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10C9217CC6C600693936 /* OfferModels.swift */; };
+		701F10CD217D540500693936 /* OfferChooseDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10CB217D540500693936 /* OfferChooseDriverVC.swift */; };
+		701F10CE217D540500693936 /* OfferChooseDriverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 701F10CC217D540500693936 /* OfferChooseDriverVC.xib */; };
+		701F10D1217D54B200693936 /* ChooseDriverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10CF217D54B200693936 /* ChooseDriverCell.swift */; };
+		701F10D2217D54B200693936 /* ChooseDriverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 701F10D0217D54B200693936 /* ChooseDriverCell.xib */; };
 		7041296C217775320078A46F /* ResearchConsignorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7041296A217775320078A46F /* ResearchConsignorVC.swift */; };
 		7041296D217775320078A46F /* ResearchConsignorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7041296B217775320078A46F /* ResearchConsignorVC.xib */; };
 		70412975217782A70078A46F /* ConsignorResearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70412974217782A70078A46F /* ConsignorResearchHeader.swift */; };
@@ -266,6 +271,11 @@
 /* Begin PBXFileReference section */
 		3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WDL_CYR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C7F9C1660A78A3335660AB0 /* Pods-WDL_CYR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDL_CYR.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR.release.xcconfig"; sourceTree = "<group>"; };
+		701F10C9217CC6C600693936 /* OfferModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferModels.swift; sourceTree = "<group>"; };
+		701F10CB217D540500693936 /* OfferChooseDriverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferChooseDriverVC.swift; sourceTree = "<group>"; };
+		701F10CC217D540500693936 /* OfferChooseDriverVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferChooseDriverVC.xib; sourceTree = "<group>"; };
+		701F10CF217D54B200693936 /* ChooseDriverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDriverCell.swift; sourceTree = "<group>"; };
+		701F10D0217D54B200693936 /* ChooseDriverCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseDriverCell.xib; sourceTree = "<group>"; };
 		7041296A217775320078A46F /* ResearchConsignorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchConsignorVC.swift; sourceTree = "<group>"; };
 		7041296B217775320078A46F /* ResearchConsignorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResearchConsignorVC.xib; sourceTree = "<group>"; };
 		70412974217782A70078A46F /* ConsignorResearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsignorResearchHeader.swift; sourceTree = "<group>"; };
@@ -750,6 +760,8 @@
 				704129AC2179C1590078A46F /* OfferFeeCell.xib */,
 				704129AF2179E6840078A46F /* CommitCell.swift */,
 				704129B02179E6840078A46F /* CommitCell.xib */,
+				701F10CF217D54B200693936 /* ChooseDriverCell.swift */,
+				701F10D0217D54B200693936 /* ChooseDriverCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -761,6 +773,7 @@
 				70CF4ED3214B410C0051A7CA /* GoodSupplyBean.swift */,
 				704DD089215C9A8200E6AD6F /* FocusResourceModel.swift */,
 				704129902178D0A60078A46F /* SearchConsignorModels.swift */,
+				701F10C9217CC6C600693936 /* OfferModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -785,6 +798,8 @@
 				7041298921784CC20078A46F /* PathDetailVC.xib */,
 				7041298C21784DB60078A46F /* ConsignorDetailVC.swift */,
 				7041298D21784DB60078A46F /* ConsignorDetailVC.xib */,
+				701F10CB217D540500693936 /* OfferChooseDriverVC.swift */,
+				701F10CC217D540500693936 /* OfferChooseDriverVC.xib */,
 			);
 			path = VCS;
 			sourceTree = "<group>";
@@ -1252,6 +1267,7 @@
 				70CF4F68214B41110051A7CA /* GoodsSupplyCell.xib in Resources */,
 				70D8BC2B21673973000522E0 /* TransactionDetailsCell.xib in Resources */,
 				70D8BBD921605153000522E0 /* WaybillDoneVC.xib in Resources */,
+				701F10D2217D54B200693936 /* ChooseDriverCell.xib in Resources */,
 				70CF4EAB214B40A00051A7CA /* Assets.xcassets in Resources */,
 				70CF4F6F214B41110051A7CA /* GSTimerShelveCell.xib in Resources */,
 				70CF4F7E214B41120051A7CA /* PersonalExcuteCell.xib in Resources */,
@@ -1310,6 +1326,7 @@
 				70CF4FA2214B41120051A7CA /* ForgetPwdVC.xib in Resources */,
 				70D8BC1B216724CE000522E0 /* TransportCapacityVC.xib in Resources */,
 				7041298B21784CC20078A46F /* PathDetailVC.xib in Resources */,
+				701F10CE217D540500693936 /* OfferChooseDriverVC.xib in Resources */,
 				70CF4F90214B41120051A7CA /* DeliveryPlaceChooiceCell.xib in Resources */,
 				70CF4F84214B41120051A7CA /* WayBillDetailStatusCell.xib in Resources */,
 				707B7204216F3C4A000F78F6 /* Resource_PriceInfoCell.xib in Resources */,
@@ -1417,6 +1434,7 @@
 				70CF4F87214B41120051A7CA /* WayBillDetailStatusCell.swift in Sources */,
 				70EA735B215E00460020B8C3 /* GSDetail_OfferInfoCell.swift in Sources */,
 				70CF4F74214B41110051A7CA /* GoodsSupplyDetailVC.swift in Sources */,
+				701F10CD217D540500693936 /* OfferChooseDriverVC.swift in Sources */,
 				70CF4F9D214B41120051A7CA /* RegisterVC.swift in Sources */,
 				704129A62179B6410078A46F /* BaseInputCell.swift in Sources */,
 				70CF4FBD214B41120051A7CA /* UIView+Border.swift in Sources */,
@@ -1502,6 +1520,7 @@
 				70CF4FD3214B41120051A7CA /* DropViewManage.swift in Sources */,
 				704DD0A0215CEC6600E6AD6F /* OfferNotDoneVC.swift in Sources */,
 				70CF4F98214B41120051A7CA /* OneChooseInputView.swift in Sources */,
+				701F10D1217D54B200693936 /* ChooseDriverCell.swift in Sources */,
 				70CF4F6D214B41110051A7CA /* GSDealedCell.swift in Sources */,
 				70CF4F7F214B41120051A7CA /* PersonalInfoHeader.swift in Sources */,
 				706488F9215B458D00F53BFC /* FocusResourceVC.swift in Sources */,
@@ -1533,6 +1552,7 @@
 				70648907215B6BE400F53BFC /* FocusPersonCell.swift in Sources */,
 				70F40F26214B55E70054A175 /* ZTScrollItem.swift in Sources */,
 				70CF4F80214B41120051A7CA /* PersonalVC.swift in Sources */,
+				701F10CA217CC6C600693936 /* OfferModels.swift in Sources */,
 				70D8BBD821605153000522E0 /* WaybillDoneVC.swift in Sources */,
 				70CF4FC5214B41120051A7CA /* BaseVC.swift in Sources */,
 				70CF4FBA214B41120051A7CA /* UIViewController+navigation.swift in Sources */,
