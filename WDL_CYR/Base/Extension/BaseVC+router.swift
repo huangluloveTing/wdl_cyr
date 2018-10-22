@@ -42,9 +42,18 @@ extension BaseVC {
     }
     
     // t去货源详情
-    func toResouceDetail() -> Void {
+    func toResouceDetail(resource:ResourceDetailUIModel) -> Void {
         let vc = ResourceDetailVC()
+        vc.resource = resource
         self.push(vc: vc, title: "货源详情")
+    }
+    
+    // 选择报价类型
+    func toChooseOfferType(resource:ResourceDetailUIModel?) -> Void {
+        // 去报价
+        let vc = ChooseOfferTypeVC()
+        vc.resource = resource
+        self.push(vc: vc, title: "选择报价类型")
     }
     
     // 添加关注路线

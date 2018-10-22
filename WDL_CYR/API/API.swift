@@ -25,6 +25,8 @@ enum API {
     case findOrderByFollowLine()  //
     case selectZbnConsignor(String) //获取所有的未关注运人信息
     case addFollowShipper(AddShipperQueryModel) // 关注托运人
+    case findTransportCapacity(QueryZbnTransportCapacity) // 获取所有的运力信息
+    case findCarrierInfoFee(String) // 报价时，获取承运人保证金、服务费等信息
 }
 
 
@@ -57,6 +59,10 @@ func apiPath(api:API) -> String {
         return "/followShipper/selectZbnConsignor"
     case .addFollowShipper(_):
         return "/followShipper/addFollowShipper"
+    case .findTransportCapacity(_):
+        return "/carrierOrderHall/findTransportCapacity"
+    case .findCarrierInfoFee(_):
+        return "/offer/findCarrierInfoFee"
     }
 }
 
@@ -89,6 +95,10 @@ func apiTask(api:API) -> Task {
         return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["queryParams":query])
     case .addFollowShipper(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
+    case .findTransportCapacity(let query):
+        return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
+    case .findCarrierInfoFee(let id):
+        return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["hallId": id])
     }
 }
 
@@ -97,7 +107,8 @@ func apiMethod(api:API) -> Moya.Method {
     switch api {
     case .getCreateHallDictionary(),
          .registerSms(_) ,
-         .selectZbnConsignor(_):
+         .selectZbnConsignor(_),
+         .findCarrierInfoFee(_):
         return .get
     default:
         return .post

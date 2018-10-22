@@ -83,13 +83,16 @@ class Util {
         var newStr = ""
         strs.enumerated().forEach { (offset , st) in
             if offset < strs.count - 1 {
-                newStr = newStr + st + seperate
+                if st.count > 0 {
+                    newStr = newStr + st + seperate
+                }
             } else {
                 newStr = newStr + st
             }
         }
         return newStr
     }
+    
 }
 
 // 富文本 YYText

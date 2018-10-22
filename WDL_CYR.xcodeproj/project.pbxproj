@@ -13,6 +13,11 @@
 		701F10CE217D540500693936 /* OfferChooseDriverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 701F10CC217D540500693936 /* OfferChooseDriverVC.xib */; };
 		701F10D1217D54B200693936 /* ChooseDriverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10CF217D54B200693936 /* ChooseDriverCell.swift */; };
 		701F10D2217D54B200693936 /* ChooseDriverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 701F10D0217D54B200693936 /* ChooseDriverCell.xib */; };
+		701F10D4217D8F0000693936 /* OfferSearchBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10D3217D8F0000693936 /* OfferSearchBaseVC.swift */; };
+		701F10D7217D942000693936 /* OfferSearchTruckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10D5217D942000693936 /* OfferSearchTruckCell.swift */; };
+		701F10D8217D942000693936 /* OfferSearchTruckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 701F10D6217D942000693936 /* OfferSearchTruckCell.xib */; };
+		701F10DB217DD99400693936 /* OfferChooseTruckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10D9217DD99400693936 /* OfferChooseTruckVC.swift */; };
+		701F10DC217DD99400693936 /* OfferChooseTruckVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 701F10DA217DD99400693936 /* OfferChooseTruckVC.xib */; };
 		7041296C217775320078A46F /* ResearchConsignorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7041296A217775320078A46F /* ResearchConsignorVC.swift */; };
 		7041296D217775320078A46F /* ResearchConsignorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7041296B217775320078A46F /* ResearchConsignorVC.xib */; };
 		70412975217782A70078A46F /* ConsignorResearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70412974217782A70078A46F /* ConsignorResearchHeader.swift */; };
@@ -276,6 +281,11 @@
 		701F10CC217D540500693936 /* OfferChooseDriverVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferChooseDriverVC.xib; sourceTree = "<group>"; };
 		701F10CF217D54B200693936 /* ChooseDriverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDriverCell.swift; sourceTree = "<group>"; };
 		701F10D0217D54B200693936 /* ChooseDriverCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseDriverCell.xib; sourceTree = "<group>"; };
+		701F10D3217D8F0000693936 /* OfferSearchBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSearchBaseVC.swift; sourceTree = "<group>"; };
+		701F10D5217D942000693936 /* OfferSearchTruckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSearchTruckCell.swift; sourceTree = "<group>"; };
+		701F10D6217D942000693936 /* OfferSearchTruckCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferSearchTruckCell.xib; sourceTree = "<group>"; };
+		701F10D9217DD99400693936 /* OfferChooseTruckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferChooseTruckVC.swift; sourceTree = "<group>"; };
+		701F10DA217DD99400693936 /* OfferChooseTruckVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferChooseTruckVC.xib; sourceTree = "<group>"; };
 		7041296A217775320078A46F /* ResearchConsignorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchConsignorVC.swift; sourceTree = "<group>"; };
 		7041296B217775320078A46F /* ResearchConsignorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResearchConsignorVC.xib; sourceTree = "<group>"; };
 		70412974217782A70078A46F /* ConsignorResearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsignorResearchHeader.swift; sourceTree = "<group>"; };
@@ -762,6 +772,8 @@
 				704129B02179E6840078A46F /* CommitCell.xib */,
 				701F10CF217D54B200693936 /* ChooseDriverCell.swift */,
 				701F10D0217D54B200693936 /* ChooseDriverCell.xib */,
+				701F10D5217D942000693936 /* OfferSearchTruckCell.swift */,
+				701F10D6217D942000693936 /* OfferSearchTruckCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -798,8 +810,11 @@
 				7041298921784CC20078A46F /* PathDetailVC.xib */,
 				7041298C21784DB60078A46F /* ConsignorDetailVC.swift */,
 				7041298D21784DB60078A46F /* ConsignorDetailVC.xib */,
+				701F10D3217D8F0000693936 /* OfferSearchBaseVC.swift */,
 				701F10CB217D540500693936 /* OfferChooseDriverVC.swift */,
 				701F10CC217D540500693936 /* OfferChooseDriverVC.xib */,
+				701F10D9217DD99400693936 /* OfferChooseTruckVC.swift */,
+				701F10DA217DD99400693936 /* OfferChooseTruckVC.xib */,
 			);
 			path = VCS;
 			sourceTree = "<group>";
@@ -1252,6 +1267,7 @@
 				70EA734C215DB2CB0020B8C3 /* Offer_NotDoneCell.xib in Resources */,
 				70CF4F7D214B41120051A7CA /* PersonalInfoHeader.xib in Resources */,
 				70EA736C215E0E680020B8C3 /* GSDetail_notDealCell.xib in Resources */,
+				701F10D8217D942000693936 /* OfferSearchTruckCell.xib in Resources */,
 				70C7CB2D216F76AD00C10AC4 /* OfferWithTruckVC.xib in Resources */,
 				70D8BC2721673956000522E0 /* TransactionDetailsVC.xib in Resources */,
 				70D8BBD521605141000522E0 /* WaybillNotDoneVC.xib in Resources */,
@@ -1306,6 +1322,7 @@
 				70412977217782B00078A46F /* ConsignorResearchHeader.xib in Resources */,
 				704129B22179E6840078A46F /* CommitCell.xib in Resources */,
 				707B720C216F3C87000F78F6 /* Resource_ShipperInfoCell.xib in Resources */,
+				701F10DC217DD99400693936 /* OfferChooseTruckVC.xib in Resources */,
 				70CF4F8D214B41120051A7CA /* DeliveryTruckTypeCell.xib in Resources */,
 				7041296D217775320078A46F /* ResearchConsignorVC.xib in Resources */,
 				704DD0A1215CEC6600E6AD6F /* OfferNotDoneVC.xib in Resources */,
@@ -1426,6 +1443,7 @@
 				70EA73A2215F47D00020B8C3 /* WaybillCarrierInfoCell.swift in Sources */,
 				70CF4F61214B41110051A7CA /* BaseModel.swift in Sources */,
 				70D8BC122166EA6A000522E0 /* PaymentCell.swift in Sources */,
+				701F10D7217D942000693936 /* OfferSearchTruckCell.swift in Sources */,
 				704DD08D215CA44000E6AD6F /* ResourceHallCell.swift in Sources */,
 				70CF4F91214B41120051A7CA /* DeliveryPlaceTabHeader.swift in Sources */,
 				7041297E2178160A0078A46F /* ConsignorResearchCell.swift in Sources */,
@@ -1477,6 +1495,7 @@
 				70CF4F99214B41120051A7CA /* DeliveryPlaceChooiceView.swift in Sources */,
 				704129A92179B7980078A46F /* OfferInputCell.swift in Sources */,
 				70CF4FCD214B41120051A7CA /* BageView.swift in Sources */,
+				701F10D4217D8F0000693936 /* OfferSearchBaseVC.swift in Sources */,
 				70CF4F5F214B41110051A7CA /* Response+serial.swift in Sources */,
 				70D8BC32216748E5000522E0 /* AuthenIndividualInfoVC.swift in Sources */,
 				7041298E21784DB60078A46F /* ConsignorDetailVC.swift in Sources */,
@@ -1549,6 +1568,7 @@
 				70CF4F67214B41110051A7CA /* GSOffShelveCell.swift in Sources */,
 				70EA7351215DCF170020B8C3 /* Offer_DoneCell.swift in Sources */,
 				70CF4FAF214B41120051A7CA /* ZTTagView.m in Sources */,
+				701F10DB217DD99400693936 /* OfferChooseTruckVC.swift in Sources */,
 				70648907215B6BE400F53BFC /* FocusPersonCell.swift in Sources */,
 				70F40F26214B55E70054A175 /* ZTScrollItem.swift in Sources */,
 				70CF4F80214B41120051A7CA /* PersonalVC.swift in Sources */,

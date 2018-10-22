@@ -43,10 +43,31 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
     }
     
     override func tapItemAtIndex(index: Int) {
-        self.toResouceDetail()
+        self.toResourceHallDetail(index: index)
     }
     
     override func toOfferAtIndex(index: Int) {
-        self.toResouceDetail()
+        var resource = ResourceDetailUIModel()
+        let hall = self.followShipper.hall[index]
+        resource.refercneceTotalPrice = hall.refercneceTotalPrice
+        resource.refercneceUnitPrice = hall.refercneceUnitPrice
+        resource.rate = 5
+        resource.carrierName = hall.consigneeName
+        resource.resource = hall
+        self.toChooseOfferType(resource: resource)
     }
+    
+    // 货源详情
+    func toResourceHallDetail(index:Int) -> Void {
+        var resource = ResourceDetailUIModel()
+        let hall = self.followShipper.hall[index]
+        resource.refercneceTotalPrice = hall.refercneceTotalPrice
+        resource.refercneceUnitPrice = hall.refercneceUnitPrice
+        resource.rate = 5
+        resource.carrierName = hall.consigneeName
+        resource.resource = hall
+        self.toResouceDetail(resource: resource)
+    }
+    
+    
 }

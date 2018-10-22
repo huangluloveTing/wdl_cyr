@@ -11,13 +11,14 @@ import UIKit
 class Resource_ShipperInfoCell: BaseCell {
     
     
+    @IBOutlet weak var focusShipperButton: UIButton!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var dealTotalLabel: UILabel!
     @IBOutlet weak var shipperNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.focusShipperButton.addBorder(color: nil, width: 0, radius: 14)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,12 +26,15 @@ class Resource_ShipperInfoCell: BaseCell {
 
         // Configure the view for the selected state
     }
+    @IBAction func focusShipperHandle(_ sender: Any) {
+        self.routeName(routeName: "\(Resource_ShipperInfoCell.self)", dataInfo: nil)
+    }
 }
 
 extension Resource_ShipperInfoCell {
-    func showInfo(name:String , dealNum:Int , rate:Float) -> Void {
+    func showInfo(name:String? , dealNum:Int , rate:Float) -> Void {
         self.shipperNameLabel.text = name
-        self.detailTextLabel?.text = String(dealNum) + "笔"
+        self.dealTotalLabel?.text = String(dealNum) + "笔"
         self.rateLabel.text = Util.floatPoint(num: 0, floatValue: rate) + "分"
     }
 }

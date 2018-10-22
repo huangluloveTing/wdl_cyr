@@ -12,6 +12,8 @@ class ChooseOfferTypeVC: NormalBaseVC {
     
     @IBOutlet weak var tableView: UITableView!
     
+    public var resource : ResourceDetailUIModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configSubViews()
@@ -57,6 +59,7 @@ extension ChooseOfferTypeVC : UITableViewDelegate , UITableViewDataSource {
         let row = indexPath.row
         if row == 0 {
             let offerTruckVC = OfferWithTruckVC()
+            offerTruckVC.resource = self.resource
             self.push(vc: offerTruckVC, title: "报价")
         }
     }

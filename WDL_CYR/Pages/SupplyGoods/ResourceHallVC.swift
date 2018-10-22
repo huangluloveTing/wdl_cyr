@@ -186,7 +186,7 @@ extension ResourceHallVC {
     
     // 去货源详情
     func toResourceDetail(resource:ResourceHallUIModel) -> Void {
-        self.toResouceDetail()
+//        self.toResouceDetail()
     }
 }
 

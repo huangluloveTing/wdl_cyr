@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OfferChooseDriverVC" customModule="WDL_CYR" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="f3Z-65-C2D" id="vUt-ZW-HNf"/>
                 <outlet property="tableView" destination="Ojz-sX-4zM" id="LPH-uh-v1E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

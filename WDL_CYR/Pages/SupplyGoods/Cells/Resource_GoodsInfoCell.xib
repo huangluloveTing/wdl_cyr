@@ -109,6 +109,21 @@
                         <color key="textColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrD-ad-X8F">
+                        <rect key="frame" x="336" y="14.5" width="93" height="28"/>
+                        <color key="backgroundColor" red="0.023529411764705882" green="0.75294117647058822" blue="0.43529411764705883" alpha="0.19558005136986301" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="0ls-Nq-ibr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                        <state key="normal" title="+ 关注该路线">
+                            <color key="titleColor" red="0.12549019607843137" green="0.74901960784313726" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="focusLineHandle:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MMc-6q-IvP"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="w1Y-Kw-KZd" firstAttribute="leading" secondItem="dHp-tv-l4p" secondAttribute="trailing" constant="10" id="05e-37-eb7"/>
@@ -135,6 +150,7 @@
                     <constraint firstItem="w1Y-Kw-KZd" firstAttribute="top" secondItem="dHp-tv-l4p" secondAttribute="top" id="ZzN-AI-kM9"/>
                     <constraint firstAttribute="bottom" secondItem="w1Y-Kw-KZd" secondAttribute="bottom" constant="18" id="bJB-t6-MeS"/>
                     <constraint firstItem="8Yb-DT-eO0" firstAttribute="centerY" secondItem="gi4-A7-r4G" secondAttribute="centerY" id="btq-Tq-bqS"/>
+                    <constraint firstItem="IrD-ad-X8F" firstAttribute="centerY" secondItem="KMD-fM-tMJ" secondAttribute="centerY" id="cFU-TK-bUq"/>
                     <constraint firstItem="sAm-e7-cBg" firstAttribute="centerY" secondItem="cHc-Tu-Eg2" secondAttribute="centerY" id="dW5-NN-2cV"/>
                     <constraint firstItem="WVq-an-x5I" firstAttribute="centerY" secondItem="GAS-wx-amT" secondAttribute="centerY" id="ena-lV-f3l"/>
                     <constraint firstItem="KMD-fM-tMJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="fgx-yI-Ghs"/>
@@ -143,6 +159,7 @@
                     <constraint firstAttribute="trailing" secondItem="sAm-e7-cBg" secondAttribute="trailing" constant="15" id="hbk-YA-rVj"/>
                     <constraint firstItem="mle-Yd-qZd" firstAttribute="centerY" secondItem="fT2-wd-1wN" secondAttribute="centerY" id="hqZ-a7-suA"/>
                     <constraint firstItem="cHc-Tu-Eg2" firstAttribute="top" secondItem="gi4-A7-r4G" secondAttribute="bottom" constant="10" id="l7u-23-ClS"/>
+                    <constraint firstAttribute="trailing" secondItem="IrD-ad-X8F" secondAttribute="trailing" constant="15" id="lHC-YH-mkU"/>
                     <constraint firstItem="sAm-e7-cBg" firstAttribute="leading" secondItem="cHc-Tu-Eg2" secondAttribute="trailing" constant="10" id="q5K-aG-MuA"/>
                     <constraint firstItem="GAS-wx-amT" firstAttribute="top" secondItem="KMD-fM-tMJ" secondAttribute="bottom" constant="15" id="sHm-jN-K72"/>
                     <constraint firstItem="fT2-wd-1wN" firstAttribute="leading" secondItem="KMD-fM-tMJ" secondAttribute="leading" id="tTS-Pm-GBd"/>
@@ -154,6 +171,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="endLabel" destination="4ZC-6r-dM2" id="mkY-I5-SGw"/>
+                <outlet property="focusLineButton" destination="IrD-ad-X8F" id="bLP-b8-fud"/>
                 <outlet property="goodsNameLabel" destination="8Yb-DT-eO0" id="A8F-R6-0zr"/>
                 <outlet property="goodsSumLabel" destination="ca6-Xy-mDZ" id="M3P-qL-TCS"/>
                 <outlet property="goodsTypeLabel" destination="sAm-e7-cBg" id="s7F-w3-hzd"/>

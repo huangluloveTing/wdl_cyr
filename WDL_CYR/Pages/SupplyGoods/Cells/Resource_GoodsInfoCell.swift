@@ -17,11 +17,11 @@ class Resource_GoodsInfoCell: BaseCell {
     @IBOutlet weak var loadTimeLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
+    @IBOutlet weak var focusLineButton: UIButton!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.focusLineButton.addBorder(color: nil, width: 0, radius: 14)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,16 +30,19 @@ class Resource_GoodsInfoCell: BaseCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func focusLineHandle(_ sender: Any) {
+        self.routeName(routeName: "\(Resource_GoodsInfoCell.self)", dataInfo: nil)
+    }
 }
 
 extension Resource_GoodsInfoCell {
     func showInfo(start:String ,
                   end:String ,
                   loadTime:TimeInterval ,
-                  goodsName:String ,
-                  goodsType:String ,
-                  goodsSumm:String ,
-                  remark:String) -> Void {
+                  goodsName:String? ,
+                  goodsType:String? ,
+                  goodsSumm:String? ,
+                  remark:String?) -> Void {
         self.startLabel.text = start
         self.endLabel.text = end
         self.loadTimeLabel.text = Util.dateFormatter(date: loadTime, formatter: "yyyy-MM-dd")

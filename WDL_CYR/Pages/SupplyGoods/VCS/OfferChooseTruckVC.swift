@@ -1,5 +1,5 @@
 //
-//  OfferChooseDriverVC.swift
+//  OfferChooseTruckVC.swift
 //  WDL_CYR
 //
 //  Created by 黄露 on 2018/10/22.
@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class OfferChooseDriverVC: OfferSearchBaseVC {
+class OfferChooseTruckVC: OfferSearchBaseVC {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -19,12 +19,13 @@ class OfferChooseDriverVC: OfferSearchBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.currentStyle = .truckSearch
+        self.currentStyle = .driverSearch
         self.defineTableView(tableView: self.tableView)
     }
     
     override func bindViewModel() {
         self.searchBar.rx.text.orEmpty.asObservable()
+            .skip(1)
             .throttle(0.3, scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] (text) in
                 self?.loadSearch(search: text)
@@ -35,7 +36,7 @@ class OfferChooseDriverVC: OfferSearchBaseVC {
 }
 
 // 获取 搜索内容
-extension OfferChooseDriverVC {
+extension OfferChooseTruckVC {
     
     func loadSearch(search:String) -> Void {
         self.search(text: search)
@@ -53,7 +54,7 @@ extension OfferChooseDriverVC {
 
 
 // 处理结果
-extension OfferChooseDriverVC {
+extension OfferChooseTruckVC {
     
     func configNetDataToUI() -> Void {
         let uiModels = self.lists.map { (capacity) -> OfferSearchUIModel in

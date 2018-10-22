@@ -26,3 +26,12 @@ struct ResourceHallUIModel {
     var unitPrice:Float = 0 // 单价
     var reportNum:Int = 0 // 报价人数
 }
+
+struct ResourceDetailUIModel {
+    var refercneceTotalPrice:Float = 0 // 参考总价
+    var refercneceUnitPrice:Float = 0 // 参考单价
+    var carrierName:String = "" // 托运人名称
+    var dealCount:Int = 0   // 成交数
+    var rate:Float = 0      // 评分
+    var resource:CarrierQueryOrderHallResult? // 货源信息
+}

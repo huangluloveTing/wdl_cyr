@@ -28,7 +28,7 @@ struct OfferWithTruckCommitModel {
     var carrierName:String = "" //承运人名
     var driverModel:OfferWithTruckDriverModel?
     var truckModel:OfferWithTruckModel?
-    var offerUnitPrice:Float = 0
+    var offerUnitPrice:Float?
     var total:Float = 0
     var serviceFee:Float = 0 // 服务费
     var myBalance:Float = 0  // 我的余额

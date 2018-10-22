@@ -20,6 +20,15 @@ class OfferInputCell: BaseInputCell {
     @IBOutlet weak var unitLabel: UILabel!
     @IBOutlet weak var seperateLine: UIView!
     
+    public var keyboardType:UIKeyboardType? {
+        set {
+            self.textField.keyboardType = newValue ?? .default
+        }
+        get {
+            return self.textField.keyboardType
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
