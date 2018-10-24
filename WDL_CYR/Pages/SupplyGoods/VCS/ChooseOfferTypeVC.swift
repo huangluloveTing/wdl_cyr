@@ -61,6 +61,10 @@ extension ChooseOfferTypeVC : UITableViewDelegate , UITableViewDataSource {
             let offerTruckVC = OfferWithTruckVC()
             offerTruckVC.resource = self.resource
             self.push(vc: offerTruckVC, title: "报价")
+            return
         }
+        let offerNoTruckVC = OfferNoTruckVC()
+        offerNoTruckVC.resource = self.resource
+        self.push(vc: offerNoTruckVC, title: "报价")
     }
 }

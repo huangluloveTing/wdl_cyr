@@ -144,7 +144,7 @@ extension GSDetailBaseVC {
     func biding_cells(indexPath:IndexPath , for tableView:UITableView) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(OfferDealTimerCell.self)") as! OfferDealTimerCell
-            
+            cell.showCuntDownTime(time: self.bidding_timer())
             return cell
         }
         if indexPath.section == 1 {

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-class OfferNotDoneVC: MainBaseVC , ZTScrollViewControllerType {
+class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dropHintView: DropHintView!
@@ -23,13 +25,31 @@ class OfferNotDoneVC: MainBaseVC , ZTScrollViewControllerType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.defineTableView(tableView: self.tableView)
         self.configDropView()
         self.configTableView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    override func bindViewModel() {
+        self.tableView.refreshState.asObservable()
+            .share(replay: 1)
+            .filter { (state) -> Bool in
+                return state != .EndRefresh
+            }
+            .subscribe(onNext: { [weak self](state) in
+                self?.tableView.endRefresh()
+                if state == .LoadMore {
+                    self?.pageSize += 20
+                } else {
+                    self?.pageSize = 20
+                }
+                self?.loadOffers()
+            })
+            .disposed(by: dispose)
     }
 }
 
@@ -44,20 +64,47 @@ extension OfferNotDoneVC {
     }
 }
 
+// 获取数据
+extension OfferNotDoneVC {
+    
+    // 获取报价数据
+    func loadOffers() -> Void {
+        self.loadOfferData(status: 1, pageSize: self.pageSize, start: nil, end: nil, dealStatus: nil) { [weak self](res, error) in
+            guard let pageInfo = res else {
+                self?.showFail(fail: error?.localizedDescription, complete: nil)
+                return
+            }
+            self?.currentUIModels = self?.configNetDataToDisplay(pageInfo: pageInfo) ?? []
+            self?.tableView.reloadData()
+        }
+    }
+}
+
 // UITableViewDelegate , UITableViewDataSource
 extension OfferNotDoneVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(Offer_NotDoneCell.self)") as! Offer_NotDoneCell
+        let offerModel = self.currentUIModels[indexPath.row]
+        cell.showInfo(info: offerModel)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.currentUIModels.count
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.contentView.shadowBorder(radius: 10, bgColor: UIColor.white, shadowColor: UIColor(hex: "C9C9C9"), shadowOpacity: 0.5, insets: UIEdgeInsetsMake(15, 15, 0, 15))
+        cell.contentView.shadowBorder(radius: 10,
+                                      bgColor: UIColor.white,
+                                      shadowColor: UIColor(hex: "C9C9C9"),
+                                      shadowOpacity: 0.5,
+                                      insets: UIEdgeInsetsMake(15, 15, 0, 15))
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        self.toOfferDetail(index: row)
     }
     
 }

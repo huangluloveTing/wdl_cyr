@@ -13,11 +13,12 @@ import Foundation
 //}
 
 // 货源状态
+// 0=驳回 1=竞价中 2=成交 3=完成 4=待指派 5=已取消 6= 未成交
 enum SourceStatus : Int {
-    case bidding = 0 //  竞价中
-    case rejected    //  已驳回
-    case canceled    //  已取消
-    case notDeal     //  未成交
+    case bidding = 1 //  竞价中
+    case rejected = 0   //  已驳回
+    case canceled = 5  //  已取消
+    case notDeal  = 6   //  未成交
     case other
 }
 

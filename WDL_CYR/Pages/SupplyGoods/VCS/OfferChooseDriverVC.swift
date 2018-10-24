@@ -17,6 +17,8 @@ class OfferChooseDriverVC: OfferSearchBaseVC {
     
     private var lists:[ZbnTransportCapacity] = []
     
+    public var searchResultClosure:OfferSearchResultClosure<ZbnTransportCapacity>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.currentStyle = .truckSearch
@@ -30,6 +32,18 @@ class OfferChooseDriverVC: OfferSearchBaseVC {
                 self?.loadSearch(search: text)
             })
             .disposed(by: dispose)
+    }
+    
+    override func zt_rightBarButtonAction(_ sender: UIBarButtonItem!) {
+        if let closure = self.searchResultClosure {
+            if self.currentCheckedIndex >= self.lists.count {
+                if self.currentCheckedIndex < self.lists.count {
+                    let capacity = self.lists[self.currentCheckedIndex]
+                    closure(capacity)
+                }
+            }
+        }
+        self.pop()
     }
     
 }
@@ -56,7 +70,7 @@ extension OfferChooseDriverVC {
 extension OfferChooseDriverVC {
     
     func configNetDataToUI() -> Void {
-        let uiModels = self.lists.map { (capacity) -> OfferSearchUIModel in
+        var uiModels = self.lists.map { (capacity) -> OfferSearchUIModel in
             var model = OfferSearchUIModel()
             model.driverName = capacity.driverName
             model.idCard = capacity.driverId
@@ -66,6 +80,13 @@ extension OfferChooseDriverVC {
             model.weight = capacity.vehicleWeight
             model.vichelNo = capacity.vehicleNo
             return model
+        }
+        
+        // 默认第一个为选中状态
+        if uiModels.count > 0 {
+            var model = uiModels[0]
+            model.check = true
+            uiModels[0] = model
         }
         self.toRefreshTableView(lists: uiModels)
     }

@@ -29,6 +29,6 @@ extension FocusPersonCell {
     func focusPersonInfo(image url:String? , title:String? , badge:Int) -> Void {
         self.toAddImageForImageView(imageUrl: url, imageView: self.focusImageView)
         self.titleLabel.text = title
-        self.rightBadgeValue(value: String(badge), to: self.numberLabel)
+        self.rightBadgeValue(value: String(badge), to: self.numberLabel, radius: 10)
     }
 }

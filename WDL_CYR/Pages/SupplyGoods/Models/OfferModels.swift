@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import HandyJSON
 
 // 有车报价 ， 驾驶员 model
 struct OfferWithTruckDriverModel {
@@ -32,4 +33,30 @@ struct OfferWithTruckCommitModel {
     var total:Float = 0
     var serviceFee:Float = 0 // 服务费
     var myBalance:Float = 0  // 我的余额
+}
+
+// 承运报价的 model
+struct CarrierOfferCommitModel : HandyJSON {
+    // 承运人ID
+    var carrierId : String?
+    // 承运人姓名
+    var carrierName : String?
+    // 承运人类型
+    var carrierType : String?
+    // 司机姓名
+    var driverName : String?
+    // 司机联系方式
+    var driverPhone : String?
+    // 货源ID
+    var hallId : String?
+    // 承运数量
+    var loadWeight : Float?
+    // 单价
+    var quotedPrice : Float?
+    // 配载单号
+    var stowageNo : String?
+    // 总价
+    var totalPrice : Float?
+    // 车牌号
+    var vehicleNo : String?
 }

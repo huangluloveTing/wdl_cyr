@@ -15,7 +15,7 @@ class ResearchConsignorVC: NormalBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fd_interactivePopDisabled = false
+        self.fd_interactivePopDisabled = true
         self.addResearchBar()
         self.configTableView()
         self.registerAllComponents()

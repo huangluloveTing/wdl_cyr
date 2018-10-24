@@ -12,7 +12,12 @@ class GSDetailVC: GSDetailBaseVC {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var currentStatus:SourceStatus = .other
+    private var currentStatus:SourceStatus = .other // 判断当前的报价状态
+    private var offerLists:[ZbnOfferModel] = []     // 报价数据
+    
+    
+    public var offer:OfferOrderHallResultApp?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +41,7 @@ class GSDetailVC: GSDetailBaseVC {
     
     // 竞标中 竞标中的倒计时
     override func bidding_timer() -> TimeInterval {
-        return 0
+        return Double(self.offer?.autoTimeInterval ?? 0) * 3600
     }
     // 已驳回 驳回原因
     override func rejectReason() -> String {
@@ -44,19 +49,35 @@ class GSDetailVC: GSDetailBaseVC {
     }
     // 未成交原因
     override func notDealReason() -> String {
-        return ""
+        return self.offer?.unableReason ?? ""
     }
     // 我的报价信息
     override func myOfferInfo() -> OfferInfoModel? {
-        return nil
+        var myOffer = OfferInfoModel()
+        myOffer.offerName = self.offer?.carrierName ?? ""
+        myOffer.offerUnitPrice = self.offer?.quotedPrice ?? 0
+        myOffer.offerTotalPrice = self.offer?.totalPrice ?? 0
+        myOffer.dealPossible = self.offer?.offerPossibility ?? ""
+        return myOffer
     }
     //其他人的报价信息
     override func otherOfferInfo() -> [OfferInfoModel] {
-        return []
+        return self.otherOfferUIModels()
     }
     // 货源信息
     override func goodsSupplyInfo() -> GSInfoModel? {
-        return nil
+        var info = GSInfoModel()
+        info.status = SourceStatus(rawValue: self.offer?.dealStatus ?? 5) ?? .other
+        info.start = Util.contact(strs: [self.offer?.startProvince ?? "" , self.offer?.startCity ?? ""])
+        info.end = Util.contact(strs: [self.offer?.endProvince ?? "" , self.offer?.endCity ?? ""])
+        info.loadTime = self.offer?.loadingTime ?? 0
+        info.goodsName = self.offer?.goodsName ?? ""
+        info.goodsType = self.offer?.goodsType ?? ""
+        info.goodsSummer = " "
+        info.referenceUnitPrice = self.offer?.refercneceUnitPrice ?? 0
+        info.referenceTotalPrice = self.offer?.refercneceTotalPrice ?? 0
+        info.remark  = self.offer?.remark ?? " "
+        return info
     }
 }
 
@@ -67,6 +88,44 @@ extension GSDetailVC {
         self.registerAllCells(tableView: self.tableView)
         self.tableView.delegate = self
         self.tableView.dataSource = self
+    }
+}
+
+extension GSDetailVC {
+    
+    //MARK: - 获取报价信息
+    func loadOffer() -> Void {
+        let hallId = self.offer?.id ?? ""
+        var query = OrderHallOfferQueryModel()
+        query.hallId = hallId
+        BaseApi.request(target: API.getOfferByOrderHallId(query), type: BaseResponseModel<BasePageModel<ZbnOfferModel>>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.offerLists = data.data?.list ?? []
+                self?.reloadPage()
+            }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
+    }
+    
+    //MARK: - 其他z报价人的信息
+    func otherOfferUIModels() -> [OfferInfoModel] {
+        let uiModels = self.offerLists.map { (model) -> OfferInfoModel in
+            var info = OfferInfoModel()
+            info.offerName = model.carrierName
+            info.offerUnitPrice = model.quotedPrice
+            info.offerTotalPrice = model.totalPrice
+            info.dealPossible = model.offerPossibility
+            return info
+        }
+        return uiModels
+    }
+    
+    //MARK: - 刷新当前页面
+    func reloadPage() -> Void {
+        let status = SourceStatus(rawValue: self.offer?.dealStatus ?? 100) ?? .other
+        self.tableView.reloadData()
+        self.configBottom(status: status, tableView: self.tableView)
     }
 }
 

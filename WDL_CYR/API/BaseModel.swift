@@ -28,6 +28,13 @@ struct BaseResponseModel<T:Any> : BaseResponse {
     var message: String?
 }
 
+struct BasePageModel<T:Any> : HandyJSON {
+    var list : [T]?
+    var pageNum : Int = 0
+    var pageSize : Int = 0
+    var total : Int = 0
+}
+
 public enum CustomerError : Error{
     case paramError(String?)
     case businessError(String?)

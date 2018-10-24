@@ -17,6 +17,8 @@ class OfferChooseTruckVC: OfferSearchBaseVC {
     
     private var lists:[ZbnTransportCapacity] = []
     
+    public var searchResultClosure:OfferSearchResultClosure<ZbnTransportCapacity>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.currentStyle = .driverSearch
@@ -33,6 +35,15 @@ class OfferChooseTruckVC: OfferSearchBaseVC {
             .disposed(by: dispose)
     }
     
+    override func zt_rightBarButtonAction(_ sender: UIBarButtonItem!) {
+        if let closure = self.searchResultClosure {
+            if self.currentCheckedIndex < self.lists.count {
+                let capacity = self.lists[self.currentCheckedIndex]
+                closure(capacity)
+            }
+        }
+        self.pop()
+    }
 }
 
 // 获取 搜索内容

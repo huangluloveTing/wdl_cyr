@@ -20,13 +20,16 @@ enum API {
     case releaseSource(ReleaseDeliverySourceModel)       // 发布货源
     case ownOrderHall(GoodsSupplyQueryBean)     // 我的关注的货源接口
     case findAllOrderHall(GoodsSupplyQueryBean) // 获取货源大厅数据
-    case findOrderByFollowShipper() //查询我已经关注线路线下的货源信息
+    case findOrderByFollowShipper()         //查询我已经关注线路线下的货源信息
     case addFollowLine(String,String,String,String) //添加关注线路
-    case findOrderByFollowLine()  //
-    case selectZbnConsignor(String) //获取所有的未关注运人信息
+    case findOrderByFollowLine()            //
+    case selectZbnConsignor(String)         //获取所有的未关注运人信息
     case addFollowShipper(AddShipperQueryModel) // 关注托运人
     case findTransportCapacity(QueryZbnTransportCapacity) // 获取所有的运力信息
-    case findCarrierInfoFee(String) // 报价时，获取承运人保证金、服务费等信息
+    case findCarrierInfoFee(String)         // 报价时，获取承运人保证金、服务费等信息
+    case addOffer(CarrierOfferCommitModel)  // 承运人报价
+    case selectOwnOffer(OfferQueryModel)    // 查询承运人自己的报价
+    case getOfferByOrderHallId(OrderHallOfferQueryModel) // 根据货源ID获取报价详情
 }
 
 
@@ -63,6 +66,12 @@ func apiPath(api:API) -> String {
         return "/carrierOrderHall/findTransportCapacity"
     case .findCarrierInfoFee(_):
         return "/offer/findCarrierInfoFee"
+    case .addOffer(_):
+        return "/offer/addOffer"
+    case .selectOwnOffer(_):
+        return "/offer/selectOwnOfferApp"
+    case .getOfferByOrderHallId(_):
+        return "/orderHall/getOfferByOrderHallId"
     }
 }
 
@@ -99,6 +108,12 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     case .findCarrierInfoFee(let id):
         return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["hallId": id])
+    case .addOffer(let commit):
+        return .requestParameters(parameters: commit.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
+    case .selectOwnOffer(let query):
+        return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
+    case .getOfferByOrderHallId(let query):
+        return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     }
 }
 

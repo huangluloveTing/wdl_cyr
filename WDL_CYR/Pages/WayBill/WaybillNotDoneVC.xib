@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,11 +22,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d2U-8i-4P4">
-                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                     <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z3D-v7-faN" customClass="DropHintView" customModule="WDL_CYR" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="9YQ-Wt-WU5"/>
@@ -40,11 +39,10 @@
                 <constraint firstAttribute="trailing" secondItem="d2U-8i-4P4" secondAttribute="trailing" id="1fM-3H-WD0"/>
                 <constraint firstItem="Z3D-v7-faN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5bX-sI-59b"/>
                 <constraint firstItem="d2U-8i-4P4" firstAttribute="top" secondItem="Z3D-v7-faN" secondAttribute="bottom" id="XF9-RJ-ZNQ"/>
-                <constraint firstItem="Z3D-v7-faN" firstAttribute="top" secondItem="ajB-9m-GAQ" secondAttribute="top" id="ijs-V3-Je4"/>
+                <constraint firstItem="Z3D-v7-faN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ijs-V3-Je4"/>
                 <constraint firstItem="d2U-8i-4P4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xNh-WQ-y7S"/>
                 <constraint firstAttribute="bottom" secondItem="d2U-8i-4P4" secondAttribute="bottom" id="zFY-13-mjd"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ajB-9m-GAQ"/>
         </view>
     </objects>
 </document>

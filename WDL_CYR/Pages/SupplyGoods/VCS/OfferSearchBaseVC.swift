@@ -17,18 +17,30 @@ enum OfferSearchStyle {
 
 class OfferSearchBaseVC: NormalBaseVC {
     
+    typealias OfferSearchResultClosure<T> = (T) -> ()
+    
     private var baseTableView:UITableView!
     private var currentList:[OfferSearchUIModel] = []
-    
     public var currentStyle:OfferSearchStyle? = .driverSearch
+    
+    // 当前选中的index
+    public var currentCheckedIndex:Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.fd_interactivePopDisabled = true
+        self.addLeftBarbuttonItem(withTitle: "取消")
+        self.addRightBarbuttonItem(withTitle: "确定")
     }
 
     // override
+    override func zt_leftBarButtonAction(_ sender: UIBarButtonItem!) {
+        self.pop()
+    }
     
+    override func zt_rightBarButtonAction(_ sender: UIBarButtonItem!) {
+        self.pop()
+    }
 }
 
 // public
@@ -36,12 +48,22 @@ extension OfferSearchBaseVC {
     // 设置数据
     func toRefreshTableView(lists:[OfferSearchUIModel]) -> Void {
         self.currentList = lists
+        self.currentCheckedIndex = 0
         self.baseTableView.reloadData()
     }
     
     // 刷新某一项
-    func toRefresh(index:Int , item:OfferSearchUIModel) -> Void {
-        self.currentList[index] = item
+    func toRefresh(index:Int) -> Void {
+        var newList = self.currentList.map { (offer) -> OfferSearchUIModel in
+            var newOffer = offer
+            newOffer.check = false
+            return newOffer
+        }
+        self.currentCheckedIndex = index
+        var checkOffer = newList[index]
+        checkOffer.check = !checkOffer.check
+        newList[index] = checkOffer
+        self.currentList = newList
         self.baseTableView.reloadData()
     }
 }
@@ -68,11 +90,17 @@ extension OfferSearchBaseVC : UITableViewDelegate , UITableViewDataSource {
         if self.currentStyle == .driverSearch {
             let cell = tableView.dequeueReusableCell(nib: OfferSearchTruckCell.self)
             cell.showInfo(vichelNo: item.vichelNo, type: item.type, length: item.length, weight: item.weight, check: item.check)
+            cell.checkClosure = {[weak self] in
+                self?.toRefresh(index: indexPath.section)
+            }
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(nib: ChooseDriverCell.self)
         cell.showInfo(driverName: item.driverName, idNo: item.idCard, phone: item.phone, checked: item.check)
+        cell.chooseClosure = {[weak self] in
+            self?.toRefresh(index: indexPath.section)
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

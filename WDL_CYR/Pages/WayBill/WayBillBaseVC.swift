@@ -9,6 +9,8 @@
 import UIKit
 
 class WayBillBaseVC: MainBaseVC {
+    
+    public var currentTableView:UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

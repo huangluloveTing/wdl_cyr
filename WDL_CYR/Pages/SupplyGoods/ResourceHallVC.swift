@@ -169,12 +169,14 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
                                           unitPrice: hall.dealUnitPrice,
                                           reportNum: hall.offerNumber)
         cell.showInfo(info: uiModel)
+        cell.offerClosure = {[weak self] in
+            self?.toOffer(index: indexPath.section)
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let resource =
-        self.toResourceDetail(resource: ResourceHallUIModel())
+        self.toResourceDetail(index: indexPath.section)
     }
 }
 
@@ -185,8 +187,28 @@ extension ResourceHallVC {
     }
     
     // 去货源详情
-    func toResourceDetail(resource:ResourceHallUIModel) -> Void {
-//        self.toResouceDetail()
+    func toResourceDetail(index:Int) -> Void {
+        // 货源详情
+        var resource = ResourceDetailUIModel()
+        let hall = self.hallLists[index]
+        resource.refercneceTotalPrice = hall.refercneceTotalPrice
+        resource.refercneceUnitPrice = hall.refercneceUnitPrice
+        resource.rate = 5
+        resource.carrierName = hall.consigneeName
+        resource.resource = hall
+        self.toResouceDetail(resource: resource)
+    }
+    
+    // 去报价页面
+    func toOffer(index:Int) -> Void {
+        var resource = ResourceDetailUIModel()
+        let hall = self.hallLists[index]
+        resource.refercneceTotalPrice = hall.refercneceTotalPrice
+        resource.refercneceUnitPrice = hall.refercneceUnitPrice
+        resource.rate = 5
+        resource.carrierName = hall.consigneeName
+        resource.resource = hall
+        self.toChooseOfferType(resource: resource)
     }
 }
 

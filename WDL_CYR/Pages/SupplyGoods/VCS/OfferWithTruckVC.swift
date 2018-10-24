@@ -8,11 +8,12 @@
 
 import UIKit
 
-let titles = ["承运人","驾驶员","车辆","报价","总价","服务费"]
-let units = ["","","","元/吨","元","元"]
-let placeholders = ["","请选择","请选择","请输入","",""]
 /// 有车报价
 class OfferWithTruckVC: NormalBaseVC {
+    
+    let titles = ["承运人","驾驶员","车辆","报价","总价","服务费"]
+    let units = ["","","","元/吨","元","元"]
+    let placeholders = ["","请选择","请选择","请输入","",""]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -66,6 +67,9 @@ extension OfferWithTruckVC : UITableViewDelegate , UITableViewDataSource {
         if row == 1 {
             self.toChooseDriver()
         }
+        if row == 2 {
+            self.toChooseTruck()
+        }
     }
 }
 
@@ -73,7 +77,30 @@ extension OfferWithTruckVC {
     // 驾驶员选择
     func toChooseDriver() -> Void {
         let driverChooseVC = OfferChooseDriverVC()
+        driverChooseVC.searchResultClosure = { [weak self] (capacity) in
+            var driver = OfferWithTruckDriverModel()
+            driver.driverName = capacity.driverName
+            driver.idCard = capacity.driverId
+            driver.phone = capacity.driverPhone
+            self?.offerModel.driverModel = driver
+            self?.tableView.reloadData()
+        }
         self.push(vc: driverChooseVC, title: "承运人")
+    }
+    
+    // 车辆选择
+    func toChooseTruck() -> Void {
+        let truckVC = OfferChooseTruckVC()
+        truckVC.searchResultClosure = {[weak self] (capacity) in
+            var truck = OfferWithTruckModel()
+            truck.truckLength = capacity.vehicleLength
+            truck.truckNo = capacity.vehicleNo
+            truck.truckType = capacity.vehicleType
+            truck.truckWeight = capacity.vehicleWeight
+            self?.offerModel.truckModel = truck
+            self?.tableView.reloadData()
+        }
+        self.push(vc: truckVC, title: "选择车辆")
     }
     
     // 将获取到的费用信息展示到UI上
@@ -103,6 +130,27 @@ extension OfferWithTruckVC {
         self.offerModel.total = total
         self.offerModel.offerUnitPrice = unit
         self.tableView.reloadRows(at: [IndexPath(row: 4, section: 0)], with: .none)
+    }
+    
+    // 提交报价
+    func commitOffer() -> Void {
+        var commit = CarrierOfferCommitModel()
+        commit.driverName = offerModel.driverModel?.driverName
+        commit.driverPhone = offerModel.driverModel?.phone
+        commit.vehicleNo = offerModel.truckModel?.truckNo
+        commit.hallId = self.resource?.resource?.id
+        commit.quotedPrice = offerModel.offerUnitPrice
+        commit.totalPrice = offerModel.total
+        self.showLoading(title: "正在提交", complete: nil)
+        BaseApi.request(target: API.addOffer(commit), type: BaseResponseModel<String>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess(success: data.message, complete: {
+                    self?.pop()
+                })
+            }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
     }
 }
 
@@ -135,7 +183,7 @@ extension OfferWithTruckVC {
         if row == 3 {
             let cell = tableView.dequeueReusableCell(nib: OfferInputCell.self)
             cell.currentStyle = .input
-            let total = String(offerModel.total)
+            let total = offerModel.total == 0 ? "" : String(offerModel.total)
             cell.showInfo(title: titles[row], content: total, unit: units[row], placeholder: placeholders[row] , style: .input)
             cell.keyboardType = UIKeyboardType.decimalPad
             cell.inputClosure = {[weak self](text) in
@@ -159,6 +207,9 @@ extension OfferWithTruckVC {
         }
         
         let cell = tableView.dequeueReusableCell(nib: CommitCell.self)
+        cell.commitClosure = {[weak self] in
+            self?.commitOffer()
+        }
         return cell
     }
 }
