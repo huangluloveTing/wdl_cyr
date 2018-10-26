@@ -10,11 +10,26 @@ import UIKit
 
 class OfferBaseVC: MainBaseVC {
     
+    let GoodsStatus = ["不限","竞价中","已成交","未上架","已上架"]
+    
     private var baseTableView:UITableView?
     
     public var pageSize:Int = 20                // 当前页面的展示每页数量
     public var currentPageInfo:OfferPageInfo?   // 后台获取的页面数据
     public var currentUIModels:[OfferUIModel] = [] // 当前页面展示的model 数组
+    
+    
+    // 状态下拉视图
+    lazy var statusView : GoodsSupplyStatusDropView = {
+        let statusDropView = GoodsSupplyStatusDropView(tags: GoodsStatus)
+        statusDropView.checkClosure = {(index) in
+            if index == 0 {
+            }
+        }
+        return statusDropView
+    }()
+    
+//    lazy var 
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -25,6 +25,8 @@
 		701F10E6217EB7DE00693936 /* OfferQueryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10E5217EB7DE00693936 /* OfferQueryModels.swift */; };
 		701F10E8217F06E400693936 /* OfferBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10E7217F06E400693936 /* OfferBaseVC.swift */; };
 		701F10EA217F082300693936 /* OfferResultModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10E9217F082300693936 /* OfferResultModels.swift */; };
+		7039671B21830E2300CE34B7 /* DropInputDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7039671A21830E2300CE34B7 /* DropInputDateView.swift */; };
+		7039671D21830F6E00CE34B7 /* DropInputDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7039671C21830F6E00CE34B7 /* DropInputDateView.xib */; };
 		7041296C217775320078A46F /* ResearchConsignorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7041296A217775320078A46F /* ResearchConsignorVC.swift */; };
 		7041296D217775320078A46F /* ResearchConsignorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7041296B217775320078A46F /* ResearchConsignorVC.xib */; };
 		70412975217782A70078A46F /* ConsignorResearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70412974217782A70078A46F /* ConsignorResearchHeader.swift */; };
@@ -300,6 +302,8 @@
 		701F10E5217EB7DE00693936 /* OfferQueryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferQueryModels.swift; sourceTree = "<group>"; };
 		701F10E7217F06E400693936 /* OfferBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferBaseVC.swift; sourceTree = "<group>"; };
 		701F10E9217F082300693936 /* OfferResultModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferResultModels.swift; sourceTree = "<group>"; };
+		7039671A21830E2300CE34B7 /* DropInputDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropInputDateView.swift; sourceTree = "<group>"; };
+		7039671C21830F6E00CE34B7 /* DropInputDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropInputDateView.xib; sourceTree = "<group>"; };
 		7041296A217775320078A46F /* ResearchConsignorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchConsignorVC.swift; sourceTree = "<group>"; };
 		7041296B217775320078A46F /* ResearchConsignorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResearchConsignorVC.xib; sourceTree = "<group>"; };
 		70412974217782A70078A46F /* ConsignorResearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsignorResearchHeader.swift; sourceTree = "<group>"; };
@@ -1161,6 +1165,8 @@
 				70CF4F4E214B410D0051A7CA /* BageView.swift */,
 				70CF4F4F214B410D0051A7CA /* DropView.swift */,
 				70CF4F50214B410D0051A7CA /* DropHintView.swift */,
+				7039671A21830E2300CE34B7 /* DropInputDateView.swift */,
+				7039671C21830F6E00CE34B7 /* DropInputDateView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1349,6 +1355,7 @@
 				70CF4F8D214B41120051A7CA /* DeliveryTruckTypeCell.xib in Resources */,
 				7041296D217775320078A46F /* ResearchConsignorVC.xib in Resources */,
 				704DD0A1215CEC6600E6AD6F /* OfferNotDoneVC.xib in Resources */,
+				7039671D21830F6E00CE34B7 /* DropInputDateView.xib in Resources */,
 				70CF4FA8214B41120051A7CA /* bad_star@3x.png in Resources */,
 				70D8BC2321672D3C000522E0 /* TransportDriverCell.xib in Resources */,
 				70D8BC2F2167405F000522E0 /* MyAuthenVC.xib in Resources */,
@@ -1602,6 +1609,7 @@
 				70CF4F80214B41120051A7CA /* PersonalVC.swift in Sources */,
 				701F10CA217CC6C600693936 /* OfferModels.swift in Sources */,
 				70D8BBD821605153000522E0 /* WaybillDoneVC.swift in Sources */,
+				7039671B21830E2300CE34B7 /* DropInputDateView.swift in Sources */,
 				70CF4FC5214B41120051A7CA /* BaseVC.swift in Sources */,
 				70CF4FBA214B41120051A7CA /* UIViewController+navigation.swift in Sources */,
 				70CF4F5E214B41110051A7CA /* BaseApi.swift in Sources */,

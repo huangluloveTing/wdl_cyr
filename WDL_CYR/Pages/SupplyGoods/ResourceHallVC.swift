@@ -8,10 +8,9 @@
 
 import UIKit
 
-
-let GoodsStatus = ["不限","竞价中","已成交","未上架","已上架"]
-
 class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
+    
+    private let GoodsStatus = ["不限","竞价中","已成交","未上架","已上架"]
     
     @IBOutlet weak var endButton: MyButton!
     @IBOutlet weak var startButton: MyButton!
@@ -71,7 +70,7 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
             if index == 0 {
                 
             }
-            self?.statusButton.setTitle(GoodsStatus[index], for: .normal)
+            self?.statusButton.setTitle(self?.GoodsStatus[index], for: .normal)
             
         }
         return self.addDropView(drop: statusView, anchorView: self.dropAnchorView)

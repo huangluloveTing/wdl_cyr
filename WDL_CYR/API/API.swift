@@ -71,7 +71,7 @@ func apiPath(api:API) -> String {
     case .selectOwnOffer(_):
         return "/offer/selectOwnOfferApp"
     case .getOfferByOrderHallId(_):
-        return "/orderHall/getOfferByOrderHallId"
+        return "/orderHall/findOrderHallAndOffer"
     }
 }
 

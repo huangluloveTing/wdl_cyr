@@ -42,4 +42,8 @@ extension UITableView {
     func initDisplay() -> Void {
         self.tableFooterView = UIView()
     }
+    
+    func hiddenSeperate() -> Void {
+        self.separatorStyle = .none
+    }
 }

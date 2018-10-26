@@ -44,12 +44,12 @@ extension GSDetail_OfferInfoCell {
             let name = offer.offerName
             let unit = offer.offerUnitPrice
             let total = offer.offerTotalPrice
-            let info_temp = name + "  " + "单价：" + Util.floatPoint(num: 2, floatValue: unit) + "元/吨" + "  " + "总价：" +  Util.floatPoint(num: 2, floatValue: total) + "元" + "\n"
+            let info_temp = name + "     " + "单价：" + Util.floatPoint(num: 2, floatValue: unit) + "元/吨" + "     " + "总价：" +  Util.floatPoint(num: 2, floatValue: total) + "元" + "\n"
             info.append(info_temp)
         }
         if info.count > 2 {
-            info = String(info.prefix(info.count - 2))
+            info = String(info.prefix(info.count - 1))
         }
-        return Util.sepecialText(text: info, lineSpace: 5, font: UIFont.systemFont(ofSize: 14), color: UIColor(hex: "333333"))
+        return Util.sepecialText(text: info, lineSpace: 14, font: UIFont.systemFont(ofSize: 12), color: UIColor(hex: "333333"))
     }
 }

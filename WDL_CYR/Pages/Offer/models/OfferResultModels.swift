@@ -194,3 +194,13 @@ struct ZbnOfferModel  : HandyJSON {
     // (string): 车牌号
     var vehicleNo : String = ""
 }
+
+
+struct OrderAndOfferResult : HandyJSON {
+    // 报价信息
+    var offerPage : [ZbnOfferModel]?
+    //  (integer): 交易剩余时间秒 ,
+    var  surplusTurnoverTime : TimeInterval = 0
+    //  货源信息
+    var zbnOrderHall : OfferOrderHallResultApp?
+}

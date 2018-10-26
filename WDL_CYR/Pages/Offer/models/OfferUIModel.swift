@@ -13,13 +13,13 @@ import Foundation
 //}
 
 // 货源状态
-// 0=驳回 1=竞价中 2=成交 3=完成 4=待指派 5=已取消 6= 未成交
+//报价的成交状态 0=驳回 1=竞价中 2=成交 3=已取消 ,
 enum SourceStatus : Int {
     case bidding = 1 //  竞价中
     case rejected = 0   //  已驳回
-    case canceled = 5  //  已取消
-    case notDeal  = 6   //  未成交
-    case other
+    case canceled = 3  //  已取消
+    case notDeal  = 2   //  未成交
+    case other = 4
 }
 
 struct OfferUIModel {
@@ -49,7 +49,7 @@ struct GSInfoModel {
     var goodsSummer:String = "" // 货品简介
     var referenceUnitPrice:Float = 0
     var referenceTotalPrice:Float = 0
-    var remark:String = ""
+    var remark:String?
 }
 
 // 报价信息

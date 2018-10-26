@@ -44,7 +44,7 @@ extension GSDetail_GoodsInfoCell {
         self.goodsSummerLabel.text = info.goodsSummer
         self.referenceUnitLabel.text = Util.floatPoint(num: 2, floatValue: info.referenceUnitPrice)+"元/吨"
         self.referenceTotalLabel.text = Util.floatPoint(num: 2, floatValue: info.referenceTotalPrice) + "元"
-        self.remarkLabel.text = info.remark
+        self.remarkLabel.text = info.remark ?? " "
     }
 }
 

@@ -163,6 +163,21 @@ extension UIView {
     }
 }
 
+//MARK: - 加载xib 视图
+extension UIView {
+    
+    //MARK: - 加载xib文件
+    static func loadXibView<T:UIView>(xibName:String , viewType:T.Type , index:Int) -> T? {
+        return Bundle.main.loadNibNamed(xibName, owner: nil, options: nil)![index] as? T
+    }
+    
+    
+    //MARK: - 加载和xib名称一样的 view ， 即 xib 名称即为 view 的类名，且为xib文件中的第一个
+    static func loadBindView<T:UIView>(viewName:T.Type) -> T? {
+        return self.loadXibView(xibName: "\(viewName)", viewType: viewName, index: 0)
+    }
+}
+
 
 // 添加点击事件
 var storeTapClosureKey = "storeTapClosureKey"
