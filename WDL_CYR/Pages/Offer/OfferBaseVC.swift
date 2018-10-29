@@ -10,8 +10,6 @@ import UIKit
 
 class OfferBaseVC: MainBaseVC {
     
-    let GoodsStatus = ["不限","竞价中","已成交","未上架","已上架"]
-    
     private var baseTableView:UITableView?
     
     public var pageSize:Int = 20                // 当前页面的展示每页数量
@@ -20,14 +18,8 @@ class OfferBaseVC: MainBaseVC {
     
     
     // 状态下拉视图
-    lazy var statusView : GoodsSupplyStatusDropView = {
-        let statusDropView = GoodsSupplyStatusDropView(tags: GoodsStatus)
-        statusDropView.checkClosure = {(index) in
-            if index == 0 {
-            }
-        }
-        return statusDropView
-    }()
+    var statusView : GoodsSupplyStatusDropView?
+    var timeChooseView : DropInputDateView?
     
 //    lazy var 
 
@@ -151,5 +143,31 @@ extension OfferBaseVC {
             return offer
         })
         return currentList ?? []
+    }
+}
+
+// dropView
+extension OfferBaseVC : DropHintViewDataSource {
+    
+    func configDropView(dropView:DropHintView) -> Void {
+        dropView.dataSource = self
+        dropView.tabTitles(titles: ["报价时间","报价状态"])
+        dropView.dropTapClosure = {(index) in
+            print("current tap index ： \(index)")
+        }
+    }
+    
+    func dropHintView(dropHint: DropHintView, index: Int) -> UIView {
+        if index == 0 {
+            if self.timeChooseView == nil {
+                self.timeChooseView = DropInputDateView.instanceDateView()
+            }
+            return timeChooseView!
+        } else {
+            if self.statusView == nil {
+                self.statusView = statusDropViewGenerate(statusTitles: GoodsStatus)
+            }
+            return self.statusView!
+        }
     }
 }

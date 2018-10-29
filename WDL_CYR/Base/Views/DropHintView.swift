@@ -101,6 +101,7 @@ class DropHintView: UIView {
 
 // actions
 extension DropHintView {
+    
     // 点击对应的按钮的操作
     private func tapTab(at index:Int) {
         if let tapClosure = self.dropTapClosure {

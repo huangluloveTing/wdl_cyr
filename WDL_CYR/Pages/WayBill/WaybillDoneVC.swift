@@ -34,5 +34,15 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // 点击状态
+    override func statusChooseHandle(index: Int) {
+        
+    }
+    
+    // 选择时间
+    override func timeChooseHandle(startTime: TimeInterval?, endTime: TimeInterval?, tapSure sure: Bool) {
+        
+    }
 
 }

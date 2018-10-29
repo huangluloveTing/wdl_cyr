@@ -91,6 +91,7 @@ extension DropViewContainer {
     }
     
     func hiddenDropView() {
+        self.endEditing(true)
         UIView.animate(withDuration: 0.25, animations: {
             self.maskOpacityView.zt_height = 0
         }) { (finish) in

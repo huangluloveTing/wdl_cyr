@@ -40,8 +40,8 @@
 - (void) showTags:(NSArray <ZTTagItem *> *)tags {
     self.allTags = [NSMutableArray arrayWithArray:tags];
     [self invalidateIntrinsicContentSize];
-//    CGSize size = self.intrinsicContentSize;
-//    NSLog(@"size : %.2f , %.2f" ,size.width , size.height);
+    CGSize size = self.intrinsicContentSize;
+    NSLog(@"size : %.2f , %.2f" ,size.width , size.height);
 }
 
 - (void) addTags:(NSArray <ZTTagItem *> *)tags {

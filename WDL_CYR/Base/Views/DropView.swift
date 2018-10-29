@@ -1,6 +1,6 @@
 //
 //  DropView.swift
-//  WDL_TYR
+//  WDL_TCYR
 //
 //  Created by 黄露 on 2018/8/25.
 //  Copyright © 2018年 yingli. All rights reserved.
@@ -148,5 +148,3 @@ extension GoodsSupplyStatusDropView {
         self.tagView.showTags(newTags)
     }
 }
-
-

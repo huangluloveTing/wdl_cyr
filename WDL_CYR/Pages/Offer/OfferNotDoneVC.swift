@@ -26,7 +26,7 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.defineTableView(tableView: self.tableView)
-        self.configDropView()
+        self.configDropView(dropView: self.dropHintView)
         self.configTableView()
     }
 
@@ -50,6 +50,16 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
                 self?.loadOffers()
             })
             .disposed(by: dispose)
+    }
+    
+    // 点击状态
+    override func statusChooseHandle(index: Int) {
+        
+    }
+    
+    // 选择时间
+    override func timeChooseHandle(startTime: TimeInterval?, endTime: TimeInterval?, tapSure sure: Bool) {
+        
     }
 }
 
@@ -107,27 +117,4 @@ extension OfferNotDoneVC : UITableViewDelegate , UITableViewDataSource {
         self.toOfferDetail(index: row)
     }
     
-}
-
-// dropView
-extension OfferNotDoneVC : DropHintViewDataSource {
-    
-    func configDropView() -> Void {
-        self.dropHintView.dataSource = self
-        self.dropHintView.tabTitles(titles: ["报价时间","报价状态"])
-        self.dropHintView.dropTapClosure = {(index) in
-            print("current tap index ： \(index)")
-        }
-    }
-    
-    func dropHintView(dropHint: DropHintView, index: Int) -> UIView {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.zt_width, height: 100))
-        if index == 0 {
-            view.backgroundColor = UIColor.red
-
-        } else {
-            view.backgroundColor = UIColor.blue
-        }
-        return view
-    }
 }

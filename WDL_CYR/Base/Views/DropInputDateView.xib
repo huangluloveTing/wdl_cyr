@@ -16,20 +16,23 @@
             <rect key="frame" x="0.0" y="0.0" width="746" height="530"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zLy-8n-DQa">
-                    <rect key="frame" x="25" y="30.5" width="315" height="449"/>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zLy-8n-DQa">
+                    <rect key="frame" x="25" y="235" width="315" height="40"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C2Z-3J-tDX">
-                    <rect key="frame" x="406.5" y="30.5" width="314.5" height="449"/>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C2Z-3J-tDX">
+                    <rect key="frame" x="406.5" y="235" width="314.5" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="55H-3J-SNf"/>
+                    </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="到" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqf-dh-c99">
-                    <rect key="frame" x="365" y="30" width="16.5" height="450"/>
+                    <rect key="frame" x="365" y="70" width="16.5" height="370"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -72,14 +75,14 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AuN-KD-KQa">
-                    <rect key="frame" x="25" y="484.5" width="315" height="0.5"/>
+                    <rect key="frame" x="25" y="280" width="315" height="0.5"/>
                     <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="4sS-Rt-3Dl"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ja9-vU-uzr">
-                    <rect key="frame" x="406.5" y="484.5" width="314.5" height="0.5"/>
+                    <rect key="frame" x="406.5" y="280" width="314.5" height="0.5"/>
                     <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="L3y-04-542"/>
@@ -89,20 +92,19 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Y7Q-sX-C9F" firstAttribute="trailing" secondItem="YRD-xG-hgQ" secondAttribute="trailing" id="01T-XS-VBH"/>
-                <constraint firstItem="YRD-xG-hgQ" firstAttribute="top" secondItem="tqf-dh-c99" secondAttribute="bottom" constant="10" id="5g8-qS-SKB"/>
-                <constraint firstItem="tqf-dh-c99" firstAttribute="top" secondItem="Y7Q-sX-C9F" secondAttribute="top" constant="10" id="7mh-Wr-PMj"/>
+                <constraint firstItem="YRD-xG-hgQ" firstAttribute="top" secondItem="tqf-dh-c99" secondAttribute="bottom" constant="50" id="5g8-qS-SKB"/>
+                <constraint firstItem="tqf-dh-c99" firstAttribute="top" secondItem="Y7Q-sX-C9F" secondAttribute="top" constant="50" id="7mh-Wr-PMj"/>
                 <constraint firstItem="C2Z-3J-tDX" firstAttribute="leading" secondItem="tqf-dh-c99" secondAttribute="trailing" constant="25" id="9rY-jZ-rUt"/>
                 <constraint firstItem="AuN-KD-KQa" firstAttribute="centerX" secondItem="zLy-8n-DQa" secondAttribute="centerX" id="AcW-Dz-xrn"/>
                 <constraint firstItem="AuN-KD-KQa" firstAttribute="top" secondItem="zLy-8n-DQa" secondAttribute="bottom" constant="5" id="D9D-vC-eQT"/>
                 <constraint firstItem="YRD-xG-hgQ" firstAttribute="leading" secondItem="Y7Q-sX-C9F" secondAttribute="leading" id="EnI-74-5hM"/>
-                <constraint firstItem="YRD-xG-hgQ" firstAttribute="top" secondItem="AuN-KD-KQa" secondAttribute="bottom" constant="5" id="KHX-ll-iE3"/>
                 <constraint firstItem="ja9-vU-uzr" firstAttribute="centerX" secondItem="C2Z-3J-tDX" secondAttribute="centerX" id="O8L-en-rK7"/>
                 <constraint firstItem="ja9-vU-uzr" firstAttribute="width" secondItem="C2Z-3J-tDX" secondAttribute="width" id="Rhl-2t-M0g"/>
                 <constraint firstItem="AuN-KD-KQa" firstAttribute="width" secondItem="zLy-8n-DQa" secondAttribute="width" id="Rxn-m1-d1m"/>
+                <constraint firstItem="C2Z-3J-tDX" firstAttribute="height" secondItem="zLy-8n-DQa" secondAttribute="height" id="UQ6-Em-8br"/>
                 <constraint firstItem="Y7Q-sX-C9F" firstAttribute="trailing" secondItem="C2Z-3J-tDX" secondAttribute="trailing" constant="25" id="WMc-SS-AF6"/>
                 <constraint firstItem="tqf-dh-c99" firstAttribute="centerY" secondItem="zLy-8n-DQa" secondAttribute="centerY" id="XkM-oo-Q5t"/>
                 <constraint firstItem="YRD-xG-hgQ" firstAttribute="bottom" secondItem="Y7Q-sX-C9F" secondAttribute="bottom" id="fXj-QB-4Jb"/>
-                <constraint firstItem="YRD-xG-hgQ" firstAttribute="top" secondItem="ja9-vU-uzr" secondAttribute="bottom" constant="5" id="kDz-bt-OPd"/>
                 <constraint firstItem="ja9-vU-uzr" firstAttribute="top" secondItem="C2Z-3J-tDX" secondAttribute="bottom" constant="5" id="kuo-hZ-Zmj"/>
                 <constraint firstItem="tqf-dh-c99" firstAttribute="leading" secondItem="zLy-8n-DQa" secondAttribute="trailing" constant="25" id="m3P-ww-eFz"/>
                 <constraint firstItem="zLy-8n-DQa" firstAttribute="leading" secondItem="Y7Q-sX-C9F" secondAttribute="leading" constant="25" id="tOQ-P6-27q"/>
@@ -113,7 +115,9 @@
             <viewLayoutGuide key="safeArea" id="Y7Q-sX-C9F"/>
             <connections>
                 <outlet property="bottomView" destination="YRD-xG-hgQ" id="YBJ-6w-iX4"/>
+                <outlet property="endSeperateLine" destination="ja9-vU-uzr" id="ME2-4b-QoL"/>
                 <outlet property="endTextField" destination="C2Z-3J-tDX" id="Wmu-cd-ej2"/>
+                <outlet property="startSeperateLine" destination="AuN-KD-KQa" id="q1h-4M-DuE"/>
                 <outlet property="startTextField" destination="zLy-8n-DQa" id="PHP-7A-yLY"/>
             </connections>
             <point key="canvasLocation" x="393.60000000000002" y="20.689655172413794"/>

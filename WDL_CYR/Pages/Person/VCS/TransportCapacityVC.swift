@@ -46,6 +46,7 @@ class TransportCapacityVC: NormalBaseVC {
                 self?.bottomButtonHandle()
             })
             .disposed(by: dispose)
+        self.emptyTitle(title: "暂无信息", to: self.tableView)
     }
     
     override func tapNaviHandler(index: Int) {
@@ -60,7 +61,7 @@ class TransportCapacityVC: NormalBaseVC {
     }
 }
 
-// bussiness cell
+//MARK: - bussiness cell
 extension TransportCapacityVC {
     
     func currentCell() -> UITableViewCell {
@@ -75,6 +76,7 @@ extension TransportCapacityVC {
     }
 }
 
+//MARK: - handles
 extension TransportCapacityVC {
     // 添加车辆
     func toAddTrunck() -> Void {
@@ -87,12 +89,18 @@ extension TransportCapacityVC {
 }
 
 
-// searchBar
+//MARK: - searchBar
 extension TransportCapacityVC {
     func configSearchBar() -> Void {
         self.searchBar = UISearchBar()
         self.searchBar?.searchBarStyle = .minimal
         self.searchBar?.sizeToFit()
+        self.searchBar?.rx.text.orEmpty.asObservable()
+            .throttle(1, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self](search) in
+                self?.loadMyCapacity(query: search)
+            })
+            .disposed(by: dispose)
     }
     
     func toReloadSearch() -> Void {
@@ -104,9 +112,11 @@ extension TransportCapacityVC {
             self.searchBar?.placeholder = "搜索司机姓名、车牌号码"
         }
     }
+    
+    
 }
 
-//MARK: config tableView
+//MARK: - config tableView
 extension TransportCapacityVC {
     func configTableView() -> Void {
         self.tableView.delegate = self
@@ -117,7 +127,7 @@ extension TransportCapacityVC {
     }
 }
 
-// 底部按钮
+//MARK: - 底部按钮
 extension TransportCapacityVC {
     func toReloadBottom() -> Void {
         switch self.showType {
@@ -140,7 +150,7 @@ extension TransportCapacityVC {
     }
 }
 
-// control chain router
+//MARK: - control chain router
 extension TransportCapacityVC {
     override func routeName(routeName: String, dataInfo: Any?) {
         print("routername : " + routeName)
@@ -148,6 +158,7 @@ extension TransportCapacityVC {
     }
 }
 
+//MARK: - TableViewDelegate / TableViewDataSource
 extension TransportCapacityVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -177,5 +188,22 @@ extension TransportCapacityVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
+    }
+}
+
+//MARK: - 获取运力
+extension TransportCapacityVC {
+    func loadMyCapacity(query:String) -> Void {
+        var queryModel = QueryZbnTransportCapacity()
+        queryModel.driverName = query
+        queryModel.driverPhone = query
+        queryModel.vehicleNo = query
+        BaseApi.request(target: API.findTransportCapacity(queryModel), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+            .subscribe(onNext: { (data) in
+                
+            }, onError: { (error) in
+                
+            })
+            .disposed(by: dispose)
     }
 }
