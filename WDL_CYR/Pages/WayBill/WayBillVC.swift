@@ -14,6 +14,7 @@ import RxDataSources
 class WayBillVC: MainBaseVC {
 
     @IBOutlet weak var tableView: UITableView!
+    private var queryBean : QuerytTransportListBean = QuerytTransportListBean()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,9 @@ class WayBillVC: MainBaseVC {
         self.emptyTitle(title: "暂无运单", to: self.tableView)
         self.hiddenTableViewSeperate(tableView: self.tableView)
         self.handle()
+
     }
+    
     
     override func currentConfig() {
         self.registerCells()

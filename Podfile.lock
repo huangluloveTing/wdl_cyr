@@ -67,7 +67,7 @@ DEPENDENCIES:
   - AMap2DMap
   - AMapLocation
   - DZNEmptyDataSet
-  - HandyJSON
+  - HandyJSON (~> 4.2.0)
   - HTHorizontalSelectionList
   - IQKeyboardManager
   - Kingfisher
@@ -135,6 +135,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   ZTHExtension: 924db453c38d748321023af4d5d637eeae45828f
 
-PODFILE CHECKSUM: 0b417e7cec3ec792b466247d31cd149541c67a7c
+PODFILE CHECKSUM: 0bd626ba675ec8248bdde7d31d95103af7e216a1
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.5.3

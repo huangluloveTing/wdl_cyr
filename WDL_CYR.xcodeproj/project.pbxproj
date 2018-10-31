@@ -281,6 +281,8 @@
 		70F40F24214B553D0054A175 /* ZTScrollItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70F40F22214B553D0054A175 /* ZTScrollItemCell.xib */; };
 		70F40F26214B55E70054A175 /* ZTScrollItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F40F25214B55E70054A175 /* ZTScrollItem.swift */; };
 		70F40F28214B5BCC0054A175 /* ZTScrollNaviBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F40F27214B5BCC0054A175 /* ZTScrollNaviBarView.swift */; };
+		785CE9202186F8D000EEDE43 /* QuerytTransportListBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CE91F2186F8D000EEDE43 /* QuerytTransportListBean.swift */; };
+		785CE9222186FA1B00EEDE43 /* WayBillPageBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CE9212186FA1B00EEDE43 /* WayBillPageBean.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -571,6 +573,8 @@
 		70F40F22214B553D0054A175 /* ZTScrollItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZTScrollItemCell.xib; sourceTree = "<group>"; };
 		70F40F25214B55E70054A175 /* ZTScrollItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTScrollItem.swift; sourceTree = "<group>"; };
 		70F40F27214B5BCC0054A175 /* ZTScrollNaviBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTScrollNaviBarView.swift; sourceTree = "<group>"; };
+		785CE91F2186F8D000EEDE43 /* QuerytTransportListBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuerytTransportListBean.swift; sourceTree = "<group>"; };
+		785CE9212186FA1B00EEDE43 /* WayBillPageBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillPageBean.swift; sourceTree = "<group>"; };
 		EA1A4827C37097B6DF46905B /* Pods-WDL_CYR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDL_CYR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1205,6 +1209,8 @@
 		70EA7375215E64F90020B8C3 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				785CE91F2186F8D000EEDE43 /* QuerytTransportListBean.swift */,
+				785CE9212186FA1B00EEDE43 /* WayBillPageBean.swift */,
 				70EA7376215E650A0020B8C3 /* WayBillModels.swift */,
 			);
 			path = models;
@@ -1417,7 +1423,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
@@ -1434,7 +1440,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1553,6 +1559,7 @@
 				70CF4F5C214B41110051A7CA /* const.swift in Sources */,
 				70CF4FB0214B41120051A7CA /* ZTTagItem.m in Sources */,
 				70CF4FD6214B41120051A7CA /* RegisterAgreeView.swift in Sources */,
+				785CE9202186F8D000EEDE43 /* QuerytTransportListBean.swift in Sources */,
 				70CF4F9A214B41120051A7CA /* DeliveryVC.swift in Sources */,
 				70CF4FC0214B41120051A7CA /* UIViewController+Location.swift in Sources */,
 				70D8BBD021605126000522E0 /* WaybillUnAssembleVC.swift in Sources */,
@@ -1582,6 +1589,7 @@
 				706488F9215B458D00F53BFC /* FocusResourceVC.swift in Sources */,
 				701F10EA217F082300693936 /* OfferResultModels.swift in Sources */,
 				704DD0A4215CEC8400E6AD6F /* OfferDealVC.swift in Sources */,
+				785CE9222186FA1B00EEDE43 /* WayBillPageBean.swift in Sources */,
 				70CF4F85214B41120051A7CA /* WayBillCell.swift in Sources */,
 				704DD09D215CEBFE00E6AD6F /* OfferContainerVC.swift in Sources */,
 				701F10E6217EB7DE00693936 /* OfferQueryModels.swift in Sources */,
@@ -1769,8 +1777,9 @@
 			baseConfigurationReference = EA1A4827C37097B6DF46905B /* Pods-WDL_CYR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T4QAJ2K396;
 				INFOPLIST_FILE = WDL_CYR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1790,8 +1799,9 @@
 			baseConfigurationReference = 6C7F9C1660A78A3335660AB0 /* Pods-WDL_CYR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T4QAJ2K396;
 				INFOPLIST_FILE = WDL_CYR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

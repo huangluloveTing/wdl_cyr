@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+
 enum WaybillProcessStatus : Int {
     case carrierDesignateMe_unassembleAndUnRecieved = 0 // 其他承运人指派给我的，未装配未接受
     case shipperDesignateMe_unassembleAndUnRecieved     // 托运人指派给我，未装配未接受
