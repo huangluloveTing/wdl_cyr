@@ -124,18 +124,21 @@ extension WaybillUnAssembleVC
     }
     
     
-    //test  当用户点击未配载的cell上的接受，发送的请求
+    //test  承运人操作运单所有涉及的按钮请求（拒绝，接受，取消运输，继续运输）
     func acceptRequest(){
         //token
 //        let token = WDLCoreManager.shared().userInfo?.token ?? ""
          //(integer): 操作类型（3=拒绝，4=接受，8=取消运输，7=继续运输） ,
         let handleType = 4
+        // 货源id ,(只有在操作 - 继续运输 提交时间才将hallid传入)
+        let hallId = ""
         //继续运输时）装货时间 ,运单部分有4钟按钮都在这里处理
         let loadingTime = ""
         //运单号
         let transportNo = "Y181017000005"
+        
     
-        BaseApi.request(target:  API.carrierAllButtonAcceptTransportState(handleType,loadingTime, transportNo), type: BaseResponseModel<AnyObject>.self)
+        BaseApi.request(target:  API.carrierAllButtonAcceptTransportState(handleType,loadingTime, transportNo,hallId), type: BaseResponseModel<AnyObject>.self)
             .subscribe(onNext: { (model) in
                 self.showSuccess(success: "接受成功", complete: {[weak self] in
                     //刷新tableview

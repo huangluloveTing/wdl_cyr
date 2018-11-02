@@ -25,6 +25,8 @@ struct WayBillInfoBean : HandyJSON {
     var comeType  : Int?// (integer): 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
     var consignorName : String? // (string): 托运人名称 ,
     var carrierName : String? // (string): 承运人名称 ,
+    var carrierType : String? //(string): 报价类型 0=无车报价 1=有车报价 ,
+    var role  : Int? //承运人角色，1：承运人， 2，司机
     var origin : String? // (string): 起始地
     var destination :String? // (string): 目的地 ,
     var loadingTime : String? // (string): 装货时间 ,
@@ -40,13 +42,13 @@ struct WayBillInfoBean : HandyJSON {
     var transportStatus : Int? // (integer): 运单状态 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派 ,
     var evaluateCode :String? //  (string): 不为空，表示承运人已经评价 ,
     var hallId : String? // 货源id ,
-    var isBreach  : Int? // 是否违约 0=否,1=是 ,
     var driverStatus : Int? // (integer): 当前司机是否接受过改订单  4=接受指派，接受指派隐藏按钮，否则现实两个按钮
     
-    //  承运人状态 0=未配载 1=TMS指派 (只要生成定单，就表明一定是已指派)2=无车竞价待指派 3=拒绝指派 4=接受指派 5=已配载 6=已违约 7=违约继续承运 8=违约放弃承运 ,
+    //  driverStatus 可用于判断违约状态 6=已违约 7=违约继续承运 8=违约放弃承运    ，承运人状态 0=未配载 1=TMS指派 (只要生成定单，就表明一定是已指派)2=无车竞价待指派 3=拒绝指派 4=接受指派 5=已配载 ,
     
-    ///以下不常用
     var driverId :String? // ( (string): 司机id ,
+    var carrierId :String? // (string): 承运人id ,
+    var orderAvailabilityPeriod : String? //(string): 货源有效期 ,
     
     var goodsType : String? // (string): 货品分类 ,
     var publishTime :String? // (string): 发布时间 ,

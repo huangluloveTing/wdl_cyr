@@ -31,7 +31,7 @@ enum API {
     case selectOwnOffer(OfferQueryModel)    // 查询承运人自己的报价
     case getOfferByOrderHallId(OrderHallOfferQueryModel) // 根据货源ID获取报价详情
     case ownTransportPage(QuerytTransportListBean) // 获取我的运单列表
-    case carrierAllButtonAcceptTransportState(Int, String, String)//承运人操作运单（拒绝，接受，取消运输，继续运输）
+    case carrierAllButtonAcceptTransportState(Int, String, String,String)//承运人操作运单（拒绝，接受，取消运输，继续运输）
   
     
 }
@@ -128,10 +128,11 @@ func apiTask(api:API) -> Task {
          handleType (integer): 操作类型（3=拒绝，4=接受，8=取消运输，7=继续运输） ,
          loadingTime (string, optional): （继续运输时）装货时间 ,
          transportNo (string): 运单号
+         hallId :string 货源id ,(只有在操作 - 继续运输 提交时间才将hallid传入)
          */
         
-    case .carrierAllButtonAcceptTransportState(let handleType , let loadingTime, let transportNo):
-        return .requestParameters(parameters: ["handleType":handleType,"loadingTime":loadingTime, "transportNo":transportNo], encoding: JSONEncoding.default)
+    case .carrierAllButtonAcceptTransportState(let handleType , let loadingTime, let transportNo,let hallId):
+        return .requestParameters(parameters: ["handleType":handleType,"loadingTime":loadingTime, "transportNo":transportNo,"hallId":hallId], encoding: JSONEncoding.default)
     }
 }
 
