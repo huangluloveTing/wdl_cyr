@@ -283,6 +283,10 @@
 		70F40F28214B5BCC0054A175 /* ZTScrollNaviBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F40F27214B5BCC0054A175 /* ZTScrollNaviBarView.swift */; };
 		785CE9202186F8D000EEDE43 /* QuerytTransportListBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CE91F2186F8D000EEDE43 /* QuerytTransportListBean.swift */; };
 		785CE9222186FA1B00EEDE43 /* WayBillPageBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785CE9212186FA1B00EEDE43 /* WayBillPageBean.swift */; };
+		78D74956218FF192004C4D66 /* AuthenInreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D74955218FF192004C4D66 /* AuthenInreviewVC.swift */; };
+		78D74958218FF1B8004C4D66 /* AuthenInreviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D74957218FF1B8004C4D66 /* AuthenInreviewVC.xib */; };
+		78D7495B219020D2004C4D66 /* AboutZbnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D74959219020D2004C4D66 /* AboutZbnVC.swift */; };
+		78D7495C219020D2004C4D66 /* AboutZbnVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D7495A219020D2004C4D66 /* AboutZbnVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -575,6 +579,10 @@
 		70F40F27214B5BCC0054A175 /* ZTScrollNaviBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTScrollNaviBarView.swift; sourceTree = "<group>"; };
 		785CE91F2186F8D000EEDE43 /* QuerytTransportListBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuerytTransportListBean.swift; sourceTree = "<group>"; };
 		785CE9212186FA1B00EEDE43 /* WayBillPageBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillPageBean.swift; sourceTree = "<group>"; };
+		78D74955218FF192004C4D66 /* AuthenInreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenInreviewVC.swift; sourceTree = "<group>"; };
+		78D74957218FF1B8004C4D66 /* AuthenInreviewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenInreviewVC.xib; sourceTree = "<group>"; };
+		78D74959219020D2004C4D66 /* AboutZbnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutZbnVC.swift; sourceTree = "<group>"; };
+		78D7495A219020D2004C4D66 /* AboutZbnVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutZbnVC.xib; sourceTree = "<group>"; };
 		EA1A4827C37097B6DF46905B /* Pods-WDL_CYR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDL_CYR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -919,8 +927,12 @@
 				70D8BC31216748E5000522E0 /* AuthenIndividualInfoVC.xib */,
 				70D8BC3421675699000522E0 /* AuthenFailVC.swift */,
 				70D8BC3521675699000522E0 /* AuthenFailVC.xib */,
+				78D74955218FF192004C4D66 /* AuthenInreviewVC.swift */,
+				78D74957218FF1B8004C4D66 /* AuthenInreviewVC.xib */,
 				70D8BC3821675801000522E0 /* AuthenEnterpriseVC.swift */,
 				70D8BC3921675801000522E0 /* AuthenEnterpriseVC.xib */,
+				78D74959219020D2004C4D66 /* AboutZbnVC.swift */,
+				78D7495A219020D2004C4D66 /* AboutZbnVC.xib */,
 			);
 			path = VCS;
 			sourceTree = "<group>";
@@ -1366,6 +1378,7 @@
 				704DD0A1215CEC6600E6AD6F /* OfferNotDoneVC.xib in Resources */,
 				7039671D21830F6E00CE34B7 /* DropInputDateView.xib in Resources */,
 				70CF4FA8214B41120051A7CA /* bad_star@3x.png in Resources */,
+				78D7495C219020D2004C4D66 /* AboutZbnVC.xib in Resources */,
 				70D8BC2321672D3C000522E0 /* TransportDriverCell.xib in Resources */,
 				70D8BC2F2167405F000522E0 /* MyAuthenVC.xib in Resources */,
 				70EA7360215E07C40020B8C3 /* GSDetail_GoodsInfoCell.xib in Resources */,
@@ -1374,6 +1387,7 @@
 				70EA7364215E0A640020B8C3 /* GSDetail_canceledOfferCell.xib in Resources */,
 				70D8BC1F21672D2B000522E0 /* TransportTruckCell.xib in Resources */,
 				70CF4FA5214B41120051A7CA /* good_star@2x.png in Resources */,
+				78D74958218FF1B8004C4D66 /* AuthenInreviewVC.xib in Resources */,
 				70D8BBFF2165B1F8000522E0 /* WalletVC.xib in Resources */,
 				70CF4FD5214B41120051A7CA /* RegisterAgreeView.xib in Resources */,
 				707B7200216F3C1F000F78F6 /* ResourceDetailVC.xib in Resources */,
@@ -1480,6 +1494,7 @@
 				70CF4F9F214B41120051A7CA /* ForgetPwdVC.swift in Sources */,
 				70CF4FCB214B41120051A7CA /* ZTFoldTableView.swift in Sources */,
 				70CF4F78214B41110051A7CA /* GSDetailBidingHeader.swift in Sources */,
+				78D74956218FF192004C4D66 /* AuthenInreviewVC.swift in Sources */,
 				70EA73A2215F47D00020B8C3 /* WaybillCarrierInfoCell.swift in Sources */,
 				70CF4F61214B41110051A7CA /* BaseModel.swift in Sources */,
 				70D8BC122166EA6A000522E0 /* PaymentCell.swift in Sources */,
@@ -1618,6 +1633,7 @@
 				701F10DB217DD99400693936 /* OfferChooseTruckVC.swift in Sources */,
 				70648907215B6BE400F53BFC /* FocusPersonCell.swift in Sources */,
 				70F40F26214B55E70054A175 /* ZTScrollItem.swift in Sources */,
+				78D7495B219020D2004C4D66 /* AboutZbnVC.swift in Sources */,
 				70CF4F80214B41120051A7CA /* PersonalVC.swift in Sources */,
 				701F10CA217CC6C600693936 /* OfferModels.swift in Sources */,
 				70D8BBD821605153000522E0 /* WaybillDoneVC.swift in Sources */,

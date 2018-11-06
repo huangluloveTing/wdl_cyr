@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthenInreviewVC" customModule="WDL_CYR" customModuleProvider="target">
+            <connections>
+                <outlet property="callButton" destination="zi2-EI-LqF" id="n4v-Ct-gXM"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认证资料审核中......" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUo-a8-5Rw">
+                    <rect key="frame" x="30" y="80" width="236.5" height="32.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="27"/>
+                    <color key="textColor" red="0.023529411764705882" green="0.73725490196078436" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的认证资料已提交成功，正在审核。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8R-N2-8II">
+                    <rect key="frame" x="30" y="142.5" width="315" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如有疑问请拨打：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpA-VB-Nn2">
+                    <rect key="frame" x="30" y="228.5" width="139" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请耐心等待！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7S-um-iPn">
+                    <rect key="frame" x="30" y="178" width="315" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zi2-EI-LqF">
+                    <rect key="frame" x="169" y="211.5" width="113" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="e8w-pS-IZd"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="0310 6591999">
+                        <color key="titleColor" red="0.023529411764705882" green="0.73725490196078436" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="TpA-VB-Nn2" firstAttribute="leading" secondItem="H8R-N2-8II" secondAttribute="leading" id="1X2-2x-5wI"/>
+                <constraint firstItem="H8R-N2-8II" firstAttribute="top" secondItem="kUo-a8-5Rw" secondAttribute="bottom" constant="30" id="4GU-YM-uxK"/>
+                <constraint firstItem="H8R-N2-8II" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="FaU-TN-ddN"/>
+                <constraint firstItem="kUo-a8-5Rw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="FpG-dn-6ho"/>
+                <constraint firstItem="kUo-a8-5Rw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="Q24-Bq-z1W"/>
+                <constraint firstItem="TpA-VB-Nn2" firstAttribute="top" secondItem="L7S-um-iPn" secondAttribute="bottom" constant="30" id="WpI-q5-3YK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="H8R-N2-8II" secondAttribute="trailing" constant="30" id="hvj-5A-j1j"/>
+                <constraint firstItem="L7S-um-iPn" firstAttribute="leading" secondItem="H8R-N2-8II" secondAttribute="leading" id="n4l-9a-GXj"/>
+                <constraint firstItem="zi2-EI-LqF" firstAttribute="leading" secondItem="TpA-VB-Nn2" secondAttribute="trailing" id="sRJ-AA-fj8"/>
+                <constraint firstItem="L7S-um-iPn" firstAttribute="top" secondItem="H8R-N2-8II" secondAttribute="bottom" constant="15" id="tfP-t9-C6b"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L7S-um-iPn" secondAttribute="trailing" constant="30" id="wzP-Zq-p6h"/>
+                <constraint firstItem="zi2-EI-LqF" firstAttribute="centerY" secondItem="TpA-VB-Nn2" secondAttribute="centerY" id="yIh-aw-LRk"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="32.799999999999997" y="81.409295352323838"/>
+        </view>
+    </objects>
+</document>
