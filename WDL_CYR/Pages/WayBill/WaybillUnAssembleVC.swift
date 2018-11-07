@@ -29,10 +29,12 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addSearchBar(to: self.tableView, placeHolder: "搜索托运人/承运人/姓名/电话号码")
+//        self.addSearchBar(to: self.tableView, placeHolder: "搜索托运人/承运人/姓名/电话号码")
         self.toConfigDropView(dropView: self.dropView)
         self.configTableView(tableView: self.tableView)
         self.loadUnAssembleDatas(refresh: true)
+        self.setCurrentTabStatus(tab: .UnAssemble)
+        self.configHeaderAndFooterRefresh()
     }
   
     // 点击状态
@@ -44,35 +46,15 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
     override func timeChooseHandle(startTime: TimeInterval?, endTime: TimeInterval?, tapSure sure: Bool) {
        
     }
+    
+    override func headerRefresh() {
+        self.loadUnAssembleDatas(refresh: true)
+    }
 }
 
 //MARK: - load data
 extension WaybillUnAssembleVC
 {
-    //test  承运人操作运单所有涉及的按钮请求（拒绝，接受，取消运输，继续运输）
-    func acceptRequest(){
-        //token
-//        let token = WDLCoreManager.shared().userInfo?.token ?? ""
-         //(integer): 操作类型（3=拒绝，4=接受，8=取消运输，7=继续运输） ,
-        let handleType = 4
-        // 货源id ,(只有在操作 - 继续运输 提交时间才将hallid传入)
-        let hallId = ""
-        //继续运输时）装货时间 ,运单部分有4钟按钮都在这里处理
-        let loadingTime = ""
-        //运单号
-        let transportNo = "Y181017000005"
-        
-    
-        BaseApi.request(target:  API.carrierAllButtonAcceptTransportState(handleType,loadingTime, transportNo,hallId), type: BaseResponseModel<AnyObject>.self)
-            .subscribe(onNext: { (model) in
-                self.showSuccess(success: "接受成功", complete: {[weak self] in
-                    //刷新tableview
-                })
-            }, onError: { (error) in
-                self.showFail(fail: error.localizedDescription, complete: nil)
-            })
-            .disposed(by: dispose)
-    }
 }
 
 

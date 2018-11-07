@@ -21,11 +21,11 @@ class WaybillSepecialInfoCell: WaybillBaseCell {
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var goodsInfoLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     @IBOutlet weak var twoHandleButton_2: UIButton!
     @IBOutlet weak var twoHandleButton_1: UIButton!
     @IBOutlet weak var oneHandleButton: UIButton!
-    
     @IBOutlet weak var oneHandleView: UIView!
     
     
@@ -37,7 +37,24 @@ class WaybillSepecialInfoCell: WaybillBaseCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
+    @IBAction func assembleAction(_ sender: Any) {
+        
+    }
+    
+}
+
+extension WaybillSepecialInfoCell {
+    //设置cell的值
+    func contentInfo(info:WayBillInfoBean?) {
+        self.toAddImageForImageView(imageUrl: info?.companyLogo, imageView: self.avatorImageView)
+        self.typeLabel.text = "【自营】运输计划"
+        self.startLabel.text = info?.origin
+        self.endLabel.text = info?.destination
+        let time = Util.dateFormatter(date: Double(info?.loadingTime ?? "0") ?? 0, formatter: "yyyy-MM-dd") + "  装货"
+        let weight = (info?.goodsWeight ?? "") + "吨"
+        self.goodsInfoLabel.text = Util.contact(strs: [time , weight], seperate: " | ")
+        self.timeLabel.text = Util.dateFormatter(date: (info?.createTime ?? 0) / 1000, formatter: "yyyy-MM-dd HH:mm:ss")
+    }
 }

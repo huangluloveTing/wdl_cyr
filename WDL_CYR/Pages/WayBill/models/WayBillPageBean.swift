@@ -32,13 +32,13 @@ struct WayBillInfoBean : HandyJSON {
     var destination :String? // (string): 目的地 ,
     var loadingTime : String? // (string): 装货时间 ,
     var goodsName :String? //  (string): 货品名称 ,
-    var createTime :String?  //v成交时间 ,（指定时间）
+    var createTime :TimeInterval?  //v成交时间 ,（指定时间）
     var goodsWeight : String? // (number): 货源总重 ,
     var vehicleLength : String? // (string): 车长 ,
     var vehicleType : String? // (string): 车型 ,
     var packageType : String? //  (string): 包装类型 ,（无包装）
-    var refercneceTotalPrice : NSNumber? //  (number): 参考总价 ,
-    var refercneceUnitPrice : NSNumber? //(number): 参考单价 ,
+    var refercneceTotalPrice : Float? //  (number): 参考总价 ,
+    var refercneceUnitPrice : Float? //(number): 参考单价 ,
     var transportNo : String? // (string): 运单号 ,
     var transportStatus : Int? // (integer): 运单状态 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派 ,
     var evaluateCode :String? //  (string): 不为空，表示承运人已经评价 ,

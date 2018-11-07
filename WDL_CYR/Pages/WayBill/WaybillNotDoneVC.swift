@@ -14,6 +14,10 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
     @IBOutlet weak var tableView: UITableView!
     var dataSource: [WayBillInfoBean]?
     
+    private var currentStatus:Int = -1
+    private var currentStartTime:TimeInterval?
+    private var currentEndTime:TimeInterval?
+    
     func willShow() {
         
     }
@@ -24,13 +28,21 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addSearchBar(to: self.tableView, placeHolder: "搜索托运人/承运人/姓名/电话号码")
+//        self.addSearchBar(to: self.tableView, placeHolder: "搜索托运人/承运人/姓名/电话号码")
         self.toConfigDropView(dropView: self.dropView)
+        self.setCurrentTabStatus(tab: .Doing)
+        self.configTableView(tableView: tableView)
+        self.configHeaderAndFooterRefresh()
+        self.loadDoingDatas(refresh: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         
+    }
+    
+    override func headerRefresh() {
+        self.loadDoingDatas(refresh: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,10 +59,18 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
     override func timeChooseHandle(startTime: TimeInterval?, endTime: TimeInterval?, tapSure sure: Bool) {
         
     }
-    
-    
-    
-    
+}
 
+extension WaybillNotDoneVC {
+    
+    func loadDoingDatas(refresh:Bool) -> Void {
+        self.loadWayBillUnCompletedData(transportStatus: self.currentStatus, startTime: self.currentStartTime, endTime: self.currentEndTime, search: "") { (info) in
+            if refresh == true {
+                self.refreshContents(items: info?.list ?? [])
+                return
+            }
+            self.addContentItems(items: info?.list ?? [])
+        }
+    }
 }
 
