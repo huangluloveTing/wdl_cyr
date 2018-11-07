@@ -83,4 +83,12 @@ extension WaybillBaseCell {
     func toShowWaybillStatusSign(status:Int , for imageView:UIImageView) -> Void {
         
     }
+    
+    //TODO: - 根据订单来源，展示 托运人 信息 ， 是否自营，是否是运输计划 指定等信息
+    func showFirstLineInfo(info:WayBillInfoBean? ,
+                           tyLabel:UILabel ,
+                           middleLabel:UILabel ,
+                           lastLabel:UILabel) -> Void {
+        
+    }
 }

@@ -23,6 +23,7 @@ struct WayBillPageBean : HandyJSON {
 
 struct WayBillInfoBean : HandyJSON {
     var comeType  : Int?// (integer): 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
+    var companyLogo : String? // 托运人 logo
     var consignorName : String? // (string): 托运人名称 ,
     var carrierName : String? // (string): 承运人名称 ,
     var carrierType : String? //(string): 报价类型 0=无车报价 1=有车报价 ,

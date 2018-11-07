@@ -77,6 +77,8 @@
 		707B7208216F3C60000F78F6 /* Resource_GoodsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 707B7206216F3C60000F78F6 /* Resource_GoodsInfoCell.xib */; };
 		707B720B216F3C87000F78F6 /* Resource_ShipperInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B7209216F3C87000F78F6 /* Resource_ShipperInfoCell.swift */; };
 		707B720C216F3C87000F78F6 /* Resource_ShipperInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 707B720A216F3C87000F78F6 /* Resource_ShipperInfoCell.xib */; };
+		70A024A12192704F00A9ECC2 /* WaybillNoHandleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */; };
+		70A024A22192704F00A9ECC2 /* WaybillNoHandleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */; };
 		70C7CB28216F74ED00C10AC4 /* ChooseOfferTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7CB26216F74ED00C10AC4 /* ChooseOfferTypeVC.swift */; };
 		70C7CB29216F74ED00C10AC4 /* ChooseOfferTypeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7CB27216F74ED00C10AC4 /* ChooseOfferTypeVC.xib */; };
 		70C7CB2C216F76AD00C10AC4 /* OfferWithTruckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7CB2A216F76AD00C10AC4 /* OfferWithTruckVC.swift */; };
@@ -357,6 +359,8 @@
 		707B7206216F3C60000F78F6 /* Resource_GoodsInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Resource_GoodsInfoCell.xib; sourceTree = "<group>"; };
 		707B7209216F3C87000F78F6 /* Resource_ShipperInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource_ShipperInfoCell.swift; sourceTree = "<group>"; };
 		707B720A216F3C87000F78F6 /* Resource_ShipperInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Resource_ShipperInfoCell.xib; sourceTree = "<group>"; };
+		70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillNoHandleCell.swift; sourceTree = "<group>"; };
+		70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillNoHandleCell.xib; sourceTree = "<group>"; };
 		70C7CB26216F74ED00C10AC4 /* ChooseOfferTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOfferTypeVC.swift; sourceTree = "<group>"; };
 		70C7CB27216F74ED00C10AC4 /* ChooseOfferTypeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseOfferTypeVC.xib; sourceTree = "<group>"; };
 		70C7CB2A216F76AD00C10AC4 /* OfferWithTruckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferWithTruckVC.swift; sourceTree = "<group>"; };
@@ -958,6 +962,8 @@
 				70EA73A1215F47D00020B8C3 /* WaybillCarrierInfoCell.xib */,
 				70EA73A4215F48090020B8C3 /* WaybillSepecialInfoCell.swift */,
 				70EA73A5215F48090020B8C3 /* WaybillSepecialInfoCell.xib */,
+				70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */,
+				70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1303,6 +1309,7 @@
 				70EA734C215DB2CB0020B8C3 /* Offer_NotDoneCell.xib in Resources */,
 				70CF4F7D214B41120051A7CA /* PersonalInfoHeader.xib in Resources */,
 				70EA736C215E0E680020B8C3 /* GSDetail_notDealCell.xib in Resources */,
+				70A024A22192704F00A9ECC2 /* WaybillNoHandleCell.xib in Resources */,
 				701F10D8217D942000693936 /* OfferSearchTruckCell.xib in Resources */,
 				70C7CB2D216F76AD00C10AC4 /* OfferWithTruckVC.xib in Resources */,
 				701F10E4217EA90100693936 /* OfferDescriptionCell.xib in Resources */,
@@ -1423,7 +1430,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
@@ -1440,7 +1447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1616,6 +1623,7 @@
 				70EA7351215DCF170020B8C3 /* Offer_DoneCell.swift in Sources */,
 				70CF4FAF214B41120051A7CA /* ZTTagView.m in Sources */,
 				701F10DB217DD99400693936 /* OfferChooseTruckVC.swift in Sources */,
+				70A024A12192704F00A9ECC2 /* WaybillNoHandleCell.swift in Sources */,
 				70648907215B6BE400F53BFC /* FocusPersonCell.swift in Sources */,
 				70F40F26214B55E70054A175 /* ZTScrollItem.swift in Sources */,
 				70CF4F80214B41120051A7CA /* PersonalVC.swift in Sources */,

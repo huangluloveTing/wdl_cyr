@@ -88,9 +88,7 @@ extension WaybillCarrierInfoCell {
                     //在点击继续运输修改时间需要判断orderAvailabilityPeriod 货源有效期这个字段
                     
                 }else{
-                    //承运人（显示配载）
-                    
-                    
+                    //承运人（显示配载)
                 }
                 
                 
@@ -100,8 +98,35 @@ extension WaybillCarrierInfoCell {
             
         }
     }
+}
+
+//MARK: - Normal display
+extension WaybillCarrierInfoCell {
+    // 通用的信息展示
+    fileprivate func showInfo(info:WayBillInfoBean?) {
+        self.toShowWaybillStatusSign(status: (info?.transportStatus)!, for: self.statusImageView)
+        self.showFirstLineInfo(info: info, tyLabel: desiginNameLabel, middleLabel: desiginTypeLabel, lastLabel: waybillTypeDescLabel)
+        self.startLabel.text = info?.origin
+        self.endLabel.text = info?.destination
+        self.
+    }
     
+}
+
+//MARK: - 未完成订单对应的显示
+extension WaybillCarrierInfoCell {
+    // 待配载的显示
+    func showInfoWillAssemble(info:WayBillInfoBean?) -> Void {
+        self.showInfo(info: info)
+    }
     
+    // 待指派的显示
+    func showInfoWillDesigned(info:WayBillInfoBean?) -> Void {
+        self.showInfo(info: info)
+    }
     
-    
+    // 待接受与拒绝的显示
+    func showInfoAcceptAndReject(info:WayBillInfoBean?) -> Void {
+        self.showInfo(info: info)
+    }
 }

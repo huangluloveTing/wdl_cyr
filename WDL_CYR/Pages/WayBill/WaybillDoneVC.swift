@@ -20,10 +20,6 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
     func didShow() {
         
     }
-    
-    override func currentConfig() {
-        self.currentTableView = self.tableView
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
