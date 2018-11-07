@@ -97,10 +97,9 @@ extension WayBillBaseVC {
     // 点击拒绝的回调
     func toRejectWaybill(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
-            let info = self.dataSource[indexPath.row]
             showAlert(title: "提示", message: "确定要拒绝？") { [weak self](index) in
                 if index == 1 {
-                    self?.rejectTransportHandle(info: info)
+                    self?.rejectTransportHandle(indexPath: indexPath)
                 }
             }
         }
@@ -109,10 +108,9 @@ extension WayBillBaseVC {
     // 点击接受的回调
     func toReceiveWaybill(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
-            let info = self.dataSource[indexPath.row]
             showAlert(title: "提示", message: "确定要接受？") { [weak self](index) in
                 if index == 1 {
-                    self?.receiveTransportHandle(info: info)
+                    self?.receiveTransportHandle(indexPath: indexPath)
                 }
             }
         }
@@ -120,24 +118,23 @@ extension WayBillBaseVC {
     // 点击指派的回调
     func toDesiginWaybill(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
-            let info = self.dataSource[indexPath.row]
+            let info = self.dataSource[indexPath.row - 1]
             self.designateTransportHandle(info: info)
         }
     }
     // 点击配载的回调
     func toAssembleWaybill(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
-            let info = self.dataSource[indexPath.row]
+            let info = self.dataSource[indexPath.row - 1]
             self.designateTransportHandle(info: info)
         }
     }
     // 点击取消运输
     func toCancelTransport(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
-            let info = self.dataSource[indexPath.row]
             showAlert(title: "提示", message: "确定要取消运输？") { [weak self](index) in
                 if index == 1 {
-                    self?.cancelTransportHandle(info: info)
+                    self?.cancelTransportHandle(indexPath: indexPath)
                 }
             }
         }
@@ -145,8 +142,8 @@ extension WayBillBaseVC {
     // 点击继续运输
     func toContinueTransport(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
-            let info = self.dataSource[indexPath.row]
-            
+            let view = WaybillChangeLoadTimeView.instance()
+            view?.show()
         }
     }
     
@@ -159,42 +156,59 @@ extension WayBillBaseVC {
 //MARK: - bussiness
 extension WayBillBaseVC {
     
-    // 拒绝
-    func rejectTransportHandle(info:WayBillInfoBean) -> Void {
+    //MARK: - 拒绝
+    func rejectTransportHandle(indexPath:IndexPath) -> Void {
+        let info = self.dataSource[indexPath.row - 1]
         self.rejectTransportHandle(transportNo: info.transportNo ?? "") { (data) in
-            
+            self.deleteCurrentWaybill(indexPath: indexPath)
         }
     }
     
-    // 接受
-    func receiveTransportHandle(info:WayBillInfoBean) -> Void {
+    //MARK: - 接受
+    func receiveTransportHandle(indexPath:IndexPath) -> Void {
+        let info = self.dataSource[indexPath.row - 1]
         self.receiveTransport(transportNo: info.transportNo ?? "") { (data) in
-            
+            self.convertWaybillToDesignate(indexPath: indexPath)
         }
     }
     
-    // 指派
+    //MARK: - 指派
     func designateTransportHandle(info:WayBillInfoBean) -> Void {
         
     }
     
-    // 配载
+    //MARK: - 配载
     func assembleTransportHandle(info:WayBillInfoBean) -> Void {
         
     }
     
-    // 继续运输
+    //MARK: - 继续运输
     func continueTransportHandle(info:WayBillInfoBean , loadTime:TimeInterval , hallId:String) -> Void {
         self.continueTransport(transportNo: info.transportNo ?? "", loadTime: loadTime, hallId: hallId) { (data) in
             
         }
     }
     
-    // 取消运输
-    func cancelTransportHandle(info:WayBillInfoBean) -> Void {
+    //MARK: -  取消运输
+    func cancelTransportHandle(indexPath:IndexPath) -> Void {
+        let info = self.dataSource[indexPath.row - 1]
         self.cancelTransport(transportNo: info.transportNo ?? "") { (data) in
-            
+            self.deleteCurrentWaybill(indexPath: indexPath)
         }
+    }
+    
+    //MARK: -  未配载 司机接受 运单后，将订单变为 待配载运单
+    func convertWaybillToDesignate(indexPath:IndexPath) -> Void {
+        var info = self.dataSource[indexPath.row - 1]
+        info.driverStatus = 4
+        self.dataSource[indexPath.row - 1] = info
+        self.currentTableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
+    //MARK: - 点击 拒绝 或者 取消运输，删除对应的运单信息
+    func deleteCurrentWaybill(indexPath:IndexPath) -> Void {
+        self.dataSource.remove(at: indexPath.row - 1)
+        self.currentTableView.deleteRows(at: [indexPath], with: .none)
     }
 }
 
