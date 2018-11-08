@@ -56,6 +56,12 @@ class WayBillBaseVC: MainBaseVC {
     func footerLoadMore() -> Void {}
     // 搜索的回调
     func currentSearch(text:String) -> Void {}
+    
+    //MARK: - lazy
+    public lazy var loadTimeView : WaybillChangeLoadTimeView? = {
+       let loadView = WaybillChangeLoadTimeView.instance()
+        return loadView
+    }()
 }
 
 
@@ -142,8 +148,8 @@ extension WayBillBaseVC {
     // 点击继续运输
     func toContinueTransport(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
-            let view = WaybillChangeLoadTimeView.instance()
-            view?.show()
+            let info = self.dataSource[indexPath.row - 1]
+            self.loadTimeView?.show(transportNo: info.transportNo ?? "")
         }
     }
     

@@ -25,9 +25,8 @@ class WaybillChangeLoadTimeView: UIView {
     var closure:WaybillChangeLoadTimeClosure?
     
     let dispose = DisposeBag()
-    static func instance(transportNo:String) -> WaybillChangeLoadTimeView? {
+    static func instance() -> WaybillChangeLoadTimeView? {
         let view = self.loadBindView(viewName: WaybillChangeLoadTimeView.self)
-        view?.transportNo = transportNo
         view?.configAllViews()
         return view
     }
@@ -43,9 +42,11 @@ class WaybillChangeLoadTimeView: UIView {
 
 extension WaybillChangeLoadTimeView {
     
-    func show() -> Void {
+    func show(transportNo:String) -> Void {
         self.loadTimeTextField.text = ""
         self.currentTime = nil
+        self.transportNoLabel.text = transportNo
+        self.loadTimeTextField.becomeFirstResponder()
         let window = UIApplication.shared.keyWindow
         self.frame = window?.bounds ?? CGRect(x: 0, y: 0, width: IPHONE_WIDTH, height: IPHONE_HEIGHT)
         window?.addSubview(self)

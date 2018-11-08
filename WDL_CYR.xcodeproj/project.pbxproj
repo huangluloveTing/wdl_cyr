@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		5FF496CEBAEF90B26CAE9B21 /* libPods-WDL_CYR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */; };
+		700347672193D95600DDEE55 /* WaybillLinkInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700347652193D95600DDEE55 /* WaybillLinkInfoCell.swift */; };
+		700347682193D95600DDEE55 /* WaybillLinkInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700347662193D95600DDEE55 /* WaybillLinkInfoCell.xib */; };
+		7003476B2193D96D00DDEE55 /* WaybillDealInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700347692193D96D00DDEE55 /* WaybillDealInfoCell.swift */; };
+		7003476C2193D96D00DDEE55 /* WaybillDealInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7003476A2193D96D00DDEE55 /* WaybillDealInfoCell.xib */; };
+		7003476F2193D98500DDEE55 /* WaybillGoodsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003476D2193D98500DDEE55 /* WaybillGoodsInfoCell.swift */; };
+		700347702193D98500DDEE55 /* WaybillGoodsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7003476E2193D98500DDEE55 /* WaybillGoodsInfoCell.xib */; };
+		700347732193DD6200DDEE55 /* WaybillReturnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700347712193DD6200DDEE55 /* WaybillReturnListCell.swift */; };
+		700347742193DD6200DDEE55 /* WaybillReturnListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700347722193DD6200DDEE55 /* WaybillReturnListCell.xib */; };
 		700DCA912183F17800EA6695 /* BaseVC+DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DCA902183F17800EA6695 /* BaseVC+DropView.swift */; };
 		701F10CA217CC6C600693936 /* OfferModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10C9217CC6C600693936 /* OfferModels.swift */; };
 		701F10CD217D540500693936 /* OfferChooseDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10CB217D540500693936 /* OfferChooseDriverVC.swift */; };
@@ -58,6 +66,7 @@
 		704DD0A1215CEC6600E6AD6F /* OfferNotDoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704DD09F215CEC6600E6AD6F /* OfferNotDoneVC.xib */; };
 		704DD0A4215CEC8400E6AD6F /* OfferDealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DD0A2215CEC8400E6AD6F /* OfferDealVC.swift */; };
 		704DD0A5215CEC8400E6AD6F /* OfferDealVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704DD0A3215CEC8400E6AD6F /* OfferDealVC.xib */; };
+		7053F8912193C69B00655D2E /* WaybillDetailBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7053F88F2193C69B00655D2E /* WaybillDetailBaseVC.swift */; };
 		7059F3F22192E7060053F1DE /* WaybillChangeLoadTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7059F3F12192E7060053F1DE /* WaybillChangeLoadTimeView.swift */; };
 		7059F3F42192E7580053F1DE /* WaybillChangeLoadTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7059F3F32192E7580053F1DE /* WaybillChangeLoadTimeView.xib */; };
 		705BA5B62192A774007B10C8 /* OfferSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705BA5B42192A774007B10C8 /* OfferSearchCell.swift */; };
@@ -294,6 +303,14 @@
 /* Begin PBXFileReference section */
 		3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WDL_CYR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C7F9C1660A78A3335660AB0 /* Pods-WDL_CYR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDL_CYR.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR.release.xcconfig"; sourceTree = "<group>"; };
+		700347652193D95600DDEE55 /* WaybillLinkInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillLinkInfoCell.swift; sourceTree = "<group>"; };
+		700347662193D95600DDEE55 /* WaybillLinkInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillLinkInfoCell.xib; sourceTree = "<group>"; };
+		700347692193D96D00DDEE55 /* WaybillDealInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillDealInfoCell.swift; sourceTree = "<group>"; };
+		7003476A2193D96D00DDEE55 /* WaybillDealInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillDealInfoCell.xib; sourceTree = "<group>"; };
+		7003476D2193D98500DDEE55 /* WaybillGoodsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillGoodsInfoCell.swift; sourceTree = "<group>"; };
+		7003476E2193D98500DDEE55 /* WaybillGoodsInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillGoodsInfoCell.xib; sourceTree = "<group>"; };
+		700347712193DD6200DDEE55 /* WaybillReturnListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillReturnListCell.swift; sourceTree = "<group>"; };
+		700347722193DD6200DDEE55 /* WaybillReturnListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillReturnListCell.xib; sourceTree = "<group>"; };
 		700DCA902183F17800EA6695 /* BaseVC+DropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseVC+DropView.swift"; sourceTree = "<group>"; };
 		701F10C9217CC6C600693936 /* OfferModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferModels.swift; sourceTree = "<group>"; };
 		701F10CB217D540500693936 /* OfferChooseDriverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferChooseDriverVC.swift; sourceTree = "<group>"; };
@@ -344,6 +361,7 @@
 		704DD09F215CEC6600E6AD6F /* OfferNotDoneVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferNotDoneVC.xib; sourceTree = "<group>"; };
 		704DD0A2215CEC8400E6AD6F /* OfferDealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDealVC.swift; sourceTree = "<group>"; };
 		704DD0A3215CEC8400E6AD6F /* OfferDealVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferDealVC.xib; sourceTree = "<group>"; };
+		7053F88F2193C69B00655D2E /* WaybillDetailBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillDetailBaseVC.swift; sourceTree = "<group>"; };
 		7059F3F12192E7060053F1DE /* WaybillChangeLoadTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillChangeLoadTimeView.swift; sourceTree = "<group>"; };
 		7059F3F32192E7580053F1DE /* WaybillChangeLoadTimeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillChangeLoadTimeView.xib; sourceTree = "<group>"; };
 		705BA5B42192A774007B10C8 /* OfferSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSearchCell.swift; sourceTree = "<group>"; };
@@ -974,6 +992,14 @@
 				70EA73A5215F48090020B8C3 /* WaybillSepecialInfoCell.xib */,
 				70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */,
 				70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */,
+				700347652193D95600DDEE55 /* WaybillLinkInfoCell.swift */,
+				700347662193D95600DDEE55 /* WaybillLinkInfoCell.xib */,
+				700347692193D96D00DDEE55 /* WaybillDealInfoCell.swift */,
+				7003476A2193D96D00DDEE55 /* WaybillDealInfoCell.xib */,
+				7003476D2193D98500DDEE55 /* WaybillGoodsInfoCell.swift */,
+				7003476E2193D98500DDEE55 /* WaybillGoodsInfoCell.xib */,
+				700347712193DD6200DDEE55 /* WaybillReturnListCell.swift */,
+				700347722193DD6200DDEE55 /* WaybillReturnListCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -983,6 +1009,7 @@
 			children = (
 				70CF4EF0214B410C0051A7CA /* WayBillDetailVC.swift */,
 				70CF4EF1214B410C0051A7CA /* WayBillDetailVC.xib */,
+				7053F88F2193C69B00655D2E /* WaybillDetailBaseVC.swift */,
 			);
 			path = VCS;
 			sourceTree = "<group>";
@@ -1318,6 +1345,7 @@
 			files = (
 				70CF4FAA214B41120051A7CA /* good_star@1x.png in Resources */,
 				70CF4FA6214B41120051A7CA /* bad_star@1x.png in Resources */,
+				700347742193DD6200DDEE55 /* WaybillReturnListCell.xib in Resources */,
 				70EA734C215DB2CB0020B8C3 /* Offer_NotDoneCell.xib in Resources */,
 				70CF4F7D214B41120051A7CA /* PersonalInfoHeader.xib in Resources */,
 				70EA736C215E0E680020B8C3 /* GSDetail_notDealCell.xib in Resources */,
@@ -1362,6 +1390,7 @@
 				70CF4FA3214B41120051A7CA /* LoginVC.xib in Resources */,
 				70EA7352215DCF170020B8C3 /* Offer_DoneCell.xib in Resources */,
 				7064890C215B87E300F53BFC /* FocusLinesCell.xib in Resources */,
+				7003476C2193D96D00DDEE55 /* WaybillDealInfoCell.xib in Resources */,
 				70CF4F6A214B41110051A7CA /* GSDetailInfoCell.xib in Resources */,
 				70D8BC0F2166E99C000522E0 /* PaymentTypeVC.xib in Resources */,
 				707B7208216F3C60000F78F6 /* Resource_GoodsInfoCell.xib in Resources */,
@@ -1372,6 +1401,7 @@
 				70CF4F94214B41120051A7CA /* XIBViews.xib in Resources */,
 				70CF4F81214B41120051A7CA /* PersonalVC.xib in Resources */,
 				70648902215B5F5A00F53BFC /* FocusEmptyView.xib in Resources */,
+				700347702193D98500DDEE55 /* WaybillGoodsInfoCell.xib in Resources */,
 				70D8BC33216748E5000522E0 /* AuthenIndividualInfoVC.xib in Resources */,
 				70D8BC072165BAA1000522E0 /* RechargeInlineVC.xib in Resources */,
 				704129AE2179C1590078A46F /* OfferFeeCell.xib in Resources */,
@@ -1387,6 +1417,7 @@
 				7039671D21830F6E00CE34B7 /* DropInputDateView.xib in Resources */,
 				70CF4FA8214B41120051A7CA /* bad_star@3x.png in Resources */,
 				70D8BC2321672D3C000522E0 /* TransportDriverCell.xib in Resources */,
+				700347682193D95600DDEE55 /* WaybillLinkInfoCell.xib in Resources */,
 				70D8BC2F2167405F000522E0 /* MyAuthenVC.xib in Resources */,
 				70EA7360215E07C40020B8C3 /* GSDetail_GoodsInfoCell.xib in Resources */,
 				70EA73A3215F47D10020B8C3 /* WaybillCarrierInfoCell.xib in Resources */,
@@ -1477,6 +1508,7 @@
 				70CF4F96214B41120051A7CA /* OnTimePostView.swift in Sources */,
 				707B720B216F3C87000F78F6 /* Resource_ShipperInfoCell.swift in Sources */,
 				70EA7379215F00A20020B8C3 /* UIResponder+Chain.swift in Sources */,
+				7003476F2193D98500DDEE55 /* WaybillGoodsInfoCell.swift in Sources */,
 				70D8BC1A216724CE000522E0 /* TransportCapacityVC.swift in Sources */,
 				70D8BC2221672D3C000522E0 /* TransportDriverCell.swift in Sources */,
 				70CF4F97214B41120051A7CA /* PlaceChooiceView.swift in Sources */,
@@ -1574,9 +1606,12 @@
 				70EA736B215E0E680020B8C3 /* GSDetail_notDealCell.swift in Sources */,
 				70CF4F69214B41110051A7CA /* GoodsSupplyCell.swift in Sources */,
 				70CF4FC8214B41120051A7CA /* ZTTransitionManager.swift in Sources */,
+				7053F8912193C69B00655D2E /* WaybillDetailBaseVC.swift in Sources */,
 				70EA734E215DBB600020B8C3 /* OfferUIModel.swift in Sources */,
 				70D8BC3621675699000522E0 /* AuthenFailVC.swift in Sources */,
 				70D8BBD421605141000522E0 /* WaybillNotDoneVC.swift in Sources */,
+				700347672193D95600DDEE55 /* WaybillLinkInfoCell.swift in Sources */,
+				7003476B2193D96D00DDEE55 /* WaybillDealInfoCell.swift in Sources */,
 				70EA7363215E0A640020B8C3 /* GSDetail_canceledOfferCell.swift in Sources */,
 				70D8BC2A21673973000522E0 /* TransactionDetailsCell.swift in Sources */,
 				70CF4F5C214B41110051A7CA /* const.swift in Sources */,
@@ -1653,6 +1688,7 @@
 				70EA73A6215F48090020B8C3 /* WaybillSepecialInfoCell.swift in Sources */,
 				70CF4F7C214B41120051A7CA /* PersonalExcuteCell.swift in Sources */,
 				70D8BC48216B1607000522E0 /* CarrierQueryOrderHallResult.swift in Sources */,
+				700347732193DD6200DDEE55 /* WaybillReturnListCell.swift in Sources */,
 				70D8BC022165B236000522E0 /* WalletMoneyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

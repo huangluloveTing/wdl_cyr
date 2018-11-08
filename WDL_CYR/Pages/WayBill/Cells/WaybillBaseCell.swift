@@ -74,7 +74,7 @@ extension WaybillBaseCell {
     
     // 点击取消运输
     func toCancelTransformWaybill<T>(param:T) -> Void {
-        self.routeName(routeName: EVENT_NAME_CONTINUETRANSPORT, dataInfo: param)
+        self.routeName(routeName: EVENT_NAME_CANCELTRANSPORT, dataInfo: param)
     }
 }
 

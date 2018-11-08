@@ -15,4 +15,6 @@ let image_waybill_trans     = UIImage(named: "waybill_donetrans") //运输中
 let image_waybill_notrecevie = UIImage(named: "waybill_willtake") //待签收
 let image_waybill_receive   = UIImage(named: "waybill_donetake") //待签收
 let image_waybill_willdone  = UIImage(named: "waybill_willdone") //已签收
-let image_waybill_done      = UIImage(named: "waybill_done") //已签收
+let image_waybill_done      = UIImage(named: "waybill_done")     //已签收
+let image_waybill_notstart  = UIImage(named: "waybill_notstart") // 待办单
+let image_waybill_notstarts  = UIImage(named: "waybill_notstarts") // 待办单

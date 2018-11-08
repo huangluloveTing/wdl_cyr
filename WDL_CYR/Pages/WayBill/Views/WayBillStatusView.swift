@@ -9,11 +9,11 @@
 import UIKit
 
 enum WayBillStatus:Int {
-    case NOT_Start   = 0  // 未开始
+    case NOT_Start   = 0  // 待办单
     case Start          // 待起运
     case Transporting   // 运输中
     case ToReceive      // 待签收
-    case Done           // 完成
+    case Done           // 已签收
 }
 
 
@@ -60,10 +60,12 @@ class WayBillStatusView: UIView {
     
     private func initialProcessItems() {
         self.processItems = []
+        let itemq = WayBillProcessItem(title: "待办单", normalImage: image_waybill_notstart!, focusImage: image_waybill_notstarts!, focus: false)
         let item1 = WayBillProcessItem(title: "待起运", normalImage: image_waybill_notShip!, focusImage: image_waybill_ship!, focus: false)
         let item2 = WayBillProcessItem(title: "运输中", normalImage: image_waybill_notTrans!, focusImage: image_waybill_trans!, focus: false)
         let item3 = WayBillProcessItem(title: "待签收", normalImage: image_waybill_notrecevie!, focusImage: image_waybill_receive!, focus: false)
         let item4 = WayBillProcessItem(title: "已签收", normalImage: image_waybill_willdone!, focusImage: image_waybill_done!, focus: false)
+        self.processItems?.append(itemq)
         self.processItems?.append(item1)
         self.processItems?.append(item2)
         self.processItems?.append(item3)
@@ -79,22 +81,26 @@ class WayBillStatusView: UIView {
         }
         
         if self.status == .NOT_Start {
+            items[0].focus = true
             self.processView.items = items
         }
         
         if self.status == .Start {
             items[0].focus = true
+            items[1].focus = true
             self.processView.items = items
         }
         if self.status == .Transporting {
-            items[0].focus = true
+            items[2].focus = true
             items[1].focus = true
+            items[2].focus = true
             self.processView.items = items
         }
         if self.status == .ToReceive {
             items[0].focus = true
             items[1].focus = true
             items[2].focus = true
+            items[3].focus = true
             self.processView.items = items
         }
         if self.status == .Done {
@@ -102,6 +108,7 @@ class WayBillStatusView: UIView {
             items[1].focus = true
             items[2].focus = true
             items[3].focus = true
+            items[4].focus = true
             self.processView.items = items
         }
     }
