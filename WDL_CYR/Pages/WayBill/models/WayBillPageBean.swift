@@ -19,7 +19,18 @@ struct WayBillPageBean : HandyJSON {
     var total : Int?
 }
 
-
+//1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收  7=被拒绝
+//当出现5或者6时，托运人就不能签收了
+enum WayBillTransportStatus : Int , HandyJSONEnum { // 运单状态
+    case noStart = 0           // 未开始
+    case willToTransport = 1   // 待起运
+    case transporting = 2      // 运输中
+    case willToPickup = 3      // 待签收
+    case driverPickup = 4      // 司机签收
+    case done =  5             // 已签收
+    case tmsPickup =  6        // TMS签收
+    case reject = 7            // 被拒绝
+}
 
 struct WayBillInfoBean : HandyJSON {
     var comeType  : Int?// (integer): 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
