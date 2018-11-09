@@ -93,6 +93,12 @@ class Util {
         return newStr
     }
     
+    static func showImage(imageView:UIImageView , imageUrl:String? , placeholder:UIImage = #imageLiteral(resourceName: "avator")) {
+        let imageResource = URL.init(string: imageUrl ?? "")
+        imageView.kf.setImage(with: imageResource, placeholder: placeholder)
+    }
+    
+    
 }
 
 // 富文本 YYText

@@ -8,6 +8,12 @@
 
 import UIKit
 
+struct ToCommentModel {
+    var logicRate:Int = 0
+    var serviceRate:Int = 0
+    var comment:String?
+}
+
 enum WaybillDisplayMode {
     case unassemble_showAssemble    //未配载，显示配载的情况，即订单来源为 1、2 的情况
     case unassemble_showSpecial     //未配载，运单来源为3 的情况
@@ -26,9 +32,34 @@ class WaybillDetailBaseVC: NormalBaseVC {
     private var currentTableView:UITableView?
     
     private var currentDisplayMode:WaybillDisplayMode?
+    
+    private var currentInfo:TransactionInformation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    
+    // 点击 对应的操作（指派，配载，修改配载）
+    public func handleAction() {}
+    
+    // 当前的回执单数据
+    func currentReturnLists() -> [ZbnTransportReturn] {
+        return []
+    }
+    // 当前的一个评论数据
+    func currentOneCommet() -> WayBillDetailCommentInfo? {
+        return nil
+    }
+    // 已互评的数据
+    func currentCommentAll() -> (WayBillDetailCommentInfo?, WayBillDetailCommentInfo?) {
+        return (nil , nil)
+    }
+    // 我的去评论的数据--- 需重写获取评论数据
+    func toComment(comment:ToCommentModel) -> Void {
+    }
+    // 提交评论 --- 需重写提交评论数据
+    func toCommitComment() -> Void {
     }
 }
 
@@ -39,7 +70,8 @@ extension WaybillDetailBaseVC {
         currentTableView = tableView
         currentTableView?.delegate = self
         currentTableView?.dataSource = self
-        currentTableView?.separatorColor = UIColor(hex: " ")
+        currentTableView?.separatorColor = UIColor(hex: "dddddd")
+        currentTableView?.separatorInset = UIEdgeInsetsMake(0, -30, 0, 0)
         registerAllCells()
     }
     
@@ -49,7 +81,7 @@ extension WaybillDetailBaseVC {
         currentTableView?.registerCell(nib: WaybillGoodsInfoCell.self)
         currentTableView?.registerCell(nib: WaybillDealInfoCell.self)
         currentTableView?.registerCell(nib: WaybillHandleCell.self)
-        currentTableView?.registerCell(nib: WaybillReturnListCell.self)
+        currentTableView?.registerCell(nib: WayBillReceiptCell.self)
         currentTableView?.registerCell(nib: WayBillToCommentCell.self)
         currentTableView?.registerCell(nib: WayBillCommentAllCell.self)
         currentTableView?.registerCell(nib: WayBillOneCommentCell.self)
@@ -59,6 +91,15 @@ extension WaybillDetailBaseVC {
     func currentShowMode(mode:WaybillDisplayMode) -> Void {
         currentDisplayMode = mode
     }
+    
+    //MARK: - 当前页面数据
+    func showCurrentPageInfo(info:TransactionInformation?) -> Void {
+        currentInfo = info
+        self.reloadTableView()
+    }
+    
+    //配置当前的显示
+    
     
     //刷新页面
     func reloadTableView() -> Void {
@@ -83,6 +124,14 @@ extension WaybillDetailBaseVC : UITableViewDelegate , UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return currentSections()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
     }
 }
 
@@ -112,6 +161,10 @@ extension WaybillDetailBaseVC {
     }
     
     func currentSections() -> Int {
+        //如果没有数据，不显示任何数据
+        guard self.currentInfo != nil else {
+            return 0
+        }
         switch self.currentDisplayMode! {
         case .unassemble_showAssemble , .unassemble_showDesignate:
             return unAssembleToDesignateNumSection()
@@ -160,54 +213,90 @@ extension WaybillDetailBaseVC {
     //MARK: - 运单状态的cell
     func waybillStatusCell(tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WayBillDetailStatusCell.self)
+        cell.showInfo(status:  self.currentInfo?.transportStatus ?? .noStart)
         return cell
     }
     //MARK: - 联系人信息的cell
     func waybillLinkInfoCell(tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WaybillLinkInfoCell.self)
-        
+        cell.showInfo(sendName: self.currentInfo?.loadingPersonName,
+                      loadPhone: self.currentInfo?.loadingPersonPhone,
+                      loadAddress: self.currentInfo?.startAddress,
+                      consignee: self.currentInfo?.consigneeName,
+                      consigneeAddress: self.currentInfo?.endAddress,
+                      carrier: self.currentInfo?.carrierName,
+                      driver: self.currentInfo?.dirverName,
+                      vehicleNo: self.currentInfo?.vehicleNo)
         return cell
     }
     //MARK: - 指派，配载等操作d相关的cell
     func waybillHandleCell(tableView:UITableView , handleName:String?) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WaybillHandleCell.self)
-        
+        cell.showHandleName(name: handleName)
         return cell
     }
     
     //MARK: - 成交信息相关的cell
     func waybillDealInfoCell(tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WaybillDealInfoCell.self)
+        cell.showInfo(time: (self.currentInfo?.dealTime ?? 0) / 1000,
+                      unit: Float(self.currentInfo?.dealUnitPrice ?? 0),
+                      total: Float(self.currentInfo?.dealTotalPrice ?? 0),
+                      serviceFee: self.currentInfo?.infoFee,
+                      capacity: self.currentInfo?.goodsWeight)
         return cell
     }
     
     //MARK: - 货源信息相关e的cell
     func waybillGoodsInfoCell(tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WaybillGoodsInfoCell.self)
+        let dealTime = (self.currentInfo?.dealTime ?? 0) / 1000
+        let start = Util.contact(strs: [self.currentInfo?.startProvince ?? "" , self.currentInfo?.startCity ?? "" , self.currentInfo?.startAddress ?? ""])
+        let end = Util.contact(strs: [self.currentInfo?.endProvince ?? "" , self.currentInfo?.endCity ?? "" , self.currentInfo?.endAddress ?? ""])
+        cell.showGoodsInfo(dealTime: dealTime, start: start,
+                           end: end, goodsType: self.currentInfo?.goodsType,
+                           loadTime: (self.currentInfo?.loadingTime ?? 0)/1000,
+                           weight: self.currentInfo?.goodsWeight,
+                           pacakge: self.currentInfo?.packageType,
+                           length: self.currentInfo?.vehicleLength,
+                           vehicleType: self.currentInfo?.vehicleType)
         return cell
     }
     
     //MARK: - 运单回单的相关功能
     func waybillReturnListCell(tableView:UITableView , canEdit:Bool) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(nib: WaybillReturnListCell.self)
+        let cell = tableView.dequeueReusableCell(nib: WayBillReceiptCell.self)
+        cell.maxPic = 3
+        let returnLists = currentReturnLists()
+        cell.showReceiptInfo(info: returnLists)
         return cell
     }
     
     //MARK: - 未评价，评价运单的cell
     func waybillToCommentCell(tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WayBillToCommentCell.self)
+        cell.commentClosure = {[weak self] (logic , service , comment) in
+            let model = ToCommentModel(logicRate: Int(logic), serviceRate: Int(service), comment: comment)
+            self?.toComment(comment: model)
+        }
+        cell.commitClosure = {[weak self] in
+            self?.toCommitComment()
+        }
         return cell
     }
     
     //MARK: - 已完成，展示一个评价信息的cell
     func waybillOneCommentCell(tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WayBillOneCommentCell.self)
+        cell.showComment(info: currentOneCommet())
         return cell
     }
     
     //MAKR: - 已完成，展示互评的cell
     func waybillCommentAllCell(tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WayBillCommentAllCell.self)
+        let (toMeComment , myComment ) = self.currentCommentAll()
+        cell.showCommentInfo(toMeinfo: toMeComment, myCommentInfo: myComment)
         return cell
     }
 }
@@ -518,5 +607,78 @@ extension WaybillDetailBaseVC {
             }
         }
         return waybillToCommentCell(tableView: tableView)
+    }
+}
+
+//MARK: - 获取运单详情
+extension WaybillDetailBaseVC {
+    
+    func loadDetailData(transportNo:String) -> Void {
+        self.showLoading()
+        BaseApi.request(target: API.queryTransportDetail(transportNo), type: BaseResponseModel<TransactionInformation>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.hiddenToast()
+                self?.currrentEvaluatedStatus(info: data.data)
+                self?.showCurrentPageInfo(info: data.data)
+            }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
+    }
+    
+    //MARK: - Evaluated
+    // 签收状态下，根据 返回的数据 ， 判断当前的评价状态
+    func currrentEvaluatedStatus(info:TransactionInformation?) {
+        let evaluatedList = info?.evaluateList
+        let myComment = self.myComment(evaluteList: evaluatedList)
+        let commetMe = self.commentToMe(evaluteList: evaluatedList)
+        if myComment != nil && commetMe != nil { // 互评
+            self.currentDisplayMode = .done_commentAll
+        }
+        if myComment != nil && commetMe == nil { // 我已评价
+            self.currentDisplayMode = .done_commentOne
+        }
+        
+        if myComment == nil && commetMe != nil {
+            self.currentDisplayMode = .done_commentOne
+        }
+    }
+    
+    // 获取我评价别人
+    func myComment(evaluteList:[ZbnEvaluate]?) -> ZbnEvaluate? {
+        var evaluted:ZbnEvaluate? = nil
+        if let evaluteList = evaluteList {
+            let filterEvaluate = evaluteList.filter { (value) -> Bool in
+                return value.evaluateTo == 1 || value.evaluateTo == 2
+            }
+            if filterEvaluate.count > 0 {
+                evaluted = filterEvaluate.first
+            }
+        }
+        return evaluted
+    }
+    
+    // 获取评价我的
+    func commentToMe(evaluteList : [ZbnEvaluate]?) -> ZbnEvaluate? {
+        var evaluted:ZbnEvaluate? = nil
+        if let evaluteList = evaluteList {
+            let filterEvaluate = evaluteList.filter { (value) -> Bool in
+                return value.evaluateTo == 3 || value.evaluateTo == 4
+            }
+            if filterEvaluate.count > 0 {
+                evaluted = filterEvaluate.first
+            }
+        }
+        return evaluted
+    }
+}
+
+
+//MARK: - event
+extension WaybillDetailBaseVC {
+    override func routeName(routeName: String, dataInfo: Any?) {
+        if routeName == WAYBILL_HANDLE_NAME {
+            self.handleAction()
+        }
     }
 }

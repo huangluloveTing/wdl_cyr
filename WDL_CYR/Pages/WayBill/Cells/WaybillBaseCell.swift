@@ -30,6 +30,12 @@ enum CurrentStatus : Int{
     case done = 3
 }
 
+enum OneHandleStatus {
+    case designate  //指派
+    case assemble   //配置
+    case changeAssemble     // 修改配载
+}
+
 class WaybillBaseCell: BaseCell {
     
     public var currentStatus:CurrentStatus = .unassemble

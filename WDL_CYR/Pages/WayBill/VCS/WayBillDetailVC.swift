@@ -11,14 +11,18 @@ import RxDataSources
 import RxSwift
 import RxCocoa
 
-class WayBillDetailVC: BaseVC {
+class WayBillDetailVC: WaybillDetailBaseVC {
 
     @IBOutlet weak var tableView: UITableView!
     
+    public var transportNo: String?
+    
+    public var waybillInfo:WayBillInfoBean?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.registerCells()
+        self.configTableView(tableView: tableView)
+        self.loadDetailData(transportNo: transportNo!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,26 +30,6 @@ class WayBillDetailVC: BaseVC {
     }
     
     override func currentConfig() {
-        Observable.of([SectionModel<String , String>(model: "header", items: ["12323" , "sfsf"])])
-            .bind(to: self.tableView.rx.items(dataSource: self.detailDataSource()))
-            .disposed(by: dispose)
+        
     }
-    
-    func registerCells() {
-        self.registerCell(nibName: "\(WayBillDetailStatusCell.self)", for: self.tableView)
-    }
-}
-
-
-//DataSource
-extension WayBillDetailVC {
-    
-    func detailDataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<String , String>> {
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String , String>>(configureCell: {(dataSource , ts , indexPath , element) -> UITableViewCell in
-                let cell = ts.dequeueReusableCell(withIdentifier: "\(WayBillDetailStatusCell.self)")
-            return cell!
-            })
-        return dataSource
-    }
-    
 }

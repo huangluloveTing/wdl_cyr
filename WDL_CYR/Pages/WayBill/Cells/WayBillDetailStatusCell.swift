@@ -29,7 +29,10 @@ class WayBillDetailStatusCell: BaseCell {
     
     func showInfo(status:WayBillTransportStatus) -> Void {
         switch status {
-        case .willToTransport , .noStart:
+        case .noStart:
+            self.wayBillStatusView?.status = .NOT_Start
+            break
+        case .willToTransport:
             self.wayBillStatusView?.status = WayBillStatus.Start
             break
         case .transporting:

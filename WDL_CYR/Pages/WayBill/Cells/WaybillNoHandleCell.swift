@@ -44,7 +44,7 @@ extension WaybillNoHandleCell {
     
     
     // 通用的信息展示
-    fileprivate func showInfo(info:WayBillInfoBean?) {
+    func showInfo(info:WayBillInfoBean?) {
         self.configStatus(status: (info?.transportStatus)!, statusLabel: self.statusLabel , comment: info?.evaluateCode)
         self.toAddImageForImageView(imageUrl: info?.companyLogo, imageView: self.logoImageView)
         self.showFirstLineInfo(info: info, tyLabel: tyNameLabel, middleLabel: typeLabel, lastLabel: typeDescLabel)

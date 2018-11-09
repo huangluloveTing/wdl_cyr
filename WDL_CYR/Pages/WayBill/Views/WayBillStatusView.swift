@@ -9,11 +9,11 @@
 import UIKit
 
 enum WayBillStatus:Int {
-    case NOT_Start   = 0  // 待办单
-    case Start          // 待起运
-    case Transporting   // 运输中
-    case ToReceive      // 待签收
-    case Done           // 已签收
+    case NOT_Start   = 1    // 待办单
+    case Start              // 待起运
+    case Transporting       // 运输中
+    case ToReceive          // 待签收
+    case Done               // 已签收
 }
 
 
@@ -49,7 +49,7 @@ class WayBillStatusView: UIView {
     }
     
     private func toConfigProcessView() {
-        self.processView.currentProccess = CGFloat(self.status.rawValue) / 4.0
+        self.processView.currentProccess = CGFloat(self.status.rawValue) / 5.0
         self.updateStatus()
     }
     
@@ -117,7 +117,7 @@ class WayBillStatusView: UIView {
 
 fileprivate class WayBillProcessView: UIView {
     
-    private let padding:CGFloat = 45
+    private let padding:CGFloat = 20
     
     private var _currentProccess:CGFloat = 0 //(>= 0 , <=1)
     
@@ -215,7 +215,7 @@ fileprivate class WayBillProcessView: UIView {
 fileprivate class ProcessItemView:UIView {
     
     private lazy var imageView:UIImageView = {
-       let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+       let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         return imageView
     }()

@@ -10,6 +10,23 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+
+enum WaybillStatus {
+    case unAssembleNoAccept     // 未配载订单来源为 1、2， 运单状态为待办单==0，司机状态为已配载==5, (接受和拒绝)
+    case unAssembleSepecial     // 未配载订单来源为 3， 运单状态为待办单==0，司机状态为已配载==5,( 接受和拒绝)
+    case unAssembleToDesignate  // 未配载的订单，发布的货源为无车报价时 运单状态为待办单==0 && 司机状态为无车竞价待指派==2 (指派)
+    case unAssembleToAssemble   // 未配载的订单，发布的货源为有车报价时 运单状态为待办单 ==0 && 司机状态为未配载==0 （配载）
+    case transporting           // transportStatus ,运输中
+    case willTransport          // 待起运
+    case willSign               // 待签收
+    case breakContractForDriver // 司机违约     driverStatus = 6，role == 2  (继续运输 和 取消运输)
+    case breakContractForCarrier// 承运人违约   driverStatus = 6，role == 1(修改配载)
+    case doneNoComment          // 已完成订单无评价
+    case doneOneComment         // 已完成订单一个评价
+    case doneAllComment         // 已完成订单互评
+    case noAnyHandle            // 没有任何操作的 ， 仅仅显示运单状态
+}
+
 enum CurrentTransportTab : Int{ // 当前运单的状态
     case UnAssemble  = 1    // 未配载
     case Doing  = 2         // 未完成
@@ -63,7 +80,6 @@ class WayBillBaseVC: MainBaseVC {
         return loadView
     }()
 }
-
 
 //MARK: - event chain
 extension WayBillBaseVC {
@@ -155,7 +171,41 @@ extension WayBillBaseVC {
     
     // 点击某一个 cell
     func toTapCell(indexPath:IndexPath) -> Void {
-        
+        // 没有接单，不进入详情
+        let info = self.dataSource[indexPath.row - 1]
+        if info.driverStatus == 4 {
+            return
+        }
+        let detailVC = WayBillDetailVC()
+        detailVC.waybillInfo = info
+        detailVC.transportNo = info.transportNo ?? ""
+        let status = configWaybillStatus(info: info)
+        switch status {
+        case .unAssembleNoAccept:
+            break;
+        case .unAssembleSepecial:
+            detailVC.currentShowMode(mode: .unassemble_showSpecial)
+        case .unAssembleToDesignate:
+            detailVC.currentShowMode(mode: .unassemble_showDesignate)
+        case .unAssembleToAssemble:
+            detailVC.currentShowMode(mode: .unassemble_showAssemble)
+        case .transporting :
+            detailVC.currentShowMode(mode: .doing_showTransporting)
+        case .willTransport:
+            detailVC.currentShowMode(mode: .doing_showWillTransport)
+        case .willSign:
+            detailVC.currentShowMode(mode: .doing_showWillSign)
+        case .breakContractForDriver:
+            print("已违约的司机 跳转 未实现")
+            return
+        case .breakContractForCarrier:
+            detailVC.currentShowMode(mode: .doing_showNotStart)
+        case .doneNoComment:
+            detailVC.currentShowMode(mode: .done_notComment)
+        default:
+            detailVC.currentShowMode(mode: .done_commentOne)
+        }
+        self.push(vc: detailVC, title: "运单详情")
     }
 }
 
@@ -185,7 +235,7 @@ extension WayBillBaseVC {
     
     //MARK: - 配载
     func assembleTransportHandle(info:WayBillInfoBean) -> Void {
-        
+        self.toAssemblePage(info: info)
     }
     
     //MARK: - 继续运输
@@ -435,7 +485,8 @@ extension WayBillBaseVC : UITableViewDelegate , UITableViewDataSource {
         }
         var newIndexPath = indexPath
         newIndexPath.row = indexPath.row - 1
-        return self.currentCell(tableView:tableView , indexPath:newIndexPath)
+//        return self.currentCell(tableView:tableView , indexPath:newIndexPath)
+        return currentWaybillCell(indexPath: newIndexPath, tableView: tableView)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -464,7 +515,7 @@ extension WayBillBaseVC {
                 return self.showUnAssembleTwoHandlesCell(info: info, indexPath: indexPath, tableView: tableView)
             }
             if info.comeType == 3 {
-                return showUnAssembleOneHandlesCellNoTruckInfo(info: info, indexPath: indexPath, tableView: tableView)
+                return showUnAssembleTwoHandlesCellNoTruckInfo(info: info, indexPath: indexPath, tableView: tableView)
             }
             return showUnAssembleOneHandleCell(info: info, indexPath: indexPath, tableView: tableView)
         case .Doing:
@@ -506,7 +557,7 @@ extension WayBillBaseVC {
     }
     
     // 订单来源为 3 的时候，即显示 拒绝和接受 按钮的样式 ， 无车辆i信息的情况
-    func showUnAssembleOneHandlesCellNoTruckInfo(info:WayBillInfoBean ,
+    func showUnAssembleTwoHandlesCellNoTruckInfo(info:WayBillInfoBean? ,
                                              indexPath:IndexPath ,
                                              tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WaybillSepecialInfoCell.self)
@@ -572,3 +623,168 @@ extension WayBillBaseVC {
         return cell
     }
 }
+
+//MARK: - method 2 =========
+
+// 匹配对应的运单状态
+extension WayBillBaseVC {
+    
+    //MARK: - 根据运单状态，配置对应的状态
+    func configWaybillStatus(info:WayBillInfoBean) -> WaybillStatus {
+        let transportStatus = info.transportStatus ?? 0 // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派
+        let comType = info.comeType         // 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
+        let driverStatus = info.driverStatus ?? 0 // 司机状态 0=未配载 1=TMS指派 (只要生成定单，就表明一定是已指派)2=无车竞价待指派 3=拒绝指派 4=接受指派 5=已配载 6=已违约 7=违约继续承运 8=违约放弃承运 ,
+        let role = info.role            // 1 承运人 ，2 司机
+        let evalate = (info.evaluateCode != nil)
+        if driverStatus == 6 { // 违约
+            if role == 2 {
+                return .breakContractForDriver
+            }
+        }
+        if driverStatus == 1 {
+            return .breakContractForCarrier
+        }
+        if transportStatus == 0 {
+            if (comType == 1 || comType == 2) && driverStatus == 5 {
+                return .unAssembleNoAccept
+            }
+            if (comType == 3 && driverStatus == 5) {
+                return .unAssembleSepecial
+            }
+            if driverStatus == 2 {
+                return .unAssembleToDesignate
+            }
+            if driverStatus == 0 {
+                return .unAssembleToAssemble
+            }
+        }
+        if transportStatus == 2 {
+            return .transporting
+        }
+        if transportStatus == 1 {
+            return .willTransport
+        }
+        if transportStatus == 3 { // 待签收
+            return .willSign
+        }
+        
+        if transportStatus > 3 {
+            if evalate == true {
+                return .doneAllComment
+            }
+            else {
+                return .doneNoComment
+            }
+        }
+        
+        return .noAnyHandle
+    }
+    
+    
+//    case unAssembleNoAccept     // 未配载订单来源为 1、2， 运单状态为待办单==0，司机状态为已配载==5, (接受和拒绝)
+//    case unAssembleSepecial     // 未配载订单来源为 3， 运单状态为待办单==0，司机状态为已配载==5,( 接受和拒绝)
+//    case unAssembleToDesignate  // 未配载的订单，发布的货源为无车报价时 运单状态为待办单==0 && 司机状态为无车竞价待指派==2 (指派)
+//    case unAssembleToAssemble   // 未配载的订单，发布的货源为有车报价时 运单状态为待办单 ==0 && 司机状态为未配载==0 （配载）
+//    case transporting           // transportStatus ,运输中
+//    case willTransport          // 待起运
+//    case willSign               // 待签收
+//    case breakContractForDriver // 司机违约     driverStatus = 6，role == 2  (继续运输 和 取消运输)
+//    case breakContractForCarrier// 承运人违约   driverStatus = 6，role == 1(修改配载)
+//    case doneNoComment          // 已完成订单无评价
+//    case doneOneComment         // 已完成订单一个评价
+//    case doneAllComment         // 已完成订单互评
+//    case noAnyHandle            // 没有任何操作的 ， 仅仅显示运单状态
+    func currentWaybillCell(indexPath:IndexPath , tableView:UITableView) -> UITableViewCell {
+        let info = self.dataSource[indexPath.row]
+        let status = configWaybillStatus(info: info)
+        switch status {
+        case .unAssembleNoAccept:
+            return unAssembleNoAcceptCell(info: info, tableView: tableView)
+        case .unAssembleSepecial:
+            return unAssembleSepecialCell(info: info, indexPath: indexPath, tableView: tableView)
+        case .unAssembleToDesignate:
+            return showUnAssembleOneHandleCell(info: info, indexPath: indexPath, tableView: tableView)
+        case .unAssembleToAssemble:
+            return unAssembleToAssembleCell(info: info, tableView: tableView)
+        case .transporting , .willSign , .willTransport:
+            return noHandleCell(info: info, tableView: tableView)
+        case .breakContractForDriver:
+            return breakContractForDriverCell(info: info, tableView: tableView)
+        case .breakContractForCarrier:
+            return breakContractForCarrierCell(info: info, tableView: tableView)
+        case .doneNoComment:
+            return noHandleCell(info: info, tableView: tableView)
+        default:
+            return noHandleCell(info: info, tableView: tableView)
+        }
+    }
+    
+    
+    // unAssembleNoAccept
+    func unAssembleNoAcceptCell(info:WayBillInfoBean? ,tableView:UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(nib: WaybillCarrierInfoCell.self)
+        cell.showInfoAcceptAndReject(info: info)
+        return cell
+    }
+    // unAssembleSepecial
+    func unAssembleSepecialCell(info:WayBillInfoBean? ,indexPath:IndexPath , tableView:UITableView) -> UITableViewCell {
+        return showUnAssembleTwoHandlesCellNoTruckInfo(info: info, indexPath: indexPath, tableView: tableView)
+    }
+    
+    // unAssembleToDesignate
+    func unAssembleToDesignateCell(info:WayBillInfoBean? , tableView:UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(nib: WaybillCarrierInfoCell.self)
+        cell.showInfoWillDesigned(info: info)
+        return cell
+    }
+    
+    // unAssembleToAssemble
+    func unAssembleToAssembleCell(info:WayBillInfoBean? , tableView:UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(nib: WaybillCarrierInfoCell.self)
+        cell.showInfoWillAssemble(info: info)
+        return cell
+    }
+    // transporting , willTransport , willSign
+    func noHandleCell(info:WayBillInfoBean? , tableView:UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(nib: WaybillNoHandleCell.self);
+        cell.showInfo(info: info)
+        return cell;
+    }
+    
+    // breakContractForDriver
+    func breakContractForDriverCell(info:WayBillInfoBean? , tableView:UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(nib: WaybillCarrierInfoCell.self)
+        cell.showInfoAcceptAndReject(info: info)
+        return cell
+    }
+    
+    // breakContractForCarrier
+    func breakContractForCarrierCell(info:WayBillInfoBean? ,tableView:UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(nib: WaybillCarrierInfoCell.self)
+        cell.showInfoDoingBreakContract(info: info)
+        return cell
+    }
+    
+    // doneNoComment
+    func doneNoCommentCell(info:WayBillInfoBean? , tableView:UITableView) -> UITableViewCell {
+        return self.noHandleCell(info:info , tableView:tableView)
+    }
+    
+    // some other
+    func doneCommentedCell(info:WayBillInfoBean , tableView:UITableView) -> UITableViewCell {
+        return noHandleCell(info:info , tableView:tableView)
+    }
+}
+
+
+//  1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派 ,
+//总体备注== 承运人登录：driverId != userId ；司机登录：driverId == userId
+//未配载==0(有车报价) 和 无车竞价待指派==2（无车报价） 相当于一个概念都是未配载 可以理解为：有车报价未配载和无车报价未配载
+//
+//承运人可看的按钮“配载”：发布的货源为有车报价时 运单状态为待办单 ==0 && 司机状态为未配载==0
+//
+//承运人可看的按钮“指派”：发布的货源为无车报价时 运单状态为待办单==0 && 司机状态为无车竞价待指派==2
+//
+//司机可看的按钮“接 受 / 拒 绝”：承运人指派后（运单状态为待办单==0，司机状态为已配载==5），司机态可以操作 接受和拒绝
+//
+//司机可看的按钮“配载”：司机接受配载后，可以重新更新配载，只能更改运输车辆信息 并且 只能选择自己名下的车辆信息

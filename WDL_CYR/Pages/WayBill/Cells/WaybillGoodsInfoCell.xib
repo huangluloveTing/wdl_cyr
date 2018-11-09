@@ -179,6 +179,17 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dealTimeLabel" destination="dsY-CS-spK" id="Req-VD-EXK"/>
+                <outlet property="endLabel" destination="0g4-Td-kM5" id="kfG-UC-ih0"/>
+                <outlet property="goodsTypeLabel" destination="qCA-fM-ZSm" id="bbZ-DO-ngR"/>
+                <outlet property="goodsWeightLabel" destination="M3W-mA-hah" id="yqV-o7-MU4"/>
+                <outlet property="lengthLabel" destination="w2Y-WY-naj" id="FTq-2S-wrM"/>
+                <outlet property="loadTimeLabel" destination="ShB-ey-Uqg" id="gi9-6H-iad"/>
+                <outlet property="packageTypeLabel" destination="F5I-Vj-2lB" id="azj-xH-Z8s"/>
+                <outlet property="startLabel" destination="WLC-PS-uvE" id="wvy-4b-u8T"/>
+                <outlet property="vehicleTypeLabel" destination="klj-fV-yr5" id="rDt-qJ-oFg"/>
+            </connections>
             <point key="canvasLocation" x="223.19999999999999" y="144.3778110944528"/>
         </tableViewCell>
     </objects>

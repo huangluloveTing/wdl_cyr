@@ -32,8 +32,8 @@ enum API {
     case getOfferByOrderHallId(OrderHallOfferQueryModel) // 根据货源ID获取报价详情
     case ownTransportPage(QuerytTransportListBean) // 获取我的运单列表
     case carrierAllButtonAcceptTransportState(Int, TimeInterval?, String , String?)//承运人操作运单（拒绝，接受，取消运输，继续运输）
-  
-    
+    case queryTransportDetail(String)       // 获取运单详情
+    case designateWaybill(String , String)  // 指派运单
 }
 
 
@@ -80,6 +80,10 @@ func apiPath(api:API) -> String {
         return "/carrierTransport/findCarrierTransportList"
     case .carrierAllButtonAcceptTransportState(_):
         return "/carrierTransport/carrierHandleTransport"
+    case .queryTransportDetail(_):
+        return "/carrierTransport/findCarrierTransportList"
+    case .designateWaybill(_, _):
+        return "/carrierTransport/assignmentWaybill"
     }
 }
 
@@ -139,6 +143,11 @@ func apiTask(api:API) -> Task {
             params["hallId"] = hallId
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
+    case .queryTransportDetail(let transportNo):
+        return .requestParameters(parameters: ["transportNo":transportNo], encoding: URLEncoding.default)
+        
+    case .designateWaybill(let phone, let transportNo):
+        return .requestParameters(parameters: [  "phone": phone,"transportId": transportNo], encoding: JSONEncoding.default)
     }
 }
 
@@ -148,7 +157,8 @@ func apiMethod(api:API) -> Moya.Method {
     case .getCreateHallDictionary(),
          .registerSms(_) ,
          .selectZbnConsignor(_),
-         .findCarrierInfoFee(_):
+         .findCarrierInfoFee(_),
+         .queryTransportDetail(_):
         return .get
     default:
         return .post

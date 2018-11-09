@@ -19,12 +19,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="370" height="87.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FD0-qM-hG5">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FD0-qM-hG5">
                         <rect key="frame" x="0.0" y="0.0" width="370" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="KBH-v6-MIp"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" red="0.023529411764705882" green="0.75294117647058822" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>
@@ -35,6 +38,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="handleButton" destination="FD0-qM-hG5" id="V8z-aX-IQC"/>
+            </connections>
             <point key="canvasLocation" x="177.59999999999999" y="173.61319340329837"/>
         </tableViewCell>
     </objects>
