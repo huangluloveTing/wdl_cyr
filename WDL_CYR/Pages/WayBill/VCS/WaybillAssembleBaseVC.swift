@@ -255,7 +255,6 @@ extension WaybillAssembleBaseVC {
         let header = WaybillAssembleHeader.instance(title: title, showDelete: show)
         return header
     }
-    
 }
 
 

@@ -506,6 +506,8 @@ extension WayBillBaseVC : UITableViewDelegate , UITableViewDataSource {
     }
 }
 
+//MARK: - 运单逻辑判断 1 =================
+
 extension WayBillBaseVC {
     func currentCell(tableView:UITableView , indexPath:IndexPath) -> UITableViewCell {
         let info = self.dataSource[indexPath.row]
@@ -624,7 +626,7 @@ extension WayBillBaseVC {
     }
 }
 
-//MARK: - method 2 =========
+//MARK: - 运单逻辑判断 2  =========
 
 // 匹配对应的运单状态
 extension WayBillBaseVC {
