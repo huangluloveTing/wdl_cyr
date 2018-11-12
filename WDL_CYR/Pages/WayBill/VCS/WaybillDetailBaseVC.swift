@@ -110,6 +110,10 @@ extension WaybillDetailBaseVC {
         print(mode)
         currentTableView?.reloadData()
     }
+    
+    public func currentWaybillDetailInfo() -> TransactionInformation? {
+        return currentInfo
+    }
 }
 
 //MARK: - UITableViewDelegate , UITableViewDataSource

@@ -61,9 +61,12 @@ extension WaybillAssembleBaseVC {
     
     func configTableView(tableView:UITableView) -> Void {
         currentTableView = tableView
+        currentTableView?.delegate = self
+        currentTableView?.dataSource = self
+        currentTableView?.backgroundColor = UIColor(hex: "eeeeee")
         currentTableView?.separatorStyle = .none
         currentTableView?.separatorColor = UIColor(hex: "DDDDDD")
-        currentTableView?.separatorInset = UIEdgeInsetsMake(0, 30, 0, 0)
+        currentTableView?.separatorInset = UIEdgeInsetsMake(0, 30, 0, 30)
         currentTableView?.registerCell(className: UITableViewCell.self)
         currentTableView?.registerCell(nib: WaybillAssembleContentCell.self)
         currentTableView?.registerCell(nib: WaybillInputAssembleAmountCell.self)

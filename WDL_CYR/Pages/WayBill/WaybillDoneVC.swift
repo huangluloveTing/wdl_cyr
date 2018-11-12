@@ -40,16 +40,30 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
     
     // 点击状态
     override func statusChooseHandle(index: Int) {
+        if index == 0 {
+            self.currentStatus = -1
+        }
+        self.currentStatus = 6
+        self.beginRefresh()
         
     }
     
     // 选择时间
     override func timeChooseHandle(startTime: TimeInterval?, endTime: TimeInterval?, tapSure sure: Bool) {
-        
+        if sure == true {
+            self.currentStartTime = startTime
+            self.currentEndTime = endTime
+            self.beginRefresh()
+        }
+        self.dropView.currenDropView?.hiddenDropView()
     }
 
     override func headerRefresh() {
         self.loadDoneDatas(refresh: true)
+    }
+    
+    override func curreenStatusTitles() -> [String] {
+        return ["全部","已签收"]
     }
 }
 
@@ -58,11 +72,17 @@ extension WaybillDoneVC {
     
     func loadDoneDatas(refresh:Bool) -> Void {
         self.loadCompletedData(transportStatus: self.currentStatus, startTime: self.currentStartTime, endTime: self.currentEndTime, search: "") { (info) in
+            self.endRefresh()
             if refresh == true {
                 self.refreshContents(items: info?.list ?? [])
-                return
+            } else {
+                self.addContentItems(items: info?.list ?? [])
             }
-            self.addContentItems(items: info?.list ?? [])
+            if self.currentDataSource.count  >= (info?.total ?? 0)  {
+                self.endRefreshAndNoMoreData()
+            } else {
+                self.resetFooter()
+            }
         }
     }
 }

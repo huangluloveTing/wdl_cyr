@@ -32,4 +32,12 @@ class WayBillDetailVC: WaybillDetailBaseVC {
     override func currentConfig() {
         
     }
+    
+    
+    override func toCommitComment() {
+        let assembleVC = WaybillAssembleVC()
+        assembleVC.pageInfo = currentWaybillDetailInfo()
+        assembleVC.currentDisplayMode = .driverAssemble
+        self.push(vc: assembleVC, title: "配载")
+    }
 }

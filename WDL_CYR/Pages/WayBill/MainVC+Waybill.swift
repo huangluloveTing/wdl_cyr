@@ -39,17 +39,17 @@ extension MainBaseVC {
     }
     
     // 去配载界面
-    func toAssemblePage(info:WayBillInfoBean) -> Void {
+    func toAssemblePage(info:TransactionInformation) -> Void {
         let assembleVC = WaybillAssembleVC()
         assembleVC.pageInfo = info
-        if info.comeType == 1 {
+        if info.sourceType == 1 {
             assembleVC.currentDisplayMode = .driverAssemble
         }
-        if info.comeType == 2 {
+        if info.sourceType == 2 {
             assembleVC.currentDisplayMode = .carrierAssemble
         }
         
-        if info.comeType == 3 {
+        if info.sourceType == 3 {
             assembleVC.currentDisplayMode = .planAssemble
         }
         

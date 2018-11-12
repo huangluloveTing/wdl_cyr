@@ -74,11 +74,20 @@ class WayBillBaseVC: MainBaseVC {
     // 搜索的回调
     func currentSearch(text:String) -> Void {}
     
+    // 当前状态数据
+    func curreenStatusTitles() -> [String] {
+        return GoodsStatus
+    }
+    
     //MARK: - lazy
     public lazy var loadTimeView : WaybillChangeLoadTimeView? = {
        let loadView = WaybillChangeLoadTimeView.instance()
         return loadView
     }()
+    
+    public var currentDataSource:[WayBillInfoBean] {
+        return self.dataSource
+    }
 }
 
 //MARK: - event chain
@@ -141,14 +150,14 @@ extension WayBillBaseVC {
     func toDesiginWaybill(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
             let info = self.dataSource[indexPath.row - 1]
-            self.designateTransportHandle(info: info)
+            self.designateTransportHandle(info: info , indexPath: indexPath)
         }
     }
     // 点击配载的回调
     func toAssembleWaybill(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
             let info = self.dataSource[indexPath.row - 1]
-            self.designateTransportHandle(info: info)
+            self.assembleTransportHandle(info: info)
         }
     }
     // 点击取消运输
@@ -173,16 +182,14 @@ extension WayBillBaseVC {
     func toTapCell(indexPath:IndexPath) -> Void {
         // 没有接单，不进入详情
         let info = self.dataSource[indexPath.row - 1]
-        if info.driverStatus == 4 {
-            return
-        }
         let detailVC = WayBillDetailVC()
         detailVC.waybillInfo = info
         detailVC.transportNo = info.transportNo ?? ""
         let status = configWaybillStatus(info: info)
         switch status {
         case .unAssembleNoAccept:
-            break;
+            print("未接受不 跳转")
+            return
         case .unAssembleSepecial:
             detailVC.currentShowMode(mode: .unassemble_showSpecial)
         case .unAssembleToDesignate:
@@ -229,13 +236,17 @@ extension WayBillBaseVC {
     }
     
     //MARK: - 指派
-    func designateTransportHandle(info:WayBillInfoBean) -> Void {
-        
+    func designateTransportHandle(info:WayBillInfoBean , indexPath:IndexPath) -> Void {
+        self.toChooseDriver(title: "指派") { [weak self](cap) in
+            let phone = cap.driverPhone
+            let code = info.transportNo
+            self?.designateWaybill(phone: phone, transportNo: code ?? "", indexPath: indexPath)
+        }
     }
     
     //MARK: - 配载
     func assembleTransportHandle(info:WayBillInfoBean) -> Void {
-        self.toAssemblePage(info: info)
+//        self.toAssemblePage(info: info)
     }
     
     //MARK: - 继续运输
@@ -280,11 +291,15 @@ extension WayBillBaseVC : DropHintViewDataSource {
         if index == 0 {
             if self.timeChooseView == nil {
                 self.timeChooseView = DropInputDateView.instanceDateView()
+                self.timeChooseView?.dropInputClosure = {[weak self](start , end , sure) in
+                    self?.timeChooseHandle(startTime: start, endTime: end, tapSure: sure)
+                }
             }
             return timeChooseView!
         } else {
             if self.statusView == nil {
-                self.statusView = statusDropViewGenerate(statusTitles: GoodsStatus)
+                self.statusView = statusDropViewGenerate(statusTitles: curreenStatusTitles())
+                
             }
             return self.statusView!
         }
@@ -351,6 +366,13 @@ extension WayBillBaseVC {
     //
     func setCurrentTabStatus(tab:CurrentTransportTab) -> Void {
         self.currentType = tab
+    }
+    
+    // begin refresh
+    func beginRefresh() -> Void {
+        if let header = self.currentTableView.mj_header {
+            header.beginRefreshing()
+        }
     }
 }
 
@@ -466,6 +488,18 @@ extension WayBillBaseVC {
                            hallId:String ,
                            closure:((Any) -> ())?) -> Void {
         transportHandle(status: 7, transportNo: transportNo,loadingTime: loadTime , hallId: hallId, closure: closure)
+    }
+    
+    // a指派
+    func designateWaybill(phone:String , transportNo:String , indexPath:IndexPath) -> Void {
+        self.showLoading()
+        BaseApi.request(target: API.designateWaybill(phone, transportNo), type: BaseResponseModel<String>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.deleteCurrentWaybill(indexPath: indexPath)
+            }, onError: {[weak self] (error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
     }
 }
 
@@ -638,38 +672,75 @@ extension WayBillBaseVC {
         let driverStatus = info.driverStatus ?? 0 // 司机状态 0=未配载 1=TMS指派 (只要生成定单，就表明一定是已指派)2=无车竞价待指派 3=拒绝指派 4=接受指派 5=已配载 6=已违约 7=违约继续承运 8=违约放弃承运 ,
         let role = info.role            // 1 承运人 ，2 司机
         let evalate = (info.evaluateCode != nil)
-        if driverStatus == 6 { // 违约
-            if role == 2 {
-                return .breakContractForDriver
-            }
-        }
-        if driverStatus == 1 {
-            return .breakContractForCarrier
-        }
-        if transportStatus == 0 {
-            if (comType == 1 || comType == 2) && driverStatus == 5 {
+        if comType == 1 {   // 来源1
+            if transportStatus == 0 { // 待办单
+                if driverStatus == 4 {  // 未接受
+                    return .unAssembleToAssemble
+                }
+                if driverStatus == 6 { // 已违约的情况
+                    if role == 2 {
+                        return .breakContractForDriver
+                    }
+                    return .breakContractForCarrier
+                }
                 return .unAssembleNoAccept
             }
-            if (comType == 3 && driverStatus == 5) {
-                return .unAssembleSepecial
+        }
+        
+        if comType == 2 { // 来源2
+            if transportStatus == 0 { // 待办单
+                if driverStatus == 4 {  // 未接受
+                    return .unAssembleToAssemble
+                }
+                if driverStatus == 6 { // 已违约的情况
+                    if role == 2 {
+                        return .breakContractForDriver
+                    }
+                    return .breakContractForCarrier
+                }
+                return .unAssembleNoAccept
             }
-            if driverStatus == 2 {
-                return .unAssembleToDesignate
+        }
+        
+        if comType == 3 {
+            if transportStatus == 0 { // 待办单
+                if driverStatus == 4 {  // 未接受
+                    return .unAssembleToAssemble
+                }
+                if driverStatus == 6 { // 已违约的情况
+                    if role == 2 {
+                        return .breakContractForDriver
+                    }
+                    return .breakContractForCarrier
+                }
+                return .unAssembleNoAccept
             }
-            if driverStatus == 0 {
-                return .unAssembleToAssemble
+        }
+        
+        if comType == 4 {
+            if transportStatus == 0 { // 待办单
+                if driverStatus == 4 {  // 已接受
+                    return .unAssembleToDesignate
+                }
+                if driverStatus == 6 { // 已违约的情况
+                    if role == 2 {
+                        return .breakContractForDriver
+                    }
+                    return .breakContractForCarrier
+                }
+                return .unAssembleNoAccept
             }
+        }
+        
+        if transportStatus == 1 {
+            return .willTransport
         }
         if transportStatus == 2 {
             return .transporting
         }
-        if transportStatus == 1 {
-            return .willTransport
-        }
-        if transportStatus == 3 { // 待签收
+        if transportStatus == 3 {
             return .willSign
         }
-        
         if transportStatus > 3 {
             if evalate == true {
                 return .doneAllComment

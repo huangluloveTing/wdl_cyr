@@ -71,6 +71,9 @@ class WaybillCarrierInfoCell: WaybillBaseCell {
             if self.waybillInfo?.comeType ==  4 { // 指派
                 self.toDesignateWaybill(param: self)
             }
+            if self.waybillInfo?.comeType == 1 || self.waybillInfo?.comeType == 2 || self.waybillInfo?.comeType == 3 {
+                self.toAssembleWaybill(param: self)
+            }
         }
         if self.currentStatus == .doing {
             if self.waybillInfo?.driverStatus == 6 { // 已违约的情况

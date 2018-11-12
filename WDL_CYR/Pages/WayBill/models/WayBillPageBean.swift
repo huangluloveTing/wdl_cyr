@@ -134,6 +134,8 @@ struct TransactionInformation : HandyJSON {
     var vehicleType : String? // (string): 车型 ,
     var vehicleWidth : String? // (string): 车宽
     var evaluateList : [ZbnEvaluate]? // 评价信息
+    var vehicleStatuc : Int = 1 // (integer): TMS货源订单配载情况 1： 未配载 2，已配载 ,
+    var sourceType : Int = 1    // (integer): 货源来源 1:来至ZBN，2:来至TMS , 3:来自SAP
 }
 
 struct ZbnLocation : HandyJSON { // 定位信息

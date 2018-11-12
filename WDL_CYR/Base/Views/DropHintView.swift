@@ -53,7 +53,7 @@ class DropHintView: UIView {
     private var dropViews:[DropViewItem]?
     private var currentIndex:Int?
     
-    private var currenDropView:DropViewContainer? // 记录当前的出现的下拉
+    var currenDropView:DropViewContainer? // 记录当前的出现的下拉
     private var beforeDropView:DropViewContainer? // 记录即将出现的下拉
     
     private var allTabButton:[MyButton] = []    // 所有的tab 按钮

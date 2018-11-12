@@ -28,8 +28,8 @@ class WaybillAssembleContentCell: BaseCell {
 
 extension WaybillAssembleContentCell {
     func showInfo(title:String? , content:String? , hight:Bool) -> Void {
-        self.detailLabel.text = title
-        self.contentLabel.text = content
+        self.contentLabel.text = title
+        self.detailLabel.text = content
         if hight == true {
             self.detailLabel.textColor = UIColor(hex: "333333")
             self.contentLabel.textColor = UIColor(hex: "333333")
