@@ -9,10 +9,11 @@
 import UIKit
 import HandyJSON
 
-enum AssembleMode {
-    case driverAssemble     // 司机配载
-    case carrierAssemble    // 承运人配载
-    case planAssemble       // 运输计划配载
+enum WayBillSourceTypeMode : Int  {
+    case driverAssemble  = 1    // 司机配载 对应 运单来源 为 1
+    case carrierAssemble  = 2  // 承运人配载 对应 运单 来源 为 2
+    case planAssemble   = 3    // 运输计划配载 对应运单来源 为 3
+    case designate  = 4        // 指派 对应 运单来源为 4
 }
 
 struct WaybillAssembleCommitModel : HandyJSON {
@@ -35,6 +36,7 @@ struct WaybillAssembleUIModel {
     var total:Float?
     var carrierNum:Float?   // 承运数量
     var disVolumn:Float?    // 分配吨数 --- u运输计划
+    var remainNum:Float?    // 剩余分配数量
 }
 
 
@@ -42,12 +44,13 @@ class WaybillAssembleBaseVC: NormalBaseVC {
     
     private var currentTableView:UITableView?
     
-    public var currentDisplayMode : AssembleMode = .driverAssemble
+    public var currentDisplayMode : WayBillSourceTypeMode = .driverAssemble
     
     private var currentAssembleModels:[WaybillAssembleUIModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     //MARK: - Override
@@ -73,9 +76,11 @@ extension WaybillAssembleBaseVC {
         currentTableView?.registerCell(nib: WaybillMultiRemailInfoCell.self)
     }
     
-    func update(indexPath:IndexPath , model:WaybillAssembleUIModel) -> Void {
-        self.currentAssembleModels[indexPath.section] = model
-        self.currentTableView?.reloadData()
+    func update(indexPath:IndexPath , model:WaybillAssembleUIModel?) -> Void {
+        if model != nil {
+            self.currentAssembleModels[indexPath.section] = model!
+            self.currentTableView?.reloadData()
+        }
     }
     
     func configUIModel(models:[WaybillAssembleUIModel]) -> Void {
@@ -120,7 +125,10 @@ extension WaybillAssembleBaseVC : UITableViewDelegate , UITableViewDataSource {
 
 extension WaybillAssembleBaseVC {
     
-    
+    //MARK: - 当前展示 数据
+    public func currentAssembleData() -> [WaybillAssembleUIModel] {
+        return self.currentAssembleModels
+    }
 }
 
 
@@ -242,6 +250,7 @@ extension WaybillAssembleBaseVC {
         }
         if row == 2 {
             let cell = tableView.dequeueReusableCell(nib: WaybillInputAssembleAmountCell.self)
+            cell.showInfo(num: info.disVolumn, canEdit: row == (currentAssembleData().count - 1))
             cell.inputClosure = { [weak self] (text) in
                 self?.inputAssembleWeight(indexPath: indexPath, input: text)
             }

@@ -33,6 +33,7 @@ enum WayBillTransportStatus : Int , HandyJSONEnum { // 运单状态
 }
 
 struct WayBillInfoBean : HandyJSON {
+    var completeStatus:Int = 1 //运单状态 1：未配载，2 ：未完成， 3：完成 ,
     var carrierId : String? // (string): 承运人id ,
     var comeType  : Int?// (integer): 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
     var companyLogo : String? // 托运人 logo

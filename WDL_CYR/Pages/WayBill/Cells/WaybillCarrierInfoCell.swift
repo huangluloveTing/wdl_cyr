@@ -145,6 +145,7 @@ extension WaybillCarrierInfoCell {
 extension WaybillCarrierInfoCell {
     // 通用的信息展示
     fileprivate func showInfo(info:WayBillInfoBean?) {
+        self.waybillInfo = info
         self.configStatus(status: (info?.transportStatus)!, statusLabel: self.statusLabel ,comment: info?.evaluateCode)
         self.toShowWaybillStatusSign(status: (info?.transportStatus)!, for: self.statusImageView)
         self.showFirstLineInfo(info: info, tyLabel: desiginNameLabel, middleLabel: desiginTypeLabel, lastLabel: waybillTypeDescLabel)

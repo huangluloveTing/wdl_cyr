@@ -50,6 +50,7 @@
 		701F10E6217EB7DE00693936 /* OfferQueryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10E5217EB7DE00693936 /* OfferQueryModels.swift */; };
 		701F10E8217F06E400693936 /* OfferBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10E7217F06E400693936 /* OfferBaseVC.swift */; };
 		701F10EA217F082300693936 /* OfferResultModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10E9217F082300693936 /* OfferResultModels.swift */; };
+		70220E63219AB2F8005D9645 /* WaybillDisplayStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70220E62219AB2F8005D9645 /* WaybillDisplayStatus.swift */; };
 		7039671B21830E2300CE34B7 /* DropInputDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7039671A21830E2300CE34B7 /* DropInputDateView.swift */; };
 		7039671D21830F6E00CE34B7 /* DropInputDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7039671C21830F6E00CE34B7 /* DropInputDateView.xib */; };
 		7041296C217775320078A46F /* ResearchConsignorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7041296A217775320078A46F /* ResearchConsignorVC.swift */; };
@@ -376,6 +377,7 @@
 		701F10E5217EB7DE00693936 /* OfferQueryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferQueryModels.swift; sourceTree = "<group>"; };
 		701F10E7217F06E400693936 /* OfferBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferBaseVC.swift; sourceTree = "<group>"; };
 		701F10E9217F082300693936 /* OfferResultModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferResultModels.swift; sourceTree = "<group>"; };
+		70220E62219AB2F8005D9645 /* WaybillDisplayStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillDisplayStatus.swift; sourceTree = "<group>"; };
 		7039671A21830E2300CE34B7 /* DropInputDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropInputDateView.swift; sourceTree = "<group>"; };
 		7039671C21830F6E00CE34B7 /* DropInputDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropInputDateView.xib; sourceTree = "<group>"; };
 		7041296A217775320078A46F /* ResearchConsignorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchConsignorVC.swift; sourceTree = "<group>"; };
@@ -1349,6 +1351,7 @@
 				785CE91F2186F8D000EEDE43 /* QuerytTransportListBean.swift */,
 				785CE9212186FA1B00EEDE43 /* WayBillPageBean.swift */,
 				70EA7376215E650A0020B8C3 /* WayBillModels.swift */,
+				70220E62219AB2F8005D9645 /* WaybillDisplayStatus.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -1711,6 +1714,7 @@
 				70ED01FC21953562001DB4D1 /* WaybillAssembleBaseVC.swift in Sources */,
 				70CF4F5F214B41110051A7CA /* Response+serial.swift in Sources */,
 				70D8BC32216748E5000522E0 /* AuthenIndividualInfoVC.swift in Sources */,
+				70220E63219AB2F8005D9645 /* WaybillDisplayStatus.swift in Sources */,
 				70140887219422CE000D5CB1 /* WayBillReceiptCell.swift in Sources */,
 				7041298E21784DB60078A46F /* ConsignorDetailVC.swift in Sources */,
 				70CF4FD0214B41120051A7CA /* AMapHandleManager.swift in Sources */,

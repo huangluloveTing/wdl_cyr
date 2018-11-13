@@ -34,8 +34,14 @@ class WaybillInputAssembleAmountCell: BaseCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+}
+
+extension WaybillInputAssembleAmountCell {
+    
+    func showInfo(num:Float? , canEdit:Bool) -> Void {
+        self.textField.text = String(num ?? 0)
+        self.textField.isUserInteractionEnabled = canEdit
+    }
 }

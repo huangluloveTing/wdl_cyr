@@ -39,19 +39,10 @@ extension MainBaseVC {
     }
     
     // 去配载界面
-    func toAssemblePage(info:TransactionInformation) -> Void {
+    func toAssemblePage(info:TransactionInformation? , mode:WayBillSourceTypeMode) -> Void {
         let assembleVC = WaybillAssembleVC()
         assembleVC.pageInfo = info
-        if info.sourceType == 1 {
-            assembleVC.currentDisplayMode = .driverAssemble
-        }
-        if info.sourceType == 2 {
-            assembleVC.currentDisplayMode = .carrierAssemble
-        }
-        
-        if info.sourceType == 3 {
-            assembleVC.currentDisplayMode = .planAssemble
-        }
+        assembleVC.currentDisplayMode = mode
         
         self.push(vc: assembleVC, title: "配载")
     }

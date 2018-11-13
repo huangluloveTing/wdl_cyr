@@ -185,30 +185,32 @@ extension WayBillBaseVC {
         let detailVC = WayBillDetailVC()
         detailVC.waybillInfo = info
         detailVC.transportNo = info.transportNo ?? ""
-        let status = configWaybillStatus(info: info)
+        
+        assembleTransportHandle(info: info)
+        return
+        
+        let status = configWaybillDisplayStatus(info: info)
         switch status {
-        case .unAssembleNoAccept:
-            print("未接受不 跳转")
-            return
-        case .unAssembleSepecial:
+        case .unAssemble_comType_3_toAssemble , .unAssemble_comType_1_2_toAssemble:
             detailVC.currentShowMode(mode: .unassemble_showSpecial)
-        case .unAssembleToDesignate:
+        case .unAssemble_comType_4_toDesignate:
             detailVC.currentShowMode(mode: .unassemble_showDesignate)
-        case .unAssembleToAssemble:
-            detailVC.currentShowMode(mode: .unassemble_showAssemble)
-        case .transporting :
+        case .notDone_transporting :
             detailVC.currentShowMode(mode: .doing_showTransporting)
-        case .willTransport:
+        case .notDone_willTransport:
             detailVC.currentShowMode(mode: .doing_showWillTransport)
-        case .willSign:
+        case .notDone_willSign:
             detailVC.currentShowMode(mode: .doing_showWillSign)
-        case .breakContractForDriver:
+        case .notDone_breakContractForDriver:
             print("已违约的司机 跳转 未实现")
             return
-        case .breakContractForCarrier:
+        case .notDone_breakContractForCarrier:
             detailVC.currentShowMode(mode: .doing_showNotStart)
-        case .doneNoComment:
+        case .done(_):
             detailVC.currentShowMode(mode: .done_notComment)
+        case .unAssemble_comType_1_2_noAccept , .unAssemble_comType_3_noAccept:
+            print("未接受不 跳转")
+            return
         default:
             detailVC.currentShowMode(mode: .done_commentOne)
         }
@@ -246,7 +248,9 @@ extension WayBillBaseVC {
     
     //MARK: - 配载
     func assembleTransportHandle(info:WayBillInfoBean) -> Void {
-//        self.toAssemblePage(info: info)
+        let tranInfo = TransactionInformation.deserialize(from: info.toJSON())
+        let mode = WayBillSourceTypeMode(rawValue: info.comeType ?? 1)
+        self.toAssemblePage(info: tranInfo , mode: mode ?? .carrierAssemble)
     }
     
     //MARK: - 继续运输
@@ -664,128 +668,79 @@ extension WayBillBaseVC {
 
 // 匹配对应的运单状态
 extension WayBillBaseVC {
-    
-    //MARK: - 根据运单状态，配置对应的状态
-    func configWaybillStatus(info:WayBillInfoBean) -> WaybillStatus {
+    //MARK: - 根据运单状态，配载对应的显示状态
+    func configWaybillDisplayStatus(info:WayBillInfoBean) -> WaybillDisplayStatus {
         let transportStatus = info.transportStatus ?? 0 // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派
         let comType = info.comeType         // 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
         let driverStatus = info.driverStatus ?? 0 // 司机状态 0=未配载 1=TMS指派 (只要生成定单，就表明一定是已指派)2=无车竞价待指派 3=拒绝指派 4=接受指派 5=已配载 6=已违约 7=违约继续承运 8=违约放弃承运 ,
         let role = info.role            // 1 承运人 ，2 司机
         let evalate = (info.evaluateCode != nil)
-        if comType == 1 {   // 来源1
-            if transportStatus == 0 { // 待办单
-                if driverStatus == 4 {  // 未接受
-                    return .unAssembleToAssemble
+        let completeStatus = info.completeStatus //运单状态 1：未配载，2 ：未完成， 3：完成 ,
+        // 未配载，只需判断配置相关的字段，即 completeStatus = 1
+        if completeStatus == 1 { // 未配载
+            if comType == 1 || comType == 2 {   // 来源1 , 2 ， 未接受时 ， 显示 接受 拒绝
+                if driverStatus == 4 {  // 当driverStatus == 4 时 ， 已接受，显示 配载
+                    return .unAssemble_comType_1_2_toAssemble
                 }
-                if driverStatus == 6 { // 已违约的情况
-                    if role == 2 {
-                        return .breakContractForDriver
-                    }
-                    return .breakContractForCarrier
+                return .unAssemble_comType_1_2_noAccept // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
+            }
+            if comType == 3 {  // 来源1 , 2 ， 未接受时 ， 显示 接受 拒绝
+                if driverStatus == 4 {  // 当driverStatus == 4 时 ， 已接受，显示 配载
+                    return .unAssemble_comType_3_toAssemble
                 }
-                return .unAssembleNoAccept
+                return .unAssemble_comType_3_noAccept // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
+            }
+            if comType == 4 {  // 来源 4 ， 显示 指派
+                return .unAssemble_comType_4_toDesignate // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
             }
         }
-        
-        if comType == 2 { // 来源2
-            if transportStatus == 0 { // 待办单
-                if driverStatus == 4 {  // 未接受
-                    return .unAssembleToAssemble
+        // 未配载，只需判断配置相关的字段，即 completeStatus = 1
+        if completeStatus == 2 { // 未配载
+            // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派
+            if transportStatus == 1 {
+                return .notDone_willTransport
+            }
+            if transportStatus == 2 {
+                return .notDone_transporting
+            }
+            if transportStatus == 3 {
+                return .notDone_willSign
+            }
+            if driverStatus ==  6 {
+                if role == 2 {
+                    return .notDone_breakContractForDriver
                 }
-                if driverStatus == 6 { // 已违约的情况
-                    if role == 2 {
-                        return .breakContractForDriver
-                    }
-                    return .breakContractForCarrier
-                }
-                return .unAssembleNoAccept
+                return .notDone_breakContractForCarrier
             }
         }
-        
-        if comType == 3 {
-            if transportStatus == 0 { // 待办单
-                if driverStatus == 4 {  // 未接受
-                    return .unAssembleToAssemble
-                }
-                if driverStatus == 6 { // 已违约的情况
-                    if role == 2 {
-                        return .breakContractForDriver
-                    }
-                    return .breakContractForCarrier
-                }
-                return .unAssembleNoAccept
-            }
-        }
-        
-        if comType == 4 {
-            if transportStatus == 0 { // 待办单
-                if driverStatus == 4 {  // 已接受
-                    return .unAssembleToDesignate
-                }
-                if driverStatus == 6 { // 已违约的情况
-                    if role == 2 {
-                        return .breakContractForDriver
-                    }
-                    return .breakContractForCarrier
-                }
-                return .unAssembleNoAccept
-            }
-        }
-        
-        if transportStatus == 1 {
-            return .willTransport
-        }
-        if transportStatus == 2 {
-            return .transporting
-        }
-        if transportStatus == 3 {
-            return .willSign
-        }
-        if transportStatus > 3 {
+        if completeStatus == 3 {
             if evalate == true {
-                return .doneAllComment
+                return .done(.myAlreadyCommented)
             }
-            else {
-                return .doneNoComment
-            }
+            return .done(.noComment)
         }
-        
-        return .noAnyHandle
+        return .other
     }
     
-    
-//    case unAssembleNoAccept     // 未配载订单来源为 1、2， 运单状态为待办单==0，司机状态为已配载==5, (接受和拒绝)
-//    case unAssembleSepecial     // 未配载订单来源为 3， 运单状态为待办单==0，司机状态为已配载==5,( 接受和拒绝)
-//    case unAssembleToDesignate  // 未配载的订单，发布的货源为无车报价时 运单状态为待办单==0 && 司机状态为无车竞价待指派==2 (指派)
-//    case unAssembleToAssemble   // 未配载的订单，发布的货源为有车报价时 运单状态为待办单 ==0 && 司机状态为未配载==0 （配载）
-//    case transporting           // transportStatus ,运输中
-//    case willTransport          // 待起运
-//    case willSign               // 待签收
-//    case breakContractForDriver // 司机违约     driverStatus = 6，role == 2  (继续运输 和 取消运输)
-//    case breakContractForCarrier// 承运人违约   driverStatus = 6，role == 1(修改配载)
-//    case doneNoComment          // 已完成订单无评价
-//    case doneOneComment         // 已完成订单一个评价
-//    case doneAllComment         // 已完成订单互评
-//    case noAnyHandle            // 没有任何操作的 ， 仅仅显示运单状态
     func currentWaybillCell(indexPath:IndexPath , tableView:UITableView) -> UITableViewCell {
         let info = self.dataSource[indexPath.row]
-        let status = configWaybillStatus(info: info)
+        let status = configWaybillDisplayStatus(info: info)
         switch status {
-        case .unAssembleNoAccept:
+        case .unAssemble_comType_1_2_noAccept:
             return unAssembleNoAcceptCell(info: info, tableView: tableView)
-        case .unAssembleSepecial:
+        case .unAssemble_comType_3_noAccept:
             return unAssembleSepecialCell(info: info, indexPath: indexPath, tableView: tableView)
-        case .unAssembleToDesignate:
-            return showUnAssembleOneHandleCell(info: info, indexPath: indexPath, tableView: tableView)
-        case .unAssembleToAssemble:
+        case .unAssemble_comType_1_2_toAssemble:
             return unAssembleToAssembleCell(info: info, tableView: tableView)
-        case .transporting , .willSign , .willTransport:
-            return noHandleCell(info: info, tableView: tableView)
-        case .breakContractForDriver:
-            return breakContractForDriverCell(info: info, tableView: tableView)
-        case .breakContractForCarrier:
+        case .unAssemble_comType_3_toAssemble:
+            return showUnAssembleTwoHandlesCellNoTruckInfo(info: info, indexPath: indexPath, tableView: tableView)
+        case .unAssemble_comType_4_toDesignate:
+            return showUnAssembleOneHandleCell(info: info, indexPath: indexPath, tableView: tableView)
+        case .notDone_breakContractForCarrier:
             return breakContractForCarrierCell(info: info, tableView: tableView)
-        case .doneNoComment:
+        case .notDone_breakContractForDriver:
+            return breakContractForDriverCell(info: info, tableView: tableView)
+        case .notDone_willSign , .notDone_transporting , .notDone_willTransport:
             return noHandleCell(info: info, tableView: tableView)
         default:
             return noHandleCell(info: info, tableView: tableView)
