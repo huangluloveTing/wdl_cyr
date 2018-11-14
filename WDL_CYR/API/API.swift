@@ -34,6 +34,8 @@ enum API {
     case carrierAllButtonAcceptTransportState(Int, TimeInterval?, String , String?)//承运人操作运单（拒绝，接受，取消运输，继续运输）
     case queryTransportDetail(String)       // 获取运单详情
     case designateWaybill(String , String)  // 指派运单
+    case assembleWaybill(WaybillAssembleCommitModel) // 单车配载
+    case assemblePlanWaybill([WaybillAssembleCommitModel]) // 多车配载
 }
 
 
@@ -81,9 +83,15 @@ func apiPath(api:API) -> String {
     case .carrierAllButtonAcceptTransportState(_):
         return "/carrierTransport/carrierHandleTransport"
     case .queryTransportDetail(_):
-        return "/carrierTransport/findCarrierTransportList"
+        return "/carrierTransport/getTransportOrderDetail"
     case .designateWaybill(_, _):
         return "/carrierTransport/assignmentWaybill"
+        
+    case .assembleWaybill(_):
+        return "/carrierTransport/allocateVehicles"
+    case .assemblePlanWaybill(_):
+        return "/carrierTransport/allocateVehicleList"
+        
     }
 }
 
@@ -143,11 +151,19 @@ func apiTask(api:API) -> Task {
             params["hallId"] = hallId
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
-    case .queryTransportDetail(let transportNo):
-        return .requestParameters(parameters: ["transportNo":transportNo], encoding: URLEncoding.default)
+    case .queryTransportDetail(let hallId):
+        return .requestParameters(parameters: ["hallId":hallId], encoding: URLEncoding.default)
         
     case .designateWaybill(let phone, let transportNo):
         return .requestParameters(parameters: [  "phone": phone,"transportId": transportNo], encoding: JSONEncoding.default)
+        
+    case .assembleWaybill(let model):
+        return .requestParameters(parameters: model.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
+        
+    case .assemblePlanWaybill(let models):
+        let json = models.toJSONString() ?? ""
+        let data = json.data(using: .utf8) ?? Data()
+        return .requestData(data)
     }
 }
 

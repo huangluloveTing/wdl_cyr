@@ -22,7 +22,7 @@ class WayBillDetailVC: WaybillDetailBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView(tableView: tableView)
-        self.loadDetailData(transportNo: transportNo!)
+        self.loadDetailData(hallId: self.waybillInfo?.hallId ?? "")
     }
 
     override func didReceiveMemoryWarning() {

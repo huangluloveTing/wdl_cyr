@@ -24,6 +24,8 @@ class WaybillInputAssembleAmountCell: BaseCell {
         super.awakeFromNib()
         
         self.textField.rx.text.orEmpty.asObservable()
+            .skip(1)
+            .distinctUntilChanged()
             .subscribe(onNext: { [weak self](text) in
                 if let closure = self?.inputClosure {
                     closure(text)
@@ -41,7 +43,7 @@ class WaybillInputAssembleAmountCell: BaseCell {
 extension WaybillInputAssembleAmountCell {
     
     func showInfo(num:Float? , canEdit:Bool) -> Void {
-        self.textField.text = String(num ?? 0)
+        self.textField.text = (num == nil) ? nil : String(num ?? 0)
         self.textField.isUserInteractionEnabled = canEdit
     }
 }

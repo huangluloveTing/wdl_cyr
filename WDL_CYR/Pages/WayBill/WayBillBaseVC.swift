@@ -186,8 +186,8 @@ extension WayBillBaseVC {
         detailVC.waybillInfo = info
         detailVC.transportNo = info.transportNo ?? ""
         
-        assembleTransportHandle(info: info)
-        return
+//        assembleTransportHandle(info: info)
+//        return
         
         let status = configWaybillDisplayStatus(info: info)
         switch status {
@@ -248,9 +248,12 @@ extension WayBillBaseVC {
     
     //MARK: - 配载
     func assembleTransportHandle(info:WayBillInfoBean) -> Void {
-        let tranInfo = TransactionInformation.deserialize(from: info.toJSON())
+        var tranInfo = TransactionInformation.deserialize(from: info.toJSON())
         let mode = WayBillSourceTypeMode(rawValue: info.comeType ?? 1)
-        self.toAssemblePage(info: tranInfo , mode: mode ?? .carrierAssemble)
+        tranInfo?.dealUnitPrice = 12
+        tranInfo?.dealTotalPrice = 80
+        
+        self.toAssemblePage(info: tranInfo , mode: .planAssemble)
     }
     
     //MARK: - 继续运输

@@ -617,9 +617,9 @@ extension WaybillDetailBaseVC {
 //MARK: - 获取运单详情
 extension WaybillDetailBaseVC {
     
-    func loadDetailData(transportNo:String) -> Void {
+    func loadDetailData(hallId:String) -> Void {
         self.showLoading()
-        BaseApi.request(target: API.queryTransportDetail(transportNo), type: BaseResponseModel<TransactionInformation>.self)
+        BaseApi.request(target: API.queryTransportDetail(hallId), type: BaseResponseModel<TransactionInformation>.self)
             .subscribe(onNext: { [weak self](data) in
                 self?.hiddenToast()
                 self?.currrentEvaluatedStatus(info: data.data)

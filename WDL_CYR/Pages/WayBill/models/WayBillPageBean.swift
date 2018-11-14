@@ -33,6 +33,7 @@ enum WayBillTransportStatus : Int , HandyJSONEnum { // 运单状态
 }
 
 struct WayBillInfoBean : HandyJSON {
+    var driverId:String? 
     var completeStatus:Int = 1 //运单状态 1：未配载，2 ：未完成， 3：完成 ,
     var carrierId : String? // (string): 承运人id ,
     var comeType  : Int?// (integer): 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
@@ -59,8 +60,7 @@ struct WayBillInfoBean : HandyJSON {
     var driverStatus : Int? // (integer): 当前司机是否接受过改订单  4=接受指派，接受指派隐藏按钮，否则现实两个按钮
     
     //  driverStatus 可用于判断违约状态 6=已违约 7=违约继续承运 8=违约放弃承运    ，承运人状态 0=未配载 1=TMS指派 (只要生成定单，就表明一定是已指派)2=无车竞价待指派 3=拒绝指派 4=接受指派 5=已配载 ,
-    
-    var driverId :String? // ( (string): 司机id ,
+    var ordNo :String? // (string): 订单号 ,
     var orderAvailabilityPeriod : String? //(string): 货源有效期 ,
     
     var goodsType : String? // (string): 货品分类 ,
@@ -73,6 +73,7 @@ struct WayBillInfoBean : HandyJSON {
 
 
 struct TransactionInformation : HandyJSON {
+    var driverId:String?
     var autoTimeInterval : Int? // (integer): 自动成交时间间隔 ,
     var bidPriceWay : Int?      // (integer, optional),
     var carrierName : String?   // (string): 承运人姓名 ,
@@ -134,6 +135,7 @@ struct TransactionInformation : HandyJSON {
     var vehicleNo :String? // (string): 车牌号 ,
     var vehicleType : String? // (string): 车型 ,
     var vehicleWidth : String? // (string): 车宽
+    var ordNo :String? // (string): 订单号 ,
     var evaluateList : [ZbnEvaluate]? // 评价信息
     var vehicleStatuc : Int = 1 // (integer): TMS货源订单配载情况 1： 未配载 2，已配载 ,
     var sourceType : Int = 1    // (integer): 货源来源 1:来至ZBN，2:来至TMS , 3:来自SAP

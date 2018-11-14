@@ -37,6 +37,7 @@ struct WaybillAssembleUIModel {
     var carrierNum:Float?   // 承运数量
     var disVolumn:Float?    // 分配吨数 --- u运输计划
     var remainNum:Float?    // 剩余分配数量
+    var lastRemain:Float?   // 上次分配剩余的数量
 }
 
 
@@ -56,7 +57,9 @@ class WaybillAssembleBaseVC: NormalBaseVC {
     //MARK: - Override
     func toChooseDriver(indexPath:IndexPath) -> Void {} // 选择司机
     func toChooseVehicle(indexPath:IndexPath) -> Void {} // 选择车辆
+    func deleteAssemble(section:Int) -> Void {}       // 删除操作
     func inputAssembleWeight(indexPath:IndexPath , input:String) -> Void {} // 输入配载数量
+    func commitAssemble() -> Void {}
 }
 
 //MARK: - config tableView
@@ -76,15 +79,31 @@ extension WaybillAssembleBaseVC {
         currentTableView?.registerCell(nib: WaybillMultiRemailInfoCell.self)
     }
     
-    func update(indexPath:IndexPath , model:WaybillAssembleUIModel?) -> Void {
+    func update(indexPath:IndexPath , model:WaybillAssembleUIModel? , refresh:Bool = false) -> Void {
         if model != nil {
             self.currentAssembleModels[indexPath.section] = model!
+        }
+        if refresh == true {
             self.currentTableView?.reloadData()
         }
     }
     
     func configUIModel(models:[WaybillAssembleUIModel]) -> Void {
         self.currentAssembleModels = models
+        self.currentTableView?.reloadData()
+    }
+    
+    // 更新剩余未配载的数据
+    func updateMultiRemain(section:Int) -> Void {
+        let indexPath = IndexPath(row: 3, section: section)
+        if ((self.currentTableView?.cellForRow(at: indexPath)) != nil) {
+            self.currentTableView?.reloadRows(at: [indexPath], with: .none)
+        }
+    }
+    
+    // 删除
+    func deleteAssembledAssembles(section:Int) -> Void {
+        self.currentAssembleModels.remove(at: section)
         self.currentTableView?.reloadData()
     }
 }
@@ -120,6 +139,28 @@ extension WaybillAssembleBaseVC : UITableViewDelegate , UITableViewDataSource {
         default:
             return multiAssembleCell(indexPath: indexPath, tableView: tableView)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if self.currentDisplayMode == .planAssemble {
+            return multiAssembleHeader(section: section)
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if self.currentDisplayMode == .planAssemble {
+            return 60
+        }
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        assembleSelect(tableView: tableView, indexPath: indexPath)
     }
 }
 
@@ -250,14 +291,14 @@ extension WaybillAssembleBaseVC {
         }
         if row == 2 {
             let cell = tableView.dequeueReusableCell(nib: WaybillInputAssembleAmountCell.self)
-            cell.showInfo(num: info.disVolumn, canEdit: row == (currentAssembleData().count - 1))
+            cell.showInfo(num: info.disVolumn, canEdit: indexPath.section == (currentAssembleData().count - 1))
             cell.inputClosure = { [weak self] (text) in
                 self?.inputAssembleWeight(indexPath: indexPath, input: text)
             }
             return cell
         }
         let cell = tableView.dequeueReusableCell(nib: WaybillMultiRemailInfoCell.self)
-        cell.showInfo(total: info.carrierNum, remain: info.carrierNum)
+        cell.showInfo(total: info.carrierNum, remain: info.remainNum)
         return cell
     }
     
@@ -265,6 +306,9 @@ extension WaybillAssembleBaseVC {
         let title = "车辆信息(" + String(section) + ")"
         let show = section > 0
         let header = WaybillAssembleHeader.instance(title: title, showDelete: show)
+        header?.deleteClosure = {[weak self] in
+            self?.deleteAssemble(section: section)
+        }
         return header
     }
 }
