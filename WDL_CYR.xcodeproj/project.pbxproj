@@ -17,6 +17,10 @@
 		700347732193DD6200DDEE55 /* WaybillReturnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700347712193DD6200DDEE55 /* WaybillReturnListCell.swift */; };
 		700347742193DD6200DDEE55 /* WaybillReturnListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700347722193DD6200DDEE55 /* WaybillReturnListCell.xib */; };
 		700DCA912183F17800EA6695 /* BaseVC+DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DCA902183F17800EA6695 /* BaseVC+DropView.swift */; };
+		700F69D121A29F8900B5666B /* WayBillCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F69CF21A29F8900B5666B /* WayBillCommentVC.swift */; };
+		700F69D221A29F8900B5666B /* WayBillCommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700F69D021A29F8900B5666B /* WayBillCommentVC.xib */; };
+		700F69D521A2A00300B5666B /* WayBillCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700F69D321A2A00300B5666B /* WayBillCommentCell.xib */; };
+		700F69D621A2A00300B5666B /* WayBillCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F69D421A2A00300B5666B /* WayBillCommentCell.swift */; };
 		7014086E2193F988000D5CB1 /* WaybillHandleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014086C2193F988000D5CB1 /* WaybillHandleCell.swift */; };
 		7014086F2193F988000D5CB1 /* WaybillHandleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7014086D2193F988000D5CB1 /* WaybillHandleCell.xib */; };
 		7014087221940A76000D5CB1 /* WayBillToCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7014087021940A75000D5CB1 /* WayBillToCommentCell.xib */; };
@@ -343,6 +347,10 @@
 		700347712193DD6200DDEE55 /* WaybillReturnListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillReturnListCell.swift; sourceTree = "<group>"; };
 		700347722193DD6200DDEE55 /* WaybillReturnListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillReturnListCell.xib; sourceTree = "<group>"; };
 		700DCA902183F17800EA6695 /* BaseVC+DropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseVC+DropView.swift"; sourceTree = "<group>"; };
+		700F69CF21A29F8900B5666B /* WayBillCommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillCommentVC.swift; sourceTree = "<group>"; };
+		700F69D021A29F8900B5666B /* WayBillCommentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WayBillCommentVC.xib; sourceTree = "<group>"; };
+		700F69D321A2A00300B5666B /* WayBillCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WayBillCommentCell.xib; sourceTree = "<group>"; };
+		700F69D421A2A00300B5666B /* WayBillCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillCommentCell.swift; sourceTree = "<group>"; };
 		7014086C2193F988000D5CB1 /* WaybillHandleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillHandleCell.swift; sourceTree = "<group>"; };
 		7014086D2193F988000D5CB1 /* WaybillHandleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillHandleCell.xib; sourceTree = "<group>"; };
 		7014087021940A75000D5CB1 /* WayBillToCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WayBillToCommentCell.xib; sourceTree = "<group>"; };
@@ -1043,6 +1051,8 @@
 		70CF4EEA214B410C0051A7CA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				700F69D421A2A00300B5666B /* WayBillCommentCell.swift */,
+				700F69D321A2A00300B5666B /* WayBillCommentCell.xib */,
 				705BA5B42192A774007B10C8 /* OfferSearchCell.swift */,
 				705BA5B52192A774007B10C8 /* OfferSearchCell.xib */,
 				70EA739A215F2F3D0020B8C3 /* WaybillBaseCell.swift */,
@@ -1093,6 +1103,8 @@
 		70CF4EEF214B410C0051A7CA /* VCS */ = {
 			isa = PBXGroup;
 			children = (
+				700F69CF21A29F8900B5666B /* WayBillCommentVC.swift */,
+				700F69D021A29F8900B5666B /* WayBillCommentVC.xib */,
 				7053F88F2193C69B00655D2E /* WaybillDetailBaseVC.swift */,
 				70CF4EF0214B410C0051A7CA /* WayBillDetailVC.swift */,
 				70CF4EF1214B410C0051A7CA /* WayBillDetailVC.xib */,
@@ -1527,6 +1539,7 @@
 				70D8BC2321672D3C000522E0 /* TransportDriverCell.xib in Resources */,
 				700347682193D95600DDEE55 /* WaybillLinkInfoCell.xib in Resources */,
 				70D8BC2F2167405F000522E0 /* MyAuthenVC.xib in Resources */,
+				700F69D221A29F8900B5666B /* WayBillCommentVC.xib in Resources */,
 				70EA7360215E07C40020B8C3 /* GSDetail_GoodsInfoCell.xib in Resources */,
 				70EA73A3215F47D10020B8C3 /* WaybillCarrierInfoCell.xib in Resources */,
 				70C7CB29216F74ED00C10AC4 /* ChooseOfferTypeVC.xib in Resources */,
@@ -1550,6 +1563,7 @@
 				70D8BBD121605126000522E0 /* WaybillUnAssembleVC.xib in Resources */,
 				70D8BC3B21675801000522E0 /* AuthenEnterpriseVC.xib in Resources */,
 				7041298F21784DB60078A46F /* ConsignorDetailVC.xib in Resources */,
+				700F69D521A2A00300B5666B /* WayBillCommentCell.xib in Resources */,
 				70CF4F71214B41110051A7CA /* GSQutationCell.xib in Resources */,
 				70CF4F75214B41110051A7CA /* GoodsSupplyDetailVC.xib in Resources */,
 				706488FA215B458D00F53BFC /* FocusResourceVC.xib in Resources */,
@@ -1678,6 +1692,7 @@
 				701F10DF217EA8D600693936 /* OfferNoTruckVC.swift in Sources */,
 				70CF4F5D214B41110051A7CA /* colors.swift in Sources */,
 				70CF4FAE214B41120051A7CA /* UIActionSheet+Blocks.m in Sources */,
+				700F69D121A29F8900B5666B /* WayBillCommentVC.swift in Sources */,
 				70CF4F65214B41110051A7CA /* MainBaseVC.swift in Sources */,
 				70CF4F60214B41110051A7CA /* ResponseHandle.swift in Sources */,
 				70D8BBFE2165B1F8000522E0 /* WalletVC.swift in Sources */,
@@ -1747,6 +1762,7 @@
 				70CF4F82214B41120051A7CA /* InputBaseVC.swift in Sources */,
 				70CF4FAD214B41120051A7CA /* SKTagButton.m in Sources */,
 				70CF4EA4214B409E0051A7CA /* AppDelegate.swift in Sources */,
+				700F69D621A2A00300B5666B /* WayBillCommentCell.swift in Sources */,
 				70D8BC3A21675801000522E0 /* AuthenEnterpriseVC.swift in Sources */,
 				7014086E2193F988000D5CB1 /* WaybillHandleCell.swift in Sources */,
 				70D8BC2E2167405F000522E0 /* MyAuthenVC.swift in Sources */,

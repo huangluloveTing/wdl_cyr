@@ -693,7 +693,7 @@ extension WayBillBaseVC {
     //MARK: - 根据运单状态，配载对应的显示状态
     func configWaybillDisplayStatus(info:WayBillInfoBean) -> WaybillDisplayStatus {
         let transportStatus = info.transportStatus ?? 0 // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派
-        let comType = info.comeType         // 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
+        let comType = info.comeType ?? 1         // 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
         let driverStatus = info.driverStatus ?? 0 // 司机状态 0=未配载 1=TMS指派 (只要生成定单，就表明一定是已指派)2=无车竞价待指派 3=拒绝指派 4=接受指派 5=已配载 6=已违约 7=违约继续承运 8=违约放弃承运 ,
         let role = info.role            // 1 承运人 ，2 司机
         let evalate = (info.evaluateCode != nil)
@@ -717,7 +717,7 @@ extension WayBillBaseVC {
             }
         }
         // 未配载，只需判断配置相关的字段，即 completeStatus = 1
-        if completeStatus == 2 { // 未配载
+        if completeStatus == 2 { // 未完成
             // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派
             if transportStatus == 1 {
                 return .notDone_willTransport
@@ -735,7 +735,7 @@ extension WayBillBaseVC {
                 return .notDone_breakContractForCarrier
             }
         }
-        if completeStatus == 3 {
+        if completeStatus == 3 { // 已完成
             if evalate == true {
                 return .done(.myAlreadyCommented)
             }

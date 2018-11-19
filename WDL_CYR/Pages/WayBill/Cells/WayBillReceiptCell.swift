@@ -9,6 +9,8 @@
 import UIKit
 
 class WayBillReceiptCell: BaseCell {
+    
+    typealias ReceiptTapClosure = (Int) -> ()
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -16,6 +18,8 @@ class WayBillReceiptCell: BaseCell {
     private var canEdit:Bool = false
     
     public var maxPic:Int = 3
+    
+    public var tapClosure:ReceiptTapClosure?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -65,6 +69,12 @@ extension WayBillReceiptCell : UICollectionViewDelegate , UICollectionViewDataSo
         let receipt = self.receiptList![indexPath.row]
         cell.showReceipt(imageUrl: receipt.returnBillUrl, time: receipt.startTime)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let closure = tapClosure {
+            closure(indexPath.row)
+        }
     }
 }
 

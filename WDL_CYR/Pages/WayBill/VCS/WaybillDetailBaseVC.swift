@@ -63,6 +63,12 @@ class WaybillDetailBaseVC: NormalBaseVC {
     // 提交评论 --- 需重写提交评论数据
     func toCommitComment() -> Void {
     }
+    
+    // 点击回执单图片
+    func clickReturnList(index:Int) -> Void {}
+    
+    // 点击添加回执单
+    func clickAddReturn() -> Void {}
 }
 
 //MARK: - config tableView
@@ -298,6 +304,14 @@ extension WaybillDetailBaseVC {
         cell.maxPic = 3
         let returnLists = currentReturnLists()
         cell.showReceiptInfo(info: returnLists)
+        cell.tapClosure = {[weak self] (row) in
+            if row == returnLists.count {
+                self?.clickAddReturn()
+            }
+            else {
+                self?.clickReturnList(index: row)
+            }
+        }
         return cell
     }
     
@@ -493,7 +507,10 @@ extension WaybillDetailBaseVC {
 //MARK: - 未完成，待签收的cell配置
 extension WaybillDetailBaseVC {
     func notDoneWillSignNumSection() -> Int {
-        return 4
+        if (self.currentInfo?.returnList?.count ?? 0) > 0 {
+            return 4
+        }
+        return 3
     }
     
     func notDoneWillSignRow(section:Int) -> Int {
@@ -678,7 +695,7 @@ extension WaybillDetailBaseVC {
         var evaluted:ZbnEvaluate? = nil
         if let evaluteList = evaluteList {
             let filterEvaluate = evaluteList.filter { (value) -> Bool in
-                return value.evaluateTo == 1 || value.evaluateTo == 2
+                return value.evaluateTo == 2
             }
             if filterEvaluate.count > 0 {
                 evaluted = filterEvaluate.first
@@ -692,7 +709,7 @@ extension WaybillDetailBaseVC {
         var evaluted:ZbnEvaluate? = nil
         if let evaluteList = evaluteList {
             let filterEvaluate = evaluteList.filter { (value) -> Bool in
-                return value.evaluateTo == 3 || value.evaluateTo == 4
+                return value.evaluateTo == 1
             }
             if filterEvaluate.count > 0 {
                 evaluted = filterEvaluate.first

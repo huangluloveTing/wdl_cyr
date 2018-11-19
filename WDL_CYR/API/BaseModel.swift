@@ -9,6 +9,14 @@
 import Foundation
 import HandyJSON
 
+enum UploadImagTypeMode:String {
+    case driverLicense = "upload_driverLicense_filePath"
+    case vehicle = "upload_vehicleLicense_filePath"
+    case roadTransportCertificate = "upload_roadTransportCertificate_filePath"
+    case transport_return = "upload_transport_return_filePath"
+}
+
+
 public protocol BaseResponse: HandyJSON {
     
     associatedtype Element

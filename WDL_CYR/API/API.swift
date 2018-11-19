@@ -36,6 +36,8 @@ enum API {
     case designateWaybill(String , String)  // 指派运单
     case assembleWaybill(WaybillAssembleCommitModel) // 单车配载
     case assemblePlanWaybill([WaybillAssembleCommitModel]) // 多车配载
+    case createEvaluate(ZbnEvaluateVo)      // 提交评价
+    case uploadImage(UIImage , UploadImagTypeMode)   // 上传驾驶证图片
 }
 
 
@@ -91,6 +93,10 @@ func apiPath(api:API) -> String {
         return "/carrierTransport/allocateVehicles"
     case .assemblePlanWaybill(_):
         return "/carrierTransport/allocateVehicleList"
+    case .createEvaluate(_):
+        return "/message/createEvaluate"
+    case .uploadImage(_ , let mode):
+        return "/commom/upload/file/app/" + mode.rawValue
         
     }
 }
@@ -164,6 +170,18 @@ func apiTask(api:API) -> Task {
         let json = models.toJSONString() ?? ""
         let data = json.data(using: .utf8) ?? Data()
         return .requestData(data)
+        
+    case .createEvaluate(let evaluate):
+        return .requestParameters(parameters: evaluate.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
+        
+    case .uploadImage(let image , _):
+        var imageData:Data? = UIImagePNGRepresentation(image)
+        if imageData == nil {
+            imageData = UIImageJPEGRepresentation(image, 1)
+        }
+        let formProvider = MultipartFormData.FormDataProvider.data(imageData!)
+        let formData = MultipartFormData.init(provider: formProvider, name: "file", fileName: "img.png", mimeType: "image/png")
+        return .uploadMultipart([formData])
     }
 }
 
