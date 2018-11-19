@@ -189,12 +189,32 @@ extension WayBillBaseVC {
 //        assembleTransportHandle(info: info)
 //        return
         
+//        case unAssemble_comType_1_2_noAccept    // 运单来源为1、2 时 的未接受的运单
+//        case unAssemble_comType_3_noAccept      // 运单来源为 3 时 的未接受的运单
+//        case unAssemble_comType_1_2_toAssemble  // 运单来源为1、2 时 的待配载的运单
+//        case unAssemble_comType_3_toAssemble    // 运单来源为 3 时 的待配载的运单
+//        case unAssemble_comType_4_toDesignate   // 运单来源为 4 时 的待指派的运单
+//        case notDone_willTransport              // 未完成 待起运的运单
+//        case notDone_transporting               // 未完成 运输中的运单
+//        case notDone_willSign                   // 未完成 待签收的运单
+//        case notDone_breakContractForDriver     // 未完成 司机违约的运单
+//        case notDone_breakContractForCarrier    // 未完成 承运人违约的运单
+//        case done(WaybillCommentStatus)         // 已完成
+//        case other                              // 其他，显示其他情况的
         let status = configWaybillDisplayStatus(info: info)
         switch status {
-        case .unAssemble_comType_3_toAssemble , .unAssemble_comType_1_2_toAssemble:
+        case .unAssemble_comType_3_toAssemble:
             detailVC.currentShowMode(mode: .unassemble_showSpecial)
+            break
+        case .unAssemble_comType_1_2_toAssemble:
+            if info.comeType == 1 {
+                detailVC.currentShowMode(mode: .unassemble_show_1_Assemble)
+            }
+            detailVC.currentShowMode(mode: .unassemble_show_2_Assemble)
+            break
         case .unAssemble_comType_4_toDesignate:
             detailVC.currentShowMode(mode: .unassemble_showDesignate)
+            break
         case .notDone_transporting :
             detailVC.currentShowMode(mode: .doing_showTransporting)
         case .notDone_willTransport:
@@ -205,14 +225,14 @@ extension WayBillBaseVC {
             print("已违约的司机 跳转 未实现")
             return
         case .notDone_breakContractForCarrier:
-            detailVC.currentShowMode(mode: .doing_showNotStart)
+            detailVC.currentShowMode(mode: .doing_carrierBreak)
         case .done(_):
             detailVC.currentShowMode(mode: .done_notComment)
         case .unAssemble_comType_1_2_noAccept , .unAssemble_comType_3_noAccept:
             print("未接受不 跳转")
             return
         default:
-            detailVC.currentShowMode(mode: .done_commentOne)
+            detailVC.currentShowMode(mode: .doing_showWillSign)
         }
         self.push(vc: detailVC, title: "运单详情")
     }
@@ -252,8 +272,7 @@ extension WayBillBaseVC {
         let mode = WayBillSourceTypeMode(rawValue: info.comeType ?? 1)
         tranInfo?.dealUnitPrice = 12
         tranInfo?.dealTotalPrice = 80
-        
-        self.toAssemblePage(info: tranInfo , mode: .planAssemble)
+        self.toAssemblePage(info: tranInfo , mode: mode ?? .planAssemble)
     }
     
     //MARK: - 继续运输

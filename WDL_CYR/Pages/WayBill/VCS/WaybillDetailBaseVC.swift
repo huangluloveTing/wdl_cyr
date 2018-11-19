@@ -15,16 +15,18 @@ struct ToCommentModel {
 }
 
 enum WaybillDisplayMode {
-    case unassemble_showAssemble    //未配载，显示配载的情况，即订单来源为 1、2 的情况
-    case unassemble_showSpecial     //未配载，运单来源为3 的情况
-    case unassemble_showDesignate   //未指派，运单来源为4 的情况
-    case doing_showWillTransport    //未完成，待起运
-    case doing_showTransporting     //未完成，运输中
-    case doing_showWillSign         //未完成，待签收
-    case doing_showNotStart         //未完成的待办单
-    case done_notComment            //已完成，未评价
-    case done_commentOne            //已完成，一个评价
-    case done_commentAll            //已完成，互评
+    case unassemble_show_1_Assemble    //未配载，显示配载的情况，即订单来源为 1 的情况
+    case unassemble_show_2_Assemble    //未配载，显示配载的情况，即订单来源为 2 的情况
+    case unassemble_showSpecial         //未配载，运单来源为3 的情况
+    case unassemble_showDesignate       //未指派，运单来源为4 的情况
+    case doing_showWillTransport        //未完成，待起运
+    case doing_showTransporting         //未完成，运输中
+    case doing_showWillSign             //未完成，待签收
+    case doing_driverBreak              // 司机违约 （不能进入详情）
+    case doing_carrierBreak             // 承运人违约，显示修改配载
+    case done_notComment                //已完成，未评价
+    case done_commentOne                //已完成，一个评价
+    case done_commentAll                //已完成，互评
 }
 
 class WaybillDetailBaseVC: NormalBaseVC {
@@ -143,13 +145,13 @@ extension WaybillDetailBaseVC : UITableViewDelegate , UITableViewDataSource {
 extension WaybillDetailBaseVC {
     func currentCell(tableView:UITableView , indexPath:IndexPath) -> UITableViewCell {
         switch self.currentDisplayMode! {
-        case .unassemble_showAssemble:
+        case .unassemble_show_1_Assemble,.unassemble_show_2_Assemble:
             return unAssembleToAssemble(indexPath: indexPath, tableView: tableView)
         case .unassemble_showSpecial:
             return unAssembleSepecialToAssemble(indexPath: indexPath, tableView: tableView)
         case .unassemble_showDesignate:
             return unAssembleToDesignate(indexPath: indexPath, tableView: tableView)
-        case .doing_showNotStart:
+        case .doing_carrierBreak:
             return notDoneNotStartCell(tableView:tableView , indexPath:indexPath)
         case .doing_showWillSign:
             return notDoneWillSignCell(tableView: tableView ,indexPath:indexPath)
@@ -161,6 +163,8 @@ extension WaybillDetailBaseVC {
             return doneToCommentCell(tableView:tableView , indexPath:indexPath)
         case .done_commentAll , .done_commentOne:
             return doneCommentedCell(tableView:tableView , indexPath:indexPath)
+        default:
+            return doneCommentedCell(tableView:tableView , indexPath:indexPath)
         }
     }
     
@@ -169,8 +173,23 @@ extension WaybillDetailBaseVC {
         guard self.currentInfo != nil else {
             return 0
         }
+        
+//        case unassemble_show_1_Assemble    //未配载，显示配载的情况，即订单来源为 1 的情况
+//        case unassemble_show_2_Assemble    //未配载，显示配载的情况，即订单来源为 2 的情况
+//        case unassemble_showSpecial         //未配载，运单来源为3 的情况
+//        case unassemble_showDesignate       //未指派，运单来源为4 的情况
+//        case doing_showWillTransport        //未完成，待起运
+//        case doing_showTransporting         //未完成，运输中
+//        case doing_showWillSign             //未完成，待签收
+//        case doing_driverBreak              // 司机违约 （不能进入详情）
+//        case doing_carrierBreak             // 承运人违约，显示修改配载
+//        case done_notComment                //已完成，未评价
+//        case done_commentOne                //已完成，一个评价
+//        case done_commentAll                //已完成，互评
         switch self.currentDisplayMode! {
-        case .unassemble_showAssemble , .unassemble_showDesignate:
+        case .unassemble_show_1_Assemble,.unassemble_show_2_Assemble:
+            return unAssembleSepecialToDesignateNumSection()
+        case .unassemble_showDesignate:
             return unAssembleToDesignateNumSection()
         case .unassemble_showSpecial:
             return unAssembleSepecialToDesignateNumSection()
@@ -180,18 +199,22 @@ extension WaybillDetailBaseVC {
             return notDoneTransportingNumSection()
         case .doing_showWillSign:
             return notDoneWillSignNumSection()
-        case .doing_showNotStart:
+        case .doing_carrierBreak:
             return notDoneNotStartNumSection()
         case .done_commentOne , .done_commentAll:
             return doneCommentedtNumSection()
         case .done_notComment:
+            return doneToCommentNumSection()
+        default:
             return doneToCommentNumSection()
         }
     }
     
     func tableViewSectionRows(section:Int) -> Int {
         switch self.currentDisplayMode! {
-        case .unassemble_showAssemble , .unassemble_showDesignate:
+        case .unassemble_show_1_Assemble,.unassemble_show_2_Assemble:
+            return unAssembleSepecialToDesignateRows(section: section)
+        case .unassemble_showDesignate:
             return unAssembleToDesignateRows(section:section)
         case .unassemble_showSpecial:
             return unAssembleSepecialToDesignateRows(section:section)
@@ -201,11 +224,13 @@ extension WaybillDetailBaseVC {
             return notDoneTransportingRow(section:section)
         case .doing_showWillSign:
             return notDoneWillSignRow(section:section)
-        case .doing_showNotStart:
+        case .doing_carrierBreak:
             return notDoneNotStartRow(section:section)
         case .done_commentOne , .done_commentAll:
             return doneCommentedRows(section:section)
         case .done_notComment:
+            return doneToCommentRow(section:section)
+        default:
             return doneToCommentRow(section:section)
         }
     }
