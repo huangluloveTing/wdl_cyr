@@ -17,7 +17,9 @@ struct WaybillCommitModel {
 class WayBillCommentVC: BaseVC  {
 
     @IBOutlet weak var tableView: UITableView!
-    public var pageInfo:WayBillInfoBean?
+    private var pageInfo:TransactionInformation?
+    
+    public var hallId:String?
     
     // 提交信息
     private var commitModel:WaybillCommitModel = WaybillCommitModel()
@@ -27,6 +29,7 @@ class WayBillCommentVC: BaseVC  {
         self.registerCells()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.loadDetailData(hallId: self.hallId!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,11 +77,11 @@ extension WayBillCommentVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(WayBillCommentCell.self)") as! WayBillCommentCell
-            let truckInfo = Util.contact(strs: [self.pageInfo?.vehicleLength ?? "" , self.pageInfo?.vehicleWidth ?? "" , self.pageInfo?.vehicleType ?? "" , self.pageInfo?.ve ?? ""], seperate: " | ")
+            let truckInfo = Util.contact(strs: [self.pageInfo?.vehicleLength ?? "" , self.pageInfo?.vehicleWidth ?? "" , self.pageInfo?.vehicleType ?? "", self.pageInfo?.vehicleNo ?? ""], seperate: " | ")
             cell.showDealInfo(unit: self.pageInfo?.dealUnitPrice,
                               amount: self.pageInfo?.dealTotalPrice,
                               cyName: self.pageInfo?.carrierName,
-                              driver: self.pageInfo?.driverName,
+                              driver: self.pageInfo?.dirverName,
                               truckInfo: truckInfo,
                               dealTime: (self.pageInfo?.dealTime) ?? 0 / 1000,
                               offerTime: (self.pageInfo?.publishTime ?? 0) / 1000)
@@ -108,5 +111,21 @@ extension WayBillCommentVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
+    }
+}
+
+
+extension WayBillCommentVC {
+    func loadDetailData(hallId:String) -> Void {
+        self.showLoading()
+        BaseApi.request(target: API.queryTransportDetail(hallId), type: BaseResponseModel<TransactionInformation>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.hiddenToast()
+                self?.pageInfo = data.data
+                self?.tableView.reloadData()
+                }, onError: { [weak self](error) in
+                    self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
     }
 }

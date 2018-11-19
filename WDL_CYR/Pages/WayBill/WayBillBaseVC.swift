@@ -226,8 +226,12 @@ extension WayBillBaseVC {
             return
         case .notDone_breakContractForCarrier:
             detailVC.currentShowMode(mode: .doing_carrierBreak)
-        case .done(_):
+        case .done(let mode):
             detailVC.currentShowMode(mode: .done_notComment)
+            if mode == .noComment {
+                self.toCommentVC(hallId: info.hallId ?? "")
+                return
+            }
         case .unAssemble_comType_1_2_noAccept , .unAssemble_comType_3_noAccept:
             print("未接受不 跳转")
             return

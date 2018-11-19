@@ -87,6 +87,13 @@ extension BaseVC {
 //        let deliveryVC = DeliveryVC()
         
     }
+    
+    // 跳转到 评价 页面
+    func toCommentVC(hallId:String) -> Void {
+        let commentVC = WayBillCommentVC()
+        commentVC.hallId = hallId
+        self.push(vc: commentVC, title: "评价")
+    }
 }
 
 extension BaseVC {
