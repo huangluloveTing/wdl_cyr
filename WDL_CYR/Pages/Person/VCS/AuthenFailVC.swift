@@ -7,19 +7,28 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AuthenFailVC: NormalBaseVC {
-
+    //拒绝原因文本
     @IBOutlet weak var rejectLabel: UILabel!
+    //重新提交按钮
     @IBOutlet weak var commitAginButton: UIButton!
+    //打电话
+    @IBOutlet weak var callButton: UIButton!
     
+    let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+     
+        //打电话
+       let taps: Observable<Void> = callButton.rx.tap.asObservable()
+        taps.subscribe(onNext: {Util.toCallPhone(num: "0310 6591999") }).disposed(by: disposeBag)
     }
     
     override func currentConfig() {
         self.commitAginButton.addBorder(color: nil, width: 0, radius: 4)
     }
-
+    
 }
