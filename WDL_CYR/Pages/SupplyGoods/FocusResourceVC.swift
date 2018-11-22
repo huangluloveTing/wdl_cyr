@@ -81,7 +81,6 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
         self.tableView.pullRefresh()
-        self.tableView.upRefresh()
     }
     
     //MARK: 切换
