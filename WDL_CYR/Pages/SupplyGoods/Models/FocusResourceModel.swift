@@ -24,13 +24,17 @@ struct ResourceHallUIModel {
     var company:String = ""
     var isAttention:Bool = false // 是否关注
     var unitPrice:Float = 0 // 单价
+    var companyLogo : String = ""//公司头像
     var reportNum:Int = 0 // 报价人数
+    var refercneceUnitPrice : Float = 0 // (number): 参考单价 ,
+    
 }
 
 struct ResourceDetailUIModel {
     var refercneceTotalPrice:Float = 0 // 参考总价
     var refercneceUnitPrice:Float = 0 // 参考单价
-    var carrierName:String = "" // 托运人名称
+//    var carrierName:String = "" // 托运人名称
+    var consignorName: String = "" // 托运人名称
     var dealCount:Int = 0   // 成交数
     var rate:Float = 0      // 评分
     var resource:CarrierQueryOrderHallResult? // 货源信息

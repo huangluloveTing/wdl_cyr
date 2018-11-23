@@ -79,7 +79,7 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
         self.registerAllCells()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.separatorStyle = .none
+        self.tableView.separatorStyle = .singleLine
         self.tableView.pullRefresh()
     }
     
@@ -140,17 +140,20 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let displayType = self.currentDisplayContentType()
+        //关注托运人
         if displayType == .focusPerson {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(FocusPersonCell.self)") as! FocusPersonCell
             let info = self.list_tyr[indexPath.row]
-            cell.focusPersonInfo(image: nil, title: info.consignorName, badge: info.hall.count)
+            cell.focusPersonInfo(image: info.loginPath, title: info.companyName, badge: info.total)
             return cell
         }
         else {
+            //关注路线
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(FocusLinesCell.self)") as! FocusLinesCell
             let info = self.list_path[indexPath.row]
             cell.showInfo(start: (info.startProvince ?? "") + (info.startCity ?? ""),
-                          end: (info.endProvince ?? "") + (info.endCity ?? ""))
+                          end: (info.endProvince ?? "") + (info.endCity ?? ""),
+                          badge: info.total)
             return cell
         }
     }
@@ -174,9 +177,71 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
             self.toAttentionLineDetail(info: line)
         }
     }
+    
+    
+    // 侧滑删除，按下编辑按钮后执行（手势冲突，未解决）
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+         //删除数组中的数据
+        if displayType == .focusPerson {
+            //取消关注托运人请求
+            let info = self.list_tyr[indexPath.row]
+            self.cancelFouceCarrier(code: info.consignorId, indexPath: indexPath)
+        }
+        else {
+             //取消关注路线请求
+            let info = self.list_path[indexPath.row]
+            self.cancelFoucePath(lineCode: info.lineCode ?? "", indexPath: indexPath)
+        }
+       
+    }
+    
+ 
+    //删除按钮文字
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "取消关注";
+    }
+    
 }
 
 extension FocusResourceVC {
+   
+    //取消关注托运人
+    func cancelFouceCarrier(code: String, indexPath:IndexPath) -> Void {
+        //托运人编码
+        var cancelQuery = CancerFouceCarrier()
+        cancelQuery.code = code
+        self.showLoading()
+        BaseApi.request(target: API.cancelFouceCarrier(cancelQuery), type: BaseResponseModel<Any>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess()
+                //删除单元格
+                self?.list_tyr.remove(at: indexPath.row)
+                self?.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.top)
+                }, onError: { [weak self](error) in
+                    self?.showFail(fail: error.localizedDescription)
+            })
+            .disposed(by: dispose)
+    }
+    
+    
+    //取消关注路线
+    func cancelFoucePath(lineCode: String, indexPath:IndexPath) -> Void {
+      
+        self.showLoading()
+        BaseApi.request(target: API.cancelFoucePath(lineCode), type: BaseResponseModel<Any>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess()
+                //删除单元格
+                self?.list_path.remove(at: indexPath.row)
+                self?.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.top)
+                }, onError: { [weak self](error) in
+                    self?.showFail(fail: error.localizedDescription)
+            })
+            .disposed(by: dispose)
+    }
+    
+    
+    
     // 获取关注的托运人的货源
     func loadResourceByAttentionCarrier() -> Void {
         self.showLoading()

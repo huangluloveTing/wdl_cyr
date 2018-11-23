@@ -34,7 +34,7 @@ class Resource_GoodsInfoCell: BaseCell {
         self.routeName(routeName: "\(Resource_GoodsInfoCell.self)", dataInfo: nil)
     }
 }
-
+//货源详情- 货源信息
 extension Resource_GoodsInfoCell {
     func showInfo(start:String ,
                   end:String ,
@@ -45,7 +45,7 @@ extension Resource_GoodsInfoCell {
                   remark:String?) -> Void {
         self.startLabel.text = start
         self.endLabel.text = end
-        self.loadTimeLabel.text = Util.dateFormatter(date: loadTime, formatter: "yyyy-MM-dd")
+        self.loadTimeLabel.text = Util.dateFormatter(date: loadTime / 1000, formatter: "yyyy-MM-dd")
         self.goodsNameLabel.text = goodsName
         self.goodsSumLabel.text = goodsSumm
         self.goodsTypeLabel.text = goodsType

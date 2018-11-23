@@ -48,7 +48,7 @@ extension OfferNoTruckVC {
     }
     
     func initDisplayData() -> Void {
-        self.offerModel.carrierName = self.resource?.resource?.consignorName ?? ""
+        self.offerModel.carrierName = self.resource?.resource?.carrierName ?? ""
     }
 }
 
@@ -104,6 +104,8 @@ extension OfferNoTruckVC {
             let cell = tableView.dequeueReusableCell(nib: OfferInputCell.self)
             cell.currentStyle = .showContent
             cell.showInfo(title: titles[row], content: offerModel.carrierName, unit: units[row], placeholder: placeholders[row])
+            
+//            cell.showInfo(title: titles[row], content: self.carrierInfo?.carrierName, unit: units[row], placeholder: placeholders[row])
             return cell
         }
         if row == 1 {

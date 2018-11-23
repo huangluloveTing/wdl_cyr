@@ -14,6 +14,7 @@ struct CarrierQueryOrderHallResult : HandyJSON {
     var bidPriceWay : Int = 0// (integer, optional),
     var carrierType : String = "" // (string, optional),
     var companyName : String = "" // (string): 企业名称 ,
+    var carrierName : String = "" // (string): 承运人名称 ,
     var consigneeName : String = "" // (string, optional),
     var consigneePhone : String = "" // (string, optional),
     var consignorName : String = "" // (string): 拖运人名称 ,
@@ -64,13 +65,16 @@ struct CarrierQueryOrderHallResult : HandyJSON {
     var vehicleLength : String = "" // (string): 车长 ,
     var vehicleType : String = "" // (string): 车型 ,
     var vehicleWidth : String = "" // (string): 车宽
+    var companyLogo : String = ""//公司头像
 }
 
 //已经关注托运人下的货源信息
 struct FollowShipperOrderHall : HandyJSON {
     var consignorId : String = "" // (string): 托运人ID ,
     var consignorName : String = "" // (string): 托运人姓名 ,
+    var companyName : String = "" // (string): 托运人公司 ,
     var hall : [CarrierQueryOrderHallResult] = [] // 货运订单信息 ,
+    var loginPath: String  = "" //公司logO
     var total : Int = 0 // (integer): 运单总数
 }
 
@@ -94,3 +98,11 @@ struct FollowFocusLineOrderHallResult : HandyJSON {
     public var total : Int = 0       // (integer): 线路下，货源订单总数
 }
 
+//取消关注托运人
+struct CancerFouceCarrier : HandyJSON {
+    var code : String = "" // 线路编码或托运人编码 ,
+    var endTime : String = "" // 结束时间 ,
+    var startTime : String = "" // 开始时间
+    var pageNum: Int  = 1 //当前页数
+    var token : String = ""
+}

@@ -53,7 +53,10 @@ extension ResourceHallCell {
         self.typeLabel.text = (info?.isSelf ?? false) ? "" : "【自营】"
         self.tyNameLabel.text = info?.company
         self.attentionButton.isSelected = info?.isAttention ?? false
-        self.unitPriceLabel.text = String(format: "%.f",  info?.unitPrice ?? 0)
+        self.unitPriceLabel.text = String(format: "%.f",  info?.refercneceUnitPrice ?? 0)
         self.reportNumLabel.text = String(format: "%d人报价", info?.reportNum ?? 0)
+        //头像
+         Util.showImage(imageView: self.avatorView, imageUrl: info?.companyLogo ?? "")
+       
     }
 }

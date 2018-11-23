@@ -150,12 +150,13 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.01
     }
+    //货源大厅列表数据
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(ResourceHallCell.self)") as! ResourceHallCell
         let hall = self.hallLists[indexPath.section]
         
         let truckInfo = Util.dateFormatter(date: hall.loadingTime, formatter: "mm-dd") + " 装货" + " 玻璃"
-        let goodsInfo = Util.contact(strs: [String(format: "%.f", hall.goodsWeight)+"吨" , hall.vehicleWidth , hall.vehicleType , hall.goodsType], seperate: " | ")
+        let goodsInfo = Util.contact(strs: [String(format: "%.f", hall.goodsWeight)+"吨" , hall.vehicleLength , hall.vehicleType , hall.packageType], seperate: " | ")
         let uiModel = ResourceHallUIModel(start: hall.startProvince + hall.startCity,
                                           end: hall.endProvince + hall.endCity,
                                           truckInfo: truckInfo,
@@ -163,8 +164,10 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
                                           isSelf: true,
                                           company: hall.companyName,
                                           isAttention: hall.shipperCode.count > 0,
-                                          unitPrice: hall.dealUnitPrice,
-                                          reportNum: hall.offerNumber)
+                                          unitPrice: hall.refercneceUnitPrice,
+                                          companyLogo: hall.companyLogo,
+                                          reportNum: hall.offerNumber,
+                                          refercneceUnitPrice: hall.refercneceUnitPrice)
         cell.showInfo(info: uiModel)
         cell.offerClosure = {[weak self] in
             self?.toOffer(index: indexPath.section)
@@ -191,7 +194,7 @@ extension ResourceHallVC {
         resource.refercneceTotalPrice = hall.refercneceTotalPrice
         resource.refercneceUnitPrice = hall.refercneceUnitPrice
         resource.rate = 5
-        resource.carrierName = hall.consigneeName
+        resource.consignorName = hall.consignorName
         resource.resource = hall
         self.toResouceDetail(resource: resource)
     }
@@ -203,7 +206,7 @@ extension ResourceHallVC {
         resource.refercneceTotalPrice = hall.refercneceTotalPrice
         resource.refercneceUnitPrice = hall.refercneceUnitPrice
         resource.rate = 5
-        resource.carrierName = hall.consigneeName
+        resource.consignorName = hall.consignorName
         resource.resource = hall
         self.toChooseOfferType(resource: resource)
     }
