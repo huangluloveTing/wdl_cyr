@@ -9,7 +9,18 @@
 import UIKit
 import HandyJSON
 
+enum WDLTransportStatus : Int , HandyJSONEnum {
+    case reject = 0        // 驳回
+    case inbinding = 1     // 竞价中
+    case deal = 2          // 成交
+    case done = 3          // 完成
+    case willDesignate = 4 // 待指派
+    case canceled = 5      // 已取消
+    case notDone = 6       // 未完成
+}
+
 struct OfferOrderHallResultApp : HandyJSON {
+    
     // 自动成交时间间隔（小时）
     var autoTimeInterval : Int = 0
     // 竞价方式 1=自由 2=指派
@@ -30,12 +41,12 @@ struct OfferOrderHallResultApp : HandyJSON {
     var consignorName : String = ""
     // 托运人ID
     var consignorNo : String = ""
-    // 企业性质
+    // 企业性质 属性 1=经销商 2=第三方 ,
     var consignorType : Int = 0
     // 创建时间
     var createTime : TimeInterval = 0
     // 报价的成交状态 0=驳回 1=竞价中 2=成交 3=已取消
-    var dealStatus : Int = 0
+    var dealStatus : WDLTransportStatus = .reject
     // 成交时间
     var dealTime : TimeInterval = 0
     // 成交总价
@@ -115,7 +126,7 @@ struct OfferOrderHallResultApp : HandyJSON {
     var remark : String = ""
     // 字段不为空表示关注
     var shipperCode : String?
-    // 订单来源 1：zbn,2:tms
+    // 订单来源 1:来至ZBN，2:来至TMS , 3:来自SAP ,
     var sourceType : Int = 1
     // 发货详细地址
     var startAddress : String = ""
@@ -164,7 +175,7 @@ struct ZbnOfferModel  : HandyJSON {
     // (integer): 历史成交笔数 ,
     var dealCount : Int = 0
     // (integer): 成交状态 0=驳回 1=竞价中 2=成交 3=完成 4=待指派 5=已取消 6= 未成交 ,
-    var dealStatus : Int = 0
+    var dealStatus : WDLTransportStatus = .reject
     // (string): 司机姓名 ,
     var driverName : String = ""
     // (string): 司机联系方式 ,

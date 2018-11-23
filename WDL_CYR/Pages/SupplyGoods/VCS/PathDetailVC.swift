@@ -12,7 +12,7 @@ class PathDetailVC: AttentionDetailBaseVC {
 
     @IBOutlet weak var tableView: UITableView!
     
-    public var lineHall:FollowLineOrderHallResult!
+    public var lineHall:FollowFocusLineOrderHallResult!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +21,8 @@ class PathDetailVC: AttentionDetailBaseVC {
     }
     
     override func pageTitle() -> String? {
-        let start = self.lineHall.startProvince + self.lineHall.startCity
-        let end = self.lineHall.endProvince + self.lineHall.endCity
+        let start = (self.lineHall.startProvince ?? "") + (self.lineHall.startCity ?? "")
+        let end = (self.lineHall.endProvince ?? "") + (self.lineHall.endCity ?? "")
         return start + "-" + end
     }
     

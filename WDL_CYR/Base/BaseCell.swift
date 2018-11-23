@@ -85,8 +85,30 @@ extension BaseCell {
 extension BaseCell {
     
     //TODO: 需要完善对应的报价 时的状态情况
-    func offerStatusStyle(status:Int? , to label:UILabel) -> Void {
-        
+    func offerStatusStyle(status:WDLTransportStatus? , to label:UILabel) -> Void {
+        switch status ?? .reject {
+        case .reject:
+            label.text = "已驳回"
+            break
+        case .inbinding:
+            label.text = "竞价中"
+            break
+        case .deal:
+            label.text = "已成交"
+            break
+        case .done:
+            label.text = "已完成"
+            break
+        case .willDesignate:
+            label.text = "待指派"
+            break
+        case .canceled:
+            label.text = "已取消"
+            break
+        case .notDone:
+            label.text = "未完成"
+            break
+        }
     }
     
     //TODO: 报价的指派对应的展示

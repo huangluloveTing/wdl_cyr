@@ -10,6 +10,8 @@ import UIKit
 
 class OfferBaseVC: MainBaseVC {
     
+    public let NotDoneStatus = ["不限","竞价中","已驳回","未成交","已取消"]
+    
     private var baseTableView:UITableView?
     
     public var pageSize:Int = 20                // 当前页面的展示每页数量
@@ -132,8 +134,8 @@ extension OfferBaseVC {
             let length = result.vehicleLength
             let type = result.vehicleType
             let package = result.packageType
-            offer.truckInfo =  Util.contact(strs: [loadTime , result.goodsName])
-            offer.goodsInfo = Util.contact(strs: [weight , length , type , package])
+            offer.truckInfo =  Util.contact(strs: [loadTime , result.goodsName], seperate: " | ")
+            offer.goodsInfo = Util.contact(strs: [weight , length , type , package], seperate: " | ")
             offer.isSelf = false
             offer.company = result.companyName
             offer.isAttention = (result.shipperCode?.count ?? 0 > 0) ? true : false
@@ -160,12 +162,12 @@ extension OfferBaseVC : DropHintViewDataSource {
     func dropHintView(dropHint: DropHintView, index: Int) -> UIView {
         if index == 0 {
             if self.timeChooseView == nil {
-                self.timeChooseView = DropInputDateView.instanceDateView()
+                self.timeChooseView = startAndEndTimeChooseViewGenerate()
             }
             return timeChooseView!
         } else {
             if self.statusView == nil {
-                self.statusView = statusDropViewGenerate(statusTitles: GoodsStatus)
+                self.statusView = statusDropViewGenerate(statusTitles: NotDoneStatus)
             }
             return self.statusView!
         }

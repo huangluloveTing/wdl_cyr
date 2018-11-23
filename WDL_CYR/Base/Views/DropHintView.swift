@@ -99,6 +99,15 @@ class DropHintView: UIView {
     }
 }
 
+//MARK: - public
+extension DropHintView {
+    
+    // 
+    func hiddenDropView() -> Void {
+        self.currenDropView?.hiddenDropView()
+    }
+}
+
 // actions
 extension DropHintView {
     

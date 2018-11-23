@@ -15,6 +15,10 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dropHintView: DropHintView!
     
+    private var startTime:TimeInterval?
+    private var endTime:TimeInterval?
+    private var dealStatus:WDLTransportStatus?
+    
     func willShow() {
         
     }
@@ -54,12 +58,33 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     
     // 点击状态
     override func statusChooseHandle(index: Int) {
-        
+        if index == 0 {
+            self.dealStatus = nil
+        }
+        if index == 1 {
+            self.dealStatus = .inbinding
+        }
+        if index == 2 {
+            self.dealStatus = .reject
+        }
+        if index == 3 {
+            self.dealStatus = .notDone
+        }
+        if index == 4 {
+            self.dealStatus = .canceled
+        }
+        self.loadOffers()
+        self.dropHintView.hiddenDropView()
     }
     
     // 选择时间
     override func timeChooseHandle(startTime: TimeInterval?, endTime: TimeInterval?, tapSure sure: Bool) {
-        
+        if sure {
+            self.startTime = startTime
+            self.endTime = endTime
+            self.loadOffers()
+        }
+        self.dropHintView.hiddenDropView()
     }
 }
 
@@ -70,6 +95,9 @@ extension OfferNotDoneVC {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
+        self.tableView.estimatedSectionFooterHeight = 0
+        self.tableView.estimatedSectionHeaderHeight = 0
+        self.tableView.estimatedRowHeight = 0
         self.registerCell(nibName: "\(Offer_NotDoneCell.self)", for: self.tableView)
     }
 }
@@ -79,7 +107,7 @@ extension OfferNotDoneVC {
     
     // 获取报价数据
     func loadOffers() -> Void {
-        self.loadOfferData(status: 1, pageSize: self.pageSize, start: nil, end: nil, dealStatus: nil) { [weak self](res, error) in
+        self.loadOfferData(status: 1, pageSize: self.pageSize, start: self.startTime, end: self.endTime, dealStatus: self.dealStatus?.rawValue) { [weak self](res, error) in
             guard let pageInfo = res else {
                 self?.showFail(fail: error?.localizedDescription, complete: nil)
                 return
@@ -117,4 +145,7 @@ extension OfferNotDoneVC : UITableViewDelegate , UITableViewDataSource {
         self.toOfferDetail(index: row)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.heightForRow(at: indexPath)
+    }
 }

@@ -18,7 +18,9 @@ struct BaseApi {
     private static let provider = MoyaProvider<API>( requestClosure:requestClosure,plugins: [MyPlugins()])
     
     static func request<T: BaseResponse>(target:API, type:T.Type) -> Observable<T> {
-        let observable = provider.rx.request(target).asObservable()
+        let observable = provider.rx.request(target)
+            .retry(2)
+            .asObservable()
             .mapModel(T.self)
         return observable
     }

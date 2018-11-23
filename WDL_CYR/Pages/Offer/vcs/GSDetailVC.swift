@@ -74,7 +74,7 @@ class GSDetailVC: GSDetailBaseVC {
     /// 货源信息
     override func goodsSupplyInfo() -> GSInfoModel? {
         var info = GSInfoModel()
-        info.status = SourceStatus(rawValue: self.offer?.dealStatus ?? 5) ?? .other
+        info.status = SourceStatus(rawValue: self.offer?.dealStatus.rawValue ?? 5) ?? .other
         info.start = Util.contact(strs: [self.offer?.startProvince ?? "" , self.offer?.startCity ?? ""])
         info.end = Util.contact(strs: [self.offer?.endProvince ?? "" , self.offer?.endCity ?? ""])
         info.loadTime = self.offer?.loadingTime ?? 0
@@ -101,7 +101,7 @@ extension GSDetailVC {
     
     // 当前的 货源状态
     func configCurrentHallStatus() -> Void {
-        self.currentStatus = SourceStatus(rawValue: self.offer?.dealStatus ?? 0) ?? .other
+        self.currentStatus = SourceStatus(rawValue: self.offer?.dealStatus.rawValue ?? 0) ?? .other
     }
 }
 
@@ -152,7 +152,7 @@ extension GSDetailVC {
     
     //MARK: - 刷新当前页面
     func reloadPage() -> Void {
-        let status = SourceStatus(rawValue: self.offer?.dealStatus ?? 100) ?? .other
+        let status = SourceStatus(rawValue: self.offer?.dealStatus.rawValue ?? 100) ?? .other
         self.tableView.reloadData()
         self.configBottom(status: status, tableView: self.tableView)
     }

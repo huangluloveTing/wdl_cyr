@@ -27,7 +27,7 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
     
     private var displayType:FocusResourceDisplay = .focusPerson
     private var list_tyr:[FollowShipperOrderHall] = []  //   关注的托运人的数据
-    private var list_path:[FollowLineOrderHallResult] = [] //   关注的线路的数据
+    private var list_path:[FollowFocusLineOrderHallResult] = [] //   关注的线路的数据
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,8 +149,8 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(FocusLinesCell.self)") as! FocusLinesCell
             let info = self.list_path[indexPath.row]
-            cell.showInfo(start: info.startProvince+info.startCity,
-                          end: info.endProvince+info.endCity)
+            cell.showInfo(start: (info.startProvince ?? "") + (info.startCity ?? ""),
+                          end: (info.endProvince ?? "") + (info.endCity ?? ""))
             return cell
         }
     }
@@ -195,7 +195,7 @@ extension FocusResourceVC {
     // 获取关注的线路的货源
     func loadResourceByAttentionPath() -> Void {
         self.showLoading()
-        BaseApi.request(target: API.findOrderByFollowShipper(), type: BaseResponseModel<[FollowLineOrderHallResult]>.self)
+        BaseApi.request(target: API.findOrderByFollowLine(), type: BaseResponseModel<[FollowFocusLineOrderHallResult]>.self)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess()
                 self?.list_path = data.data ?? []

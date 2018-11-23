@@ -69,7 +69,7 @@ extension BaseVC {
     }
     
     // 跳转到关注线路详情
-    func toAttentionLineDetail(info:FollowLineOrderHallResult) -> Void {
+    func toAttentionLineDetail(info:FollowFocusLineOrderHallResult) -> Void {
         let lineVC = PathDetailVC()
         lineVC.lineHall = info
         self.push(vc: lineVC, title: nil)

@@ -75,12 +75,22 @@ struct FollowShipperOrderHall : HandyJSON {
 }
 
 struct FollowLineOrderHallResult : HandyJSON {
-    var endCity : String = "" // (string): 收货地市 ,
-    var endProvince : String = "" // (string): 收货地省 ,
+    var endCity : String?     // (string): 收货地市 ,
+    var endProvince : String? // (string): 收货地省 ,
     var hall : [CarrierQueryOrderHallResult] = [] // 线路下，货源信息 ,
-    var lineCode : String = "" // (string): 线路ID或者货主的ID ,
-    var startCity : String = "" // (string): 发货地市 ,
-    var startProvince : String = "" // (string): 发货地省 ,
-    var total : Int = 0 // (integer): 线路下，货源订单总数
+    var lineCode : String?    // (string): 线路ID或者货主的ID ,
+    var startCity : String?   // (string): 发货地市 ,
+    var startProvince : String? // (string): 发货地省 ,
+    var total : Int = 0       // (integer): 线路下，货源订单总数
+}
+
+struct FollowFocusLineOrderHallResult : HandyJSON {
+    public var endCity : String?     // (string): 收货地市 ,
+    public var endProvince : String? // (string): 收货地省 ,
+    public var hall : [CarrierQueryOrderHallResult] = [] // 线路下，货源信息 ,
+    public var lineCode : String?    // (string): 线路ID或者货主的ID ,
+    public var startCity : String?   // (string): 发货地市 ,
+    public var startProvince : String? // (string): 发货地省 ,
+    public var total : Int = 0       // (integer): 线路下，货源订单总数
 }
 
