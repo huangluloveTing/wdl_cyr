@@ -22,7 +22,7 @@ enum API {
     case findAllOrderHall(GoodsSupplyQueryBean) // 获取货源大厅数据
     case findOrderByFollowShipper()         //查询我已经关注线路线下的货源信息
     case addFollowLine(String,String,String,String) //添加关注线路
-    case findOrderByFollowLine()            //
+    case findOrderByFollowLine()            //查询我已经关注线路线下的货源信息
     case selectZbnConsignor(String)         //获取所有的未关注运人信息
     case addFollowShipper(AddShipperQueryModel) // 关注托运人
     case findTransportCapacity(QueryZbnTransportCapacity) // 获取所有的运力信息
@@ -38,12 +38,20 @@ enum API {
     case assemblePlanWaybill([WaybillAssembleCommitModel]) // 多车配载
     case createEvaluate(ZbnEvaluateVo)      // 提交评价
     case uploadImage(UIImage , UploadImagTypeMode)   // 上传驾驶证图片
+    case cancelFouceCarrier(CancerFouceCarrier)      //通过关注托运人的编码，取消关注
+    case cancelFoucePath(String)       // 取消线路的关注
+    
+    
 }
 
 
 // PATH
 func apiPath(api:API) -> String {
     switch api {
+    case .cancelFoucePath(_):
+        return "/followLine/cancelFollowLine"
+    case .cancelFouceCarrier(_):
+        return "/followShipper/cacleFollow"
     case .login(_, _):
         return "/carrier/login"
     case .register(_, _, _, _):
@@ -62,6 +70,7 @@ func apiPath(api:API) -> String {
         return "/carrierOrderHall/findAllOrderHall"
     case .findOrderByFollowShipper():
         return "/followShipper/findOrderByFollowShipper"
+        
     case .findOrderByFollowLine():
         return "/followLine/findOrderByFollowLine"
     case .addFollowLine(_, _, _, _):
@@ -128,6 +137,10 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["startPointProvince":startProvince , "startPointCity":startCity , "endPointProvince":endProvince,"endPointCity":endCity], encoding: JSONEncoding.default)
     case .selectZbnConsignor(let query):
         return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["queryParams":query])
+        
+    case .cancelFoucePath(let query):
+        return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["queryParams":query])
+        
     case .addFollowShipper(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .findTransportCapacity(let query):
@@ -174,6 +187,9 @@ func apiTask(api:API) -> Task {
     case .createEvaluate(let evaluate):
         return .requestParameters(parameters: evaluate.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
         
+    case .cancelFouceCarrier(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
+        
     case .uploadImage(let image , _):
         var imageData:Data? = UIImagePNGRepresentation(image)
         if imageData == nil {
@@ -183,6 +199,7 @@ func apiTask(api:API) -> Task {
         let formData = MultipartFormData.init(provider: formProvider, name: "file", fileName: "img.png", mimeType: "image/png")
         return .uploadMultipart([formData])
     }
+  
 }
 
 // METHOD
@@ -192,6 +209,7 @@ func apiMethod(api:API) -> Moya.Method {
          .registerSms(_) ,
          .selectZbnConsignor(_),
          .findCarrierInfoFee(_),
+         .cancelFoucePath(_),
          .queryTransportDetail(_):
         return .get
     default:

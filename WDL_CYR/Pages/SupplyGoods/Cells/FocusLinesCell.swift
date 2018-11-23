@@ -12,7 +12,7 @@ class FocusLinesCell: BaseCell {
     
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
-    
+    @IBOutlet weak var numberLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,8 +27,10 @@ class FocusLinesCell: BaseCell {
 }
 
 extension FocusLinesCell {
-    func showInfo(start:String? , end:String?) -> Void {
+    func showInfo(start:String? , end:String?  , badge:Int) -> Void {
         self.startLabel.text = start
         self.endLabel.text = end
+   
+          self.rightBadgeValue(value: String(badge), to: self.numberLabel, radius: 10)
     }
 }

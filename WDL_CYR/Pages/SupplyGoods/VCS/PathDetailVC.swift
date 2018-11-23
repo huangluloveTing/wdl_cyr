@@ -38,7 +38,8 @@ class PathDetailVC: AttentionDetailBaseVC {
                                             company: res.companyName,
                                             isAttention: res.shipperCode.count > 0,
                                             unitPrice: res.dealUnitPrice,
-                                            reportNum: res.offerNumber)
+                                            companyLogo: res.companyLogo,
+                                            reportNum: res.offerNumber,  refercneceUnitPrice: res.refercneceUnitPrice)
             return model
         }
         self.refresh(items: items)
@@ -54,7 +55,8 @@ class PathDetailVC: AttentionDetailBaseVC {
         resource.refercneceTotalPrice = hall.refercneceTotalPrice
         resource.refercneceUnitPrice = hall.refercneceUnitPrice
         resource.rate = 5
-        resource.carrierName = hall.consigneeName
+//        resource.carrierName = hall.consigneeName
+        resource.consignorName = hall.consignorName
         resource.resource = hall
         self.toChooseOfferType(resource: resource)
     }
@@ -66,7 +68,8 @@ class PathDetailVC: AttentionDetailBaseVC {
         resource.refercneceTotalPrice = hall.refercneceTotalPrice
         resource.refercneceUnitPrice = hall.refercneceUnitPrice
         resource.rate = 5
-        resource.carrierName = hall.consigneeName
+//        resource.carrierName = hall.consigneeName
+        resource.consignorName = hall.consignorName
         resource.resource = hall
         self.toResouceDetail(resource: resource)
     }

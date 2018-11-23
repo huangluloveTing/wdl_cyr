@@ -114,26 +114,37 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
         }
         
         if section == 1 {
+            //货源信息
             let cell = self.dequeueReusableCell(className: Resource_GoodsInfoCell.self, for: tableView)
-            let start = (self.resource?.resource?.startProvince ?? "") + (self.resource?.resource?.startCity ?? "")
-            let end = (self.resource?.resource?.endProvince ?? "") + (self.resource?.resource?.endCity ?? "")
+            let start = (self.resource?.resource?.startProvince ?? "") + (self.resource?.resource?.startCity ?? "") + (self.resource?.resource?.startDistrict ?? "")
+            let end = (self.resource?.resource?.endProvince ?? "") + (self.resource?.resource?.endCity ?? "") + (self.resource?.resource?.endDistrict ?? "")
             let loadTime = self.resource?.resource?.loadingTime ?? 0
             let goodsName = self.resource?.resource?.goodsName
             let goodsType = self.resource?.resource?.goodsType
             let remark = self.resource?.resource?.remark ?? " "
-//            let summary = Util.contact(strs: [<#T##[String]#>], seperate: <#T##String#>)
+            //货品简介
+            let goodWt = String(format: "%.1f吨", self.resource?.resource?.goodsWeight ?? 0.0)
+            let vtype = self.resource?.resource?.vehicleType ?? ""
+            let vPackage = self.resource?.resource?.packageType ?? ""
+            let vLength = self.resource?.resource?.vehicleLength ?? ""
+             let summary =  Util.contact(strs: [goodWt, vtype, vPackage, vLength], seperate: " | ")
+
             cell.showInfo(start: start,
                           end: end,
                           loadTime: loadTime,
                           goodsName: goodsName,
                           goodsType: goodsType,
-                          goodsSumm: "",
+                          goodsSumm: summary,
                           remark: remark)
             return cell
         }
-        
+        //托运人信息
         let cell = self.dequeueReusableCell(className: Resource_ShipperInfoCell.self, for: tableView)
-        cell.showInfo(name: self.resource?.carrierName,
+//        cell.showInfo(name: self.resource?.carrierName,
+//                      dealNum: self.resource?.dealCount ?? 0,
+//                      rate: self.resource?.rate ?? 0)
+        
+        cell.showInfo(name: self.resource?.consignorName,
                       dealNum: self.resource?.dealCount ?? 0,
                       rate: self.resource?.rate ?? 0)
         return cell

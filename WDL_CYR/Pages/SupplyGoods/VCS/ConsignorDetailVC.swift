@@ -28,6 +28,9 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
         let items = self.followShipper.hall.map { (res) -> ResourceHallUIModel in
             let truckInfo = Util.dateFormatter(date: res.loadingTime, formatter: "mm-dd") + " 装货" + " 玻璃"
             let goodsInfo = Util.contact(strs: [String(format: "%.f", res.goodsWeight)+"吨" , res.vehicleWidth , res.vehicleType , res.goodsType], seperate: " | ")
+            
+           
+           
             let model = ResourceHallUIModel(start: res.startProvince + res.startCity,
                                               end: res.endProvince + res.endCity,
                                               truckInfo: truckInfo,
@@ -36,7 +39,11 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
                                               company: res.companyName,
                                               isAttention: res.shipperCode.count > 0,
                                               unitPrice: res.dealUnitPrice,
-                                              reportNum: res.offerNumber)
+                                             companyLogo: res.companyLogo,
+                                             reportNum: res.offerNumber,  refercneceUnitPrice: res.refercneceUnitPrice)
+            
+            
+            
             return model
         }
         self.refresh(items: items)
@@ -52,7 +59,8 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
         resource.refercneceTotalPrice = hall.refercneceTotalPrice
         resource.refercneceUnitPrice = hall.refercneceUnitPrice
         resource.rate = 5
-        resource.carrierName = hall.consigneeName
+//        resource.carrierName = hall.consignorName
+         resource.consignorName = hall.consignorName
         resource.resource = hall
         self.toChooseOfferType(resource: resource)
     }
@@ -64,7 +72,8 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
         resource.refercneceTotalPrice = hall.refercneceTotalPrice
         resource.refercneceUnitPrice = hall.refercneceUnitPrice
         resource.rate = 5
-        resource.carrierName = hall.consigneeName
+//        resource.carrierName = hall.consignorName
+          resource.consignorName = hall.consignorName
         resource.resource = hall
         self.toResouceDetail(resource: resource)
     }
