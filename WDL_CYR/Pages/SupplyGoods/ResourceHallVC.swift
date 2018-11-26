@@ -36,6 +36,7 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
         self.registerCells()
         self.configTableView()
         self.queryResourceHall(quey: query)
+        self.tableView.pullRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +57,18 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
         self.statusButton.rx.tap.asObservable()
             .subscribe(onNext: { () in
                 self.showStatusDropView()
+            })
+            .disposed(by: dispose)
+        
+        //TODO:未做分页上拉刷新
+        self.tableView.refreshState.share(replay: 1)
+            .filter({(state) -> Bool in
+                return state != .EndRefresh
+            })
+            .asDriver(onErrorJustReturn: .EndRefresh)
+            .drive(onNext: { [weak self](state) in
+                self?.tableView.endRefresh()
+                self?.queryResourceHall(quey: self!.query)
             })
             .disposed(by: dispose)
     }

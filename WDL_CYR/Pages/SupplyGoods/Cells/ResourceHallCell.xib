@@ -33,13 +33,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="50000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rls-1x-SOa">
-                        <rect key="frame" x="469" y="35" width="61" height="21.5"/>
+                        <rect key="frame" x="469" y="35" width="57" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                         <color key="textColor" red="0.76078431372549016" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="元/吨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbJ-bV-fzZ">
-                        <rect key="frame" x="530" y="40.5" width="27" height="14"/>
+                        <rect key="frame" x="526" y="40.5" width="27" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -128,7 +128,7 @@
                     <constraint firstItem="Ynd-do-by8" firstAttribute="leading" secondItem="rAc-gT-FfG" secondAttribute="trailing" id="4is-Av-yIC"/>
                     <constraint firstItem="fhh-14-Vja" firstAttribute="leading" secondItem="LeD-eI-gkb" secondAttribute="trailing" id="5rh-D1-3JA"/>
                     <constraint firstItem="Yrc-XS-7Pg" firstAttribute="top" secondItem="3ZT-kx-9Xu" secondAttribute="bottom" constant="15" id="8jt-K4-Pvt"/>
-                    <constraint firstAttribute="trailing" secondItem="fbJ-bV-fzZ" secondAttribute="trailing" constant="6" id="8sm-94-hgl"/>
+                    <constraint firstAttribute="trailing" secondItem="fbJ-bV-fzZ" secondAttribute="trailing" constant="10" id="8sm-94-hgl"/>
                     <constraint firstItem="fbJ-bV-fzZ" firstAttribute="leading" secondItem="Rls-1x-SOa" secondAttribute="trailing" id="Cth-v8-NOg"/>
                     <constraint firstItem="cAA-Dz-UMD" firstAttribute="leading" secondItem="X8G-61-xDe" secondAttribute="leading" id="ESp-ms-ep0"/>
                     <constraint firstItem="LeD-eI-gkb" firstAttribute="leading" secondItem="H99-2d-38V" secondAttribute="trailing" constant="10" id="FMm-qs-Src"/>

@@ -37,6 +37,7 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        //需要下拉刷新
+         self.tableView.beginRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -185,12 +186,22 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
         if displayType == .focusPerson {
             //关注托运人跳转详情页
             let shipper = self.list_tyr[indexPath.row]
-            self.toAttentionConsignorDetail(consignor: shipper)
+            if shipper.hall.count == 0 {
+                self.showWarn(warn: "当前关注的托运人没有任何货源数据！", complete: nil)
+            }else{
+                self.toAttentionConsignorDetail(consignor: shipper)
+            }
+            
         }
         else {
             //关注路线跳转详情页
             let line = self.list_path[indexPath.row]
-            self.toAttentionLineDetail(info: line)
+            if line.hall.count == 0 {
+                self.showWarn(warn: "当前关注的路线没有任何货源数据！", complete: nil)
+            }else{
+                self.toAttentionLineDetail(info: line)
+            }
+            
         }
     }
     
