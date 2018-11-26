@@ -34,6 +34,10 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
         self.configTableView()
         self.toTapHeader(index: 0)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       //需要下拉刷新
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -144,6 +148,11 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
         if displayType == .focusPerson {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(FocusPersonCell.self)") as! FocusPersonCell
             let info = self.list_tyr[indexPath.row]
+            if info.total == 0 {
+                cell.numberLabel.isHidden = true
+            }else{
+                cell.numberLabel.isHidden = false
+            }
             cell.focusPersonInfo(image: info.loginPath, title: info.companyName, badge: info.total)
             return cell
         }
@@ -151,6 +160,11 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
             //关注路线
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(FocusLinesCell.self)") as! FocusLinesCell
             let info = self.list_path[indexPath.row]
+            if info.total == 0 {
+                cell.numberLabel.isHidden = true
+            }else{
+                cell.numberLabel.isHidden = false
+            }
             cell.showInfo(start: (info.startProvince ?? "") + (info.startCity ?? ""),
                           end: (info.endProvince ?? "") + (info.endCity ?? ""),
                           badge: info.total)
@@ -169,10 +183,12 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let displayType = self.currentDisplayContentType()
         if displayType == .focusPerson {
+            //关注托运人跳转详情页
             let shipper = self.list_tyr[indexPath.row]
             self.toAttentionConsignorDetail(consignor: shipper)
         }
         else {
+            //关注路线跳转详情页
             let line = self.list_path[indexPath.row]
             self.toAttentionLineDetail(info: line)
         }

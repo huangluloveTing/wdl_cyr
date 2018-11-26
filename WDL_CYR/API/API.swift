@@ -20,7 +20,7 @@ enum API {
     case releaseSource(ReleaseDeliverySourceModel)       // 发布货源
     case ownOrderHall(GoodsSupplyQueryBean)     // 我的关注的货源接口
     case findAllOrderHall(GoodsSupplyQueryBean) // 获取货源大厅数据
-    case findOrderByFollowShipper()         //查询我已经关注线路线下的货源信息
+    case findOrderByFollowShipper()         //查询我已经关注托运人线下的货源信息
     case addFollowLine(String,String,String,String) //添加关注线路
     case findOrderByFollowLine()            //查询我已经关注线路线下的货源信息
     case selectZbnConsignor(String)         //获取所有的未关注运人信息
@@ -139,7 +139,7 @@ func apiTask(api:API) -> Task {
         return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["queryParams":query])
         
     case .cancelFoucePath(let query):
-        return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["queryParams":query])
+        return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["lineCode":query])
         
     case .addFollowShipper(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)

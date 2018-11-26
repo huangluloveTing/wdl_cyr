@@ -28,8 +28,8 @@ class PathDetailVC: AttentionDetailBaseVC {
     
     func configResources() -> Void {
         let items = self.lineHall.hall.map { (res) -> ResourceHallUIModel in
-            let truckInfo = Util.dateFormatter(date: res.loadingTime, formatter: "mm-dd") + " 装货" + " 玻璃"
-            let goodsInfo = Util.contact(strs: [String(format: "%.f", res.goodsWeight)+"吨" , res.vehicleWidth , res.vehicleType , res.goodsType], seperate: " | ")
+            let truckInfo = Util.dateFormatter(date: res.loadingTime/1000, formatter: "MM-dd") + " 装货 " + res.goodsType
+            let goodsInfo = Util.contact(strs: [String(format: "%.f", res.goodsWeight)+"吨" , res.vehicleLength , res.vehicleType , res.packageType], seperate: " | ")
             let model = ResourceHallUIModel(start: res.startProvince + res.startCity,
                                             end: res.endProvince + res.endCity,
                                             truckInfo: truckInfo,
