@@ -155,7 +155,7 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(ResourceHallCell.self)") as! ResourceHallCell
         let hall = self.hallLists[indexPath.section]
         
-        let truckInfo = Util.dateFormatter(date: hall.loadingTime, formatter: "mm-dd") + " 装货" + " 玻璃"
+        let truckInfo = Util.dateFormatter(date: hall.loadingTime/1000, formatter: "MM-dd") + " 装货 " + hall.goodsType
         let goodsInfo = Util.contact(strs: [String(format: "%.f", hall.goodsWeight)+"吨" , hall.vehicleLength , hall.vehicleType , hall.packageType], seperate: " | ")
         let uiModel = ResourceHallUIModel(start: hall.startProvince + hall.startCity,
                                           end: hall.endProvince + hall.endCity,
