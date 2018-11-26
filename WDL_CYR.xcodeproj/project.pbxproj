@@ -57,6 +57,8 @@
 		70220E63219AB2F8005D9645 /* WaybillDisplayStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70220E62219AB2F8005D9645 /* WaybillDisplayStatus.swift */; };
 		7039671B21830E2300CE34B7 /* DropInputDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7039671A21830E2300CE34B7 /* DropInputDateView.swift */; };
 		7039671D21830F6E00CE34B7 /* DropInputDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7039671C21830F6E00CE34B7 /* DropInputDateView.xib */; };
+		703CC6DF21AB9EA100F0245D /* Offer_otherOffersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CC6DD21AB9EA100F0245D /* Offer_otherOffersCell.swift */; };
+		703CC6E021AB9EA100F0245D /* Offer_otherOffersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 703CC6DE21AB9EA100F0245D /* Offer_otherOffersCell.xib */; };
 		7041296C217775320078A46F /* ResearchConsignorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7041296A217775320078A46F /* ResearchConsignorVC.swift */; };
 		7041296D217775320078A46F /* ResearchConsignorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7041296B217775320078A46F /* ResearchConsignorVC.xib */; };
 		70412975217782A70078A46F /* ConsignorResearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70412974217782A70078A46F /* ConsignorResearchHeader.swift */; };
@@ -392,6 +394,8 @@
 		70220E62219AB2F8005D9645 /* WaybillDisplayStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillDisplayStatus.swift; sourceTree = "<group>"; };
 		7039671A21830E2300CE34B7 /* DropInputDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropInputDateView.swift; sourceTree = "<group>"; };
 		7039671C21830F6E00CE34B7 /* DropInputDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropInputDateView.xib; sourceTree = "<group>"; };
+		703CC6DD21AB9EA100F0245D /* Offer_otherOffersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer_otherOffersCell.swift; sourceTree = "<group>"; };
+		703CC6DE21AB9EA100F0245D /* Offer_otherOffersCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Offer_otherOffersCell.xib; sourceTree = "<group>"; };
 		7041296A217775320078A46F /* ResearchConsignorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchConsignorVC.swift; sourceTree = "<group>"; };
 		7041296B217775320078A46F /* ResearchConsignorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResearchConsignorVC.xib; sourceTree = "<group>"; };
 		70412974217782A70078A46F /* ConsignorResearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsignorResearchHeader.swift; sourceTree = "<group>"; };
@@ -743,6 +747,8 @@
 				70EA7366215E0AE00020B8C3 /* GSDetail_rejectCell.xib */,
 				70EA7369215E0E680020B8C3 /* GSDetail_notDealCell.swift */,
 				70EA736A215E0E680020B8C3 /* GSDetail_notDealCell.xib */,
+				703CC6DD21AB9EA100F0245D /* Offer_otherOffersCell.swift */,
+				703CC6DE21AB9EA100F0245D /* Offer_otherOffersCell.xib */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -1520,6 +1526,7 @@
 				70CF4F6A214B41110051A7CA /* GSDetailInfoCell.xib in Resources */,
 				70D8BC0F2166E99C000522E0 /* PaymentTypeVC.xib in Resources */,
 				707B7208216F3C60000F78F6 /* Resource_GoodsInfoCell.xib in Resources */,
+				703CC6E021AB9EA100F0245D /* Offer_otherOffersCell.xib in Resources */,
 				70CF4F86214B41120051A7CA /* WayBillCell.xib in Resources */,
 				70ED020C2195513C001DB4D1 /* WaybillMultiRemailInfoCell.xib in Resources */,
 				704129AA2179B7980078A46F /* OfferInputCell.xib in Resources */,
@@ -1658,6 +1665,7 @@
 				70F40F1E214B4E710054A175 /* ZTScrollVCType.swift in Sources */,
 				70CF4F8B214B41120051A7CA /* WayBillVC.swift in Sources */,
 				707B7203216F3C4A000F78F6 /* Resource_PriceInfoCell.swift in Sources */,
+				703CC6DF21AB9EA100F0245D /* Offer_otherOffersCell.swift in Sources */,
 				70CF4FAB214B41120051A7CA /* SKTag.m in Sources */,
 				70CF4F83214B41120051A7CA /* NormalBaseVC.swift in Sources */,
 				70CF4F88214B41120051A7CA /* WayBillDetailVC.swift in Sources */,

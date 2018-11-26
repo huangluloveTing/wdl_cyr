@@ -29,6 +29,7 @@ enum API {
     case findCarrierInfoFee(String)         // 报价时，获取承运人保证金、服务费等信息
     case addOffer(CarrierOfferCommitModel)  // 承运人报价
     case selectOwnOffer(OfferQueryModel)    // 查询承运人自己的报价
+    case getOtherOfferByOrderHallId(String) // 根据货源id 获取 其他人的报价
     case getOfferByOrderHallId(OrderHallOfferQueryModel) // 根据货源ID获取报价详情
     case ownTransportPage(QuerytTransportListBean) // 获取我的运单列表
     case carrierAllButtonAcceptTransportState(Int, TimeInterval?, String , String?)//承运人操作运单（拒绝，接受，取消运输，继续运输）
@@ -40,8 +41,7 @@ enum API {
     case uploadImage(UIImage , UploadImagTypeMode)   // 上传驾驶证图片
     case cancelFouceCarrier(CancerFouceCarrier)      //通过关注托运人的编码，取消关注
     case cancelFoucePath(String)       // 取消线路的关注
-    
-    
+    case cancelOffer(String , String)                        // 取消报价
 }
 
 
@@ -106,7 +106,10 @@ func apiPath(api:API) -> String {
         return "/message/createEvaluate"
     case .uploadImage(_ , let mode):
         return "/commom/upload/file/app/" + mode.rawValue
-        
+    case .getOtherOfferByOrderHallId(_):
+        return "/offer/getOtherOfferByOrderHallId"
+    case .cancelOffer(_ , _):
+        return "/offer/cancelOffer"
     }
 }
 
@@ -198,6 +201,11 @@ func apiTask(api:API) -> Task {
         let formProvider = MultipartFormData.FormDataProvider.data(imageData!)
         let formData = MultipartFormData.init(provider: formProvider, name: "file", fileName: "img.png", mimeType: "image/png")
         return .uploadMultipart([formData])
+        
+    case .getOtherOfferByOrderHallId(let hallId):
+        return .requestParameters(parameters: ["hallId": hallId], encoding: JSONEncoding.default)
+    case .cancelOffer(let hallId , let offerId):
+        return .requestParameters(parameters: ["hallId": hallId , "id":offerId], encoding: JSONEncoding.default)
     }
   
 }

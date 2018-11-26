@@ -22,7 +22,7 @@ class GSDetailBaseVC: NormalBaseVC {
     func notDealReason() -> String {return ""}      // 未成交原因
     
     func myOfferInfo() -> OfferInfoModel? {return nil} // 我的报价信息
-    func otherOfferInfo() -> [OfferInfoModel] {return []} //其他人的报价信息
+    func otherOfferInfo() -> [OfferInfoModel]? {return []} //其他人的报价信息
     func goodsSupplyInfo() -> GSInfoModel? {return nil} // 货源信息
     
     //
@@ -78,9 +78,9 @@ class GSDetailBaseVC: NormalBaseVC {
     }
     
     //MARK: 配置底部按钮
-    func configBottom(status:SourceStatus , tableView:UITableView) -> Void {
+    func configBottom(status:WDLOfferDealStatus , tableView:UITableView) -> Void {
         switch status {
-        case .bidding:
+         case .inbinding:
             self.bidding_bottom(tableView: tableView)
             break
         case .canceled:
@@ -90,6 +90,12 @@ class GSDetailBaseVC: NormalBaseVC {
             self.noBottom(tableView: tableView)
         }
     }
+    
+    //MARK: - 是否获取其他人的x报价信息
+    /// - 若货源信息是由TMS经销商来源
+    /// - 有明报显示 ，暗报不显示其他人报价
+    /// - 若货源信息是由第三方发布的都可见
+    func showOtherOfferInfo() -> Bool { return true }
 }
 
 // register cells
@@ -102,6 +108,7 @@ extension GSDetailBaseVC {
         self.registerCell(nibName: "\(GSDetail_canceledOfferCell.self)", for: tableView)
         self.registerCell(nibName: "\(GSDetail_rejectCell.self)", for: tableView)
         self.registerCell(nibName: "\(GSDetail_notDealCell.self)", for: tableView)
+        self.registerCell(nibName: "\(Offer_otherOffersCell.self)", for: tableView)
     }
 }
 
@@ -138,6 +145,11 @@ extension GSDetailBaseVC {
     }
     
     func bidding_numberRwos(at section:Int , for tableView:UITableView) -> Int {
+        if section == 1 {
+            if showOtherOfferInfo() == true {
+                return 2
+            }
+        }
         return  1
     }
     
@@ -148,6 +160,11 @@ extension GSDetailBaseVC {
             return cell
         }
         if indexPath.section == 1 {
+            if indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCell(className: Offer_otherOffersCell.self)
+                cell.showOfferInfo(otherOffers: self.otherOfferInfo() ?? [])
+                return cell
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GSDetail_OfferInfoCell.self)") as! GSDetail_OfferInfoCell
             cell.showOfferInfo(myOffer: self.myOfferInfo() ?? OfferInfoModel(), otherOffers: self.otherOfferInfo())
             return cell
@@ -166,6 +183,9 @@ extension GSDetailBaseVC {
     }
     
     func canceled_numberRwos(at section:Int , for tableView:UITableView) -> Int {
+        if section == 1 && showOtherOfferInfo() == true {
+            return 2
+        }
         return  1
     }
     
@@ -176,6 +196,11 @@ extension GSDetailBaseVC {
             return cell
         }
         if indexPath.section == 1 {
+            if indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCell(className: Offer_otherOffersCell.self)
+                cell.showOfferInfo(otherOffers: self.otherOfferInfo() ?? [])
+                return cell
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GSDetail_OfferInfoCell.self)") as! GSDetail_OfferInfoCell
             cell.showOfferInfo(myOffer: self.myOfferInfo() ?? OfferInfoModel(), otherOffers: self.otherOfferInfo())
             return cell
@@ -194,6 +219,9 @@ extension GSDetailBaseVC {
     }
     
     func reject_numberRwos(at section:Int , for tableView:UITableView) -> Int {
+        if section == 1 && showOtherOfferInfo() {
+            return 2
+        }
         return  1
     }
     
@@ -204,6 +232,11 @@ extension GSDetailBaseVC {
             return cell
         }
         if indexPath.section == 1 {
+            if indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCell(className: Offer_otherOffersCell.self)
+                cell.showOfferInfo(otherOffers: self.otherOfferInfo() ?? [])
+                return cell
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GSDetail_OfferInfoCell.self)") as! GSDetail_OfferInfoCell
             cell.showOfferInfo(myOffer: self.myOfferInfo() ?? OfferInfoModel(), otherOffers: self.otherOfferInfo())
             return cell
@@ -222,6 +255,9 @@ extension GSDetailBaseVC {
     }
     
     func notDeal_numberRwos(at section:Int , for tableView:UITableView) -> Int {
+        if section == 1 && showOtherOfferInfo() == true {
+            return 2
+        }
         return  1
     }
     
@@ -232,6 +268,11 @@ extension GSDetailBaseVC {
             return cell
         }
         if indexPath.section == 1 {
+            if indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCell(className: Offer_otherOffersCell.self)
+                cell.showOfferInfo(otherOffers: self.otherOfferInfo() ?? [])
+                return cell
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GSDetail_OfferInfoCell.self)") as! GSDetail_OfferInfoCell
             cell.showOfferInfo(myOffer: self.myOfferInfo() ?? OfferInfoModel(), otherOffers: self.otherOfferInfo())
             return cell
@@ -240,5 +281,39 @@ extension GSDetailBaseVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(GSDetail_GoodsInfoCell.self)") as! GSDetail_GoodsInfoCell
         cell.showGoodsInfo(info: self.goodsSupplyInfo() ?? GSInfoModel())
         return cell
+    }
+}
+
+//MARK: - load data
+extension GSDetailBaseVC {
+    
+    //MARK: - 获取其他人的报价
+    func loadOtherInfo(hallId:String? , closure:(([ZbnOfferModel]? , Error?) -> ())?) -> Void {
+        BaseApi.request(target: API.getOtherOfferByOrderHallId(hallId ?? ""), type: BaseResponseModel<[ZbnOfferModel]>.self)
+            .subscribe(onNext: { (data) in
+                if let closure = closure {
+                    closure(data.data ?? [] , nil)
+                }
+            }, onError: { (error) in
+                if let closure = closure {
+                    closure(nil , error)
+                }
+            })
+            .disposed(by: dispose)
+    }
+    
+    //MARK: - 取消报价
+    func cancelOfferHandle(hallId:String , offerId:String) -> Void {
+        self.showLoading()
+        BaseApi.request(target: API.cancelOffer(hallId , offerId), type: BaseResponseModel<String>.self)
+            .subscribe(onNext: {[weak self] (data) in
+                self?.hiddenToast()
+                self?.showSuccess(success: data.message, complete: {
+                    self?.pop(toRootViewControllerAnimation: true)
+                })
+            }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
     }
 }

@@ -17,7 +17,7 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     
     private var startTime:TimeInterval?
     private var endTime:TimeInterval?
-    private var dealStatus:WDLTransportStatus?
+    private var dealStatus:WDLOfferDealStatus?
     
     func willShow() {
         
@@ -32,6 +32,7 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
         self.defineTableView(tableView: self.tableView)
         self.configDropView(dropView: self.dropHintView)
         self.configTableView()
+        self.tableView.beginRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +50,7 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
                 if state == .LoadMore {
                     self?.pageSize += 20
                 } else {
+                    self?.tableView.removeCacheHeights()
                     self?.pageSize = 20
                 }
                 self?.loadOffers()
@@ -73,7 +75,7 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
         if index == 4 {
             self.dealStatus = .canceled
         }
-        self.loadOffers()
+        self.tableView.beginRefresh()
         self.dropHintView.hiddenDropView()
     }
     
@@ -82,9 +84,13 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
         if sure {
             self.startTime = startTime
             self.endTime = endTime
-            self.loadOffers()
+            self.tableView.beginRefresh()
         }
         self.dropHintView.hiddenDropView()
+    }
+    
+    override func callBackForRefresh(param: Any?) {
+        self.loadOffers()
     }
 }
 
@@ -108,6 +114,7 @@ extension OfferNotDoneVC {
     // 获取报价数据
     func loadOffers() -> Void {
         self.loadOfferData(status: 1, pageSize: self.pageSize, start: self.startTime, end: self.endTime, dealStatus: self.dealStatus?.rawValue) { [weak self](res, error) in
+            self?.tableView.endRefresh()
             guard let pageInfo = res else {
                 self?.showFail(fail: error?.localizedDescription, complete: nil)
                 return

@@ -44,8 +44,8 @@ class OfferDealTimerCell: BaseCell {
     // 设置 倒计时时间
     func timerDisplay(hours:Double , minus:Double , second:Double) -> Void {
         self.hourLabel.text = String(format: "%.f", hours)
-        self.minuteLabel.text = String(format: "%.f", minus)
-        self.secondLabel.text = String(format: "%.f", second)
+        self.minuteLabel.text = String(format: "%02.f", minus)
+        self.secondLabel.text = String(format: "%02.f", second)
     }
     
     deinit {

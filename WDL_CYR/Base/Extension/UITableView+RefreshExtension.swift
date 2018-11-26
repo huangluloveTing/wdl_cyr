@@ -82,6 +82,18 @@ extension UITableView {
         }
         return state
     }
+    
+    func beginRefresh() -> Void {
+        if let header = self.mj_header {
+            header.beginRefreshing()
+        }
+    }
+    
+    func beginLoadMore() -> Void {
+        if let footer = self.mj_footer {
+            footer.beginRefreshing()
+        }
+    }
 }
 
 extension Reactive where Base : UITableView {

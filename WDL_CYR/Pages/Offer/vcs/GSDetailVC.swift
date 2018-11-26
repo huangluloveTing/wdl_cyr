@@ -34,7 +34,7 @@ class GSDetailVC: GSDetailBaseVC {
     //MARK: overrride
     // 取消报价
     override func cancelOffer() -> Void {
-        
+        self.cancelOfferHandle(hallId: self.offer?.id ?? "", offerId: self.offer?.offerId ?? "")
     }
      // 重新报价
     override func toOfferAgain() -> Void {
@@ -43,7 +43,7 @@ class GSDetailVC: GSDetailBaseVC {
     
     // 竞标中 竞标中的倒计时
     override func bidding_timer() -> TimeInterval {
-        return Double(self.offer?.autoTimeInterval ?? 0) * 3600
+        return self.offer?.surplusTurnoverTime ?? 0
     }
     
     // 已驳回 驳回原因
@@ -67,8 +67,11 @@ class GSDetailVC: GSDetailBaseVC {
     }
     
     /// 其他人的报价信息
-    override func otherOfferInfo() -> [OfferInfoModel] {
-        return self.otherOfferUIModels()
+    override func otherOfferInfo() -> [OfferInfoModel]? {
+        if showOtherOfferInfo() == true {
+            return self.otherOfferUIModels()
+        }
+        return nil
     }
     
     /// 货源信息
@@ -85,6 +88,22 @@ class GSDetailVC: GSDetailBaseVC {
         info.referenceTotalPrice = self.offer?.refercneceTotalPrice ?? 0
         info.remark  = self.offer?.remark ?? " "
         return info
+    }
+    
+    override func showOtherOfferInfo() -> Bool {
+        //MARK: - 是否获取其他人的x报价信息
+        /// - 若货源信息是由TMS经销商来源
+        /// - 有明报显示 ，暗报不显示其他人报价
+        /// - 若货源信息是由第三方发布的都可见
+        if self.offer?.sourceType == 2 && self.offer?.offerType == 2 { // 不显示其他人报价
+            return false
+        }
+        return true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.configBottom(status: self.offer?.dealStatus ?? .reject, tableView: self.tableView)
     }
 }
 
@@ -107,33 +126,15 @@ extension GSDetailVC {
 
 extension GSDetailVC {
     
-    //MARK: - 获取报价信息
+    //MARK: - 获取其他人报价信息
     func loadOffer() -> Void {
-        let hallId = self.offer?.id ?? ""
-        var query = OrderHallOfferQueryModel()
-        query.hallId = hallId
-        BaseApi.request(target: API.getOfferByOrderHallId(query), type: BaseResponseModel<OrderAndOfferResult>.self)
-            .subscribe(onNext: { [weak self](data) in
-                self?.offerLists = data.data?.offerPage ?? []
-                self?.offer = data.data?.zbnOrderHall
-                self?.reloadPage()
-            }, onError: { [weak self](error) in
-                self?.showFail(fail: error.localizedDescription, complete: nil)
-            })
-            .disposed(by: dispose)
-    }
-    
-    //TODO: - TODO 模拟报价数据
-    func virtualOffers() -> [ZbnOfferModel] {
-        var items: [ZbnOfferModel] = []
-        for _ in 0 ... 10 {
-            var item = ZbnOfferModel()
-            item.carrierName = "王师傅"
-            item.quotedPrice = 109
-            item.totalPrice = 1000
-            items.append(item)
+        self.loadOtherInfo(hallId: self.offer?.id) { (offers, error) in
+            guard let others = offers else {
+                return
+            }
+            self.offerLists = others
+            self.tableView.reloadData()
         }
-        return items
     }
     
     
@@ -149,13 +150,10 @@ extension GSDetailVC {
         }
         return uiModels
     }
+}
+
+extension GSDetailVC {
     
-    //MARK: - 刷新当前页面
-    func reloadPage() -> Void {
-        let status = SourceStatus(rawValue: self.offer?.dealStatus.rawValue ?? 100) ?? .other
-        self.tableView.reloadData()
-        self.configBottom(status: status, tableView: self.tableView)
-    }
 }
 
 //MARK: UITableViewDelegate / UITableViewDataSource
@@ -181,3 +179,4 @@ extension GSDetailVC : UITableViewDelegate , UITableViewDataSource {
         view.backgroundColor = UIColor(hex: "eeeeee")
     }
 }
+

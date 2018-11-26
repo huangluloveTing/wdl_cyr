@@ -80,7 +80,7 @@ extension OfferBaseVC {
         let offer = self.currentPageInfo?.list?[index]
         let offerDetailVC = GSDetailVC()
         offerDetailVC.offer = offer
-        self.push(vc: offerDetailVC, title: "报价详情")
+        self.pushToVC(vc: offerDetailVC, title: "报价详情")
     }
 }
 

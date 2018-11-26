@@ -26,6 +26,7 @@ class OfferDealVC: OfferBaseVC , ZTScrollViewControllerType {
         self.defineTableView(tableView: tableView)
         self.configDropView(dropView: self.dropHintView)
         self.configTableView()
+        self.tableView.beginRefresh()
     }
     
     override func bindViewModel() {

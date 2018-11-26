@@ -33,7 +33,7 @@ struct OfferUIModel {
     var isSelf:Bool = false // 是否自营
     var company:String = ""
     var isAttention:Bool = false // 是否关注
-    var reportStatus:WDLTransportStatus = .reject // 报价状态
+    var reportStatus:WDLOfferDealStatus = .reject // 报价状态
     var designateStatus : Int = 0 // 指派状态
     var avatorURL:String = ""
 }

@@ -60,12 +60,18 @@ class ZTScrollViewConroller: UIViewController {
         collectionView.isPagingEnabled = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isScrollEnabled = self.horiScrolEnable()
         collectionView.register(UINib.init(nibName: "\(ZTScrollItemCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(ZTScrollItemCell.self)")
         return collectionView
     }()
     
     func setTitleTintColor(color:UIColor , state:UIControlState) -> Void {
         self.naviSelectView?.setHeaderTintColor(color: color, state: state)
+    }
+    
+    //MARK: - 是否启用横向滚动
+    func horiScrolEnable() -> Bool {
+        return true
     }
 }
 

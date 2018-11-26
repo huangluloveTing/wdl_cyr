@@ -85,7 +85,7 @@ extension BaseCell {
 extension BaseCell {
     
     //TODO: 需要完善对应的报价 时的状态情况
-    func offerStatusStyle(status:WDLTransportStatus? , to label:UILabel) -> Void {
+    func offerStatusStyle(status:WDLOfferDealStatus? , to label:UILabel) -> Void {
         switch status ?? .reject {
         case .reject:
             label.text = "已驳回"

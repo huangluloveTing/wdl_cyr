@@ -9,6 +9,13 @@
 import UIKit
 import RxSwift
 
+
+//MARK: - 页面返回回调的mode
+enum CallbackMode {
+    case refresh(Any?)
+    case other(Any)
+}
+
 // 页面操作  -> tableView 的相关操作
 
 typealias HandleExcute<T> = (T) -> ()
@@ -16,6 +23,8 @@ typealias HandleError = (Error) -> ()
 typealias HandleComplete = () -> ()
 
 class BaseVC: UIViewController {
+    
+    public var callBack:((CallbackMode) -> ())?
     
     public let dispose = DisposeBag()
 
@@ -55,6 +64,36 @@ class BaseVC: UIViewController {
     // 搜索框的当前的输入内容回调，可重写
     func searchBarInput(search:String) -> Void {
         print("current search content : " + search)
+    }
+    
+    //MARK: - callBack
+    // 页面返回回调的刷新
+    func callBackForRefresh(param:Any?) -> Void {
+        
+    }
+    
+    // 页面返回回调的其他操作
+    func callBackForOtherHandle(param:Any?) -> Void {
+        
+    }
+}
+
+// 跳转新页面
+extension BaseVC {
+    
+    // 跳转新页面（当需要页面回调时，使用这个跳转方法，并在页面需要回调时，调用回调 闭包）
+    func pushToVC(vc:BaseVC , title:String?) -> Void {
+        vc.callBack = {[weak self] (model) in
+            switch model {
+            case .refresh(let param):
+                self?.callBackForRefresh(param: param)
+                break
+            case .other(let param):
+                self?.callBackForOtherHandle(param: param)
+                break
+            }
+        }
+        self.push(vc: vc, title: title)
     }
 }
 
@@ -246,4 +285,8 @@ extension BaseVC {
     func removeRightBarButton() -> Void {
         self.addLeftBarbuttonItem(with: UIView(frame: .zero))
     }
+}
+
+extension BaseVC {
+    
 }
