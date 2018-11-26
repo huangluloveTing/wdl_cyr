@@ -48,6 +48,7 @@ class DropPlaceChooiceView: UIView {
         }
         return view
     }()
+    
     @IBAction func cancelAction(_ sender: Any) {
         if let closure = self.decideClosure {
             closure(false)

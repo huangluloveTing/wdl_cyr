@@ -82,7 +82,7 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
                 
             }
             self?.statusButton.setTitle(self?.GoodsStatus[index], for: .normal)
-            
+            self?.statusView.hiddenDropView()
         }
         return self.addDropView(drop: statusView, anchorView: self.dropAnchorView)
     }()
@@ -106,7 +106,7 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
                 self?.startModel = SupplyPlaceModel()
                 self?.startButton.setTitle("发货地", for: .normal)
             }
-            
+            self?.placeChooseView.hiddenDropView()
         }
         return self.addDropView(drop: placeView, anchorView: dropAnchorView)
     }()
@@ -130,7 +130,7 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
                 self?.endModel = SupplyPlaceModel()
                 self?.endButton.setTitle("发货地", for: .normal)
             }
-            
+            self?.endPlaceChooseView.hiddenDropView()
         }
         return self.addDropView(drop: placeView, anchorView: dropAnchorView)
     }()
