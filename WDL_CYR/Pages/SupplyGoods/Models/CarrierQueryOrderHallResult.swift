@@ -66,6 +66,7 @@ struct CarrierQueryOrderHallResult : HandyJSON {
     var vehicleType : String = "" // (string): 车型 ,
     var vehicleWidth : String = "" // (string): 车宽
     var companyLogo : String = ""//公司头像
+   
 }
 
 //已经关注托运人下的货源信息

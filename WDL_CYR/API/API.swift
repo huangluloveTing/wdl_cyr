@@ -70,7 +70,6 @@ func apiPath(api:API) -> String {
         return "/carrierOrderHall/findAllOrderHall"
     case .findOrderByFollowShipper():
         return "/followShipper/findOrderByFollowShipper"
-        
     case .findOrderByFollowLine():
         return "/followLine/findOrderByFollowLine"
     case .addFollowLine(_, _, _, _):
