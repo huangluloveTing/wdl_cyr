@@ -42,6 +42,8 @@ enum API {
     case cancelFouceCarrier(CancerFouceCarrier)      //通过关注托运人的编码，取消关注
     case cancelFoucePath(String)       // 取消线路的关注
     case cancelOffer(String , String)                        // 取消报价
+    case findCapacityByDriverNameOrPhone(String)            // 根据驾驶员姓名/电话查询驾驶员信息
+    case findCapacityByName(String)                         //
 }
 
 
@@ -110,6 +112,10 @@ func apiPath(api:API) -> String {
         return "/offer/getOtherOfferByOrderHallId"
     case .cancelOffer(_ , _):
         return "/offer/cancelOffer"
+    case .findCapacityByDriverNameOrPhone(_):
+        return "/carrierOrderHall/findCapacityByDriverNameOrPhone"
+    case .findCapacityByName(_):
+        return "/carrierOrderHall/findCapacityByName"
     }
 }
 
@@ -206,6 +212,10 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["hallId": hallId], encoding: JSONEncoding.default)
     case .cancelOffer(let hallId , let offerId):
         return .requestParameters(parameters: ["hallId": hallId , "id":offerId], encoding: JSONEncoding.default)
+    case .findCapacityByDriverNameOrPhone(let nameOrPhone):
+        return .requestParameters(parameters: ["nameOrPhone" : nameOrPhone], encoding: URLEncoding.default)
+    case .findCapacityByName(let name):
+        return .requestParameters(parameters: ["name" : name], encoding: URLEncoding.default)
     }
   
 }
@@ -218,7 +228,9 @@ func apiMethod(api:API) -> Moya.Method {
          .selectZbnConsignor(_),
          .findCarrierInfoFee(_),
          .cancelFoucePath(_),
-         .queryTransportDetail(_):
+         .queryTransportDetail(_),
+         .findCapacityByName(_),
+         .findCapacityByDriverNameOrPhone(_):
         return .get
     default:
         return .post

@@ -25,6 +25,11 @@ class OfferChooseTruckVC: OfferSearchBaseVC {
         self.defineTableView(tableView: self.tableView)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadSearch(search: "")
+    }
+    
     override func bindViewModel() {
         self.searchBar.rx.text.orEmpty.asObservable()
             .skip(1)
@@ -77,6 +82,7 @@ extension OfferChooseTruckVC {
             model.length = capacity.vehicleLength
             model.weight = capacity.vehicleWeight
             model.vichelNo = capacity.vehicleNo
+            model.transStatus = capacity.transportStatus == 2
             return model
         }
         self.toRefreshTableView(lists: uiModels)

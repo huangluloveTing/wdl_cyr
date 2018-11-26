@@ -36,7 +36,7 @@ class OfferChooseDriverVC: OfferSearchBaseVC {
     
     override func zt_rightBarButtonAction(_ sender: UIBarButtonItem!) {
         if let closure = self.searchResultClosure {
-            if self.currentCheckedIndex >= self.lists.count {
+            if self.currentCheckedIndex < self.lists.count {
                 if self.currentCheckedIndex < self.lists.count {
                     let capacity = self.lists[self.currentCheckedIndex]
                     closure(capacity)
@@ -52,7 +52,7 @@ class OfferChooseDriverVC: OfferSearchBaseVC {
 extension OfferChooseDriverVC {
     
     func loadSearch(search:String) -> Void {
-        self.search(text: search)
+        self.searchDirver(text: search)
             .share(replay: 1)
             .asDriver(onErrorJustReturn: BaseResponseModel<[ZbnTransportCapacity]>())
             .asObservable()
@@ -79,6 +79,7 @@ extension OfferChooseDriverVC {
             model.length = capacity.vehicleLength
             model.weight = capacity.vehicleWeight
             model.vichelNo = capacity.vehicleNo
+            model.transStatus = capacity.transportStatus == 2
             return model
         }
         

@@ -59,6 +59,7 @@
 		7039671D21830F6E00CE34B7 /* DropInputDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7039671C21830F6E00CE34B7 /* DropInputDateView.xib */; };
 		703CC6DF21AB9EA100F0245D /* Offer_otherOffersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CC6DD21AB9EA100F0245D /* Offer_otherOffersCell.swift */; };
 		703CC6E021AB9EA100F0245D /* Offer_otherOffersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 703CC6DE21AB9EA100F0245D /* Offer_otherOffersCell.xib */; };
+		703CC6E221ABCF0800F0245D /* CarrierOfferBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CC6E121ABCF0800F0245D /* CarrierOfferBaseVC.swift */; };
 		7041296C217775320078A46F /* ResearchConsignorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7041296A217775320078A46F /* ResearchConsignorVC.swift */; };
 		7041296D217775320078A46F /* ResearchConsignorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7041296B217775320078A46F /* ResearchConsignorVC.xib */; };
 		70412975217782A70078A46F /* ConsignorResearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70412974217782A70078A46F /* ConsignorResearchHeader.swift */; };
@@ -396,6 +397,7 @@
 		7039671C21830F6E00CE34B7 /* DropInputDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropInputDateView.xib; sourceTree = "<group>"; };
 		703CC6DD21AB9EA100F0245D /* Offer_otherOffersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer_otherOffersCell.swift; sourceTree = "<group>"; };
 		703CC6DE21AB9EA100F0245D /* Offer_otherOffersCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Offer_otherOffersCell.xib; sourceTree = "<group>"; };
+		703CC6E121ABCF0800F0245D /* CarrierOfferBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrierOfferBaseVC.swift; sourceTree = "<group>"; };
 		7041296A217775320078A46F /* ResearchConsignorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchConsignorVC.swift; sourceTree = "<group>"; };
 		7041296B217775320078A46F /* ResearchConsignorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResearchConsignorVC.xib; sourceTree = "<group>"; };
 		70412974217782A70078A46F /* ConsignorResearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsignorResearchHeader.swift; sourceTree = "<group>"; };
@@ -945,6 +947,7 @@
 				707B71FE216F3C1F000F78F6 /* ResourceDetailVC.xib */,
 				70C7CB26216F74ED00C10AC4 /* ChooseOfferTypeVC.swift */,
 				70C7CB27216F74ED00C10AC4 /* ChooseOfferTypeVC.xib */,
+				703CC6E121ABCF0800F0245D /* CarrierOfferBaseVC.swift */,
 				70C7CB2A216F76AD00C10AC4 /* OfferWithTruckVC.swift */,
 				70C7CB2B216F76AD00C10AC4 /* OfferWithTruckVC.xib */,
 				701F10DD217EA8D600693936 /* OfferNoTruckVC.swift */,
@@ -1618,7 +1621,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
@@ -1635,7 +1638,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1706,6 +1709,7 @@
 				70CF4F73214B41110051A7CA /* GoodSupplyBean.swift in Sources */,
 				70D8BC162166EEEE000522E0 /* PaymentCommitCell.swift in Sources */,
 				70EA736F215E12920020B8C3 /* GSDetailVC.swift in Sources */,
+				703CC6E221ABCF0800F0245D /* CarrierOfferBaseVC.swift in Sources */,
 				70CF4FBE214B41120051A7CA /* UITableView+ProxyDelegate.swift in Sources */,
 				70CF4FCC214B41120051A7CA /* DropViewContainer.swift in Sources */,
 				704129AD2179C1590078A46F /* OfferFeeCell.swift in Sources */,

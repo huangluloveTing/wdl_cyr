@@ -14,6 +14,8 @@ struct OfferWithTruckDriverModel {
     var driverName : String = "" // 驾驶员名称
     var idCard:String = "" // 身份证号码
     var phone:String = "" // 手机号码
+    var type:Int = 0        // 承运人 类型  1=司机 2=承运人 ,
+    var driverId:String = ""
 }
 
 // 有车报价 ， 车辆 model
@@ -42,11 +44,13 @@ struct CarrierOfferCommitModel : HandyJSON {
     // 承运人姓名
     var carrierName : String?
     // 承运人类型
-    var carrierType : String?
+    var carrierType : Int?
     // 司机姓名
     var driverName : String?
     // 司机联系方式
     var driverPhone : String?
+    // 司机id
+    var driverId:String?
     // 货源ID
     var hallId : String?
     // 承运数量

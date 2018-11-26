@@ -17,6 +17,7 @@ class OfferSearchTruckCell: BaseCell {
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var vichelLengthLabel: UILabel!
     @IBOutlet weak var vichelTypeLabel: UILabel!
+    @IBOutlet weak var transportStatusLabel: UILabel!
     
     public var checkClosure:CheckClosure?
     
@@ -40,11 +41,15 @@ class OfferSearchTruckCell: BaseCell {
 
 extension OfferSearchTruckCell {
     
-    func showInfo(vichelNo:String? , type:String? , length:String? ,weight:String? , check:Bool? = false) -> Void {
+    func showInfo(vichelNo:String? , type:String? , length:String? ,weight:String? , check:Bool? = false , transporting:Bool? = false) -> Void {
         self.vichelNoLabel.text = vichelNo
         self.vichelTypeLabel.text = type
         self.vichelLengthLabel.text = length
         self.weightLabel.text = weight
         self.checkButton.isSelected = check ?? false
+        self.checkButton.isUserInteractionEnabled = true
+        if transporting == true {
+            self.checkButton.isUserInteractionEnabled = false
+        }
     }
 }

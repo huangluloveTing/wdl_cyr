@@ -89,7 +89,7 @@ extension OfferSearchBaseVC : UITableViewDelegate , UITableViewDataSource {
         let item = self.currentList[indexPath.section]
         if self.currentStyle == .driverSearch {
             let cell = tableView.dequeueReusableCell(nib: OfferSearchTruckCell.self)
-            cell.showInfo(vichelNo: item.vichelNo, type: item.type, length: item.length, weight: item.weight, check: item.check)
+            cell.showInfo(vichelNo: item.vichelNo, type: item.type, length: item.length, weight: item.weight, check: item.check , transporting: item.transStatus)
             cell.checkClosure = {[weak self] in
                 self?.toRefresh(index: indexPath.section)
             }
@@ -122,18 +122,21 @@ extension OfferSearchBaseVC : UITableViewDelegate , UITableViewDataSource {
 
 extension OfferSearchBaseVC {
     
-    // 搜索
+    // 搜索车辆
     func search(text:String) -> Observable<BaseResponseModel<[ZbnTransportCapacity]>> {
-        var query = QueryZbnTransportCapacity()
-        if self.currentStyle == .driverSearch {
-            query.driverName = text
-            query.driverPhone = text
-        } else {
-            query.vehicleNo = text
-        }
-        return BaseApi.request(target: API.findTransportCapacity(query), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+        return BaseApi.request(target: API.findCapacityByName(text), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+            .retry()
             .asObservable()
     }
+    
+    // 搜索司机
+    func searchDirver(text:String) -> Observable<BaseResponseModel<[ZbnTransportCapacity]>> {
+        return BaseApi.request(target: API.findCapacityByDriverNameOrPhone(text), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+            .retry()
+            .asObservable()
+    }
+    
+    
     
 }
 
@@ -147,4 +150,5 @@ struct OfferSearchUIModel {
     var length:String = ""      // 车长
     var weight:String = ""      // 载重
     var check:Bool = false
+    var transStatus:Bool = false // 是否正在u运输中
 }

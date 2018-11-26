@@ -9,7 +9,7 @@
 import UIKit
 
 /// 有车报价
-class OfferWithTruckVC: NormalBaseVC {
+class OfferWithTruckVC: CarrierOfferBaseVC {
     
     let titles = ["承运人","驾驶员","车辆","报价","总价","服务费"]
     let units = ["","","","元/吨","元","元"]
@@ -27,7 +27,7 @@ class OfferWithTruckVC: NormalBaseVC {
         self.initDisplayData()
         self.configTableView()
         self.registerAllCells()
-        self.loadCarrierInfo()
+        self.loadFee()
     }
 
 }
@@ -49,6 +49,25 @@ extension OfferWithTruckVC {
     
     func initDisplayData() -> Void {
         self.offerModel.carrierName = self.resource?.resource?.carrierName ?? ""
+    }
+    
+    //MARK: -
+    func loadFee() -> Void {
+        let hallId = self.resource?.resource?.id ?? ""
+        self.showLoading()
+        self.loadCarrierInfo(hallId: hallId) { [weak self](info, error) in
+            self?.hiddenToast()
+            self?.carrierInfo = info
+            self?.configNetToUI()
+            self?.tableView.reloadData()
+        }
+    }
+    
+    // 将获取的数据信息配置到显示界面上
+    func configNetToUI() -> Void {
+        self.offerModel.carrierName = self.carrierInfo?.carrierName ?? ""
+        self.offerModel.myBalance = self.carrierInfo?.useableMoney ?? 0
+        self.offerModel.serviceFee = self.carrierInfo?.singleTimeFee ?? 0
     }
 }
 
@@ -82,6 +101,8 @@ extension OfferWithTruckVC {
             driver.driverName = capacity.driverName
             driver.idCard = capacity.driverId
             driver.phone = capacity.driverPhone
+            driver.type = capacity.capacityType
+            driver.driverId = capacity.driverId
             self?.offerModel.driverModel = driver
             self?.tableView.reloadData()
         }
@@ -110,19 +131,6 @@ extension OfferWithTruckVC {
         self.tableView.reloadData()
     }
     
-    // 获取 报价时，获取承运人保证金、服务费等信息
-    func loadCarrierInfo() -> Void {
-        let hallId = self.resource?.resource?.id ?? ""
-        BaseApi.request(target: API.findCarrierInfoFee(hallId), type: BaseResponseModel<CarrierInfoFee>.self)
-            .subscribe(onNext: { [weak self](data) in
-                self?.carrierInfo = data.data
-                self?.toRefresh()
-            }, onError: { (error) in
-                
-            })
-            .disposed(by: dispose)
-    }
-    
     // 根据填写的单价，计算总价，并反馈到UI上
     func toCaculateTotal(unit:Float) -> Void {
         let weight = self.resource?.resource?.goodsWeight
@@ -137,15 +145,18 @@ extension OfferWithTruckVC {
         var commit = CarrierOfferCommitModel()
         commit.driverName = offerModel.driverModel?.driverName
         commit.driverPhone = offerModel.driverModel?.phone
+        commit.driverId = offerModel.driverModel?.driverId
+        commit.carrierType = 1
         commit.vehicleNo = offerModel.truckModel?.truckNo
         commit.hallId = self.resource?.resource?.id
         commit.quotedPrice = offerModel.offerUnitPrice
         commit.totalPrice = offerModel.total
+        commit.loadWeight = self.resource?.resource?.goodsWeight
         self.showLoading(title: "正在提交", complete: nil)
         BaseApi.request(target: API.addOffer(commit), type: BaseResponseModel<String>.self)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: {
-                    self?.pop()
+                    self?.popCurrent(beforeIndes: 2, animation: true)
                 })
             }, onError: { [weak self](error) in
                 self?.showFail(fail: error.localizedDescription, complete: nil)

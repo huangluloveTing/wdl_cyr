@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OfferNoTruckVC: NormalBaseVC {
+class OfferNoTruckVC: CarrierOfferBaseVC {
     
     let titles = ["承运人","报价","总价","服务费"]
     let units = ["","元/吨","元","元"]
@@ -26,6 +26,7 @@ class OfferNoTruckVC: NormalBaseVC {
         self.configTableView()
         self.registerAllCells()
         self.initDisplayData()
+        self.loadFee()
     }
 
 }
@@ -67,9 +68,15 @@ extension OfferNoTruckVC {
     // 提交报价
     func commitOffer() -> Void {
         var commit = CarrierOfferCommitModel()
+        commit.driverName = offerModel.driverModel?.driverName
+        commit.driverPhone = offerModel.driverModel?.phone
+        commit.driverId = offerModel.driverModel?.driverId
+        commit.carrierType = 2
+        commit.vehicleNo = offerModel.truckModel?.truckNo
         commit.hallId = self.resource?.resource?.id
         commit.quotedPrice = offerModel.offerUnitPrice
         commit.totalPrice = offerModel.total
+        commit.loadWeight = self.resource?.resource?.goodsWeight
         self.showLoading(title: "正在提交", complete: nil)
         BaseApi.request(target: API.addOffer(commit), type: BaseResponseModel<String>.self)
             .subscribe(onNext: { [weak self](data) in
@@ -80,6 +87,25 @@ extension OfferNoTruckVC {
                     self?.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)
+    }
+    
+    //MARK: -
+    func loadFee() -> Void {
+        let hallId = self.resource?.resource?.id ?? ""
+        self.showLoading()
+        self.loadCarrierInfo(hallId: hallId) { [weak self](info, error) in
+            self?.hiddenToast()
+            self?.carrierInfo = info
+            self?.configNetToUI()
+            self?.tableView.reloadData()
+        }
+    }
+    
+    // 将获取的数据信息配置到显示界面上
+    func configNetToUI() -> Void {
+        self.offerModel.carrierName = self.carrierInfo?.carrierName ?? ""
+        self.offerModel.myBalance = self.carrierInfo?.useableMoney ?? 0
+        self.offerModel.serviceFee = self.carrierInfo?.singleTimeFee ?? 0
     }
     
 }
@@ -104,8 +130,6 @@ extension OfferNoTruckVC {
             let cell = tableView.dequeueReusableCell(nib: OfferInputCell.self)
             cell.currentStyle = .showContent
             cell.showInfo(title: titles[row], content: offerModel.carrierName, unit: units[row], placeholder: placeholders[row])
-            
-//            cell.showInfo(title: titles[row], content: self.carrierInfo?.carrierName, unit: units[row], placeholder: placeholders[row])
             return cell
         }
         if row == 1 {
@@ -149,3 +173,4 @@ extension OfferNoTruckVC {
         return cell
     }
 }
+
