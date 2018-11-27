@@ -12,6 +12,15 @@ class ResourceHallCell: BaseCell {
     
     typealias ResourceOfferClosure = () -> ()
     
+    //标题
+    //参考价
+    @IBOutlet weak var canPriceTitleLab: UILabel!
+    
+    //参考价单位
+    @IBOutlet weak var unitTitleLab: UILabel!
+    //多少人报价
+    @IBOutlet weak var perNumTitleLab: UILabel!
+    
     @IBOutlet weak var avatorView: UIImageView!
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
@@ -57,6 +66,17 @@ extension ResourceHallCell {
         self.reportNumLabel.text = String(format: "%d人报价", info?.reportNum ?? 0)
         //头像
          Util.showImage(imageView: self.avatorView, imageUrl: info?.companyLogo ?? "")
-       
+       //参考价是否可见 1=可见 2=不可见
+        if info?.refercnecePriceIsVisable == 1 {
+            self.unitPriceLabel.isHidden = false
+            canPriceTitleLab.isHidden = false
+            unitTitleLab.isHidden = false
+            perNumTitleLab.isHidden = false
+        }else{
+            self.unitPriceLabel.isHidden = true
+            canPriceTitleLab.isHidden = true
+            unitTitleLab.isHidden = true
+            perNumTitleLab.isHidden = true
+        }
     }
 }

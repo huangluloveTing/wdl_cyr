@@ -16,7 +16,7 @@ struct OfferQueryModel : HandyJSON {
     var endTime : TimeInterval?
     // 开始时间
     var startTime : TimeInterval?
-    //
+    // 页数
     var pageNum : Int = 1
     //
     var pageSize : Int = 20

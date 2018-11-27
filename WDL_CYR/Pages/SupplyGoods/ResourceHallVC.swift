@@ -170,6 +170,9 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
         
         let truckInfo = Util.dateFormatter(date: hall.loadingTime/1000, formatter: "MM-dd") + " 装货 " + hall.goodsType
         let goodsInfo = Util.contact(strs: [String(format: "%.f", hall.goodsWeight)+"吨" , hall.vehicleLength , hall.vehicleType , hall.packageType], seperate: " | ")
+        
+        //参考价是否可见  var refercnecePriceIsVisable : String = "" // (string, optional), 参考价是否可见，1=可见 2，不可见
+        
         let uiModel = ResourceHallUIModel(start: hall.startProvince + hall.startCity,
                                           end: hall.endProvince + hall.endCity,
                                           truckInfo: truckInfo,
@@ -180,7 +183,8 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
                                           unitPrice: hall.refercneceUnitPrice,
                                           companyLogo: hall.companyLogo,
                                           reportNum: hall.offerNumber,
-                                          refercneceUnitPrice: hall.refercneceUnitPrice)
+                                          refercneceUnitPrice: hall.refercneceUnitPrice,
+                                          refercnecePriceIsVisable: hall.refercnecePriceIsVisable)
         cell.showInfo(info: uiModel)
         cell.offerClosure = {[weak self] in
             self?.toOffer(index: indexPath.section)

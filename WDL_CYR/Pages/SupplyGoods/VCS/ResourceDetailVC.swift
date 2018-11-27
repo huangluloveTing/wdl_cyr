@@ -126,8 +126,10 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
             let goodWt = String(format: "%.1f吨", self.resource?.resource?.goodsWeight ?? 0.0)
             let vtype = self.resource?.resource?.vehicleType ?? ""
             let vPackage = self.resource?.resource?.packageType ?? ""
-            let vLength = self.resource?.resource?.vehicleLength ?? ""
-             let summary =  Util.contact(strs: [goodWt, vtype, vPackage, vLength], seperate: " | ")
+            let vLength = "车长" + (self.resource?.resource?.vehicleLength ?? "")
+            let vWidth = "车宽" + (self.resource?.resource?.vehicleWidth ?? "")
+            let comLW = vLength + "." + vWidth
+             let summary =  Util.contact(strs: [goodWt, vtype, vPackage, comLW], seperate: " | ")
 
             cell.showInfo(start: start,
                           end: end,

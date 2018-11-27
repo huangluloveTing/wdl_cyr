@@ -23,7 +23,7 @@ enum SourceStatus : Int {
 }
 
 struct OfferUIModel {
-    var possible:String = ""
+    var possible:String = ""    // 可能性 高中低
     var unitPrice:Float = 0
     var totalPrice:Float = 0
     var start:String = ""
@@ -35,7 +35,8 @@ struct OfferUIModel {
     var isAttention:Bool = false // 是否关注
     var reportStatus:WDLOfferDealStatus = .reject // 报价状态
     var designateStatus : Int = 0 // 指派状态
-    var avatorURL:String = ""
+    var avatorURL:String = ""//头像
+    
 }
 
 // 货源信息

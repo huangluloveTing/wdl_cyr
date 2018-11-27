@@ -32,6 +32,9 @@ struct OfferOrderHallResultApp : HandyJSON {
     var carrierName : String = ""
     // 承运方式 (1-单车运输)
     var carrierType : String = ""
+    
+    // 企业头像
+    var companyLogo : String = ""
     // 企业名称
     var companyName : String = ""
     // 收货人

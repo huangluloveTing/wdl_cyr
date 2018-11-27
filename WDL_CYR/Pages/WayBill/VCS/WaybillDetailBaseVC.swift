@@ -248,7 +248,8 @@ extension WaybillDetailBaseVC {
     //MARK: - 运单状态的cell
     func waybillStatusCell(tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WayBillDetailStatusCell.self)
-        cell.showInfo(status:  self.currentInfo?.transportStatus ?? .noStart)
+        //设置运单号和运单的状态流程
+        cell.showInfo(status:  self.currentInfo?.transportStatus ?? .noStart, transpoNo:self.currentInfo?.transportNo ?? "")
         return cell
     }
     //MARK: - 联系人信息的cell

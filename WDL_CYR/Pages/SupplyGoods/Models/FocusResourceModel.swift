@@ -27,7 +27,7 @@ struct ResourceHallUIModel {
     var companyLogo : String = ""//公司头像
     var reportNum:Int = 0 // 报价人数
     var refercneceUnitPrice : Float = 0 // (number): 参考单价 ,
-    
+    var refercnecePriceIsVisable: Int = 1 // 参考价是否可见 1=可见 2=不可见
 }
 
 struct ResourceDetailUIModel {

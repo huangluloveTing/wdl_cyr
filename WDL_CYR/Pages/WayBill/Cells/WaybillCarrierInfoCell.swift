@@ -18,7 +18,6 @@ class WaybillCarrierInfoCell: WaybillBaseCell {
     @IBOutlet weak var waybillTypeDescLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
-    @IBOutlet weak var loadTimeLabel: UILabel!
     @IBOutlet weak var goodsInfoLabel: UILabel!
     @IBOutlet weak var dealTimeLabel: UILabel!
     @IBOutlet weak var truckInfoLabel: UILabel!
@@ -151,14 +150,15 @@ extension WaybillCarrierInfoCell {
         self.showFirstLineInfo(info: info, tyLabel: desiginNameLabel, middleLabel: desiginTypeLabel, lastLabel: waybillTypeDescLabel)
         self.startLabel.text = info?.origin
         self.endLabel.text = info?.destination
-        self.goodsInfoLabel.text = Util.contact(strs: [Util.dateFormatter(date: (Double(info?.loadingTime ?? "0") ?? 0) / 1000, formatter: "yyyy-MM-dd") , "装货" , info?.goodsName ?? ""], seperate: "    ")
-        self.loadTimeLabel.text = Util.dateFormatter(date: Double(info?.loadingTime ?? "0") ?? 0, formatter: "yyyy-MM-dd HH:mm:ss")
+        //装货时间
+        self.goodsInfoLabel.text = Util.contact(strs: [Util.dateFormatter(date: (Double(info?.loadingTime ?? "0") ?? 0) / 1000, formatter: "yyyy-MM-dd") , "装货" , info?.goodsType ?? ""], seperate: "    ")
+        
         let weight = (info?.goodsWeight ?? "") + "吨"
-        self.truckInfoLabel.text = Util.contact(strs: [weight , info?.vehicleLength ?? "" , info?.vehicleWidth ?? "" , info?.goodsType ?? ""], seperate: " | ")
+        self.truckInfoLabel.text = Util.contact(strs: [weight , info?.vehicleLength ?? "" , info?.vehicleType ?? "" , info?.packageType ?? ""], seperate: " | ")
         self.unitPriceLabel.text = String(info?.refercneceUnitPrice ?? 0) + "元"
         self.totalPriceLabel.text = String(info?.refercneceTotalPrice ?? 0) + "元"
         self.waybillNoLabel.text = info?.transportNo
-        self.dealTimeLabel.text = Util.dateFormatter(date: info?.createTime ?? 0 , formatter: "yyyy-MM-dd HH:mm:ss")
+        self.dealTimeLabel.text = Util.dateFormatter(date: (info?.createTime ?? 0)/1000, formatter: "yyyy-MM-dd HH:mm:ss")
     }
     
 }

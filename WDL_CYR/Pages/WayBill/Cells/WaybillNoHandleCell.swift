@@ -57,5 +57,6 @@ extension WaybillNoHandleCell {
         self.totalLabel.text = String(info?.refercneceTotalPrice ?? 0) + "元"
         self.transportNoLabel.text = info?.transportNo
         self.dealTimeLabel.text = Util.dateFormatter(date: info?.createTime ?? 0 , formatter: "yyyy-MM-dd HH:mm:ss")
+       
     }
 }
