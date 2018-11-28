@@ -82,6 +82,17 @@ extension OfferBaseVC {
         offerDetailVC.offer = offer
         self.pushToVC(vc: offerDetailVC, title: "报价详情")
     }
+    
+    //MARK: - 去查看运单
+    func toWaybillPage(index:Int) -> Void {
+        
+        let detailVC = WayBillDetailVC()
+        var hall = WayBillInfoBean()
+        hall.hallId = self.currentPageInfo?.list![index].id
+        detailVC.waybillInfo = hall
+        //        detailVC.transportNo = info.transportNo ?? ""
+        self.push(vc: detailVC, title: "运单详情")
+    }
 }
 
 // 获取数据
@@ -93,10 +104,13 @@ extension OfferBaseVC {
                        pageSize:Int ,
                        start:TimeInterval? ,
                        end:TimeInterval? ,
-                       dealStatus:Int? , result:((OfferPageInfo? ,Error?) ->())?) -> Void {
+                       dealStatus:Int? ,
+                       carrierName:String? ,
+                       result:((OfferPageInfo? ,Error?) ->())?) -> Void {
         var query = OfferQueryModel()
         query.dealStatus = dealStatus
         query.status = status
+        query.carrierName = carrierName
         query.startTime = start
         query.endTime = end
         query.pageSize = pageSize

@@ -113,7 +113,12 @@ extension OfferNotDoneVC {
     
     // 获取报价数据
     func loadOffers() -> Void {
-        self.loadOfferData(status: 1, pageSize: self.pageSize, start: self.startTime, end: self.endTime, dealStatus: self.dealStatus?.rawValue) { [weak self](res, error) in
+        self.loadOfferData(status: 1,
+                           pageSize: self.pageSize,
+                           start: self.startTime,
+                           end: self.endTime,
+                           dealStatus: self.dealStatus?.rawValue,
+                           carrierName: "") { [weak self](res, error) in
             self?.tableView.endRefresh()
             guard let pageInfo = res else {
                 self?.showFail(fail: error?.localizedDescription, complete: nil)

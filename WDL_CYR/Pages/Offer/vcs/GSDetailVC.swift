@@ -38,7 +38,9 @@ class GSDetailVC: GSDetailBaseVC {
     }
      // 重新报价
     override func toOfferAgain() -> Void {
-        
+        var resource = ResourceDetailUIModel()
+        resource.resource = CarrierQueryOrderHallResult.deserialize(from: self.offer?.toJSONString())
+        self.toChooseOfferType(resource: resource)
     }
     
     // 竞标中 竞标中的倒计时
@@ -120,7 +122,26 @@ extension GSDetailVC {
     
     // 当前的 货源状态
     func configCurrentHallStatus() -> Void {
-        self.currentStatus = SourceStatus(rawValue: self.offer?.dealStatus.rawValue ?? 0) ?? .other
+        switch self.offer?.dealStatus ?? .reject {
+        case .canceled:
+            self.currentStatus = .canceled
+            break
+        case .deal,.done:
+            self.currentStatus = .dealed
+            break
+        case .inbinding:
+            self.currentStatus = .bidding
+            break
+        case .notDone:
+            self.currentStatus = .notDeal
+            break
+        case .reject:
+            self.currentStatus = .rejected
+            break
+        case .willDesignate:
+            self.currentStatus = .willDesignate
+            break
+        }
     }
 }
 

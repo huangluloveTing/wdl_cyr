@@ -113,7 +113,14 @@ extension BaseCell {
     
     //TODO: 报价的指派对应的展示
     func offerDesignateStyle(designate:Int? , to label:UILabel) -> Void {
-        
+        if designate == 4 {
+            label.textColor = UIColor(hex: "06C06F")
+            label.text = "待指派"
+        }
+        else {
+            label.textColor = UIColor.blue
+            label.text = "查看运单"
+        }
     }
     
     //TODO: 货源详情中，货源状态

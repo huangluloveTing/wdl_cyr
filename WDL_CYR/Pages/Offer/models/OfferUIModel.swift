@@ -19,6 +19,8 @@ enum SourceStatus : Int {
     case rejected = 0   //  已驳回
     case canceled = 3  //  已取消
     case notDeal  = 2   //  未成交
+    case dealed = 5     // 已完成
+    case willDesignate = 6      // 待指派
     case other = 4
 }
 
