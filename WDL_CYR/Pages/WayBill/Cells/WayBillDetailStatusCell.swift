@@ -11,7 +11,7 @@ import UIKit
 class WayBillDetailStatusCell: BaseCell {
     
     private var wayBillStatusView:WayBillStatusView?
-
+    //运单号
     @IBOutlet weak var wayBillNoLabel: UILabel!
     @IBOutlet weak var statusView: UIView!
     
@@ -27,7 +27,10 @@ class WayBillDetailStatusCell: BaseCell {
 
     }
     
-    func showInfo(status:WayBillTransportStatus) -> Void {
+    func showInfo(status:WayBillTransportStatus, transpoNo:String) -> Void {
+        //设置运单号
+        self.wayBillNoLabel.text = "运单号：" + transpoNo
+        //运单状态
         switch status {
         case .noStart:
             self.wayBillStatusView?.status = .NOT_Start

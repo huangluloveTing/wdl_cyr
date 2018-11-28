@@ -48,7 +48,7 @@ extension ResearchConsignorVC {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.initDisplay()
-        self.emptyTitle(title: "该货主不存在", to: self.tableView)
+//        self.emptyTitle(title: "该货主不存在", to: self.tableView)
     }
     
     func registerAllComponents() -> Void {

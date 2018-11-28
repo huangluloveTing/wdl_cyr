@@ -49,5 +49,7 @@ extension Offer_NotDoneCell {
         self.companyLabel.text = info?.company
         self.attentionButton.isSelected = info?.isAttention ?? false
         self.offerStatusStyle(status: info?.reportStatus, to: self.statusLabel)
+        //公司头像
+        self.toAddImageForImageView(imageUrl: info?.avatorURL, imageView: self.avatorImageView)
     }
 }

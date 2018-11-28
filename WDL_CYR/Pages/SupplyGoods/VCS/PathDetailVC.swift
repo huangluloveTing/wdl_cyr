@@ -39,7 +39,7 @@ class PathDetailVC: AttentionDetailBaseVC {
                                             isAttention: res.shipperCode.count > 0,
                                             unitPrice: res.dealUnitPrice,
                                             companyLogo: res.companyLogo,
-                                            reportNum: res.offerNumber,  refercneceUnitPrice: res.refercneceUnitPrice)
+                                            reportNum: res.offerNumber,  refercneceUnitPrice: res.refercneceUnitPrice, refercnecePriceIsVisable: res.refercnecePriceIsVisable)
             return model
         }
         self.refresh(items: items)

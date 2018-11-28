@@ -41,7 +41,7 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
                                               unitPrice: res.dealUnitPrice,
                                              companyLogo: res.companyLogo,
                                              reportNum: res.offerNumber,
-                                             refercneceUnitPrice:res.refercneceUnitPrice)
+                                             refercneceUnitPrice:res.refercneceUnitPrice , refercnecePriceIsVisable: res.refercnecePriceIsVisable)
             
             
             

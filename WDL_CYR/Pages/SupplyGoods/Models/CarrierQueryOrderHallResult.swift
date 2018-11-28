@@ -49,7 +49,8 @@ struct CarrierQueryOrderHallResult : HandyJSON {
     var pageSize : Int = 0 // (integer): 页面大小 ,
     var payType : String = "" // (string, optional),
     var publishTime : TimeInterval = 0 // (string): 发布时间 ,
-    var refercnecePriceIsVisable : String = "" // (string, optional),
+//    var refercnecePriceIsVisable : String = "" // (string, optional), 参考价是否可见，1=可见 2，不可见
+    var refercnecePriceIsVisable : Int = 1 // (string, optional), 参考价是否可见，1=可见 2，不可见
     var refercneceTotalPrice : Float = 0 // (number): 参考总价 ,
     var refercneceUnitPrice : Float = 0 // (number): 参考单价 ,
     var remark : String = "" //(string, optional),

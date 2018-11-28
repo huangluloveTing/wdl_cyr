@@ -136,26 +136,28 @@ extension OfferBaseVC {
         if total <= currentCount {
             self.noMoreData()
         }
+        //报价数据
         let currentList = self.currentPageInfo?.list?.map({ (result) -> OfferUIModel in
             var offer = OfferUIModel()
+            // 可能性 高中低
             offer.possible = result.offerPossibility
             offer.unitPrice = result.quotedPrice
             offer.totalPrice = result.totalPrice
             offer.start = Util.contact(strs: [result.startProvince , result.startCity])
             offer.end = Util.contact(strs: [result.endProvince , result.endCity])
-            let loadTime = Util.dateFormatter(date: result.loadingTime, formatter: "yyyy-MM-dd") + "装货"
+            let loadTime = Util.dateFormatter(date: result.loadingTime/1000, formatter: "yyyy-MM-dd") + " 装货 "
             let weight = String(result.goodsWeight) + "吨"
             let length = result.vehicleLength
             let type = result.vehicleType
             let package = result.packageType
-            offer.truckInfo =  Util.contact(strs: [loadTime , result.goodsName], seperate: " | ")
+            offer.truckInfo =  Util.contact(strs: [loadTime , result.goodsType], seperate: "  ")
             offer.goodsInfo = Util.contact(strs: [weight , length , type , package], seperate: " | ")
             offer.isSelf = false
             offer.company = result.companyName
             offer.isAttention = (result.shipperCode?.count ?? 0 > 0) ? true : false
             offer.reportStatus = result.dealStatus
             offer.designateStatus  = 0
-            offer.avatorURL = ""
+            offer.avatorURL = result.companyLogo //头像
             return offer
         })
         return currentList ?? []

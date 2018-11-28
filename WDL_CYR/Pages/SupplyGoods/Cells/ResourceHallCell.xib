@@ -167,8 +167,10 @@
             <connections>
                 <outlet property="attentionButton" destination="bVv-nb-JZZ" id="Jjh-hW-oeC"/>
                 <outlet property="avatorView" destination="KaX-fB-s5S" id="bbf-dp-pto"/>
+                <outlet property="canPriceTitleLab" destination="fhh-14-Vja" id="OLX-gh-hcz"/>
                 <outlet property="endLabel" destination="H99-2d-38V" id="msm-aR-a8O"/>
                 <outlet property="goodsDescLabel" destination="WD0-sf-joY" id="VWe-GG-u93"/>
+                <outlet property="perNumTitleLab" destination="3ZT-kx-9Xu" id="T1d-Hz-ArM"/>
                 <outlet property="reportButton" destination="Yrc-XS-7Pg" id="2R4-Xj-oHd"/>
                 <outlet property="reportNumLabel" destination="3ZT-kx-9Xu" id="8ou-Lc-Tq4"/>
                 <outlet property="startLabel" destination="X8G-61-xDe" id="6zz-mZ-XiJ"/>
@@ -176,6 +178,7 @@
                 <outlet property="tyNameLabel" destination="Ynd-do-by8" id="dfB-Da-4NH"/>
                 <outlet property="typeLabel" destination="rAc-gT-FfG" id="EFp-CF-W3m"/>
                 <outlet property="unitPriceLabel" destination="Rls-1x-SOa" id="XMG-i9-EPv"/>
+                <outlet property="unitTitleLab" destination="fbJ-bV-fzZ" id="ATv-ED-6wx"/>
             </connections>
             <point key="canvasLocation" x="158.5" y="111.5"/>
         </tableViewCell>
