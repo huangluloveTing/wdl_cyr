@@ -2,7 +2,7 @@ platform:ios ,'8.0'
 inhibit_all_warnings!
 
 target 'WDL_CYR' do
-
+pod 'JPush'
 pod 'Moya/RxSwift'
 pod 'RxCocoa'
 pod 'HandyJSON','~> 4.2.0'

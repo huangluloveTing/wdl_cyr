@@ -343,6 +343,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18AEF43021AFE21F00FE2468 /* WDL_CYR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WDL_CYR.entitlements; sourceTree = "<group>"; };
 		3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WDL_CYR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C7F9C1660A78A3335660AB0 /* Pods-WDL_CYR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDL_CYR.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR.release.xcconfig"; sourceTree = "<group>"; };
 		700347652193D95600DDEE55 /* WaybillLinkInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillLinkInfoCell.swift; sourceTree = "<group>"; };
@@ -803,6 +804,7 @@
 		70CF4EA2214B409E0051A7CA /* WDL_CYR */ = {
 			isa = PBXGroup;
 			children = (
+				18AEF43021AFE21F00FE2468 /* WDL_CYR.entitlements */,
 				70CF4EB9214B410B0051A7CA /* API */,
 				70CF4F14214B410D0051A7CA /* Base */,
 				70CF4F51214B410F0051A7CA /* Commons */,
@@ -1445,6 +1447,11 @@
 				TargetAttributes = {
 					70CF4E9F214B409E0051A7CA = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2007,17 +2014,18 @@
 			baseConfigurationReference = EA1A4827C37097B6DF46905B /* Pods-WDL_CYR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WDL_CYR/WDL_CYR.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T4QAJ2K396;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 5426J2FLKL;
 				INFOPLIST_FILE = WDL_CYR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wdl.tms;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wdl.chengRunRen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = WDLchengyunrenProvisioningProfiles;
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/WDL_CYR/WDL_CYR-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2029,15 +2037,16 @@
 			baseConfigurationReference = 6C7F9C1660A78A3335660AB0 /* Pods-WDL_CYR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WDL_CYR/WDL_CYR.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T4QAJ2K396;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WDL_CYR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wdl.tms;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wdl.chengRunRen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/WDL_CYR/WDL_CYR-Bridging-Header.h";
