@@ -10,6 +10,11 @@ import UIKit
 
 class PersonalInfoHeader: BaseCell {
 
+    @IBOutlet weak var carrierNameLabel: UILabel!
+    @IBOutlet weak var authButton: UIButton!
+    @IBOutlet weak var moneyLabel: UILabel!
+    @IBOutlet weak var carrierLogoImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +26,13 @@ class PersonalInfoHeader: BaseCell {
         // Configure the view for the selected state
     }
     
+}
+
+extension PersonalInfoHeader {
+    func showCarrierInfo(name:String? , auth:Bool? = false , money:Float? , logo:String?) -> Void {
+        self.carrierNameLabel.text = name
+        self.authButton.isSelected = auth ?? false
+        self.moneyLabel.text = Util.floatPoint(num: 2, floatValue: money ?? 0) + "元"
+        Util.showImage(imageView: self.carrierLogoImageView, imageUrl: logo)
+    }
 }

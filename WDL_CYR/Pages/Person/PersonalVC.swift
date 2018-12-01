@@ -16,6 +16,10 @@ let personTitles:[[String]] = [["钱包","我的运力","我的认证"],["消息
 
 class PersonalVC: MainBaseVC {
     
+    
+    private var carrierInfo = WDLCoreManager.shared().userInfo
+    private var carrierBondInfo = WDLCoreManager.shared().bondInfo
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var dropHintView: DropHintView!
@@ -32,11 +36,12 @@ class PersonalVC: MainBaseVC {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.loadCarrierInfo()
+        self.loadCarrierBoundMoney()
     }
     
     override func viewDidLayoutSubviews() {
@@ -84,13 +89,35 @@ extension PersonalVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(PersonalInfoHeader.self)") as! PersonalInfoHeader
+            cell.showCarrierInfo(name: self.carrierInfo?.carrierName ,
+                                 auth: self.carrierInfo?.isAuth == .authed ,
+                                 money: self.carrierBondInfo?.useableMoney,
+                                 logo: self.carrierInfo?.headPortrait)
             return cell
         }
+        var showIndicator = true
+        var subTitle = ""
+        var badge:Int? = nil
+        // 认证i信息
+        if indexPath.section == 1 && indexPath.row == 2 {
+            if self.carrierInfo?.isAuth == .authed {
+                subTitle = "认证"
+            } else {
+                subTitle = "未认证"
+            }
+        }
+        if indexPath.section == 2 && indexPath.row == 0 {
+            badge = self.unReadMessageCount()
+        }
+        if indexPath.section == 2 && indexPath.row == 2 {
+            showIndicator = false
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(PersonalExcuteCell.self)") as! PersonalExcuteCell
         let img = personImgs[indexPath.section - 1][indexPath.row]
         let title = personTitles[indexPath.section - 1][indexPath.row]
-        let info = PersonExcuteInfo(image: img, exTitle: title, exSubTitle: nil, showIndicator: true)
-        cell.contentInfo(info: info)
+        let info = PersonExcuteInfo(image: img, exTitle: title, exSubTitle: subTitle, showIndicator: showIndicator)
+        cell.contentInfo(info: info , badgeValue: badge)
         return cell
     }
     
@@ -116,6 +143,19 @@ extension PersonalVC : UITableViewDelegate , UITableViewDataSource {
     }
 }
 
+//MARK: - 页面数据
+extension PersonalVC {
+    //是否认证
+    func isAuthed() -> Bool {
+        return false
+    }
+    
+    //消息个数
+    func unReadMessageCount() -> Int {
+        return 0
+    }
+}
+
 extension PersonalVC {
     
     // 钱包
@@ -135,4 +175,27 @@ extension PersonalVC {
         let authenVC = MyAuthenVC()
         self.pushToVC(vc: authenVC, title: "我的认证")
     }
+    
+    // 获取承运人信息
+    func loadCarrierInfo() -> Void {
+        WDLCoreManager.shared().loadCarrierInfo { (info) in
+            self.carrierInfo = info
+            self.tableView.reloadData()
+        }
+    }
+    
+    // 获取承运人保证金数据
+    func loadCarrierBoundMoney() -> Void {
+        self.loadCarrierBoundTask().asObservable()
+            .retry()
+            .subscribe(onNext: { (data) in
+                WDLCoreManager.shared().bondInfo = data.data
+                self.carrierBondInfo = data.data
+                self.tableView.reloadData()
+            })
+            .disposed(by: dispose)
+    }
+    
+    // 根据获取数据，配置页面数据
+    
 }

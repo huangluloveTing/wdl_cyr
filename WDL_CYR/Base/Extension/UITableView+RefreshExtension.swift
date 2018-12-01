@@ -94,6 +94,28 @@ extension UITableView {
             footer.beginRefreshing()
         }
     }
+    
+    //MARK: - 初始化 tableView 的 预估高度，防止 上拉加载时出现的无限加载
+    func initEstmatedHeights() -> Void {
+        self.estimatedRowHeight = 0
+        self.estimatedSectionHeaderHeight = 0
+        self.estimatedSectionFooterHeight = 0
+    }
+    
+    //MARK: -
+    func refreshAndLoadState() -> Observable<TableViewState> {
+        return self.refreshState.asObserver().distinctUntilChanged()
+            .throttle(2, scheduler: MainScheduler.instance)
+            .filter({ (state) -> Bool in
+                return state != .EndRefresh
+            })
+    }
+    
+    func tableResultHandle(currentListCount:Int? , total:Int?) -> Void {
+        if (currentListCount ?? 0) >= (total ?? 0) {
+            self.noMore()
+        }
+    }
 }
 
 extension Reactive where Base : UITableView {

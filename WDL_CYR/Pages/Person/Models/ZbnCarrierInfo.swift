@@ -9,6 +9,11 @@
 import UIKit
 import HandyJSON
 
+enum CarrierAuthMode : Int, HandyJSONEnum { // 承运人认证状态
+    case authed = 1    // 已认证
+    case unAuth = 0    // 未认证
+}
+
 struct ZbnCarrierInfo: HandyJSON {
     var activityRate : String? // (string): 活跃度 ,
     var addedCount : Int = 0 // (integer): 承运人被添加次数 ,
@@ -38,7 +43,7 @@ struct ZbnCarrierInfo: HandyJSON {
     var idCardFrontage : String? // (string): 身份证正面照 ,
     var idCardHandheld : String? // (string): 手持身份证照 ,
     var idCardOpposite : String? // (string): 身份证背面照 ,
-    var isAuth : Int = 0 // (integer): 是否认证 0=未认证 1=认证 ,
+    var isAuth : CarrierAuthMode = .unAuth // (integer): 是否认证 0=未认证 1=认证 ,
     var jpushAlias : String? // (string): 极光推送alias ,
     var jpushTag : String? // (string): 极光推送tag ,
     var lastTransportTime : TimeInterval? // (string): 最后一次承运时间 ,
@@ -51,5 +56,22 @@ struct ZbnCarrierInfo: HandyJSON {
     var startTime : TimeInterval? // (string): 开始时间 ,
     var transportCount : Int = 0 // (integer): 承运次数 ,
     var vehicleAudited : Int = 0 // (integer): 车辆运力已审核个数 ,
-    var vehicleUnaudited : Int = 0 // (integer): 车辆运力未审核个数
+    var vehicleUnaudited : Int = 0 // (integer): 车辆运力未审核个数,
+    var token:String? //
+}
+
+
+struct ZbnBondInfo : HandyJSON { // 账号数据
+    var bankAccount : String? // (string): 银行户名 ,
+    var bankCard : String? // (string): 绑定银行卡 ,
+    var bankName : String? // (string): 开户行 ,
+    var carrierId : String? // (string): 承运人ID ,
+    var endTime : TimeInterval = 0 // (string): 结束时间 ,
+    var frozenMoney : Float = 0// (number): 冻结金额 ,
+    var id : String? // (string): id ,
+    var payAccount : String? // (string): 支付账号 ,
+    var payPsword : String? // (string): 支付密码 ,
+    var startTime : TimeInterval = 0 // (string): 开始时间 ,
+    var totalMoney : Float = 0 //(number): 总金额 ,
+    var useableMoney : Float = 0 // (number): 可支配金额
 }

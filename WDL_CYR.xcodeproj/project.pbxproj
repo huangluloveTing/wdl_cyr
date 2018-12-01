@@ -57,6 +57,7 @@
 		70220E63219AB2F8005D9645 /* WaybillDisplayStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70220E62219AB2F8005D9645 /* WaybillDisplayStatus.swift */; };
 		7039671B21830E2300CE34B7 /* DropInputDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7039671A21830E2300CE34B7 /* DropInputDateView.swift */; };
 		7039671D21830F6E00CE34B7 /* DropInputDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7039671C21830F6E00CE34B7 /* DropInputDateView.xib */; };
+		7039BF3721B26529001A7E3C /* BaseVC+task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7039BF3621B26529001A7E3C /* BaseVC+task.swift */; };
 		703CC6DF21AB9EA100F0245D /* Offer_otherOffersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CC6DD21AB9EA100F0245D /* Offer_otherOffersCell.swift */; };
 		703CC6E021AB9EA100F0245D /* Offer_otherOffersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 703CC6DE21AB9EA100F0245D /* Offer_otherOffersCell.xib */; };
 		703CC6E221ABCF0800F0245D /* CarrierOfferBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703CC6E121ABCF0800F0245D /* CarrierOfferBaseVC.swift */; };
@@ -399,6 +400,7 @@
 		70220E62219AB2F8005D9645 /* WaybillDisplayStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillDisplayStatus.swift; sourceTree = "<group>"; };
 		7039671A21830E2300CE34B7 /* DropInputDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropInputDateView.swift; sourceTree = "<group>"; };
 		7039671C21830F6E00CE34B7 /* DropInputDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropInputDateView.xib; sourceTree = "<group>"; };
+		7039BF3621B26529001A7E3C /* BaseVC+task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseVC+task.swift"; sourceTree = "<group>"; };
 		703CC6DD21AB9EA100F0245D /* Offer_otherOffersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer_otherOffersCell.swift; sourceTree = "<group>"; };
 		703CC6DE21AB9EA100F0245D /* Offer_otherOffersCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Offer_otherOffersCell.xib; sourceTree = "<group>"; };
 		703CC6E121ABCF0800F0245D /* CarrierOfferBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrierOfferBaseVC.swift; sourceTree = "<group>"; };
@@ -1256,6 +1258,7 @@
 				70D8BC49216B1863000522E0 /* ResponseBaseModel.swift */,
 				70CF4F49214B410D0051A7CA /* BaseCell.swift */,
 				704129A52179B6410078A46F /* BaseInputCell.swift */,
+				7039BF3621B26529001A7E3C /* BaseVC+task.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1869,6 +1872,7 @@
 				70648907215B6BE400F53BFC /* FocusPersonCell.swift in Sources */,
 				70F40F26214B55E70054A175 /* ZTScrollItem.swift in Sources */,
 				78D7495B219020D2004C4D66 /* AboutZbnVC.swift in Sources */,
+				7039BF3721B26529001A7E3C /* BaseVC+task.swift in Sources */,
 				70CF4F80214B41120051A7CA /* PersonalVC.swift in Sources */,
 				701F10CA217CC6C600693936 /* OfferModels.swift in Sources */,
 				70D8BBD821605153000522E0 /* WaybillDoneVC.swift in Sources */,

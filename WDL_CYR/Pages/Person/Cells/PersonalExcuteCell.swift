@@ -18,6 +18,7 @@ struct PersonExcuteInfo {
 
 class PersonalExcuteCell: BaseCell {
     
+    @IBOutlet weak var badgeValueLabel: UILabel!
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var exTitleLabel: UILabel!
     @IBOutlet weak var indicatorView: UIImageView!
@@ -37,10 +38,13 @@ class PersonalExcuteCell: BaseCell {
 }
 
 extension PersonalExcuteCell {
-    func contentInfo(info:PersonExcuteInfo) -> Void {
+    func contentInfo(info:PersonExcuteInfo , badgeValue:Int? = 0) -> Void {
         self.headerImageView.image = info.image
         self.exTitleLabel.text = info.exTitle
         self.exSubTitleLabel.text = info.exSubTitle
-        self.indicatorView.isHidden = !(info.showIndicator ?? true)
+        self.indicatorView.isHidden = !(info.showIndicator ?? false)
+        if let value = badgeValue {
+            self.rightBadgeValue(value: String(value), to: self.badgeValueLabel, bgColor: UIColor.red, radius: 9)
+        }
     }
 }
