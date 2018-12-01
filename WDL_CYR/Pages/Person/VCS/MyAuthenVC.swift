@@ -91,12 +91,12 @@ extension MyAuthenVC {
 //        self.push(vc: vc, title: "我的认证")
         
         let vc = AboutZbnVC()
-        self.push(vc: vc, title: "关于我们")
+        self.pushToVC(vc: vc, title: "关于我们")
     }
     
     // 点击企业
     func toEnterprise() -> Void {
         let enterpriseAuthenVC = AuthenEnterpriseVC()
-        self.push(vc: enterpriseAuthenVC, title: "我的认证")
+        self.pushToVC(vc: enterpriseAuthenVC, title: "我的认证")
     }
 }

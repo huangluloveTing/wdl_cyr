@@ -30,7 +30,9 @@ class WDLCoreManager: NSObject {
     
     public var regionAreas:[RegionModel]?
     
-    public var userInfo: LoginInfo?
+    public var userInfo: ZbnCarrierInfo?
+    
+    public var bondInfo: ZbnBondInfo? // 账号信息
     
     public var token:String?
     
@@ -40,6 +42,24 @@ class WDLCoreManager: NSObject {
     public static func shared() -> WDLCoreManager {
         return instance
     }
-    
-    
+}
+
+//MARK: - 获取基本信息
+extension WDLCoreManager {
+    //MARK: - 获取承运人信息
+    func loadCarrierInfo(closure:((ZbnCarrierInfo?) -> ())? = nil) -> Void {
+        let _ = BaseApi.request(target: API.getCarrierInformation(), type: BaseResponseModel<ZbnCarrierInfo>.self)
+            .retry()
+            .subscribe(onNext: { (data) in
+                let token = self.userInfo?.token
+                var info = data.data
+                if info?.token == nil {
+                    info?.token = token
+                }
+                self.userInfo = info
+                if let closure = closure {
+                    closure(data.data)
+                }
+            })
+    }
 }

@@ -38,7 +38,7 @@ extension GSDetail_GoodsInfoCell {
         self.gsStatus(status: info.status, to: self.statusLabel)
         self.startLabel.text = info.start
         self.endLabel.text = info.end
-        self.loadTimeLabel.text = Util.dateFormatter(date: info.loadTime, formatter: "yyyy-MM-dd")
+        self.loadTimeLabel.text = Util.dateFormatter(date: info.loadTime / 1000, formatter: "yyyy-MM-dd")
         self.goodsNameLabel.text = info.goodsName
         self.goodsTypeLabel.text = info.goodsType
         self.goodsSummerLabel.text = info.goodsSummer

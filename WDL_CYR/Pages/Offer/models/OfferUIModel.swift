@@ -19,6 +19,8 @@ enum SourceStatus : Int {
     case rejected = 0   //  已驳回
     case canceled = 3  //  已取消
     case notDeal  = 2   //  未成交
+    case dealed = 5     // 已完成
+    case willDesignate = 6      // 待指派
     case other = 4
 }
 
@@ -34,7 +36,7 @@ struct OfferUIModel {
     var company:String = ""
     var isAttention:Bool = false // 是否关注
     var reportStatus:WDLOfferDealStatus = .reject // 报价状态
-    var designateStatus : Int = 0 // 指派状态
+//    var designateStatus : Int = 0 // 指派状态
     var avatorURL:String = ""//头像
     
 }

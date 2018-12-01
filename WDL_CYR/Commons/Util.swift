@@ -93,6 +93,22 @@ class Util {
         return newStr
     }
     
+    static func concatSeperateStr(seperete:String? = " | " , strs:String? ...) -> String {
+        var valueStr = ""
+        strs.enumerated().forEach { (index ,st) in
+            if let st = st {
+                if st.count > 0 {
+                    if index != (strs.count - 1) {
+                        valueStr = valueStr + st + (seperete ?? "")
+                    } else {
+                        valueStr = valueStr + st
+                    }
+                }
+            }
+        }
+        return valueStr
+    }
+    
     static func showImage(imageView:UIImageView , imageUrl:String? , placeholder:UIImage = #imageLiteral(resourceName: "avator")) {
         let imageResource = URL.init(string: imageUrl ?? "")
         imageView.kf.setImage(with: imageResource, placeholder: placeholder)

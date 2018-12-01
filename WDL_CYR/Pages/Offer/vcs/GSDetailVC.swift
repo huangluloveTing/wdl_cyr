@@ -38,7 +38,9 @@ class GSDetailVC: GSDetailBaseVC {
     }
      // 重新报价
     override func toOfferAgain() -> Void {
-        
+        var resource = ResourceDetailUIModel()
+        resource.resource = CarrierQueryOrderHallResult.deserialize(from: self.offer?.toJSONString())
+        self.toChooseOfferType(resource: resource)
     }
     
     // 竞标中 竞标中的倒计时
@@ -78,12 +80,13 @@ class GSDetailVC: GSDetailBaseVC {
     override func goodsSupplyInfo() -> GSInfoModel? {
         var info = GSInfoModel()
         info.status = SourceStatus(rawValue: self.offer?.dealStatus.rawValue ?? 5) ?? .other
-        info.start = Util.contact(strs: [self.offer?.startProvince ?? "" , self.offer?.startCity ?? ""])
-        info.end = Util.contact(strs: [self.offer?.endProvince ?? "" , self.offer?.endCity ?? ""])
+        info.start = Util.contact(strs: [self.offer?.startProvince ?? "" , self.offer?.startCity ?? "" , self.offer?.startDistrict ?? ""])
+        info.end = Util.contact(strs: [self.offer?.endProvince ?? "" , self.offer?.endCity ?? "" ,self.offer?.endDistrict ?? ""])
         info.loadTime = self.offer?.loadingTime ?? 0
         info.goodsName = self.offer?.goodsName ?? ""
         info.goodsType = self.offer?.goodsType ?? ""
-        info.goodsSummer = " "
+        let weight = Util.floatPoint(num: 1, floatValue: self.offer?.goodsWeight ?? 0)
+        info.goodsSummer = Util.concatSeperateStr(seperete: "| " , strs: weight,self.offer?.vehicleType,self.offer?.packageType,self.offer?.vehicleLength,self.offer?.vehicleWidth)
         info.referenceUnitPrice = self.offer?.refercneceUnitPrice ?? 0
         info.referenceTotalPrice = self.offer?.refercneceTotalPrice ?? 0
         info.remark  = self.offer?.remark ?? " "
@@ -120,7 +123,26 @@ extension GSDetailVC {
     
     // 当前的 货源状态
     func configCurrentHallStatus() -> Void {
-        self.currentStatus = SourceStatus(rawValue: self.offer?.dealStatus.rawValue ?? 0) ?? .other
+        switch self.offer?.dealStatus ?? .reject {
+        case .canceled:
+            self.currentStatus = .canceled
+            break
+        case .deal,.done:
+            self.currentStatus = .dealed
+            break
+        case .inbinding:
+            self.currentStatus = .bidding
+            break
+        case .notDone:
+            self.currentStatus = .notDeal
+            break
+        case .reject:
+            self.currentStatus = .rejected
+            break
+        case .willDesignate:
+            self.currentStatus = .willDesignate
+            break
+        }
     }
 }
 

@@ -10,6 +10,7 @@ import Foundation
 import HandyJSON
 
 struct OfferQueryModel : HandyJSON {
+    var carrierName:String? // 托运人名称/企业名称 ,
     // 成交状态 0=驳回 1=竞价中 2=成交 3=完成 4=待指派 5=已取消 6= 未成交
     var dealStatus : Int?
     // 结束时间

@@ -44,6 +44,10 @@ enum API {
     case cancelOffer(String , String)                        // 取消报价
     case findCapacityByDriverNameOrPhone(String)            // 根据驾驶员姓名/电话查询驾驶员信息
     case findCapacityByName(String)                         //
+    case getCarrierInformation()                            // 获取登陆承运人信息
+    case zbnBondInformation()                               // 获取承运人保证金数据
+    case findCarInformation(String)                               // 获取我的车辆
+    case findDriverInformation(String)                            // 获取我的司机
 }
 
 
@@ -115,6 +119,14 @@ func apiPath(api:API) -> String {
         return "/carrierOrderHall/findCapacityByDriverNameOrPhone"
     case .findCapacityByName(_):
         return "/carrierOrderHall/findCapacityByName"
+    case .getCarrierInformation():
+        return "/information/getCarrierInformation"
+    case .zbnBondInformation():
+        return "/wallet/zbnBondInformation"
+    case .findCarInformation(_):
+        return "/carrierOrderHall/findCarInformation"
+    case .findDriverInformation(_):
+        return "/carrierOrderHall/findDriverInformation"
     }
 }
 
@@ -215,6 +227,14 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["nameOrPhone" : nameOrPhone], encoding: URLEncoding.default)
     case .findCapacityByName(let name):
         return .requestParameters(parameters: ["name" : name], encoding: URLEncoding.default)
+    case .getCarrierInformation():
+        return .requestParameters(parameters: Dictionary(), encoding: JSONEncoding.default)
+    case .zbnBondInformation():
+        return .requestParameters(parameters: Dictionary(), encoding: JSONEncoding.default)
+    case .findCarInformation(let name):
+        return .requestParameters(parameters: ["name":name], encoding: URLEncoding.default)
+    case .findDriverInformation(let name):
+        return .requestParameters(parameters: ["name":name], encoding: URLEncoding.default)
     }
   
 }
@@ -229,7 +249,9 @@ func apiMethod(api:API) -> Moya.Method {
          .cancelFoucePath(_),
          .queryTransportDetail(_),
          .findCapacityByName(_),
-         .findCapacityByDriverNameOrPhone(_):
+         .findCapacityByDriverNameOrPhone(_),
+         .findCarInformation(_),
+         .findDriverInformation(_):
         return .get
     default:
         return .post

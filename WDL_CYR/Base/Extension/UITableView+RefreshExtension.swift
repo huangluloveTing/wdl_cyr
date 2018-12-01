@@ -67,7 +67,7 @@ extension UITableView {
     
     private var _freshState : PublishSubject<TableViewState>? {
         set {
-            objc_setAssociatedObject(self, &refreshKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+            objc_setAssociatedObject(self, &refreshKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         get {
             return objc_getAssociatedObject(self, &refreshKey) as? PublishSubject
@@ -92,6 +92,28 @@ extension UITableView {
     func beginLoadMore() -> Void {
         if let footer = self.mj_footer {
             footer.beginRefreshing()
+        }
+    }
+    
+    //MARK: - 初始化 tableView 的 预估高度，防止 上拉加载时出现的无限加载
+    func initEstmatedHeights() -> Void {
+        self.estimatedRowHeight = 0
+        self.estimatedSectionHeaderHeight = 0
+        self.estimatedSectionFooterHeight = 0
+    }
+    
+    //MARK: -
+    func refreshAndLoadState() -> Observable<TableViewState> {
+        return self.refreshState.asObserver().distinctUntilChanged()
+            .throttle(2, scheduler: MainScheduler.instance)
+            .filter({ (state) -> Bool in
+                return state != .EndRefresh
+            })
+    }
+    
+    func tableResultHandle(currentListCount:Int? , total:Int?) -> Void {
+        if (currentListCount ?? 0) >= (total ?? 0) {
+            self.noMore()
         }
     }
 }

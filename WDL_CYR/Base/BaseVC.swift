@@ -69,7 +69,9 @@ class BaseVC: UIViewController {
     //MARK: - callBack
     // 页面返回回调的刷新
     func callBackForRefresh(param:Any?) -> Void {
-        
+        if let callBack = self.callBack {
+            callBack(.refresh(param))
+        }
     }
     
     // 页面返回回调的其他操作

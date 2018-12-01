@@ -18,6 +18,7 @@ class ResearchConsignorVC: NormalBaseVC {
         self.fd_interactivePopDisabled = true
         self.addResearchBar()
         self.configTableView()
+        self.searchBarInput(search: "")
         self.registerAllComponents()
     }
 
@@ -62,6 +63,7 @@ extension ResearchConsignorVC {
 extension ResearchConsignorVC {
     func searchConsignors(input:String) -> Void {
         BaseApi.request(target: API.selectZbnConsignor(input), type: BaseResponseModel<[ConsignorFollowShipper]>.self)
+            .retry(3)
             .subscribe(onNext: { [weak self](data) in
                 self?.consignors = data.data ?? []
                 self?.toRenderTableView()
@@ -82,6 +84,7 @@ extension ResearchConsignorVC {
         query.shipperType = consignor.consignorType ?? ""
         self.showLoading()
         BaseApi.request(target: API.addFollowShipper(query), type: BaseResponseModel<String>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: "添加成功", complete: nil)
                 self?.toRefreshTableView(row: index)

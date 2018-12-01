@@ -92,21 +92,26 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
         let placeView = Bundle.main.loadNibNamed("DropPlaceView", owner: nil, options: nil)?.first as! DropPlaceChooiceView
         placeView.placeItems = self.initialProinve()
         placeView.frame = CGRect(x: 0, y: 0, width: IPHONE_WIDTH, height: IPHONE_WIDTH)
-        placeView.dropClosure = { (province , city , strict) in
-            self.startModel.province = province
-            self.startModel.city = city
-            self.startModel.strict = strict
-            self.startButton.setTitle(strict?.title, for: .normal)
+        placeView.dropClosure = { [weak self](province , city , strict) in
+            self?.startModel.province = province
+            self?.startModel.city = city
+            let title = (city?.title != nil || city?.title.count ?? 0 > 0) ? city?.title : province?.title
+            self?.startButton.setTitle(title, for: .normal)
         }
         placeView.decideClosure = { [weak self](sure) in
             if sure == true {
-                let strict = self?.startModel.strict
-                self?.startButton.setTitle(strict?.title, for: .normal)
+                let title = (self?.startModel.city?.title != nil || self?.startModel.city?.title.count ?? 0 > 0) ? self?.startModel.city?.title : self?.startModel.province?.title
+                self?.startButton.setTitle(title, for: .normal)
+                self?.query.startCity = self?.startModel.city?.title
+                self?.query.startProvince = self?.startModel.province?.title
             } else {
                 self?.startModel = SupplyPlaceModel()
                 self?.startButton.setTitle("发货地", for: .normal)
+                self?.query.startCity = ""
+                self?.query.startProvince = ""
             }
             self?.placeChooseView.hiddenDropView()
+            self?.tableView.beginRefresh()
         }
         return self.addDropView(drop: placeView, anchorView: dropAnchorView)
     }()
@@ -120,16 +125,22 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
             self.endModel.province = province
             self.endModel.city = city
             self.endModel.strict = strict
-            self.endButton.setTitle(strict?.title, for: .normal)
+            let title = (city?.title != nil || city?.title.count ?? 0 > 0) ? city?.title : province?.title
+            self.endButton.setTitle(title, for: .normal)
         }
         placeView.decideClosure = { [weak self](sure) in
             if sure == true {
-                let strict = self?.endModel.strict
-                self?.endButton.setTitle(strict?.title, for: .normal)
+                let title = (self?.endModel.city?.title != nil || self?.endModel.city?.title.count ?? 0 > 0) ? self?.endModel.city?.title : self?.endModel.province?.title
+                self?.query.endCity = self?.endModel.city?.title
+                self?.query.endProvince = self?.endModel.province?.title
+                self?.endButton.setTitle(title, for: .normal)
             } else {
                 self?.endModel = SupplyPlaceModel()
+                self?.query.endCity = self?.endModel.city?.title
+                self?.query.endProvince = self?.endModel.province?.title
                 self?.endButton.setTitle("发货地", for: .normal)
             }
+            self?.tableView.beginRefresh()
             self?.endPlaceChooseView.hiddenDropView()
         }
         return self.addDropView(drop: placeView, anchorView: dropAnchorView)
@@ -184,7 +195,8 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
                                           companyLogo: hall.companyLogo,
                                           reportNum: hall.offerNumber,
                                           refercneceUnitPrice: hall.refercneceUnitPrice,
-                                          refercnecePriceIsVisable: hall.refercnecePriceIsVisable)
+                                          refercnecePriceIsVisable: hall.refercnecePriceIsVisable,
+                                          isOffer:hall.isOffer != nil && (hall.isOffer)!.count > 0)
         cell.showInfo(info: uiModel)
         cell.offerClosure = {[weak self] in
             self?.toOffer(index: indexPath.section)
@@ -211,7 +223,7 @@ extension ResourceHallVC {
         resource.refercneceTotalPrice = hall.refercneceTotalPrice
         resource.refercneceUnitPrice = hall.refercneceUnitPrice
         resource.rate = 5
-        resource.consignorName = hall.consignorName
+        resource.consignorName = hall.companyName
         resource.resource = hall
         self.toResouceDetail(resource: resource)
     }

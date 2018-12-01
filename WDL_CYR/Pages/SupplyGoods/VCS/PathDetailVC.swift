@@ -39,7 +39,10 @@ class PathDetailVC: AttentionDetailBaseVC {
                                             isAttention: res.shipperCode.count > 0,
                                             unitPrice: res.dealUnitPrice,
                                             companyLogo: res.companyLogo,
-                                            reportNum: res.offerNumber,  refercneceUnitPrice: res.refercneceUnitPrice, refercnecePriceIsVisable: res.refercnecePriceIsVisable)
+                                            reportNum: res.offerNumber,
+                                            refercneceUnitPrice: res.refercneceUnitPrice,
+                                            refercnecePriceIsVisable: res.refercnecePriceIsVisable,
+                                            isOffer:(res.isOffer != nil && (res.isOffer)!.count > 0))
             return model
         }
         self.refresh(items: items)
@@ -69,8 +72,21 @@ class PathDetailVC: AttentionDetailBaseVC {
         resource.refercneceUnitPrice = hall.refercneceUnitPrice
         resource.rate = 5
 //        resource.carrierName = hall.consigneeName
-        resource.consignorName = hall.consignorName
+        resource.consignorName = hall.companyName
         resource.resource = hall
         self.toResouceDetail(resource: resource)
+    }
+    
+    override func callBackForRefresh(param: Any?) {
+        super.callBackForRefresh(param: param)
+        let info = param as! CarrierQueryOrderHallResult
+        var newHalls = self.lineHall.hall
+        self.lineHall.hall.enumerated().forEach { (offset, element) in
+            if element.id == info.id {
+                newHalls[offset] = info
+            }
+        }
+        self.lineHall.hall = newHalls
+        self.configResources()
     }
 }

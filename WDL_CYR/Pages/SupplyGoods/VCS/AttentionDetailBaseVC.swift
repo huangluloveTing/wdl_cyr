@@ -22,6 +22,11 @@ class AttentionDetailBaseVC: NormalBaseVC {
         self.navigationItem.title = self.pageTitle()
     }
     
+    //MARK: -
+    override func callBackForRefresh(param: Any?) {
+        
+    }
+    
     //MARK: 常用接口
     // 对应的title
     func pageTitle() -> String? {return ""}
@@ -43,6 +48,14 @@ extension AttentionDetailBaseVC {
     func refresh(items:[ResourceHallUIModel]) -> Void {
         self.items = items
         self.baseTableView?.reloadData()
+    }
+    
+    //MARK: - 报价成功，刷新某个cell，使其不能再报价
+    func offerSuccessedIndex(index:Int) -> Void {
+        var info = self.items![index]
+        info.isOffer = true
+        self.items![index] = info
+        self.baseTableView?.reloadRows(at: [IndexPath(row: 0, section: index)], with: .none)
     }
 }
 

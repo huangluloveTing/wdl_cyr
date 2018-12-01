@@ -57,13 +57,11 @@ extension DropInputDateView {
         self.endTextField.inputView = self.inputEndDatePicker()
         self.startTextField.rx.text.orEmpty.asObservable()
             .subscribe(onNext: { [weak self](text) in
-                self?.startTime = Double(text) ?? 0
                 self?.startIsFirstResponse()
             })
             .disposed(by: dispose)
         self.endTextField.rx.text.orEmpty.asObservable()
             .subscribe(onNext: { [weak self](text) in
-                self?.endTime = Double(text) ?? 0
                 self?.endIsFirstResponse()
             })
             .disposed(by: dispose)
@@ -72,13 +70,20 @@ extension DropInputDateView {
     func inputStartDatePicker() -> UIDatePicker {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
-        datePicker.rx.date.asObservable()
-            .skip(1)
-            .map { (date) -> String in
+        datePicker.locale = Locale(identifier: "zh-Hans")
+        let startObservable = datePicker.rx.date.asObservable()
+            .share(replay: 1).skip(1)
+            
+        startObservable.map { (date) -> String in
                 let dateString = Util.dateFormatter(date: date, formatter: "yyyy-MM-dd")
                 return dateString
             }
             .bind(to: self.startTextField.rx.text)
+            .disposed(by: dispose)
+        startObservable
+            .subscribe(onNext: { [weak self](date) in
+                self?.startTime = Double(date.timeIntervalSince1970) * 1000
+            })
             .disposed(by: dispose)
         return datePicker
     }
@@ -87,13 +92,19 @@ extension DropInputDateView {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.minimumDate = Date(timeIntervalSince1970: self.startTime ?? 0)
-        datePicker.rx.date.asObservable()
+        datePicker.locale = Locale(identifier: "zh-Hans")
+        let endObservable = datePicker.rx.date.asObservable()
             .skip(1)
-            .map { (date) -> String in
+            
+        endObservable.map { (date) -> String in
                 let dateString = Util.dateFormatter(date: date, formatter: "yyyy-MM-dd")
                 return dateString
             }
             .bind(to: self.endTextField.rx.text)
+            .disposed(by: dispose)
+        endObservable.subscribe(onNext: { [weak self](date) in
+                self?.endTime = Double(date.timeIntervalSince1970) * 1000
+            })
             .disposed(by: dispose)
         return datePicker
     }

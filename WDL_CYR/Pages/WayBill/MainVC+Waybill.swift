@@ -14,14 +14,14 @@ extension MainBaseVC {
     func toChooseDriver(title:String? , closure:((ZbnTransportCapacity) -> ())? = nil) -> Void {
         let driverChooseVC = OfferChooseDriverVC()
         driverChooseVC.searchResultClosure = closure
-        self.push(vc: driverChooseVC, title: title)
+        self.pushToVC(vc: driverChooseVC, title: title)
     }
     
     // 车辆选择
     func toChooseTruck(closure:((ZbnTransportCapacity) -> ())?) -> Void {
         let truckVC = OfferChooseTruckVC()
         truckVC.searchResultClosure = closure
-        self.push(vc: truckVC, title: "选择车辆")
+        self.pushToVC(vc: truckVC, title: "选择车辆")
     }
     
     
@@ -44,6 +44,6 @@ extension MainBaseVC {
         assembleVC.pageInfo = info
         assembleVC.currentDisplayMode = mode
         
-        self.push(vc: assembleVC, title: "配载")
+        self.pushToVC(vc: assembleVC, title: "配载")
     }
 }

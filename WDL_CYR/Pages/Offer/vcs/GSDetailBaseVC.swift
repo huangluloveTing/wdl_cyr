@@ -44,6 +44,8 @@ class GSDetailBaseVC: NormalBaseVC {
             return self.reject_numberSection(for: tableView)
         case .other:
             return 0
+        default:
+            return 0
         }
     }
     
@@ -59,6 +61,8 @@ class GSDetailBaseVC: NormalBaseVC {
             return self.reject_numberRwos(at: section, for: tableView)
         case .other:
             return 0
+        default:
+            return 0
         }
     }
     
@@ -73,6 +77,8 @@ class GSDetailBaseVC: NormalBaseVC {
         case .rejected:
             return self.reject_cells(indexPath: indexPath, for: tableView)
         case .other:
+            return UITableViewCell(style: .default, reuseIdentifier: "cell")
+        default:
             return UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
     }

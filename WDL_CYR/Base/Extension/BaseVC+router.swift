@@ -12,7 +12,7 @@ extension BaseVC {
     
     func toRegisterVC(title:String?) { // 去注册页面
         let registerVC = RegisterVC()
-        self.push(vc: registerVC , title:title)
+        self.pushToVC(vc: registerVC , title:title)
     }
     
     func toLinkKF() { // 联系客服
@@ -21,7 +21,7 @@ extension BaseVC {
     
     func toForgetPwdVC() {
         let forgetPwdVC = ForgetPwdVC()
-        self.push(vc: forgetPwdVC, title: "忘记密码")
+        self.pushToVC(vc: forgetPwdVC, title: "忘记密码")
     }
     
     // 跳转到主模块
@@ -32,20 +32,20 @@ extension BaseVC {
     // 去 货物供应详情
     func toGoodsSupplyDetail() {
         let detailSupplu = GoodsSupplyDetailVC()
-        self.push(vc: detailSupplu, title: "详情")
+        self.pushToVC(vc: detailSupplu, title: "详情")
     }
     
     // 去运单详情
     func toWayBillDetail() {
         let wayBillDetail = WayBillDetailVC()
-        self.push(vc: wayBillDetail, title: "运单详情")
+        self.pushToVC(vc: wayBillDetail, title: "运单详情")
     }
     
     // t去货源详情
     func toResouceDetail(resource:ResourceDetailUIModel) -> Void {
         let vc = ResourceDetailVC()
         vc.resource = resource
-        self.push(vc: vc, title: "货源详情")
+        self.pushToVC(vc: vc, title: "货源详情")
     }
     
     // 选择报价类型
@@ -53,33 +53,33 @@ extension BaseVC {
         // 去报价
         let vc = ChooseOfferTypeVC()
         vc.resource = resource
-        self.push(vc: vc, title: "选择报价类型")
+        self.pushToVC(vc: vc, title: "选择报价类型")
     }
     
     // 添加关注路线
     func toFocusLineVC() -> Void {
         let lineVC = AddLinesVC()
-        self.push(vc: lineVC, title: "添加路线")
+        self.pushToVC(vc: lineVC, title: "添加路线")
     }
     
     // 添加关注的托运人(去搜索托运人界面)
     func toResearchConsignor() -> Void {
         let consignorVC = ResearchConsignorVC()
-        self.push(vc: consignorVC, title: "")
+        self.pushToVC(vc: consignorVC, title: "")
     }
     
     // 跳转到关注线路详情
     func toAttentionLineDetail(info:FollowFocusLineOrderHallResult) -> Void {
         let lineVC = PathDetailVC()
         lineVC.lineHall = info
-        self.push(vc: lineVC, title: nil)
+        self.pushToVC(vc: lineVC, title: nil)
     }
     
     // 跳转到关注托运人详情
     func toAttentionConsignorDetail(consignor:FollowShipperOrderHall) -> Void {
         let consignorVC = ConsignorDetailVC()
         consignorVC.followShipper = consignor
-        self.push(vc: consignorVC, title: nil)
+        self.pushToVC(vc: consignorVC, title: nil)
     }
     
     //TODO: todo
@@ -92,7 +92,69 @@ extension BaseVC {
     func toCommentVC(hallId:String) -> Void {
         let commentVC = WayBillCommentVC()
         commentVC.hallId = hallId
-        self.push(vc: commentVC, title: "评价")
+        self.pushToVC(vc: commentVC, title: "评价")
+    }
+    
+    //MARK: - 进入d运单详情的相关p逻辑判断
+    func transportBillDetailPage(info:WayBillInfoBean) -> Void {
+        // 没有接单，不进入详情
+        let detailVC = WayBillDetailVC()
+        detailVC.waybillInfo = info
+        detailVC.transportNo = info.transportNo ?? ""
+        
+        //        assembleTransportHandle(info: info)
+        //        return
+        
+        //        case unAssemble_comType_1_2_noAccept    // 运单来源为1、2 时 的未接受的运单
+        //        case unAssemble_comType_3_noAccept      // 运单来源为 3 时 的未接受的运单
+        //        case unAssemble_comType_1_2_toAssemble  // 运单来源为1、2 时 的待配载的运单
+        //        case unAssemble_comType_3_toAssemble    // 运单来源为 3 时 的待配载的运单
+        //        case unAssemble_comType_4_toDesignate   // 运单来源为 4 时 的待指派的运单
+        //        case notDone_willTransport              // 未完成 待起运的运单
+        //        case notDone_transporting               // 未完成 运输中的运单
+        //        case notDone_willSign                   // 未完成 待签收的运单
+        //        case notDone_breakContractForDriver     // 未完成 司机违约的运单
+        //        case notDone_breakContractForCarrier    // 未完成 承运人违约的运单
+        //        case done(WaybillCommentStatus)         // 已完成
+        //        case other                              // 其他，显示其他情况的
+        let status = TransportUtil.configWaybillDisplayStatus(info: info)
+        switch status {
+        case .unAssemble_comType_3_toAssemble:
+            detailVC.currentShowMode(mode: .unassemble_showSpecial)
+            break
+        case .unAssemble_comType_1_2_toAssemble:
+            if info.comeType == 1 {
+                detailVC.currentShowMode(mode: .unassemble_show_1_Assemble)
+            }
+            detailVC.currentShowMode(mode: .unassemble_show_2_Assemble)
+            break
+        case .unAssemble_comType_4_toDesignate:
+            detailVC.currentShowMode(mode: .unassemble_showDesignate)
+            break
+        case .notDone_transporting :
+            detailVC.currentShowMode(mode: .doing_showTransporting)
+        case .notDone_willTransport:
+            detailVC.currentShowMode(mode: .doing_showWillTransport)
+        case .notDone_willSign:
+            detailVC.currentShowMode(mode: .doing_showWillSign)
+        case .notDone_breakContractForDriver:
+            print("已违约的司机 跳转 未实现")
+            return
+        case .notDone_breakContractForCarrier:
+            detailVC.currentShowMode(mode: .doing_carrierBreak)
+        case .done(let mode):
+            detailVC.currentShowMode(mode: .done_notComment)
+            if mode == .noComment {
+                self.toCommentVC(hallId: info.hallId ?? "")
+                return
+            }
+        case .unAssemble_comType_1_2_noAccept , .unAssemble_comType_3_noAccept:
+            print("未接受不 跳转")
+            return
+        default:
+            detailVC.currentShowMode(mode: .doing_showWillSign)
+        }
+        self.pushToVC(vc: detailVC, title: "运单详情")
     }
 }
 

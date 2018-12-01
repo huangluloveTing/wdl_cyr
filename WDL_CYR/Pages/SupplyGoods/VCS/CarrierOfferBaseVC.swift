@@ -20,7 +20,7 @@ extension CarrierOfferBaseVC {
     //MARK: - 报价时，获取承运人保证金、服务费等信息
     func loadCarrierInfo(hallId:String , closure:((CarrierInfoFee? , Error?)->())? ) -> Void {
         BaseApi.request(target: API.findCarrierInfoFee(hallId), type: BaseResponseModel<CarrierInfoFee>.self)
-            .retry()
+            .retry(10)
             .subscribe(onNext: { (data) in
                 if let closure = closure {
                     closure(data.data , nil)

@@ -24,7 +24,12 @@ class ChooseOfferTypeVC: NormalBaseVC {
         super.viewDidLoad()
         self.configSubViews()
     }
-
+    
+    override func callBackForRefresh(param: Any?) {
+        if let callBack = self.callBack {
+            callBack(.refresh(param))
+        }
+    }
 }
 
 //MARK: views
@@ -84,25 +89,25 @@ extension ChooseOfferTypeVC : UITableViewDelegate , UITableViewDataSource {
                 /// 有车报价
                 let offerTruckVC = OfferWithTruckVC()
                 offerTruckVC.resource = self.resource
-                self.push(vc: offerTruckVC, title: "报价")
+                self.pushToVC(vc: offerTruckVC, title: "报价")
                 return
             }
             //无车报价
             let offerNoTruckVC = OfferNoTruckVC()
             offerNoTruckVC.resource = self.resource
-            self.push(vc: offerNoTruckVC, title: "报价")
+            self.pushToVC(vc: offerNoTruckVC, title: "报价")
             break
         case .truck:
             /// 有车报价
             let offerTruckVC = OfferWithTruckVC()
             offerTruckVC.resource = self.resource
-            self.push(vc: offerTruckVC, title: "报价")
+            self.pushToVC(vc: offerTruckVC, title: "报价")
             break
         default:
             //无车报价
             let offerNoTruckVC = OfferNoTruckVC()
             offerNoTruckVC.resource = self.resource
-            self.push(vc: offerNoTruckVC, title: "报价")
+            self.pushToVC(vc: offerNoTruckVC, title: "报价")
         }
        
     }

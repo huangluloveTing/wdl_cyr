@@ -43,7 +43,7 @@ class LoginVC: BaseVC {
                 }
                 return true
             })
-            .flatMap({ () ->  Observable<LoginInfo?> in
+            .flatMap({ () ->  Observable<ZbnCarrierInfo?> in
                 return self.loginHandle()
             })
             .subscribe(onNext: { (valid) in
@@ -82,10 +82,10 @@ class LoginVC: BaseVC {
 
 extension LoginVC {
     
-    func loginHandle() -> Observable<LoginInfo?> {
+    func loginHandle() -> Observable<ZbnCarrierInfo?> {
         self.showLoading()
-        return Observable<LoginInfo?>.create({ (obser) -> Disposable in
-            return BaseApi.request(target: API.login(self.phoneTextField.text ?? "", self.passworldTextField.text ?? ""), type: BaseResponseModel<LoginInfo>.self)
+        return Observable<ZbnCarrierInfo?>.create({ (obser) -> Disposable in
+            return BaseApi.request(target: API.login(self.phoneTextField.text ?? "", self.passworldTextField.text ?? ""), type: BaseResponseModel<ZbnCarrierInfo>.self)
                     .subscribe(onNext: { (model) in
                         self.showSuccess()
                         print("respone = \(model.toJSON() ?? ["s":""])")

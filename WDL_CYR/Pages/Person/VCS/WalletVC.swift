@@ -18,10 +18,18 @@ class WalletVC: NormalBaseVC {
     @IBOutlet weak var rechargeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    private var bondnInfo = WDLCoreManager.shared().bondInfo
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initailUI()
         self.configTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadBondInfo()
+        walletAmount()
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,12 +99,29 @@ extension WalletVC {
     // 去充值
     func toRecharge() -> Void {
         let rechargeVC = RechargeInlineVC()
-        self.push(vc: rechargeVC, title: nil)
+        self.pushToVC(vc: rechargeVC, title: nil)
     }
     
     // 去交易明细
     func toTransactionDetails() -> Void {
         let transactionDetailsVC = TransactionDetailsVC()
-        self.push(vc: transactionDetailsVC, title: "交易明细")
+        self.pushToVC(vc: transactionDetailsVC, title: "交易明细")
+    }
+    
+    // 设置账号余额
+    func walletAmount() -> Void {
+        self.amountLabel.text = Util.floatPoint(num: 2, floatValue: self.bondnInfo?.useableMoney ?? 0)
+    }
+    
+    // 获取账号余额信息
+    func loadBondInfo() -> Void {
+        self.loadCarrierBoundTask().asObservable()
+            .retry(5)
+            .subscribe(onNext: { (data) in
+                WDLCoreManager.shared().bondInfo = data.data
+                self.bondnInfo = data.data
+                self.walletAmount()
+            })
+            .disposed(by: dispose)
     }
 }

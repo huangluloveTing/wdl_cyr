@@ -67,6 +67,9 @@ extension OfferNoTruckVC {
     
     // 提交报价
     func commitOffer() -> Void {
+        if !canCommitOffer() {
+            return
+        }
         var commit = CarrierOfferCommitModel()
         commit.driverName = offerModel.driverModel?.driverName
         commit.driverPhone = offerModel.driverModel?.phone
@@ -81,6 +84,11 @@ extension OfferNoTruckVC {
         BaseApi.request(target: API.addOffer(commit), type: BaseResponseModel<String>.self)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: {
+                    if let callBack = self?.callBack {
+                        var newResource = self?.resource?.resource
+                        newResource?.isOffer = "OK"
+                        callBack(.refresh(newResource))
+                    }
                     self?.pop()
                 })
                 }, onError: { [weak self](error) in
@@ -89,11 +97,25 @@ extension OfferNoTruckVC {
             .disposed(by: dispose)
     }
     
+    //MARK: - 是否可以提交
+    func canCommitOffer() -> Bool {
+        if offerModel.offerUnitPrice == nil || (offerModel.offerUnitPrice ?? 0) <= 0 {
+            self.showWarn(warn: "请填写正确的报价", complete: nil)
+            return false
+        }
+        return true
+    }
+    
     //MARK: -
     func loadFee() -> Void {
         let hallId = self.resource?.resource?.id ?? ""
         self.showLoading()
         self.loadCarrierInfo(hallId: hallId) { [weak self](info, error) in
+            if let error = error {
+                self?.showFail(fail: error.localizedDescription, complete: {
+                    self?.pop()
+                })
+            }
             self?.hiddenToast()
             self?.carrierInfo = info
             self?.configNetToUI()

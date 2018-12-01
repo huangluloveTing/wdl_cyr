@@ -56,6 +56,11 @@ extension OfferWithTruckVC {
         let hallId = self.resource?.resource?.id ?? ""
         self.showLoading()
         self.loadCarrierInfo(hallId: hallId) { [weak self](info, error) in
+            if let error = error {
+                self?.showFail(fail: error.localizedDescription, complete: {
+                    self?.pop()
+                })
+            }
             self?.hiddenToast()
             self?.carrierInfo = info
             self?.configNetToUI()
@@ -106,7 +111,7 @@ extension OfferWithTruckVC {
             self?.offerModel.driverModel = driver
             self?.tableView.reloadData()
         }
-        self.push(vc: driverChooseVC, title: "承运人")
+        self.pushToVC(vc: driverChooseVC, title: "承运人")
     }
     
     // 车辆选择
@@ -121,7 +126,7 @@ extension OfferWithTruckVC {
             self?.offerModel.truckModel = truck
             self?.tableView.reloadData()
         }
-        self.push(vc: truckVC, title: "选择车辆")
+        self.pushToVC(vc: truckVC, title: "选择车辆")
     }
     
     // 将获取到的费用信息展示到UI上
@@ -142,6 +147,9 @@ extension OfferWithTruckVC {
     
     // 提交报价
     func commitOffer() -> Void {
+        if !canCommitOffer() {
+            return
+        }
         var commit = CarrierOfferCommitModel()
         commit.driverName = offerModel.driverModel?.driverName
         commit.driverPhone = offerModel.driverModel?.phone
@@ -156,12 +164,33 @@ extension OfferWithTruckVC {
         BaseApi.request(target: API.addOffer(commit), type: BaseResponseModel<String>.self)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: {
+                    if let callBack = self?.callBack {
+                        var newResource = self?.resource?.resource
+                        newResource?.isOffer = "OK"
+                        callBack(.refresh(newResource))
+                    }
                     self?.popCurrent(beforeIndes: 2, animation: true)
                 })
             }, onError: { [weak self](error) in
                 self?.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)
+    }
+    
+    func canCommitOffer() -> Bool {
+        if offerModel.driverModel == nil {
+            self.showWarn(warn: "请选择驾驶员", complete: nil)
+            return false
+        }
+        if offerModel.truckModel == nil {
+            self.showWarn(warn: "请选择车辆", complete: nil)
+            return false
+        }
+        if offerModel.offerUnitPrice == nil || (offerModel.offerUnitPrice ?? 0) <= 0 {
+            self.showWarn(warn: "请填写正确的报价", complete: nil)
+            return false
+        }
+        return true
     }
 }
 

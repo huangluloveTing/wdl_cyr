@@ -20,17 +20,24 @@ enum TransportCapacityShowType { // 当前展示的信息 ， 驾驶员 ， 车�
 
 class TransportCapacityVC: NormalBaseVC {
     
-    private var searchBar:UISearchBar?
     private var showType:TransportCapacityShowType = .Truck
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    
+    private var vehicleLists:[ZbnTransportCapacity] = [] //所有的车辆数据
+    private var driverLists:[ZbnTransportCapacity] = [] // 所有的司机数据
+    
+    private var driverSearch:String?
+    private var vehicleSearch:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configSearchBar()
         self.configTableView()
+        tableView.beginRefresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,20 +64,32 @@ class TransportCapacityVC: NormalBaseVC {
         }
         self.toReloadSearch()
         self.toReloadBottom()
-        self.tableView.reloadData()
+        decideToLoadData(index: index)
     }
 }
 
 //MARK: - bussiness cell
 extension TransportCapacityVC {
     
-    func currentCell() -> UITableViewCell {
+    func currentCell(indexPath:IndexPath , tableView:UITableView) -> UITableViewCell {
         switch self.showType {
         case .Truck:
             let cell = self.dequeueReusableCell(className: TransportTruckCell.self, for: self.tableView)
+            let info = self.vehicleLists[indexPath.section]
+            cell.toShowInfo(truckNo: info.vehicleNo,
+                            truckType: info.vehicleType,
+                            truckLength: info.vehicleLength,
+                            truckWeight: info.vehicleWeight,
+                            extra: "",
+                            canEdit: true)
             return cell
         default:
             let cell = self.dequeueReusableCell(className: TransportDriverCell.self, for: self.tableView)
+            let info = self.driverLists[indexPath.section]
+            cell.toShowInfo(driverName: info.driverName,
+                            idCard: info.driverId,
+                            phoneNum: info.driverPhone,
+                            canEdit: true)
             return cell
         }
     }
@@ -92,24 +111,36 @@ extension TransportCapacityVC {
 //MARK: - searchBar
 extension TransportCapacityVC {
     func configSearchBar() -> Void {
-        self.searchBar = UISearchBar()
         self.searchBar?.searchBarStyle = .minimal
-        self.searchBar?.sizeToFit()
         self.searchBar?.rx.text.orEmpty.asObservable()
             .throttle(1, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self](search) in
-                self?.loadMyCapacity(query: search)
+                self?.rxSearchHandle(search: search)
             })
             .disposed(by: dispose)
+    }
+    
+    func rxSearchHandle(search:String) -> Void {
+        switch self.showType {
+        case .Driver:
+            self.driverSearch = search
+            self.loadData()
+            break
+        default:
+            self.vehicleSearch = search
+            self.loadData()
+        }
     }
     
     func toReloadSearch() -> Void {
         switch self.showType {
         case .Driver:
             self.searchBar?.placeholder = "搜索驾驶员姓名、电话"
+            self.searchBar?.text = self.driverSearch
             break
         default:
             self.searchBar?.placeholder = "搜索司机姓名、车牌号码"
+            self.searchBar?.text = self.vehicleSearch
         }
     }
     
@@ -124,6 +155,15 @@ extension TransportCapacityVC {
         self.tableView.tableFooterView = UIView()
         self.registerForNibCell(className: TransportDriverCell.self, for: tableView)
         self.registerForNibCell(className: TransportTruckCell.self, for: tableView)
+        tableView.initEstmatedHeights()
+        tableView.pullRefresh()
+        tableView.refreshState.asObservable()
+            .subscribe(onNext: { [weak self](state) in
+                if state == .Refresh {
+                    self?.loadData()
+                }
+            })
+            .disposed(by: dispose)
     }
 }
 
@@ -148,6 +188,24 @@ extension TransportCapacityVC {
             self.toAddTrunck()
         }
     }
+    
+    //MARK: - 根据点击的tab 和 当前数据情况，决定是否s重新获取数据
+    func decideToLoadData(index:Int) -> Void {
+        self.tableView.removeCacheHeights()
+        if index == 0 {
+            if self.vehicleLists.count <= 0 {
+                self.tableView.beginRefresh()
+                return
+            }
+        }
+        if index == 1 {
+            if self.driverLists.count <= 0 {
+                self.tableView.beginRefresh()
+                return
+            }
+        }
+        self.tableView.reloadData()
+    }
 }
 
 //MARK: - control chain router
@@ -166,43 +224,71 @@ extension TransportCapacityVC : UITableViewDelegate , UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        switch self.showType {
+        case .Driver:
+            return self.driverLists.count
+        default:
+            return self.vehicleLists.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return self.currentCell()
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return self.searchBar
-        }
-        return nil
+        return self.currentCell(indexPath: indexPath , tableView:tableView)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 60
-        }
-        return 10
+        return 0.01
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.heightForRow(at: indexPath)
     }
 }
 
 //MARK: - 获取运力
 extension TransportCapacityVC {
-    func loadMyCapacity(query:String) -> Void {
-        var queryModel = QueryZbnTransportCapacity()
-        queryModel.driverName = query
-        queryModel.driverPhone = query
-        queryModel.vehicleNo = query
-        BaseApi.request(target: API.findTransportCapacity(queryModel), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
-            .subscribe(onNext: { (data) in
-                
-            }, onError: { (error) in
-                
+    
+    func loadData() -> Void {
+        if self.showType == .Driver {
+            self.loadDriverCapacity(search: self.driverSearch ?? "")
+        }
+        else {
+            self.loadVichelCapacity(search: self.vehicleSearch ?? "")
+        }
+    }
+    
+    //MARK: - 获取车辆数据
+    func loadVichelCapacity(search:String) -> Void {
+        self.tableView.removeCacheHeights()
+        BaseApi.request(target: API.findCarInformation(search), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+            .retry(10)
+            .subscribe(onNext: { [weak self](data) in
+                self?.tableView.endRefresh()
+                self?.vehicleLists = data.data ?? []
+                self?.tableView.reloadData()
+            }, onError: { [weak self](error) in
+                self?.tableView.endRefresh()
+                self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
+    }
+    
+    //MARK: - 获取所有的司机数据
+    func loadDriverCapacity(search:String) -> Void {
+        self.tableView.removeCacheHeights()
+        BaseApi.request(target: API.findDriverInformation(search), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+            .retry(10)
+            .subscribe(onNext: { [weak self](data) in
+                self?.tableView.endRefresh()
+                self?.driverLists = data.data ?? []
+                self?.tableView.reloadData()
+            }, onError: { [weak self](error) in
+                self?.tableView.endRefresh()
+                self?.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)
     }

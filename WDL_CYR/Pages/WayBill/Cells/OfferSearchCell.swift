@@ -22,6 +22,7 @@ class OfferSearchCell: BaseCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         searchBar.rx.text.orEmpty.asObservable()
+            .throttle(1, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self](text) in
                 if let closure = self?.searchClosure {
                     closure(text)
@@ -34,4 +35,8 @@ class OfferSearchCell: BaseCell {
         super.setSelected(selected, animated: animated)
     }
     
+    
+    func showPlaceholder(place:String) -> Void {
+        self.searchBar.placeholder = place
+    }
 }

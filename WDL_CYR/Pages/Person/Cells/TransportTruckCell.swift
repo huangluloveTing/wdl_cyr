@@ -37,14 +37,14 @@ class TransportTruckCell: BaseCell {
 extension TransportTruckCell {
     func toShowInfo(truckNo:String? ,
                     truckType:String? ,
-                    truckLength:Float? ,
-                    truckWeight:Float? ,
+                    truckLength:String? ,
+                    truckWeight:String? ,
                     extra:String? ,
                     canEdit:Bool = false) -> Void {
         self.truckNoLabel.text = "车牌号：".concat(one: truckNo)
         self.truckTypeLabel.text = truckType
-        self.truckLengthLabel.text = String(format: "%.1f", truckLength ?? 0)+"m"
-        self.truckWeightLabel.text = String(format: "%.f", truckWeight ?? 0)+"吨"
+        self.truckLengthLabel.text = truckLength
+        self.truckWeightLabel.text = truckWeight
         self.editView.isHidden = !canEdit
     }
 }

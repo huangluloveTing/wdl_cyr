@@ -160,6 +160,8 @@ struct OfferOrderHallResultApp : HandyJSON {
     var vehicleType : String = ""
     // 车宽
     var vehicleWidth : String = ""
+    
+    var transportOrderAppResult :WayBillInfoBean? // optional), 运单信息
 }
 
 

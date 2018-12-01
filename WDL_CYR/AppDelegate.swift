@@ -28,9 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configIQKeyboard()
         self.configGAODEMap()
         self.configHUD()
-        self.mirro()
         
         return true
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        self.loadCarrierInfo()
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
@@ -92,6 +95,10 @@ extension AppDelegate {
     
     func mirro() {
         
+    }
+    
+    func loadCarrierInfo() -> Void {
+        WDLCoreManager.shared().loadCarrierInfo()
     }
  }
 
