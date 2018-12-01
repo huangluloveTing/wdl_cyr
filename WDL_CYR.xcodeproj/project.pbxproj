@@ -80,6 +80,9 @@
 		704129AE2179C1590078A46F /* OfferFeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704129AC2179C1590078A46F /* OfferFeeCell.xib */; };
 		704129B12179E6840078A46F /* CommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704129AF2179E6840078A46F /* CommitCell.swift */; };
 		704129B22179E6840078A46F /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704129B02179E6840078A46F /* CommitCell.xib */; };
+		7047769521B0CD0000628C6F /* ZbnCarrierInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047769421B0CD0000628C6F /* ZbnCarrierInfo.swift */; };
+		7047769821B0CE6200628C6F /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047769621B0CE6200628C6F /* UserStore.swift */; };
+		7047769921B0CE6200628C6F /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047769721B0CE6200628C6F /* UserDefault.swift */; };
 		704DD087215BB55E00E6AD6F /* AddLinesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DD085215BB55E00E6AD6F /* AddLinesVC.swift */; };
 		704DD088215BB55E00E6AD6F /* AddLinesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704DD086215BB55E00E6AD6F /* AddLinesVC.xib */; };
 		704DD08A215C9A8200E6AD6F /* FocusResourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DD089215C9A8200E6AD6F /* FocusResourceModel.swift */; };
@@ -114,6 +117,7 @@
 		707B7208216F3C60000F78F6 /* Resource_GoodsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 707B7206216F3C60000F78F6 /* Resource_GoodsInfoCell.xib */; };
 		707B720B216F3C87000F78F6 /* Resource_ShipperInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B7209216F3C87000F78F6 /* Resource_ShipperInfoCell.swift */; };
 		707B720C216F3C87000F78F6 /* Resource_ShipperInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 707B720A216F3C87000F78F6 /* Resource_ShipperInfoCell.xib */; };
+		7092932A21AF9614005E8DA6 /* TransportUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7092932921AF9614005E8DA6 /* TransportUtil.swift */; };
 		70A024A12192704F00A9ECC2 /* WaybillNoHandleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */; };
 		70A024A22192704F00A9ECC2 /* WaybillNoHandleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */; };
 		70C7CB28216F74ED00C10AC4 /* ChooseOfferTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7CB26216F74ED00C10AC4 /* ChooseOfferTypeVC.swift */; };
@@ -418,6 +422,9 @@
 		704129AC2179C1590078A46F /* OfferFeeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferFeeCell.xib; sourceTree = "<group>"; };
 		704129AF2179E6840078A46F /* CommitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCell.swift; sourceTree = "<group>"; };
 		704129B02179E6840078A46F /* CommitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommitCell.xib; sourceTree = "<group>"; };
+		7047769421B0CD0000628C6F /* ZbnCarrierInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbnCarrierInfo.swift; sourceTree = "<group>"; };
+		7047769621B0CE6200628C6F /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		7047769721B0CE6200628C6F /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		704DD085215BB55E00E6AD6F /* AddLinesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinesVC.swift; sourceTree = "<group>"; };
 		704DD086215BB55E00E6AD6F /* AddLinesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddLinesVC.xib; sourceTree = "<group>"; };
 		704DD089215C9A8200E6AD6F /* FocusResourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusResourceModel.swift; sourceTree = "<group>"; };
@@ -452,6 +459,7 @@
 		707B7206216F3C60000F78F6 /* Resource_GoodsInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Resource_GoodsInfoCell.xib; sourceTree = "<group>"; };
 		707B7209216F3C87000F78F6 /* Resource_ShipperInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource_ShipperInfoCell.swift; sourceTree = "<group>"; };
 		707B720A216F3C87000F78F6 /* Resource_ShipperInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Resource_ShipperInfoCell.xib; sourceTree = "<group>"; };
+		7092932921AF9614005E8DA6 /* TransportUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportUtil.swift; sourceTree = "<group>"; };
 		70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillNoHandleCell.swift; sourceTree = "<group>"; };
 		70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillNoHandleCell.xib; sourceTree = "<group>"; };
 		70C7CB26216F74ED00C10AC4 /* ChooseOfferTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOfferTypeVC.swift; sourceTree = "<group>"; };
@@ -711,6 +719,14 @@
 				3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7047769321B0CCE500628C6F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7047769421B0CD0000628C6F /* ZbnCarrierInfo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		704DD094215CEB8900E6AD6F /* Offer */ = {
@@ -985,6 +1001,7 @@
 		70CF4EDE214B410C0051A7CA /* Person */ = {
 			isa = PBXGroup;
 			children = (
+				7047769321B0CCE500628C6F /* Models */,
 				70CF4EE6214B410C0051A7CA /* VCS */,
 				70CF4EDF214B410C0051A7CA /* Cells */,
 				70CF4EE4214B410C0051A7CA /* PersonalVC.swift */,
@@ -1357,6 +1374,7 @@
 				70CF4F53214B410F0051A7CA /* Util.swift */,
 				70CF4F54214B410F0051A7CA /* Regx.swift */,
 				70CF4F55214B410F0051A7CA /* DropViewManage.swift */,
+				7092932921AF9614005E8DA6 /* TransportUtil.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -1365,6 +1383,8 @@
 			isa = PBXGroup;
 			children = (
 				70CF4F57214B41100051A7CA /* WDLCoreDataManager.swift */,
+				7047769721B0CE6200628C6F /* UserDefault.swift */,
+				7047769621B0CE6200628C6F /* UserStore.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -1621,7 +1641,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
@@ -1638,7 +1658,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1669,6 +1689,7 @@
 				70CF4F8B214B41120051A7CA /* WayBillVC.swift in Sources */,
 				707B7203216F3C4A000F78F6 /* Resource_PriceInfoCell.swift in Sources */,
 				703CC6DF21AB9EA100F0245D /* Offer_otherOffersCell.swift in Sources */,
+				7047769821B0CE6200628C6F /* UserStore.swift in Sources */,
 				70CF4FAB214B41120051A7CA /* SKTag.m in Sources */,
 				70CF4F83214B41120051A7CA /* NormalBaseVC.swift in Sources */,
 				70CF4F88214B41120051A7CA /* WayBillDetailVC.swift in Sources */,
@@ -1739,6 +1760,7 @@
 				70CF4FD1214B41120051A7CA /* Util.swift in Sources */,
 				70CF4F62214B41110051A7CA /* API.swift in Sources */,
 				70CF4F66214B41110051A7CA /* GSDetailInfoCell.swift in Sources */,
+				7092932A21AF9614005E8DA6 /* TransportUtil.swift in Sources */,
 				70C7CB28216F74ED00C10AC4 /* ChooseOfferTypeVC.swift in Sources */,
 				70CF4FB4214B41120051A7CA /* UITableView+RefreshExtension.swift in Sources */,
 				70EA7372215E63990020B8C3 /* WayBillContainerVC.swift in Sources */,
@@ -1750,6 +1772,7 @@
 				70D8BC1E21672D2B000522E0 /* TransportTruckCell.swift in Sources */,
 				70EA7367215E0AE00020B8C3 /* GSDetail_rejectCell.swift in Sources */,
 				70CF4F99214B41120051A7CA /* DeliveryPlaceChooiceView.swift in Sources */,
+				7047769921B0CE6200628C6F /* UserDefault.swift in Sources */,
 				704129A92179B7980078A46F /* OfferInputCell.swift in Sources */,
 				70CF4FCD214B41120051A7CA /* BageView.swift in Sources */,
 				701F10D4217D8F0000693936 /* OfferSearchBaseVC.swift in Sources */,
@@ -1828,6 +1851,7 @@
 				70412981217819B40078A46F /* UITableView+Extension.swift in Sources */,
 				70CF4FBC214B41120051A7CA /* String+Extension.swift in Sources */,
 				70ED020221954E30001DB4D1 /* WaybillAssembleHeader.swift in Sources */,
+				7047769521B0CD0000628C6F /* ZbnCarrierInfo.swift in Sources */,
 				70CF4FB1214B41120051A7CA /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				70CF4FD4214B41120051A7CA /* WDLCoreDataManager.swift in Sources */,
 				70CF4FC3214B41120051A7CA /* BaseVC+router.swift in Sources */,

@@ -44,6 +44,7 @@ enum API {
     case cancelOffer(String , String)                        // 取消报价
     case findCapacityByDriverNameOrPhone(String)            // 根据驾驶员姓名/电话查询驾驶员信息
     case findCapacityByName(String)                         //
+    case getCarrierInformation()                            // 获取登陆承运人信息
 }
 
 
@@ -115,6 +116,8 @@ func apiPath(api:API) -> String {
         return "/carrierOrderHall/findCapacityByDriverNameOrPhone"
     case .findCapacityByName(_):
         return "/carrierOrderHall/findCapacityByName"
+    case .getCarrierInformation():
+        return "/information/getCarrierInformation"
     }
 }
 
@@ -215,6 +218,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["nameOrPhone" : nameOrPhone], encoding: URLEncoding.default)
     case .findCapacityByName(let name):
         return .requestParameters(parameters: ["name" : name], encoding: URLEncoding.default)
+    case .getCarrierInformation():
+        return .requestParameters(parameters: Dictionary(), encoding: JSONEncoding.default)
     }
   
 }

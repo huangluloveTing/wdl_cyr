@@ -29,7 +29,7 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.defineTableView(tableView: self.tableView)
+        self.defineTableView(tableView: tableView, canRefresh: true, canLoadMore: true)
         self.configDropView(dropView: self.dropHintView)
         self.configTableView()
         self.tableView.beginRefresh()
@@ -40,22 +40,14 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     }
     
     override func bindViewModel() {
-        self.tableView.refreshState.asObservable()
-            .share(replay: 1)
-            .filter { (state) -> Bool in
-                return state != .EndRefresh
-            }
-            .subscribe(onNext: { [weak self](state) in
-                self?.tableView.endRefresh()
-                if state == .LoadMore {
-                    self?.pageSize += 20
-                } else {
-                    self?.tableView.removeCacheHeights()
-                    self?.pageSize = 20
-                }
-                self?.loadOffers()
-            })
-            .disposed(by: dispose)
+    }
+    
+    override func footerLoadMore(pageSize: Int) {
+        self.loadOffers()
+    }
+    
+    override func headerRefresh() {
+        self.loadOffers()
     }
     
     // 点击状态
@@ -125,6 +117,9 @@ extension OfferNotDoneVC {
                 return
             }
             self?.currentUIModels = self?.configNetDataToDisplay(pageInfo: pageInfo) ?? []
+            if (self?.currentUIModels.count ?? 0) >= (res?.total ?? 0) {
+                self?.noMoreData()
+            }
             self?.tableView.reloadData()
         }
     }

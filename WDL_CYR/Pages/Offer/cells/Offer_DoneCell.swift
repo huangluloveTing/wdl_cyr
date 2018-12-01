@@ -45,6 +45,6 @@ extension Offer_DoneCell {
         self.toAddImageForImageView(imageUrl: info?.avatorURL, imageView: self.avatorImageView)
         self.typeLabel.text = (info?.isSelf ?? false) ? "【自营】" : ""
         self.companyLabel.text = info?.company
-        self.offerDesignateStyle(designate: info?.designateStatus, to: self.designateLabel)
+        self.offerDesignateStyle(designate: info?.reportStatus.rawValue, to: self.designateLabel)
     }
 }

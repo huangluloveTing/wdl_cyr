@@ -91,12 +91,12 @@ extension WalletVC {
     // 去充值
     func toRecharge() -> Void {
         let rechargeVC = RechargeInlineVC()
-        self.push(vc: rechargeVC, title: nil)
+        self.pushToVC(vc: rechargeVC, title: nil)
     }
     
     // 去交易明细
     func toTransactionDetails() -> Void {
         let transactionDetailsVC = TransactionDetailsVC()
-        self.push(vc: transactionDetailsVC, title: "交易明细")
+        self.pushToVC(vc: transactionDetailsVC, title: "交易明细")
     }
 }

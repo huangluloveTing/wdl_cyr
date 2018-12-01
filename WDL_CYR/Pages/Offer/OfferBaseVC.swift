@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class OfferBaseVC: MainBaseVC {
     
@@ -30,22 +32,6 @@ class OfferBaseVC: MainBaseVC {
     }
     
     override func bindViewModel() {
-        self.baseTableView?.refreshState.asObservable()
-            .distinctUntilChanged()
-            .filter({ (state) -> Bool in
-                return state != .EndRefresh
-            })
-            .subscribe(onNext: { [weak self](state) in
-                self?.endRefresh()
-                if state == .LoadMore {
-                    self?.pageSize += 20
-                    self?.footerLoadMore(pageSize: self?.pageSize ?? 20)
-                } else {
-                    self?.pageSize = 20
-                    self?.headerRefresh()
-                }
-            })
-            .disposed(by: dispose)
     }
     
     // override
@@ -63,6 +49,25 @@ extension OfferBaseVC {
         if canLoadMore == true {
             self.baseTableView?.upRefresh()
         }
+        self.baseTableView?.refreshState.asObservable()
+            .distinctUntilChanged()
+            .throttle(1, scheduler: MainScheduler.instance)
+            .filter({ (state) -> Bool in
+                return state != .EndRefresh
+            })
+            .subscribe(onNext: { [weak self](state) in
+                self?.endRefresh()
+                if state == .LoadMore {
+                    self?.pageSize += 20
+                    self?.footerLoadMore(pageSize: self?.pageSize ?? 20)
+                } else {
+                    self?.resetTableView()
+                    self?.baseTableView?.removeCacheHeights()
+                    self?.pageSize = 20
+                    self?.headerRefresh()
+                }
+            })
+            .disposed(by: dispose)
     }
     
     func endRefresh() -> Void {
@@ -71,6 +76,10 @@ extension OfferBaseVC {
     
     func noMoreData() -> Void {
         self.baseTableView?.noMore()
+    }
+    
+    func resetTableView() -> Void {
+        self.baseTableView?.resetFooter()
     }
 }
 
@@ -85,13 +94,8 @@ extension OfferBaseVC {
     
     //MARK: - 去查看运单
     func toWaybillPage(index:Int) -> Void {
-        
-        let detailVC = WayBillDetailVC()
-        var hall = WayBillInfoBean()
-        hall.hallId = self.currentPageInfo?.list![index].id
-        detailVC.waybillInfo = hall
-        //        detailVC.transportNo = info.transportNo ?? ""
-        self.push(vc: detailVC, title: "运单详情")
+        let info = self.currentPageInfo?.list![index]
+        self.transportBillDetailPage(info: (info?.transportOrderAppResult)!)
     }
 }
 
@@ -129,7 +133,6 @@ extension OfferBaseVC {
     
     // 根据后台接口，获取当前页面的展示数据
     func configNetDataToDisplay(pageInfo:OfferPageInfo?) -> [OfferUIModel] {
-        self.endRefresh()
         self.currentPageInfo = pageInfo
         let total = self.currentPageInfo?.total ?? 0
         let currentCount = self.currentPageInfo?.list?.count ?? 0
@@ -156,7 +159,7 @@ extension OfferBaseVC {
             offer.company = result.companyName
             offer.isAttention = (result.shipperCode?.count ?? 0 > 0) ? true : false
             offer.reportStatus = result.dealStatus
-            offer.designateStatus  = 0
+//            offer.designateStatus  = 0
             offer.avatorURL = result.companyLogo //头像
             return offer
         })

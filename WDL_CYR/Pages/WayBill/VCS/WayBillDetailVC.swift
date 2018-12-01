@@ -38,6 +38,6 @@ class WayBillDetailVC: WaybillDetailBaseVC {
         let assembleVC = WaybillAssembleVC()
         assembleVC.pageInfo = currentWaybillDetailInfo()
         assembleVC.currentDisplayMode = .driverAssemble
-        self.push(vc: assembleVC, title: "配载")
+        self.pushToVC(vc: assembleVC, title: "配载")
     }
 }

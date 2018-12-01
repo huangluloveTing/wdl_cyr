@@ -121,18 +121,18 @@ extension PersonalVC {
     // 钱包
     func toWalletVC() -> Void {
         let walletVC = WalletVC()
-        self.push(vc: walletVC, title: "钱包")
+        self.pushToVC(vc: walletVC, title: "钱包")
     }
     
     // 我的运力
     func toTransportCapacity() -> Void {
         let tansportCapacityVC = TransportCapacityVC()
-        self.push(vc: tansportCapacityVC, title: nil)
+        self.pushToVC(vc: tansportCapacityVC, title: nil)
     }
     
     // 去我的认证
     func toMyAuthenVC() -> Void {
         let authenVC = MyAuthenVC()
-        self.push(vc: authenVC, title: "我的认证")
+        self.pushToVC(vc: authenVC, title: "我的认证")
     }
 }

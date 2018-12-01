@@ -67,7 +67,7 @@ extension UITableView {
     
     private var _freshState : PublishSubject<TableViewState>? {
         set {
-            objc_setAssociatedObject(self, &refreshKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+            objc_setAssociatedObject(self, &refreshKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         get {
             return objc_getAssociatedObject(self, &refreshKey) as? PublishSubject

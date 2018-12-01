@@ -35,6 +35,8 @@ class ResourceHallCell: BaseCell {
     
     public var offerClosure:ResourceOfferClosure?
     
+    private var info:ResourceHallUIModel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.reportButton.addBorder(color: nil, width: 0, radius: 15)
@@ -46,6 +48,9 @@ class ResourceHallCell: BaseCell {
     }
     
     @IBAction func offerAction(_ sender: Any) {
+        if info?.isOffer == true {
+            return
+        }
         if let closure = self.offerClosure {
             closure()
         }
@@ -55,6 +60,7 @@ class ResourceHallCell: BaseCell {
 extension ResourceHallCell {
     
     func showInfo(info:ResourceHallUIModel?) -> Void {
+        self.info = info
         self.startLabel.text = info?.start
         self.endLabel.text = info?.end
         self.truckDescLabel.text = info?.truckInfo
@@ -64,9 +70,9 @@ extension ResourceHallCell {
         self.attentionButton.isSelected = info?.isAttention ?? false
         self.unitPriceLabel.text = String(format: "%.f",  info?.refercneceUnitPrice ?? 0)
         self.reportNumLabel.text = String(format: "%d人报价", info?.reportNum ?? 0)
-        //头像
+        // 头像
          Util.showImage(imageView: self.avatorView, imageUrl: info?.companyLogo ?? "")
-       //参考价是否可见 1=可见 2=不可见
+        // 参考价是否可见 1=可见 2=不可见
         if info?.refercnecePriceIsVisable == 1 {
             self.unitPriceLabel.isHidden = false
             canPriceTitleLab.isHidden = false
@@ -77,6 +83,13 @@ extension ResourceHallCell {
             canPriceTitleLab.isHidden = true
             unitTitleLab.isHidden = true
             perNumTitleLab.isHidden = true
+        }
+        
+        self.reportButton.isSelected = info?.isOffer ?? false
+        if info?.isOffer == true {
+            self.reportButton.backgroundColor = UIColor(hex: "D3D3D3")
+        } else {
+            self.reportButton.backgroundColor = UIColor(hex: "06C06F")
         }
     }
 }

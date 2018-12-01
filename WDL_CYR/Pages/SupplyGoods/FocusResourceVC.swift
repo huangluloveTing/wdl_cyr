@@ -33,11 +33,11 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
         super.viewDidLoad()
         self.configTableView()
         self.toTapHeader(index: 0)
+        self.tableView.beginRefresh()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        //需要下拉刷新
-         self.tableView.beginRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,7 +138,6 @@ extension FocusResourceVC { // 关注托运人或者关注线路 切换
         let index = type == .focusPerson ? 0 : 1
         self.toTapHeader(index: index)
     }
-    
 }
 
 extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {

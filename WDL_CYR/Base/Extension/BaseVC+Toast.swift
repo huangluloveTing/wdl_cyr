@@ -37,7 +37,7 @@ extension BaseVC {
     func showFail(fail:String? = nil , complete:ToastCompleteClosure? = {}) {
         self.svProgressCanInterface()
         SVProgressHUD.showError(withStatus: fail)
-        SVProgressHUD.dismiss(withDelay: 0.5) {
+        SVProgressHUD.dismiss(withDelay: 1.5) {
             if let complete = complete {
                 complete()
             }

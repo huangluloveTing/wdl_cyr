@@ -195,7 +195,8 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
                                           companyLogo: hall.companyLogo,
                                           reportNum: hall.offerNumber,
                                           refercneceUnitPrice: hall.refercneceUnitPrice,
-                                          refercnecePriceIsVisable: hall.refercnecePriceIsVisable)
+                                          refercnecePriceIsVisable: hall.refercnecePriceIsVisable,
+                                          isOffer:hall.isOffer != nil && (hall.isOffer)!.count > 0)
         cell.showInfo(info: uiModel)
         cell.offerClosure = {[weak self] in
             self?.toOffer(index: indexPath.section)
@@ -222,7 +223,7 @@ extension ResourceHallVC {
         resource.refercneceTotalPrice = hall.refercneceTotalPrice
         resource.refercneceUnitPrice = hall.refercneceUnitPrice
         resource.rate = 5
-        resource.consignorName = hall.consignorName
+        resource.consignorName = hall.companyName
         resource.resource = hall
         self.toResouceDetail(resource: resource)
     }

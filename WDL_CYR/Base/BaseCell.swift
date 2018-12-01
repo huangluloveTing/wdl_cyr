@@ -117,6 +117,18 @@ extension BaseCell {
             label.textColor = UIColor(hex: "06C06F")
             label.text = "待指派"
         }
+        else if designate == 0 {
+            label.textColor = UIColor(hex: "06C06F")
+            label.text = "已驳回"
+        }
+        else if designate == 5 {
+            label.textColor = UIColor(hex: "06C06F")
+            label.text = "已取消"
+        }
+        else if designate == 3 {
+            label.textColor = UIColor(hex: "06C06F")
+            label.text = "已完成"
+        }
         else {
             label.textColor = UIColor.blue
             label.text = "查看运单"

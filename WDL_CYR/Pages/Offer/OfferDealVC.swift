@@ -25,35 +25,25 @@ class OfferDealVC: OfferBaseVC , ZTScrollViewControllerType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.defineTableView(tableView: tableView)
-//        self.configDropView(dropView: self.dropHintView)
+        self.defineTableView(tableView: tableView , canRefresh: true , canLoadMore: true)
         self.configTableView()
         self.tableView.beginRefresh()
     }
     
     override func bindViewModel() {
-        self.tableView.refreshState.asObservable()
-            .share(replay: 1)
-            .filter { (state) -> Bool in
-                return state != .EndRefresh
-            }
-            .subscribe(onNext: { [weak self](state) in
-                self?.tableView.endRefresh()
-                if state == .LoadMore {
-                    self?.pageSize += 20
-                } else {
-                    self?.tableView.removeCacheHeights()
-                    self?.pageSize = 20
-                }
-                self?.loadOffers()
-            })
-            .disposed(by: dispose)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    override func headerRefresh() {
+        self.loadOffers()
+    }
+    
+    override func footerLoadMore(pageSize: Int) {
+        self.loadOffers()
+    }
     
     // 点击状态
     override func statusChooseHandle(index: Int) {
@@ -84,18 +74,20 @@ extension OfferDealVC {
 extension OfferDealVC {
     // 获取报价数据
     func loadOffers() -> Void {
-        self.loadOfferData(status: 1,
+        self.loadOfferData(status: 2,
                            pageSize: self.pageSize,
                            start: nil,
                            end: nil,
                            dealStatus: nil,
                            carrierName: self.currentSearchContent) { [weak self](res, error) in
-            self?.tableView.endRefresh()
             guard let pageInfo = res else {
                 self?.showFail(fail: error?.localizedDescription, complete: nil)
                 return
             }
             self?.currentUIModels = self?.configNetDataToDisplay(pageInfo: pageInfo) ?? []
+            if (self?.currentUIModels.count ?? 0) >= (res?.total ?? 0){
+                self?.noMoreData()
+            }
             self?.tableView.reloadData()
         }
     }
@@ -138,11 +130,11 @@ extension OfferDealVC : UITableViewDelegate , UITableViewDataSource {
         if indexPath.row > 0 {
             let row = indexPath.row - 1
             let info = self.currentPageInfo?.list![indexPath.row - 1]
-            if info?.dealStatus == .willDesignate {
-                self.toOfferDetail(index: row)
-                return
-            }
+//            if info?.dealStatus == .deal {
             self.toWaybillPage(index: row)
+//                return
+//            }
+//            self.toOfferDetail(index: row)
         }
     }
     

@@ -32,6 +32,8 @@ class WDLCoreManager: NSObject {
     
     public var userInfo: LoginInfo?
     
+    public var zbnCarrierInfo:ZbnCarrierInfo? 
+    
     public var token:String?
     
     private static let instance = WDLCoreManager()
