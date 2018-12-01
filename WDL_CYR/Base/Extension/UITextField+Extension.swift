@@ -78,6 +78,7 @@ extension UITextField {
         let timeObservable = PublishSubject<TimeInterval>()
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = mode
+        datePicker.locale = Locale(identifier: "zh-Hans")
         let _ =  datePicker.rx.date
             .skip(skip)
             .takeUntil(self.rx.deallocated)
