@@ -10,6 +10,23 @@ import UIKit
 
 class Util {
     
+    static func showMoney(money:CGFloat , after point:Int = 2) -> String {
+        let newMony = String(format: "%.\(point)f", money)
+        return newMony
+    }
+    
+    
+    // 隐藏电话号码
+    static func formatterPhone(phone:String) -> String {
+        let count = phone.count
+        if count != 11 {
+            return phone
+        }
+        let newPhone = phone.prefix(3).appending("****").appending(phone.suffix(4))
+        return newPhone
+    }
+    
+    
     static func toCallPhone(num:String?) {
         guard let phone = num else {
             print("电话号码不存在")

@@ -18,6 +18,7 @@ enum API {
     case loadTaskInfo()             // 获取省市区
     case getCreateHallDictionary()  // 获取数据字典
     case releaseSource(ReleaseDeliverySourceModel)       // 发布货源
+     case getMainMessage(MessageQueryBean)   //消息中心主页(无分页)
     case ownOrderHall(GoodsSupplyQueryBean)     // 我的关注的货源接口
     case findAllOrderHall(GoodsSupplyQueryBean) // 获取货源大厅数据
     case findOrderByFollowShipper()         //查询我已经关注托运人线下的货源信息
@@ -36,6 +37,9 @@ enum API {
     case queryTransportDetail(String)       // 获取运单详情
     case designateWaybill(String , String)  // 指派运单
     case assembleWaybill(WaybillAssembleCommitModel) // 单车配载
+    
+    case updatePassword(ModifyPasswordModel)    // 修改密码
+    case updatePhone(ModityPhoneModel)          // 修改手机号码
     case assemblePlanWaybill([WaybillAssembleCommitModel]) // 多车配载
     case createEvaluate(ZbnEvaluateVo)      // 提交评价
     case uploadImage(UIImage , UploadImagTypeMode)   // 上传驾驶证图片
@@ -48,12 +52,19 @@ enum API {
     case zbnBondInformation()                               // 获取承运人保证金数据
     case findCarInformation(String)                               // 获取我的车辆
     case findDriverInformation(String)                            // 获取我的司机
+    case markHasSeenMessage(String)                     // 标记查看过的消息
 }
 
 
 // PATH
 func apiPath(api:API) -> String {
     switch api {
+    case .getMainMessage(_):
+        return "/message/getMessage"
+    case .updatePassword(_):
+        return "/consignor/updatePassword"
+    case .updatePhone(_):
+        return "/consignor/updatePhone"
     case .cancelFoucePath(_):
         return "/followLine/cancelFollowLine"
     case .cancelFouceCarrier(_):
@@ -127,16 +138,28 @@ func apiPath(api:API) -> String {
         return "/carrierOrderHall/findCarInformation"
     case .findDriverInformation(_):
         return "/carrierOrderHall/findDriverInformation"
+    case .markHasSeenMessage(_):
+        return "/message/markMessage"
     }
 }
 
 // TASK
 func apiTask(api:API) -> Task {
     switch api {
+    case .markHasSeenMessage(let id):
+        return .requestParameters(parameters: ["id" : id], encoding: URLEncoding.default)
+    case .getMainMessage(let model):
+        return .requestParameters(parameters: model.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     case .registerSms(let phpne):
         return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["cellphone":phpne])
     case .register(let pwd, let phone, let vcode, let vpwd):
         return .requestParameters(parameters: ["password": pwd,"phone": phone,"verificationCode": vcode,"verificationPassword": vpwd], encoding: JSONEncoding.default)
+        
+    case .updatePassword(let model):
+        return .requestParameters(parameters: model.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
+        
+    case .updatePhone(let model):
+        return .requestParameters(parameters: model.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     case .login(let account , let pwd):
         return .requestParameters(parameters: ["cellphone":account,"password":pwd], encoding: JSONEncoding.default)
     case .loadTaskInfo():
@@ -244,6 +267,7 @@ func apiMethod(api:API) -> Moya.Method {
     switch api {
     case .getCreateHallDictionary(),
          .registerSms(_) ,
+         .markHasSeenMessage(_),
          .selectZbnConsignor(_),
          .findCarrierInfoFee(_),
          .cancelFoucePath(_),

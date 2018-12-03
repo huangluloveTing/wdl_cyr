@@ -83,13 +83,35 @@ extension WalletVC : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
+            // 去交易明细
             self.toTransactionDetails()
+        }
+        if indexPath.row == 1 {
+            //银行卡设置
+            self.toBankSet()
+        }
+        if indexPath.row == 2 {
+            //修改支付密码
+            self.toModifyPassword()
         }
     }
 }
 
 // handles
 extension WalletVC {
+    
+    //银行卡设置
+    func toBankSet() -> Void {
+        let bankVC = BankCardVC()
+        self.pushToVC(vc: bankVC, title: "银行卡设置")
+        
+    }
+    //修改支付密码
+    func toModifyPassword() -> Void {
+
+        let modifyVC = AddModifyPayPasswordVC()
+        self.pushToVC(vc: modifyVC, title: "修改支付密码")
+    }
     
     //MARK: 退还保证金
     func toSendBackMoneyHandle() -> Void {

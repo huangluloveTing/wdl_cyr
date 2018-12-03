@@ -11,11 +11,10 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-let personImgs:[[UIImage]] = [[#imageLiteral(resourceName: "钱包"),#imageLiteral(resourceName: "运力"),#imageLiteral(resourceName: "认证")],[#imageLiteral(resourceName: "消息中心"), #imageLiteral(resourceName: "个人设置") , #imageLiteral(resourceName: "联系客服")]]
-let personTitles:[[String]] = [["钱包","我的运力","我的认证"],["消息中心","个人设置","联系客服"]]
 
+let personImgs:[[UIImage]] = [[#imageLiteral(resourceName: "钱包"),#imageLiteral(resourceName: "运力"),#imageLiteral(resourceName: "认证")],[#imageLiteral(resourceName: "消息中心"), #imageLiteral(resourceName: "个人设置")]]
+let personTitles:[[String]] = [["钱包","我的运力","我的认证"],["消息中心","个人设置"]]
 class PersonalVC: MainBaseVC {
-    
     
     private var carrierInfo = WDLCoreManager.shared().userInfo
     private var carrierBondInfo = WDLCoreManager.shared().bondInfo
@@ -140,6 +139,20 @@ extension PersonalVC : UITableViewDelegate , UITableViewDataSource {
                 self.toMyAuthenVC()
             }
         }
+        else if indexPath.section == 2 {
+            if indexPath.row == 0 {
+                //消息中心
+                self.toMessageCenter()
+            }
+            if indexPath.row == 1 {
+                //个人设置
+                self.toPersonSetting()
+            }
+
+        }
+        
+        
+        
     }
 }
 
@@ -158,6 +171,17 @@ extension PersonalVC {
 
 extension PersonalVC {
     
+    // t去个人设置
+    func toPersonSetting() -> Void {
+        let settingVC = PersonSettingVC()
+        self.push(vc: settingVC, title: "个人设置")
+    }
+    
+    //MARK: - 去消息中心
+    func toMessageCenter() -> Void {
+        let messageCenter = MessageCenterVC()
+        self.push(vc: messageCenter, title: "消息中心")
+    }
     // 钱包
     func toWalletVC() -> Void {
         let walletVC = WalletVC()

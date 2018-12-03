@@ -17,8 +17,8 @@ class AboutZbnVC: NormalBaseVC {
        
         let webView = UIWebView.init(frame: CGRect(origin: CGPoint.zero, size: CGSize.init(width: UIScreen.main.bounds.size.width, height: self.view.frame.size.height)))
         self.view .addSubview(webView)
-        let urlString = HOST + "/app/common/companyProfile"
-//        let urlString = "http://172.16.59.47:8081/zbn-web/app/common/companyProfile"
+        let urlString = HOST + "/html/profile.html"
+
         webView.loadRequest(URLRequest.init(url: URL.init(string: urlString)!))
         webView.delegate = self
 

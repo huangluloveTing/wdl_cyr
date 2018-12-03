@@ -42,6 +42,9 @@ class WDLCoreManager: NSObject {
     public static func shared() -> WDLCoreManager {
         return instance
     }
+    
+    
+  
 }
 
 //MARK: - 获取基本信息
