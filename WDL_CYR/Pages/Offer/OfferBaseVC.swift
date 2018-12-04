@@ -95,7 +95,9 @@ extension OfferBaseVC {
     //MARK: - 去查看运单
     func toWaybillPage(index:Int) -> Void {
         let info = self.currentPageInfo?.list![index]
-        self.transportBillDetailPage(info: (info?.transportOrderAppResult)!)
+        if info?.transportOrderAppResult != nil {
+            self.transportBillDetailPage(info: (info?.transportOrderAppResult)!)
+        }
     }
 }
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import HandyJSON
+import RxSwift
 
 struct LoginInfo : HandyJSON {
     var token : String?
@@ -52,6 +53,7 @@ extension WDLCoreManager {
     //MARK: - 获取承运人信息
     func loadCarrierInfo(closure:((ZbnCarrierInfo?) -> ())? = nil) -> Void {
         let _ = BaseApi.request(target: API.getCarrierInformation(), type: BaseResponseModel<ZbnCarrierInfo>.self)
+            .throttle(2, scheduler: MainScheduler.instance)
             .retry()
             .subscribe(onNext: { (data) in
                 let token = self.userInfo?.token

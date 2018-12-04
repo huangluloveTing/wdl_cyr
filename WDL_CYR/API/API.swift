@@ -42,7 +42,6 @@ enum API {
     case updatePhone(ModityPhoneModel)          // 修改手机号码
     case assemblePlanWaybill([WaybillAssembleCommitModel]) // 多车配载
     case createEvaluate(ZbnEvaluateVo)      // 提交评价
-    case uploadImage(UIImage , UploadImagTypeMode)   // 上传驾驶证图片
     case cancelFouceCarrier(CancerFouceCarrier)      //通过关注托运人的编码，取消关注
     case cancelFoucePath(String)       // 取消线路的关注
     case cancelOffer(String , String)                        // 取消报价
@@ -53,6 +52,8 @@ enum API {
     case findCarInformation(String)                               // 获取我的车辆
     case findDriverInformation(String)                            // 获取我的司机
     case markHasSeenMessage(String)                     // 标记查看过的消息
+    
+    case uploadImage(UIImage , UploadImagTypeMode)   // 上传图片
 }
 
 
@@ -120,8 +121,6 @@ func apiPath(api:API) -> String {
         return "/carrierTransport/allocateVehicleList"
     case .createEvaluate(_):
         return "/message/createEvaluate"
-    case .uploadImage(_ , let mode):
-        return "/commom/upload/file/app/" + mode.rawValue
     case .getOtherOfferByOrderHallId(_):
         return "/offer/getOtherOfferByOrderHallId"
     case .cancelOffer(_ , _):
@@ -140,6 +139,8 @@ func apiPath(api:API) -> String {
         return "/carrierOrderHall/findDriverInformation"
     case .markHasSeenMessage(_):
         return "/message/markMessage"
+    case .uploadImage(_ , let mode):
+        return "/commom/upload/file/" + mode.rawValue
     }
 }
 
@@ -233,15 +234,6 @@ func apiTask(api:API) -> Task {
     case .cancelFouceCarrier(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
         
-    case .uploadImage(let image , _):
-        var imageData:Data? = UIImagePNGRepresentation(image)
-        if imageData == nil {
-            imageData = UIImageJPEGRepresentation(image, 1)
-        }
-        let formProvider = MultipartFormData.FormDataProvider.data(imageData!)
-        let formData = MultipartFormData.init(provider: formProvider, name: "file", fileName: "img.png", mimeType: "image/png")
-        return .uploadMultipart([formData])
-        
     case .getOtherOfferByOrderHallId(let hallId):
         return .requestParameters(parameters: ["hallId": hallId], encoding: JSONEncoding.default)
     case .cancelOffer(let hallId , let offerId):
@@ -258,6 +250,15 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["name":name], encoding: URLEncoding.default)
     case .findDriverInformation(let name):
         return .requestParameters(parameters: ["name":name], encoding: URLEncoding.default)
+        
+    case .uploadImage(let image , _):
+        var imageData:Data? = UIImagePNGRepresentation(image)
+        if imageData == nil {
+            imageData = UIImageJPEGRepresentation(image, 1)
+        }
+        let formProvider = MultipartFormData.FormDataProvider.data(imageData!)
+        let formData = MultipartFormData.init(provider: formProvider, name: "file", fileName: "img.png", mimeType: "image/png")
+        return .uploadMultipart([formData])
     }
   
 }

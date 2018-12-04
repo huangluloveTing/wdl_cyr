@@ -17,8 +17,6 @@ class WayBillDetailVC: WaybillDetailBaseVC {
     
     public var transportNo: String?
     
-    public var waybillInfo:WayBillInfoBean?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView(tableView: tableView)

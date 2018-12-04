@@ -24,8 +24,8 @@ enum WaybillDisplayStatus {
     case notDone_willTransport              // 未完成 待起运的运单
     case notDone_transporting               // 未完成 运输中的运单
     case notDone_willSign                   // 未完成 待签收的运单
-    case notDone_breakContractForDriver     // 未完成 司机违约的运单
-    case notDone_breakContractForCarrier    // 未完成 承运人违约的运单
+    case notDone_breakContractForDriver     // 未完成 司机违约的运单(待办单)
+    case notDone_breakContractForCarrier    // 未完成 承运人违约的运单(待办单)
     case done(WaybillCommentStatus)         // 已完成
     case other                              // 其他，显示其他情况的
 }

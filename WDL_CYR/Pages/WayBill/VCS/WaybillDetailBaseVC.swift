@@ -35,12 +35,20 @@ class WaybillDetailBaseVC: NormalBaseVC {
     
     private var currentDisplayMode:WaybillDisplayMode?
     
+    public var waybillInfo:WayBillInfoBean?
+    
     private var currentInfo:TransactionInformation?
+    
+    private var showBottom:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.addBottomView()
+    }
     
     // 点击 对应的操作（指派，配载，修改配载）
     public func handleAction() {}
@@ -302,8 +310,12 @@ extension WaybillDetailBaseVC {
     //MARK: - 运单回单的相关功能
     func waybillReturnListCell(tableView:UITableView , canEdit:Bool) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WayBillReceiptCell.self)
-        cell.maxPic = 3
         let returnLists = currentReturnLists()
+        if canUploadReturnBill() == true {
+            cell.maxPic = 3
+        } else {
+            cell.maxPic = returnLists.count
+        }
         cell.showReceiptInfo(info: returnLists)
         cell.tapClosure = {[weak self] (row) in
             if row == returnLists.count {
@@ -657,12 +669,43 @@ extension WaybillDetailBaseVC {
     }
 }
 
+//MARK: - bussiness
+extension WaybillDetailBaseVC {
+    //MARK: - 当前运单角色
+    func currentRole() -> Int {
+        //1 . 承运人 ， 2. 司机
+        //TODO: 完善
+        return self.waybillInfo?.role ?? 1
+    }
+    
+    /*
+     * 作为驾驶员状态: 拥有该运单： 上传回单 申请签收 按钮
+     * 作为承运人状态 若该订单是自己指派其他驾驶员情况，有该订单查看，
+     *              无上传回单及申请签收操作按钮
+     */
+    //MARK: - 是否有可以上传回单
+    func canUploadReturnBill() -> Bool {
+        if self.currentRole() == 1 {
+            return false
+        }
+        return true
+    }
+    
+    //MARK: - 底部按钮显示
+    
+    //MARK: - 申请签收
+    func toReportSign() -> Void {
+        print("申请签收")
+    }
+}
+
 //MARK: - 获取运单详情
 extension WaybillDetailBaseVC {
     
     func loadDetailData(hallId:String) -> Void {
         self.showLoading()
         BaseApi.request(target: API.queryTransportDetail(hallId), type: BaseResponseModel<TransactionInformation>.self)
+            .retry()
             .subscribe(onNext: { [weak self](data) in
                 self?.hiddenToast()
                 self?.currrentEvaluatedStatus(info: data.data)
@@ -726,6 +769,27 @@ extension WaybillDetailBaseVC {
     override func routeName(routeName: String, dataInfo: Any?) {
         if routeName == WAYBILL_HANDLE_NAME {
             self.handleAction()
+        }
+    }
+}
+
+extension WaybillDetailBaseVC {
+    
+    // 跟据运单状态，添加
+    func addBottomView() -> Void {
+        self.showBottom = false
+        //运输中，司机 显示 申请签收
+        if self.currentDisplayMode == .doing_showTransporting {
+            if self.currentRole() == 2 {
+                self.showBottom = true
+                self.bottomButtom(titles: ["申请签收"], targetView: self.currentTableView!) { [weak self](_) in
+                    self?.toReportSign()
+                }
+            }
+        }
+        
+        if self.showBottom == true {
+            self.currentTableView?.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH, height: 60))
         }
     }
 }

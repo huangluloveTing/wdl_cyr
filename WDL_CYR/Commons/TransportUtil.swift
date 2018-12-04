@@ -26,7 +26,7 @@ class TransportUtil: NSObject {
                 }
                 return .unAssemble_comType_1_2_noAccept // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
             }
-            if comType == 3 {  // 来源1 , 2 ， 未接受时 ， 显示 接受 拒绝
+            if comType == 3 {  // 来源3 ， 未接受时 ， 显示 接受 拒绝
                 if driverStatus == 4 {  // 当driverStatus == 4 时 ， 已接受，显示 配载
                     return .unAssemble_comType_3_toAssemble
                 }
@@ -36,6 +36,7 @@ class TransportUtil: NSObject {
                 return .unAssemble_comType_4_toDesignate // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
             }
         }
+        
         // 未配载，只需判断配置相关的字段，即 completeStatus = 1
         if completeStatus == 2 { // 未完成
             // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派

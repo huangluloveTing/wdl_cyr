@@ -10,10 +10,10 @@ import Foundation
 import HandyJSON
 
 enum UploadImagTypeMode:String {
-    case driverLicense = "upload_driverLicense_filePath"
-    case vehicle = "upload_vehicleLicense_filePath"
-    case roadTransportCertificate = "upload_roadTransportCertificate_filePath"
-    case transport_return = "upload_transport_return_filePath"
+    case license_path = "upload_licence"
+    case card_path = "upload_idCard"
+    case logo_path = "upload_companyLogo"
+    case bussiness_path = ""
 }
 
 

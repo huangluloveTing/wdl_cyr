@@ -48,6 +48,8 @@ extension AppDelegate {
     func getAreaInfo() {
         if (WDLCoreManager.shared().userInfo?.token?.count ?? 0) > 0 {
             BaseApi.request(target: API.loadTaskInfo(), type: BaseResponseModel<[RegionModel]>.self)
+                .throttle(2, scheduler: MainScheduler.instance)
+                .retry()
                 .subscribe(onNext: {(regions) in
                     WDLCoreManager.shared().regionAreas = regions.data
                 }, onError: { (error) in

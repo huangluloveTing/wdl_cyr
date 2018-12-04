@@ -150,6 +150,7 @@
 		70A024A12192704F00A9ECC2 /* WaybillNoHandleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */; };
 		70A024A22192704F00A9ECC2 /* WaybillNoHandleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */; };
 		70A57E2F21B613AA00DEEA2C /* AddModifyPayPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A57E2E21B613AA00DEEA2C /* AddModifyPayPasswordVC.xib */; };
+		70A57E3121B672B600DEEA2C /* BaseVC+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A57E3021B672B500DEEA2C /* BaseVC+Picker.swift */; };
 		70C7CB28216F74ED00C10AC4 /* ChooseOfferTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7CB26216F74ED00C10AC4 /* ChooseOfferTypeVC.swift */; };
 		70C7CB29216F74ED00C10AC4 /* ChooseOfferTypeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7CB27216F74ED00C10AC4 /* ChooseOfferTypeVC.xib */; };
 		70C7CB2C216F76AD00C10AC4 /* OfferWithTruckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7CB2A216F76AD00C10AC4 /* OfferWithTruckVC.swift */; };
@@ -523,6 +524,7 @@
 		70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillNoHandleCell.swift; sourceTree = "<group>"; };
 		70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillNoHandleCell.xib; sourceTree = "<group>"; };
 		70A57E2E21B613AA00DEEA2C /* AddModifyPayPasswordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddModifyPayPasswordVC.xib; sourceTree = "<group>"; };
+		70A57E3021B672B500DEEA2C /* BaseVC+Picker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseVC+Picker.swift"; sourceTree = "<group>"; };
 		70C7CB26216F74ED00C10AC4 /* ChooseOfferTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOfferTypeVC.swift; sourceTree = "<group>"; };
 		70C7CB27216F74ED00C10AC4 /* ChooseOfferTypeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseOfferTypeVC.xib; sourceTree = "<group>"; };
 		70C7CB2A216F76AD00C10AC4 /* OfferWithTruckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferWithTruckVC.swift; sourceTree = "<group>"; };
@@ -1354,6 +1356,7 @@
 				70CF4F45214B410D0051A7CA /* BaseBean.swift */,
 				70D8BC49216B1863000522E0 /* ResponseBaseModel.swift */,
 				70CF4F49214B410D0051A7CA /* BaseCell.swift */,
+				70A57E3021B672B500DEEA2C /* BaseVC+Picker.swift */,
 				704129A52179B6410078A46F /* BaseInputCell.swift */,
 				7039BF3621B26529001A7E3C /* BaseVC+task.swift */,
 			);
@@ -1941,6 +1944,7 @@
 				70CF4F82214B41120051A7CA /* InputBaseVC.swift in Sources */,
 				70CF4FAD214B41120051A7CA /* SKTagButton.m in Sources */,
 				70CF4EA4214B409E0051A7CA /* AppDelegate.swift in Sources */,
+				70A57E3121B672B600DEEA2C /* BaseVC+Picker.swift in Sources */,
 				700F69D621A2A00300B5666B /* WayBillCommentCell.swift in Sources */,
 				70D8BC3A21675801000522E0 /* AuthenEnterpriseVC.swift in Sources */,
 				7014086E2193F988000D5CB1 /* WaybillHandleCell.swift in Sources */,
