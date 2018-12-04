@@ -79,7 +79,7 @@ struct MessageQueryBean: HandyJSON{
     var msgFrom: String?    //消息发送人
     var msgInfo: String?    //消息体
     var transportNo: String? //运单号
-    var msgStatus: Int?     //消息状态： 0=未读 1=已读 2=接受 3=拒绝
+    var msgStatus: Int = 0     //消息状态： 0=未读 1=已读 2=接受 3=拒绝
     var pageSize: Int?      //页面大小
 }
 

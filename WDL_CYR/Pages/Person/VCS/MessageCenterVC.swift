@@ -165,8 +165,9 @@ extension MessageCenterVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
-        let info = self.hallLists[indexPath.row]
+        var info = self.hallLists[indexPath.row]
         //标记看过的数据
+        info.msgStatus = 1
         self.markMessegeRequest(model: info)
         if info.msgType == 1 { //系统消息
             self.systermMessages(info: info)
