@@ -35,6 +35,9 @@
 		183FD32421B526B00069D50F /* MessageCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183FD32021B526B00069D50F /* MessageCenterCell.xib */; };
 		183FD32621B52B210069D50F /* MessageDetailAcceptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183FD32521B52B210069D50F /* MessageDetailAcceptCell.swift */; };
 		183FD32821B52B4C0069D50F /* MessageDetailAcceptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183FD32721B52B4C0069D50F /* MessageDetailAcceptCell.xib */; };
+		183FD32B21B644BE0069D50F /* ReturnMoneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183FD32921B644BE0069D50F /* ReturnMoneyVC.swift */; };
+		183FD32C21B644BE0069D50F /* ReturnMoneyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183FD32A21B644BE0069D50F /* ReturnMoneyVC.xib */; };
+		18E3810021B66F6500FF6544 /* PayHtmlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */; };
 		5FF496CEBAEF90B26CAE9B21 /* libPods-WDL_CYR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */; };
 		700347672193D95600DDEE55 /* WaybillLinkInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700347652193D95600DDEE55 /* WaybillLinkInfoCell.swift */; };
 		700347682193D95600DDEE55 /* WaybillLinkInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700347662193D95600DDEE55 /* WaybillLinkInfoCell.xib */; };
@@ -404,7 +407,10 @@
 		183FD32021B526B00069D50F /* MessageCenterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCenterCell.xib; sourceTree = "<group>"; };
 		183FD32521B52B210069D50F /* MessageDetailAcceptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailAcceptCell.swift; sourceTree = "<group>"; };
 		183FD32721B52B4C0069D50F /* MessageDetailAcceptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageDetailAcceptCell.xib; sourceTree = "<group>"; };
+		183FD32921B644BE0069D50F /* ReturnMoneyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnMoneyVC.swift; sourceTree = "<group>"; };
+		183FD32A21B644BE0069D50F /* ReturnMoneyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReturnMoneyVC.xib; sourceTree = "<group>"; };
 		18AEF43021AFE21F00FE2468 /* WDL_CYR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WDL_CYR.entitlements; sourceTree = "<group>"; };
+		18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayHtmlVC.swift; sourceTree = "<group>"; };
 		3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WDL_CYR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C7F9C1660A78A3335660AB0 /* Pods-WDL_CYR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDL_CYR.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR.release.xcconfig"; sourceTree = "<group>"; };
 		700347652193D95600DDEE55 /* WaybillLinkInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillLinkInfoCell.swift; sourceTree = "<group>"; };
@@ -1127,6 +1133,8 @@
 				183FD2EA21B4FC500069D50F /* PersonSettingVC.xib */,
 				70D8BBFC2165B1F8000522E0 /* WalletVC.swift */,
 				70D8BBFD2165B1F8000522E0 /* WalletVC.xib */,
+				183FD32921B644BE0069D50F /* ReturnMoneyVC.swift */,
+				183FD32A21B644BE0069D50F /* ReturnMoneyVC.xib */,
 				183FD2FD21B50DD90069D50F /* BankCardVC.swift */,
 				183FD2FE21B50DD90069D50F /* BankCardVC.xib */,
 				183FD30D21B518280069D50F /* ModifyBankSetVC.swift */,
@@ -1139,6 +1147,7 @@
 				70D8BC052165BAA0000522E0 /* RechargeInlineVC.xib */,
 				70D8BC0C2166E99C000522E0 /* PaymentTypeVC.swift */,
 				70D8BC0D2166E99C000522E0 /* PaymentTypeVC.xib */,
+				18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */,
 				70D8BC18216724CE000522E0 /* TransportCapacityVC.swift */,
 				70D8BC19216724CE000522E0 /* TransportCapacityVC.xib */,
 				70D8BC2421673955000522E0 /* TransactionDetailsVC.swift */,
@@ -1660,6 +1669,7 @@
 				70CF4F6A214B41110051A7CA /* GSDetailInfoCell.xib in Resources */,
 				70D8BC0F2166E99C000522E0 /* PaymentTypeVC.xib in Resources */,
 				707B7208216F3C60000F78F6 /* Resource_GoodsInfoCell.xib in Resources */,
+				183FD32C21B644BE0069D50F /* ReturnMoneyVC.xib in Resources */,
 				703CC6E021AB9EA100F0245D /* Offer_otherOffersCell.xib in Resources */,
 				70CF4F86214B41120051A7CA /* WayBillCell.xib in Resources */,
 				70ED020C2195513C001DB4D1 /* WaybillMultiRemailInfoCell.xib in Resources */,
@@ -1821,6 +1831,7 @@
 				70CF4F9F214B41120051A7CA /* ForgetPwdVC.swift in Sources */,
 				70ED01FF219537DD001DB4D1 /* WaybillAssembleContentCell.swift in Sources */,
 				70CF4FCB214B41120051A7CA /* ZTFoldTableView.swift in Sources */,
+				183FD32B21B644BE0069D50F /* ReturnMoneyVC.swift in Sources */,
 				70CF4F78214B41110051A7CA /* GSDetailBidingHeader.swift in Sources */,
 				7014087A21940AA6000D5CB1 /* WayBillOneCommentCell.swift in Sources */,
 				78D74956218FF192004C4D66 /* AuthenInreviewVC.swift in Sources */,
@@ -1848,6 +1859,7 @@
 				70CF4F6B214B41110051A7CA /* GSTimerShelveCell.swift in Sources */,
 				70CF4F73214B41110051A7CA /* GoodSupplyBean.swift in Sources */,
 				70D8BC162166EEEE000522E0 /* PaymentCommitCell.swift in Sources */,
+				18E3810021B66F6500FF6544 /* PayHtmlVC.swift in Sources */,
 				70EA736F215E12920020B8C3 /* GSDetailVC.swift in Sources */,
 				703CC6E221ABCF0800F0245D /* CarrierOfferBaseVC.swift in Sources */,
 				183FD30B21B50FBA0069D50F /* AddModifyPayPasswordVC.swift in Sources */,

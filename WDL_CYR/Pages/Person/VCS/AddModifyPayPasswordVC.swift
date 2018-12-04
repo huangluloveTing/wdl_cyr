@@ -32,5 +32,6 @@ class AddModifyPayPasswordVC: NormalBaseVC {
     
     //获取验证码
     @IBAction func getCodeClick(_ sender: UIButton) {
+        
     }
 }

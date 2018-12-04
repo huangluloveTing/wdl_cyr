@@ -18,7 +18,7 @@ enum API {
     case loadTaskInfo()             // 获取省市区
     case getCreateHallDictionary()  // 获取数据字典
     case releaseSource(ReleaseDeliverySourceModel)       // 发布货源
-     case getMainMessage(MessageQueryBean)   //消息中心主页(无分页)
+    case getMainMessage(MessageQueryBean)   //消息中心主页(无分页)
     case ownOrderHall(GoodsSupplyQueryBean)     // 我的关注的货源接口
     case findAllOrderHall(GoodsSupplyQueryBean) // 获取货源大厅数据
     case findOrderByFollowShipper()         //查询我已经关注托运人线下的货源信息
@@ -52,13 +52,22 @@ enum API {
     case zbnBondInformation()                               // 获取承运人保证金数据
     case findCarInformation(String)                               // 获取我的车辆
     case findDriverInformation(String)                            // 获取我的司机
-    case markHasSeenMessage(String)                     // 标记查看过的消息
+    case markHasSeenMessage(MessageQueryBean)                     // 标记查看过的消息
+//    case dealDetail(String)                     //交易明细
+    
+     case returnMoney(String)   //退余额
+    
+    case rechargeMoney(ZbnCashFlow) //充值
 }
 
 
 // PATH
 func apiPath(api:API) -> String {
     switch api {
+    case .rechargeMoney(_):
+        return "/wallet/addCash"
+    case .returnMoney(_):
+        return "/wallet/returnCash"
     case .getMainMessage(_):
         return "/message/getMessage"
     case .updatePassword(_):
@@ -146,8 +155,14 @@ func apiPath(api:API) -> String {
 // TASK
 func apiTask(api:API) -> Task {
     switch api {
-    case .markHasSeenMessage(let id):
-        return .requestParameters(parameters: ["id" : id], encoding: URLEncoding.default)
+    case .returnMoney(let money):
+        return .requestParameters(parameters: ["money":money], encoding: URLEncoding.default)
+
+    case .rechargeMoney(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
+    case .markHasSeenMessage(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
+        
     case .getMainMessage(let model):
         return .requestParameters(parameters: model.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     case .registerSms(let phpne):
@@ -267,7 +282,6 @@ func apiMethod(api:API) -> Moya.Method {
     switch api {
     case .getCreateHallDictionary(),
          .registerSms(_) ,
-         .markHasSeenMessage(_),
          .selectZbnConsignor(_),
          .findCarrierInfoFee(_),
          .cancelFoucePath(_),
