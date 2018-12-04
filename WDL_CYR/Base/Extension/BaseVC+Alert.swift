@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum AlertVCMode {
+    case alert
+    case sheet
+}
+
 extension BaseVC {
     
     public func showAlert(title:String? = "" , message:String? = "", closure:((Int) -> ())? = { (index) in }) {
