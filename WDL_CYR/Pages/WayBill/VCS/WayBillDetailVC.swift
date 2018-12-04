@@ -39,6 +39,30 @@ class WayBillDetailVC: WaybillDetailBaseVC {
         self.pushToVC(vc: assembleVC, title: "配载")
     }
     
+    override func clickAddReturn() {
+        self.takePhotoAlert { [weak self](image) in
+            self?.uploadWaybillImage(image: image)
+        }
+    }
     
-    
+    override func clickReturnList(index: Int) {
+        
+    }
+}
+
+extension WayBillDetailVC {
+    //MARK: - 上传运单
+    func uploadWaybillImage(image:UIImage?) -> Void {
+        guard let newImg = image else {
+            return
+        }
+        BaseApi.request(target: API.uploadImage(newImg, .returnbill_path), type: BaseResponseModel<String>.self)
+            .retry(5)
+            .subscribe(onNext: { (data) in
+                
+            }, onError: { (error) in
+                
+            })
+            .disposed(by: dispose)
+    }
 }

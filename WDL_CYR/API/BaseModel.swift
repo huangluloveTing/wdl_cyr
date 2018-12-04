@@ -14,6 +14,7 @@ enum UploadImagTypeMode:String {
     case card_path = "upload_idCard"
     case logo_path = "upload_companyLogo"
     case bussiness_path = ""
+    case returnbill_path = "upload_transport_return_filePath"
 }
 
 

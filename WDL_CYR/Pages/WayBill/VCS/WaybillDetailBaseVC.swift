@@ -53,10 +53,6 @@ class WaybillDetailBaseVC: NormalBaseVC {
     // 点击 对应的操作（指派，配载，修改配载）
     public func handleAction() {}
     
-    // 当前的回执单数据
-    func currentReturnLists() -> [ZbnTransportReturn] {
-        return []
-    }
     // 当前的一个评论数据
     func currentOneCommet() -> WayBillDetailCommentInfo? {
         return nil
@@ -671,6 +667,21 @@ extension WaybillDetailBaseVC {
 
 //MARK: - bussiness
 extension WaybillDetailBaseVC {
+    //MARK: - 当前的回执单数据
+    func currentReturnLists() -> [ZbnTransportReturn] {
+        return self.currentInfo?.returnList ?? []
+    }
+    
+    //MARK: - 上传成功后，显示运单数据
+    func addReturnBill(imgURL:String) -> Void {
+        var list = currentReturnLists()
+        var returnModel = ZbnTransportReturn()
+        returnModel.returnBillUrl = imgURL
+        list.append(returnModel)
+        self.currentInfo?.returnList = list
+        self.currentTableView?.reloadData()
+    }
+    
     //MARK: - 当前运单角色
     func currentRole() -> Int {
         //1 . 承运人 ， 2. 司机

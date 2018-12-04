@@ -70,7 +70,9 @@ class WaybillCarrierInfoCell: WaybillBaseCell {
             if self.waybillInfo?.comeType ==  4 { // 指派
                 self.toDesignateWaybill(param: self)
             }
-            if self.waybillInfo?.comeType == 1 || self.waybillInfo?.comeType == 2 || self.waybillInfo?.comeType == 3 {
+            else if self.waybillInfo?.comeType == 1 || self.waybillInfo?.comeType == 2 || self.waybillInfo?.comeType == 3 {
+                self.toAssembleWaybill(param: self)
+            } else {
                 self.toAssembleWaybill(param: self)
             }
         }

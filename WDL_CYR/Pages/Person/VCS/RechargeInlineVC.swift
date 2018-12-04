@@ -20,6 +20,7 @@ class RechargeInlineVC: NormalBaseVC {
         self.addNaviSelectTitles(titles: ["在线充值"])
         self.configTabView()
         self.registerAllCells()
+        toRecharge(num: 10)
     }
 
     override func didReceiveMemoryWarning() {
