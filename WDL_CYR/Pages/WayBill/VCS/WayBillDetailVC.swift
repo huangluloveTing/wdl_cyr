@@ -38,4 +38,7 @@ class WayBillDetailVC: WaybillDetailBaseVC {
         assembleVC.currentDisplayMode = .driverAssemble
         self.pushToVC(vc: assembleVC, title: "配载")
     }
+    
+    
+    
 }

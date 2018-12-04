@@ -68,6 +68,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="7uE-rB-qHv" firstAttribute="top" secondItem="JDt-ah-Ecw" secondAttribute="bottom" constant="10" id="1Rr-36-Plo"/>
+                    <constraint firstItem="x85-kc-XbF" firstAttribute="top" secondItem="7uE-rB-qHv" secondAttribute="bottom" constant="13" id="6VP-Vq-jIx"/>
                     <constraint firstAttribute="bottom" secondItem="Fzq-md-1B6" secondAttribute="bottom" constant="10" id="6aJ-Xo-hJZ"/>
                     <constraint firstItem="LqA-SE-IJL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="D5K-5W-vaZ"/>
                     <constraint firstAttribute="trailing" secondItem="7uE-rB-qHv" secondAttribute="trailing" constant="20" id="FJf-kn-LpX"/>
@@ -76,6 +77,7 @@
                     <constraint firstAttribute="trailing" secondItem="LqA-SE-IJL" secondAttribute="trailing" constant="20" id="TmD-t7-BZX"/>
                     <constraint firstAttribute="bottom" secondItem="x85-kc-XbF" secondAttribute="bottom" constant="10" id="VSz-EO-532"/>
                     <constraint firstAttribute="trailing" secondItem="x85-kc-XbF" secondAttribute="trailing" constant="20" id="XKY-vp-5qa"/>
+                    <constraint firstItem="Fzq-md-1B6" firstAttribute="top" secondItem="7uE-rB-qHv" secondAttribute="bottom" constant="13" id="fRb-rn-6lZ"/>
                     <constraint firstItem="JDt-ah-Ecw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="lb6-nM-h7G"/>
                     <constraint firstItem="JDt-ah-Ecw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="vOe-uV-Yzb"/>
                 </constraints>

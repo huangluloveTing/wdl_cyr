@@ -26,7 +26,7 @@ class MessageCenterVC: NormalBaseVC {
     private let icons = [UIImage.init(named: "message_offer")!,
                          UIImage.init(named: "message_yd")!,
                          UIImage.init(named: "message_alert")!]
-
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         //获取用户信息
@@ -46,6 +46,7 @@ extension MessageCenterVC {
         tableView.delegate = self
         tableView.dataSource = self
         self.registerCell(nibName: "\(MessageCenterCell.self)", for: tableView)
+        
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         tableView.pullRefresh()
@@ -114,13 +115,12 @@ extension MessageCenterVC {
     }
  
     //标记已经看过的消息
-    func markMessegeRequest(id: String){
+    func markMessegeRequest(model: MessageQueryBean){
        
-        BaseApi.request(target: API.markHasSeenMessage(id),  type: BaseResponseModel<AnyObject>.self)
+        BaseApi.request(target: API.markHasSeenMessage(model),  type: BaseResponseModel<AnyObject>.self)
             .subscribe(onNext: { (_) in
                 print("标记成功")
             }, onError: { (error) in
-//                self.showFail(fail: error.localizedDescription, complete: nil)
                 
             })
             .disposed(by: dispose)
@@ -134,6 +134,7 @@ extension MessageCenterVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(MessageCenterCell.self)") as! MessageCenterCell
+    
         let info = self.hallLists[indexPath.row]
         var icon:UIImage? = nil
         var title:String? = ""
@@ -166,7 +167,7 @@ extension MessageCenterVC : UITableViewDelegate , UITableViewDataSource {
       
         let info = self.hallLists[indexPath.row]
         //标记看过的数据
-        self.markMessegeRequest(id: info.id ?? "")
+        self.markMessegeRequest(model: info)
         if info.msgType == 1 { //系统消息
             self.systermMessages(info: info)
         }

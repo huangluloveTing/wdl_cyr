@@ -16,7 +16,8 @@ class RechargeInlineVC: NormalBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addNaviSelectTitles(titles: ["在线充值","线下充值"])
+//        self.addNaviSelectTitles(titles: ["在线充值","线下充值"])
+        self.addNaviSelectTitles(titles: ["在线充值"])
         self.configTabView()
         self.registerAllCells()
     }
@@ -48,9 +49,25 @@ extension RechargeInlineVC {
 //Handles
 extension RechargeInlineVC {
     func toRecharge(num:Float) -> Void {
-        print("recharge money : " + String(num))
-        let paymentVC = PaymentTypeVC()
-        self.pushToVC(vc: paymentVC, title: "支付方式")
+       
+        var queryBean = ZbnCashFlow()
+        queryBean.flowMoney = num
+        BaseApi.request(target: API.rechargeMoney(queryBean), type: BaseResponseModel<Any>.self)
+            .retry(2)
+            .subscribe(onNext: { [weak self](data) in
+
+                print("充值的网页: \(String(describing: data.data))")
+                self?.showSuccess(success: nil)
+
+                let paymentVC = PayHtmlVC()
+                paymentVC.htmlString = data.data as? String
+                self?.pushToVC(vc: paymentVC, title: "支付")
+               
+                },onError: {[weak self] (error) in
+                    self?.showFail(fail: error.localizedDescription)
+            })
+            .disposed(by: dispose)
+
     }
 }
 
@@ -64,6 +81,8 @@ extension RechargeInlineVC : UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(InLineMoneyCell.self)") as! InLineMoneyCell
         cell.rechargeClosure = {[weak self] (selectMoney , inputMoney) in
             self?.toRecharge(num: inputMoney ?? selectMoney)
+            
+            
         }
         return cell
     }

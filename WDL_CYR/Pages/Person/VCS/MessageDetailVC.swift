@@ -36,6 +36,7 @@ extension MessageDetailVC {
         tableView.delegate = self
         tableView.dataSource = self
         self.registerCell(nibName: "\(MessageDetailCell.self)", for: tableView)
+        self.registerCell(nibName: "\(MessageDetailAcceptCell.self)", for: tableView)//报价信息
         tableView.tableFooterView = UIView()
     }
 }
@@ -46,48 +47,41 @@ extension MessageDetailVC {
 extension MessageDetailVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //报价或系统cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(MessageDetailCell.self)") as! MessageDetailCell
-        cell.btnHeightConstant.constant = 30 //默认按钮高度30
+        
+        //运单信息cell才有接受和拒绝
+        let wayCell = tableView.dequeueReusableCell(withIdentifier: "\(MessageDetailAcceptCell.self)") as! MessageDetailAcceptCell
+       
+    
         let info = self.currentInfo
         var title:String? = ""
-        var btnTitle:String? = ""
+       
         if info?.msgType == 1 { //系统消息
             title = "系统消息"
-            btnTitle = ""
-            cell.rightBtn.isHidden = true
-            cell.btnHeightConstant.constant = 0
         }
         if info?.msgType == 2 { //报价消息
             title = "报价消息"
-            btnTitle = "查看货源"
-            cell.rightBtn.isHidden = false
+         
         }
         if info?.msgType == 3 { // 运单信息
             title = "运单信息"
-            btnTitle = "查看运单"
-            cell.rightBtn.isHidden = false
-        }
-       
-        cell.showDetalMessageInfo(title: title ?? "", content: info?.msgInfo, time: info?.createTime, buttonTitle: btnTitle ?? "",hallId: info?.hallNo ?? "")
-        
-        //cell按钮点击跳转事件
-        
-        cell.buttonClosure = { [weak self] (sender, hallId) in
-            
-            if sender.titleLabel?.text == "查看货源" {
-                //跳转货源详情
-//                var supplyDetail = GoodsSupplyListItem()
-//                supplyDetail.id = hallId
-//                self?.toGoodsSupplyDetail(item: supplyDetail)
+            if self.currentInfo?.msgStatus == 2 ||  self.currentInfo?.msgStatus == 3 {
+                wayCell.acceptBtn.isHidden = true
+                wayCell.refuseBtn.isHidden = true
+            }else{
+                wayCell.acceptBtn.isHidden = false
+                wayCell.refuseBtn.isHidden = false
+                
             }
-            else if sender.titleLabel?.text == "查看运单" {
-                //跳转运单详情
-//                var wayBillInfo = WayBillInfoBean()
-//                wayBillInfo.id = hallId
-//                self?.toWayBillDetail(wayBillInfo: wayBillInfo)
-            }
-            
+            wayCell.showDetalMessageInfo(title: title ?? "", content: info?.msgInfo, time: info?.createTime)
+            self.quoteBtnClick(cell: wayCell)
+            return wayCell
         }
+       //报价或系统cell，只读
+        cell.showDetalMessageInfo(title: title ?? "", content: info?.msgInfo, time: info?.createTime)
+        
+     
         
         return cell
     }
@@ -101,5 +95,64 @@ extension MessageDetailVC : UITableViewDelegate , UITableViewDataSource {
     }
     
     
+    
+    
+}
+
+//MARK:运单信息逻辑处理
+extension MessageDetailVC{
+    
+    
+    func  quoteBtnClick(cell: MessageDetailAcceptCell) {
+        //cell按钮点击跳转事件
+        
+        cell.buttonClosure = { [weak self] (sender) in
+            if sender.tag == 44 {
+                //拒绝
+                guard let info = self?.currentInfo else {
+                    self?.showFail(fail: "没有获取到消息数据", complete: nil)
+                    return
+                }
+                self?.currentInfo?.msgStatus = 3
+                self?.markMessegeRequest(model: info)
+            }else {
+                //接受
+                guard let info = self?.currentInfo else {
+                    self?.showFail(fail: "没有获取到消息数据", complete: nil)
+                    return
+                }
+                self?.currentInfo?.msgStatus = 2
+                self?.markMessegeRequest(model: info)
+            
+            }
+            
+        
+            
+            //跳转运单页面
+            let tab =  UIApplication.shared.keyWindow?.rootViewController as! RootTabBarVC
+            self?.pop(toRootViewControllerAnimation: false)
+            tab.selectedIndex = 2
+            
+        }
+        
+    }
+    
+    
+    //接受或拒绝（0：未读， 1=已读 2=接受 3=拒绝）
+    func markMessegeRequest(model: MessageQueryBean){
+        
+        BaseApi.request(target: API.markHasSeenMessage(model),  type: BaseResponseModel<AnyObject>.self)
+            .subscribe(onNext: { (_) in
+                print("接受和拒绝成功")
+            }, onError: { (error) in
+                //                self.showFail(fail: error.localizedDescription, complete: nil)
+                
+            })
+            .disposed(by: dispose)
+    }
+  
+    
+   
+   
     
 }

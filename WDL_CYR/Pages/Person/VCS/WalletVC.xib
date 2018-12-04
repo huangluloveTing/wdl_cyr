@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +15,7 @@
                 <outlet property="amountLabel" destination="WYs-qS-aPA" id="N2w-34-cWr"/>
                 <outlet property="rechargeButton" destination="hDf-vj-wos" id="VhN-wP-maI"/>
                 <outlet property="tableView" destination="jYu-so-CeV" id="NIU-Bv-wkE"/>
+                <outlet property="totalLabel" destination="jgs-Xo-VFf" id="B2c-Gq-Rl0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,20 +25,32 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="钱包-背景" translatesAutoresizingMaskIntoConstraints="NO" id="e70-5A-kTl">
-                    <rect key="frame" x="0.0" y="20" width="414" height="100"/>
+                    <rect key="frame" x="0.0" y="20" width="414" height="150"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="yzV-47-fyP"/>
+                        <constraint firstAttribute="height" constant="150" id="yzV-47-fyP"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号余额（元）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gla-Bg-beI">
-                    <rect key="frame" x="40" y="40" width="86" height="14.666666666666664"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可支配余额（元）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gla-Bg-beI">
+                    <rect key="frame" x="39.999999999999993" y="40" width="98.333333333333314" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="25000000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYs-qS-aPA">
-                    <rect key="frame" x="39.999999999999986" y="66.666666666666671" width="200.66666666666663" height="36"/>
+                    <rect key="frame" x="39.999999999999986" y="67" width="200.66666666666663" height="36"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总金额（元）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEX-FO-taL">
+                    <rect key="frame" x="40.000000000000007" y="113" width="73.666666666666686" height="14.666666666666671"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="25000000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgs-Xo-VFf">
+                    <rect key="frame" x="40" y="132.66666666666666" width="141.33333333333334" height="25.333333333333343"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -51,13 +64,13 @@
                     <state key="normal" title="充值"/>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jYu-so-CeV">
-                    <rect key="frame" x="0.0" y="120" width="414" height="616"/>
+                    <rect key="frame" x="0.0" y="170" width="414" height="566"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noO-XQ-xzf">
-                    <rect key="frame" x="176.66666666666666" y="694" width="62" height="27"/>
+                    <rect key="frame" x="170" y="694" width="74" height="27"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="退回保证金">
+                    <state key="normal" title="退回可用余额">
                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.40378852739726029" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -71,10 +84,12 @@
                 <constraint firstItem="hDf-vj-wos" firstAttribute="centerY" secondItem="WYs-qS-aPA" secondAttribute="centerY" id="1BT-ie-LEi"/>
                 <constraint firstItem="e70-5A-kTl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2zf-ns-kyK"/>
                 <constraint firstItem="e70-5A-kTl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6RK-a1-MBn"/>
+                <constraint firstItem="OEX-FO-taL" firstAttribute="leading" secondItem="gla-Bg-beI" secondAttribute="leading" id="MIO-s7-97V"/>
                 <constraint firstItem="gla-Bg-beI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="Mtn-9h-eMq"/>
                 <constraint firstItem="jYu-so-CeV" firstAttribute="top" secondItem="e70-5A-kTl" secondAttribute="bottom" id="Nj1-iP-9BJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hDf-vj-wos" secondAttribute="trailing" constant="40" id="PFt-hi-hlj"/>
                 <constraint firstItem="WYs-qS-aPA" firstAttribute="top" secondItem="gla-Bg-beI" secondAttribute="bottom" constant="12" id="SG7-KY-aDz"/>
+                <constraint firstItem="jgs-Xo-VFf" firstAttribute="leading" secondItem="OEX-FO-taL" secondAttribute="leading" id="XQD-zf-41x"/>
                 <constraint firstItem="noO-XQ-xzf" firstAttribute="centerX" secondItem="jYu-so-CeV" secondAttribute="centerX" id="bOC-6I-5LL"/>
                 <constraint firstItem="WYs-qS-aPA" firstAttribute="leading" secondItem="gla-Bg-beI" secondAttribute="leading" id="bvp-mC-mLh"/>
                 <constraint firstItem="gla-Bg-beI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="eWs-eZ-GQJ"/>
@@ -82,9 +97,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jYu-so-CeV" secondAttribute="bottom" id="hBo-GX-Xd9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jYu-so-CeV" secondAttribute="trailing" id="m0Z-Dj-64U"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="e70-5A-kTl" secondAttribute="trailing" id="qND-Nr-B5X"/>
+                <constraint firstItem="jgs-Xo-VFf" firstAttribute="top" secondItem="OEX-FO-taL" secondAttribute="bottom" constant="5" id="wOr-mD-UU9"/>
+                <constraint firstItem="OEX-FO-taL" firstAttribute="top" secondItem="WYs-qS-aPA" secondAttribute="bottom" constant="10" id="zVt-sq-8Le"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="33.5" y="81.5"/>
+            <point key="canvasLocation" x="33.333333333333336" y="80.706521739130437"/>
         </view>
     </objects>
     <resources>

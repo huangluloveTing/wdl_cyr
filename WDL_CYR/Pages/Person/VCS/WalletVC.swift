@@ -13,8 +13,10 @@ import RxCocoa
 let Wallet_Titles = ["交易明细","银行卡设置","修改支付密码"]
 
 class WalletVC: NormalBaseVC {
-    
+    //可支配余额
     @IBOutlet weak var amountLabel: UILabel!
+    //总金额
+    @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var rechargeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
@@ -64,7 +66,8 @@ extension WalletVC {
 extension WalletVC : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,6 +89,7 @@ extension WalletVC : UITableViewDataSource , UITableViewDelegate {
             // 去交易明细
             self.toTransactionDetails()
         }
+        
         if indexPath.row == 1 {
             //银行卡设置
             self.toBankSet()
@@ -113,9 +117,12 @@ extension WalletVC {
         self.pushToVC(vc: modifyVC, title: "修改支付密码")
     }
     
-    //MARK: 退还保证金
+    //MARK: 退回可用金额
     func toSendBackMoneyHandle() -> Void {
-        
+        let returnVC = ReturnMoneyVC()
+        let accountInfo =  self.bondnInfo
+        returnVC.bondnInfo = accountInfo
+        self.pushToVC(vc: returnVC, title: "退款可用余额")
     }
     
     // 去充值
@@ -132,7 +139,11 @@ extension WalletVC {
     
     // 设置账号余额
     func walletAmount() -> Void {
+        //可支配金额
         self.amountLabel.text = Util.floatPoint(num: 2, floatValue: self.bondnInfo?.useableMoney ?? 0)
+        //总金额金额
+        self.totalLabel.text = Util.floatPoint(num: 2, floatValue: self.bondnInfo?.totalMoney ?? 0)
+        
     }
     
     // 获取账号余额信息
