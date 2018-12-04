@@ -149,6 +149,7 @@
 		7092932A21AF9614005E8DA6 /* TransportUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7092932921AF9614005E8DA6 /* TransportUtil.swift */; };
 		70A024A12192704F00A9ECC2 /* WaybillNoHandleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */; };
 		70A024A22192704F00A9ECC2 /* WaybillNoHandleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */; };
+		70A57E2F21B613AA00DEEA2C /* AddModifyPayPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A57E2E21B613AA00DEEA2C /* AddModifyPayPasswordVC.xib */; };
 		70C7CB28216F74ED00C10AC4 /* ChooseOfferTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7CB26216F74ED00C10AC4 /* ChooseOfferTypeVC.swift */; };
 		70C7CB29216F74ED00C10AC4 /* ChooseOfferTypeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70C7CB27216F74ED00C10AC4 /* ChooseOfferTypeVC.xib */; };
 		70C7CB2C216F76AD00C10AC4 /* OfferWithTruckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7CB2A216F76AD00C10AC4 /* OfferWithTruckVC.swift */; };
@@ -521,6 +522,7 @@
 		7092932921AF9614005E8DA6 /* TransportUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportUtil.swift; sourceTree = "<group>"; };
 		70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillNoHandleCell.swift; sourceTree = "<group>"; };
 		70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillNoHandleCell.xib; sourceTree = "<group>"; };
+		70A57E2E21B613AA00DEEA2C /* AddModifyPayPasswordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddModifyPayPasswordVC.xib; sourceTree = "<group>"; };
 		70C7CB26216F74ED00C10AC4 /* ChooseOfferTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOfferTypeVC.swift; sourceTree = "<group>"; };
 		70C7CB27216F74ED00C10AC4 /* ChooseOfferTypeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseOfferTypeVC.xib; sourceTree = "<group>"; };
 		70C7CB2A216F76AD00C10AC4 /* OfferWithTruckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferWithTruckVC.swift; sourceTree = "<group>"; };
@@ -1131,6 +1133,7 @@
 				183FD2FE21B50DD90069D50F /* BankCardVC.xib */,
 				183FD30D21B518280069D50F /* ModifyBankSetVC.swift */,
 				183FD31121B518770069D50F /* ModifyBankSetVC.xib */,
+				70A57E2E21B613AA00DEEA2C /* AddModifyPayPasswordVC.xib */,
 				183FD30121B50DF70069D50F /* ModifyPayPasswordVC.swift */,
 				183FD30221B50DF70069D50F /* ModifyPayPasswordVC.xib */,
 				183FD30921B50FBA0069D50F /* AddModifyPayPasswordVC.swift */,
@@ -1611,6 +1614,7 @@
 				70CF4FA4214B41120051A7CA /* good_star@3x.png in Resources */,
 				70EA735C215E00460020B8C3 /* GSDetail_OfferInfoCell.xib in Resources */,
 				70CF4FA1214B41120051A7CA /* RegisterVC.xib in Resources */,
+				70A57E2F21B613AA00DEEA2C /* AddModifyPayPasswordVC.xib in Resources */,
 				706488FE215B45BB00F53BFC /* ResourceHallVC.xib in Resources */,
 				70CF4F7B214B41110051A7CA /* GSDetailBidingHeader.xib in Resources */,
 				70D8BC0B2165BAC3000522E0 /* InLineMoneyCell.xib in Resources */,
@@ -1756,7 +1760,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
@@ -1773,7 +1777,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
