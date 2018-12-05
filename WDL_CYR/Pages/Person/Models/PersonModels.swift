@@ -129,3 +129,4 @@ struct ZbnCashFlow : HandyJSON {
     var startTime : String?    //(string): 开始时间 ,
     var transportNo : String?   //(string): 运单号
 }
+

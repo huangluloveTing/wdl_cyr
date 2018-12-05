@@ -20,7 +20,15 @@ class AddDriverVC: NormalBaseVC {
     @IBAction func nextHandle(_ sender: Any) {
         let phone = phoneInputView.text
         if Util.isPhoneNum(num: phone) {
-            
+            toInviteResultPage(phone: phone ?? "")
+        } else {
+            self.showWarn(warn: "请输入正确的手机号码", complete: nil)
         }
+    }
+    
+    func toInviteResultPage(phone:String) -> Void {
+        let result = InviteDriverResultVC()
+        result.driverPhone = phone
+        self.pushToVC(vc: result, title: "添加驾驶员")
     }
 }

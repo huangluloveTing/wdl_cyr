@@ -128,7 +128,8 @@ extension TransportCapacityVC {
 extension TransportCapacityVC {
     // 添加车辆
     func toAddTrunck() -> Void {
-        
+        let addVC = AddVehicleVC()
+        self.pushToVC(vc: addVC, title: "添加车辆")
     }
     // 添加驾驶员
     func toAddDriver() -> Void {

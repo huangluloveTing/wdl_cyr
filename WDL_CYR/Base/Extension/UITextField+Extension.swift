@@ -40,6 +40,12 @@ extension UITextField {
             imageView.zt_width = imageView.zt_width + 10
             self.rightViewMode = UITextFieldViewMode.always
             self.rightView = imageView
+        } else {
+            let imageView = self.modeImageView()
+            imageView.sizeToFit()
+            imageView.zt_width = 10
+            self.rightViewMode = UITextFieldViewMode.always
+            self.rightView = imageView
         }
     }
     

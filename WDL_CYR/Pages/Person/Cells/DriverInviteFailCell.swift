@@ -20,5 +20,8 @@ class DriverInviteFailCell: BaseCell {
 
         // Configure the view for the selected state
     }
+    @IBAction func inviteHandle(_ sender: Any) {
+        self.routeName(routeName: "\(DriverInviteFailCell.self)", dataInfo: self)
+    }
     
 }

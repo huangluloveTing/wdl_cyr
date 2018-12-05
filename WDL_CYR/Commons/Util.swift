@@ -136,7 +136,10 @@ class Util {
     }
     
     static func showImage(imageView:UIImageView , imageUrl:String? , placeholder:UIImage = #imageLiteral(resourceName: "avator")) {
-        let imageResource = URL.init(string: imageUrl ?? "")
+        var newImageUrl = imageUrl
+        newImageUrl = newImageUrl?.replacingOccurrences(of: "\n", with: "")
+        newImageUrl = newImageUrl?.trimmingCharacters(in: CharacterSet.whitespaces)
+        let imageResource = URL.init(string: newImageUrl ?? "")
         imageView.kf.setImage(with: imageResource, placeholder: placeholder)
     }
     

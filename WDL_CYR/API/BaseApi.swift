@@ -19,7 +19,6 @@ struct BaseApi {
     
     static func request<T: BaseResponse>(target:API, type:T.Type) -> Observable<T> {
         let observable = provider.rx.request(target)
-            .retry(2)
             .asObservable()
             .mapModel(T.self)
         return observable

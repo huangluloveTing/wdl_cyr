@@ -10,13 +10,14 @@ import UIKit
 
 class InviteDriverCell: BaseCell {
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var driverNameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var idCardNoLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.addButton.addBorder(color: nil, width: 0, radius: 16)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,11 +26,14 @@ class InviteDriverCell: BaseCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func addHandle(_ sender: Any) {
+        self.routeName(routeName: "\(InviteDriverCell.self)", dataInfo: self)
+    }
 }
 
 extension InviteDriverCell {
-    func showInfo(name:String , phone:String , idCard:String) -> Void {
-        self.nameLabel.text = Util.contact(strs: ["驾驶员:" , name])
+    func showInfo(name:String? , phone:String? , idCard:String?) -> Void {
+        self.driverNameLabel.text = Util.concatSeperateStr(seperete:"", strs:  "驾驶员: " , name)
         self.phoneLabel.text = phone
         self.idCardNoLabel.text = idCard
     }

@@ -60,6 +60,7 @@ enum API {
     case deleteTransportCapacity(String) // 删除运力（车辆）
     case deleteDriver(String)            // 删除运力（司机）
     case addDriver(String)               // 添加司机
+    case addCapacityInformation(ZbnTransportCapacity) // 添加车辆
 }
 
 
@@ -159,6 +160,8 @@ func apiPath(api:API) -> String {
         return "/carrierOrderHall/deleteDriver"
     case .addDriver(_):
         return "/carrierOrderHall/addDriver"
+    case .addCapacityInformation(_):
+        return "/carrierOrderHall/addCapacityInformation"
     }
 }
 
@@ -292,6 +295,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["id":id], encoding: URLEncoding.default)
     case .addDriver(let phone):
         return .requestParameters(parameters: ["phone":phone], encoding: URLEncoding.default)
+    case .addCapacityInformation(let capacity):
+        return .requestParameters(parameters: capacity.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     }
   
 }

@@ -55,6 +55,8 @@
 		7003D93A21B7A28600BD07FC /* InviteDriverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7003D93821B7A28600BD07FC /* InviteDriverCell.xib */; };
 		7003D93D21B7A42200BD07FC /* InviteDriverResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003D93B21B7A42200BD07FC /* InviteDriverResultVC.swift */; };
 		7003D93E21B7A42200BD07FC /* InviteDriverResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7003D93C21B7A42200BD07FC /* InviteDriverResultVC.xib */; };
+		7003D94121B7CAAC00BD07FC /* AddVehicleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003D93F21B7CAAC00BD07FC /* AddVehicleVC.swift */; };
+		7003D94221B7CAAC00BD07FC /* AddVehicleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7003D94021B7CAAC00BD07FC /* AddVehicleVC.xib */; };
 		700DCA912183F17800EA6695 /* BaseVC+DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DCA902183F17800EA6695 /* BaseVC+DropView.swift */; };
 		700F69D121A29F8900B5666B /* WayBillCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F69CF21A29F8900B5666B /* WayBillCommentVC.swift */; };
 		700F69D221A29F8900B5666B /* WayBillCommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700F69D021A29F8900B5666B /* WayBillCommentVC.xib */; };
@@ -439,6 +441,8 @@
 		7003D93821B7A28600BD07FC /* InviteDriverCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InviteDriverCell.xib; sourceTree = "<group>"; };
 		7003D93B21B7A42200BD07FC /* InviteDriverResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteDriverResultVC.swift; sourceTree = "<group>"; };
 		7003D93C21B7A42200BD07FC /* InviteDriverResultVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InviteDriverResultVC.xib; sourceTree = "<group>"; };
+		7003D93F21B7CAAC00BD07FC /* AddVehicleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleVC.swift; sourceTree = "<group>"; };
+		7003D94021B7CAAC00BD07FC /* AddVehicleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVehicleVC.xib; sourceTree = "<group>"; };
 		700DCA902183F17800EA6695 /* BaseVC+DropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseVC+DropView.swift"; sourceTree = "<group>"; };
 		700F69CF21A29F8900B5666B /* WayBillCommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillCommentVC.swift; sourceTree = "<group>"; };
 		700F69D021A29F8900B5666B /* WayBillCommentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WayBillCommentVC.xib; sourceTree = "<group>"; };
@@ -1192,6 +1196,8 @@
 				7003D93021B79C4900BD07FC /* AddDriverVC.xib */,
 				7003D93B21B7A42200BD07FC /* InviteDriverResultVC.swift */,
 				7003D93C21B7A42200BD07FC /* InviteDriverResultVC.xib */,
+				7003D93F21B7CAAC00BD07FC /* AddVehicleVC.swift */,
+				7003D94021B7CAAC00BD07FC /* AddVehicleVC.xib */,
 			);
 			path = VCS;
 			sourceTree = "<group>";
@@ -1692,6 +1698,7 @@
 				70CF4EA9214B409E0051A7CA /* Main.storyboard in Resources */,
 				70EA7358215DFE720020B8C3 /* OfferDealTimerCell.xib in Resources */,
 				70CF4F79214B41110051A7CA /* DropPlaceView.xib in Resources */,
+				7003D94221B7CAAC00BD07FC /* AddVehicleVC.xib in Resources */,
 				70140885219422CE000D5CB1 /* WayBillReceiptItem.xib in Resources */,
 				70CF4FA3214B41120051A7CA /* LoginVC.xib in Resources */,
 				70EA7352215DCF170020B8C3 /* Offer_DoneCell.xib in Resources */,
@@ -2036,6 +2043,7 @@
 				70CF4FB2214B41120051A7CA /* UIAlertView+Blocks.m in Sources */,
 				70EA7354215DEE380020B8C3 /* GSDetailBaseVC.swift in Sources */,
 				183FD31C21B525080069D50F /* PersonModels.swift in Sources */,
+				7003D94121B7CAAC00BD07FC /* AddVehicleVC.swift in Sources */,
 				70F40F23214B553D0054A175 /* ZTScrollItemCell.swift in Sources */,
 				70CF4F92214B41120051A7CA /* DeliveryPlaceChooiceCell.swift in Sources */,
 				70EA7374215E63BF0020B8C3 /* WayBillBaseVC.swift in Sources */,
