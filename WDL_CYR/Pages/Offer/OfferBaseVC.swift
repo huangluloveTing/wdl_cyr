@@ -121,6 +121,7 @@ extension OfferBaseVC {
         query.endTime = end
         query.pageSize = pageSize
         BaseApi.request(target: API.selectOwnOffer(query), type: BaseResponseModel<OfferPageInfo>.self)
+            .retry(5)
             .subscribe(onNext: { (data) in
                 if let closure = result {
                     closure(data.data , nil)

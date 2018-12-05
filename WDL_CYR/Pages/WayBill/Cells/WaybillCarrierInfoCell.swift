@@ -93,32 +93,64 @@ extension WaybillCarrierInfoCell {
         self.waybillInfo = info
         //顶部3个按钮状态 1：未配载，2 ：未完成， 3：完成 ,(运单的分类是以下四种，判断该字段展示相应的cell)
         self.currentStatus = CurrentStatus(rawValue: currentBtnIndex) ?? .unassemble
-        
-        switch currentBtnIndex {
-        case 1:
-            //1：未配载
-            //info.comeType
-            //4种类型判断展示 comeType: 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= 个人指派（按照rp顺序）,
-            //driverStatus : Int? // (integer): 当前司机是否接受过改订单  4=接受，接受指派隐藏按钮，否则为没有进行过任何操作，显示两个按钮
-            if info?.driverStatus == 4 {
-                self.showInfoWillDesigned(info: info)
-            } else {
-                self.showInfoAcceptAndReject(info: info)
-            }
-        case 2:
-            //2：未完成 依次判断 comeType 运单来源，
-            //transportStatus 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派 ,
-            //driverStatus 可用于判断违约状态 6=已违约 7=违约继续承运 8=违约放弃承运  ,
-            print("未完成")
-            setDataWhenUnFinished(info:info)
-        case 3:
-            //3：完成 依次判断 comeType 运单来源， evaluateCode 不为空，表示承运人已经评价 ,
-            print("完成")
-        default:
-            print("未知")
-        }
+        showWaybillInfo(info: info)
+//        switch currentBtnIndex {
+//        case 1:
+//            //1：未配载
+//            //info.comeType
+//            //4种类型判断展示 comeType: 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= 个人指派（按照rp顺序）,
+//            //driverStatus : Int? // (integer): 当前司机是否接受过改订单  4=接受，接受指派隐藏按钮，否则为没有进行过任何操作，显示两个按钮
+//            if info?.driverStatus == 4 {
+//                self.showInfoWillDesigned(info: info)
+//            } else {
+//                self.showInfoAcceptAndReject(info: info)
+//            }
+//        case 2:
+//            //2：未完成 依次判断 comeType 运单来源，
+//            //transportStatus 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派 ,
+//            //driverStatus 可用于判断违约状态 6=已违约 7=违约继续承运 8=违约放弃承运  ,
+//            print("未完成")
+//            setDataWhenUnFinished(info:info)
+//        case 3:
+//            //3：完成 依次判断 comeType 运单来源， evaluateCode 不为空，表示承运人已经评价 ,
+//            print("完成")
+//        default:
+//            print("未知")
+//        }
     }
     
+    //MARK: - 根据订单状态处理显示
+    func showWaybillInfo(info:WayBillInfoBean?) -> Void {
+        
+        let status = TransportUtil.configWaybillDisplayStatus(info: info!)
+        switch status {
+        case .unAssemble_comType_1_2_noAccept:
+            self.showInfoAcceptAndReject(info: info)
+            break;
+        case .unAssemble_comType_3_noAccept:
+            self.showInfoAcceptAndReject(info: info)
+            break;
+        case .unAssemble_comType_1_2_toAssemble:
+            self.showInfoWillAssemble(info: info)
+            break;
+        case .unAssemble_comType_3_toAssemble:
+            self.showInfoWillAssemble(info: info)
+            break;
+        case .unAssemble_comType_4_toDesignate:
+            self.showInfoWillDesigned(info: info)
+            break;
+        case .notDone_breakContractForCarrier:
+            showInfoDoingBreakContract(info: info)
+            break
+        case .notDone_breakContractForDriver:
+            showInfoDoingDriverBreakContract(info: info)
+            break
+        case .notDone_willSign , .notDone_transporting , .notDone_willTransport:
+            break
+        default:
+            break
+        }
+    }
     
     
     //2.未完成的逻辑处理

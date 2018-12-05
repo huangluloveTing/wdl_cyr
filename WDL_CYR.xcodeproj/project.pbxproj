@@ -46,6 +46,14 @@
 		700347702193D98500DDEE55 /* WaybillGoodsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7003476E2193D98500DDEE55 /* WaybillGoodsInfoCell.xib */; };
 		700347732193DD6200DDEE55 /* WaybillReturnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700347712193DD6200DDEE55 /* WaybillReturnListCell.swift */; };
 		700347742193DD6200DDEE55 /* WaybillReturnListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700347722193DD6200DDEE55 /* WaybillReturnListCell.xib */; };
+		7003D93121B79C4900BD07FC /* AddDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003D92F21B79C4900BD07FC /* AddDriverVC.swift */; };
+		7003D93221B79C4900BD07FC /* AddDriverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7003D93021B79C4900BD07FC /* AddDriverVC.xib */; };
+		7003D93521B7A25200BD07FC /* DriverInviteFailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003D93321B7A25200BD07FC /* DriverInviteFailCell.swift */; };
+		7003D93621B7A25200BD07FC /* DriverInviteFailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7003D93421B7A25200BD07FC /* DriverInviteFailCell.xib */; };
+		7003D93921B7A28600BD07FC /* InviteDriverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003D93721B7A28600BD07FC /* InviteDriverCell.swift */; };
+		7003D93A21B7A28600BD07FC /* InviteDriverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7003D93821B7A28600BD07FC /* InviteDriverCell.xib */; };
+		7003D93D21B7A42200BD07FC /* InviteDriverResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003D93B21B7A42200BD07FC /* InviteDriverResultVC.swift */; };
+		7003D93E21B7A42200BD07FC /* InviteDriverResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7003D93C21B7A42200BD07FC /* InviteDriverResultVC.xib */; };
 		700DCA912183F17800EA6695 /* BaseVC+DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DCA902183F17800EA6695 /* BaseVC+DropView.swift */; };
 		700F69D121A29F8900B5666B /* WayBillCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F69CF21A29F8900B5666B /* WayBillCommentVC.swift */; };
 		700F69D221A29F8900B5666B /* WayBillCommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700F69D021A29F8900B5666B /* WayBillCommentVC.xib */; };
@@ -353,7 +361,7 @@
 		70EA73A7215F48090020B8C3 /* WaybillSepecialInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70EA73A5215F48090020B8C3 /* WaybillSepecialInfoCell.xib */; };
 		70ED01F321952D81001DB4D1 /* WaybillDesignateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ED01F121952D81001DB4D1 /* WaybillDesignateVC.swift */; };
 		70ED01F421952D81001DB4D1 /* WaybillDesignateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70ED01F221952D81001DB4D1 /* WaybillDesignateVC.xib */; };
-		70ED01F621952E6E001DB4D1 /* MainVC+Waybill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ED01F521952E6E001DB4D1 /* MainVC+Waybill.swift */; };
+		70ED01F621952E6E001DB4D1 /* BaseVC+Waybill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ED01F521952E6E001DB4D1 /* BaseVC+Waybill.swift */; };
 		70ED01FC21953562001DB4D1 /* WaybillAssembleBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ED01FB21953562001DB4D1 /* WaybillAssembleBaseVC.swift */; };
 		70ED01FF219537DD001DB4D1 /* WaybillAssembleContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ED01FD219537DD001DB4D1 /* WaybillAssembleContentCell.swift */; };
 		70ED0200219537DD001DB4D1 /* WaybillAssembleContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70ED01FE219537DD001DB4D1 /* WaybillAssembleContentCell.xib */; };
@@ -421,6 +429,14 @@
 		7003476E2193D98500DDEE55 /* WaybillGoodsInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillGoodsInfoCell.xib; sourceTree = "<group>"; };
 		700347712193DD6200DDEE55 /* WaybillReturnListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillReturnListCell.swift; sourceTree = "<group>"; };
 		700347722193DD6200DDEE55 /* WaybillReturnListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillReturnListCell.xib; sourceTree = "<group>"; };
+		7003D92F21B79C4900BD07FC /* AddDriverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDriverVC.swift; sourceTree = "<group>"; };
+		7003D93021B79C4900BD07FC /* AddDriverVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDriverVC.xib; sourceTree = "<group>"; };
+		7003D93321B7A25200BD07FC /* DriverInviteFailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverInviteFailCell.swift; sourceTree = "<group>"; };
+		7003D93421B7A25200BD07FC /* DriverInviteFailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DriverInviteFailCell.xib; sourceTree = "<group>"; };
+		7003D93721B7A28600BD07FC /* InviteDriverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteDriverCell.swift; sourceTree = "<group>"; };
+		7003D93821B7A28600BD07FC /* InviteDriverCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InviteDriverCell.xib; sourceTree = "<group>"; };
+		7003D93B21B7A42200BD07FC /* InviteDriverResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteDriverResultVC.swift; sourceTree = "<group>"; };
+		7003D93C21B7A42200BD07FC /* InviteDriverResultVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InviteDriverResultVC.xib; sourceTree = "<group>"; };
 		700DCA902183F17800EA6695 /* BaseVC+DropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseVC+DropView.swift"; sourceTree = "<group>"; };
 		700F69CF21A29F8900B5666B /* WayBillCommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillCommentVC.swift; sourceTree = "<group>"; };
 		700F69D021A29F8900B5666B /* WayBillCommentVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WayBillCommentVC.xib; sourceTree = "<group>"; };
@@ -740,7 +756,7 @@
 		70EA73A5215F48090020B8C3 /* WaybillSepecialInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillSepecialInfoCell.xib; sourceTree = "<group>"; };
 		70ED01F121952D81001DB4D1 /* WaybillDesignateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillDesignateVC.swift; sourceTree = "<group>"; };
 		70ED01F221952D81001DB4D1 /* WaybillDesignateVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillDesignateVC.xib; sourceTree = "<group>"; };
-		70ED01F521952E6E001DB4D1 /* MainVC+Waybill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC+Waybill.swift"; sourceTree = "<group>"; };
+		70ED01F521952E6E001DB4D1 /* BaseVC+Waybill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseVC+Waybill.swift"; sourceTree = "<group>"; };
 		70ED01FB21953562001DB4D1 /* WaybillAssembleBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillAssembleBaseVC.swift; sourceTree = "<group>"; };
 		70ED01FD219537DD001DB4D1 /* WaybillAssembleContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillAssembleContentCell.swift; sourceTree = "<group>"; };
 		70ED01FE219537DD001DB4D1 /* WaybillAssembleContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillAssembleContentCell.xib; sourceTree = "<group>"; };
@@ -1116,6 +1132,10 @@
 				70D8BC2121672D3C000522E0 /* TransportDriverCell.xib */,
 				70D8BC2821673973000522E0 /* TransactionDetailsCell.swift */,
 				70D8BC2921673973000522E0 /* TransactionDetailsCell.xib */,
+				7003D93321B7A25200BD07FC /* DriverInviteFailCell.swift */,
+				7003D93421B7A25200BD07FC /* DriverInviteFailCell.xib */,
+				7003D93721B7A28600BD07FC /* InviteDriverCell.swift */,
+				7003D93821B7A28600BD07FC /* InviteDriverCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1166,6 +1186,10 @@
 				70D8BC3921675801000522E0 /* AuthenEnterpriseVC.xib */,
 				78D74959219020D2004C4D66 /* AboutZbnVC.swift */,
 				78D7495A219020D2004C4D66 /* AboutZbnVC.xib */,
+				7003D92F21B79C4900BD07FC /* AddDriverVC.swift */,
+				7003D93021B79C4900BD07FC /* AddDriverVC.xib */,
+				7003D93B21B7A42200BD07FC /* InviteDriverResultVC.swift */,
+				7003D93C21B7A42200BD07FC /* InviteDriverResultVC.xib */,
 			);
 			path = VCS;
 			sourceTree = "<group>";
@@ -1177,7 +1201,7 @@
 				70CF4EEA214B410C0051A7CA /* Cells */,
 				70CF4EEF214B410C0051A7CA /* VCS */,
 				70CF4EF2214B410C0051A7CA /* Views */,
-				70ED01F521952E6E001DB4D1 /* MainVC+Waybill.swift */,
+				70ED01F521952E6E001DB4D1 /* BaseVC+Waybill.swift */,
 				70CF4EF4214B410C0051A7CA /* WayBillVC.swift */,
 				70CF4EF5214B410C0051A7CA /* WayBillVC.xib */,
 				70EA7371215E63990020B8C3 /* WayBillContainerVC.swift */,
@@ -1646,6 +1670,7 @@
 				70F40F24214B553D0054A175 /* ZTScrollItemCell.xib in Resources */,
 				70D8BC3721675699000522E0 /* AuthenFailVC.xib in Resources */,
 				704DD088215BB55E00E6AD6F /* AddLinesVC.xib in Resources */,
+				7003D93A21B7A28600BD07FC /* InviteDriverCell.xib in Resources */,
 				704DD08E215CA44000E6AD6F /* ResourceHallCell.xib in Resources */,
 				70ED021021955508001DB4D1 /* WaybillAssembleVC.xib in Resources */,
 				7014086F2193F988000D5CB1 /* WaybillHandleCell.xib in Resources */,
@@ -1653,6 +1678,7 @@
 				704DD0A5215CEC8400E6AD6F /* OfferDealVC.xib in Resources */,
 				70140888219422CE000D5CB1 /* WayBillReceiptCell.xib in Resources */,
 				183FD31221B518770069D50F /* ModifyBankSetVC.xib in Resources */,
+				7003D93621B7A25200BD07FC /* DriverInviteFailCell.xib in Resources */,
 				70EA7370215E12920020B8C3 /* GSDetailVC.xib in Resources */,
 				70648908215B6BE400F53BFC /* FocusPersonCell.xib in Resources */,
 				70CF4FA7214B41120051A7CA /* bad_star@2x.png in Resources */,
@@ -1705,12 +1731,14 @@
 				70ED01F421952D81001DB4D1 /* WaybillDesignateVC.xib in Resources */,
 				78D7495C219020D2004C4D66 /* AboutZbnVC.xib in Resources */,
 				70D8BC2321672D3C000522E0 /* TransportDriverCell.xib in Resources */,
+				7003D93E21B7A42200BD07FC /* InviteDriverResultVC.xib in Resources */,
 				183FD2FB21B4FF090069D50F /* GSConfirmDealView.xib in Resources */,
 				700347682193D95600DDEE55 /* WaybillLinkInfoCell.xib in Resources */,
 				70D8BC2F2167405F000522E0 /* MyAuthenVC.xib in Resources */,
 				183FD2F621B4FD200069D50F /* ModityPasswordVC.xib in Resources */,
 				700F69D221A29F8900B5666B /* WayBillCommentVC.xib in Resources */,
 				70EA7360215E07C40020B8C3 /* GSDetail_GoodsInfoCell.xib in Resources */,
+				7003D93221B79C4900BD07FC /* AddDriverVC.xib in Resources */,
 				70EA73A3215F47D10020B8C3 /* WaybillCarrierInfoCell.xib in Resources */,
 				70C7CB29216F74ED00C10AC4 /* ChooseOfferTypeVC.xib in Resources */,
 				70EA7364215E0A640020B8C3 /* GSDetail_canceledOfferCell.xib in Resources */,
@@ -1840,6 +1868,7 @@
 				78D74956218FF192004C4D66 /* AuthenInreviewVC.swift in Sources */,
 				70EA73A2215F47D00020B8C3 /* WaybillCarrierInfoCell.swift in Sources */,
 				70140880219420DD000D5CB1 /* WaybillReturnListView.swift in Sources */,
+				7003D93521B7A25200BD07FC /* DriverInviteFailCell.swift in Sources */,
 				70CF4F61214B41110051A7CA /* BaseModel.swift in Sources */,
 				70D8BC122166EA6A000522E0 /* PaymentCell.swift in Sources */,
 				701F10D7217D942000693936 /* OfferSearchTruckCell.swift in Sources */,
@@ -1857,6 +1886,7 @@
 				70CF4F9D214B41120051A7CA /* RegisterVC.swift in Sources */,
 				704129A62179B6410078A46F /* BaseInputCell.swift in Sources */,
 				70CF4FBD214B41120051A7CA /* UIView+Border.swift in Sources */,
+				7003D93921B7A28600BD07FC /* InviteDriverCell.swift in Sources */,
 				70D8BC062165BAA1000522E0 /* RechargeInlineVC.swift in Sources */,
 				70D8BC4A216B1863000522E0 /* ResponseBaseModel.swift in Sources */,
 				70CF4F6B214B41110051A7CA /* GSTimerShelveCell.swift in Sources */,
@@ -1906,6 +1936,7 @@
 				183FD2ED21B4FC500069D50F /* PersonSettingVC.swift in Sources */,
 				70CF4FC9214B41120051A7CA /* BaseCell.swift in Sources */,
 				7059F3F22192E7060053F1DE /* WaybillChangeLoadTimeView.swift in Sources */,
+				7003D93121B79C4900BD07FC /* AddDriverVC.swift in Sources */,
 				70CF4FC7214B41120051A7CA /* ZTTransition.swift in Sources */,
 				70D8BC1E21672D2B000522E0 /* TransportTruckCell.swift in Sources */,
 				70EA7367215E0AE00020B8C3 /* GSDetail_rejectCell.swift in Sources */,
@@ -1934,7 +1965,7 @@
 				70EA734E215DBB600020B8C3 /* OfferUIModel.swift in Sources */,
 				70D8BC3621675699000522E0 /* AuthenFailVC.swift in Sources */,
 				70D8BBD421605141000522E0 /* WaybillNotDoneVC.swift in Sources */,
-				70ED01F621952E6E001DB4D1 /* MainVC+Waybill.swift in Sources */,
+				70ED01F621952E6E001DB4D1 /* BaseVC+Waybill.swift in Sources */,
 				700347672193D95600DDEE55 /* WaybillLinkInfoCell.swift in Sources */,
 				7003476B2193D96D00DDEE55 /* WaybillDealInfoCell.swift in Sources */,
 				183FD32321B526B00069D50F /* MessageDetailCell.swift in Sources */,
@@ -2023,6 +2054,7 @@
 				7039671B21830E2300CE34B7 /* DropInputDateView.swift in Sources */,
 				70CF4FC5214B41120051A7CA /* BaseVC.swift in Sources */,
 				183FD2FF21B50DD90069D50F /* BankCardVC.swift in Sources */,
+				7003D93D21B7A42200BD07FC /* InviteDriverResultVC.swift in Sources */,
 				70CF4FBA214B41120051A7CA /* UIViewController+navigation.swift in Sources */,
 				70CF4F5E214B41110051A7CA /* BaseApi.swift in Sources */,
 				70CF4F77214B41110051A7CA /* GoodsSupplyFoldInfoView.swift in Sources */,

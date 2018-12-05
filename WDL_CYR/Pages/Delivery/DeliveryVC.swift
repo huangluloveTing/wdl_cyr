@@ -260,6 +260,7 @@ extension DeliveryVC {
             
             self.showLoading()
             BaseApi.request(target: API.releaseSource(sourceModel), type: BaseResponseModel<String>.self)
+                .retry(5)
                 .subscribe(onNext: { (model) in
                     self.showSuccess(success: model.message, complete: nil)
                     self.clearAllInput()

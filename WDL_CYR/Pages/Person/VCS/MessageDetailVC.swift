@@ -142,6 +142,7 @@ extension MessageDetailVC{
     func markMessegeRequest(model: MessageQueryBean){
         
         BaseApi.request(target: API.markHasSeenMessage(model),  type: BaseResponseModel<AnyObject>.self)
+            .retry(5)
             .subscribe(onNext: { (_) in
                 print("接受和拒绝成功")
             }, onError: { (error) in

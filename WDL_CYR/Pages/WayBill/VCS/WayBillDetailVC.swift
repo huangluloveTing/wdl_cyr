@@ -48,6 +48,23 @@ class WayBillDetailVC: WaybillDetailBaseVC {
     override func clickReturnList(index: Int) {
         
     }
+    
+    override func handleAction() {
+        //MARK: - 指派
+        let mode = currentMode()
+        if mode == .unassemble_showDesignate {
+            self.toChooseDriver(title: "选择司机", closure: { [weak self](capacity) in
+                let phone = capacity.driverPhone
+                let code = self?.waybillInfo?.transportId ?? ""
+                let hallId = self?.waybillInfo?.hallId ?? ""
+                self?.toDesignate(phone: phone, transportNo: code , hallId: hallId, closure: {
+                    self?.showSuccess(success: "指派成功", complete: {
+                        self?.loadDetailData(hallId: hallId)
+                    })
+                })
+            })
+        }
+    }
 }
 
 extension WayBillDetailVC {

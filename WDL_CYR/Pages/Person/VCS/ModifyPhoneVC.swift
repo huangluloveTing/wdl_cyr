@@ -83,6 +83,7 @@ class ModifyPhoneVC: NormalBaseVC {
     
     func obtainVerifyCode(phone:String) -> Void {
         BaseApi.request(target: API.registerSms(phone), type: BaseResponseModel<String>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.timedownVeryCodeButton()
             }, onError: { (error) in
@@ -95,6 +96,7 @@ class ModifyPhoneVC: NormalBaseVC {
         if self.inputIsOk() {
             self.showLoading()
             BaseApi.request(target: API.updatePhone(self.modifyPhone), type: BaseResponseModel<String>.self)
+                .retry(5)
                 .subscribe(onNext: { [weak self](data) in
                     self?.showSuccess(success: data.message, complete: {
                         self?.pop()

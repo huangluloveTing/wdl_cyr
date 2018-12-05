@@ -133,6 +133,7 @@ extension RegisterVC {
         
         self.showLoading(title: "正在提交", complete: nil)
         BaseApi.request(target: API.register(self.registerInfo.pwd!, self.registerInfo.phone!, self.registerInfo.veryCode!, self.registerInfo.confirmPwd!), type: BaseResponseModel<AnyObject>.self)
+            .retry(5)
             .subscribe(onNext: { (model) in
                 self.showSuccess(success: "注册成功", complete: {[weak self] in
                     self?.pop()
@@ -147,6 +148,7 @@ extension RegisterVC {
         self.showLoading()
         self.verifyButton.isEnabled = false
         BaseApi.request(target: API.registerSms(phone), type: BaseResponseModel<Any>.self)
+            .retry(5)
             .subscribe(onNext: { (model) in
                 self.showSuccess(success: "获取验证码成功", complete: nil)
                 self.timedownVeryCodeButton()

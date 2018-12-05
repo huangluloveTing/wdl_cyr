@@ -74,6 +74,7 @@ class AddLinesVC: NormalBaseVC {
     func toAddLine() -> Void {
         self.showLoading(title: "正在提交", canInterface: false)
         BaseApi.request(target: API.addFollowLine(self.startProvince ?? "", self.startCity ?? "", self.endProvince ?? "", self.endCity ?? ""), type: BaseResponseModel<String>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: nil, complete: {
                     self?.pop()

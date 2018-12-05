@@ -76,21 +76,50 @@ extension TransportCapacityVC {
         case .Truck:
             let cell = self.dequeueReusableCell(className: TransportTruckCell.self, for: self.tableView)
             let info = self.vehicleLists[indexPath.section]
+            let canEdit = showCapacityStatus(info: info)
+            let extra = truckInsuranceDate(info: info)
             cell.toShowInfo(truckNo: info.vehicleNo,
                             truckType: info.vehicleType,
                             truckLength: info.vehicleLength,
                             truckWeight: info.vehicleWeight,
-                            extra: "",
-                            canEdit: true)
+                            extra: extra,
+                            canEdit: canEdit)
             return cell
         default:
             let cell = self.dequeueReusableCell(className: TransportDriverCell.self, for: self.tableView)
             let info = self.driverLists[indexPath.section]
+            let canEdit = showCapacityStatus(info: info)
             cell.toShowInfo(driverName: info.driverName,
                             idCard: info.driverId,
                             phoneNum: info.driverPhone,
-                            canEdit: true)
+                            canEdit: canEdit)
             return cell
+        }
+    }
+    
+    //MARK: - 点击编辑
+    func tapEditeHandle(index:Int) -> Void {
+        switch self.showType {
+        case .Driver:
+            toEditDriver(index:index)
+            break
+        default:
+            toEditTruck(index: index)
+        }
+    }
+    
+    //MARK: - 点击删除
+    func tapDeleteHandle(index:Int) -> Void {
+        AlertManager.showTitleAndContentAlert(context: self, title: "提示", content: "是否删除该运力?") { [weak self](tab) in
+            if tab == 1 {
+                switch self?.showType ?? .Driver {
+                case .Driver:
+                    self?.deleteDriver(index: index)
+                    break
+                default:
+                    self?.deleteTruck(index: index)
+                }
+            }
         }
     }
 }
@@ -103,6 +132,16 @@ extension TransportCapacityVC {
     }
     // 添加驾驶员
     func toAddDriver() -> Void {
+        toAddDriverPage()
+    }
+    
+    //MARK: - 编辑司机
+    func toEditDriver(index:Int) -> Void  {
+        
+    }
+    
+    //MARK: - 编辑车辆
+    func toEditTruck(index:Int) -> Void {
         
     }
 }
@@ -192,6 +231,7 @@ extension TransportCapacityVC {
     //MARK: - 根据点击的tab 和 当前数据情况，决定是否s重新获取数据
     func decideToLoadData(index:Int) -> Void {
         self.tableView.removeCacheHeights()
+        self.tableView.reloadData()
         if index == 0 {
             if self.vehicleLists.count <= 0 {
                 self.tableView.beginRefresh()
@@ -204,15 +244,28 @@ extension TransportCapacityVC {
                 return
             }
         }
-        self.tableView.reloadData()
     }
 }
 
 //MARK: - control chain router
 extension TransportCapacityVC {
     override func routeName(routeName: String, dataInfo: Any?) {
-        print("routername : " + routeName)
-        print(dataInfo ?? "")
+        if routeName == TOEDIT_TRANSPORT {
+            let cell = dataInfo as? BaseCell
+            if cell != nil {
+                let indexPath = tableView.indexPath(for: cell!)
+                if indexPath == nil { return }
+                tapEditeHandle(index: indexPath!.section)
+            }
+        }
+        if routeName == TODELE_TRANSPORT {
+            let cell = dataInfo as? BaseCell
+            if cell != nil {
+                let indexPath = tableView.indexPath(for: cell!)
+                if indexPath == nil { return }
+                tapDeleteHandle(index: indexPath!.section)
+            }
+        }
     }
 }
 
@@ -291,5 +344,57 @@ extension TransportCapacityVC {
                 self?.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)
+    }
+    
+    //MARK: - 删除车辆
+    func deleteTruck(index:Int) -> Void {
+        let info = self.vehicleLists[index]
+        BaseApi.request(target: API.deleteTransportCapacity(info.id), type: BaseResponseModel<String>.self)
+            .retry(5)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess(success: data.message, complete: {
+                    self?.tableView.beginRefresh()
+                })
+            }, onError: {[weak self] (error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
+    }
+    
+    //MARK: - 删除司机
+    func deleteDriver(index:Int) -> Void {
+        let info = self.driverLists[index]
+        BaseApi.request(target: API.deleteDriver(info.id), type: BaseResponseModel<String>.self)
+            .retry(5)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess(success: data.message, complete: {
+                    self?.tableView.beginRefresh()
+                })
+                }, onError: {[weak self] (error) in
+                    self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
+    }
+    
+    //MARK: - 是否显示车辆的保险有效期判断
+    func truckInsuranceDate(info:ZbnTransportCapacity?) -> String {
+        let insuranceDate = (info?.insuranceExpirationDate ?? 0) / 1000
+        let currentDate = Date().timeIntervalSince1970
+        let alter = insuranceDate - currentDate
+        if alter <= 0 {
+            return "保险已经到期"
+        }
+        if (alter > 0) && (alter <= 7 * 24 * 3600)  {
+            return "保险即将到期"
+        }
+        return ""
+    }
+    
+    //MARK: - 是否显示司机 和 车辆的 状态(即是否显示 编辑）
+    func showCapacityStatus(info:ZbnTransportCapacity?) -> Bool {
+        if info?.status == 1{
+            return false
+        }
+        return true
     }
 }

@@ -52,7 +52,7 @@ struct ZbnTransportCapacity : HandyJSON {
     var overallScore : Float = 0 // (number): 综合评分 ,
     var registrationDate : TimeInterval = 0 // (string): 注册日期 ,
     var startTime : TimeInterval = 0 // (string): 开始时间 ,
-    var status : Int = 0 // (integer): 审核状态 ,
+    var status : Int = 1 // (integer): 审核状态 ,
     var transportStatus : Int = 0 // (integer): 运输状态 0=空闲 1=已配载 2=运输中 ,
     var useProperty : String = "" // (string): 使用性质 ,
     var vehicleIdCode : String = "" // (string): 车辆识别代码 ,

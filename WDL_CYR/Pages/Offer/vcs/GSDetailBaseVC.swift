@@ -296,6 +296,7 @@ extension GSDetailBaseVC {
     //MARK: - 获取其他人的报价
     func loadOtherInfo(hallId:String? , closure:(([ZbnOfferModel]? , Error?) -> ())?) -> Void {
         BaseApi.request(target: API.getOtherOfferByOrderHallId(hallId ?? ""), type: BaseResponseModel<[ZbnOfferModel]>.self)
+            .retry()
             .subscribe(onNext: { (data) in
                 if let closure = closure {
                     closure(data.data ?? [] , nil)
@@ -312,6 +313,7 @@ extension GSDetailBaseVC {
     func cancelOfferHandle(hallId:String , offerId:String) -> Void {
         self.showLoading()
         BaseApi.request(target: API.cancelOffer(hallId , offerId), type: BaseResponseModel<String>.self)
+            .retry(5)
             .subscribe(onNext: {[weak self] (data) in
                 self?.hiddenToast()
                 self?.showSuccess(success: data.message, complete: {

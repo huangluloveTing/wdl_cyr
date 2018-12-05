@@ -248,6 +248,7 @@ extension ResourceHallVC {
     func queryResourceHall(quey:GoodsSupplyQueryBean) -> Void {
         self.showLoading(title: "", canInterface: true)
         BaseApi.request(target: API.findAllOrderHall(quey), type: BaseResponseModel<ResponsePagesModel<CarrierQueryOrderHallResult>>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: nil)
                 self?.configNetDataToUI(lists: data.data?.list ?? [])

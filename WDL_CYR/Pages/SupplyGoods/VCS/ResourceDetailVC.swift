@@ -71,6 +71,7 @@ extension ResourceDetailVC {
         let endCity = self.resource?.resource?.endCity ?? ""
         self.showLoading(title: "", canInterface: true)
         BaseApi.request(target: API.addFollowLine(startProvince, startCity, endProvince, endCity), type: BaseResponseModel<String>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: nil)
             }, onError: { [weak self](error) in
@@ -86,6 +87,7 @@ extension ResourceDetailVC {
         query.shipperType = self.resource?.resource?.consignorType ?? ""
         self.showLoading(title: "", canInterface: true)
         BaseApi.request(target: API.addFollowShipper(query), type: BaseResponseModel<String>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: nil)
             }, onError: { (error) in

@@ -238,6 +238,7 @@ extension FocusResourceVC {
         cancelQuery.code = code
         self.showLoading()
         BaseApi.request(target: API.cancelFouceCarrier(cancelQuery), type: BaseResponseModel<Any>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess()
                 //删除单元格
@@ -255,6 +256,7 @@ extension FocusResourceVC {
       
         self.showLoading()
         BaseApi.request(target: API.cancelFoucePath(lineCode), type: BaseResponseModel<Any>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess()
                 //删除单元格
@@ -272,6 +274,7 @@ extension FocusResourceVC {
     func loadResourceByAttentionCarrier() -> Void {
         self.showLoading()
         BaseApi.request(target: API.findOrderByFollowShipper(), type: BaseResponseModel<[FollowShipperOrderHall]>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess()
                 self?.list_tyr = data.data ?? []
@@ -287,6 +290,7 @@ extension FocusResourceVC {
     func loadResourceByAttentionPath() -> Void {
         self.showLoading()
         BaseApi.request(target: API.findOrderByFollowLine(), type: BaseResponseModel<[FollowFocusLineOrderHallResult]>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess()
                 self?.list_path = data.data ?? []

@@ -86,6 +86,7 @@ extension LoginVC {
         self.showLoading()
         return Observable<ZbnCarrierInfo?>.create({ (obser) -> Disposable in
             return BaseApi.request(target: API.login(self.phoneTextField.text ?? "", self.passworldTextField.text ?? ""), type: BaseResponseModel<ZbnCarrierInfo>.self)
+                    .retry(5)
                     .subscribe(onNext: { (model) in
                         self.showSuccess()
                         print("respone = \(model.toJSON() ?? ["s":""])")

@@ -62,6 +62,7 @@ extension WayBillCommentVC {
         }
         self.showLoading()
         BaseApi.request(target: API.createEvaluate(evaluate), type: BaseResponseModel<String>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: "评价成功", complete: {
                     self?.pop(toRootViewControllerAnimation: true)
@@ -119,6 +120,7 @@ extension WayBillCommentVC {
     func loadDetailData(hallId:String) -> Void {
         self.showLoading()
         BaseApi.request(target: API.queryTransportDetail(hallId), type: BaseResponseModel<TransactionInformation>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.hiddenToast()
                 self?.pageInfo = data.data

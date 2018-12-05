@@ -62,6 +62,7 @@ class ModityPasswordVC: NormalBaseVC {
         if self.verifyInputIsOk() {
             self.showLoading()
             BaseApi.request(target: API.updatePassword(self.pwdModify), type: BaseResponseModel<String>.self)
+                .retry(5)
                 .subscribe(onNext: { [weak self](data) in
                     self?.showSuccess(success: data.message, complete: {
                         self?.pop()

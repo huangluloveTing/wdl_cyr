@@ -222,6 +222,7 @@ extension WaybillAssembleVC {
         }
         self.showLoading()
         BaseApi.request(target: API.assembleWaybill((assemble?.commitModel)!), type: BaseResponseModel<String>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: {
                     self?.pop()
@@ -256,6 +257,7 @@ extension WaybillAssembleVC {
         }
         self.showLoading()
         BaseApi.request(target: API.assemblePlanWaybill(commitModels), type: BaseResponseModel<String>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: {
                     self?.pop()

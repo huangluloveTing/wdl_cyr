@@ -45,6 +45,7 @@ extension TransportTruckCell {
         self.truckTypeLabel.text = truckType
         self.truckLengthLabel.text = truckLength
         self.truckWeightLabel.text = truckWeight
+        self.extraLabel.text = extra
         self.editView.isHidden = !canEdit
     }
 }

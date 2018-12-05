@@ -26,6 +26,15 @@ class Util {
         return newPhone
     }
     
+    static func isPhoneNum(num:String?) -> Bool {
+        let mobile = "^1(3[0-9]|5[0-9]|5[0-9]|7[0-9]|8[025-9]|9[0-9])\\d{8}$"
+        let regextestmobile = NSPredicate(format: "SELF MATCHES %@",mobile)
+        if (regextestmobile.evaluate(with: num) == true){
+            return true
+        } else {
+            return false
+        }
+    }
     
     static func toCallPhone(num:String?) {
         guard let phone = num else {

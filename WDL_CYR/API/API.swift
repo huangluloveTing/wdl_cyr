@@ -35,7 +35,7 @@ enum API {
     case ownTransportPage(QuerytTransportListBean) // 获取我的运单列表
     case carrierAllButtonAcceptTransportState(Int, TimeInterval?, String , String?)//承运人操作运单（拒绝，接受，取消运输，继续运输）
     case queryTransportDetail(String)       // 获取运单详情
-    case designateWaybill(String , String)  // 指派运单
+    case designateWaybill(String , String , String)  // 指派运单
     case assembleWaybill(WaybillAssembleCommitModel) // 单车配载
     
     case updatePassword(ModifyPasswordModel)    // 修改密码
@@ -56,6 +56,9 @@ enum API {
 //    case dealDetail(String)                     //交易明细
     case returnMoney(String)   //退余额
     case rechargeMoney(ZbnCashFlow) //充值
+    case deleteTransportCapacity(String) // 删除运力（车辆）
+    case deleteDriver(String)            // 删除运力（司机）
+    case addDriver(String)               // 添加司机
 }
 
 
@@ -118,7 +121,7 @@ func apiPath(api:API) -> String {
         return "/carrierTransport/carrierHandleTransport"
     case .queryTransportDetail(_):
         return "/carrierTransport/getTransportOrderDetail"
-    case .designateWaybill(_, _):
+    case .designateWaybill(_, _ , _):
         return "/carrierTransport/assignmentWaybill"
         
     case .assembleWaybill(_):
@@ -147,6 +150,12 @@ func apiPath(api:API) -> String {
         return "/message/markMessage"
     case .uploadImage(_ , let mode):
         return "/commom/upload/file/" + mode.rawValue
+    case .deleteTransportCapacity(_):
+        return "/carrierOrderHall/deleteTransportCapacity"
+    case .deleteDriver(_):
+        return "/carrierOrderHall/deleteDriver"
+    case .addDriver(_):
+        return "/carrierOrderHall/addDriver"
     }
 }
 
@@ -229,8 +238,8 @@ func apiTask(api:API) -> Task {
     case .queryTransportDetail(let hallId):
         return .requestParameters(parameters: ["hallId":hallId], encoding: URLEncoding.default)
         
-    case .designateWaybill(let phone, let transportNo):
-        return .requestParameters(parameters: [  "phone": phone,"transportId": transportNo], encoding: JSONEncoding.default)
+    case .designateWaybill(let phone, let transportNo , let hallId):
+        return .requestParameters(parameters: [  "phone": phone,"transportId": transportNo , "hallId" : hallId], encoding: JSONEncoding.default)
         
     case .assembleWaybill(let model):
         return .requestParameters(parameters: model.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
@@ -271,6 +280,13 @@ func apiTask(api:API) -> Task {
         let formProvider = MultipartFormData.FormDataProvider.data(imageData!)
         let formData = MultipartFormData.init(provider: formProvider, name: "file", fileName: "img.png", mimeType: "image/png")
         return .uploadMultipart([formData])
+        
+    case .deleteTransportCapacity(let id) :
+        return .requestParameters(parameters: ["id":id], encoding: URLEncoding.default)
+    case .deleteDriver(let id):
+        return .requestParameters(parameters: ["id":id], encoding: URLEncoding.default)
+    case .addDriver(let phone):
+        return .requestParameters(parameters: ["phone":phone], encoding: URLEncoding.default)
     }
   
 }
@@ -287,6 +303,9 @@ func apiMethod(api:API) -> Moya.Method {
          .findCapacityByName(_),
          .findCapacityByDriverNameOrPhone(_),
          .findCarInformation(_),
+         .deleteTransportCapacity(_),
+         .deleteDriver(_),
+         .addDriver(_),
          .findDriverInformation(_):
         return .get
     default:

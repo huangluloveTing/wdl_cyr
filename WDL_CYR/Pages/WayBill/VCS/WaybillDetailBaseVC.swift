@@ -104,6 +104,11 @@ extension WaybillDetailBaseVC {
         currentDisplayMode = mode
     }
     
+    //MARK: - 获取当前的mode
+    func currentMode() -> WaybillDisplayMode {
+        return currentDisplayMode!
+    }
+    
     //MARK: - 当前页面数据
     func showCurrentPageInfo(info:TransactionInformation?) -> Void {
         currentInfo = info
@@ -716,7 +721,7 @@ extension WaybillDetailBaseVC {
     func loadDetailData(hallId:String) -> Void {
         self.showLoading()
         BaseApi.request(target: API.queryTransportDetail(hallId), type: BaseResponseModel<TransactionInformation>.self)
-            .retry()
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.hiddenToast()
                 self?.currrentEvaluatedStatus(info: data.data)

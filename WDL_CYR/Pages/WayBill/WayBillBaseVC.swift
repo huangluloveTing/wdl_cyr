@@ -209,8 +209,9 @@ extension WayBillBaseVC {
     func designateTransportHandle(info:WayBillInfoBean , indexPath:IndexPath) -> Void {
         self.toChooseDriver(title: "指派") { [weak self](cap) in
             let phone = cap.driverPhone
-            let code = info.transportNo
-            self?.designateWaybill(phone: phone, transportNo: code ?? "", indexPath: indexPath)
+            let code = info.transportId
+            let hallId = info.hallId ?? ""
+            self?.designateWaybill(phone: phone, transportNo: code ?? "" , hallId: hallId, indexPath: indexPath)
         }
     }
     
@@ -392,6 +393,7 @@ extension WayBillBaseVC {
         self.queryBean.endTime = endTime
         
         BaseApi.request(target: API.ownTransportPage(self.queryBean), type: BaseResponseModel<WayBillPageBean>.self)
+            .retry(5)
             .subscribe(onNext: {[weak self](data) in
                 self?.endRefresh()
                 if let closure = closure {
@@ -430,6 +432,7 @@ extension WayBillBaseVC {
                          hallId:String? ,
                          closure:((Any) -> ())?){
         BaseApi.request(target:  API.carrierAllButtonAcceptTransportState(status, loadingTime, transportNo , hallId), type: BaseResponseModel<Any>.self)
+            .retry(5)
             .subscribe(onNext: { (model) in
                 if let closure = closure {
                     closure(model)
@@ -465,9 +468,10 @@ extension WayBillBaseVC {
     }
     
     // a指派
-    func designateWaybill(phone:String , transportNo:String , indexPath:IndexPath) -> Void {
+    func designateWaybill(phone:String , transportNo:String , hallId:String , indexPath:IndexPath) -> Void {
         self.showLoading()
-        BaseApi.request(target: API.designateWaybill(phone, transportNo), type: BaseResponseModel<String>.self)
+        BaseApi.request(target: API.designateWaybill(phone, transportNo , hallId), type: BaseResponseModel<String>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.deleteCurrentWaybill(indexPath: indexPath)
             }, onError: {[weak self] (error) in

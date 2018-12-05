@@ -9,7 +9,7 @@
 import UIKit
 
 
-extension MainBaseVC {
+extension BaseVC {
     // 驾驶员选择
     func toChooseDriver(title:String? , closure:((ZbnTransportCapacity) -> ())? = nil) -> Void {
         let driverChooseVC = OfferChooseDriverVC()
@@ -26,8 +26,9 @@ extension MainBaseVC {
     
     
     // 指派
-    func toDesignate(phone:String , transportNo:String , closure:(() -> ())?) -> Void {
-        BaseApi.request(target: API.designateWaybill(phone, transportNo), type: BaseResponseModel<String>.self)
+    func toDesignate(phone:String , transportNo:String , hallId:String, closure:(() -> ())?) -> Void {
+        BaseApi.request(target: API.designateWaybill(phone, transportNo , hallId), type: BaseResponseModel<String>.self)
+            .retry(5)
             .subscribe(onNext: { (data) in
                 if let closure = closure {
                     closure()
