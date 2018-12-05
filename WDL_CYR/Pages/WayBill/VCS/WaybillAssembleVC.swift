@@ -113,8 +113,8 @@ extension WaybillAssembleVC {
         model.commitModel.vehicleNo = pageInfo?.vehicleNo
         model.commitModel.transportNo = pageInfo?.transportNo
         model.commitModel.loadWeight = pageInfo?.goodsWeight
-        model.commitModel.driverName = pageInfo?.dirverName
-        model.driverName = pageInfo?.dirverName
+        model.commitModel.driverName = pageInfo?.driverName
+        model.driverName = pageInfo?.driverName
         model.vehicleNo = pageInfo?.vehicleNo
         model.unit = Float(pageInfo?.dealUnitPrice ?? 0)
         model.total = Float(pageInfo?.dealTotalPrice ?? 0)
@@ -132,8 +132,8 @@ extension WaybillAssembleVC {
         model.commitModel.vehicleNo = pageInfo?.vehicleNo
         model.commitModel.transportNo = pageInfo?.transportNo
         model.commitModel.loadWeight = pageInfo?.goodsWeight
-        model.commitModel.driverName = pageInfo?.dirverName
-        model.driverName = pageInfo?.dirverName
+        model.commitModel.driverName = pageInfo?.driverName
+        model.driverName = pageInfo?.driverName
         model.vehicleNo = pageInfo?.vehicleNo
         model.unit = Float(pageInfo?.dealUnitPrice ?? 0)
         model.total = Float(pageInfo?.dealTotalPrice ?? 0)

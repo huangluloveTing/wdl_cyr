@@ -33,7 +33,10 @@ enum WayBillTransportStatus : Int , HandyJSONEnum { // 运单状态
 }
 
 struct WayBillInfoBean : HandyJSON {
-    var driverId:String? 
+    var driverId:String?
+    var driverName : String? // (string): 司机姓名 ,
+    var dealTotalPrice : Float = 0 // (number): 成交总价 ,
+    var dealUnitPrice : Float = 0  // (number): 成交单价 ,
     var completeStatus:Int = 1 //运单状态 1：未配载，2 ：未完成， 3：完成 ,
     var carrierId : String? // (string): 承运人id ,
     var comeType  : Int? = 1 // (integer): 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
@@ -58,7 +61,6 @@ struct WayBillInfoBean : HandyJSON {
     var evaluateCode :String? //  (string): 不为空，表示承运人已经评价 ,
     var hallId : String? // 货源id ,
     var driverStatus : Int? // (integer): 当前司机是否接受过改订单  4=接受指派，接受指派隐藏按钮，否则现实两个按钮
-    
     //  driverStatus 可用于判断违约状态 6=已违约 7=违约继续承运 8=违约放弃承运    ，承运人状态 0=未配载 1=TMS指派 (只要生成定单，就表明一定是已指派)2=无车竞价待指派 3=拒绝指派 4=接受指派 5=已配载 ,
     var ordNo :String? // (string): 订单号 ,
     var orderAvailabilityPeriod : String? //(string): 货源有效期 ,
@@ -88,7 +90,7 @@ struct TransactionInformation : HandyJSON {
     var dealTotalPrice : CGFloat? // (number): 成交总价 ,
     var dealUnitPrice : CGFloat? // (number): 成交单价 ,
     var dealWay : Int?          // (integer): 成交方式 1=自动 2=手动 ,
-    var dirverName : String?    // (string): 司机姓名 ,
+    var driverName : String?    // (string): 司机姓名 ,
     var driverPhone : String?   // (string): 司机手机号 ,
     var endAddress : String?    // (string, optional),
     var endCity : String?       // (string): 收货地市 ,

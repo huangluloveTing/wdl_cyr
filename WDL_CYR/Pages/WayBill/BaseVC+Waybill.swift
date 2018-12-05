@@ -44,7 +44,6 @@ extension BaseVC {
         let assembleVC = WaybillAssembleVC()
         assembleVC.pageInfo = info
         assembleVC.currentDisplayMode = mode
-        
         self.pushToVC(vc: assembleVC, title: "配载")
     }
 }

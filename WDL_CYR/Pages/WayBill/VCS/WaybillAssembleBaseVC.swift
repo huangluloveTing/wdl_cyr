@@ -11,9 +11,9 @@ import HandyJSON
 
 enum WayBillSourceTypeMode : Int  {
     case driverAssemble  = 1    // 司机配载 对应 运单来源 为 1
-    case carrierAssemble  = 2  // 承运人配载 对应 运单 来源 为 2
-    case planAssemble   = 3    // 运输计划配载 对应运单来源 为 3
-    case designate  = 4        // 指派 对应 运单来源为 4
+    case carrierAssemble  = 2   // 承运人配载 对应 运单 来源 为 2
+    case planAssemble   = 3     // 运输计划配载 对应运单来源 为 3
+    case designate  = 4         // 指派 对应 运单来源为 4
 }
 
 struct WaybillAssembleCommitModel : HandyJSON {

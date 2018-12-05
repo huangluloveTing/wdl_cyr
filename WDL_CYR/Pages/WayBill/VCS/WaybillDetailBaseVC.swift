@@ -261,6 +261,7 @@ extension WaybillDetailBaseVC {
         cell.showInfo(status:  self.currentInfo?.transportStatus ?? .noStart, transpoNo:self.currentInfo?.transportNo ?? "")
         return cell
     }
+    
     //MARK: - 联系人信息的cell
     func waybillLinkInfoCell(tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WaybillLinkInfoCell.self)
@@ -270,10 +271,11 @@ extension WaybillDetailBaseVC {
                       consignee: self.currentInfo?.consigneeName,
                       consigneeAddress: self.currentInfo?.endAddress,
                       carrier: self.currentInfo?.carrierName,
-                      driver: self.currentInfo?.dirverName,
+                      driver: self.currentInfo?.driverName,
                       vehicleNo: self.currentInfo?.vehicleNo)
         return cell
     }
+    
     //MARK: - 指派，配载等操作d相关的cell
     func waybillHandleCell(tableView:UITableView , handleName:String?) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WaybillHandleCell.self)

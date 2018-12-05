@@ -136,6 +136,7 @@ extension WayBillBaseVC {
         }
         
     }
+    
     // 点击接受的回调
     func toReceiveWaybill(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
@@ -146,6 +147,7 @@ extension WayBillBaseVC {
             }
         }
     }
+    
     // 点击指派的回调
     func toDesiginWaybill(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
@@ -153,6 +155,7 @@ extension WayBillBaseVC {
             self.designateTransportHandle(info: info , indexPath: indexPath)
         }
     }
+    
     // 点击配载的回调
     func toAssembleWaybill(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
@@ -160,6 +163,7 @@ extension WayBillBaseVC {
             self.assembleTransportHandle(info: info)
         }
     }
+    
     // 点击取消运输
     func toCancelTransport(indexPath:IndexPath?) -> Void {
         if let indexPath = indexPath {
@@ -217,10 +221,10 @@ extension WayBillBaseVC {
     
     //MARK: - 配载
     func assembleTransportHandle(info:WayBillInfoBean) -> Void {
-        var tranInfo = TransactionInformation.deserialize(from: info.toJSON())
+        let tranInfo = TransactionInformation.deserialize(from: info.toJSON())
         let mode = WayBillSourceTypeMode(rawValue: info.comeType ?? 1)
-        tranInfo?.dealUnitPrice = 12
-        tranInfo?.dealTotalPrice = 80
+//        tranInfo?.dealUnitPrice = tranInfo?.dealUnitPrice ?? 0
+//        tranInfo?.dealTotalPrice = tranInfo?.dealTotalPrice ?? 0
         self.toAssemblePage(info: tranInfo , mode: mode ?? .planAssemble)
     }
     
