@@ -52,7 +52,6 @@ class ReturnMoneyVC: NormalBaseVC {
         BaseApi.request(target: API.returnMoney(self.moneyFeild.text!), type: BaseResponseModel<Any>.self)
             .retry(2)
             .subscribe(onNext: { [weak self](data) in
-             
                 self?.showSuccess(success: data.message, complete: {
                     self?.pop(animated: true)
                 })

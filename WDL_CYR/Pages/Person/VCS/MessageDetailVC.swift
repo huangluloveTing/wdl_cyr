@@ -69,9 +69,13 @@ extension MessageDetailVC : UITableViewDelegate , UITableViewDataSource {
             if self.currentInfo?.msgStatus == 2 ||  self.currentInfo?.msgStatus == 3 {
                 wayCell.acceptBtn.isHidden = true
                 wayCell.refuseBtn.isHidden = true
+                wayCell.accHeightConstant.constant = 0
+                wayCell.refHeightConstant.constant = 0
             }else{
                 wayCell.acceptBtn.isHidden = false
                 wayCell.refuseBtn.isHidden = false
+                wayCell.accHeightConstant.constant = 30
+                wayCell.refHeightConstant.constant = 30
                 
             }
             wayCell.showDetalMessageInfo(title: title ?? "", content: info?.msgInfo, time: info?.createTime)
@@ -109,19 +113,19 @@ extension MessageDetailVC{
         cell.buttonClosure = { [weak self] (sender) in
             if sender.tag == 44 {
                 //拒绝
-                guard let info = self?.currentInfo else {
+                guard var info = self?.currentInfo else {
                     self?.showFail(fail: "没有获取到消息数据", complete: nil)
                     return
                 }
-                self?.currentInfo?.msgStatus = 3
+                info.msgStatus = 3
                 self?.markMessegeRequest(model: info)
             }else {
                 //接受
-                guard let info = self?.currentInfo else {
+                guard var info = self?.currentInfo else {
                     self?.showFail(fail: "没有获取到消息数据", complete: nil)
                     return
                 }
-                self?.currentInfo?.msgStatus = 2
+                info.msgStatus = 2
                 self?.markMessegeRequest(model: info)
             
             }

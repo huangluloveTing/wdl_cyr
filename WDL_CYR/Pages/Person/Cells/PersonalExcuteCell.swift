@@ -44,7 +44,13 @@ extension PersonalExcuteCell {
         self.exSubTitleLabel.text = info.exSubTitle
         self.indicatorView.isHidden = !(info.showIndicator ?? false)
         if let value = badgeValue {
-            self.rightBadgeValue(value: String(value), to: self.badgeValueLabel, bgColor: UIColor.red, radius: 9)
+            if badgeValue == 0 {
+                self.badgeValueLabel.isHidden = true
+            }else{
+                self.badgeValueLabel.isHidden = false
+                self.rightBadgeValue(value: String(value), to: self.badgeValueLabel, bgColor: UIColor.red, radius: 9)
+            }
+           
         }
     }
 }

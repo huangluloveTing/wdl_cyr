@@ -9,7 +9,10 @@
 import UIKit
 
 class MessageDetailAcceptCell: UITableViewCell {
-
+//接受按钮的高度
+    @IBOutlet weak var accHeightConstant: NSLayoutConstraint!
+    //接受按钮的高度
+    @IBOutlet weak var refHeightConstant: NSLayoutConstraint!
     @IBOutlet weak var titleLab: UILabel!
     @IBOutlet weak var detailInfoLab: UILabel!
     @IBOutlet weak var dateLab: UILabel!

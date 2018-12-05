@@ -12,6 +12,7 @@ import Moya
 import Alamofire
 
 enum API {
+    case getMessageNum() //消息个数
     case login(String , String)     // 登录接口
     case register(String , String , String , String) // 注册
     case registerSms(String)        // 获取验证码
@@ -65,6 +66,8 @@ enum API {
 // PATH
 func apiPath(api:API) -> String {
     switch api {
+    case .getMessageNum():
+        return "/message/messageNumber"
     case .rechargeMoney(_):
         return "/wallet/addCash"
     case .returnMoney(_):
@@ -162,6 +165,8 @@ func apiPath(api:API) -> String {
 // TASK
 func apiTask(api:API) -> Task {
     switch api {
+    case .getMessageNum():
+        return .requestPlain
     case .returnMoney(let money):
         return .requestParameters(parameters: ["money":money], encoding: URLEncoding.default)
 
@@ -296,6 +301,7 @@ func apiMethod(api:API) -> Moya.Method {
     switch api {
     case .getCreateHallDictionary(),
          .registerSms(_) ,
+         .getMessageNum(),
          .selectZbnConsignor(_),
          .findCarrierInfoFee(_),
          .cancelFoucePath(_),

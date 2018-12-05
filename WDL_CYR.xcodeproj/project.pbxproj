@@ -37,6 +37,7 @@
 		183FD32B21B644BE0069D50F /* ReturnMoneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183FD32921B644BE0069D50F /* ReturnMoneyVC.swift */; };
 		183FD32C21B644BE0069D50F /* ReturnMoneyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183FD32A21B644BE0069D50F /* ReturnMoneyVC.xib */; };
 		18E3810021B66F6500FF6544 /* PayHtmlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */; };
+		18E3810221B7A7BA00FF6544 /* AppDelegate+jpush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3810121B7A7BA00FF6544 /* AppDelegate+jpush.swift */; };
 		5FF496CEBAEF90B26CAE9B21 /* libPods-WDL_CYR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */; };
 		700347672193D95600DDEE55 /* WaybillLinkInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700347652193D95600DDEE55 /* WaybillLinkInfoCell.swift */; };
 		700347682193D95600DDEE55 /* WaybillLinkInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700347662193D95600DDEE55 /* WaybillLinkInfoCell.xib */; };
@@ -419,6 +420,7 @@
 		183FD32A21B644BE0069D50F /* ReturnMoneyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReturnMoneyVC.xib; sourceTree = "<group>"; };
 		18AEF43021AFE21F00FE2468 /* WDL_CYR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WDL_CYR.entitlements; sourceTree = "<group>"; };
 		18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayHtmlVC.swift; sourceTree = "<group>"; };
+		18E3810121B7A7BA00FF6544 /* AppDelegate+jpush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+jpush.swift"; sourceTree = "<group>"; };
 		3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WDL_CYR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C7F9C1660A78A3335660AB0 /* Pods-WDL_CYR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDL_CYR.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR.release.xcconfig"; sourceTree = "<group>"; };
 		700347652193D95600DDEE55 /* WaybillLinkInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillLinkInfoCell.swift; sourceTree = "<group>"; };
@@ -1503,6 +1505,7 @@
 		70CF4F51214B410F0051A7CA /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				18E3810121B7A7BA00FF6544 /* AppDelegate+jpush.swift */,
 				70CF4F52214B410F0051A7CA /* AMapHandleManager.swift */,
 				70CF4F53214B410F0051A7CA /* Util.swift */,
 				70CF4F54214B410F0051A7CA /* Regx.swift */,
@@ -1797,7 +1800,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
@@ -1814,7 +1817,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1966,6 +1969,7 @@
 				70D8BC3621675699000522E0 /* AuthenFailVC.swift in Sources */,
 				70D8BBD421605141000522E0 /* WaybillNotDoneVC.swift in Sources */,
 				70ED01F621952E6E001DB4D1 /* BaseVC+Waybill.swift in Sources */,
+				18E3810221B7A7BA00FF6544 /* AppDelegate+jpush.swift in Sources */,
 				700347672193D95600DDEE55 /* WaybillLinkInfoCell.swift in Sources */,
 				7003476B2193D96D00DDEE55 /* WaybillDealInfoCell.swift in Sources */,
 				183FD32321B526B00069D50F /* MessageDetailCell.swift in Sources */,

@@ -36,6 +36,8 @@ class WDLCoreManager: NSObject {
     public var bondInfo: ZbnBondInfo? // 账号信息
     
     public var token:String?
+    //未读条数
+    public var unreadMessageCount:Int = 0
     
     private static let instance = WDLCoreManager()
     private override init() {}
@@ -67,4 +69,18 @@ extension WDLCoreManager {
                 }
             })
     }
+    
+    
+    
+    public func loadUnReadMessage(closure:((Int)->())?) {
+        let _ = BaseApi.request(target: API.getMessageNum(), type: BaseResponseModel<Int>.self)
+            .retry()
+            .subscribe(onNext: { (data) in
+                self.unreadMessageCount = data.data ?? 0
+                if let closure = closure {
+                    closure(data.data ?? 0)
+                }
+            })
+    }
+    
 }
