@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        initJPush(lanchOptions: launchOptions)
+        //注册设备
+        registerJPush()
         let login = LoginVC()
         let naviVC = UINavigationController(rootViewController: login)
         window = UIWindow.init(frame: UIScreen.main.bounds)
@@ -29,6 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configGAODEMap()
         self.configHUD()
         
+        //通过这个获取registrationID 发送消息
+        JPUSHService.registrationIDCompletionHandler { (resCode, registrationID) in
+            if resCode == 0{
+                print("registrationID获取成功：\(String(describing: registrationID))")
+            }else {
+                print("registrationID获取失败：\(String(describing: registrationID))")
+            }
+        }
         return true
     }
     
@@ -36,8 +46,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.loadCarrierInfo()
     }
     
+    func applicationWillResignActive(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+       
+    }
+
+    
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
          return UIInterfaceOrientationMask.portrait
+    }
+    
+    //MARK: - 极光
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        JPUSHService.handleRemoteNotification(userInfo)
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        registerToken(token: deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        
     }
     
 }

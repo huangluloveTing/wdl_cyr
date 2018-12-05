@@ -18,7 +18,7 @@ class PersonalVC: MainBaseVC {
     
     private var carrierInfo = WDLCoreManager.shared().userInfo
     private var carrierBondInfo = WDLCoreManager.shared().bondInfo
-    
+    private var currentMessageNum: String = ""//当前信息个数
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var dropHintView: DropHintView!
@@ -41,6 +41,8 @@ class PersonalVC: MainBaseVC {
         super.viewDidAppear(animated)
         self.loadCarrierInfo()
         self.loadCarrierBoundMoney()
+        //获取消息个数
+        self.getMessageNum()
     }
     
     override func viewDidLayoutSubviews() {
@@ -165,7 +167,7 @@ extension PersonalVC {
     
     //消息个数
     func unReadMessageCount() -> Int {
-        return 0
+        return Int(self.currentMessageNum) ?? 0
     }
 }
 
@@ -198,6 +200,15 @@ extension PersonalVC {
     func toMyAuthenVC() -> Void {
         let authenVC = MyAuthenVC()
         self.pushToVC(vc: authenVC, title: "我的认证")
+    }
+    
+    //获取消息个数
+    func getMessageNum() -> Void {
+        WDLCoreManager.shared().loadUnReadMessage { [weak self](count) in
+            self?.currentMessageNum = String(format: "%ld", count)
+            self?.tableView.reloadData()
+      
+        }
     }
     
     // 获取承运人信息

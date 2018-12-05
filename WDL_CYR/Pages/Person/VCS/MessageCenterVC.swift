@@ -138,6 +138,7 @@ extension MessageCenterVC : UITableViewDelegate , UITableViewDataSource {
         let info = self.hallLists[indexPath.row]
         var icon:UIImage? = nil
         var title:String? = ""
+      
         if info.msgType == 1 { //系统消息
             icon = icons[2]
             title = "系统消息"
@@ -166,14 +167,17 @@ extension MessageCenterVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
         var info = self.hallLists[indexPath.row]
-        //标记看过的数据
-        info.msgStatus = 1
-        self.markMessegeRequest(model: info)
+        
         if info.msgType == 1 { //系统消息
             self.systermMessages(info: info)
+            //标记看过的数据
+            info.msgStatus = 1
+            self.markMessegeRequest(model: info)
         }
         if info.msgType == 2 { //报价消息
            self.toOfferMessages(info: info)
+            info.msgStatus = 1
+            self.markMessegeRequest(model: info)
         }
         if info.msgType == 3 { // 运单信息
            self.wayBillsMessages(info: info)

@@ -84,9 +84,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="accHeightConstant" destination="nXy-Pe-GG9" id="jHF-vA-Tdy"/>
                 <outlet property="acceptBtn" destination="x85-kc-XbF" id="Uaz-37-sby"/>
                 <outlet property="dateLab" destination="LqA-SE-IJL" id="0aG-eO-Gnk"/>
                 <outlet property="detailInfoLab" destination="7uE-rB-qHv" id="sbR-cB-1mw"/>
+                <outlet property="refHeightConstant" destination="7za-Mh-AyB" id="Tjl-X0-qi6"/>
                 <outlet property="refuseBtn" destination="Fzq-md-1B6" id="uto-jK-uEj"/>
                 <outlet property="titleLab" destination="JDt-ah-Ecw" id="eyM-7g-407"/>
             </connections>
