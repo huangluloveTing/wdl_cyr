@@ -113,19 +113,19 @@ struct ZbnCashFlow : HandyJSON {
     var carrierName : String?//  (string): 承运人 ,
     var carrierNo : String? // (string): 承运人ID ,
     var cellPhone : String? // (string): 联系电话 ,
-    var createTime : String?  //(string): 创建时间 ,
-    var endTime : String? // (string): 结束时间 ,
+    var createTime : TimeInterval?  //(string): 创建时间 ,
+    var endTime : TimeInterval? // (string): 结束时间 ,
     var flowMoney : Float? // (number): 金额 ,
     var flowNo : String? // (string): 流水号 ,
-    var flowStatus : Int?  //(integer): 0=支付失败 1=支付成功 ,
-    var flowType : Int?  // (integer): 类型类型 1=充值 2=余额退款 3=服务费扣除 4=服务费退回 5=违约金扣除 6=违约金退回 ,
-    var frozenMoney : String?  // (number): 冻结余额 ,
+    var flowStatus : Int?  //(integer):0=支付失败 1=支付成功  2 - 支付中  3-取消充值
+    var flowType : Int?  // (integer):类型 1=充值 2=退钱 3=信息费扣除 4=信息费退回 5=违约金扣除 6=违约金退回 7=保证金扣除 8=保证金退回 9=保证金释放 10=平台充值
+    var frozenMoney : Float?  // (number): 冻结余额 ,
     var id : String?
     var ids : [String]?   //ids (Array[string], optional),
     var pageNum : Int?   // (integer): 当前页数 ,
     var pageSize : Int?   // (integer): 页面大小 ,
     var payType : Int?   // (integer, optional): 0=支付失败 1=支付成功 ,
     var remark : String?   // (string),
-    var startTime : String?    //(string): 开始时间 ,
+    var startTime : TimeInterval?    //(string): 开始时间 ,
     var transportNo : String?   //(string): 运单号
 }
