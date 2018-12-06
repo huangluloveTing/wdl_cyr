@@ -220,6 +220,7 @@ extension ResourceHallVC {
         // 货源详情
         var resource = ResourceDetailUIModel()
         let hall = self.hallLists[index]
+        resource.refercnecePriceIsVisable = hall.refercnecePriceIsVisable
         resource.refercneceTotalPrice = hall.refercneceTotalPrice
         resource.refercneceUnitPrice = hall.refercneceUnitPrice
         resource.rate = 5

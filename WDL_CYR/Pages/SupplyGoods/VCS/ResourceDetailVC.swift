@@ -112,6 +112,16 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
         if section == 0 {
             let cell = self.dequeueReusableCell(className: Resource_PriceInfoCell.self, for: tableView)
             cell.showInfo(unit: self.resource?.refercneceUnitPrice, total: self.resource?.refercneceTotalPrice)
+            if self.resource?.refercnecePriceIsVisable == 1{
+                //可见
+                cell.startLabel.isHidden = false
+                cell.endLabel.isHidden = false
+            }else{
+                //价格不可见
+                cell.startLabel.isHidden = true
+                cell.endLabel.isHidden = true
+
+            }
             return cell
         }
         

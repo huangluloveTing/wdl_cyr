@@ -65,7 +65,7 @@ extension TransactionDetailsVC : UITableViewDelegate , UITableViewDataSource {
         cell.showInfo(reason: reason, time: time, money: money, remark: remark, waybillNo: wayBillNo, account: account, freeze: freeze,  flowStatus: payStatus, balance: balance)
         //点击退款
         cell.buttonClosure = {[weak self] in
-            self?.toSendBackMoneyHandle()
+            self?.toSendBackMoneyHandle(accountInfo: info)
         }
         return cell
     }
@@ -155,10 +155,9 @@ extension TransactionDetailsVC {
     }
     
     //MARK: 退回可用金额
-    func toSendBackMoneyHandle() -> Void {
+    func toSendBackMoneyHandle(accountInfo:ZbnCashFlow) -> Void {
         let returnVC = ReturnMoneyVC()
-//        let accountInfo =  self.bondnInfo
-//        returnVC.bondnInfo = accountInfo
+        returnVC.bondnInfo = accountInfo
         self.pushToVC(vc: returnVC, title: "退款可用余额")
     }
     

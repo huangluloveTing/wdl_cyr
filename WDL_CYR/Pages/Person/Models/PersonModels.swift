@@ -109,6 +109,9 @@ struct AuthConsignorVo : HandyJSON {
 
 //充值
 struct ZbnCashFlow : HandyJSON {
+    
+    var money: Float?//添加的用于退款的金额存储
+    
     var balance : Float? // (number): 余额 ,
     var carrierName : String?//  (string): 承运人 ,
     var carrierNo : String? // (string): 承运人ID ,

@@ -34,6 +34,7 @@ struct ResourceHallUIModel {
 struct ResourceDetailUIModel {
     var refercneceTotalPrice:Float = 0 // 参考总价
     var refercneceUnitPrice:Float = 0 // 参考单价
+    var refercnecePriceIsVisable : Int = 1 // (string, optional), 参考价是否可见，1=可见 2，不可见
 //    var carrierName:String = "" // 托运人名称
     var consignorName: String = "" // 托运人名称
     var dealCount:Int = 0   // 成交数
