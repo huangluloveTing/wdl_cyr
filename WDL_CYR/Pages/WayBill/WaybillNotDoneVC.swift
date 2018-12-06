@@ -74,6 +74,10 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
             self.currentStartTime = startTime
             self.currentEndTime = endTime
             self.beginRefresh()
+        }else {
+            self.currentStartTime = nil
+            self.currentEndTime = nil
+            self.beginRefresh()
         }
         self.dropView.currenDropView?.hiddenDropView()
     }
