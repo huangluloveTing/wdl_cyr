@@ -163,12 +163,12 @@ extension TransactionDetailsVC {
         BaseApi.request(target: API.dealDetail(self.qeury), type: BaseResponseModel<PageInfo<ZbnCashFlow>>.self)
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
+                self?.hiddenToast()
                 self?.tableView.endRefresh()
                 self?.configNetDataToUI(lists: data.data?.list ?? [])
                 self?.tableView.reloadData()
                 self?.tableView.tableResultHandle(currentListCount: data.data?.list?.count,
                                                   total: data.data?.total)
-                self?.showSuccess()
             },onError: {[weak self] (error) in
                 self?.tableView.endRefresh()
                 self?.showFail(fail: error.localizedDescription)
