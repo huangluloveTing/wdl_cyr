@@ -10,36 +10,22 @@ import UIKit
 
 class ReturnMoneyVC: NormalBaseVC {
     
-    //金额账户数据
-    var bondnInfo:ZbnBondInfo?
-    
-    //可退金额
-    @IBOutlet weak var returnMoneyLab: UILabel!
-    //账户人
-    @IBOutlet weak var accountLab: UILabel!
+    //充值明细的数据模型
+    var bondnInfo:ZbnCashFlow?
+
     //输入退款金额
     @IBOutlet weak var moneyFeild: UITextField!
-    //全部退回按钮
-    @IBOutlet weak var allReturnBtn: UIButton!
+
     //确认按钮
     @IBOutlet weak var sureBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.allReturnBtn.addBorder(color: nil, radius: 16)
         self.sureBtn.addBorder(color: nil, radius: 22)
-      
-        
-        //可支配金额
-        self.returnMoneyLab.text = Util.floatPoint(num: 2, floatValue: self.bondnInfo?.useableMoney ?? 0) + "元"
-        //账户人
-        self.accountLab.text = self.bondnInfo?.bankAccount ?? ""
+
     }
 
-    //全部退回
-    @IBAction func allReturnClick(_ sender: UIButton) {
-        self.moneyFeild.text = Util.floatPoint(num: 2, floatValue: self.bondnInfo?.useableMoney ?? 0)
-    }
+
     
     //确认
     @IBAction func sureClick(_ sender: UIButton) {
@@ -48,10 +34,21 @@ class ReturnMoneyVC: NormalBaseVC {
             showFail(fail: "请输入退款金额", complete: nil)
             return
         }
-        
-        BaseApi.request(target: API.returnMoney(self.moneyFeild.text!), type: BaseResponseModel<Any>.self)
+        //余额
+        let balance: Float = self.bondnInfo?.balance ?? 0
+        //支付的金额
+        let flowMoney: Float = self.bondnInfo?.flowMoney ?? 0
+        let inputM: Float = Float(self.moneyFeild.text!) ?? 0
+        if inputM > balance || inputM > flowMoney{
+            showFail(fail: "输入的金额不能大于余额和充值的金额", complete: nil)
+            return
+        }
+        //添加用户输入的金额
+        self.bondnInfo?.money = inputM
+        BaseApi.request(target: API.returnMoney(self.bondnInfo!), type: BaseResponseModel<Any>.self)
             .retry(2)
             .subscribe(onNext: { [weak self](data) in
+                print("退款:\(data)")
                 self?.showSuccess(success: data.message, complete: {
                     self?.pop(animated: true)
                 })

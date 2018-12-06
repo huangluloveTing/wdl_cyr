@@ -54,7 +54,8 @@ enum API {
     case uploadImage(UIImage , UploadImagTypeMode)   // 上传图片
     case markHasSeenMessage(MessageQueryBean)                     // 标记查看过的消息
     case dealDetail(ZbnCashFlow)                     //交易明细
-    case returnMoney(String)   //退余额
+//    case returnMoney(String, String)   //退余额
+    case returnMoney(ZbnCashFlow)   //退余额
     case rechargeMoney(ZbnCashFlow) //充值
     case deleteTransportCapacity(String) // 删除运力（车辆）
     case deleteDriver(String)            // 删除运力（司机）
@@ -177,8 +178,11 @@ func apiTask(api:API) -> Task {
     switch api {
     case .getMessageNum():
         return .requestPlain
-    case .returnMoney(let money):
-        return .requestParameters(parameters: ["money":money], encoding: URLEncoding.default)
+//    case .returnMoney(let money,let id):
+//        return .requestParameters(parameters: ["money":money, "id": id], encoding: URLEncoding.default)
+        
+    case .returnMoney(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .dealDetail(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .rechargeMoney(let query):
