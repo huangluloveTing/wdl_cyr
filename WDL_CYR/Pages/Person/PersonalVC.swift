@@ -231,6 +231,34 @@ extension PersonalVC {
             .disposed(by: dispose)
     }
     
-    // 根据获取数据，配置页面数据
+    // 根据当前的认证状态，跳转到对应的页面
+    func authStatusToPage() -> Void {
+//        let status = carrierInfo?.isAuth
+        
+    }
+    
+    //MAR: - 去企业认证成功的页面
+    func toEnterpriseAuthedPage() -> Void {
+        let enterpriseVC = EnterpriseAuthedPage()
+        self.pushToVC(vc: enterpriseVC, title: "认证")
+    }
+    
+    //MARK: - 去个人认证成功的页面
+    func toIndividualAuthedPage() -> Void {
+        let enterpriseVC = IndividualAuthedVC()
+        self.pushToVC(vc: enterpriseVC, title: "认证")
+    }
+    
+    //MARK: - 去认证失败的页面
+    func toAuthFailPage() -> Void{
+        let failPage = AuthenFailVC()
+        self.pushToVC(vc: failPage, title: "我的认证")
+    }
+    
+    //MARK: - 去认证中的页面
+    func toAuthingPage() -> Void {
+        let page = AuthenInreviewVC()
+        self.pushToVC(vc: page, title: "我的认证")
+    }
     
 }

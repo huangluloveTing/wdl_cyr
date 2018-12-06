@@ -279,7 +279,6 @@ extension WayBillBaseVC : DropHintViewDataSource {
         } else {
             if self.statusView == nil {
                 self.statusView = statusDropViewGenerate(statusTitles: curreenStatusTitles())
-                
             }
             return self.statusView!
         }

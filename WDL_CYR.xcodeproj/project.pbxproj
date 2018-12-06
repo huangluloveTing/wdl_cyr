@@ -153,6 +153,10 @@
 		7064890C215B87E300F53BFC /* FocusLinesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7064890A215B87E300F53BFC /* FocusLinesCell.xib */; };
 		70727FDE21B8EBA600912C6C /* WayBillStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70727FDD21B8EBA600912C6C /* WayBillStatusView.swift */; };
 		70727FE021B8FA9A00912C6C /* PictureBroweManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70727FDF21B8FA9A00912C6C /* PictureBroweManager.swift */; };
+		70727FE321B93F7D00912C6C /* IndividualAuthedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70727FE121B93F7D00912C6C /* IndividualAuthedVC.swift */; };
+		70727FE421B93F7D00912C6C /* IndividualAuthedVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70727FE221B93F7D00912C6C /* IndividualAuthedVC.xib */; };
+		70727FE721B93F9300912C6C /* EnterpriseAuthedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70727FE521B93F9300912C6C /* EnterpriseAuthedPage.swift */; };
+		70727FE821B93F9300912C6C /* EnterpriseAuthedPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70727FE621B93F9300912C6C /* EnterpriseAuthedPage.xib */; };
 		707B71FF216F3C1F000F78F6 /* ResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B71FD216F3C1F000F78F6 /* ResourceDetailVC.swift */; };
 		707B7200216F3C1F000F78F6 /* ResourceDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 707B71FE216F3C1F000F78F6 /* ResourceDetailVC.xib */; };
 		707B7203216F3C4A000F78F6 /* Resource_PriceInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B7201216F3C4A000F78F6 /* Resource_PriceInfoCell.swift */; };
@@ -541,6 +545,10 @@
 		7064890A215B87E300F53BFC /* FocusLinesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusLinesCell.xib; sourceTree = "<group>"; };
 		70727FDD21B8EBA600912C6C /* WayBillStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillStatusView.swift; sourceTree = "<group>"; };
 		70727FDF21B8FA9A00912C6C /* PictureBroweManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureBroweManager.swift; sourceTree = "<group>"; };
+		70727FE121B93F7D00912C6C /* IndividualAuthedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualAuthedVC.swift; sourceTree = "<group>"; };
+		70727FE221B93F7D00912C6C /* IndividualAuthedVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndividualAuthedVC.xib; sourceTree = "<group>"; };
+		70727FE521B93F9300912C6C /* EnterpriseAuthedPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterpriseAuthedPage.swift; sourceTree = "<group>"; };
+		70727FE621B93F9300912C6C /* EnterpriseAuthedPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterpriseAuthedPage.xib; sourceTree = "<group>"; };
 		707B71FD216F3C1F000F78F6 /* ResourceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceDetailVC.swift; sourceTree = "<group>"; };
 		707B71FE216F3C1F000F78F6 /* ResourceDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceDetailVC.xib; sourceTree = "<group>"; };
 		707B7201216F3C4A000F78F6 /* Resource_PriceInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource_PriceInfoCell.swift; sourceTree = "<group>"; };
@@ -1200,6 +1208,10 @@
 				7003D93C21B7A42200BD07FC /* InviteDriverResultVC.xib */,
 				7003D93F21B7CAAC00BD07FC /* AddVehicleVC.swift */,
 				7003D94021B7CAAC00BD07FC /* AddVehicleVC.xib */,
+				70727FE121B93F7D00912C6C /* IndividualAuthedVC.swift */,
+				70727FE221B93F7D00912C6C /* IndividualAuthedVC.xib */,
+				70727FE521B93F9300912C6C /* EnterpriseAuthedPage.swift */,
+				70727FE621B93F9300912C6C /* EnterpriseAuthedPage.xib */,
 			);
 			path = VCS;
 			sourceTree = "<group>";
@@ -1661,6 +1673,7 @@
 				70CF4FA1214B41120051A7CA /* RegisterVC.xib in Resources */,
 				706488FE215B45BB00F53BFC /* ResourceHallVC.xib in Resources */,
 				70CF4F7B214B41110051A7CA /* GSDetailBidingHeader.xib in Resources */,
+				70727FE421B93F7D00912C6C /* IndividualAuthedVC.xib in Resources */,
 				70D8BC0B2165BAC3000522E0 /* InLineMoneyCell.xib in Resources */,
 				70CF4F6E214B41110051A7CA /* GSOffShelveCell.xib in Resources */,
 				70CF4EAE214B40A00051A7CA /* LaunchScreen.storyboard in Resources */,
@@ -1752,6 +1765,7 @@
 				700F69D221A29F8900B5666B /* WayBillCommentVC.xib in Resources */,
 				70EA7360215E07C40020B8C3 /* GSDetail_GoodsInfoCell.xib in Resources */,
 				7003D93221B79C4900BD07FC /* AddDriverVC.xib in Resources */,
+				70727FE821B93F9300912C6C /* EnterpriseAuthedPage.xib in Resources */,
 				70EA73A3215F47D10020B8C3 /* WaybillCarrierInfoCell.xib in Resources */,
 				70C7CB29216F74ED00C10AC4 /* ChooseOfferTypeVC.xib in Resources */,
 				70EA7364215E0A640020B8C3 /* GSDetail_canceledOfferCell.xib in Resources */,
@@ -1951,6 +1965,7 @@
 				704129B12179E6840078A46F /* CommitCell.swift in Sources */,
 				183FD2ED21B4FC500069D50F /* PersonSettingVC.swift in Sources */,
 				70CF4FC9214B41120051A7CA /* BaseCell.swift in Sources */,
+				70727FE321B93F7D00912C6C /* IndividualAuthedVC.swift in Sources */,
 				7059F3F22192E7060053F1DE /* WaybillChangeLoadTimeView.swift in Sources */,
 				7003D93121B79C4900BD07FC /* AddDriverVC.swift in Sources */,
 				70CF4FC7214B41120051A7CA /* ZTTransition.swift in Sources */,
@@ -2076,6 +2091,7 @@
 				70CF4FBA214B41120051A7CA /* UIViewController+navigation.swift in Sources */,
 				70CF4F5E214B41110051A7CA /* BaseApi.swift in Sources */,
 				70CF4F77214B41110051A7CA /* GoodsSupplyFoldInfoView.swift in Sources */,
+				70727FE721B93F9300912C6C /* EnterpriseAuthedPage.swift in Sources */,
 				70EA73A6215F48090020B8C3 /* WaybillSepecialInfoCell.swift in Sources */,
 				70CF4F7C214B41120051A7CA /* PersonalExcuteCell.swift in Sources */,
 				70D8BC48216B1607000522E0 /* CarrierQueryOrderHallResult.swift in Sources */,
