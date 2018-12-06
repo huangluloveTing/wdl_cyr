@@ -39,7 +39,7 @@ class WalletVC: NormalBaseVC {
     }
     
     @IBAction func sendBackMoney(_ sender: Any) {
-        self.toSendBackMoneyHandle()
+//        self.toSendBackMoneyHandle()
     }
 }
 
@@ -118,12 +118,12 @@ extension WalletVC {
     }
     
     //MARK: 退回可用金额
-    func toSendBackMoneyHandle() -> Void {
-        let returnVC = ReturnMoneyVC()
-        let accountInfo =  self.bondnInfo
-        returnVC.bondnInfo = accountInfo
-        self.pushToVC(vc: returnVC, title: "退款可用余额")
-    }
+//    func toSendBackMoneyHandle() -> Void {
+//        let returnVC = ReturnMoneyVC()
+//        let accountInfo =  self.bondnInfo
+//        returnVC.bondnInfo = accountInfo
+//        self.pushToVC(vc: returnVC, title: "退款可用余额")
+//    }
     
     // 去充值
     func toRecharge() -> Void {

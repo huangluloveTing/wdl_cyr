@@ -78,7 +78,7 @@ extension MyAuthenVC {
         }
     }
     
-    // 点击个人
+    // 点击个人(carrierType = 1)
     func toIndividual() -> Void {
         
         let individualAuthenVC = AuthenIndividualInfoVC()
@@ -91,9 +91,10 @@ extension MyAuthenVC {
         
 //        let vc = AboutZbnVC()
 //        self.pushToVC(vc: vc, title: "关于我们")
+    
     }
     
-    // 点击企业
+    // 点击企业(carrierType = 2)
     func toEnterprise() -> Void {
         let enterpriseAuthenVC = AuthenEnterpriseVC()
         self.pushToVC(vc: enterpriseAuthenVC, title: "我的认证")

@@ -134,9 +134,18 @@ extension TransactionDetailsVC : UITableViewDelegate , UITableViewDataSource {
         let freeze = info.frozenMoney ?? 0
         let balance = info.balance ?? 0 //余额
         let payStatus = self.payTypeText(payType: info.flowStatus ?? 0, cell: cell)//支付状态
+        //只有类型是充值，状态是支付成功才可以显示退款
+        if info.flowType == 1 && info.flowStatus == 1{
+            cell.returnMoney.isHidden = false
+        }else{
+            cell.returnMoney.isHidden = true
+        }
+        
         cell.showInfo(reason: reason, time: time, money: money, remark: remark, waybillNo: wayBillNo, account: account, freeze: freeze,  flowStatus: payStatus, balance: balance)
-        
-        
+        //点击退款
+        cell.buttonClosure = {[weak self] in
+            self?.toSendBackMoneyHandle()
+        }
         return cell
     }
   
@@ -250,5 +259,13 @@ extension TransactionDetailsVC : DropHintViewDataSource {
 
 //MARK: - refresh
 extension TransactionDetailsVC {
+    
+    //MARK: 退回可用金额
+    func toSendBackMoneyHandle() -> Void {
+        let returnVC = ReturnMoneyVC()
+//        let accountInfo =  self.bondnInfo
+//        returnVC.bondnInfo = accountInfo
+        self.pushToVC(vc: returnVC, title: "退款可用余额")
+    }
     
 }

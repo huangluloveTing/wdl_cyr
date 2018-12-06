@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import RxSwift
 
 class AuthenIndividualInfoVC: NormalBaseVC {
-    
+  
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var IDCardTextField: UITextField!
     @IBOutlet weak var mobileTextField: UITextField!
@@ -17,6 +18,8 @@ class AuthenIndividualInfoVC: NormalBaseVC {
     @IBOutlet weak var frontImageView: UIImageView!
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var handImageView: UIImageView!
+    
+    private var zbnCarrierInfo:ZbnCarrierInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,5 +34,18 @@ class AuthenIndividualInfoVC: NormalBaseVC {
 
     override func bindViewModel() {
         
+    }
+    
+    //提交申请
+    @IBAction func applyClick(_ sender: UIButton) {
+        self.applyRequest()
+    }
+    
+}
+
+extension AuthenIndividualInfoVC{
+    
+    func applyRequest() -> Void {
+    
     }
 }

@@ -24,5 +24,8 @@ let JPushMasterSecret = "2a32fcb079991db342500952"
 let HOST = "http://182.150.21.104:58092/zbn-web"
 
 //本地测试
+//liaobing
 //let HOST = "http://172.16.59.47:8081/zbn-web"
+//zhaoxiaoyang
+//let HOST = "http://172.16.8.52:8081/zbn-web"
 

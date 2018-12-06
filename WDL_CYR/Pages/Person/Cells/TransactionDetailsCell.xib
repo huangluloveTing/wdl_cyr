@@ -103,6 +103,17 @@
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfN-Mn-k8G">
+                        <rect key="frame" x="361" y="71" width="60" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="cwe-dE-4PX"/>
+                            <constraint firstAttribute="height" constant="30" id="np2-k9-w9t"/>
+                        </constraints>
+                        <state key="normal" title="退款"/>
+                        <connections>
+                            <action selector="returnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="v9I-5B-BQR"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Oon-tM-pod" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="1iT-Kg-3ah"/>
@@ -110,6 +121,7 @@
                     <constraint firstItem="uqb-x1-jAI" firstAttribute="leading" secondItem="Jzf-5x-j1Y" secondAttribute="trailing" constant="10" id="6Yc-KC-5eD"/>
                     <constraint firstItem="XXY-rb-PGG" firstAttribute="leading" secondItem="O71-Iy-5kO" secondAttribute="leading" id="CLu-7c-rLh"/>
                     <constraint firstItem="Jzf-5x-j1Y" firstAttribute="centerY" secondItem="cIM-88-DbK" secondAttribute="centerY" id="CrM-Oo-2qP"/>
+                    <constraint firstAttribute="trailing" secondItem="JfN-Mn-k8G" secondAttribute="trailing" constant="15" id="Ed0-g6-31A"/>
                     <constraint firstItem="ggT-z1-fOu" firstAttribute="leading" secondItem="O71-Iy-5kO" secondAttribute="trailing" constant="10" id="GWB-ZX-Z1f"/>
                     <constraint firstItem="QDW-JL-Bfp" firstAttribute="top" secondItem="kT0-2X-Dmj" secondAttribute="bottom" constant="10" id="HK4-so-lPE"/>
                     <constraint firstItem="XXY-rb-PGG" firstAttribute="top" secondItem="O71-Iy-5kO" secondAttribute="bottom" constant="10" id="Mvv-0R-w7u"/>
@@ -125,6 +137,7 @@
                     <constraint firstItem="kT0-2X-Dmj" firstAttribute="top" secondItem="gOr-YC-ioa" secondAttribute="bottom" constant="11" id="dRZ-TS-ugU"/>
                     <constraint firstItem="cIM-88-DbK" firstAttribute="leading" secondItem="kT0-2X-Dmj" secondAttribute="trailing" constant="10" id="fHz-DD-1oP"/>
                     <constraint firstItem="gOr-YC-ioa" firstAttribute="leading" secondItem="Oon-tM-pod" secondAttribute="leading" id="gRK-sw-JTe"/>
+                    <constraint firstItem="JfN-Mn-k8G" firstAttribute="top" secondItem="RdR-rQ-agM" secondAttribute="bottom" constant="11" id="joZ-MM-stM"/>
                     <constraint firstItem="kT0-2X-Dmj" firstAttribute="leading" secondItem="gOr-YC-ioa" secondAttribute="leading" id="kNm-ky-yg0"/>
                     <constraint firstItem="pzX-wI-bGB" firstAttribute="leading" secondItem="QDW-JL-Bfp" secondAttribute="trailing" constant="10" id="nu8-II-lgw"/>
                     <constraint firstItem="Mpa-aS-L0p" firstAttribute="top" secondItem="XXY-rb-PGG" secondAttribute="top" id="odG-Th-x7j"/>
@@ -143,6 +156,7 @@
                 <outlet property="freezeMoneyLabel" destination="uqb-x1-jAI" id="JEj-44-gZn"/>
                 <outlet property="payStatusLabel" destination="RdR-rQ-agM" id="fj9-rI-C8X"/>
                 <outlet property="remarkLabel" destination="Mpa-aS-L0p" id="eTF-LV-uqo"/>
+                <outlet property="returnMoney" destination="JfN-Mn-k8G" id="3Lq-Ig-Bc7"/>
                 <outlet property="transactionMoneyLabel" destination="uG6-7a-bli" id="DoR-OF-yQL"/>
                 <outlet property="transactionReasonLabel" destination="Oon-tM-pod" id="6V8-xA-0cS"/>
                 <outlet property="transactionTimeLabel" destination="gOr-YC-ioa" id="zKy-1T-QLW"/>

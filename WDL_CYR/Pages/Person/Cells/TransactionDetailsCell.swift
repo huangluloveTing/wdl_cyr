@@ -28,6 +28,12 @@ class TransactionDetailsCell: BaseCell {
     //支付状态： var flowStatus : Int?  //(integer):0=支付失败 1=支付成功  2 - 支付中  3-取消充值
     @IBOutlet weak var payStatusLabel: UILabel!
     
+    //退款
+    @IBOutlet weak var returnMoney: UIButton!
+    
+    typealias ButtonClosure = () ->()
+    public var buttonClosure : ButtonClosure?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,6 +42,13 @@ class TransactionDetailsCell: BaseCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    //退款按钮
+    @IBAction func returnClick(_ sender: UIButton) {
+        if let closure = self.buttonClosure{
+            closure()
+        }
+    }
+    
 }
 
 extension TransactionDetailsCell {
