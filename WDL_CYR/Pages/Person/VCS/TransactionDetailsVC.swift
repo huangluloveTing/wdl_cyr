@@ -10,18 +10,83 @@ import UIKit
 
 class TransactionDetailsVC: NormalBaseVC {
     
+    let messageStatus:[String] = ["全部","服务费扣除","服务费退回","违约金扣除",
+                                  "违约金退回","充值","平台充值","保证金冻结",
+                                  "保证金释放","退还保证金"]
+    
+    @IBOutlet weak var dropView: DropHintView!
+    private var qeury = ZbnCashFlow()
+    private var timeChooseView:DropInputDateView {
+      return startAndEndTimeChooseViewGenerate()
+    }
+    private var statusView:GoodsSupplyStatusDropView {
+        return statusDropViewGenerate(statusTitles: messageStatus)
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     //数组
     private var hallLists:[ZbnCashFlow] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView()
+        toConfigDropView(dropView: dropView)
         //交易明细数据请求
         self.loadDealDetailRequest()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func timeChooseHandle(startTime: TimeInterval?, endTime: TimeInterval?, tapSure sure: Bool) {
+        if sure == true {
+            self.qeury.startTime = startTime
+            self.qeury.endTime = endTime
+        } else {
+            self.qeury.startTime = nil
+            self.qeury.endTime = nil
+        }
+        self.tableView.beginRefresh()
+        self.dropView.hiddenDropView()
+    }
+    
+    override func statusChooseHandle(index: Int) {
+//      flowType   1=充值 2=退钱 3=信息费扣除 4=信息费退回 5=违约金扣除 6=违约金退回 7=保证金扣除 8=保证金退回 9=保证金释放 10=平台充值 ,
+//        ["全部","服务费扣除","服务费退回","违约金扣除",
+//         "违约金退回","充值","平台充值","保证金冻结",
+//         "保证金释放","退还保证金"]
+        if index == 0 {
+            self.qeury.flowType = nil
+        }
+        if index == 1 {
+            self.qeury.flowType = 3
+        }
+        if index == 2 {
+            self.qeury.flowType = 4
+        }
+        if index == 3 {
+            self.qeury.flowType = 5
+        }
+        if index == 4 {
+            self.qeury.flowType = 6
+        }
+        if index == 5 {
+            self.qeury.flowType = 1
+        }
+        if index == 6 {
+            self.qeury.flowType = 10
+        }
+        if index == 7 {
+            self.qeury.flowType = 7
+        }
+        if index == 8 {
+            self.qeury.flowType = 9
+        }
+        if index == 9 {
+            self.qeury.flowType = 8
+        }
+        self.tableView.beginRefresh()
+        self.dropView.hiddenDropView()
     }
 }
 
@@ -33,6 +98,20 @@ extension TransactionDetailsVC {
         self.tableView.dataSource = self
         self.registerForNibCell(className: TransactionDetailsCell.self, for: self.tableView)
         self.fullSeperate(for: self.tableView)
+        tableView.pullRefresh()
+        tableView.upRefresh()
+        tableView.initEstmatedHeights()
+        tableView.refreshAndLoadState().asObservable()
+            .subscribe(onNext: { [weak self](state) in
+                if state == .Refresh {
+                    self?.tableView.removeCacheHeights()
+                    self?.qeury.pageSize = 20
+                } else {
+                    self?.qeury.pageSize += 20
+                }
+                self?.loadDealDetailRequest()
+            })
+            .disposed(by: dispose)
     }
 }
 
@@ -61,6 +140,9 @@ extension TransactionDetailsVC : UITableViewDelegate , UITableViewDataSource {
         return cell
     }
   
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.heightForRow(at: indexPath)
+    }
 }
 //MARK: - loadData
 extension TransactionDetailsVC {
@@ -68,15 +150,18 @@ extension TransactionDetailsVC {
     func loadDealDetailRequest(){
         //配置参数
         self.showLoading()
-        var queryBean = ZbnCashFlow()
-        
-        BaseApi.request(target: API.dealDetail(queryBean), type: BaseResponseModel<PageInfo<ZbnCashFlow>>.self)
+        BaseApi.request(target: API.dealDetail(self.qeury), type: BaseResponseModel<PageInfo<ZbnCashFlow>>.self)
+            .retry(5)
             .subscribe(onNext: { [weak self](data) in
+                self?.tableView.endRefresh()
                 self?.configNetDataToUI(lists: data.data?.list ?? [])
                 self?.tableView.reloadData()
+                self?.tableView.tableResultHandle(currentListCount: data.data?.list?.count,
+                                                  total: data.data?.total)
                 self?.showSuccess()
-                },onError: {[weak self] (error) in
-                    self?.showFail(fail: error.localizedDescription)
+            },onError: {[weak self] (error) in
+                self?.tableView.endRefresh()
+                self?.showFail(fail: error.localizedDescription)
             })
             .disposed(by: dispose)
     }
@@ -144,5 +229,26 @@ extension TransactionDetailsVC {
             return ""
         }
     }
+}
+
+
+//MARK: - drop
+extension TransactionDetailsVC : DropHintViewDataSource {
+    func toConfigDropView(dropView:DropHintView) -> Void {
+        dropView.dataSource = self
+        dropView.tabTitles(titles: ["交易时间","交易类型"])
+    }
+    
+    func dropHintView(dropHint: DropHintView, index: Int) -> UIView {
+        if index == 0 {
+            return timeChooseView
+        } else {
+            return self.statusView
+        }
+    }
+}
+
+//MARK: - refresh
+extension TransactionDetailsVC {
     
 }

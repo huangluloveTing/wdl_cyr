@@ -122,8 +122,8 @@ struct ZbnCashFlow : HandyJSON {
     var frozenMoney : Float?  // (number): 冻结余额 ,
     var id : String?
     var ids : [String]?   //ids (Array[string], optional),
-    var pageNum : Int?   // (integer): 当前页数 ,
-    var pageSize : Int?   // (integer): 页面大小 ,
+    var pageNum : Int = 0   // (integer): 当前页数 ,
+    var pageSize : Int = 20   // (integer): 页面大小 ,
     var payType : Int?   // (integer, optional): 0=支付失败 1=支付成功 ,
     var remark : String?   // (string),
     var startTime : TimeInterval?    //(string): 开始时间 ,

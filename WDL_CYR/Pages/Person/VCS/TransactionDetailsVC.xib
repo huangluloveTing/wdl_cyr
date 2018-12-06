@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionDetailsVC" customModule="WDL_CYR" customModuleProvider="target">
             <connections>
+                <outlet property="dropView" destination="t1g-ZJ-9cb" id="mce-Ql-6EY"/>
                 <outlet property="tableView" destination="yKD-GQ-D6g" id="FC5-4f-GgM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,18 +22,28 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yKD-GQ-D6g">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1g-ZJ-9cb" customClass="DropHintView" customModule="WDL_CYR" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="vgY-pa-Oln"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="yKD-GQ-D6g" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="0Kg-Wy-9SX"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yKD-GQ-D6g" secondAttribute="bottom" id="WMU-EX-QEJ"/>
-                <constraint firstItem="yKD-GQ-D6g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fOl-S1-hLR"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yKD-GQ-D6g" secondAttribute="trailing" id="xXc-oD-d8E"/>
+                <constraint firstAttribute="trailing" secondItem="t1g-ZJ-9cb" secondAttribute="trailing" id="7MS-JW-i1f"/>
+                <constraint firstItem="t1g-ZJ-9cb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8UL-Yg-A0x"/>
+                <constraint firstAttribute="bottom" secondItem="yKD-GQ-D6g" secondAttribute="bottom" id="WMU-EX-QEJ"/>
+                <constraint firstItem="yKD-GQ-D6g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fOl-S1-hLR"/>
+                <constraint firstItem="t1g-ZJ-9cb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fe5-8O-jGt"/>
+                <constraint firstItem="yKD-GQ-D6g" firstAttribute="top" secondItem="t1g-ZJ-9cb" secondAttribute="bottom" id="fgn-dd-25i"/>
+                <constraint firstAttribute="trailing" secondItem="yKD-GQ-D6g" secondAttribute="trailing" id="xXc-oD-d8E"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="138.40000000000001" y="126.38680659670166"/>
         </view>
     </objects>
 </document>
