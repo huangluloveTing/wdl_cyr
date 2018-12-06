@@ -151,7 +151,7 @@ extension AuthenIndividualInfoVC {
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.hiddenToast()
-                
+                self?.uploadCardImageResult(imgUrl: data.data?.first ?? "", mode: mode)
             }, onError: { [weak self](error) in
                 self?.showFail(fail: error.localizedDescription, complete: nil)
             })
@@ -166,11 +166,11 @@ extension AuthenIndividualInfoVC {
             self.zbnCarrierInfo?.idCardFrontage = imgUrl
             break
         case .OppositeImage:
-            Util.showImage(imageView: self.frontImageView, imageUrl: imgUrl, placeholder: UIImage.init(named: "我的认证-身份证")!)
+            Util.showImage(imageView: self.backImageView, imageUrl: imgUrl, placeholder: UIImage.init(named: "我的认证-身份证")!)
             self.zbnCarrierInfo?.idCardOpposite = imgUrl
             break
         default:
-            Util.showImage(imageView: self.frontImageView, imageUrl: imgUrl, placeholder: UIImage.init(named: "我的认证- 手持身份证")!)
+            Util.showImage(imageView: self.handImageView, imageUrl: imgUrl, placeholder: UIImage.init(named: "我的认证- 手持身份证")!)
             self.zbnCarrierInfo?.idCardHandheld = imgUrl
             
         }

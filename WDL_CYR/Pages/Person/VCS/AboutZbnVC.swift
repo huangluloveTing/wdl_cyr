@@ -23,6 +23,11 @@ class AboutZbnVC: NormalBaseVC {
         webView.delegate = self
 
     }
+    
+    
+    deinit {
+        self.hiddenToast()
+    }
    
 }
 
@@ -31,18 +36,17 @@ class AboutZbnVC: NormalBaseVC {
 extension AboutZbnVC: UIWebViewDelegate {
     // 该方法是在UIWebView在开发加载时调用
     func webViewDidStartLoad(_ webView: UIWebView) {
-        SVProgressHUD.show()
+        self.showLoading()
     }
 
     // 该方法是在UIWebView加载完之后才调用
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        SVProgressHUD.dismiss()
+        self.hiddenToast()
     }
 
     // 该方法是在UIWebView请求失败的时候调用
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
        self.showFail(fail: "加载失败", complete: nil)
-
     }
 }
 

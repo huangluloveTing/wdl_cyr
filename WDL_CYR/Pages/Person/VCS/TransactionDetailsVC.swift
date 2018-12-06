@@ -98,6 +98,7 @@ extension TransactionDetailsVC {
         self.tableView.dataSource = self
         self.registerForNibCell(className: TransactionDetailsCell.self, for: self.tableView)
         self.fullSeperate(for: self.tableView)
+        tableView.tableFooterView = UIView()
         tableView.pullRefresh()
         tableView.upRefresh()
         tableView.initEstmatedHeights()
