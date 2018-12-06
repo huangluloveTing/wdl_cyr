@@ -13,11 +13,14 @@ class ZTScrollViewConroller: UIViewController {
     private var subItems:[ZTScrollItem]?
     private var naviSelectView:ZTScrollNaviBarView?
     
+    private var currentFrontView:ZTScrollViewControllerType?
+    
     private var isTapTab:Bool? = false // 判断当前操作是点击导航栏上的tabIndex  还是滑动
     
     //MARK: 设置子视图
     func scrollSubItems(items:[ZTScrollItem]) -> Void {
         self.subItems = items
+        self.currentFrontView = items.first?.viewController
         self.collectionView.reloadData()
         self.configNaviSelectTitle()
     }
@@ -97,17 +100,31 @@ extension ZTScrollViewConroller : UICollectionViewDelegate , UICollectionViewDat
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.collectionView {
+            let offset = scrollView.contentOffset.x
+            let index = round(offset / scrollView.zt_width)
+            decideCurrentFront(index: Int(index))
             if self.isTapTab == true {
                 return
             }
-            let offset = scrollView.contentOffset.x
-            let index = round(offset / scrollView.zt_width)
             self.naviSelectView?.toSelected(index: Int(index))
         }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.isTapTab = false
+    }
+    
+    //MARK: - 获取当前显示的vc
+    func decideCurrentFront(index:Int) -> Void {
+        let front = self.subItems![index]
+        if self.currentFrontView == nil {
+            self.currentFrontView = front.viewController
+            return
+        }
+        if (self.currentFrontView! as! UIViewController) != (front.viewController as! UIViewController) {
+            self.currentFrontView?.willDisappear()
+            self.currentFrontView = front.viewController
+        }
     }
 }
 

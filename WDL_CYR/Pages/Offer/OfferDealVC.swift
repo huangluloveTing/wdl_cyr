@@ -9,8 +9,11 @@
 import UIKit
 
 class OfferDealVC: OfferBaseVC , ZTScrollViewControllerType {
+    func willDisappear() {
+    }
+    
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var dropHintView: DropHintView!
+//    @IBOutlet weak var dropHintView: DropHintView!
     
     private var currentSearchContent:String? // 当前的搜索内容
     

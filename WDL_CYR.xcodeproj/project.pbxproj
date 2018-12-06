@@ -152,6 +152,7 @@
 		7064890B215B87E300F53BFC /* FocusLinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70648909215B87E300F53BFC /* FocusLinesCell.swift */; };
 		7064890C215B87E300F53BFC /* FocusLinesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7064890A215B87E300F53BFC /* FocusLinesCell.xib */; };
 		70727FDE21B8EBA600912C6C /* WayBillStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70727FDD21B8EBA600912C6C /* WayBillStatusView.swift */; };
+		70727FE021B8FA9A00912C6C /* PictureBroweManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70727FDF21B8FA9A00912C6C /* PictureBroweManager.swift */; };
 		707B71FF216F3C1F000F78F6 /* ResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B71FD216F3C1F000F78F6 /* ResourceDetailVC.swift */; };
 		707B7200216F3C1F000F78F6 /* ResourceDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 707B71FE216F3C1F000F78F6 /* ResourceDetailVC.xib */; };
 		707B7203216F3C4A000F78F6 /* Resource_PriceInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B7201216F3C4A000F78F6 /* Resource_PriceInfoCell.swift */; };
@@ -539,6 +540,7 @@
 		70648909215B87E300F53BFC /* FocusLinesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusLinesCell.swift; sourceTree = "<group>"; };
 		7064890A215B87E300F53BFC /* FocusLinesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusLinesCell.xib; sourceTree = "<group>"; };
 		70727FDD21B8EBA600912C6C /* WayBillStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillStatusView.swift; sourceTree = "<group>"; };
+		70727FDF21B8FA9A00912C6C /* PictureBroweManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureBroweManager.swift; sourceTree = "<group>"; };
 		707B71FD216F3C1F000F78F6 /* ResourceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceDetailVC.swift; sourceTree = "<group>"; };
 		707B71FE216F3C1F000F78F6 /* ResourceDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceDetailVC.xib; sourceTree = "<group>"; };
 		707B7201216F3C4A000F78F6 /* Resource_PriceInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource_PriceInfoCell.swift; sourceTree = "<group>"; };
@@ -1511,6 +1513,7 @@
 		70CF4F51214B410F0051A7CA /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				70727FDF21B8FA9A00912C6C /* PictureBroweManager.swift */,
 				18E3810121B7A7BA00FF6544 /* AppDelegate+jpush.swift */,
 				70CF4F52214B410F0051A7CA /* AMapHandleManager.swift */,
 				70CF4F53214B410F0051A7CA /* Util.swift */,
@@ -1810,6 +1813,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/LBPhotoBrowser/test/LBPhotoBrowser/LBPhotoBrowser.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_ROOT}/ZTHExtension/ZTExtension/HZExtension/ZTExtension.bundle",
@@ -1818,6 +1822,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LBPhotoBrowser.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZTExtension.bundle",
@@ -1880,6 +1885,7 @@
 				70140880219420DD000D5CB1 /* WaybillReturnListView.swift in Sources */,
 				7003D93521B7A25200BD07FC /* DriverInviteFailCell.swift in Sources */,
 				70CF4F61214B41110051A7CA /* BaseModel.swift in Sources */,
+				70727FE021B8FA9A00912C6C /* PictureBroweManager.swift in Sources */,
 				70D8BC122166EA6A000522E0 /* PaymentCell.swift in Sources */,
 				701F10D7217D942000693936 /* OfferSearchTruckCell.swift in Sources */,
 				701F10E8217F06E400693936 /* OfferBaseVC.swift in Sources */,

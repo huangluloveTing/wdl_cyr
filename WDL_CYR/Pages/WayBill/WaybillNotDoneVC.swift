@@ -9,6 +9,10 @@
 import UIKit
 
 class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
+    func willDisappear() {
+        self.dropView.hiddenDropView()
+    }
+    
     
     @IBOutlet weak var dropView: DropHintView!
     @IBOutlet weak var tableView: UITableView!
@@ -28,7 +32,6 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.addSearchBar(to: self.tableView, placeHolder: "搜索托运人/承运人/姓名/电话号码")
         self.toConfigDropView(dropView: self.dropView)
         self.setCurrentTabStatus(tab: .Doing)
         self.configTableView(tableView: tableView)

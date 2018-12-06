@@ -9,6 +9,10 @@
 import UIKit
 
 class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
+    func willDisappear() {
+        
+    }
+    
     
     @IBOutlet weak var endButton: MyButton!
     @IBOutlet weak var startButton: MyButton!

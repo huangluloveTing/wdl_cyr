@@ -11,4 +11,5 @@ import Foundation
 protocol ZTScrollViewControllerType {
     func willShow()
     func didShow()
+    func willDisappear()
 }

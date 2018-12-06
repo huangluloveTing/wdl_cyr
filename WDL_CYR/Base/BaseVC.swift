@@ -289,6 +289,13 @@ extension BaseVC {
     }
 }
 
+// 调用图片浏览器
 extension BaseVC {
-    
+    func showLocalImags(imgs:[UIImage] , imageSuperView:UIView) -> Void {
+        PictureBroweManager.shard().showPictures(imgItems: imgs, imageSuperView: imageSuperView)
+    }
+    func showWebImages(imgs:[String] ,imageSuperView:UIView) -> Void {
+        PictureBroweManager.shard().showWebPictures(webItems: imgs, imageSuperView: imageSuperView)
+    }
 }
+

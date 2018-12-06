@@ -9,6 +9,6 @@
 import UIKit
 
 struct ZTScrollItem {
-    var viewController:ZTScrollViewControllerType
+    var viewController: ZTScrollViewControllerType
     var title:String
 }

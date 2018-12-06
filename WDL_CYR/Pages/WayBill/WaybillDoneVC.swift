@@ -9,6 +9,10 @@
 import UIKit
 
 class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
+    func willDisappear() {
+        self.dropView.hiddenDropView()
+    }
+    
     
     @IBOutlet weak var dropView: DropHintView!
     @IBOutlet weak var tableView: UITableView!

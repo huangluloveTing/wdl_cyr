@@ -16,6 +16,10 @@ enum FocusResourceDisplay {
 }
 
 class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
+    func willDisappear() {
+        
+    }
+    
     
     
     @IBOutlet weak var addLinesBtn: UIButton!

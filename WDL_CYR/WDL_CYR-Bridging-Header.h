@@ -20,6 +20,7 @@
 #import <HTHorizontalSelectionList.h>
 #import "UITextView+YLTextView.h"
 #import "JPUSHService.h"
+#import <LBPhotoBrowserManager.h>
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif

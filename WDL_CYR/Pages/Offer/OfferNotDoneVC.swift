@@ -11,6 +11,11 @@ import RxCocoa
 import RxSwift
 
 class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
+    func willDisappear() {
+        
+        self.dropHintView.hiddenDropView()
+    }
+    
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dropHintView: DropHintView!

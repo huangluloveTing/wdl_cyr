@@ -18,5 +18,6 @@ pod 'MJRefresh'
 pod 'SVProgressHUD'
 pod 'HTHorizontalSelectionList'
 pod 'Kingfisher'
+pod 'LBPhotoBrowser'
 
 end

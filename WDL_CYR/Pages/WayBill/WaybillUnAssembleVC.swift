@@ -12,6 +12,11 @@ import RxCocoa
 import RxDataSources
 class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
     
+    func willDisappear() {
+        self.dropView.hiddenDropView()
+    }
+    
+    
     @IBOutlet weak var dropView: DropHintView!
     @IBOutlet weak var tableView: UITableView!
     
