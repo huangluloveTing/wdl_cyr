@@ -269,7 +269,7 @@ extension WaybillDetailBaseVC {
                       loadPhone: self.currentInfo?.loadingPersonPhone,
                       loadAddress: self.currentInfo?.startAddress,
                       consignee: self.currentInfo?.consigneeName,
-                      consigneeAddress: self.currentInfo?.endAddress,
+                      rePhone: self.currentInfo?.consigneePhone,
                       carrier: self.currentInfo?.carrierName,
                       driver: self.currentInfo?.driverName,
                       vehicleNo: self.currentInfo?.vehicleNo)

@@ -32,8 +32,11 @@ class WayBillDetailStatusCell: BaseCell {
         self.wayBillNoLabel.text = "运单号：" + transpoNo
         //运单状态
         switch status {
+        case .willStart:
+            self.wayBillStatusView?.status = WayBillStatus.willToDo
+            break
         case .noStart:
-            self.wayBillStatusView?.status = .NOT_Start
+            self.wayBillStatusView?.status = WayBillStatus.NOT_Start
             break
         case .willToTransport:
             self.wayBillStatusView?.status = WayBillStatus.Start
@@ -46,9 +49,6 @@ class WayBillDetailStatusCell: BaseCell {
             break
         case .done:
             self.wayBillStatusView?.status = WayBillStatus.Done
-            break
-        default:
-            self.wayBillStatusView?.status = WayBillStatus.NOT_Start
             break
         }
     }

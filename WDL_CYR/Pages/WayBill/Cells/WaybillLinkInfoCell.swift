@@ -37,7 +37,7 @@ extension WaybillLinkInfoCell {
                   loadPhone:String? ,   // 装货电话
                   loadAddress:String? , // 装货地址
                   consignee:String? ,   // 收货人
-                  consigneeAddress:String? ,    // 收货地址
+                  rePhone:String? ,    // 收货电话号码
                   carrier:String? ,         // 承运人
                   driver:String? ,          // 驾驶员
                   vehicleNo:String? /*车牌*/) -> Void {
@@ -45,7 +45,7 @@ extension WaybillLinkInfoCell {
         self.loadPhoneLabel.text = loadPhone
         self.loadAddressLabel.text = loadAddress
         self.consigneeNameLabel.text = consignee
-        self.consigneeAddressLabel.text = consigneeAddress
+        self.consigneeAddressLabel.text = rePhone
         self.carrierNameLabel.text = carrier
         self.driverNameLabel.text = driver
         self.vehicleNoLabel.text = vehicleNo

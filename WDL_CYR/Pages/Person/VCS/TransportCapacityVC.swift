@@ -385,7 +385,7 @@ extension TransportCapacityVC {
         if alter <= 0 {
             return "保险已经到期"
         }
-        if (alter > 0) && (alter <= 7 * 24 * 3600)  {
+        if (alter > 0) && (alter <= 30 * 24 * 3600)  {
             return "保险即将到期"
         }
         return ""

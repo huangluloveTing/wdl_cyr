@@ -151,6 +151,7 @@
 		70648908215B6BE400F53BFC /* FocusPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70648906215B6BE400F53BFC /* FocusPersonCell.xib */; };
 		7064890B215B87E300F53BFC /* FocusLinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70648909215B87E300F53BFC /* FocusLinesCell.swift */; };
 		7064890C215B87E300F53BFC /* FocusLinesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7064890A215B87E300F53BFC /* FocusLinesCell.xib */; };
+		70727FDE21B8EBA600912C6C /* WayBillStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70727FDD21B8EBA600912C6C /* WayBillStatusView.swift */; };
 		707B71FF216F3C1F000F78F6 /* ResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B71FD216F3C1F000F78F6 /* ResourceDetailVC.swift */; };
 		707B7200216F3C1F000F78F6 /* ResourceDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 707B71FE216F3C1F000F78F6 /* ResourceDetailVC.xib */; };
 		707B7203216F3C4A000F78F6 /* Resource_PriceInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707B7201216F3C4A000F78F6 /* Resource_PriceInfoCell.swift */; };
@@ -218,7 +219,6 @@
 		70CF4F87214B41120051A7CA /* WayBillDetailStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4EEE214B410C0051A7CA /* WayBillDetailStatusCell.swift */; };
 		70CF4F88214B41120051A7CA /* WayBillDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4EF0214B410C0051A7CA /* WayBillDetailVC.swift */; };
 		70CF4F89214B41120051A7CA /* WayBillDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CF4EF1214B410C0051A7CA /* WayBillDetailVC.xib */; };
-		70CF4F8A214B41120051A7CA /* WayBillStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4EF3214B410C0051A7CA /* WayBillStatusView.swift */; };
 		70CF4F8B214B41120051A7CA /* WayBillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4EF4214B410C0051A7CA /* WayBillVC.swift */; };
 		70CF4F8C214B41120051A7CA /* WayBillVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CF4EF5214B410C0051A7CA /* WayBillVC.xib */; };
 		70CF4F8D214B41120051A7CA /* DeliveryTruckTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CF4EF8214B410C0051A7CA /* DeliveryTruckTypeCell.xib */; };
@@ -538,6 +538,7 @@
 		70648906215B6BE400F53BFC /* FocusPersonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusPersonCell.xib; sourceTree = "<group>"; };
 		70648909215B87E300F53BFC /* FocusLinesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusLinesCell.swift; sourceTree = "<group>"; };
 		7064890A215B87E300F53BFC /* FocusLinesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusLinesCell.xib; sourceTree = "<group>"; };
+		70727FDD21B8EBA600912C6C /* WayBillStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillStatusView.swift; sourceTree = "<group>"; };
 		707B71FD216F3C1F000F78F6 /* ResourceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceDetailVC.swift; sourceTree = "<group>"; };
 		707B71FE216F3C1F000F78F6 /* ResourceDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceDetailVC.xib; sourceTree = "<group>"; };
 		707B7201216F3C4A000F78F6 /* Resource_PriceInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource_PriceInfoCell.swift; sourceTree = "<group>"; };
@@ -607,7 +608,6 @@
 		70CF4EEE214B410C0051A7CA /* WayBillDetailStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillDetailStatusCell.swift; sourceTree = "<group>"; };
 		70CF4EF0214B410C0051A7CA /* WayBillDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillDetailVC.swift; sourceTree = "<group>"; };
 		70CF4EF1214B410C0051A7CA /* WayBillDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WayBillDetailVC.xib; sourceTree = "<group>"; };
-		70CF4EF3214B410C0051A7CA /* WayBillStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillStatusView.swift; sourceTree = "<group>"; };
 		70CF4EF4214B410C0051A7CA /* WayBillVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillVC.swift; sourceTree = "<group>"; };
 		70CF4EF5214B410C0051A7CA /* WayBillVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WayBillVC.xib; sourceTree = "<group>"; };
 		70CF4EF8214B410C0051A7CA /* DeliveryTruckTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryTruckTypeCell.xib; sourceTree = "<group>"; };
@@ -1296,7 +1296,7 @@
 		70CF4EF2214B410C0051A7CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				70CF4EF3214B410C0051A7CA /* WayBillStatusView.swift */,
+				70727FDD21B8EBA600912C6C /* WayBillStatusView.swift */,
 				7059F3F12192E7060053F1DE /* WaybillChangeLoadTimeView.swift */,
 				7059F3F32192E7580053F1DE /* WaybillChangeLoadTimeView.xib */,
 				7014087F219420DD000D5CB1 /* WaybillReturnListView.swift */,
@@ -1926,11 +1926,11 @@
 				70CF4F6C214B41110051A7CA /* GSQutationCell.swift in Sources */,
 				70ED02072195509C001DB4D1 /* WaybillInputAssembleAmountCell.swift in Sources */,
 				70CF4FC4214B41120051A7CA /* MyButton.swift in Sources */,
-				70CF4F8A214B41120051A7CA /* WayBillStatusView.swift in Sources */,
 				183FD2F021B4FCE80069D50F /* AlertManager.swift in Sources */,
 				70140886219422CE000D5CB1 /* WayBillReceiptItem.swift in Sources */,
 				70CF4FB5214B41120051A7CA /* BaseVC+Empty.swift in Sources */,
 				70CF4FC6214B41120051A7CA /* BaseBean.swift in Sources */,
+				70727FDE21B8EBA600912C6C /* WayBillStatusView.swift in Sources */,
 				70CF4F93214B41120051A7CA /* DeliveryModels.swift in Sources */,
 				70F40F28214B5BCC0054A175 /* ZTScrollNaviBarView.swift in Sources */,
 				70EA734B215DB2CB0020B8C3 /* Offer_NotDoneCell.swift in Sources */,

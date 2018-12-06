@@ -263,7 +263,7 @@ extension WayBillBaseVC : DropHintViewDataSource {
     
     func toConfigDropView(dropView:DropHintView) -> Void {
         dropView.dataSource = self
-        dropView.tabTitles(titles: ["报价时间","报价状态"])
+        dropView.tabTitles(titles: ["运单时间","运单状态"])
     }
     
     func dropHintView(dropHint: DropHintView, index: Int) -> UIView {
