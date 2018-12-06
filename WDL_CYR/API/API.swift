@@ -61,6 +61,7 @@ enum API {
     case deleteDriver(String)            // 删除运力（司机）
     case addDriver(String)               // 添加司机
     case addCapacityInformation(ZbnTransportCapacity) // 添加车辆
+    case dictionaryEntityByCode(BasicDictionaryKeyMode) // 获取数据字典接口
 }
 
 
@@ -112,7 +113,7 @@ func apiPath(api:API) -> String {
     case .addFollowShipper(_):
         return "/followShipper/addFollowShipper"
     case .findTransportCapacity(_):
-        return "/carrierOrderHall/findTransportCapacity"
+        return "/transportCapacity/findTransportCapacity"
     case .findCarrierInfoFee(_):
         return "/offer/findCarrierInfoFee"
     case .addOffer(_):
@@ -141,29 +142,31 @@ func apiPath(api:API) -> String {
     case .cancelOffer(_ , _):
         return "/offer/cancelOffer"
     case .findCapacityByDriverNameOrPhone(_):
-        return "/carrierOrderHall/findCapacityByDriverNameOrPhone"
+        return "/transportCapacity/findCapacityByDriverNameOrPhone"
     case .findCapacityByName(_):
-        return "/carrierOrderHall/findCapacityByName"
+        return "/transportCapacity/findCapacityByName"
     case .getCarrierInformation():
         return "/information/getCarrierInformation"
     case .zbnBondInformation():
         return "/wallet/zbnBondInformation"
     case .findCarInformation(_):
-        return "/carrierOrderHall/findCarInformation"
+        return "/transportCapacity/findCarInformation"
     case .findDriverInformation(_):
-        return "/carrierOrderHall/findDriverInformation"
+        return "/transportCapacity/findDriverInformation"
     case .markHasSeenMessage(_):
         return "/message/markMessage"
     case .uploadImage(_ , let mode):
         return "/commom/upload/file/" + mode.rawValue
     case .deleteTransportCapacity(_):
-        return "/carrierOrderHall/deleteTransportCapacity"
+        return "/transportCapacity/deleteTransportCapacity"
     case .deleteDriver(_):
-        return "/carrierOrderHall/deleteDriver"
+        return "/transportCapacity/deleteDriver"
     case .addDriver(_):
-        return "/carrierOrderHall/addDriver"
+        return "/transportCapacity/addDriver"
     case .addCapacityInformation(_):
-        return "/carrierOrderHall/addCapacityInformation"
+        return "/transportCapacity/addCapacityInformation"
+    case .dictionaryEntityByCode(_):
+        return "/app/common/dictionaryEntityByCode"
     }
 }
 
@@ -300,6 +303,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["phone":phone], encoding: URLEncoding.default)
     case .addCapacityInformation(let capacity):
         return .requestParameters(parameters: capacity.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
+    case .dictionaryEntityByCode(let code):
+        return .requestParameters(parameters: ["dataDictionaryTypeCode" : code.rawValue], encoding: URLEncoding.default)
     }
   
 }
@@ -320,7 +325,8 @@ func apiMethod(api:API) -> Moya.Method {
          .deleteTransportCapacity(_),
          .deleteDriver(_),
          .addDriver(_),
-         .findDriverInformation(_):
+         .findDriverInformation(_),
+         .dictionaryEntityByCode(_):
         return .get
     default:
         return .post

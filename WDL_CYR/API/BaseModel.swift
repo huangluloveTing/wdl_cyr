@@ -17,6 +17,9 @@ enum UploadImagTypeMode:String {
     case returnbill_path = "upload_transport_return_filePath"
 }
 
+enum BasicDictionaryKeyMode : String {
+    case VehicleType = "VehicleType" // 车辆类型
+}
 
 public protocol BaseResponse: HandyJSON {
     

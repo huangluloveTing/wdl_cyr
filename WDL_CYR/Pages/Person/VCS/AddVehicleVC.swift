@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AddVehicleVC: NormalBaseVC {
+    
+    private var currentCommitItem:ZbnTransportCapacity? // 当前提交车辆编辑提交数据
+    
+    public var editStatus:Bool = false
+    
+    private var typeModels:HallModels?
     
     enum AddVehicleHandleMode {
         case driverLicense      // 行驶证
@@ -42,12 +50,170 @@ class AddVehicleVC: NormalBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadVehicleType()
     }
 
     override func currentConfig() {
         bottomView.shadow(color: UIColor(hex: "000000"), offset: CGSize(width: 0, height: -2), opacity: 0.3, radius: 2)
         initTextField()
         initHandlePictureView()
+    }
+    
+    @IBAction func commitHandle(_ sender: Any) {
+        commitVehicleInfo()
+    }
+    override func bindViewModel() {
+        self.registerTextField.datePickerInput(mode: .date, dateFormatter: "yyyy-MM-dd", skip: 1)
+            .asObservable()
+            .subscribe(onNext: { [weak self](date) in
+                self?.currentCommitItem?.registrationDate = date * 1000
+            })
+            .disposed(by: dispose)
+        self.insValidTextField.datePickerInput(mode: .date, dateFormatter: "yyyy-MM-dd", skip: 1)
+            .asObservable()
+            .subscribe(onNext: { [weak self](date) in
+                self?.currentCommitItem?.insuranceExpirationDate = date * 1000
+            })
+            .disposed(by: dispose)
+        self.checkValidTextField.datePickerInput(mode: .date, dateFormatter: "yyyy-MM-dd", skip: 1)
+            .asObservable()
+            .subscribe(onNext: { [weak self](date) in
+                self?.currentCommitItem?.inspectionValidityDate = date * 1000
+            })
+            .disposed(by: dispose)
+        
+        self.vehicleNoTextField.rx.text.orEmpty.asObservable()
+            .subscribe(onNext: { [weak self](text) in
+                self?.currentCommitItem?.vehicleNo = text
+            })
+            .disposed(by: dispose)
+        self.vehicleTypeTextField.rx.text.orEmpty.asObservable()
+            .subscribe(onNext: { [weak self](text) in
+                self?.currentCommitItem?.vehicleType = text
+            })
+            .disposed(by: dispose)
+        self.ownTextField.rx.text.orEmpty.asObservable()
+            .subscribe(onNext: { [weak self](text) in
+                self?.currentCommitItem?.belongToCarrier = text
+            })
+            .disposed(by: dispose)
+        self.addressTextField.rx.text.orEmpty.asObservable()
+            .subscribe(onNext: { [weak self](text) in
+                self?.currentCommitItem?.address = text
+            })
+            .disposed(by: dispose)
+        self.useTypeTextField.rx.text.orEmpty.asObservable()
+            .subscribe(onNext: { [weak self](text) in
+                self?.currentCommitItem?.useProperty = text
+            })
+            .disposed(by: dispose)
+        self.vehicleIdTextField.rx.text.orEmpty.asObservable()
+            .subscribe(onNext: { [weak self](text) in
+                self?.currentCommitItem?.vehicleIdCode = text
+            })
+            .disposed(by: dispose)
+        self.vehicleEnginNoTextField.rx.text.orEmpty.asObservable()
+            .subscribe(onNext: { [weak self](text) in
+                self?.currentCommitItem?.engineNumber = text
+            })
+            .disposed(by: dispose)
+        self.volumnTextField.rx.text.orEmpty.asObservable()
+            .subscribe(onNext: { [weak self](text) in
+                self?.currentCommitItem?.vehicleVolume = text
+            })
+            .disposed(by: dispose)
+        self.lengthTextField.rx.text.orEmpty.asObservable()
+            .subscribe(onNext: { [weak self](text) in
+                self?.currentCommitItem?.vehicleLength = text
+            })
+            .disposed(by: dispose)
+        self.weightTextField.rx.text.orEmpty.asObservable()
+            .subscribe(onNext: { [weak self](text) in
+                self?.currentCommitItem?.vehicleWeight = text
+            })
+            .disposed(by: dispose)
+    }
+    
+    //MARK: - 判断是否是编辑
+    func currentIsEditVehicle() -> Bool {
+        if self.currentCommitItem == nil { // 当当前编辑对象为 nil , 即为添加新车辆 ， 返回false
+            return false
+        }
+        return true
+    }
+}
+
+extension AddVehicleVC {
+    //MARK: - 验证提交信息
+    func commitIsOk() -> Bool {
+        if (self.currentCommitItem?.vehicleNo.count ?? 0) <= 0 {
+            self.showWarn(warn: "请输入车辆号码", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.vehicleType.count ?? 0) <= 0 {
+            self.showWarn(warn: "请选择车辆类型", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.belongToCarrier.count ?? 0) <= 0 {
+            self.showWarn(warn: "请输入车辆所有人", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.address.count ?? 0) <= 0 {
+            self.showWarn(warn: "请输入住址", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.useProperty.count ?? 0) <= 0 {
+            self.showWarn(warn: "请输入使用性质", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.engineNumber.count ?? 0) <= 0 {
+            self.showWarn(warn: "请输入车辆号码", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.vehicleIdCode.count ?? 0) <= 0 {
+            self.showWarn(warn: "请输入车辆号码", complete: nil)
+            return false
+        }
+        
+        if (self.currentCommitItem?.registrationDate ?? 0) <= 0 {
+            self.showWarn(warn: "请选择注册日期", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.inspectionValidityDate ?? 0) <= 0 {
+            self.showWarn(warn: "请选择检验有效期", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.insuranceExpirationDate ?? 0) <= 0 {
+            self.showWarn(warn: "请选择保险到期日期", complete: nil)
+            return false
+        }
+        
+        if (self.currentCommitItem?.vehicleVolume.count ?? 0) <= 0 {
+            self.showWarn(warn: "请填写车辆体积", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.vehicleLength.count ?? 0) <= 0 {
+            self.showWarn(warn: "请填写车辆长度", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.vehicleWeight.count ?? 0) <= 0 {
+            self.showWarn(warn: "请填写车辆载重", complete: nil)
+            return false
+        }
+        
+        if (self.currentCommitItem?.drivingLicensePhoto.count ?? 0) <= 0 {
+            self.showWarn(warn: "请上传行驶证照片", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.insurancePhoto.count ?? 0) <= 0 {
+            self.showWarn(warn: "请上传保险单照片", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.vehiclePhoto.count ?? 0) <= 0 {
+            self.showWarn(warn: "请上传车辆照片", complete: nil)
+            return false
+        }
+        return true
     }
 }
 
@@ -72,19 +238,63 @@ extension AddVehicleVC {
         switch mode {
         case .driverLicense:
             Util.showImage(imageView: self.driverLicesImageView, imageUrl: imgUrl, placeholder: UIImage.init(named: "add_vehi_liens")!)
+            self.currentCommitItem?.drivingLicensePhoto = imgUrl
             break
         case .insuranceLicense:
             Util.showImage(imageView: self.insuranceImageView, imageUrl: imgUrl, placeholder: UIImage.init(named: "add_ins")!)
+            self.currentCommitItem?.insurancePhoto = imgUrl
             break
         default:
             Util.showImage(imageView: self.vehicleImageView, imageUrl: imgUrl, placeholder: UIImage.init(named: "add_vehi")!)
+            self.currentCommitItem?.vehiclePhoto = imgUrl
         }
+    }
+    
+    //MARK: - 配载车辆类型数据
+    func toConfigVehicleTypeData() -> [String] {
+        var items : [String] = []
+        self.typeModels?.VehicleType?.forEach({ (item) in
+            items.append(item.dictionaryName ?? " ")
+        })
+        return items
+    }
+    
+    //MARK: - 提交车辆信息
+    func commitVehicleInfo() -> Void {
+        if commitIsOk() == true {
+            self.showLoading()
+            BaseApi.request(target: API.addCapacityInformation((self.currentCommitItem)!), type: BaseResponseModel<String>.self)
+                .retry(5)
+                .subscribe(onNext: { [weak self](data) in
+                    self?.showSuccess(success: data.message, complete: {
+                        self?.pop()
+                    })
+                } ,onError: {[weak self] (error) in
+                    self?.showFail(fail: error.localizedDescription, complete: nil)
+                })
+                .disposed(by: dispose)
+        }
+    }
+    
+    //MARK: - 获取车辆类型
+    func loadVehicleType() -> Void {
+        BaseApi.request(target: API.dictionaryEntityByCode(BasicDictionaryKeyMode.VehicleType), type: BaseResponseModel<HallModels>.self)
+            .retry()
+            .subscribe(onNext: { [weak self](data) in
+                self?.typeModels = data.data
+                self?.vehicleTypeTextField.oneChooseInputView(titles: self?.toConfigVehicleTypeData())
+                    .disposed(by: self?.dispose ?? DisposeBag())
+            })
+            .disposed(by: dispose)
     }
 }
 
 extension AddVehicleVC {
     //MARK: - init views
     func initTextField() -> Void {
+        if self.currentCommitItem == nil {
+            self.currentCommitItem = ZbnTransportCapacity()
+        }
         self.vehicleNoTextField.titleTextField(title: "  车辆号码")
         self.vehicleTypeTextField.titleTextField(title: "  车辆类型" , indicator: true)
         self.ownTextField.titleTextField(title: "  所有人")

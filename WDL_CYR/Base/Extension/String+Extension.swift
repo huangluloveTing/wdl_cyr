@@ -90,4 +90,5 @@ extension String {
         return validIndex(original:original)
     }
     
+    //MARK: - 验证字符串是否是 长度不为 0 或者 不为 nil
 }
