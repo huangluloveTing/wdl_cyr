@@ -4,12 +4,13 @@
 //
 //  Created by 黄露 on 2018/10/5.
 //  Copyright © 2018年 yingli. All rights reserved.
-//
+//  公司认证申请
 
 import UIKit
-
+import RxSwift
 class AuthenEnterpriseVC: NormalBaseVC {
     
+    private var infoDispose:Disposable? = nil
     @IBOutlet weak var enterpriseNameTextField: UITextField!
     @IBOutlet weak var enterpriseSummerTextField: UITextField!
     @IBOutlet weak var legalNameTextField: UITextField!
@@ -43,5 +44,38 @@ class AuthenEnterpriseVC: NormalBaseVC {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    //提交申请
+    @IBAction func applyClick(_ sender: UIButton) {
+        self.applyRequest()
+    }
+    
 }
+
+extension AuthenEnterpriseVC{
+    //个人信息提交申请请求
+    func applyRequest() -> Void {
+        var query = ZbnCarrierInfo()
+        query.carrierType = 2//企业
+        query.legalPersonPhone = self.mobileTextField.text//手机号必须是法人字段，不然会覆盖
+         query.legalPerson = self.legalNameTextField.text//法人姓名
+        query.companyName = self.enterpriseNameTextField.text//企业名称
+         query.companyAbbreviation = self.enterpriseSummerTextField.text//企业简介
+        query.businessLicenseNo = self.businesslicenseLabel.text
+       //营业执照号
+        query.idCard = self.IDCardTextField.text
+        
+        query.address = self.addressTextField.text//联系地址
+        //图片
+        
+        self.infoDispose = BaseApi.request(target: API.carrierIdentifer(query), type: BaseResponseModel<Any>.self)
+            .subscribe(onNext: {  [weak self](data) in
+                self?.showSuccess(success: data.message, complete: {
+                    self?.pop(toRootViewControllerAnimation: true)
+                })
+                }, onError: { [weak self](error) in
+                    self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+    }
+    
+}
+

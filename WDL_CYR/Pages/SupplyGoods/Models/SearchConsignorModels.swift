@@ -86,3 +86,5 @@ struct CarrierInfoFee : HandyJSON {
     // 可支配金额
     var useableMoney : Float = 0
 }
+
+

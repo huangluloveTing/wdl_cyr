@@ -83,7 +83,6 @@ extension RechargeInlineVC : UITableViewDelegate , UITableViewDataSource {
         cell.rechargeClosure = {[weak self] (selectMoney , inputMoney) in
             self?.toRecharge(num: inputMoney ?? selectMoney)
             
-            
         }
         return cell
     }

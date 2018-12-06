@@ -38,7 +38,6 @@ enum API {
     case queryTransportDetail(String)       // 获取运单详情
     case designateWaybill(String , String , String)  // 指派运单
     case assembleWaybill(WaybillAssembleCommitModel) // 单车配载
-    
     case updatePassword(ModifyPasswordModel)    // 修改密码
     case updatePhone(ModityPhoneModel)          // 修改手机号码
     case assemblePlanWaybill([WaybillAssembleCommitModel]) // 多车配载
@@ -61,6 +60,8 @@ enum API {
     case deleteDriver(String)            // 删除运力（司机）
     case addDriver(String)               // 添加司机
     case addCapacityInformation(ZbnTransportCapacity) // 添加车辆
+    case carrierIdentifer(ZbnCarrierInfo)//承运人认证
+    
 }
 
 
@@ -164,6 +165,8 @@ func apiPath(api:API) -> String {
         return "/carrierOrderHall/addDriver"
     case .addCapacityInformation(_):
         return "/carrierOrderHall/addCapacityInformation"
+    case .carrierIdentifer(_):
+        return "/information/authentication"
     }
 }
 
@@ -300,6 +303,9 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["phone":phone], encoding: URLEncoding.default)
     case .addCapacityInformation(let capacity):
         return .requestParameters(parameters: capacity.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
+        
+    case .carrierIdentifer(let query):
+        return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     }
   
 }
