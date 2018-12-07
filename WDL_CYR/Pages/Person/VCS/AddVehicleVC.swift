@@ -12,7 +12,7 @@ import RxCocoa
 
 class AddVehicleVC: NormalBaseVC {
     
-    private var currentCommitItem:ZbnTransportCapacity? // 当前提交车辆编辑提交数据
+    public var currentCommitItem:ZbnTransportCapacity? // 当前提交车辆编辑提交数据
     
     public var editStatus:Bool = false
     
@@ -292,6 +292,7 @@ extension AddVehicleVC {
 extension AddVehicleVC {
     //MARK: - init views
     func initTextField() -> Void {
+        toInitInputContent()
         if self.currentCommitItem == nil {
             self.currentCommitItem = ZbnTransportCapacity()
         }
@@ -337,5 +338,32 @@ extension AddVehicleVC {
                 self?.uploadPictureToServer(image: image!, mode: .vehicleImage)
             })
         }
+    }
+    
+    //MARK: - 编辑时 ，初始数据
+    func toInitInputContent() -> Void {
+        self.vehicleNoTextField.text = self.currentCommitItem?.vehicleNo
+        self.vehicleTypeTextField.text = self.currentCommitItem?.vehicleType
+        self.ownTextField.text = self.currentCommitItem?.belongToCarrier
+        self.addressTextField.text = self.currentCommitItem?.address
+        self.useTypeTextField.text = self.currentCommitItem?.useProperty
+        self.vehicleIdTextField.text = self.currentCommitItem?.vehicleIdCode
+        self.vehicleEnginNoTextField.text = self.currentCommitItem?.engineNumber
+        if (self.currentCommitItem?.registrationDate ?? 0) > 0 {
+            self.registerTextField.text = Util.dateFormatter(date: (self.currentCommitItem?.registrationDate ?? 0) / 1000, formatter: "yyyy-MM-dd")
+        }
+        if (self.currentCommitItem?.inspectionValidityDate ?? 0) > 0 {
+            self.checkValidTextField.text = Util.dateFormatter(date: (self.currentCommitItem?.inspectionValidityDate ?? 0) / 1000, formatter: "yyyy-MM-dd")
+        }
+        if (self.currentCommitItem?.insuranceExpirationDate ?? 0) > 0 {
+            self.insValidTextField.text = Util.dateFormatter(date: (self.currentCommitItem?.insuranceExpirationDate ?? 0) / 1000, formatter: "yyyy-MM-dd")
+        }
+        self.volumnTextField.text = self.currentCommitItem?.vehicleVolume
+        self.lengthTextField.text = self.currentCommitItem?.vehicleLength
+        self.weightTextField.text = self.currentCommitItem?.vehicleWeight
+        
+        Util.showImage(imageView: self.driverLicesImageView, imageUrl: self.currentCommitItem?.drivingLicensePhoto, placeholder: UIImage.init(named: "add_vehi_liens")!)
+        Util.showImage(imageView: self.insuranceImageView, imageUrl: self.currentCommitItem?.insurancePhoto, placeholder: UIImage.init(named: "add_ins")!)
+        Util.showImage(imageView: self.vehicleImageView, imageUrl: self.currentCommitItem?.vehiclePhoto, placeholder: UIImage.init(named: "add_vehi")!)
     }
 }

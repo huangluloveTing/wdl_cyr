@@ -26,7 +26,7 @@ class AuthenIndividualInfoVC: NormalBaseVC {
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var handImageView: UIImageView!
     
-    private var zbnCarrierInfo:ZbnCarrierInfo?
+    public var zbnCarrierInfo:ZbnCarrierInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +41,7 @@ class AuthenIndividualInfoVC: NormalBaseVC {
     }
 
     override func bindViewModel() {
+        toInitInputInfo()
         if self.zbnCarrierInfo == nil {
             self.zbnCarrierInfo = ZbnCarrierInfo()
             self.zbnCarrierInfo?.carrierType = 1
@@ -174,5 +175,16 @@ extension AuthenIndividualInfoVC {
             self.zbnCarrierInfo?.idCardHandheld = imgUrl
             
         }
+    }
+    
+    //MARK: - 变更数据时 ， 赋值初始值
+    func toInitInputInfo() -> Void {
+        let info = self.zbnCarrierInfo
+        self.nameTextField.text = info?.carrierName
+        self.IDCardTextField.text = info?.idCard
+        self.mobileTextField.text = info?.cellPhone
+        Util.showImage(imageView: self.frontImageView, imageUrl: info?.idCardFrontage, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
+        Util.showImage(imageView: self.backImageView, imageUrl: info?.idCardOpposite, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
+        Util.showImage(imageView: self.handImageView, imageUrl: info?.idCardHandheld, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
     }
 }

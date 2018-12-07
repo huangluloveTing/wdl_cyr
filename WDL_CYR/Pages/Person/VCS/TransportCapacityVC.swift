@@ -143,7 +143,9 @@ extension TransportCapacityVC {
     
     //MARK: - 编辑车辆
     func toEditTruck(index:Int) -> Void {
-        
+        let addVC = AddVehicleVC()
+        addVC.currentCommitItem = self.vehicleLists[index]
+        self.pushToVC(vc: addVC, title: "添加车辆")
     }
 }
 

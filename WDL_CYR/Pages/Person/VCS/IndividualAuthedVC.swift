@@ -19,8 +19,7 @@ class IndividualAuthedVC: NormalBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        addRightBarbuttonItem(withTitle: "申请变更")
     }
 
     override func currentConfig() {
@@ -31,5 +30,11 @@ class IndividualAuthedVC: NormalBaseVC {
         self.nameLabel.text = info?.carrierName ?? " "
         self.phoneLabel.text = info?.cellPhone ?? " "
         self.idCardLabel.text = info?.idCard ?? " "
+    }
+    
+    override func zt_rightBarButtonAction(_ sender: UIBarButtonItem!) {
+        let autheVC = AuthenIndividualInfoVC()
+        autheVC.zbnCarrierInfo = WDLCoreManager.shared().userInfo
+        self.pushToVC(vc: autheVC, title: "我的认证")
     }
 }
