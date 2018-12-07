@@ -18,15 +18,16 @@ class AuthenInreviewVC: NormalBaseVC {
         super.viewDidLoad()
 
         //打电话
-
         self.callButton.rx.tap
             .subscribe(onNext: {
-                Util.toCallPhone(num: "0310 6591999")
+                Util.toCallPhone(num: KF_PHONE_NUM)
             }).disposed(by: disposeBag)
+        
+        
         
     }
     
-
+ 
     
 
 }

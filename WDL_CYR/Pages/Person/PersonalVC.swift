@@ -102,9 +102,16 @@ extension PersonalVC : UITableViewDelegate , UITableViewDataSource {
         // 认证i信息
         if indexPath.section == 1 && indexPath.row == 2 {
             if self.carrierInfo?.isAuth == .authed {
-                subTitle = "认证"
-            } else {
+                subTitle = "已认证"
+            }
+            if self.carrierInfo?.isAuth == .unAuth {
                 subTitle = "未认证"
+            }
+            if self.carrierInfo?.isAuth == .authing {
+                subTitle = "认证中"
+            }
+            if self.carrierInfo?.isAuth == .authFail {
+                subTitle = "认证失败"
             }
         }
         if indexPath.section == 2 && indexPath.row == 0 {
@@ -198,8 +205,7 @@ extension PersonalVC {
     
     // 去我的认证
     func toMyAuthenVC() -> Void {
-        let authenVC = MyAuthenVC()
-        self.pushToVC(vc: authenVC, title: "我的认证")
+        self.authStatusToPage()
     }
     
     //获取消息个数
@@ -230,17 +236,46 @@ extension PersonalVC {
             })
             .disposed(by: dispose)
     }
+  
     
     // 根据当前的认证状态，跳转到对应的页面
     func authStatusToPage() -> Void {
-//        let status = carrierInfo?.isAuth
-        
+        let status = carrierInfo?.isAuth
+        if status == .authed {
+            //已认证
+            if carrierInfo?.carrierType == 1 {
+                //1.个人
+                self.toIndividualAuthedPage()
+            }else{
+                //2.企业
+                self.toEnterpriseAuthedPage()
+            }
+            
+        }
+        if status == .unAuth {
+            // "未认证"
+           self.toGoAuthedPage()
+        }
+        if status == .authing {
+            // "认证中"
+            self.toAuthingPage()
+        }
+        if status == .authFail {
+            // "认证失败"
+            self.toAuthFailPage()
+        }
     }
     
     //MAR: - 去企业认证成功的页面
     func toEnterpriseAuthedPage() -> Void {
         let enterpriseVC = EnterpriseAuthedPage()
         self.pushToVC(vc: enterpriseVC, title: "认证")
+    }
+    
+    //MARK: - 未认证去成功的页面
+    func toGoAuthedPage() -> Void {
+        let mvc = MyAuthenVC()
+        self.pushToVC(vc: mvc, title: "认证")
     }
     
     //MARK: - 去个人认证成功的页面
@@ -252,6 +287,7 @@ extension PersonalVC {
     //MARK: - 去认证失败的页面
     func toAuthFailPage() -> Void{
         let failPage = AuthenFailVC()
+        
         self.pushToVC(vc: failPage, title: "我的认证")
     }
     

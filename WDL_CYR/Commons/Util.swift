@@ -36,6 +36,7 @@ class Util {
         }
     }
     
+    
     static func toCallPhone(num:String?) {
         guard let phone = num else {
             print("电话号码不存在")
@@ -46,6 +47,7 @@ class Util {
             UIApplication.shared.openURL(url)
         }
     }
+
     
     static func dateFormatter(date:TimeInterval,formatter:String = "yyyy-MM-dd") -> String {
         let toDate = Date(timeIntervalSince1970: date)

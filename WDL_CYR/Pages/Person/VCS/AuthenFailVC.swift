@@ -24,7 +24,9 @@ class AuthenFailVC: NormalBaseVC {
      
         //打电话
        let taps: Observable<Void> = callButton.rx.tap.asObservable()
-        taps.subscribe(onNext: {Util.toCallPhone(num: "0310 6591999") }).disposed(by: disposeBag)
+        taps.subscribe(onNext: {Util.toCallPhone(num: KF_PHONE_NUM) }).disposed(by: disposeBag)
+        
+        self.rejectLabel.text = "驳回原因：" + (WDLCoreManager.shared().userInfo?.authenticationMsg ?? "")
     }
     
     override func currentConfig() {
