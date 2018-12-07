@@ -198,8 +198,7 @@ extension PersonalVC {
     
     // 去我的认证
     func toMyAuthenVC() -> Void {
-        let authenVC = MyAuthenVC()
-        self.pushToVC(vc: authenVC, title: "我的认证")
+        authStatusToPage()
     }
     
     //获取消息个数
@@ -234,7 +233,7 @@ extension PersonalVC {
     // 根据当前的认证状态，跳转到对应的页面
     func authStatusToPage() -> Void {
 //        let status = carrierInfo?.isAuth
-        
+        toAuthFailPage()
     }
     
     //MAR: - 去企业认证成功的页面

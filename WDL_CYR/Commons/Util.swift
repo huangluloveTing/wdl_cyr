@@ -41,7 +41,8 @@ class Util {
             print("电话号码不存在")
             return
         }
-        let url = URL(string:  "telprompt:"+phone)!
+        let newPhone = phone.replacingOccurrences(of: " ", with: "")
+        let url = URL(string:  "telprompt:" + newPhone)!
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.openURL(url)
         }
