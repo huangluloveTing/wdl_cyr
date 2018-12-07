@@ -74,6 +74,7 @@ extension AppDelegate : JPUSHRegisterDelegate {
             JPUSHService.handleRemoteNotification(userInfo)
         }
         //角标清空
+        NotificationCenter.default.post(name: .init(PUSH_MESSAGE_VALUE), object: nil, userInfo: nil)
         JPUSHService.setBadge(0)
         UIApplication.shared.applicationIconBadgeNumber = 0
         completionHandler()
