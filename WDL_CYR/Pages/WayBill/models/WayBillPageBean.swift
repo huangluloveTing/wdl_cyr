@@ -79,8 +79,8 @@ struct TransactionInformation : HandyJSON {
     var carrierName : String?   // (string): 承运人姓名 ,
     var carrierType :String?    // (string, optional),
     var cellPhone :String?      // (string): 承运人手机号 ,
-    var consigneeName : String? // (string, optional),
-    var consigneePhone :String? // (string, optional),
+    var consigneeName : String? // (string, optional),收货人
+    var consigneePhone :String? // (string, optional), 收货联系人电话
     var consignorName :String?  // (string): 拖运人名称 ,
     var consignorNo : String?   // (string): 托运人ID ,
     var createTime : String?    // (string, optional),
