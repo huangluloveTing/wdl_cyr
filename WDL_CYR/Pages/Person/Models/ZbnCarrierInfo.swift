@@ -34,11 +34,16 @@ struct ModityPhoneModel : HandyJSON {
 
 
 enum CarrierAuthMode : Int, HandyJSONEnum { // 承运人认证状态
-    case authed = 1    // 已认证
+    case authed = 3    // 已认证
     case unAuth = 0    // 未认证
+    case authing = 1    // 认证中
+    case authFail = 2    // 驳回，认证失败
+   
 }
 
 struct ZbnCarrierInfo: HandyJSON {
+    
+    var authenticationMsg: String?//认证错误信息
     var activityRate : String? // (string): 活跃度 ,
     var addedCount : Int = 0 // (integer): 承运人被添加次数 ,
     var address : String? // (string): 地址 ,
@@ -67,7 +72,7 @@ struct ZbnCarrierInfo: HandyJSON {
     var idCardFrontage : String? // (string): 身份证正面照 ,
     var idCardHandheld : String? // (string): 手持身份证照 ,
     var idCardOpposite : String? // (string): 身份证背面照 ,
-    var isAuth : CarrierAuthMode = .unAuth // (integer): 是否认证 0=未认证 1=认证 ,
+    var isAuth : CarrierAuthMode = .unAuth // (integer): 是否认证 0=未认证 1=认证 ,2=驳回 3=通过 4=冻结,
     var jpushAlias : String? // (string): 极光推送alias ,
     var jpushTag : String? // (string): 极光推送tag ,
     var lastTransportTime : TimeInterval? // (string): 最后一次承运时间 ,

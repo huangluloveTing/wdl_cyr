@@ -83,14 +83,6 @@ extension MyAuthenVC {
         
         let individualAuthenVC = AuthenIndividualInfoVC()
         self.push(vc: individualAuthenVC, title: "我的认证")
-//        正在审核
-//        let vc = AuthenInreviewVC()
-//         审核失败
-//         let vc = AuthenFailVC()
-//        self.push(vc: vc, title: "我的认证")
-        
-//        let vc = AboutZbnVC()
-//        self.pushToVC(vc: vc, title: "关于我们")
     
     }
     

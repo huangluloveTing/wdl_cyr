@@ -23,7 +23,4 @@ class AuthenInreviewVC: NormalBaseVC {
                 Util.toCallPhone(num: "0310 6591999")
             }).disposed(by: disposeBag)
     }
-
-    
-
 }
