@@ -294,12 +294,12 @@ extension GSDetailBaseVC {
 extension GSDetailBaseVC {
     
     //MARK: - 获取其他人的报价
-    func loadOtherInfo(hallId:String? , closure:(([ZbnOfferModel]? , Error?) -> ())?) -> Void {
-        BaseApi.request(target: API.getOtherOfferByOrderHallId(hallId ?? ""), type: BaseResponseModel<[ZbnOfferModel]>.self)
-            .retry()
+    func loadOtherInfo(model:OfferOrderHallResultApp? , closure:(([ZbnOfferModel]? , Error?) -> ())?) -> Void {
+        BaseApi.request(target: API.getOtherOfferByOrderHallId(model!), type: BaseResponseModel<Any>.self)//[ZbnOfferModel]
             .subscribe(onNext: { (data) in
+                print("报价人信息===\(data)")
                 if let closure = closure {
-                    closure(data.data ?? [] , nil)
+//                    closure(data.data ?? [] , nil)
                 }
             }, onError: { (error) in
                 if let closure = closure {

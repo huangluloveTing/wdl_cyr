@@ -47,7 +47,7 @@ struct CarrierQueryOrderHallResult : HandyJSON {
     var packageType : String = "" // (string): 包装类型 ,
     var pageNum : Int = 0 // (integer): 当前页数 ,
     var pageSize : Int = 0 // (integer): 页面大小 ,
-    var isOffer : String? // (string, optional): 不为空，表示该货源已经报价 ,
+    var isOffer : String? // (string, optional): 是否报价不为空，表示该货源已经报价 ,
     var payType : String = "" // (string, optional),
     var publishTime : TimeInterval = 0 // (string): 发布时间 ,
 //    var refercnecePriceIsVisable : String = "" // (string, optional), 参考价是否可见，1=可见 2，不可见

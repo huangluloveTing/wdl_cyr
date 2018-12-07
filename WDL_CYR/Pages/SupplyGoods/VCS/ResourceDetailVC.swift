@@ -19,15 +19,24 @@ class ResourceDetailVC: NormalBaseVC {
         super.viewDidLoad()
         self.configSubViews()
         self.registerAllCells()
+       
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.bottomButtom(titles: ["我要报价"], targetView: self.tableView) { [weak self](_) in
+        if ((self.resource?.resource?.isOffer) != nil) {
+            //不为空表示是已经报价
+           self.bottomButtom(titles: [], targetView: self.tableView)
+      
+        }else{
+    
+            self.bottomButtom(titles: ["我要报价"], targetView: self.tableView) { [weak self](_) in
             self?.toReportPrice()
         }
-    }
+        
+        }
     
+    }
     //MARK: route
     override func routeName(routeName: String, dataInfo: Any?) {
         if routeName == "\(Resource_GoodsInfoCell.self)" {
