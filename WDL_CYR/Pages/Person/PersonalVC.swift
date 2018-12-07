@@ -205,7 +205,7 @@ extension PersonalVC {
     
     // 去我的认证
     func toMyAuthenVC() -> Void {
-        self.authStatusToPage()
+        authStatusToPage()
     }
     
     //获取消息个数
