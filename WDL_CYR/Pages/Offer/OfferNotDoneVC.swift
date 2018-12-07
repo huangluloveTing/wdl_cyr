@@ -35,7 +35,6 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.defineTableView(tableView: tableView, canRefresh: true, canLoadMore: true)
-        self.configDropView(dropView: self.dropHintView)
         self.configTableView()
         self.tableView.beginRefresh()
     }
@@ -92,6 +91,11 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     
     override func callBackForRefresh(param: Any?) {
         self.loadOffers()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.configDropView(dropView: self.dropHintView)
     }
 }
 

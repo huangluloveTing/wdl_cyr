@@ -32,7 +32,6 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.addSearchBar(to: self.tableView, placeHolder: "搜索托运人/承运人/姓名/电话号码")
-        self.toConfigDropView(dropView: self.dropView)
         self.setCurrentTabStatus(tab: .Done)
         self.configTableView(tableView: tableView)
         self.configHeaderAndFooterRefresh()
@@ -72,6 +71,11 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
     
     override func curreenStatusTitles() -> [String] {
         return ["全部","已签收"]
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.toConfigDropView(dropView: self.dropView)
     }
 }
 

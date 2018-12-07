@@ -29,7 +29,6 @@ class TransactionDetailsVC: NormalBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView()
-        toConfigDropView(dropView: dropView)
         //交易明细数据请求
         self.loadDealDetailRequest()
     }
@@ -87,6 +86,11 @@ class TransactionDetailsVC: NormalBaseVC {
         }
         self.tableView.beginRefresh()
         self.dropView.hiddenDropView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        toConfigDropView(dropView: dropView)
     }
 }
 

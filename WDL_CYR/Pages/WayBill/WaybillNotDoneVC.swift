@@ -32,7 +32,6 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.toConfigDropView(dropView: self.dropView)
         self.setCurrentTabStatus(tab: .Doing)
         self.configTableView(tableView: tableView)
         self.configHeaderAndFooterRefresh()
@@ -84,6 +83,11 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
     
     override func curreenStatusTitles() -> [String] {
         return ["全部","待办单","待起运","运输中","待签收"]
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        toConfigDropView(dropView: self.dropView)
     }
 }
 

@@ -35,7 +35,6 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.addSearchBar(to: self.tableView, placeHolder: "搜索托运人/承运人/姓名/电话号码")
-        self.toConfigDropView(dropView: self.dropView)
         self.configTableView(tableView: self.tableView)
         self.loadUnAssembleDatas(refresh: true)
         self.setCurrentTabStatus(tab: .UnAssemble)
@@ -76,6 +75,11 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
     
     override func curreenStatusTitles() -> [String] {
         return ["不限","待办单"]
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        toConfigDropView(dropView: self.dropView)
     }
 }
 
