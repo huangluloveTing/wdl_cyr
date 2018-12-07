@@ -31,7 +31,10 @@ enum API {
     case findCarrierInfoFee(String)         // 报价时，获取承运人保证金、服务费等信息
     case addOffer(CarrierOfferCommitModel)  // 承运人报价
     case selectOwnOffer(OfferQueryModel)    // 查询承运人自己的报价
-    case getOtherOfferByOrderHallId(String) // 根据货源id 获取 其他人的报价
+//    case getOtherOfferByOrderHallId(String) // 根据货源id 获取 其他人的报价
+    
+    case getOtherOfferByOrderHallId(OfferOrderHallResultApp) // 根据货源id 获取 其他人的报价
+    
     case getOfferByOrderHallId(OrderHallOfferQueryModel) // 根据货源ID获取报价详情
     case ownTransportPage(QuerytTransportListBean) // 获取我的运单列表
     case carrierAllButtonAcceptTransportState(Int, TimeInterval?, String , String?)//承运人操作运单（拒绝，接受，取消运输，继续运输）
@@ -274,9 +277,13 @@ func apiTask(api:API) -> Task {
         
     case .cancelFouceCarrier(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
+      
+    
+    case .getOtherOfferByOrderHallId(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
         
-    case .getOtherOfferByOrderHallId(let hallId):
-        return .requestParameters(parameters: ["hallId": hallId], encoding: JSONEncoding.default)
+//    case .getOtherOfferByOrderHallId(let hallId):
+//        return .requestParameters(parameters: ["hallId": hallId], encoding: JSONEncoding.default)
     case .cancelOffer(let hallId , let offerId):
         return .requestParameters(parameters: ["hallId": hallId , "id":offerId], encoding: JSONEncoding.default)
     case .findCapacityByDriverNameOrPhone(let nameOrPhone):

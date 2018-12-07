@@ -22,6 +22,9 @@ enum WDLOfferDealStatus : Int , HandyJSONEnum {
 
 struct OfferOrderHallResultApp : HandyJSON {
     
+    
+    // 自己添加的
+    var hallId : String = ""
     // 自动成交时间间隔（小时）
     var autoTimeInterval : Int = 0
     // 竞价方式 1=自由 2=指派

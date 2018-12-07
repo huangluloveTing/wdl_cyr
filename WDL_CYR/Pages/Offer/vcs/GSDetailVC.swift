@@ -150,7 +150,9 @@ extension GSDetailVC {
     
     //MARK: - 获取其他人报价信息
     func loadOffer() -> Void {
-        self.loadOtherInfo(hallId: self.offer?.id) { (offers, error) in
+        let hallId = self.offer?.id ?? ""
+        self.offer?.hallId = hallId
+        self.loadOtherInfo(model: self.offer) { (offers, error) in
             guard let others = offers else {
                 return
             }
