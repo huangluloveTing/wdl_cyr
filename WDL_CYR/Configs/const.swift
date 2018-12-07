@@ -12,6 +12,7 @@ let KF_PHONE_NUM = "03106591999"  // 客服电话
 let BUTTON_FONT = UIFont.systemFont(ofSize: 16)
 let IPHONE_WIDTH = UIScreen.main.bounds.size.width
 let IPHONE_HEIGHT = UIScreen.main.bounds.size.height
+let IPHONE_RATE = (IPHONE_WIDTH / 375.0) > 1 ? 1 : (IPHONE_WIDTH / 375.0)
 
 let GAODE_MAP_KEY = "8e99eeada50ef322b5c993eb92acffd6"
 
