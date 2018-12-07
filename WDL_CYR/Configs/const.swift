@@ -14,6 +14,7 @@ let IPHONE_WIDTH = UIScreen.main.bounds.size.width
 let IPHONE_HEIGHT = UIScreen.main.bounds.size.height
 let IPHONE_RATE = (IPHONE_WIDTH / 375.0) > 1 ? 1 : (IPHONE_WIDTH / 375.0)
 
+
 let GAODE_MAP_KEY = "8e99eeada50ef322b5c993eb92acffd6"
 
 
@@ -29,4 +30,8 @@ let HOST = "http://182.150.21.104:58092/zbn-web"
 //let HOST = "http://172.16.59.47:8081/zbn-web"
 //zhaoxiaoyang
 //let HOST = "http://172.16.8.52:8081/zbn-web"
+
+//MARK: - 通知中心
+let PUSH_MESSAGE_VALUE = "PUSH_MESSAGE_VALUE"
+
 

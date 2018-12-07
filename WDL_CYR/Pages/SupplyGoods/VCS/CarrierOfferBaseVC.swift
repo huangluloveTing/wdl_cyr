@@ -20,9 +20,8 @@ class CarrierOfferBaseVC: NormalBaseVC {
 extension CarrierOfferBaseVC {
     //MARK: - 报价时，获取承运人保证金、服务费等信息
     func loadCarrierInfo(hallId:String , closure:((CarrierInfoFee? , Error?)->())? ) -> Void {
-       let ob =  BaseApi.request(target: API.findCarrierInfoFee(hallId), type: BaseResponseModel<CarrierInfoFee>.self)
-            .share(replay: 1)
-        ob.throttle(1, scheduler: MainScheduler.instance).retry(10)
+       BaseApi.request(target: API.findCarrierInfoFee(hallId), type: BaseResponseModel<CarrierInfoFee>.self)
+            .share(replay: 1).retry(20)
             .subscribe(onNext: { (data) in
                 if let closure = closure {
                     closure(data.data , nil)

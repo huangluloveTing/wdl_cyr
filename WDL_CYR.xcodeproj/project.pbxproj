@@ -168,6 +168,7 @@
 		7092932A21AF9614005E8DA6 /* TransportUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7092932921AF9614005E8DA6 /* TransportUtil.swift */; };
 		70A024A12192704F00A9ECC2 /* WaybillNoHandleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */; };
 		70A024A22192704F00A9ECC2 /* WaybillNoHandleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */; };
+		70A21D7A21BA6AE5001D5ECC /* WDLNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A21D7921BA6AE5001D5ECC /* WDLNotificationManager.swift */; };
 		70A57E3121B672B600DEEA2C /* BaseVC+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A57E3021B672B500DEEA2C /* BaseVC+Picker.swift */; };
 		70A57E8A21B6760A00DEEA2C /* AddModifyPayPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A57E8921B6760900DEEA2C /* AddModifyPayPasswordVC.xib */; };
 		70C7CB28216F74ED00C10AC4 /* ChooseOfferTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7CB26216F74ED00C10AC4 /* ChooseOfferTypeVC.swift */; };
@@ -560,6 +561,7 @@
 		7092932921AF9614005E8DA6 /* TransportUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportUtil.swift; sourceTree = "<group>"; };
 		70A0249F2192704F00A9ECC2 /* WaybillNoHandleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillNoHandleCell.swift; sourceTree = "<group>"; };
 		70A024A02192704F00A9ECC2 /* WaybillNoHandleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillNoHandleCell.xib; sourceTree = "<group>"; };
+		70A21D7921BA6AE5001D5ECC /* WDLNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDLNotificationManager.swift; sourceTree = "<group>"; };
 		70A57E3021B672B500DEEA2C /* BaseVC+Picker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseVC+Picker.swift"; sourceTree = "<group>"; };
 		70A57E8921B6760900DEEA2C /* AddModifyPayPasswordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddModifyPayPasswordVC.xib; sourceTree = "<group>"; };
 		70C7CB26216F74ED00C10AC4 /* ChooseOfferTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOfferTypeVC.swift; sourceTree = "<group>"; };
@@ -1532,6 +1534,7 @@
 				70CF4F54214B410F0051A7CA /* Regx.swift */,
 				70CF4F55214B410F0051A7CA /* DropViewManage.swift */,
 				7092932921AF9614005E8DA6 /* TransportUtil.swift */,
+				70A21D7921BA6AE5001D5ECC /* WDLNotificationManager.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -1866,6 +1869,7 @@
 				70D8BC2221672D3C000522E0 /* TransportDriverCell.swift in Sources */,
 				70CF4F97214B41120051A7CA /* PlaceChooiceView.swift in Sources */,
 				70CF4F95214B41120051A7CA /* DeliveryTruckTypeView.swift in Sources */,
+				70A21D7A21BA6AE5001D5ECC /* WDLNotificationManager.swift in Sources */,
 				70CF4FD2214B41120051A7CA /* Regx.swift in Sources */,
 				70648900215B45FA00F53BFC /* ResourceContainerVC.swift in Sources */,
 				707B71FF216F3C1F000F78F6 /* ResourceDetailVC.swift in Sources */,
