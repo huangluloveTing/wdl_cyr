@@ -16,7 +16,7 @@ class AuthenEnterpriseVC: NormalBaseVC {
         case WholeImage     //手持身份证
     }
     
-    private var zbnCarrierInfo:ZbnCarrierInfo?
+    public var zbnCarrierInfo:ZbnCarrierInfo?
     
     private var infoDispose:Disposable? = nil
     @IBOutlet weak var enterpriseNameTextField: UITextField!
@@ -55,6 +55,7 @@ class AuthenEnterpriseVC: NormalBaseVC {
     }
     
     override func bindViewModel() {
+        toInitInputInfo()
         if self.zbnCarrierInfo == nil {
             self.zbnCarrierInfo?.carrierType = 2
         }
@@ -222,5 +223,20 @@ extension AuthenEnterpriseVC {
             return false
         }
         return true
+    }
+    
+    //MARK: - 变更数据时 ， 赋值初始值
+    func toInitInputInfo() -> Void {
+        let info = self.zbnCarrierInfo
+        self.enterpriseNameTextField.text = info?.companyName
+        self.enterpriseSummerTextField.text = info?.companyAbbreviation
+        self.legalNameTextField.text = info?.legalPerson
+        self.IDCardTextField.text = info?.idCard
+        self.businesslicenseLabel.text = info?.businessLicenseNo
+        self.addressTextField.text = info?.address
+        self.mobileTextField.text = info?.cellPhone
+        Util.showImage(imageView: self.frontImageView, imageUrl: info?.idCardFrontage, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
+        Util.showImage(imageView: self.backImageView, imageUrl: info?.idCardOpposite, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
+        Util.showImage(imageView: self.handImageView, imageUrl: info?.idCardHandheld, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
     }
 }

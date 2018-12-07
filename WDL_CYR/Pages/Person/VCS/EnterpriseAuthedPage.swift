@@ -24,8 +24,7 @@ class EnterpriseAuthedPage: NormalBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        addRightBarbuttonItem(withTitle: "申请变更")
     }
 
     override func currentConfig() {
@@ -40,5 +39,12 @@ class EnterpriseAuthedPage: NormalBaseVC {
         self.licenseLabel.text = info?.businessLicenseNo ?? " "
         self.addressLabel.text = info?.address ?? " "
         self.phoneLabel.text = info?.cellPhone ?? " "
+    }
+    
+    override func zt_rightBarButtonAction(_ sender: UIBarButtonItem!) {
+        let info = WDLCoreManager.shared().userInfo
+        let autheVC = AuthenEnterpriseVC()
+        autheVC.zbnCarrierInfo = info
+        self.pushToVC(vc: autheVC, title: "我的认证")
     }
 }
