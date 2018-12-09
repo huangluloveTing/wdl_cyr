@@ -714,6 +714,25 @@ extension WaybillDetailBaseVC {
     //MARK: - 申请签收
     func toReportSign() -> Void {
         print("申请签收")
+        let returnImgList = currentReturnLists().map { (imgReturn) -> String in
+            return imgReturn.returnBillUrl ?? ""
+        }
+        let transportNo = self.currentInfo?.transportNo ?? ""
+        var halllReturnVo = OrderHallReturnVo()
+        let hallId = self.waybillInfo?.hallId ?? ""
+        halllReturnVo.imageUrl = returnImgList
+        halllReturnVo.transportNo = transportNo
+        self.showLoading()
+        BaseApi.request(target: API.addOrderHallReturn(halllReturnVo), type: BaseResponseModel<String>.self)
+            .retry(5)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess(success: data.message, complete: {
+                    self?.loadDetailData(hallId: hallId)
+                })
+            }, onError: { (error) in
+                self.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
     }
 }
 
