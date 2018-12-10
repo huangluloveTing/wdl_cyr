@@ -47,7 +47,7 @@ extension WayBillCommentVC {
     
     func toCommit() -> Void {
         var evaluate = ZbnEvaluateVo()
-        evaluate.evaluateTo = 1
+        evaluate.evaluateTo = 2
         evaluate.transportNo = self.pageInfo?.transportNo ?? ""
         evaluate.logisticsServicesScore = Int(self.commitModel.logicScore)
         evaluate.serviceAttitudeScore = Int(self.commitModel.serviceScore)
