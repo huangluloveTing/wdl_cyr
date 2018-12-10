@@ -31,7 +31,7 @@ class BaseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = false
-        
+        self.registerMessageNotification()
         self.view.backgroundColor = UIColor(hex: COLOR_BACKGROUND)
         self.currentConfig()
         self.bindViewModel()
@@ -76,6 +76,11 @@ class BaseVC: UIViewController {
     
     // 页面返回回调的其他操作
     func callBackForOtherHandle(param:Any?) -> Void {
+        
+    }
+    
+    //MARK: - 消息接受 回调
+    func receiveMessageResultHandler() -> Void {
         
     }
 }
@@ -296,6 +301,16 @@ extension BaseVC {
     }
     func showWebImages(imgs:[String] ,imageSuperView:UIView) -> Void {
         PictureBroweManager.shard().showWebPictures(webItems: imgs, imageSuperView: imageSuperView)
+    }
+}
+
+extension BaseVC {
+    func registerMessageNotification() -> Void {
+        NotificationCenter.default.addObserver(self, selector: #selector(receiveMessegeHandler), name: .init(PUSH_MESSAGE_VALUE), object: nil)
+    }
+    
+    @objc private func receiveMessegeHandler() {
+        receiveMessageResultHandler()
     }
 }
 

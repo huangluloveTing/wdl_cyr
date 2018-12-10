@@ -12,6 +12,8 @@ let KF_PHONE_NUM = "03106591999"  // 客服电话
 let BUTTON_FONT = UIFont.systemFont(ofSize: 16)
 let IPHONE_WIDTH = UIScreen.main.bounds.size.width
 let IPHONE_HEIGHT = UIScreen.main.bounds.size.height
+let IPHONE_RATE = (IPHONE_WIDTH / 375.0) > 1 ? 1 : (IPHONE_WIDTH / 375.0)
+
 
 let GAODE_MAP_KEY = "8e99eeada50ef322b5c993eb92acffd6"
 
@@ -21,12 +23,16 @@ let JPushAppKey = "db2771dd3e1276628b07fe23"
 let JPushMasterSecret = "2a32fcb079991db342500952"
 
 //外网测试
-//let HOST = "http://182.150.21.104:58092/zbn-web"
+let HOST = "http://182.150.21.104:58092/zbn-web"
 
 //本地测试
 //liaobing
 
-let HOST = "http://172.16.58.15:8081/zbn-web"
+//let HOST = "http://172.16.58.15:8081/zbn-web"
 //zhaoxiaoyang
 //let HOST = "http://172.16.8.52:8081/zbn-web"
+
+//MARK: - 通知中心
+let PUSH_MESSAGE_VALUE = "PUSH_MESSAGE_VALUE"
+
 

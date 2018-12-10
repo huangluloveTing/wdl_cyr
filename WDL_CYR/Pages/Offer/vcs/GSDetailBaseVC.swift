@@ -295,11 +295,11 @@ extension GSDetailBaseVC {
     
     //MARK: - 获取其他人的报价
     func loadOtherInfo(model:OfferOrderHallResultApp? , closure:(([ZbnOfferModel]? , Error?) -> ())?) -> Void {
-        BaseApi.request(target: API.getOtherOfferByOrderHallId(model!), type: BaseResponseModel<Any>.self)//[ZbnOfferModel]
+        BaseApi.request(target: API.getOtherOfferByOrderHallId(model!), type: BaseResponseModel<PageInfo<ZbnOfferModel>>.self)//[ZbnOfferModel]
             .subscribe(onNext: { (data) in
                 print("报价人信息===\(data)")
                 if let closure = closure {
-//                    closure(data.data ?? [] , nil)
+                    closure(data.data?.list ?? [] , nil)
                 }
             }, onError: { (error) in
                 if let closure = closure {

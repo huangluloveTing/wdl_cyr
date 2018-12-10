@@ -15,7 +15,7 @@ import HandyJSON
 
 struct BaseApi {
     
-    private static let provider = MoyaProvider<API>( requestClosure:requestClosure,plugins: [])
+    private static let provider = MoyaProvider<API>(endpointClosure: myEndPoint ,requestClosure:requestClosure,plugins: [MyPlugins()])
     
     static func request<T: BaseResponse>(target:API, type:T.Type) -> Observable<T> {
         let observable = provider.rx.request(target)
@@ -26,13 +26,13 @@ struct BaseApi {
 }
 
 func myEndPoint(target:TargetType) -> Endpoint {
-    let endPoint = Endpoint(url: target.baseURL.absoluteString,
+    let endPoint = Endpoint(url: target.baseURL.absoluteString + target.path,
                             sampleResponseClosure: { () -> EndpointSampleResponse in
                                 return .networkResponse(200, target.sampleData)
                             },
                             method: target.method,
                             task: target.task,
-                            httpHeaderFields: [String: String]())
+                            httpHeaderFields: target.headers)
     return endPoint
 }
 
@@ -45,7 +45,8 @@ func requestClosure(endPoint:Endpoint , done:MoyaProvider<API>.RequestResultClos
         #if DEBUG
         print("parameters : \(String(describing: String(data: request.httpBody ?? Data(), encoding: .utf8)))")
         print("headers : \(request.allHTTPHeaderFields ?? Dictionary())")
-        print("uir: \(request.url?.absoluteString ?? "")")
+        print("urL: \(request.url?.absoluteString ?? "")")
+        print("method : \(request.httpMethod ?? "")")
         #endif
         done(.success(request))
     }
@@ -55,16 +56,19 @@ func requestClosure(endPoint:Endpoint , done:MoyaProvider<API>.RequestResultClos
 }
 
 struct MyPlugins: PluginType {
+    
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
         print("headers: ",request.allHTTPHeaderFields ?? Dictionary())
         return request
     }
+    
     func willSend(_ request: RequestType, target: TargetType) {
         
     }
     func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
         
     }
+    
     func process(_ result: Result<Moya.Response, MoyaError>, target: TargetType) -> Result<Moya.Response, MoyaError> {
         return result
     }

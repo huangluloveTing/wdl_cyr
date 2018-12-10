@@ -34,13 +34,21 @@ class GSDetailVC: GSDetailBaseVC {
     //MARK: overrride
     // 取消报价
     override func cancelOffer() -> Void {
-        self.cancelOfferHandle(hallId: self.offer?.id ?? "", offerId: self.offer?.offerId ?? "")
+        AlertManager.showCustomTitleAndContentAlert(context: self, actionTitles: ["取消" , "确定"], title: "", content: "确定取消该报价?") {[weak self] (index) in
+            if index == 1 {
+                self?.cancelOfferHandle(hallId: self?.offer?.id ?? "", offerId: self?.offer?.offerId ?? "")
+            }
+        }
     }
      // 重新报价
     override func toOfferAgain() -> Void {
-        var resource = ResourceDetailUIModel()
-        resource.resource = CarrierQueryOrderHallResult.deserialize(from: self.offer?.toJSONString())
-        self.toChooseOfferType(resource: resource)
+        AlertManager.showCustomTitleAndContentAlert(context: self, actionTitles: ["取消" , "确定"], title: "", content: "确定重新报价?") {[weak self] (index) in
+            if index == 1 {
+                var resource = ResourceDetailUIModel()
+                resource.resource = CarrierQueryOrderHallResult.deserialize(from: self?.offer?.toJSONString())
+                self?.toChooseOfferType(resource: resource)
+            }
+        }
     }
     
     // 竞标中 竞标中的倒计时

@@ -116,6 +116,7 @@ extension OfferNoTruckVC {
                 self?.showFail(fail: error.localizedDescription, complete: {
                     self?.pop()
                 })
+                return
             }
             self?.hiddenToast()
             self?.carrierInfo = info

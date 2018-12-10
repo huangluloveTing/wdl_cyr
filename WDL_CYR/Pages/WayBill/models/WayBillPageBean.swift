@@ -180,3 +180,8 @@ struct ZbnEvaluate  : HandyJSON {
     var commonts : String?
     var createTime : TimeInterval = 0 // (string): 时间 ,
 }
+
+struct OrderHallReturnVo : HandyJSON {
+    var imageUrl:[String] = []   // 回单图片地址 ,
+    var transportNo : String = "" //(string): 运单编码省
+}

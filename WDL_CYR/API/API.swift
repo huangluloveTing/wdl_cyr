@@ -66,6 +66,7 @@ enum API {
     case addCapacityInformation(ZbnTransportCapacity) // 添加车辆
     case dictionaryEntityByCode(BasicDictionaryKeyMode) // 获取数据字典接口
     case carrierIdentifer(ZbnCarrierInfo)//承运人认证
+    case addOrderHallReturn(OrderHallReturnVo) // 申请签收
 }
 
 
@@ -173,6 +174,8 @@ func apiPath(api:API) -> String {
         return "/app/common/dictionaryEntityByCode"
     case .carrierIdentifer(_):
         return "/information/authentication"
+    case .addOrderHallReturn(_):
+        return "/carrierTransport/addOrderHallReturn"
     }
 }
 
@@ -319,6 +322,8 @@ func apiTask(api:API) -> Task {
     case .dictionaryEntityByCode(let code):
         return .requestParameters(parameters: ["dataDictionaryTypeCode" : code.rawValue], encoding: URLEncoding.default)
     case .carrierIdentifer(let query):
+        return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
+    case .addOrderHallReturn(let query):
         return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     }
   
