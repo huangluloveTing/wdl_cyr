@@ -33,6 +33,7 @@ extension GSDetail_OfferInfoCell {
         self.possibleLabel.text = myOffer.dealPossible
         self.unitPriceLabel.text = Util.floatPoint(num: 2, floatValue: myOffer.offerUnitPrice)+"元/吨"
         self.totalPriceLabel.text = Util.floatPoint(num: 2, floatValue: myOffer.offerTotalPrice)+"元"
+        
         if otherOffers == nil {
 //            self.otherNumLabel.text = ""
 //            self.otherReportLabel.text = ""
