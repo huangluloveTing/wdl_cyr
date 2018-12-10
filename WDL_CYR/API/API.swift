@@ -135,7 +135,6 @@ func apiPath(api:API) -> String {
         return "/carrierTransport/getTransportOrderDetail"
     case .designateWaybill(_, _ , _):
         return "/carrierTransport/assignmentWaybill"
-        
     case .assembleWaybill(_):
         return "/carrierTransport/allocateVehicles"
     case .assemblePlanWaybill(_):

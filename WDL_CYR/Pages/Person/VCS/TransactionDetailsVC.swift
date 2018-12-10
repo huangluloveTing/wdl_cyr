@@ -165,7 +165,6 @@ extension TransactionDetailsVC {
         //配置参数
         self.showLoading()
         BaseApi.request(target: API.dealDetail(self.qeury), type: BaseResponseModel<PageInfo<ZbnCashFlow>>.self)
-            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.hiddenToast()
                 self?.tableView.endRefresh()

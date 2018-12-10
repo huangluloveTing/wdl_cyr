@@ -53,15 +53,21 @@ extension RechargeInlineVC {
        
         var queryBean = ZbnCashFlow()
         queryBean.flowMoney = num
-        BaseApi.request(target: API.rechargeMoney(queryBean), type: BaseResponseModel<Any>.self)
+        BaseApi.request(target: API.rechargeMoney(queryBean), type: BaseResponseModel<Any
+            >.self)
             .retry(2)
             .subscribe(onNext: { [weak self](data) in
 
                 print("充值的网页: \(String(describing: data.data))")
+                
+                guard data.data != nil else{
+                   self?.showFail(fail: "暂时无法获取充值页面，请稍后再试", complete: nil)
+                    return
+                }
                 self?.showSuccess(success: nil)
-
                 let paymentVC = PayHtmlVC()
-                paymentVC.htmlString = data.data as? String
+                let dic = data.data as? Dictionary<String, Any>
+                paymentVC.htmlString = dic?["data"] as? String
                 self?.pushToVC(vc: paymentVC, title: "支付")
                
                 },onError: {[weak self] (error) in
