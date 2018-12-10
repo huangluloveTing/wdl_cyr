@@ -23,12 +23,12 @@ let JPushAppKey = "db2771dd3e1276628b07fe23"
 let JPushMasterSecret = "2a32fcb079991db342500952"
 
 //外网测试
-let HOST = "http://182.150.21.104:58092/zbn-web"
+//let HOST = "http://182.150.21.104:58092/zbn-web"
 
 //本地测试
 //liaobing
 
-//let HOST = "http://172.16.58.15:8081/zbn-web"
+let HOST = "http://172.16.58.15:8081/zbn-web"
 //zhaoxiaoyang
 //let HOST = "http://172.16.8.52:8081/zbn-web"
 

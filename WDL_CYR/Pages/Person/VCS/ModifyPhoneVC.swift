@@ -24,8 +24,8 @@ class ModifyPhoneVC: NormalBaseVC {
     }
     
     override func currentConfig() {
-        self.phoneTextField.titleTextField(title: "新手机号码")
-        self.verifyCodeTextField.titleTextField(title: "验证码")
+        self.phoneTextField.titleTextField(title: "新手机号码  ")
+        self.verifyCodeTextField.titleTextField(title: "验证码  ")
         self.commitButton.addBorder(color: nil, width: 0, radius: 4)
     }
     
