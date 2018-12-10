@@ -20,12 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initJPush(lanchOptions: launchOptions)
         //注册设备
         registerJPush()
-        let login = LoginVC()
-        let naviVC = UINavigationController(rootViewController: login)
-        window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.rootViewController = naviVC
-        window?.backgroundColor = UIColor.white
-        window?.makeKeyAndVisible()
         
         self.configIQKeyboard()
         self.configGAODEMap()
@@ -39,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("registrationID获取失败：\(String(describing: registrationID))")
             }
         }
+        
+        decideToLogin()
+        
         return true
     }
     
@@ -122,15 +119,32 @@ extension AppDelegate {
     }
 }
  
- // 联系 反射
+ //
  extension AppDelegate {
     
-    func mirro() {
-        
-    }
     
     func loadCarrierInfo() -> Void {
-        WDLCoreManager.shared().loadCarrierInfo()
+        let userInfo = WDLCoreManager.shared().userInfo
+        if userInfo != nil && userInfo?.token != nil {
+            WDLCoreManager.shared().loadCarrierInfo()
+        }
     }
+    
+    //MARK: - 如果已登录，则直接进入首页
+    func decideToLogin() -> Void {
+        let userInfo = WDLCoreManager.shared().userInfo
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor.white
+        if userInfo == nil || userInfo?.token == nil {
+            let login = LoginVC()
+            let naviVC = UINavigationController(rootViewController: login)
+            window?.rootViewController = naviVC
+        } else {
+            let root = RootTabBarVC()
+            window?.rootViewController = root
+        }
+        window?.makeKeyAndVisible()
+    }
+    
  }
 

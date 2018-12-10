@@ -31,6 +31,7 @@ class PersonalVC: MainBaseVC {
             self.automaticallyAdjustsScrollViewInsets = false
         }
         self.fd_prefersNavigationBarHidden = true
+        registerMessageNotification()
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +62,11 @@ class PersonalVC: MainBaseVC {
                 
             })
             .disposed(by: dispose)
+    }
+    
+    //MARK: - 接受推送回调
+    override func receiveMessageResultHandler() {
+        getMessageNum()
     }
 }
 

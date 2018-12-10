@@ -31,7 +31,7 @@ class BaseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = false
-        self.registerMessageNotification()
+//        self.registerMessageNotification()
         self.view.backgroundColor = UIColor(hex: COLOR_BACKGROUND)
         self.currentConfig()
         self.bindViewModel()

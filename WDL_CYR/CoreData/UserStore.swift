@@ -23,7 +23,7 @@ class UserStore: NSObject {
     }
     
     // 保存用户基本信息
-    static func storeUserInfo(info:LoginInfo?) {
+    static func storeUserInfo(info:ZbnCarrierInfo?) {
         UserDefault.storeInfo(key: userInfo_store_key, info: info?.toJSON())
     }
 
@@ -31,9 +31,9 @@ class UserStore: NSObject {
         return UserDefault.loadInfo(key: token_store_key) as? String
     }
 
-    static func loadUserInfo() -> LoginInfo? {
+    static func loadUserInfo() -> ZbnCarrierInfo? {
         let info = UserDefault.loadInfo(key: userInfo_store_key)
-        return LoginInfo.deserialize(from: info as? [String:Any])
+        return ZbnCarrierInfo.deserialize(from: info as? [String:Any])
     }
     
     // 保存地址相关信息

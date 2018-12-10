@@ -29,11 +29,25 @@ struct LoginInfo : HandyJSON {
 
 class WDLCoreManager: NSObject {
     
+    private var _userInfo:ZbnCarrierInfo?
+    
     public var regionAreas:[RegionModel]?
     
-    public var userInfo: ZbnCarrierInfo?
+    public var userInfo: ZbnCarrierInfo? {
+        set {
+            _userInfo = newValue
+            UserStore.storeUserInfo(info: newValue)
+        }
+        get {
+            guard let value = _userInfo else {
+                _userInfo = UserStore.loadUserInfo()
+                return _userInfo
+            }
+            return value
+        }
+    }
     
-    public var bondInfo: ZbnBondInfo? // 账号信息
+    public var bondInfo: ZbnBondInfo? // 账户信息
     
     public var token:String?
     //未读条数
