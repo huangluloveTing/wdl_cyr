@@ -20,7 +20,7 @@ class TransactionDetailsVC: NormalBaseVC {
       return startAndEndTimeChooseViewGenerate()
     }
     private var statusView:GoodsSupplyStatusDropView {
-        return statusDropViewGenerate(statusTitles: messageStatus)
+         return statusDropViewGenerate(statusTitles: messageStatus)
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -31,6 +31,10 @@ class TransactionDetailsVC: NormalBaseVC {
         self.configTableView()
         //交易明细数据请求
         self.loadDealDetailRequest()
+    }
+    
+    override func currentConfig() {
+        toConfigDropView(dropView: dropView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,7 +94,6 @@ class TransactionDetailsVC: NormalBaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        toConfigDropView(dropView: dropView)
     }
 }
 
@@ -250,6 +253,8 @@ extension TransactionDetailsVC {
 extension TransactionDetailsVC : DropHintViewDataSource {
     func toConfigDropView(dropView:DropHintView) -> Void {
         dropView.dataSource = self
+        dropView.zt_width = IPHONE_WIDTH
+        dropView.zt_height = IPHONE_HEIGHT
         dropView.tabTitles(titles: ["交易时间","交易类型"])
     }
     

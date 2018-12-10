@@ -73,12 +73,13 @@ extension WayBillDetailVC {
         guard let newImg = image else {
             return
         }
-        BaseApi.request(target: API.uploadImage(newImg, .returnbill_path), type: BaseResponseModel<String>.self)
+        BaseApi.request(target: API.uploadImage(newImg, .returnbill_path), type: BaseResponseModel<[String]>.self)
             .retry(5)
-            .subscribe(onNext: { (data) in
-                
-            }, onError: { (error) in
-                
+            .subscribe(onNext: { [weak self](data) in
+                self?.hiddenToast()
+                self?.addReturnBill(imgURL: data.data?.first ?? "")
+            }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)
     }

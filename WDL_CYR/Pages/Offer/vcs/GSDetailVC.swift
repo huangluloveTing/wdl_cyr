@@ -40,7 +40,8 @@ class GSDetailVC: GSDetailBaseVC {
             }
         }
     }
-     // 重新报价
+    
+    // 重新报价
     override func toOfferAgain() -> Void {
         AlertManager.showCustomTitleAndContentAlert(context: self, actionTitles: ["取消" , "确定"], title: "", content: "确定重新报价?") {[weak self] (index) in
             if index == 1 {
