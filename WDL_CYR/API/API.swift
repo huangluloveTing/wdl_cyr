@@ -146,9 +146,9 @@ func apiPath(api:API) -> String {
     case .cancelOffer(_ , _):
         return "/offer/cancelOffer"
     case .findCapacityByDriverNameOrPhone(_):
-        return "/transportCapacity/findCapacityByDriverNameOrPhone"
+        return "/transportCapacity/findDriverInformation"
     case .findCapacityByName(_):
-        return "/transportCapacity/findCapacityByName"
+        return "/transportCapacity/findCarInformation"
     case .getCarrierInformation():
         return "/information/getCarrierInformation"
     case .zbnBondInformation():

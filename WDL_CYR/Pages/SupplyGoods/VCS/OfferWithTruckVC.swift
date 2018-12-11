@@ -51,7 +51,7 @@ extension OfferWithTruckVC {
         self.offerModel.carrierName = self.resource?.resource?.carrierName ?? ""
     }
     
-    //MARK: -
+    //MARK: - 获取报价信息
     func loadFee() -> Void {
         let hallId = self.resource?.resource?.id ?? ""
         self.showLoading()
@@ -171,7 +171,9 @@ extension OfferWithTruckVC {
                         newResource?.isOffer = "OK"
                         callBack(.refresh(newResource))
                     }
-                    self?.popCurrent(beforeIndes: 2, animation: true)
+//                    self?.popCurrent(beforeIndes: 2, animation: true)
+                    self?.pop(toRootViewControllerAnimation: true
+                    )
                 })
             }, onError: { [weak self](error) in
                 self?.showFail(fail: error.localizedDescription, complete: nil)
