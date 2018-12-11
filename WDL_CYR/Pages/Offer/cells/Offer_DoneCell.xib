@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,19 +38,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="成都市新都区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiN-KD-aYq">
-                        <rect key="frame" x="30" y="73" width="86" height="17"/>
+                        <rect key="frame" x="30" y="73.5" width="86" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="广元市高新区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csh-gD-9Fu">
-                        <rect key="frame" x="153" y="73" width="86" height="17"/>
+                        <rect key="frame" x="170" y="73.5" width="86" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="30吨 | 1方 | 高栏车 | 无包装 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jB-bA-3c8">
-                        <rect key="frame" x="30" y="127" width="178.5" height="105"/>
+                        <rect key="frame" x="30" y="127.5" width="479" height="105"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -62,13 +62,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元/吨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9n-pu-oqL">
-                        <rect key="frame" x="132" y="33" width="29" height="14.5"/>
+                        <rect key="frame" x="132" y="33.5" width="29" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ksb-BT-Cqi">
-                        <rect key="frame" x="311" y="34" width="12.5" height="14.5"/>
+                        <rect key="frame" x="311.5" y="33.5" width="12.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -81,22 +81,22 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_to" translatesAutoresizingMaskIntoConstraints="NO" id="vSt-rp-Il5">
-                        <rect key="frame" x="126" y="76" width="17" height="11"/>
+                        <rect key="frame" x="126" y="71" width="34" height="22"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-02-11 装货   玻璃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7V-gT-yKJ">
-                        <rect key="frame" x="30" y="100" width="147.5" height="17"/>
+                        <rect key="frame" x="30" y="100.5" width="147.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="【自营】" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bK-ar-4Br">
-                        <rect key="frame" x="70" y="250.5" width="45" height="13.5"/>
+                        <rect key="frame" x="70" y="251" width="45" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.023529411760000001" green="0.75294117650000003" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="河南心连心有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5v-xn-Q8o">
-                        <rect key="frame" x="115" y="250.5" width="323.5" height="13.5"/>
+                        <rect key="frame" x="115" y="251" width="324" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -109,7 +109,7 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="800" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P3n-gm-STZ">
-                        <rect key="frame" x="449" y="252.5" width="50" height="11"/>
+                        <rect key="frame" x="449" y="252" width="50" height="11"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="11" id="oHl-qr-zgK"/>
                             <constraint firstAttribute="width" constant="50" id="vvM-e2-NdV"/>
@@ -122,7 +122,7 @@
                         <state key="selected" title="已关注" image="attention"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="待指派" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cz-Wo-bUf">
-                        <rect key="frame" x="472" y="137.5" width="37" height="14.5"/>
+                        <rect key="frame" x="472" y="136.5" width="37" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.023529411764705882" green="0.75294117647058822" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -157,6 +157,7 @@
                     <constraint firstItem="w0F-T9-zzt" firstAttribute="leading" secondItem="2hn-Fh-Z6o" secondAttribute="trailing" constant="5" id="cu6-rC-O7h"/>
                     <constraint firstItem="7jB-bA-3c8" firstAttribute="leading" secondItem="a7V-gT-yKJ" secondAttribute="leading" id="gqX-wL-jWl"/>
                     <constraint firstItem="7jB-bA-3c8" firstAttribute="top" secondItem="a7V-gT-yKJ" secondAttribute="bottom" constant="10" id="i4T-ex-wHv"/>
+                    <constraint firstAttribute="trailing" secondItem="7jB-bA-3c8" secondAttribute="trailing" constant="30" id="jB0-bL-C6Y"/>
                     <constraint firstItem="UkU-1s-wrG" firstAttribute="leading" secondItem="y9n-pu-oqL" secondAttribute="trailing" constant="30" id="nO1-sE-CvH"/>
                     <constraint firstItem="2hn-Fh-Z6o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="oK9-Ri-Wlg"/>
                     <constraint firstItem="P3n-gm-STZ" firstAttribute="centerY" secondItem="e5v-xn-Q8o" secondAttribute="centerY" id="p4f-Q0-8X8"/>
@@ -187,6 +188,6 @@
     <resources>
         <image name="attention" width="10" height="9"/>
         <image name="attention_no" width="10" height="9"/>
-        <image name="right_to" width="17" height="11"/>
+        <image name="right_to" width="34" height="22"/>
     </resources>
 </document>

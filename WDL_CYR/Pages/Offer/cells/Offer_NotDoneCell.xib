@@ -75,7 +75,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="30吨 | 1方 | 高栏车 | 无包装 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLk-EV-zEF">
-                        <rect key="frame" x="30" y="149" width="178.5" height="112.5"/>
+                        <rect key="frame" x="30" y="149" width="396" height="112.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -167,6 +167,7 @@
                     <constraint firstItem="c4b-72-7Jr" firstAttribute="centerY" secondItem="eon-gr-Ukr" secondAttribute="centerY" id="Ryx-Is-eG5"/>
                     <constraint firstItem="eon-gr-Ukr" firstAttribute="leading" secondItem="VLk-EV-zEF" secondAttribute="leading" id="SQl-98-pQZ"/>
                     <constraint firstItem="fcl-bm-0Uq" firstAttribute="leading" secondItem="xHd-MI-CXE" secondAttribute="trailing" constant="10" id="TfM-mj-Acv"/>
+                    <constraint firstAttribute="trailing" secondItem="VLk-EV-zEF" secondAttribute="trailing" constant="30" id="UW7-IJ-Ma3"/>
                     <constraint firstItem="xc9-dM-c19" firstAttribute="centerY" secondItem="fcl-bm-0Uq" secondAttribute="centerY" id="UrL-wt-i8E"/>
                     <constraint firstItem="xHd-MI-CXE" firstAttribute="top" secondItem="gka-Cj-dJU" secondAttribute="bottom" constant="15" id="V9O-5Y-gne"/>
                     <constraint firstItem="c4b-72-7Jr" firstAttribute="leading" secondItem="r5h-gT-7Kw" secondAttribute="trailing" id="Xge-38-Izf"/>

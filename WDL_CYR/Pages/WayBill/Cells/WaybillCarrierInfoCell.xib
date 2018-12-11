@@ -66,7 +66,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30吨 | 9.7m | 高栏车 | 无包装 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQD-9N-r3G">
-                        <rect key="frame" x="30" y="109" width="177" height="16"/>
+                        <rect key="frame" x="30" y="109" width="447" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -237,6 +237,7 @@
                     <constraint firstItem="nkH-Xq-CDJ" firstAttribute="leading" secondItem="ip5-uX-IxN" secondAttribute="trailing" constant="5" id="VtV-sP-FKx"/>
                     <constraint firstItem="UmF-YU-30c" firstAttribute="top" secondItem="WxH-3R-Owb" secondAttribute="bottom" constant="10" id="WbB-Oe-raZ"/>
                     <constraint firstItem="QLT-Z1-IFa" firstAttribute="trailing" secondItem="2QC-53-mdn" secondAttribute="trailing" id="Xst-zh-5eV"/>
+                    <constraint firstAttribute="trailing" secondItem="CQD-9N-r3G" secondAttribute="trailing" constant="30" id="ZcN-Rz-zKx"/>
                     <constraint firstItem="7ap-Cj-BVd" firstAttribute="leading" secondItem="eKc-LL-UbZ" secondAttribute="leading" id="cAo-hE-xP1"/>
                     <constraint firstItem="7Ee-V0-aOt" firstAttribute="leading" secondItem="jAs-Vz-u40" secondAttribute="trailing" constant="10" id="cKw-OP-iYx"/>
                     <constraint firstItem="ng3-7j-5eW" firstAttribute="top" secondItem="gbB-rP-ijN" secondAttribute="bottom" constant="10" id="cTV-gs-DAP"/>

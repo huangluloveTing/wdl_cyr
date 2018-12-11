@@ -52,7 +52,9 @@ extension RechargeInlineVC {
     func toRecharge(num:Float) -> Void {
        
         var queryBean = ZbnCashFlow()
-        queryBean.flowMoney = num
+//        queryBean.flowMoney = num
+        let numString = String(format: "%.2lf", num)
+         queryBean.money = numString
         BaseApi.request(target: API.rechargeMoney(queryBean), type: BaseResponseModel<Any
             >.self)
             .retry(2)
@@ -66,8 +68,9 @@ extension RechargeInlineVC {
                 }
                 self?.showSuccess(success: nil)
                 let paymentVC = PayHtmlVC()
-                let dic = data.data as? Dictionary<String, Any>
-                paymentVC.htmlString = dic?["data"] as? String
+//                let dic = data.data as? Dictionary<String, Any>
+//                paymentVC.htmlString = dic?["data"] as? String
+                paymentVC.htmlString = data.data! as? String
                 self?.pushToVC(vc: paymentVC, title: "支付")
                
                 },onError: {[weak self] (error) in

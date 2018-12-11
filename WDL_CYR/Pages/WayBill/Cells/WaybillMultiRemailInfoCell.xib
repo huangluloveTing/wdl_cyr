@@ -46,7 +46,7 @@
                 <outlet property="remainLabel" destination="u8Q-hi-8bj" id="dN3-kV-Pa0"/>
                 <outlet property="totalWeightLabel" destination="3US-ji-vy6" id="Zyz-Sj-br1"/>
             </connections>
-            <point key="canvasLocation" x="190.40000000000001" y="165.96701649175412"/>
+            <point key="canvasLocation" x="190.40000000000001" y="165.06746626686657"/>
         </tableViewCell>
     </objects>
 </document>

@@ -80,7 +80,7 @@ func apiPath(api:API) -> String {
     case .dealDetail(_):
         return "/wallet/cashFlotInformation"
     case .returnMoney(_):
-        return "/wallet/returnCash"
+        return "/wallet/refundCash"
     case .getMainMessage(_):
         return "/message/getMessage"
     case .updatePassword(_):

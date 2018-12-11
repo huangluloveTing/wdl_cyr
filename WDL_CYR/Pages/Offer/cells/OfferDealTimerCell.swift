@@ -39,6 +39,7 @@ class OfferDealTimerCell: BaseCell {
         let minus = floor((second - hours * 3600) / 60)
         let seconds = second - (hours * 3600 + minus * 60)
         self.timerDisplay(hours: hours, minus: minus, second: seconds)
+    
     }
     
     // 设置 倒计时时间
