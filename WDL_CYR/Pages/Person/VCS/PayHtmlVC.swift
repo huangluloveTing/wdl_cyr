@@ -17,7 +17,15 @@ class PayHtmlVC: NormalBaseVC {
  
         let webView = UIWebView.init(frame: CGRect(origin: CGPoint.zero, size: CGSize.init(width: IPHONE_WIDTH, height:self.view.frame.size.height - 64)))
         self.view.addSubview(webView)
-        webView.loadHTMLString(htmlString ?? "", baseURL: nil)
+
+        var urlString = "";
+        if htmlString != nil || htmlString != "" {
+            urlString = HOST + htmlString!
+        }else {
+             urlString = HOST + ""
+        }
+        
+        webView.loadRequest(URLRequest.init(url: URL.init(string: urlString)!))
         webView.delegate = self
     }
 

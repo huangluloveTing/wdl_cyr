@@ -44,14 +44,26 @@ class ReturnMoneyVC: NormalBaseVC {
             return
         }
         //添加用户输入的金额
-        self.bondnInfo?.money = inputM
+        self.bondnInfo?.money = self.moneyFeild.text
         BaseApi.request(target: API.returnMoney(self.bondnInfo!), type: BaseResponseModel<Any>.self)
             .retry(2)
             .subscribe(onNext: { [weak self](data) in
                 print("退款:\(data)")
-                self?.showSuccess(success: data.message, complete: {
-                    self?.pop(animated: true)
-                })
+//                self?.showSuccess(success: data.message, complete: {
+//                    self?.pop(animated: true)
+//                })
+                
+                
+                guard data.data != nil else{
+                    self?.showFail(fail: "暂时无法获取退款页面，请稍后再试", complete: nil)
+                    return
+                }
+                self?.showSuccess(success: nil)
+                let paymentVC = PayHtmlVC()
+                //                let dic = data.data as? Dictionary<String, Any>
+                //                paymentVC.htmlString = dic?["data"] as? String
+                paymentVC.htmlString = data.data! as? String
+                self?.pushToVC(vc: paymentVC, title: "退款")
                 },onError: {[weak self] (error) in
                     self?.showFail(fail: error.localizedDescription)
             })

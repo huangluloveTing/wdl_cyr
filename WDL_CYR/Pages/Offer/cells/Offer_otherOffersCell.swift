@@ -41,7 +41,7 @@ class Offer_otherOffersCell: BaseCell {
     }
     
     func showOfferInfo(otherOffers:[OfferInfoModel]) -> Void {
-        self.otherNumLabel.text = "已有"+String(otherOffers.count)+"位承运人报价"
+        self.otherNumLabel.text = "已有其他"+String(otherOffers.count)+"位承运人报价"
         self.otherReportLabel.attributedText = self.configOtherReport(offers: otherOffers)
     }
 }

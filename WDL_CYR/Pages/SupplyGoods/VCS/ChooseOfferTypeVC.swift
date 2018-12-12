@@ -124,9 +124,9 @@ extension ChooseOfferTypeVC {
             if self.resource?.resource?.offerWay == 1 {
                 return .truck
             }
-            if self.resource?.resource?.offerWay == 2 {
-                return .noTruck
-            }
+//            if self.resource?.resource?.offerWay == 2 {
+//                return .noTruck
+//            }
         }
         return .all
     }
