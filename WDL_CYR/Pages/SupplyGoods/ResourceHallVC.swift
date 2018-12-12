@@ -78,7 +78,7 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
             })
             .asDriver(onErrorJustReturn: .EndRefresh)
             .drive(onNext: { [weak self](state) in
-                self?.tableView.endRefresh()
+//                self?.tableView.endRefresh()
                 self?.queryResourceHall(quey: self!.query)
             })
             .disposed(by: dispose)
@@ -160,7 +160,8 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
     
     override func callBackForRefresh(param: Any?) {
         let items = param as? [MoreScreenSelectionItem]
-        
+        moreSelectItems = items ?? []
+        configQuery()
     }
 }
 
@@ -271,9 +272,11 @@ extension ResourceHallVC {
         BaseApi.request(target: API.findAllOrderHall(quey), type: BaseResponseModel<ResponsePagesModel<CarrierQueryOrderHallResult>>.self)
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
+                self?.tableView.endRefresh()
                 self?.showSuccess(success: nil)
                 self?.configNetDataToUI(lists: data.data?.list ?? [])
             }, onError: {[weak self] (error) in
+                self?.tableView.endRefresh()
                 self?.showFail(fail: error.localizedDescription)
             })
             .disposed(by: dispose)
@@ -340,6 +343,7 @@ extension ResourceHallVC {
             var inputItem = MoreScreenInputItem()
             inputItem.placeholder = "请输入货主名称"
             consig.inputItem = inputItem
+            consig.queryKey = .consignorName
             
             var loadTimeItem = MoreScreenSelectionItem()
             loadTimeItem.title = "装货时间"
@@ -395,16 +399,23 @@ extension ResourceHallVC {
             widthItems.insert(noLimit, at: 0)
             typeItems.insert(noLimit, at: 0)
             tons.insert(noLimit, at: 0)
+        
             loadTimeItem.items = loadTimes
             loadTimeItem.type = .multiSelect
+            loadTimeItem.queryKey = .loadingTime
             lengthItem.items = lengthItems
             lengthItem.type = .multiSelect
+            lengthItem.queryKey = .vehicleLength
             widthItem.items = widthItems
             widthItem.type = .multiSelect
+            widthItem.queryKey = .vehicleWidth
             typeItem.items = typeItems
             typeItem.type = .multiSelect
+            typeItem.queryKey = .vehicleType
             tonsItem.items = tons
             tonsItem.type = .multiSelect
+            tonsItem.queryKey = .vehicleWeight
+            
             moreSelectItems = [consig , loadTimeItem , lengthItem , widthItem , typeItem , tonsItem]
         }
     }
@@ -432,6 +443,36 @@ extension ResourceHallVC {
 extension ResourceHallVC {
     //MARK: - 根据筛选条件，组装查询条件
     func configQuery() -> Void {
-        
+        //MARK: - 承运人
+        moreSelectItems.forEach { (item) in
+            switch item.queryKey ?? .consignorName  {
+            case .vehicleWidth:
+                self.query.vehicleWidth = getSelectedItem(items: item.items)?.title
+                break
+            case .vehicleType:
+                self.query.vehicleType = getSelectedItem(items: item.items)?.title
+                break
+            case .vehicleLength:
+                self.query.vehicleLength = getSelectedItem(items: item.items)?.title
+                break
+            case .vehicleWeight:
+                break
+            case .loadingTime:
+                self.query.loadingTime = getSelectedItem(items: item.items)?.title
+                break
+            case .consignorName:
+                self.query.consignorName = item.inputItem?.input
+                break
+            }
+        }
+        self.tableView.beginRefresh()
+    }
+    
+    //MARK: - 获取选中的 item
+    private func getSelectedItem(items:[MoreScreenItem]) -> MoreScreenItem? {
+        let item = items.filter { (screen) -> Bool in
+            return screen.select
+        }.first
+        return item
     }
 }

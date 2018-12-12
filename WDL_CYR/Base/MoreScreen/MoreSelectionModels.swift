@@ -14,10 +14,20 @@ enum MoreScreenItemType {
     case multiSelect
 }
 
+enum MoreScreenQueryKey : String {
+    case vehicleWidth = "vehicleWidth"
+    case vehicleType = "vehicleType"
+    case vehicleLength = "vehicleLength"
+    case vehicleWeight = "vehicleWeight"
+    case loadingTime = "loadingTime"
+    case consignorName = "consignorName"
+}
+
 struct MoreScreenSelectionItem {
     var title: String = ""
     var type: MoreScreenItemType = .multiSelect
     var items: [MoreScreenItem] = []
+    var queryKey: MoreScreenQueryKey?
     var inputItem: MoreScreenInputItem?
 }
 

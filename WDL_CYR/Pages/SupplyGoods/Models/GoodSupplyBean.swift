@@ -19,25 +19,7 @@ enum GoodsSupplyListStatus : Int {
 
 
 struct GoodsSupplyQueryBean : HandyJSON {
-//    "carrierId": "string",
-//    "endCity": "string",
-//    "endDistrict": "string",
-//    "endProvince": "string",
-//    "endTime": "2018-12-12T04:11:44.683Z",
-//    "followStatus": 0,
-//    "loadingTime": "2018-12-12T04:11:44.683Z",
-//    "maxWeight": 0,
-//    "minWeight": 0,
-//    "orderStatus": 0,
-//    "pageNum": 0,
-//    "pageSize": 0,
-//    "startCity": "string",
-//    "startDistrict": "string",
-//    "startProvince": "string",
-//    "startTime": "2018-12-12T04:11:44.683Z",
-//    "token": "string",
-//    "vehicleLength": "string",
-//    "vehicleType": "string"
+    var consignorName: String? //
     var endCity : String?
     var endProvince: String?
     var isDeal:Int?
@@ -47,7 +29,8 @@ struct GoodsSupplyQueryBean : HandyJSON {
     var pageSize : Int = 20
     var vehicleType:String?
     var vehicleLength:String?
-    var loadingTime:TimeInterval? //: 装货时间 ,
+    var vehicleWidth: String? // (number): 车宽
+    var loadingTime: String? //: 装货时间 ,
     var maxWeight : Float? // (number): 最大吨位 ,
     var minWeight : Float? // (number): 最小吨位 ,
     

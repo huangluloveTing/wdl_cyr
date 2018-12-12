@@ -26,6 +26,7 @@ class MoreScreenSelectionVC: NormalBaseVC {
     
     @IBAction func sureHandle(_ sender: Any) {
         callBackForRefresh(param: currentSelectionItems)
+        self.pop()
     }
 }
 
