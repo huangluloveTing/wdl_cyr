@@ -25,6 +25,8 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
     private var listStatus:GoodsSupplyStatus?
     private var query : GoodsSupplyQueryBean = GoodsSupplyQueryBean()
     
+    private var moreSelectItems:[MoreScreenSelectionItem] = []
+    
     private var hallLists:[CarrierQueryOrderHallResult] = []
     
     func willShow() {
@@ -41,6 +43,7 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
         self.configTableView()
         self.queryResourceHall(quey: query)
         self.tableView.pullRefresh()
+        self.loadAllMoreData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,8 +62,12 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
             })
             .disposed(by: dispose)
         self.statusButton.rx.tap.asObservable()
-            .subscribe(onNext: { () in
-                self.showStatusDropView()
+            .subscribe(onNext: { [weak self]() in
+                if self?.moreSelectItems.count ?? 0 <= 0 {
+                    self?.loadAllMoreData(toMore: true)
+                    return
+                }
+                self?.showMoreSelection()
             })
             .disposed(by: dispose)
         
@@ -149,6 +156,12 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
         }
         return self.addDropView(drop: placeView, anchorView: dropAnchorView)
     }()
+    
+    
+    override func callBackForRefresh(param: Any?) {
+        let items = param as? [MoreScreenSelectionItem]
+        
+    }
 }
 
 //MARK: 注册cell / 配置tableView
@@ -211,6 +224,9 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.toResourceDetail(index: indexPath.section)
     }
+    
+    
+    
 }
 
 extension ResourceHallVC {
@@ -273,6 +289,15 @@ extension ResourceHallVC {
 // 添加 下拉选项 操作
 extension ResourceHallVC {
     
+    //MARK: - 点击更多筛选操作
+    func showMoreSelection() -> Void {
+        self.placeChooseView.hiddenDropView()
+        self.endPlaceChooseView.hiddenDropView()
+        let moreVC = MoreScreenSelectionVC()
+        moreVC.currentSelectionItems = moreSelectItems
+        self.pushToVC(vc: moreVC, title: "更多筛选")
+    }
+    
     func showStatusDropView() {
         self.placeChooseView.hiddenDropView()
         self.endPlaceChooseView.hiddenDropView()
@@ -301,5 +326,112 @@ extension ResourceHallVC {
         } else {
             self.endPlaceChooseView.hiddenDropView()
         }
+    }
+}
+
+//MARK: - 获取更多筛选的数据
+extension ResourceHallVC {
+    //MARK: - 组装 tableView 数据
+    func configTableViewUIModels(select:MoreChooseItems?) {
+        if let select = select {
+            var consig = MoreScreenSelectionItem()
+            consig.title = "托运人名称"
+            consig.type = .input
+            var inputItem = MoreScreenInputItem()
+            inputItem.placeholder = "请输入货主名称"
+            consig.inputItem = inputItem
+            
+            var loadTimeItem = MoreScreenSelectionItem()
+            loadTimeItem.title = "装货时间"
+            var lengthItem = MoreScreenSelectionItem()
+            lengthItem.title = "车长"
+            var widthItem = MoreScreenSelectionItem()
+            widthItem.title = "车宽"
+            var typeItem = MoreScreenSelectionItem()
+            typeItem.title = "车型"
+            var tonsItem = MoreScreenSelectionItem()
+            tonsItem.title = "吨位"
+            var tons = select.OrderTonsLimit.map { (item) -> MoreScreenItem in
+                var returnValue = MoreScreenItem()
+                returnValue.title = item.value ?? ""
+                returnValue.select = false
+                return returnValue
+            }
+            
+            var widthItems = select.VehicleWidth.map { (item) -> MoreScreenItem in
+                var returnValue = MoreScreenItem()
+                returnValue.title = item.value ?? ""
+                returnValue.select = false
+                return returnValue
+            }
+            
+            var loadTimes = select.LoadingTime.map { (item) -> MoreScreenItem in
+                var returnValue = MoreScreenItem()
+                returnValue.title = item.value ?? ""
+                returnValue.select = false
+                return returnValue
+            }
+            
+            var lengthItems = select.VehicleLength.map { (item) -> MoreScreenItem in
+                var returnValue = MoreScreenItem()
+                returnValue.title = item.value ?? ""
+                returnValue.select = false
+                return returnValue
+            }
+            
+            var typeItems = select.VehicleType.map { (item) -> MoreScreenItem in
+                var returnValue = MoreScreenItem()
+                returnValue.title = item.value ?? ""
+                returnValue.select = false
+                return returnValue
+            }
+            
+            var noLimit = MoreScreenItem()
+            noLimit.title = "不限"
+            noLimit.select = true
+            
+            loadTimes.insert(noLimit, at: 0)
+            lengthItems.insert(noLimit, at: 0)
+            widthItems.insert(noLimit, at: 0)
+            typeItems.insert(noLimit, at: 0)
+            tons.insert(noLimit, at: 0)
+            loadTimeItem.items = loadTimes
+            loadTimeItem.type = .multiSelect
+            lengthItem.items = lengthItems
+            lengthItem.type = .multiSelect
+            widthItem.items = widthItems
+            widthItem.type = .multiSelect
+            typeItem.items = typeItems
+            typeItem.type = .multiSelect
+            tonsItem.items = tons
+            tonsItem.type = .multiSelect
+            moreSelectItems = [consig , loadTimeItem , lengthItem , widthItem , typeItem , tonsItem]
+        }
+    }
+    
+    
+    //MARK: - 请求更多筛选相关的数据
+    func loadAllMoreData(toMore:Bool? = false) -> Void {
+        self.showLoading()
+        BaseApi.request(target: API.getCarrierHallDictionary(), type: BaseResponseModel<MoreChooseItems>.self)
+            .retry(10)
+            .subscribe(onNext: { [weak self](data) in
+                self?.hiddenToast()
+                self?.configTableViewUIModels(select: data.data)
+                if toMore == true {
+                    self?.showMoreSelection()
+                }
+                }, onError: { [weak self](error) in
+                    self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
+    }
+}
+
+
+extension ResourceHallVC {
+    //MARK: - 根据筛选条件，组装查询条件
+    func configQuery() -> Void {
+        
     }
 }
