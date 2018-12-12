@@ -62,6 +62,13 @@ class LoginVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if DEBUG
+            self.phoneTextField.text = DEBUG_ACCOUNT
+            self.passworldTextField.text = DEBUG_PASSWORD
+        #else
+            self.phoneTextField.text = ""
+            self.passworldTextField.text = ""
+        #endif
     }
     
     //忘记密码

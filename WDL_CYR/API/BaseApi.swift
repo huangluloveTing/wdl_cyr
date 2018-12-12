@@ -21,6 +21,8 @@ struct BaseApi {
         let observable = provider.rx.request(target)
             .asObservable()
             .mapModel(T.self)
+            .share(replay: 1)
+        
         return observable
     }
 }

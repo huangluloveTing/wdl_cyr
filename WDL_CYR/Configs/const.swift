@@ -14,13 +14,10 @@ let IPHONE_WIDTH = UIScreen.main.bounds.size.width
 let IPHONE_HEIGHT = UIScreen.main.bounds.size.height
 let IPHONE_RATE = (IPHONE_WIDTH / 375.0) > 1 ? 1 : (IPHONE_WIDTH / 375.0)
 
+let DEBUG_ACCOUNT = "15390078888"
+let DEBUG_PASSWORD = "a123456"
 
-let GAODE_MAP_KEY = "8e99eeada50ef322b5c993eb92acffd6"
-
-
-//极光推送的key
-let JPushAppKey = "db2771dd3e1276628b07fe23"
-let JPushMasterSecret = "2a32fcb079991db342500952"
+#if DEBUG
 
 //外网测试
 let HOST = "http://182.150.21.104:58092/zbn-web"
@@ -32,7 +29,25 @@ let HOST = "http://182.150.21.104:58092/zbn-web"
 //zhaoxiaoyang
 //let HOST = "http://172.16.8.52:8081/zbn-web"
 
+let GAODE_MAP_KEY = "8e99eeada50ef322b5c993eb92acffd6"
+
+
+//极光推送的key
+let JPushAppKey = "db2771dd3e1276628b07fe23"
+let JPushMasterSecret = "2a32fcb079991db342500952"
+
+#else
+
+let HOST = "http://182.150.21.104:58092/zbn-web"
+let GAODE_MAP_KEY = "8e99eeada50ef322b5c993eb92acffd6"
+
+//极光推送的key
+let JPushAppKey = "db2771dd3e1276628b07fe23"
+let JPushMasterSecret = "2a32fcb079991db342500952"
+
+#endif
+
 //MARK: - 通知中心
-let PUSH_MESSAGE_VALUE = "PUSH_MESSAGE_VALUE"
+let PUSH_MESSAGE_VALUE = "PUSH_MESSAGE_VALUE"  // 消息推送通知
 
 
