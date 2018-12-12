@@ -47,7 +47,8 @@ class WayBillDetailStatusCell: BaseCell {
         case .willToPickup:
             self.wayBillStatusView?.status = WayBillStatus.ToReceive
             break
-        case .done:
+            
+        case .done , .commented_one:
             self.wayBillStatusView?.status = WayBillStatus.Done
             break
         }

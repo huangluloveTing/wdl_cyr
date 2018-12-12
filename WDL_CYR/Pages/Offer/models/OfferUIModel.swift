@@ -61,4 +61,5 @@ struct OfferInfoModel {
     var offerUnitPrice:Float = 0
     var offerTotalPrice:Float = 0
     var dealPossible:String = ""  // 成交可能性
+    var showOffer:Bool = true
 }

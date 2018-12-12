@@ -28,10 +28,13 @@ class Offer_otherOffersCell: BaseCell {
     private func configOtherReport(offers:[OfferInfoModel]) -> NSAttributedString {
         var info = ""
         for offer in offers {
+            let show = offer.showOffer
             let name = offer.offerName
             let unit = offer.offerUnitPrice
             let total = offer.offerTotalPrice
-            let info_temp = name + "     " + "单价：" + Util.floatPoint(num: 2, floatValue: unit) + "元/吨" + "     " + "总价：" +  Util.floatPoint(num: 2, floatValue: total) + "元" + "\n"
+            let unit_formate = show ? Util.floatPoint(num: 2, floatValue: unit) : "*.**"
+            let total_formate = show ? Util.floatPoint(num: 2, floatValue: total) : "*.**"
+            let info_temp = name + "     " + "单价：" + unit_formate + "元/吨" + "     " + "总价：" + total_formate  + "元" + "\n"
             info.append(info_temp)
         }
         if info.count > 2 {

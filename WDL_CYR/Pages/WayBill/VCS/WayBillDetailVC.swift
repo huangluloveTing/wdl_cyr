@@ -20,6 +20,10 @@ class WayBillDetailVC: WaybillDetailBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView(tableView: tableView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.loadDetailData(hallId: self.waybillInfo?.hallId ?? "")
     }
 
@@ -63,6 +67,13 @@ class WayBillDetailVC: WaybillDetailBaseVC {
                     })
                 })
             })
+        }
+        if mode == .unassemble_showSpecial ||
+            mode == .unassemble_show_1_Assemble ||
+            mode == .unassemble_show_2_Assemble {
+            let tranInfo = TransactionInformation.deserialize(from: self.waybillInfo?.toJSON())
+            let mode = WayBillSourceTypeMode(rawValue: self.waybillInfo?.comeType ?? 1)
+            self.toAssemblePage(info: tranInfo , mode: mode ?? .planAssemble)
         }
     }
 }

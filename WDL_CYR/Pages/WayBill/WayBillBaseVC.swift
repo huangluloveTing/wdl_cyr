@@ -477,6 +477,7 @@ extension WayBillBaseVC {
         BaseApi.request(target: API.designateWaybill(phone, transportNo , hallId), type: BaseResponseModel<String>.self)
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
+                self?.hiddenToast()
                 self?.deleteCurrentWaybill(indexPath: indexPath)
             }, onError: {[weak self] (error) in
                 self?.showFail(fail: error.localizedDescription, complete: nil)

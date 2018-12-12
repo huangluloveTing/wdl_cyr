@@ -166,10 +166,10 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
 //        cell.showInfo(name: self.resource?.carrierName,
 //                      dealNum: self.resource?.dealCount ?? 0,
 //                      rate: self.resource?.rate ?? 0)
-        
+        let info = WDLCoreManager.shared().userInfo
         cell.showInfo(name: self.resource?.consignorName,
-                      dealNum: self.resource?.dealCount ?? 0,
-                      rate: self.resource?.rate ?? 0)
+                      dealNum: info?.dealCount ?? 0,
+                      rate: info?.growupScore ?? 0)
         return cell
     }
     

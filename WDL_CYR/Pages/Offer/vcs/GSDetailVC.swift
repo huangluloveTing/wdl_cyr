@@ -102,6 +102,10 @@ class GSDetailVC: GSDetailBaseVC {
         return info
     }
     
+    override func showMyOffer() -> Bool {
+        return self.offer?.offerType == 1;
+    }
+    
     override func showOtherOfferInfo() -> Bool {
         //MARK: - 是否获取其他人的x报价信息
         /// - 若货源信息是由TMS经销商来源
@@ -179,6 +183,7 @@ extension GSDetailVC {
             info.offerUnitPrice = model.quotedPrice
             info.offerTotalPrice = model.totalPrice
             info.dealPossible = model.offerPossibility
+//            info.showOffer = model
             return info
         }
         return uiModels

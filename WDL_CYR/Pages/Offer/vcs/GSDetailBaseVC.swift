@@ -24,6 +24,7 @@ class GSDetailBaseVC: NormalBaseVC {
     func myOfferInfo() -> OfferInfoModel? {return nil} // 我的报价信息
     func otherOfferInfo() -> [OfferInfoModel]? {return []} //其他人的报价信息
     func goodsSupplyInfo() -> GSInfoModel? {return nil} // 货源信息
+    func showMyOffer() -> Bool { return true }
     
     //
 
@@ -208,7 +209,7 @@ extension GSDetailBaseVC {
                 return cell
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GSDetail_OfferInfoCell.self)") as! GSDetail_OfferInfoCell
-            cell.showOfferInfo(myOffer: self.myOfferInfo() ?? OfferInfoModel(), otherOffers: self.otherOfferInfo())
+            cell.showOfferInfo(myOffer: self.myOfferInfo() ?? OfferInfoModel(), otherOffers: self.otherOfferInfo() , showOffer: showMyOffer())
             return cell
         }
         
@@ -244,7 +245,7 @@ extension GSDetailBaseVC {
                 return cell
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GSDetail_OfferInfoCell.self)") as! GSDetail_OfferInfoCell
-            cell.showOfferInfo(myOffer: self.myOfferInfo() ?? OfferInfoModel(), otherOffers: self.otherOfferInfo())
+            cell.showOfferInfo(myOffer: self.myOfferInfo() ?? OfferInfoModel(), otherOffers: self.otherOfferInfo() , showOffer: showMyOffer())
             return cell
         }
         
@@ -280,7 +281,7 @@ extension GSDetailBaseVC {
                 return cell
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(GSDetail_OfferInfoCell.self)") as! GSDetail_OfferInfoCell
-            cell.showOfferInfo(myOffer: self.myOfferInfo() ?? OfferInfoModel(), otherOffers: self.otherOfferInfo())
+            cell.showOfferInfo(myOffer: self.myOfferInfo() ?? OfferInfoModel(), otherOffers: self.otherOfferInfo() , showOffer: showMyOffer())
             return cell
         }
         

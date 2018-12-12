@@ -16,12 +16,8 @@ class TransactionDetailsVC: NormalBaseVC {
     
     @IBOutlet weak var dropView: DropHintView!
     private var qeury = ZbnCashFlow()
-    private var timeChooseView:DropInputDateView {
-      return startAndEndTimeChooseViewGenerate()
-    }
-    private var statusView:GoodsSupplyStatusDropView {
-         return statusDropViewGenerate(statusTitles: messageStatus)
-    }
+    private var timeChooseView:DropInputDateView?
+    private var statusView:GoodsSupplyStatusDropView?
     
     @IBOutlet weak var tableView: UITableView!
     //数组
@@ -34,7 +30,7 @@ class TransactionDetailsVC: NormalBaseVC {
     }
     
     override func currentConfig() {
-        toConfigDropView(dropView: dropView)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,6 +90,7 @@ class TransactionDetailsVC: NormalBaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        toConfigDropView(dropView: dropView)
     }
 }
 
@@ -252,16 +249,20 @@ extension TransactionDetailsVC {
 extension TransactionDetailsVC : DropHintViewDataSource {
     func toConfigDropView(dropView:DropHintView) -> Void {
         dropView.dataSource = self
-        dropView.zt_width = IPHONE_WIDTH
-        dropView.zt_height = IPHONE_HEIGHT
         dropView.tabTitles(titles: ["交易时间","交易类型"])
     }
     
     func dropHintView(dropHint: DropHintView, index: Int) -> UIView {
         if index == 0 {
-            return timeChooseView
+            if timeChooseView == nil {
+                timeChooseView = startAndEndTimeChooseViewGenerate()
+            }
+            return timeChooseView!
         } else {
-            return self.statusView
+            if statusView == nil {
+                statusView = statusDropViewGenerate(statusTitles: messageStatus)
+            }
+            return statusView!
         }
     }
 }

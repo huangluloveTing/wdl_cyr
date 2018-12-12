@@ -29,11 +29,10 @@ class GSDetail_OfferInfoCell: BaseCell {
 
 extension GSDetail_OfferInfoCell {
     
-    func showOfferInfo(myOffer:OfferInfoModel , otherOffers:[OfferInfoModel]?) -> Void {
+    func showOfferInfo(myOffer:OfferInfoModel , otherOffers:[OfferInfoModel]? , showOffer:Bool = true) -> Void {
         self.possibleLabel.text = myOffer.dealPossible
         self.unitPriceLabel.text = Util.floatPoint(num: 2, floatValue: myOffer.offerUnitPrice)+"元/吨"
         self.totalPriceLabel.text = Util.floatPoint(num: 2, floatValue: myOffer.offerTotalPrice)+"元"
-        
         if otherOffers == nil {
 //            self.otherNumLabel.text = ""
 //            self.otherReportLabel.text = ""
