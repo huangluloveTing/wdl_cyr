@@ -29,9 +29,21 @@ struct LoginInfo : HandyJSON {
 
 class WDLCoreManager: NSObject {
     
+    private var _regions:[RegionModel]?
     private var _userInfo:ZbnCarrierInfo?
     
-    public var regionAreas:[RegionModel]?
+    public var regionAreas:[RegionModel]? {
+        set {
+            _regions = newValue
+            UserStore.storeRegionsInfo(regions: newValue)
+        }
+        get {
+            if _regions == nil {
+                _regions = UserStore.loadRegisonInfo()
+            }
+            return _regions
+        }
+    }
     
     public var userInfo: ZbnCarrierInfo? {
         set {
@@ -93,6 +105,17 @@ extension WDLCoreManager {
                 self.unreadMessageCount = data.data ?? 0
                 if let closure = closure {
                     closure(data.data ?? 0)
+                }
+            })
+    }
+    
+    public func loadAreas(closure:(([RegionModel])->())? = nil) {
+       let _ = BaseApi.request(target: API.loadTaskInfo(), type: BaseResponseModel<[RegionModel]>.self)
+            .retry()
+            .subscribe(onNext: { [weak self](data) in
+                self?.regionAreas = data.data ?? []
+                if let closure = closure {
+                    closure(data.data ?? [])
                 }
             })
     }
