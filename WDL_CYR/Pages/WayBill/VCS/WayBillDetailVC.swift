@@ -15,6 +15,8 @@ class WayBillDetailVC: WaybillDetailBaseVC {
 
     @IBOutlet weak var tableView: UITableView!
     
+    private var commentModel:ToCommentModel?
+    
     public var transportNo: String?
     
     override func viewDidLoad() {
@@ -37,10 +39,35 @@ class WayBillDetailVC: WaybillDetailBaseVC {
     
     
     override func toCommitComment() {
-        let assembleVC = WaybillAssembleVC()
-        assembleVC.pageInfo = currentWaybillDetailInfo()
-        assembleVC.currentDisplayMode = .driverAssemble
-        self.pushToVC(vc: assembleVC, title: "配载")
+        var evaluate = ZbnEvaluateVo()
+        evaluate.evaluateTo = 2
+        evaluate.transportNo = transportNo ?? ""
+        evaluate.logisticsServicesScore = Int(self.commentModel?.logicRate ?? 0)
+        evaluate.serviceAttitudeScore = Int(self.commentModel?.serviceRate ?? 0)
+        evaluate.commonts = self.commentModel?.comment ?? ""
+        if evaluate.logisticsServicesScore == 0 {
+            self.showWarn(warn: "请评价物流服务", complete: nil)
+            return
+        }
+        if evaluate.serviceAttitudeScore == 0 {
+            self.showWarn(warn: "请评价服务态度", complete: nil)
+            return
+        }
+        self.showLoading()
+        BaseApi.request(target: API.createEvaluate(evaluate), type: BaseResponseModel<String>.self)
+            .retry(5)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess(success: "评价成功", complete: {
+                    self?.pop(toRootViewControllerAnimation: true)
+                })
+                }, onError: { (error) in
+                    self.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
+    }
+    
+    override func toComment(comment: ToCommentModel) {
+        self.commentModel = comment;
     }
     
     override func clickAddReturn() {
