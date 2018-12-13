@@ -151,7 +151,7 @@ extension BaseVC {
         case .notDone_breakContractForCarrier:
             detailVC.currentShowMode(mode: .doing_carrierBreak)
         case .done(let mode):
-            detailVC.currentShowMode(mode: .done_notComment)
+            detailVC.currentShowMode(mode: .done_notCommentForCarrier)
             if mode == .noComment {
                 self.toCommentVC(hallId: info.hallId ?? "")
                 return

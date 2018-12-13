@@ -14,6 +14,11 @@ struct ToCommentModel {
     var comment:String?
 }
 
+enum WaybillCurrentRole {
+    case driver
+    case carrier
+}
+
 enum WaybillDisplayMode {
     case unassemble_show_1_Assemble    //未配载，显示配载的情况，即订单来源为 1 的情况
     case unassemble_show_2_Assemble    //未配载，显示配载的情况，即订单来源为 2 的情况
@@ -26,7 +31,8 @@ enum WaybillDisplayMode {
     case doing_driverBreak              // 司机违约 （不能进入详情）
     case doing_carrierBreak             // 承运人违约，显示修改配载
     case doing_canEditAssemble          // 待起运可修改配载
-    case done_notComment                //已完成，未评价
+    case done_notCommentForDriver       // 已完成，未评价（司机）
+    case done_notCommentForCarrier      // 已完成，未评价(承运人)
     case done_commentOne                //已完成，一个评价
     case done_commentAll                //已完成，互评
 }
@@ -57,11 +63,33 @@ class WaybillDetailBaseVC: NormalBaseVC {
     
     // 当前的一个评论数据
     func currentOneCommet() -> WayBillDetailCommentInfo? {
-        return nil
+        let myCmt = myComment(evaluteList: self.currentInfo?.evaluateList)
+        let toMeComment = commentToMe(evaluteList: self.currentInfo?.evaluateList)
+        let evalue = myCmt ?? toMeComment
+        var info = WayBillDetailCommentInfo()
+        info.logic = Float(evalue?.logisticsServicesScore ?? 0)
+        info.service = Float(evalue?.serviceAttitudeScore ?? 0)
+        info.comment = evalue?.commonts
+        info.commentTime = evalue?.createTime
+        return info
     }
     // 已互评的数据
     func currentCommentAll() -> (WayBillDetailCommentInfo?, WayBillDetailCommentInfo?) {
-        return (nil , nil)
+        let myCmt = myComment(evaluteList: self.currentInfo?.evaluateList)
+        let toMeComment = commentToMe(evaluteList: self.currentInfo?.evaluateList)
+        
+        var infoToMe = WayBillDetailCommentInfo()
+        infoToMe.logic = Float(toMeComment?.logisticsServicesScore ?? 0)
+        infoToMe.service = Float(toMeComment?.serviceAttitudeScore ?? 0)
+        infoToMe.comment = toMeComment?.commonts
+        infoToMe.commentTime = toMeComment?.createTime
+        
+        var infoMeComment = WayBillDetailCommentInfo()
+        infoMeComment.logic = Float(myCmt?.logisticsServicesScore ?? 0)
+        infoMeComment.service = Float(myCmt?.serviceAttitudeScore ?? 0)
+        infoMeComment.comment = myCmt?.commonts
+        infoMeComment.commentTime = myCmt?.createTime
+        return (infoMeComment ,infoToMe)
     }
     // 我的去评论的数据--- 需重写获取评论数据
     func toComment(comment:ToCommentModel) -> Void {
@@ -178,8 +206,10 @@ extension WaybillDetailBaseVC {
             return notDoneWillStartCell(tableView:tableView , indexPath:indexPath)
         case .doing_canEditAssemble:
              return willToStartToAssemble(indexPath: indexPath, tableView: tableView)
-        case .done_notComment:
+        case .done_notCommentForDriver:
             return doneToCommentCell(tableView:tableView , indexPath:indexPath)
+        case .done_notCommentForCarrier:
+            return notDoneWillSignCell(tableView:tableView, indexPath:indexPath)
         case .done_commentAll , .done_commentOne:
             return doneCommentedCell(tableView:tableView , indexPath:indexPath)
         default:
@@ -222,7 +252,9 @@ extension WaybillDetailBaseVC {
             return notDoneNotStartNumSection()
         case .done_commentOne , .done_commentAll:
             return doneCommentedtNumSection()
-        case .done_notComment:
+        case .done_notCommentForCarrier:
+            return notDoneWillSignNumSection()
+        case .done_notCommentForDriver:
             return doneToCommentNumSection()
         default:
             return doneToCommentNumSection()
@@ -247,7 +279,9 @@ extension WaybillDetailBaseVC {
             return notDoneNotStartRow(section:section)
         case .done_commentOne , .done_commentAll:
             return doneCommentedRows(section:section)
-        case .done_notComment:
+        case .done_notCommentForCarrier:
+            return notDoneWillSignRow(section:section)
+        case .done_notCommentForDriver:
             return doneToCommentRow(section:section)
         default:
             return doneToCommentRow(section:section)
@@ -786,13 +820,21 @@ extension WaybillDetailBaseVC {
         let commetMe = self.commentToMe(evaluteList: evaluatedList)
         if myComment != nil && commetMe != nil { // 互评
             self.currentDisplayMode = .done_commentAll
+            return
         }
         if myComment != nil && commetMe == nil { // 我已评价
             self.currentDisplayMode = .done_commentOne
+            return
         }
         
         if myComment == nil && commetMe != nil {
             self.currentDisplayMode = .done_commentOne
+            return
+        }
+        if info?.driverId != WDLCoreManager.shared().userInfo?.id { // 不是司机，不能评价
+            self.currentDisplayMode = .done_notCommentForDriver
+        } else {
+            self.currentDisplayMode = .done_notCommentForCarrier
         }
     }
     

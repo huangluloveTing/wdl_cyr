@@ -9,6 +9,7 @@
 import Foundation
 
 enum WaybillCommentStatus {
+    case cannotComment             // 不能评价
     case noComment                 // 未评价
     case myAlreadyCommented        // 我已评价
     case commentToMe               // 已评价我 的

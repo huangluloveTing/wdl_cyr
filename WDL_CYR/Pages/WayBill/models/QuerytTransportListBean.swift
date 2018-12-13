@@ -29,6 +29,8 @@ struct QuerytTransportListBean: HandyJSON {
 
 struct WayBillDetailCommentInfo : HandyJSON {
     var rate:CGFloat?
+    var logic : Float = 0
+    var service :Float = 0
     var comment:String?
     var commentTime:TimeInterval?
 }

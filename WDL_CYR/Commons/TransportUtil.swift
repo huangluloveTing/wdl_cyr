@@ -72,6 +72,9 @@ class TransportUtil: NSObject {
             if evalate == true {
                 return .done(.myAlreadyCommented)
             }
+            if driverIsSelf == true {
+                return .done(.cannotComment)
+            }
             return .done(.noComment)
         }
         return .other
