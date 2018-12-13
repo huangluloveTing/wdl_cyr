@@ -19,10 +19,18 @@ class TransportUtil: NSObject {
         let evalate = (info.evaluateCode != nil)
         let completeStatus = info.completeStatus //运单状态 1：未配载，2 ：未完成， 3：完成 ,
         // 未配载，只需判断配置相关的字段，即 completeStatus = 1
+        
+        // 当前承运人和司机是否是同一个
+        let driverIsSelf = WDLCoreManager.shared().userInfo?.id == info.driverId
+        
         if completeStatus == 1 { // 未配载
             if comType == 1 || comType == 2 {   // 来源1 , 2 ， 未接受时 ， 显示 接受 拒绝
                 if driverStatus == 4 {  // 当driverStatus == 4 时 ， 已接受，显示 配载
                     return .unAssemble_comType_1_2_toAssemble
+                }
+                // 承运人 和司机 不是同一个人时，不能去接受 拒绝
+                if driverIsSelf == true {
+                    return .unAssemble_comType_1_2_self
                 }
                 return .unAssemble_comType_1_2_noAccept // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
             }
@@ -54,6 +62,10 @@ class TransportUtil: NSObject {
                     return .notDone_breakContractForDriver
                 }
                 return .notDone_breakContractForCarrier
+            }
+            // 待起运的运单，都可以修改配载
+            if transportStatus == 1 {
+                return .notDone_canEditAssemble
             }
         }
         if completeStatus == 3 { // 已完成

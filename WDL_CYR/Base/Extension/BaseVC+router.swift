@@ -159,6 +159,8 @@ extension BaseVC {
         case .unAssemble_comType_1_2_noAccept , .unAssemble_comType_3_noAccept:
             print("未接受不 跳转")
             return
+        case .notDone_canEditAssemble:
+            detailVC.currentShowMode(mode: .doing_canEditAssemble)
         default:
             detailVC.currentShowMode(mode: .doing_showWillSign)
         }

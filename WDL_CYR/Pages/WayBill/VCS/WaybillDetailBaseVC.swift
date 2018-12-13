@@ -17,6 +17,7 @@ struct ToCommentModel {
 enum WaybillDisplayMode {
     case unassemble_show_1_Assemble    //未配载，显示配载的情况，即订单来源为 1 的情况
     case unassemble_show_2_Assemble    //未配载，显示配载的情况，即订单来源为 2 的情况
+    case unassemble_assembled           // 未配载司机可以接受的运单
     case unassemble_showSpecial         //未配载，运单来源为3 的情况
     case unassemble_showDesignate       //未指派，运单来源为4 的情况
     case doing_showWillTransport        //未完成，待起运
@@ -24,6 +25,7 @@ enum WaybillDisplayMode {
     case doing_showWillSign             //未完成，待签收
     case doing_driverBreak              // 司机违约 （不能进入详情）
     case doing_carrierBreak             // 承运人违约，显示修改配载
+    case doing_canEditAssemble          // 待起运可修改配载
     case done_notComment                //已完成，未评价
     case done_commentOne                //已完成，一个评价
     case done_commentAll                //已完成，互评
@@ -174,6 +176,8 @@ extension WaybillDetailBaseVC {
             return notDoneTransportingCell(tableView: tableView , indexPath:indexPath)
         case .doing_showWillTransport:
             return notDoneWillStartCell(tableView:tableView , indexPath:indexPath)
+        case .doing_canEditAssemble:
+             return willToStartToAssemble(indexPath: indexPath, tableView: tableView)
         case .done_notComment:
             return doneToCommentCell(tableView:tableView , indexPath:indexPath)
         case .done_commentAll , .done_commentOne:
@@ -389,6 +393,27 @@ extension WaybillDetailBaseVC {
             }
             if row == 2 {
                 return waybillHandleCell(tableView: tableView, handleName: "配载")
+            }
+        }
+        if section == 1 {
+            return waybillDealInfoCell(tableView: tableView)
+        }
+        return waybillGoodsInfoCell(tableView: tableView)
+    }
+    
+    // 当运单来源为 1，2 时 ， 对应的cell
+    func willToStartToAssemble(indexPath:IndexPath , tableView:UITableView) -> UITableViewCell {
+        let section = indexPath.section
+        let row = indexPath.row
+        if section == 0 {
+            if row == 0 {
+                return waybillStatusCell(tableView: tableView)
+            }
+            if row == 1 {
+                return waybillLinkInfoCell(tableView: tableView)
+            }
+            if row == 2 {
+                return waybillHandleCell(tableView: tableView, handleName: "修改配载")
             }
         }
         if section == 1 {

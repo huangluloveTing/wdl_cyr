@@ -389,16 +389,6 @@ extension ResourceHallVC {
                 returnValue.select = false
                 return returnValue
             }
-            
-//            var noLimit = MoreScreenItem()
-//            noLimit.title = "不限"
-//            noLimit.select = true
-//
-//            loadTimes.insert(noLimit, at: 0)
-//            lengthItems.insert(noLimit, at: 0)
-//            widthItems.insert(noLimit, at: 0)
-//            typeItems.insert(noLimit, at: 0)
-//            tons.insert(noLimit, at: 0)
         
             loadTimeItem.items = loadTimes
             loadTimeItem.type = .multiSelect

@@ -17,6 +17,7 @@ enum WaybillCommentStatus {
 
 enum WaybillDisplayStatus {
     case unAssemble_comType_1_2_noAccept    // 运单来源为1、2 时 的未接受的运单
+    case unAssemble_comType_1_2_self        // 运单来源为1、2 时 的未接受的承运人指派给别的司机的
     case unAssemble_comType_3_noAccept      // 运单来源为 3 时 的未接受的运单
     case unAssemble_comType_1_2_toAssemble  // 运单来源为1、2 时 的待配载的运单
     case unAssemble_comType_3_toAssemble    // 运单来源为 3 时 的待配载的运单
@@ -26,6 +27,7 @@ enum WaybillDisplayStatus {
     case notDone_willSign                   // 未完成 待签收的运单
     case notDone_breakContractForDriver     // 未完成 司机违约的运单(待办单)
     case notDone_breakContractForCarrier    // 未完成 承运人违约的运单(待办单)
+    case notDone_canEditAssemble                // 未完成 可以配置的（即z待起运的运单，都可以修改配载）
     case done(WaybillCommentStatus)         // 已完成
     case other                              // 其他，显示其他情况的
 }

@@ -654,6 +654,8 @@ extension WayBillBaseVC {
         switch status {
         case .unAssemble_comType_1_2_noAccept:
             return unAssembleNoAcceptCell(info: info, tableView: tableView)
+        case .unAssemble_comType_1_2_self:
+            return noHandleCell(info: info, tableView: tableView)
         case .unAssemble_comType_3_noAccept:
             return unAssembleSepecialCell(info: info, indexPath: indexPath, tableView: tableView)
         case .unAssemble_comType_1_2_toAssemble:
@@ -666,6 +668,8 @@ extension WayBillBaseVC {
             return breakContractForCarrierCell(info: info, tableView: tableView)
         case .notDone_breakContractForDriver:
             return breakContractForDriverCell(info: info, tableView: tableView)
+        case .notDone_canEditAssemble:
+            return unAssembleToAssembleCell(info: info, tableView: tableView)
         case .notDone_willSign , .notDone_transporting , .notDone_willTransport:
             return noHandleCell(info: info, tableView: tableView)
         default:

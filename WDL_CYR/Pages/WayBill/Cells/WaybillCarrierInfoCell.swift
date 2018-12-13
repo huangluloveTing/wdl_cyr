@@ -171,6 +171,9 @@ extension WaybillCarrierInfoCell {
                 self.showInfoDoingNormal(info: info)
             }
         }
+        if info?.transportStatus == 1 {
+            self.showCanEditInfo(info: info)
+        }
     }
 }
 
@@ -252,6 +255,14 @@ extension WaybillCarrierInfoCell {
         self.oneHandleView.isHidden = true
         self.twoHandleButton_1.setTitle("取消运输", for: .normal)
         self.twoHandleButton_2.setTitle("继续运输", for: .normal)
+    }
+    
+    // 显示可以修改配载 -- 待起运
+    func showCanEditInfo(info:WayBillInfoBean?) -> Void {
+        self.showInfo(info: info)
+        self.twoHandleView.isHidden = true
+        self.oneHandleView.isHidden = false
+        self.oneHandleButton.setTitle("修改配载", for: .normal)
     }
 }
 
