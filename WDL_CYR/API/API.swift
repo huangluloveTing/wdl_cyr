@@ -186,9 +186,7 @@ func apiTask(api:API) -> Task {
     switch api {
     case .getMessageNum():
         return .requestPlain
-//    case .returnMoney(let money,let id):
-//        return .requestParameters(parameters: ["money":money, "id": id], encoding: URLEncoding.default)
-        
+
     case .returnMoney(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .dealDetail(let query):
@@ -202,6 +200,12 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: model.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     case .registerSms(let phpne):
         return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["cellphone":phpne])
+        
+    case .findCarrierInfoFee(let id):
+        return .requestCompositeParameters(bodyParameters: [String:Any](), bodyEncoding: JSONEncoding.default, urlParameters: ["hallId": id])
+        
+    
+        
     case .register(let pwd, let phone, let vcode, let vpwd):
         return .requestParameters(parameters: ["password": pwd,"phone": phone,"verificationCode": vcode,"verificationPassword": vpwd], encoding: JSONEncoding.default)
         
@@ -238,8 +242,7 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .findTransportCapacity(let query):
         return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
-    case .findCarrierInfoFee(let id):
-        return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["hallId": id])
+
     case .addOffer(let commit):
         return .requestParameters(parameters: commit.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     case .selectOwnOffer(let query):
