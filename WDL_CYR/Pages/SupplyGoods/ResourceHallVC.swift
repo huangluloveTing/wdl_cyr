@@ -355,50 +355,50 @@ extension ResourceHallVC {
             typeItem.title = "车型"
             var tonsItem = MoreScreenSelectionItem()
             tonsItem.title = "吨位"
-            var tons = select.OrderTonsLimit.map { (item) -> MoreScreenItem in
+            let tons = select.OrderTonsLimit.map { (item) -> MoreScreenItem in
                 var returnValue = MoreScreenItem()
-                returnValue.title = item.value ?? ""
+                returnValue.title = item.dictionaryName ?? ""
                 returnValue.select = false
                 return returnValue
             }
             
-            var widthItems = select.VehicleWidth.map { (item) -> MoreScreenItem in
+            let widthItems = select.VehicleWidth.map { (item) -> MoreScreenItem in
                 var returnValue = MoreScreenItem()
-                returnValue.title = item.value ?? ""
+                returnValue.title = item.dictionaryName ?? ""
                 returnValue.select = false
                 return returnValue
             }
             
-            var loadTimes = select.LoadingTime.map { (item) -> MoreScreenItem in
+            let loadTimes = select.LoadingTime.map { (item) -> MoreScreenItem in
                 var returnValue = MoreScreenItem()
-                returnValue.title = item.value ?? ""
+                returnValue.title = item.dictionaryName ?? ""
                 returnValue.select = false
                 return returnValue
             }
             
-            var lengthItems = select.VehicleLength.map { (item) -> MoreScreenItem in
+            let lengthItems = select.VehicleLength.map { (item) -> MoreScreenItem in
                 var returnValue = MoreScreenItem()
-                returnValue.title = item.value ?? ""
+                returnValue.title = item.dictionaryName ?? ""
                 returnValue.select = false
                 return returnValue
             }
             
-            var typeItems = select.VehicleType.map { (item) -> MoreScreenItem in
+            let typeItems = select.VehicleType.map { (item) -> MoreScreenItem in
                 var returnValue = MoreScreenItem()
-                returnValue.title = item.value ?? ""
+                returnValue.title = item.dictionaryName ?? ""
                 returnValue.select = false
                 return returnValue
             }
             
-            var noLimit = MoreScreenItem()
-            noLimit.title = "不限"
-            noLimit.select = true
-            
-            loadTimes.insert(noLimit, at: 0)
-            lengthItems.insert(noLimit, at: 0)
-            widthItems.insert(noLimit, at: 0)
-            typeItems.insert(noLimit, at: 0)
-            tons.insert(noLimit, at: 0)
+//            var noLimit = MoreScreenItem()
+//            noLimit.title = "不限"
+//            noLimit.select = true
+//
+//            loadTimes.insert(noLimit, at: 0)
+//            lengthItems.insert(noLimit, at: 0)
+//            widthItems.insert(noLimit, at: 0)
+//            typeItems.insert(noLimit, at: 0)
+//            tons.insert(noLimit, at: 0)
         
             loadTimeItem.items = loadTimes
             loadTimeItem.type = .multiSelect
@@ -414,7 +414,7 @@ extension ResourceHallVC {
             typeItem.queryKey = .vehicleType
             tonsItem.items = tons
             tonsItem.type = .multiSelect
-            tonsItem.queryKey = .vehicleWeight
+            tonsItem.queryKey = .weightStr
             
             moreSelectItems = [consig , loadTimeItem , lengthItem , widthItem , typeItem , tonsItem]
         }
@@ -447,21 +447,24 @@ extension ResourceHallVC {
         moreSelectItems.forEach { (item) in
             switch item.queryKey ?? .consignorName  {
             case .vehicleWidth:
-                self.query.vehicleWidth = getSelectedItem(items: item.items)?.title
+                self.query.vehicleWidth = getSelectedItem(items: item.items)
                 break
             case .vehicleType:
-                self.query.vehicleType = getSelectedItem(items: item.items)?.title
+                self.query.vehicleType = getSelectedItem(items: item.items)
                 break
             case .vehicleLength:
-                self.query.vehicleLength = getSelectedItem(items: item.items)?.title
+                self.query.vehicleLength = getSelectedItem(items: item.items)
                 break
             case .vehicleWeight:
                 break
             case .loadingTime:
-                self.query.loadingTime = getSelectedItem(items: item.items)?.title
+                self.query.loadingTime = getSelectedItem(items: item.items)
                 break
             case .consignorName:
                 self.query.consignorName = item.inputItem?.input
+                break
+            case .weightStr:
+                self.query.weightStr = getSelectedItem(items: item.items)
                 break
             }
         }
@@ -469,10 +472,17 @@ extension ResourceHallVC {
     }
     
     //MARK: - 获取选中的 item
-    private func getSelectedItem(items:[MoreScreenItem]) -> MoreScreenItem? {
-        let item = items.filter { (screen) -> Bool in
+    private func getSelectedItem(items:[MoreScreenItem]) -> String? {
+        let items = items.filter { (screen) -> Bool in
             return screen.select
-        }.first
-        return item
+        }
+        
+        var param = ""
+        items.forEach { (item) in
+            if item.select == true {
+                param.append(item.title)
+            }
+        }
+        return param
     }
 }

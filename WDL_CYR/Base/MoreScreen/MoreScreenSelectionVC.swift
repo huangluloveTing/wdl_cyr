@@ -87,38 +87,51 @@ extension MoreScreenSelectionVC {
     }
     
     //MARK: - 选择相关的逻辑
-    //如果选择的是第一个，即不限的情况，如果选中时，别的都未非选中
-    // 不是第一个时 ，要将不限设置为非选中
+    //如果title 为 不限 则 其他 不选择 ，
+    // 选择其他 ， 不限就需要 不选中
     private func selectItemHandle(item:MoreScreenSelectionItem , index:Int) -> MoreScreenSelectionItem {
-        var newItem = item
         var newItems = item.items
-        if index == 0 { //
-            let selectItem = item.items[index]
-            if selectItem.select == false {
-                newItems = item.items.enumerated().map({ (offset , ite) -> MoreScreenItem in
-                    var newIt = ite
-                    if offset == 0 {
-                        newIt.select = true
-                    }
-                    else {
-                        newIt.select = false
-                    }
-                    return newIt
-                })
-            }
+        if newItems[index].title == "不限" {
+            return clickNolimitHandle(index: index, item: item)
         } else {
-            newItems = item.items.enumerated().map({ (offset , ite) -> MoreScreenItem in
-                var newIt = ite
-                if offset == 0 {
-                    newIt.select = false
-                }
-                if offset == index  {
-                    newIt.select = !newIt.select
-                }
-                
-                return newIt
-            })
+            return clickNotNolimitHandle(index: index, item: item)
         }
+    }
+    
+    //MARK: - 选择的不是 不限 选项 ，需要将 不限设置为不选中
+    func clickNotNolimitHandle(index:Int , item:MoreScreenSelectionItem) -> MoreScreenSelectionItem {
+        var subItem = item.items[index]
+        if subItem.title != "不限" {
+            subItem.select = !subItem.select
+        }
+        //需要将不限设置为非选中
+        var newItems = item.items.map { (enum_item) -> MoreScreenItem in
+            var newItem = enum_item
+            if newItem.title == "不限" {
+                newItem.select = false
+            }
+            return newItem
+        }
+        newItems[index] = subItem
+        var newItem = item
+        newItem.items = newItems
+        return newItem
+    }
+    
+    //MARK: - z选择的是 不限 选项，需要将 其他所有设置为 不选中
+    func clickNolimitHandle(index:Int , item:MoreScreenSelectionItem) -> MoreScreenSelectionItem {
+        var subItem = item.items[index]
+        if subItem.title == "不限" {
+            subItem.select = true;
+        }
+        //需要将不限设置为非选中
+        var newItems = item.items.map { (enum_item) -> MoreScreenItem in
+            var newItem = enum_item
+            newItem.select = false
+            return newItem
+        }
+        newItems[index] = subItem
+        var newItem = item
         newItem.items = newItems
         return newItem
     }
@@ -149,6 +162,7 @@ extension MoreScreenSelectionVC {
                 return newItem
             }
         }
+        
         currentSelectionItems = items
         self.tableView.reloadData()
     }

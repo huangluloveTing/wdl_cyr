@@ -33,6 +33,7 @@ struct GoodsSupplyQueryBean : HandyJSON {
     var loadingTime: String? //: 装货时间 ,
     var maxWeight : Float? // (number): 最大吨位 ,
     var minWeight : Float? // (number): 最小吨位 ,
+    var weightStr: String? //
     
 }
 

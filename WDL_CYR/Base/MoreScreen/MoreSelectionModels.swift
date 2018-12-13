@@ -21,6 +21,7 @@ enum MoreScreenQueryKey : String {
     case vehicleWeight = "vehicleWeight"
     case loadingTime = "loadingTime"
     case consignorName = "consignorName"
+    case weightStr = "weightStr"
 }
 
 struct MoreScreenSelectionItem {

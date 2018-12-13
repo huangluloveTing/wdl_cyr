@@ -13,3 +13,9 @@ protocol ZTScrollViewControllerType {
     func didShow()
     func willDisappear()
 }
+
+
+protocol ZTScrollVCContainerType {
+    associatedtype SubVCType
+    func scrollSubItems(items:SubVCType)
+}
