@@ -8,7 +8,7 @@
 
 import UIKit
 import RxSwift
-
+import Alamofire
 class CarrierOfferBaseVC: NormalBaseVC {
 
     override func viewDidLoad() {
@@ -32,5 +32,9 @@ extension CarrierOfferBaseVC {
                     }
             })
             .disposed(by: dispose)
+    
+       
     }
+    
+    
 }

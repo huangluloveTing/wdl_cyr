@@ -14,8 +14,12 @@ let IPHONE_WIDTH = UIScreen.main.bounds.size.width
 let IPHONE_HEIGHT = UIScreen.main.bounds.size.height
 let IPHONE_RATE = (IPHONE_WIDTH / 375.0) > 1 ? 1 : (IPHONE_WIDTH / 375.0)
 
+//let DEBUG_ACCOUNT = "18100000000"
+//let DEBUG_PASSWORD = "q123456"
+
 let DEBUG_ACCOUNT = "15390078888"
 let DEBUG_PASSWORD = "a123456"
+
 
 #if DEBUG
 
