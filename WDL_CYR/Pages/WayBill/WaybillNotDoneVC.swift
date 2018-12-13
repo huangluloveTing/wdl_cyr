@@ -40,7 +40,7 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
-        
+        self.tableView.beginRefresh()
     }
     
     override func headerRefresh() {

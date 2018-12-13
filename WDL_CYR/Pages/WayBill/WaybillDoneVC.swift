@@ -28,6 +28,11 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
     func didShow() {
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.beginRefresh()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
