@@ -122,6 +122,13 @@
 		704129AE2179C1590078A46F /* OfferFeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704129AC2179C1590078A46F /* OfferFeeCell.xib */; };
 		704129B12179E6840078A46F /* CommitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704129AF2179E6840078A46F /* CommitCell.swift */; };
 		704129B22179E6840078A46F /* CommitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704129B02179E6840078A46F /* CommitCell.xib */; };
+		7044A04121C0FA50007A963F /* MoreScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7044A03C21C0FA4F007A963F /* MoreScreenCell.xib */; };
+		7044A04221C0FA50007A963F /* MoreScreenSelectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7044A03D21C0FA4F007A963F /* MoreScreenSelectionVC.xib */; };
+		7044A04321C0FA50007A963F /* MoreScreenSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044A03E21C0FA4F007A963F /* MoreScreenSelectionVC.swift */; };
+		7044A04421C0FA50007A963F /* MoreSelectionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044A03F21C0FA4F007A963F /* MoreSelectionModels.swift */; };
+		7044A04521C0FA50007A963F /* MoreScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044A04021C0FA4F007A963F /* MoreScreenCell.swift */; };
+		7044A04821C10BB6007A963F /* MoreInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044A04621C10BB6007A963F /* MoreInputCell.swift */; };
+		7044A04921C10BB6007A963F /* MoreInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7044A04721C10BB6007A963F /* MoreInputCell.xib */; };
 		7047769521B0CD0000628C6F /* ZbnCarrierInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047769421B0CD0000628C6F /* ZbnCarrierInfo.swift */; };
 		7047769821B0CE6200628C6F /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047769621B0CE6200628C6F /* UserStore.swift */; };
 		7047769921B0CE6200628C6F /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047769721B0CE6200628C6F /* UserDefault.swift */; };
@@ -515,6 +522,13 @@
 		704129AC2179C1590078A46F /* OfferFeeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferFeeCell.xib; sourceTree = "<group>"; };
 		704129AF2179E6840078A46F /* CommitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitCell.swift; sourceTree = "<group>"; };
 		704129B02179E6840078A46F /* CommitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommitCell.xib; sourceTree = "<group>"; };
+		7044A03C21C0FA4F007A963F /* MoreScreenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreScreenCell.xib; sourceTree = "<group>"; };
+		7044A03D21C0FA4F007A963F /* MoreScreenSelectionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreScreenSelectionVC.xib; sourceTree = "<group>"; };
+		7044A03E21C0FA4F007A963F /* MoreScreenSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreScreenSelectionVC.swift; sourceTree = "<group>"; };
+		7044A03F21C0FA4F007A963F /* MoreSelectionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreSelectionModels.swift; sourceTree = "<group>"; };
+		7044A04021C0FA4F007A963F /* MoreScreenCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreScreenCell.swift; sourceTree = "<group>"; };
+		7044A04621C10BB6007A963F /* MoreInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInputCell.swift; sourceTree = "<group>"; };
+		7044A04721C10BB6007A963F /* MoreInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreInputCell.xib; sourceTree = "<group>"; };
 		7047769421B0CD0000628C6F /* ZbnCarrierInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbnCarrierInfo.swift; sourceTree = "<group>"; };
 		7047769621B0CE6200628C6F /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		7047769721B0CE6200628C6F /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
@@ -828,6 +842,20 @@
 				3DD28D370259C986DDEA9AA8 /* libPods-WDL_CYR.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7044A03B21C0FA4F007A963F /* MoreScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7044A03E21C0FA4F007A963F /* MoreScreenSelectionVC.swift */,
+				7044A03D21C0FA4F007A963F /* MoreScreenSelectionVC.xib */,
+				7044A03F21C0FA4F007A963F /* MoreSelectionModels.swift */,
+				7044A04021C0FA4F007A963F /* MoreScreenCell.swift */,
+				7044A03C21C0FA4F007A963F /* MoreScreenCell.xib */,
+				7044A04621C10BB6007A963F /* MoreInputCell.swift */,
+				7044A04721C10BB6007A963F /* MoreInputCell.xib */,
+			);
+			path = MoreScreen;
 			sourceTree = "<group>";
 		};
 		7047769321B0CCE500628C6F /* Models */ = {
@@ -1399,6 +1427,7 @@
 		70CF4F14214B410D0051A7CA /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				7044A03B21C0FA4F007A963F /* MoreScreen */,
 				183FD2EE21B4FCE80069D50F /* AlertManager */,
 				70F40F1C214B4E270054A175 /* ZTScrollNaviTitle */,
 				70CF4F4B214B410D0051A7CA /* Views */,
@@ -1671,6 +1700,7 @@
 				70D8BC2721673956000522E0 /* TransactionDetailsVC.xib in Resources */,
 				70D8BBD521605141000522E0 /* WaybillNotDoneVC.xib in Resources */,
 				183FD30021B50DD90069D50F /* BankCardVC.xib in Resources */,
+				7044A04221C0FA50007A963F /* MoreScreenSelectionVC.xib in Resources */,
 				70CF4FA4214B41120051A7CA /* good_star@3x.png in Resources */,
 				70EA735C215E00460020B8C3 /* GSDetail_OfferInfoCell.xib in Resources */,
 				70CF4FA1214B41120051A7CA /* RegisterVC.xib in Resources */,
@@ -1728,6 +1758,7 @@
 				707B7208216F3C60000F78F6 /* Resource_GoodsInfoCell.xib in Resources */,
 				183FD32C21B644BE0069D50F /* ReturnMoneyVC.xib in Resources */,
 				703CC6E021AB9EA100F0245D /* Offer_otherOffersCell.xib in Resources */,
+				7044A04121C0FA50007A963F /* MoreScreenCell.xib in Resources */,
 				70CF4F86214B41120051A7CA /* WayBillCell.xib in Resources */,
 				70ED020C2195513C001DB4D1 /* WaybillMultiRemailInfoCell.xib in Resources */,
 				183FD32121B526B00069D50F /* MessageDetailCell.xib in Resources */,
@@ -1755,6 +1786,7 @@
 				7041296D217775320078A46F /* ResearchConsignorVC.xib in Resources */,
 				704DD0A1215CEC6600E6AD6F /* OfferNotDoneVC.xib in Resources */,
 				70A57E8A21B6760A00DEEA2C /* AddModifyPayPasswordVC.xib in Resources */,
+				7044A04921C10BB6007A963F /* MoreInputCell.xib in Resources */,
 				7039671D21830F6E00CE34B7 /* DropInputDateView.xib in Resources */,
 				70CF4FA8214B41120051A7CA /* bad_star@3x.png in Resources */,
 				70ED01F421952D81001DB4D1 /* WaybillDesignateVC.xib in Resources */,
@@ -1918,6 +1950,7 @@
 				701F10CD217D540500693936 /* OfferChooseDriverVC.swift in Sources */,
 				70ED01F321952D81001DB4D1 /* WaybillDesignateVC.swift in Sources */,
 				70CF4F9D214B41120051A7CA /* RegisterVC.swift in Sources */,
+				7044A04821C10BB6007A963F /* MoreInputCell.swift in Sources */,
 				704129A62179B6410078A46F /* BaseInputCell.swift in Sources */,
 				70CF4FBD214B41120051A7CA /* UIView+Border.swift in Sources */,
 				7003D93921B7A28600BD07FC /* InviteDriverCell.swift in Sources */,
@@ -1943,6 +1976,7 @@
 				700F69D121A29F8900B5666B /* WayBillCommentVC.swift in Sources */,
 				70CF4F65214B41110051A7CA /* MainBaseVC.swift in Sources */,
 				70CF4F60214B41110051A7CA /* ResponseHandle.swift in Sources */,
+				7044A04421C0FA50007A963F /* MoreSelectionModels.swift in Sources */,
 				70D8BBFE2165B1F8000522E0 /* WalletVC.swift in Sources */,
 				7014087E21940B05000D5CB1 /* UITextView+YLTextView.m in Sources */,
 				7014087821940AA6000D5CB1 /* WayBillCommentAllCell.swift in Sources */,
@@ -2017,6 +2051,7 @@
 				70D8BBD021605126000522E0 /* WaybillUnAssembleVC.swift in Sources */,
 				7041296C217775320078A46F /* ResearchConsignorVC.swift in Sources */,
 				70CF4F82214B41120051A7CA /* InputBaseVC.swift in Sources */,
+				7044A04521C0FA50007A963F /* MoreScreenCell.swift in Sources */,
 				70CF4FAD214B41120051A7CA /* SKTagButton.m in Sources */,
 				70CF4EA4214B409E0051A7CA /* AppDelegate.swift in Sources */,
 				70A57E3121B672B600DEEA2C /* BaseVC+Picker.swift in Sources */,
@@ -2038,6 +2073,7 @@
 				70CF4FD3214B41120051A7CA /* DropViewManage.swift in Sources */,
 				704DD0A0215CEC6600E6AD6F /* OfferNotDoneVC.swift in Sources */,
 				70CF4F98214B41120051A7CA /* OneChooseInputView.swift in Sources */,
+				7044A04321C0FA50007A963F /* MoreScreenSelectionVC.swift in Sources */,
 				701F10D1217D54B200693936 /* ChooseDriverCell.swift in Sources */,
 				70CF4F6D214B41110051A7CA /* GSDealedCell.swift in Sources */,
 				70CF4F7F214B41120051A7CA /* PersonalInfoHeader.swift in Sources */,

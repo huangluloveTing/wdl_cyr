@@ -67,6 +67,7 @@ enum API {
     case dictionaryEntityByCode(BasicDictionaryKeyMode) // 获取数据字典接口
     case carrierIdentifer(ZbnCarrierInfo)//承运人认证
     case addOrderHallReturn(OrderHallReturnVo) // 申请签收
+    case getCarrierHallDictionary()
 }
 
 
@@ -175,6 +176,8 @@ func apiPath(api:API) -> String {
         return "/information/authentication"
     case .addOrderHallReturn(_):
         return "/carrierTransport/addOrderHallReturn"
+    case .getCarrierHallDictionary():
+        return "/app/common/getCarrierHallDictionary"
     }
 }
 
@@ -324,6 +327,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     case .addOrderHallReturn(let query):
         return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
+    case .getCarrierHallDictionary():
+        return .requestPlain
     }
   
 }
@@ -345,7 +350,8 @@ func apiMethod(api:API) -> Moya.Method {
          .deleteDriver(_),
          .addDriver(_),
          .findDriverInformation(_),
-         .dictionaryEntityByCode(_):
+         .dictionaryEntityByCode(_),
+         .getCarrierHallDictionary():
         return .get
     default:
         return .post

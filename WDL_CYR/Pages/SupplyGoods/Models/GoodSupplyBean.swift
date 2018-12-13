@@ -19,6 +19,7 @@ enum GoodsSupplyListStatus : Int {
 
 
 struct GoodsSupplyQueryBean : HandyJSON {
+    var consignorName: String? //
     var endCity : String?
     var endProvince: String?
     var isDeal:Int?
@@ -26,6 +27,13 @@ struct GoodsSupplyQueryBean : HandyJSON {
     var startProvince : String?
     var pageNum : Int = 1
     var pageSize : Int = 20
+    var vehicleType:String?
+    var vehicleLength:String?
+    var vehicleWidth: String? // (number): 车宽
+    var loadingTime: String? //: 装货时间 ,
+    var maxWeight : Float? // (number): 最大吨位 ,
+    var minWeight : Float? // (number): 最小吨位 ,
+    
 }
 
 
