@@ -30,9 +30,9 @@ class TransportUtil: NSObject {
                 }
                 // 承运人 和司机 不是同一个人时，不能去接受 拒绝
                 if driverIsSelf == true {
-                    return .unAssemble_comType_1_2_self
+                    return .unAssemble_comType_1_2_noAccept
                 }
-                return .unAssemble_comType_1_2_noAccept // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
+                return .unAssemble_comType_1_2_self // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
             }
             if comType == 3 {  // 来源3 ， 未接受时 ， 显示 接受 拒绝
                 if driverStatus == 4 {  // 当driverStatus == 4 时 ， 已接受，显示 配载
@@ -61,7 +61,7 @@ class TransportUtil: NSObject {
                 return .notDone_willSign
             }
             if driverStatus ==  6 {
-                if role == 2 {
+                if driverIsSelf == true {
                     return .notDone_breakContractForDriver
                 }
                 return .notDone_breakContractForCarrier
