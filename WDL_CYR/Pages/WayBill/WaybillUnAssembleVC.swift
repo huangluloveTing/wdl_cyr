@@ -81,6 +81,12 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
         super.viewDidLayoutSubviews()
         toConfigDropView(dropView: self.dropView)
     }
+    
+    override func currentSearch(text: String) {
+        self.queryBean.searchWord = text
+        self.beginRefresh()
+        self.view.endEditing(true)
+    }
 }
 
 //MARK: - load data

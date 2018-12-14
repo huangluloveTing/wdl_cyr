@@ -42,7 +42,7 @@ struct WayBillInfoBean : HandyJSON {
     var companyLogo : String? // 托运人 logo
     var consignorName : String? // (string): 托运人名称 ,
     var carrierName : String? // (string): 承运人名称 ,
-    var carrierType : String? //(string): 报价类型 0=无车报价 1=有车报价 ,
+    var carrierType : Int? //(string): 报价类型 0=无车报价 1=有车报价 ,
     var role  : Int? //承运人角色，1：承运人， 2，司机
     var origin : String? // (string): 起始地
     var destination :String? // (string): 目的地 ,

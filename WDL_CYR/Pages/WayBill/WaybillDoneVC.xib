@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p95-bM-q6c">
-                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                    <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                     <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LV8-dA-cnM" customClass="DropHintView" customModule="WDL_CYR" customModuleProvider="target">
@@ -32,17 +32,25 @@
                         <constraint firstAttribute="height" constant="44" id="LL3-Jt-XJg"/>
                     </constraints>
                 </view>
+                <searchBar tag="1005" contentMode="redraw" searchBarStyle="minimal" placeholder="搜索托运人/承运人/姓名/电话号码" translatesAutoresizingMaskIntoConstraints="NO" id="Uif-zC-sps">
+                    <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="p95-bM-q6c" secondAttribute="bottom" id="4bA-mX-G79"/>
+                <constraint firstItem="Uif-zC-sps" firstAttribute="top" secondItem="LV8-dA-cnM" secondAttribute="bottom" id="5nj-BI-VWW"/>
                 <constraint firstItem="p95-bM-q6c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="915-UQ-R99"/>
+                <constraint firstAttribute="trailing" secondItem="Uif-zC-sps" secondAttribute="trailing" id="I7h-3e-jkg"/>
                 <constraint firstItem="LV8-dA-cnM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OXA-zg-6W3"/>
                 <constraint firstAttribute="trailing" secondItem="p95-bM-q6c" secondAttribute="trailing" id="VKC-cj-LYK"/>
-                <constraint firstItem="p95-bM-q6c" firstAttribute="top" secondItem="LV8-dA-cnM" secondAttribute="bottom" id="Wsm-6f-grv"/>
+                <constraint firstItem="p95-bM-q6c" firstAttribute="top" secondItem="Uif-zC-sps" secondAttribute="bottom" id="Vfp-w5-cwc"/>
                 <constraint firstItem="LV8-dA-cnM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="e94-pf-UhV"/>
+                <constraint firstItem="Uif-zC-sps" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qDt-Qz-EU2"/>
                 <constraint firstAttribute="trailing" secondItem="LV8-dA-cnM" secondAttribute="trailing" id="rzD-3m-QfQ"/>
             </constraints>
+            <point key="canvasLocation" x="138.40000000000001" y="128.18590704647679"/>
         </view>
     </objects>
 </document>
