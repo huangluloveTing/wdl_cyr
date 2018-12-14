@@ -62,7 +62,7 @@ extension InviteDriverResultVC {
     //MARK: - 搜索司机
     func searchDrivers() -> Void {
         self.showLoading()
-        BaseApi.request(target: API.findCapacityByDriverNameOrPhone(driverPhone ?? ""), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+        BaseApi.request(target: API.addDriverWithPhone(driverPhone ?? ""), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
             .retry(10)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: nil)

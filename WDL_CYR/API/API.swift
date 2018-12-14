@@ -49,6 +49,8 @@ enum API {
     case cancelFoucePath(String)       // 取消线路的关注
     case cancelOffer(String , String)                        // 取消报价
     case findCapacityByDriverNameOrPhone(String)            // 根据驾驶员姓名/电话查询驾驶员信息
+    
+    case addDriverWithPhone(String)            // 我的运力添加驾驶员下一步后进行搜索的接口
     case findCapacityByName(String)                         //
     case getCarrierInformation()                            // 获取登陆承运人信息
     case zbnBondInformation()                               // 获取承运人保证金数据
@@ -147,7 +149,10 @@ func apiPath(api:API) -> String {
     case .cancelOffer(_ , _):
         return "/offer/cancelOffer"
     case .findCapacityByDriverNameOrPhone(_):
-//        return "/transportCapacity/findDriverInformation"
+        return "/transportCapacity/findDriverInformation"
+    
+    case .addDriverWithPhone(_):
+    
         return "/transportCapacity/findDriverByPhone"
         
     case .findCapacityByName(_):
@@ -297,8 +302,13 @@ func apiTask(api:API) -> Task {
     case .cancelOffer(let hallId , let offerId):
         return .requestParameters(parameters: ["hallId": hallId , "id":offerId], encoding: JSONEncoding.default)
     case .findCapacityByDriverNameOrPhone(let nameOrPhone):
-//        return .requestParameters(parameters: ["nameOrPhone" : nameOrPhone], encoding: URLEncoding.default)
-        return .requestParameters(parameters: ["phone" : nameOrPhone], encoding: URLEncoding.default)
+        return .requestParameters(parameters: ["nameOrPhone" : nameOrPhone], encoding: URLEncoding.default)
+ 
+        
+    case .addDriverWithPhone(let phone):
+      
+        return .requestParameters(parameters: ["phone" : phone], encoding: URLEncoding.default)
+        
     case .findCapacityByName(let name):
         return .requestParameters(parameters: ["name" : name], encoding: URLEncoding.default)
     case .getCarrierInformation():
@@ -349,6 +359,7 @@ func apiMethod(api:API) -> Moya.Method {
          .findCarrierInfoFee(_),
          .cancelFoucePath(_),
          .queryTransportDetail(_),
+         .addDriverWithPhone(_),
          .findCapacityByName(_),
          .findCapacityByDriverNameOrPhone(_),
          .findCarInformation(_),
