@@ -63,4 +63,6 @@ struct CarrierOfferCommitModel : HandyJSON {
     var totalPrice : Float?
     // 车牌号
     var vehicleNo : String?
+    // 信息费
+    var infoFee : Float?
 }

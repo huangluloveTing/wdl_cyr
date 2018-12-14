@@ -80,6 +80,7 @@ extension OfferNoTruckVC {
         commit.quotedPrice = offerModel.offerUnitPrice
         commit.totalPrice = offerModel.total
         commit.loadWeight = self.resource?.resource?.goodsWeight
+        commit.infoFee = self.carrierInfo?.singleTimeFee
         self.showLoading(title: "正在提交", complete: nil)
         BaseApi.request(target: API.addOffer(commit), type: BaseResponseModel<String>.self)
             .retry(5)
