@@ -751,8 +751,7 @@ extension WaybillDetailBaseVC {
     //MARK: - 当前运单角色
     func currentRole() -> Int {
         //1 . 承运人 ， 2. 司机
-        //TODO: 完善
-        return self.waybillInfo?.role ?? 1
+        return WDLCoreManager.shared().userInfo?.id == self.waybillInfo?.driverId ? 2 : 1
     }
     
     /*
