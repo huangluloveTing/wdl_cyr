@@ -22,11 +22,11 @@ class WayBillDetailVC: WaybillDetailBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView(tableView: tableView)
+        self.loadDetailData(hallId: self.waybillInfo?.hallId ?? "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.loadDetailData(hallId: self.waybillInfo?.hallId ?? "")
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,11 +111,27 @@ extension WayBillDetailVC {
         guard let newImg = image else {
             return
         }
+        self.showLoading()
         BaseApi.request(target: API.uploadImage(newImg, .returnbill_path), type: BaseResponseModel<[String]>.self)
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.hiddenToast()
                 self?.addReturnBill(imgURL: data.data?.first ?? "")
+//                self?.uploadReturnImgToTransport(img: data.data?.first ?? "")
+            }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
+    }
+    
+    //MARK: - 上传运单到运单数据中
+    func uploadReturnImgToTransport(img:String) -> Void {
+        let transportNo = self.waybillInfo?.transportNo ?? ""
+        BaseApi.request(target: API.updateReturnImg(img, transportNo), type: BaseResponseModel<String>.self)
+            .retry(5)
+            .subscribe(onNext: { [weak self](data) in
+                self?.hiddenToast()
+                self?.addReturnBill(imgURL: img)
             }, onError: { [weak self](error) in
                 self?.showFail(fail: error.localizedDescription, complete: nil)
             })

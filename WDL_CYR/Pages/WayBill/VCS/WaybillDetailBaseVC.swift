@@ -740,7 +740,7 @@ extension WaybillDetailBaseVC {
     
     //MARK: - 上传成功后，显示运单数据
     func addReturnBill(imgURL:String) -> Void {
-        var list = currentReturnLists()
+        var list = self.currentReturnLists()
         var returnModel = ZbnTransportReturn()
         returnModel.returnBillUrl = imgURL
         list.append(returnModel)
