@@ -70,6 +70,7 @@ enum API {
     case carrierIdentifer(ZbnCarrierInfo)//承运人认证
     case addOrderHallReturn(OrderHallReturnVo) // 申请签收
     case getCarrierHallDictionary()
+    case updateReturnImg(String , String)   // 上传回单
 }
 
 
@@ -185,6 +186,8 @@ func apiPath(api:API) -> String {
         return "/carrierTransport/addOrderHallReturn"
     case .getCarrierHallDictionary():
         return "/app/common/getCarrierHallDictionary"
+    case .updateReturnImg(_ , _):
+        return "/carrierTransport/updateReturnImg"
     }
 }
 
@@ -345,6 +348,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     case .getCarrierHallDictionary():
         return .requestPlain
+    case .updateReturnImg(let imgUrl , let transportNo):
+        return .requestParameters(parameters: ["returnBillUrl":imgUrl , "transportNo" : transportNo] , encoding: JSONEncoding.default)
     }
   
 }
