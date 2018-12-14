@@ -283,6 +283,8 @@ extension WaybillDetailBaseVC {
             return notDoneWillSignRow(section:section)
         case .done_notCommentForDriver:
             return doneToCommentRow(section:section)
+        case .doing_canEditAssemble:
+            return notDoneWillStartCanEditRow(section:section)
         default:
             return doneToCommentRow(section:section)
         }
@@ -521,6 +523,14 @@ extension WaybillDetailBaseVC {
     func notDoneWillStartRow(section:Int) -> Int {
         if section == 0 {
             return 2
+        }
+        return 1
+    }
+    
+    //MARK: - 待起运可以 修改配载的
+    func notDoneWillStartCanEditRow(section:Int) -> Int {
+        if section == 0 {
+            return 3
         }
         return 1
     }

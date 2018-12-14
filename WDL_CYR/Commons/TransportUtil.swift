@@ -49,6 +49,9 @@ class TransportUtil: NSObject {
         if completeStatus == 2 { // 未完成
             // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派
             if transportStatus == 1 {
+                if (info.carrierType ?? 0) == 1 {
+                    return .notDone_canEditAssemble
+                }
                 return .notDone_willTransport
             }
             if transportStatus == 2 {
@@ -62,10 +65,6 @@ class TransportUtil: NSObject {
                     return .notDone_breakContractForDriver
                 }
                 return .notDone_breakContractForCarrier
-            }
-            // 待起运的运单，都可以修改配载
-            if transportStatus == 1 {
-                return .notDone_canEditAssemble
             }
         }
         if completeStatus == 3 { // 已完成

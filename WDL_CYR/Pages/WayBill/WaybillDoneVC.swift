@@ -82,6 +82,11 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
         super.viewDidLayoutSubviews()
         self.toConfigDropView(dropView: self.dropView)
     }
+    
+    override func currentSearch(text: String) {
+        self.queryBean.searchWord = text
+        self.beginRefresh()
+    }
 }
 
 

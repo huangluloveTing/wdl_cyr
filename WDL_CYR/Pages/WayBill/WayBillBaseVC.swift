@@ -43,6 +43,8 @@ class WayBillBaseVC: MainBaseVC {
     
     private var currentTableView:UITableView!
     
+    private var currentSearchBar : UISearchBar?
+    
     public var currentPageSize:Int = 20
     
     private var currentType:CurrentTransportTab = .UnAssemble
@@ -60,6 +62,8 @@ class WayBillBaseVC: MainBaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.currentSearchBar = self.view.viewWithTag(1005) as? UISearchBar
+        self.currentSearchBar?.delegate = self;
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,6 +91,10 @@ class WayBillBaseVC: MainBaseVC {
     
     public var currentDataSource:[WayBillInfoBean] {
         return self.dataSource
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        currentSearch(text: searchBar.text ?? "")
     }
 }
 
@@ -186,7 +194,7 @@ extension WayBillBaseVC {
     // 点击某一个 cell
     func toTapCell(indexPath:IndexPath) -> Void {
         // 没有接单，不进入详情
-        let info = self.dataSource[indexPath.row - 1]
+        let info = self.dataSource[indexPath.row]
         transportBillDetailPage(info: info)
     }
 }
@@ -391,7 +399,6 @@ extension WayBillBaseVC {
         // 运单状态： -1 不限 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收
         self.queryBean.transportStatus = transportStatus
         //搜索字段
-        self.queryBean.searchWord = search
         //开始结束时间
         self.queryBean.startTime = startTime
         self.queryBean.endTime = endTime
@@ -489,27 +496,17 @@ extension WayBillBaseVC {
 //MARK: - UITableViewDelegate , UITableViewDataSource
 extension WayBillBaseVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSource.count + 1
+        return self.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(nib: OfferSearchCell.self)
-            cell.searchClosure = {[weak self] (text) in
-                self?.currentSearch(text: text)
-            }
-            return cell
-        }
         var newIndexPath = indexPath
-        newIndexPath.row = indexPath.row - 1
+        newIndexPath.row = indexPath.row
 //        return self.currentCell(tableView:tableView , indexPath:newIndexPath)
         return currentWaybillCell(indexPath: newIndexPath, tableView: tableView)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            return
-        }
         cell.contentView.shadowBorder(radius: 8,
                                       bgColor: UIColor.white,
                                       shadowColor: UIColor(hex: COLOR_SHADOW),
@@ -520,6 +517,12 @@ extension WayBillBaseVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.toTapCell(indexPath: indexPath)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == currentTableView {
+            self.view.endEditing(true)
+        }
     }
 }
 
