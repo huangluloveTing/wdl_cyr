@@ -771,10 +771,10 @@ extension WaybillDetailBaseVC {
      */
     //MARK: - 是否有可以上传回单
     func canUploadReturnBill() -> Bool {
-        if self.currentRole() == 1 {
-            return false
+        if self.currentDisplayMode == .doing_showTransporting {
+            return true
         }
-        return true
+        return false
     }
     
     //MARK: - 底部按钮显示
@@ -898,11 +898,9 @@ extension WaybillDetailBaseVC {
         self.showBottom = false
         //运输中，司机 显示 申请签收
         if self.currentDisplayMode == .doing_showTransporting {
-            if self.currentRole() == 2 {
-                self.showBottom = true
-                self.bottomButtom(titles: ["申请签收"], targetView: self.currentTableView!) { [weak self](_) in
-                    self?.toReportSign()
-                }
+            self.showBottom = true
+            self.bottomButtom(titles: ["申请签收"], targetView: self.currentTableView!) { [weak self](_) in
+                self?.toReportSign()
             }
         }
         
