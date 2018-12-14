@@ -43,6 +43,8 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
         self.configTableView()
         self.queryResourceHall(quey: query)
         self.tableView.pullRefresh()
+        self.tableView.upRefresh()
+        self.tableView.initEstmatedHeights()
         self.loadAllMoreData()
     }
 
@@ -79,6 +81,12 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
             .asDriver(onErrorJustReturn: .EndRefresh)
             .drive(onNext: { [weak self](state) in
 //                self?.tableView.endRefresh()
+                if state == .LoadMore {
+                    self?.query.pageSize += 20;
+                } else {
+                    self?.tableView.removeCacheHeights()
+                    self?.query.pageSize = 20;
+                }
                 self?.queryResourceHall(quey: self!.query)
             })
             .disposed(by: dispose)
@@ -192,6 +200,11 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.01
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.heightForRow(at: indexPath)
+    }
+    
     //货源大厅列表数据
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(ResourceHallCell.self)") as! ResourceHallCell
