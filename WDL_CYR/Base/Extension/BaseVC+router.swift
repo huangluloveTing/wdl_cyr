@@ -140,7 +140,8 @@ extension BaseVC {
                 self.toCommentVC(hallId: info.hallId ?? "")
                 return
             }
-        case .unAssemble_comType_1_2_noAccept , .unAssemble_comType_3_noAccept:
+      case .unAssemble_comType_1_2_noAccept ,
+           .unAssemble_comType_3_noAccept:
             print("未接受不 跳转")
             return
         case .notDone_canEditAssemble:

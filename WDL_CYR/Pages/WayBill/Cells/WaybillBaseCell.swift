@@ -106,11 +106,11 @@ extension WaybillBaseCell {
         if status == 2 {
             statusLabel.text = "运输中"
         }
-        if status == 3 {
+        if status == 3 || status == 4 {
             statusLabel.text = "待签收"
         }
         
-        if status > 3 {
+        if status > 4 {
             if comment == nil {
                 statusLabel.text = "待评价"
             } else {
