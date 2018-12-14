@@ -147,7 +147,9 @@ func apiPath(api:API) -> String {
     case .cancelOffer(_ , _):
         return "/offer/cancelOffer"
     case .findCapacityByDriverNameOrPhone(_):
-        return "/transportCapacity/findDriverInformation"
+//        return "/transportCapacity/findDriverInformation"
+        return "/transportCapacity/findDriverByPhone"
+        
     case .findCapacityByName(_):
         return "/transportCapacity/findCarInformation"
     case .getCarrierInformation():
@@ -295,7 +297,8 @@ func apiTask(api:API) -> Task {
     case .cancelOffer(let hallId , let offerId):
         return .requestParameters(parameters: ["hallId": hallId , "id":offerId], encoding: JSONEncoding.default)
     case .findCapacityByDriverNameOrPhone(let nameOrPhone):
-        return .requestParameters(parameters: ["nameOrPhone" : nameOrPhone], encoding: URLEncoding.default)
+//        return .requestParameters(parameters: ["nameOrPhone" : nameOrPhone], encoding: URLEncoding.default)
+        return .requestParameters(parameters: ["phone" : nameOrPhone], encoding: URLEncoding.default)
     case .findCapacityByName(let name):
         return .requestParameters(parameters: ["name" : name], encoding: URLEncoding.default)
     case .getCarrierInformation():
