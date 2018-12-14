@@ -831,10 +831,15 @@ extension WaybillDetailBaseVC {
             self.currentDisplayMode = .done_commentOne
             return
         }
-        if info?.driverId != WDLCoreManager.shared().userInfo?.id { // 不是司机，不能评价
-            self.currentDisplayMode = .done_notCommentForDriver
-        } else {
-            self.currentDisplayMode = .done_notCommentForCarrier
+        if self.currentDisplayMode == .done_notCommentForDriver ||
+            self.currentDisplayMode == .done_notCommentForCarrier ||
+            self.currentDisplayMode == .done_commentOne ||
+            self.currentDisplayMode == .done_commentAll {
+            if info?.driverId != WDLCoreManager.shared().userInfo?.id { // 不是司机，不能评价
+                self.currentDisplayMode = .done_notCommentForDriver
+            } else {
+                self.currentDisplayMode = .done_notCommentForCarrier
+            }
         }
     }
     

@@ -100,11 +100,11 @@ class Util {
     static func sepecialText(text:String? = "" , lineSpace:Float , font:UIFont , color:UIColor) -> NSAttributedString {
         let targetValue = text ?? ""
         let attribute = NSMutableAttributedString(string: targetValue)
-        attribute.addAttribute(NSAttributedStringKey.font, value: font, range: NSRangeFromString(targetValue))
+        attribute.addAttribute(NSAttributedStringKey.font, value: font, range: NSRange(location: 0, length: targetValue.length > 0 ? targetValue.length - 1 : 0))
         let paragraphStye = NSMutableParagraphStyle()
         paragraphStye.lineSpacing = CGFloat(lineSpace)
-        attribute.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStye, range: NSRangeFromString(targetValue))
-        attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSRangeFromString(targetValue))
+        attribute.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStye, range: NSRange(location: 0, length: targetValue.length > 0 ? targetValue.length - 1 : 0))
+        attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSRange(location: 0, length: targetValue.length > 0 ? targetValue.length - 1 : 0))
         return attribute
     }
     
