@@ -41,8 +41,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajf-Td-QvX">
-                                <rect key="frame" x="83.5" y="-0.5" width="48" height="22"/>
-                                <state key="normal" image="未认证"/>
+                                <rect key="frame" x="83.5" y="2.5" width="48" height="16"/>
+                                <state key="normal" image="未认证" backgroundImage="未认证"/>
                                 <state key="selected" image="已认证"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="保证金余额：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEt-3T-vdk">

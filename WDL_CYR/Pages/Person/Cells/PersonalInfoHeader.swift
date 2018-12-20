@@ -31,7 +31,13 @@ class PersonalInfoHeader: BaseCell {
 extension PersonalInfoHeader {
     func showCarrierInfo(name:String? , auth:Bool? = false , money:Float? , logo:String?) -> Void {
         self.carrierNameLabel.text = name
-        self.authButton.isSelected = auth ?? false
+//        self.authButton.isSelected = auth ?? false
+        let idenStatus = auth ?? false
+        if idenStatus == true {
+            self.authButton.setImage(UIImage(named: "已认证"), for: .normal)
+        }else{
+             self.authButton.setImage(UIImage(named: "未认证"), for: .normal)
+        }
         self.moneyLabel.text = Util.floatPoint(num: 2, floatValue: money ?? 0) + "元"
         Util.showImage(imageView: self.carrierLogoImageView, imageUrl: logo)
     }

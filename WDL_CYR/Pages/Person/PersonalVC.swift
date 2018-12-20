@@ -32,6 +32,8 @@ class PersonalVC: MainBaseVC {
         }
         self.fd_prefersNavigationBarHidden = true
         registerMessageNotification()
+        
+       
     }
 
     override func didReceiveMemoryWarning() {
