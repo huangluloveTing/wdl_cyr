@@ -97,6 +97,7 @@ extension LoginVC {
                     .subscribe(onNext: { (model) in
                         self.showSuccess()
                         print("respone = \(model.toJSON() ?? ["s":""])")
+
                         WDLCoreManager.shared().userInfo = model.data
                         obser.onNext(model.data)
                         obser.onCompleted()
