@@ -9,7 +9,8 @@
 import UIKit
 
 class WaybillNoHandleCell: WaybillBaseCell {
-
+    //货源编号：id
+    @IBOutlet weak var goodCodeId: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var tyNameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
@@ -45,6 +46,8 @@ extension WaybillNoHandleCell {
     
     // 通用的信息展示
     func showInfo(info:WayBillInfoBean?) {
+        //货源编号
+        self.goodCodeId.text = "货源编号：" + (info?.hallId ?? "")
         self.configStatus(status: (info?.transportStatus)!, statusLabel: self.statusLabel , comment: info?.evaluateCode)
         self.toAddImageForImageView(imageUrl: info?.companyLogo, imageView: self.logoImageView)
         self.showFirstLineInfo(info: info, tyLabel: tyNameLabel, middleLabel: typeLabel, lastLabel: typeDescLabel)

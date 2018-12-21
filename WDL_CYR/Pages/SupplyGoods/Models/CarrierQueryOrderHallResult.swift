@@ -34,7 +34,7 @@ struct CarrierQueryOrderHallResult : HandyJSON {
     var goodsName : String = "" // (string): 货品名称 ,
     var goodsType : String = "" // (string): 货品分类 ,
     var goodsWeight : Float = 0 // (number): 货源总重 ,
-    var id : String = "" // (string, optional),
+    var id : String = "" // (string, optional),货源编号
     var infoFee : Float = 0  // (number): 服务费 ,
     var isDeal : Int = 0 // (integer): 订单状态0=竞价中 1=成交 2=未上架 3=已下架 ,
     var isEnable : Int = 0 // (integer, optional),

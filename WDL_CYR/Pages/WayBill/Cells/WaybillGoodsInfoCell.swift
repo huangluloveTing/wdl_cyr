@@ -9,7 +9,8 @@
 import UIKit
 
 class WaybillGoodsInfoCell: BaseCell {
-    
+    //货源编号
+    @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var dealTimeLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
@@ -44,7 +45,8 @@ extension WaybillGoodsInfoCell {
                        weight:Float? ,
                        pacakge:String? ,
                        length:String? ,
-                       vehicleType:String?) -> Void {
+                       vehicleType:String?,
+                       goodId:String?) -> Void {
         self.dealTimeLabel.text = Util.dateFormatter(date: dealTime ?? 0, formatter: "yyyy-MM-dd HH:mm:ss")
         self.startLabel.text = start
         self.endLabel.text = end
@@ -54,5 +56,6 @@ extension WaybillGoodsInfoCell {
         self.packageTypeLabel.text = pacakge
         self.lengthLabel.text = length
         self.vehicleTypeLabel.text = vehicleType
+        self.codeLabel.text = "货源编号：" + (goodId ?? "")
     }
 }

@@ -124,6 +124,12 @@
                             <action selector="focusLineHandle:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MMc-6q-IvP"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="货源编码：0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ic3-NC-HrW">
+                        <rect key="frame" x="93.5" y="23" width="74.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.023529411760000001" green="0.73725490199999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="w1Y-Kw-KZd" firstAttribute="leading" secondItem="dHp-tv-l4p" secondAttribute="trailing" constant="10" id="05e-37-eb7"/>
@@ -147,6 +153,7 @@
                     <constraint firstItem="WVq-an-x5I" firstAttribute="leading" secondItem="GAS-wx-amT" secondAttribute="trailing" constant="10" id="R3p-4X-eDb"/>
                     <constraint firstAttribute="trailing" secondItem="WVq-an-x5I" secondAttribute="trailing" constant="15" id="TGn-Tj-df7"/>
                     <constraint firstItem="3do-CD-j6m" firstAttribute="top" secondItem="GAS-wx-amT" secondAttribute="bottom" constant="10" id="Uwe-8u-ZuO"/>
+                    <constraint firstItem="Ic3-NC-HrW" firstAttribute="bottom" secondItem="KMD-fM-tMJ" secondAttribute="bottom" id="XUA-4r-K7u"/>
                     <constraint firstItem="w1Y-Kw-KZd" firstAttribute="top" secondItem="dHp-tv-l4p" secondAttribute="top" id="ZzN-AI-kM9"/>
                     <constraint firstAttribute="bottom" secondItem="w1Y-Kw-KZd" secondAttribute="bottom" constant="18" id="bJB-t6-MeS"/>
                     <constraint firstItem="8Yb-DT-eO0" firstAttribute="centerY" secondItem="gi4-A7-r4G" secondAttribute="centerY" id="btq-Tq-bqS"/>
@@ -160,6 +167,7 @@
                     <constraint firstItem="mle-Yd-qZd" firstAttribute="centerY" secondItem="fT2-wd-1wN" secondAttribute="centerY" id="hqZ-a7-suA"/>
                     <constraint firstItem="cHc-Tu-Eg2" firstAttribute="top" secondItem="gi4-A7-r4G" secondAttribute="bottom" constant="10" id="l7u-23-ClS"/>
                     <constraint firstAttribute="trailing" secondItem="IrD-ad-X8F" secondAttribute="trailing" constant="15" id="lHC-YH-mkU"/>
+                    <constraint firstItem="Ic3-NC-HrW" firstAttribute="leading" secondItem="KMD-fM-tMJ" secondAttribute="trailing" constant="5" id="paK-G2-pvO"/>
                     <constraint firstItem="sAm-e7-cBg" firstAttribute="leading" secondItem="cHc-Tu-Eg2" secondAttribute="trailing" constant="10" id="q5K-aG-MuA"/>
                     <constraint firstItem="GAS-wx-amT" firstAttribute="top" secondItem="KMD-fM-tMJ" secondAttribute="bottom" constant="15" id="sHm-jN-K72"/>
                     <constraint firstItem="fT2-wd-1wN" firstAttribute="leading" secondItem="KMD-fM-tMJ" secondAttribute="leading" id="tTS-Pm-GBd"/>
@@ -172,6 +180,7 @@
             <connections>
                 <outlet property="endLabel" destination="4ZC-6r-dM2" id="mkY-I5-SGw"/>
                 <outlet property="focusLineButton" destination="IrD-ad-X8F" id="bLP-b8-fud"/>
+                <outlet property="goodCodeId" destination="Ic3-NC-HrW" id="G5O-0R-eMC"/>
                 <outlet property="goodsNameLabel" destination="8Yb-DT-eO0" id="A8F-R6-0zr"/>
                 <outlet property="goodsSumLabel" destination="ca6-Xy-mDZ" id="M3P-qL-TCS"/>
                 <outlet property="goodsTypeLabel" destination="sAm-e7-cBg" id="s7F-w3-hzd"/>

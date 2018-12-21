@@ -340,13 +340,14 @@ extension WaybillDetailBaseVC {
         let dealTime = (self.currentInfo?.dealTime ?? 0) / 1000
         let start = Util.contact(strs: [self.currentInfo?.startProvince ?? "" , self.currentInfo?.startCity ?? "" , self.currentInfo?.startAddress ?? ""])
         let end = Util.contact(strs: [self.currentInfo?.endProvince ?? "" , self.currentInfo?.endCity ?? "" , self.currentInfo?.endAddress ?? ""])
+        
         cell.showGoodsInfo(dealTime: dealTime, start: start,
                            end: end, goodsType: self.currentInfo?.goodsType,
                            loadTime: (self.currentInfo?.loadingTime ?? 0)/1000,
                            weight: self.currentInfo?.goodsWeight,
                            pacakge: self.currentInfo?.packageType,
                            length: self.currentInfo?.vehicleLength,
-                           vehicleType: self.currentInfo?.vehicleType)
+                           vehicleType: self.currentInfo?.vehicleType,goodId:self.currentInfo?.id)
         return cell
     }
     

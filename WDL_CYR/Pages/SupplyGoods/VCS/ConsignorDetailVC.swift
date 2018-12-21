@@ -31,7 +31,7 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
             
             
             print("======\(res.companyLogo)")
-            let model = ResourceHallUIModel(start: res.startProvince + res.startCity,
+            let model = ResourceHallUIModel(id: res.id,start: res.startProvince + res.startCity,
                                             end: res.endProvince + res.endCity,
                                             truckInfo: truckInfo,
                                             goodsInfo: goodsInfo,

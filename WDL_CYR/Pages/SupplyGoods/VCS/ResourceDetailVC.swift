@@ -150,15 +150,17 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
             let vLength = "车长" + (self.resource?.resource?.vehicleLength ?? "")
             let vWidth = "车宽" + (self.resource?.resource?.vehicleWidth ?? "")
             let comLW = vLength + "." + vWidth
-             let summary =  Util.contact(strs: [goodWt, vtype, vPackage, comLW], seperate: " | ")
-
+            let summary =  Util.contact(strs: [goodWt, vtype, vPackage, comLW], seperate: " | ")
+            //货源编码
+            let goodCode = self.resource?.resource?.id ?? ""
             cell.showInfo(start: start,
                           end: end,
                           loadTime: loadTime,
                           goodsName: goodsName,
                           goodsType: goodsType,
                           goodsSumm: summary,
-                          remark: remark)
+                          remark: remark,
+                          goodCode:goodCode)
             return cell
         }
         //托运人信息
