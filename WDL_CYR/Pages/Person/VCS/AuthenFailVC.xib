@@ -49,6 +49,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <state key="normal" title="重新提交"/>
+                    <connections>
+                        <action selector="reSummitClick:" destination="-1" eventType="touchUpInside" id="9vi-jm-eUG"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quM-wj-5uP">
                     <rect key="frame" x="189" y="187" width="113" height="33"/>
