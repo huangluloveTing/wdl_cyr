@@ -32,6 +32,8 @@ class PersonalVC: MainBaseVC {
         }
         self.fd_prefersNavigationBarHidden = true
         registerMessageNotification()
+        
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -272,7 +274,7 @@ extension PersonalVC {
         }
     }
     
-    //MAR: - 去企业认证成功的页面
+    //MARK: - 去企业认证成功的页面
     func toEnterpriseAuthedPage() -> Void {
         let enterpriseVC = EnterpriseAuthedPage()
         self.pushToVC(vc: enterpriseVC, title: "认证")

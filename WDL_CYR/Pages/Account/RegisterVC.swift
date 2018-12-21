@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-let dueTime = 10
+let dueTime = 60
 
 class RegisterVC: BaseVC {
     
@@ -166,11 +166,11 @@ extension RegisterVC {
             .take(RxTimeInterval(dueTime), scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] (time) in
                 self?.verifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-                self?.verifyButton.setTitle(String(format: "%ds", time), for: UIControlState.normal)
-            }, onCompleted: { [weak self] in
-                self?.verifyButton.isEnabled = true
-                self?.verifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-                self?.verifyButton.setTitle("重新获取", for: UIControlState.normal)
+                self?.verifyButton.setTitle(String(format: "%ds", (dueTime - time)), for: UIControlState.normal)
+                }, onCompleted: { [weak self] in
+                    self?.verifyButton.isEnabled = true
+                    self?.verifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+                    self?.verifyButton.setTitle("重新获取", for: UIControlState.normal)
             })
             .disposed(by: dispose)
     }

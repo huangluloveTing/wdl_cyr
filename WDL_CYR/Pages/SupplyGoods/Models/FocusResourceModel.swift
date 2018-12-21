@@ -16,6 +16,7 @@ struct SupplyPlaceModel {
 
 // 货源大厅 的 item 的 model
 struct ResourceHallUIModel {
+    var id : String = "" // (string, optional),货源编号
     var start:String = ""
     var end:String = ""
     var truckInfo:String = ""
@@ -32,6 +33,7 @@ struct ResourceHallUIModel {
 }
 
 struct ResourceDetailUIModel {
+    var id : String = "" // (string, optional),货源编号
     var refercneceTotalPrice:Float = 0 // 参考总价
     var refercneceUnitPrice:Float = 0 // 参考单价
     var refercnecePriceIsVisable : Int = 1 // (string, optional), 参考价是否可见，1=可见 2，不可见

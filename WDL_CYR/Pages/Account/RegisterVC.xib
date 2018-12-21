@@ -132,7 +132,7 @@
                                     <rect key="frame" x="115.5" y="292" width="239.5" height="17"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sgk-1w-v32">
                                     <rect key="frame" x="20" y="326" width="335" height="1"/>
@@ -151,7 +151,7 @@
                                     <rect key="frame" x="115.5" y="344.5" width="239.5" height="17"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gf0-27-tQB">
                                     <rect key="frame" x="20" y="378.5" width="335" height="1"/>

@@ -215,7 +215,7 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
         
         //参考价是否可见  var refercnecePriceIsVisable : String = "" // (string, optional), 参考价是否可见，1=可见 2，不可见
         
-        let uiModel = ResourceHallUIModel(start: hall.startProvince + hall.startCity,
+        let uiModel = ResourceHallUIModel(id: hall.id,start: hall.startProvince + hall.startCity,
                                           end: hall.endProvince + hall.endCity,
                                           truckInfo: truckInfo,
                                           goodsInfo: goodsInfo,
@@ -260,6 +260,7 @@ extension ResourceHallVC {
         resource.rate = 5
         resource.consignorName = hall.companyName
         resource.resource = hall
+        
         self.toResouceDetail(resource: resource)
     }
     

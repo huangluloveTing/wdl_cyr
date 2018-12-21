@@ -12,6 +12,8 @@ class ResourceHallCell: BaseCell {
     
     typealias ResourceOfferClosure = () -> ()
     
+    //货源编号：id
+    @IBOutlet weak var goodCodeId: UILabel!
     //标题
     //参考价
     @IBOutlet weak var canPriceTitleLab: UILabel!
@@ -62,7 +64,8 @@ extension ResourceHallCell {
     func showInfo(info:ResourceHallUIModel?) -> Void {
         self.info = info
         self.startLabel.text = info?.start
-        self.endLabel.text = info?.end
+        //货源编号
+        self.goodCodeId.text = "货源编号：" +  (info?.id ?? "")
         self.truckDescLabel.text = info?.truckInfo
         self.goodsDescLabel.text = info?.goodsInfo
         self.typeLabel.text = (info?.isSelf ?? false) ? "" : "【自营】"

@@ -4,7 +4,7 @@
 //
 //  Created by 黄露 on 2018/10/5.
 //  Copyright © 2018年 yingli. All rights reserved.
-//
+//  认证成功界面
 
 import UIKit
 import RxSwift

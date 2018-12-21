@@ -10,7 +10,8 @@ import UIKit
 
 /// 
 class WaybillCarrierInfoCell: WaybillBaseCell {
-    
+    //货源编号：id
+    @IBOutlet weak var goodCodeId: UILabel!
     @IBOutlet weak var statusImageView: UIImageView!
     @IBOutlet weak var avatorImageView: UIImageView!
     @IBOutlet weak var desiginNameLabel: UILabel!
@@ -193,6 +194,9 @@ extension WaybillCarrierInfoCell {
 extension WaybillCarrierInfoCell {
     // 通用的信息展示
     fileprivate func showInfo(info:WayBillInfoBean?) {
+        
+        //货源编号
+        self.goodCodeId.text = "货源编号：" + (info?.hallId ?? "")
         self.waybillInfo = info
         self.configStatus(status: (info?.transportStatus)!, statusLabel: self.statusLabel ,comment: info?.evaluateCode)
         self.toShowWaybillStatusSign(status: (info?.transportStatus)!, for: self.statusImageView)

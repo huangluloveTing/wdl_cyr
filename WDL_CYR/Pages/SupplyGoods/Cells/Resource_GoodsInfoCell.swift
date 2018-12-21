@@ -9,7 +9,8 @@
 import UIKit
 
 class Resource_GoodsInfoCell: BaseCell {
-    
+    //货源编号：id
+    @IBOutlet weak var goodCodeId: UILabel!
     @IBOutlet weak var remarkLabel: UILabel!
     @IBOutlet weak var goodsSumLabel: UILabel!
     @IBOutlet weak var goodsTypeLabel: UILabel!
@@ -42,7 +43,8 @@ extension Resource_GoodsInfoCell {
                   goodsName:String? ,
                   goodsType:String? ,
                   goodsSumm:String? ,
-                  remark:String?) -> Void {
+                  remark:String?,
+                  goodCode:String?) -> Void {
         self.startLabel.text = start
         self.endLabel.text = end
         self.loadTimeLabel.text = Util.dateFormatter(date: loadTime / 1000, formatter: "yyyy-MM-dd")
@@ -50,5 +52,7 @@ extension Resource_GoodsInfoCell {
         self.goodsSumLabel.text = goodsSumm
         self.goodsTypeLabel.text = goodsType
         self.remarkLabel.text = remark
+        //货源编号
+        self.goodCodeId.text = "货源编号：" + (goodCode ?? "")
     }
 }

@@ -13,7 +13,8 @@ class WaybillSepecialInfoCell: WaybillBaseCell {
     
     @IBOutlet weak var statusImageView: UIImageView!
     @IBOutlet weak var avatorImageView: UIImageView!
-    
+    //货源编号：id
+    @IBOutlet weak var goodCodeId: UILabel!
     @IBOutlet weak var desiginLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var desginDescLabel: UILabel!
@@ -48,6 +49,8 @@ class WaybillSepecialInfoCell: WaybillBaseCell {
 extension WaybillSepecialInfoCell {
     //设置cell的值
     func contentInfo(info:WayBillInfoBean?) {
+        //货源编号
+        self.goodCodeId.text = "货源编号：" + (info?.hallId ?? "")
         self.toAddImageForImageView(imageUrl: info?.companyLogo, imageView: self.avatorImageView)
         self.typeLabel.text = "【自营】运输计划"
         self.startLabel.text = info?.origin

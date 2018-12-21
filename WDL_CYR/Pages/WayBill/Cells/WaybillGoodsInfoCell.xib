@@ -133,6 +133,12 @@
                         <color key="textColor" red="0.08235294118" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="货源编号：0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkp-Di-AkB">
+                        <rect key="frame" x="93.5" y="30.5" width="75" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.023529411760000001" green="0.73725490199999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="TlQ-3A-G0u" firstAttribute="leading" secondItem="jWt-2N-9rp" secondAttribute="leading" id="1Fo-Qj-NaK"/>
@@ -147,6 +153,7 @@
                     <constraint firstItem="brH-Hr-Mx2" firstAttribute="leading" secondItem="w2Y-WY-naj" secondAttribute="trailing" constant="12" id="C44-fB-Q8K"/>
                     <constraint firstItem="WLC-PS-uvE" firstAttribute="leading" secondItem="qat-p0-APX" secondAttribute="trailing" constant="10" id="CPw-zY-tnA"/>
                     <constraint firstItem="jWt-2N-9rp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="ELd-6U-SkE"/>
+                    <constraint firstItem="Gkp-Di-AkB" firstAttribute="leading" secondItem="jWt-2N-9rp" secondAttribute="trailing" constant="5" id="Fsg-xE-FFN"/>
                     <constraint firstItem="kqP-oR-nWN" firstAttribute="top" secondItem="qat-p0-APX" secondAttribute="bottom" constant="10" id="HMa-N7-6bn"/>
                     <constraint firstItem="0Dc-I2-rR1" firstAttribute="leading" secondItem="jWt-2N-9rp" secondAttribute="leading" id="KON-fy-HES"/>
                     <constraint firstAttribute="bottom" secondItem="w2Y-WY-naj" secondAttribute="bottom" constant="10" id="MIq-XV-tJO"/>
@@ -171,6 +178,7 @@
                     <constraint firstItem="dUQ-fY-MFK" firstAttribute="leading" secondItem="qCA-fM-ZSm" secondAttribute="trailing" constant="40" id="nUx-FI-J6g"/>
                     <constraint firstItem="jWt-2N-9rp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="owM-qJ-ST5"/>
                     <constraint firstItem="dsY-CS-spK" firstAttribute="leading" secondItem="TlQ-3A-G0u" secondAttribute="trailing" constant="10" id="pvg-fa-dPe"/>
+                    <constraint firstItem="Gkp-Di-AkB" firstAttribute="bottom" secondItem="jWt-2N-9rp" secondAttribute="bottom" id="txU-fN-65L"/>
                     <constraint firstItem="TlQ-3A-G0u" firstAttribute="top" secondItem="jWt-2N-9rp" secondAttribute="bottom" constant="20" id="uQe-gX-hn3"/>
                     <constraint firstItem="NvK-of-NNS" firstAttribute="leading" secondItem="dUQ-fY-MFK" secondAttribute="leading" id="vdv-fc-CeG"/>
                     <constraint firstItem="0g4-Td-kM5" firstAttribute="leading" secondItem="kqP-oR-nWN" secondAttribute="trailing" constant="10" id="xY6-he-F8o"/>
@@ -182,6 +190,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="codeLabel" destination="Gkp-Di-AkB" id="vxj-qu-XnK"/>
                 <outlet property="dealTimeLabel" destination="dsY-CS-spK" id="Req-VD-EXK"/>
                 <outlet property="endLabel" destination="0g4-Td-kM5" id="kfG-UC-ih0"/>
                 <outlet property="goodsTypeLabel" destination="qCA-fM-ZSm" id="bbZ-DO-ngR"/>
