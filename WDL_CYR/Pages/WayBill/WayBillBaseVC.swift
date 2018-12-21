@@ -658,6 +658,9 @@ extension WayBillBaseVC {
         case .unAssemble_comType_1_2_noAccept:
             return unAssembleNoAcceptCell(info: info, tableView: tableView)
         case .unAssemble_comType_1_2_self:
+            if info.driverStatus != 4 {
+                return showUnAssembleOneHandleCell(info: info, indexPath: indexPath, tableView: tableView)
+            }
             return noHandleCell(info: info, tableView: tableView)
         case .unAssemble_comType_3_noAccept:
             return unAssembleSepecialCell(info: info, indexPath: indexPath, tableView: tableView)

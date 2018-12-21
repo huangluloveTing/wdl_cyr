@@ -66,20 +66,29 @@ class WaybillCarrierInfoCell: WaybillBaseCell {
     }
     
     @IBAction func oneHandleAction(_ sender: Any) {
-        if self.currentStatus == .unassemble { // 未配载的情况
-            if self.waybillInfo?.comeType ==  4 { // 指派
+        let status = TransportUtil.configWaybillDisplayStatus(info: self.waybillInfo!)
+        switch status {
+        case .unAssemble_comType_1_2_self:
+            if self.waybillInfo?.driverStatus != 4 {
                 self.toDesignateWaybill(param: self)
+                break
             }
-            else if self.waybillInfo?.comeType == 1 || self.waybillInfo?.comeType == 2 || self.waybillInfo?.comeType == 3 {
-                self.toAssembleWaybill(param: self)
-            } else {
-                self.toAssembleWaybill(param: self)
-            }
-        }
-        if self.currentStatus == .doing {
-            if self.waybillInfo?.driverStatus == 6 { // 已违约的情况
-                self.toAssembleWaybill(param: self)
-            }
+        case .unAssemble_comType_1_2_toAssemble:
+            self.toAssembleWaybill(param: self)
+            break;
+        case .unAssemble_comType_3_toAssemble:
+            self.toAssembleWaybill(param: self)
+            break;
+        case .unAssemble_comType_4_toDesignate:
+            self.toDesignateWaybill(param: self)
+            break
+        case .notDone_canEditAssemble:
+            self.toAssembleWaybill(param: self);
+        case .notDone_breakContractForCarrier:
+            self.toAssembleWaybill(param: self)
+            break;
+        default:
+            break
         }
     }
     
@@ -130,6 +139,9 @@ extension WaybillCarrierInfoCell {
         case .unAssemble_comType_3_noAccept:
             self.showInfoAcceptAndReject(info: info)
             break;
+        case .unAssemble_comType_1_2_self:
+            self.showInfoWillDesigned(info: info)
+            break
         case .unAssemble_comType_1_2_toAssemble:
             self.showInfoWillAssemble(info: info)
             break;

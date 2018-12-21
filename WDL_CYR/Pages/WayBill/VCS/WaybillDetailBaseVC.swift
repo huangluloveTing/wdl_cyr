@@ -59,7 +59,9 @@ class WaybillDetailBaseVC: NormalBaseVC {
     }
     
     // 点击 对应的操作（指派，配载，修改配载）
-    public func handleAction() {}
+    public func handleAction() {
+        
+    }
     
     // 当前的一个评论数据
     func currentOneCommet() -> WayBillDetailCommentInfo? {

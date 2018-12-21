@@ -111,6 +111,11 @@ extension BaseVC {
         detailVC.transportNo = info.transportNo ?? ""
         let status = TransportUtil.configWaybillDisplayStatus(info: info)
         switch status {
+        case .unAssemble_comType_1_2_self:
+            if info.driverStatus != 4 {
+                detailVC.currentShowMode(mode: .unassemble_showDesignate)
+                break
+            }
         case .unAssemble_comType_3_toAssemble:
             detailVC.currentShowMode(mode: .unassemble_showSpecial)
             break
