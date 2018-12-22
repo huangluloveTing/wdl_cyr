@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OfferDealVC" customModule="WDL_CYR" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="Q67-Yl-8Ab" id="CeN-Jx-RMh"/>
                 <outlet property="tableView" destination="AUf-Ux-OJV" id="iU6-kK-IcW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,17 +22,25 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUf-Ux-OJV">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="56" width="375" height="611"/>
                     <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Q67-Yl-8Ab">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Q67-Yl-8Ab" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3Ig-oM-pCh"/>
                 <constraint firstAttribute="trailing" secondItem="AUf-Ux-OJV" secondAttribute="trailing" id="Nqv-oB-79L"/>
                 <constraint firstItem="AUf-Ux-OJV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TZ7-uw-PmK"/>
+                <constraint firstItem="Q67-Yl-8Ab" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jz5-Ac-0fP"/>
+                <constraint firstItem="AUf-Ux-OJV" firstAttribute="top" secondItem="Q67-Yl-8Ab" secondAttribute="bottom" id="pVb-gs-NlS"/>
                 <constraint firstAttribute="bottom" secondItem="AUf-Ux-OJV" secondAttribute="bottom" id="tx9-0l-mzd"/>
-                <constraint firstItem="AUf-Ux-OJV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zEf-ut-9AZ"/>
+                <constraint firstAttribute="trailing" secondItem="Q67-Yl-8Ab" secondAttribute="trailing" id="yeF-A0-Jcb"/>
             </constraints>
+            <point key="canvasLocation" x="138.40000000000001" y="128.18590704647679"/>
         </view>
     </objects>
 </document>

@@ -35,7 +35,7 @@ class PathDetailVC: AttentionDetailBaseVC {
                                             truckInfo: truckInfo,
                                             goodsInfo: goodsInfo,
                                             isSelf: true,
-                                            company: res.companyName,
+                                            company: res.consignorName,
                                             isAttention: res.shipperCode.count > 0,
                                             unitPrice: res.dealUnitPrice,
                                             companyLogo: res.companyLogo,
@@ -61,6 +61,7 @@ class PathDetailVC: AttentionDetailBaseVC {
 //        resource.carrierName = hall.consigneeName
         resource.consignorName = hall.consignorName
         resource.resource = hall
+        resource.attention = hall.shipperCode.count > 0
         self.toChooseOfferType(resource: resource)
     }
     
@@ -71,8 +72,9 @@ class PathDetailVC: AttentionDetailBaseVC {
         resource.refercneceTotalPrice = hall.refercneceTotalPrice
         resource.refercneceUnitPrice = hall.refercneceUnitPrice
         resource.rate = 5
+        resource.attention = hall.shipperCode.count > 0
 //        resource.carrierName = hall.consigneeName
-        resource.consignorName = hall.companyName
+        resource.consignorName = hall.consignorName
         resource.resource = hall
         self.toResouceDetail(resource: resource)
     }

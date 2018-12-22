@@ -46,6 +46,7 @@ class AddVehicleVC: NormalBaseVC {
     @IBOutlet weak var driverLicesImageView: UIImageView!   // 行驶证
     @IBOutlet weak var insuranceImageView: UIImageView!     // 保险单
     @IBOutlet weak var vehicleImageView: UIImageView!       // 货车照片
+    @IBOutlet weak var vehichleWidthTextField: UITextField!
     
     
     override func viewDidLoad() {
@@ -132,6 +133,11 @@ class AddVehicleVC: NormalBaseVC {
                 self?.currentCommitItem?.vehicleWeight = text
             })
             .disposed(by: dispose)
+        self.vehichleWidthTextField.rx.text.orEmpty.asObservable()
+            .subscribe(onNext: { [weak self](text) in
+                self?.currentCommitItem?.vehicleWidth = text
+            })
+            .disposed(by: dispose)
     }
     
     //MARK: - 判断是否是编辑
@@ -198,6 +204,10 @@ extension AddVehicleVC {
         }
         if (self.currentCommitItem?.vehicleWeight.count ?? 0) <= 0 {
             self.showWarn(warn: "请填写车辆载重", complete: nil)
+            return false
+        }
+        if (self.currentCommitItem?.vehicleWidth.count ?? 0) <= 0 {
+            self.showWarn(warn: "请填写车辆宽度", complete: nil)
             return false
         }
         
@@ -311,6 +321,7 @@ extension AddVehicleVC {
         self.volumnTextField.titleTextField(title: "  体积")
         self.lengthTextField.titleTextField(title: "  车长")
         self.weightTextField.titleTextField(title: "  载重")
+        self.vehichleWidthTextField.titleTextField(title: "  车宽")
     }
     
     func initHandlePictureView() -> Void {
@@ -349,6 +360,7 @@ extension AddVehicleVC {
         self.useTypeTextField.text = self.currentCommitItem?.useProperty
         self.vehicleIdTextField.text = self.currentCommitItem?.vehicleIdCode
         self.vehicleEnginNoTextField.text = self.currentCommitItem?.engineNumber
+        
         if (self.currentCommitItem?.registrationDate ?? 0) > 0 {
             self.registerTextField.text = Util.dateFormatter(date: (self.currentCommitItem?.registrationDate ?? 0) / 1000, formatter: "yyyy-MM-dd")
         }
@@ -361,6 +373,7 @@ extension AddVehicleVC {
         self.volumnTextField.text = self.currentCommitItem?.vehicleVolume
         self.lengthTextField.text = self.currentCommitItem?.vehicleLength
         self.weightTextField.text = self.currentCommitItem?.vehicleWeight
+        self.vehichleWidthTextField.text = self.currentCommitItem?.vehicleWidth
         
         Util.showImage(imageView: self.driverLicesImageView, imageUrl: self.currentCommitItem?.drivingLicensePhoto, placeholder: UIImage.init(named: "add_vehi_liens")!)
         Util.showImage(imageView: self.insuranceImageView, imageUrl: self.currentCommitItem?.insurancePhoto, placeholder: UIImage.init(named: "add_ins")!)

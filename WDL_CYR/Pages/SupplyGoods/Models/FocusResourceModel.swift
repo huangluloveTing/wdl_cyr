@@ -42,5 +42,6 @@ struct ResourceDetailUIModel {
     var dealCount:Int = 0   // 成交数
     var rate:Float = 0      // 评分
     var isOffer:Bool = false // h是否报价
+    var attention:Bool = false  // 是否关注
     var resource:CarrierQueryOrderHallResult? // 货源信息
 }

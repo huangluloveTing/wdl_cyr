@@ -12,8 +12,8 @@ class OfferDealVC: OfferBaseVC , ZTScrollViewControllerType {
     func willDisappear() {
     }
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-//    @IBOutlet weak var dropHintView: DropHintView!
     
     private var currentSearchContent:String? // 当前的搜索内容
     
@@ -71,6 +71,7 @@ extension OfferDealVC {
         self.tableView.estimatedSectionHeaderHeight = 0
         self.registerCell(nibName: "\(Offer_DoneCell.self)", for: self.tableView)
         self.registerCell(nibName: "\(OfferSearchCell.self)", for: tableView)
+        self.searchBar.delegate = self;
     }
 }
 
@@ -100,48 +101,44 @@ extension OfferDealVC {
 extension OfferDealVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(className: OfferSearchCell.self)
-            cell.showPlaceholder(place: "搜索托运人名称/企业名称")
-            cell.searchClosure = {[weak self] (search) in
-                self?.currentSearchContent = search
-                self?.tableView.beginRefresh()
-            }
-            return cell
-        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(Offer_DoneCell.self)") as! Offer_DoneCell
-        let offerModel = self.currentUIModels[indexPath.row - 1]
+        let offerModel = self.currentUIModels[indexPath.row]
         cell.showInfo(info: offerModel)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.currentUIModels.count + 1
+        return self.currentUIModels.count
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row > 0{
             cell.contentView.shadowBorder(radius: 10,
                                           bgColor: UIColor.white,
                                           shadowColor: UIColor(hex: "C9C9C9"),
                                           shadowOpacity: 0.5,
                                           insets: UIEdgeInsetsMake(15, 15, 0, 15))
-        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row > 0 {
-            let row = indexPath.row - 1
-            let info = self.currentPageInfo?.list![indexPath.row - 1]
+            let row = indexPath.row
+//            let info = self.currentPageInfo?.list![indexPath.row]
 //            if info?.dealStatus == .deal {
             self.toWaybillPage(index: row)
 //                return
 //            }
 //            self.toOfferDetail(index: row)
-        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.heightForRow(at: indexPath)
+    }
+}
+
+extension OfferDealVC {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar == self.searchBar {
+            self.currentSearchContent = searchBar.text
+            self.tableView.beginRefresh()
+        }
     }
 }

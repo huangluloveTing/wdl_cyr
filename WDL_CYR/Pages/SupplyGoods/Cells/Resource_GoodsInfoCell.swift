@@ -44,7 +44,8 @@ extension Resource_GoodsInfoCell {
                   goodsType:String? ,
                   goodsSumm:String? ,
                   remark:String?,
-                  goodCode:String?) -> Void {
+                  goodCode:String?,
+                  foucs:Bool) -> Void {
         self.startLabel.text = start
         self.endLabel.text = end
         self.loadTimeLabel.text = Util.dateFormatter(date: loadTime / 1000, formatter: "yyyy-MM-dd")
@@ -54,5 +55,6 @@ extension Resource_GoodsInfoCell {
         self.remarkLabel.text = remark
         //货源编号
         self.goodCodeId.text = "货源编号：" + (goodCode ?? "")
+        self.focusLineButton.isHidden = foucs;
     }
 }

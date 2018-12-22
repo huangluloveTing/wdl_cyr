@@ -74,6 +74,8 @@ class WaybillCarrierInfoCell: WaybillBaseCell {
                 self.toDesignateWaybill(param: self)
                 break
             }
+//        case .notDone_willTransport:
+//            self.toAssembleWaybill(param: self)
         case .unAssemble_comType_1_2_toAssemble:
             self.toAssembleWaybill(param: self)
             break;

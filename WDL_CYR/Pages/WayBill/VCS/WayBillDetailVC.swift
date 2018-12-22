@@ -98,7 +98,8 @@ class WayBillDetailVC: WaybillDetailBaseVC {
         if mode == .unassemble_showSpecial ||
             mode == .unassemble_show_1_Assemble ||
             mode == .unassemble_show_2_Assemble ||
-            mode == .doing_carrierBreak {
+            mode == .doing_carrierBreak ||
+            mode == .doing_canEditAssemble {
             let tranInfo = TransactionInformation.deserialize(from: self.waybillInfo?.toJSON())
             let mode = WayBillSourceTypeMode(rawValue: self.waybillInfo?.comeType ?? 1)
             self.toAssemblePage(info: tranInfo , mode: mode ?? .planAssemble)

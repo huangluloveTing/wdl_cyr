@@ -160,7 +160,8 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
                           goodsType: goodsType,
                           goodsSumm: summary,
                           remark: remark,
-                          goodCode:goodCode)
+                          goodCode:goodCode,
+                          foucs: self.resource?.attention ?? false)
             return cell
         }
         //托运人信息
@@ -171,7 +172,7 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
         let info = WDLCoreManager.shared().userInfo
         cell.showInfo(name: self.resource?.consignorName,
                       dealNum: info?.dealCount ?? 0,
-                      rate: info?.growupScore ?? 0)
+                      rate: info?.growupScore ?? 0 ,foucs:self.resource?.attention ?? false)
         return cell
     }
     

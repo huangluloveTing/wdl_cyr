@@ -15,7 +15,7 @@ class TransportUtil: NSObject {
         let transportStatus = info.transportStatus ?? 0 // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派
         let comType = info.comeType ?? 1         // 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
         let driverStatus = info.driverStatus ?? 0 // 司机状态 0=未配载 1=TMS指派 (只要生成定单，就表明一定是已指派)2=无车竞价待指派 3=拒绝指派 4=接受指派 5=已配载 6=已违约 7=违约继续承运 8=违约放弃承运 ,
-        let role = info.role            // 1 承运人 ，2 司机
+//        let role = info.role            // 1 承运人 ，2 司机
         let evalate = (info.evaluateCode != nil)
         let completeStatus = info.completeStatus //运单状态 1：未配载，2 ：未完成， 3：完成 ,
         // 未配载，只需判断配置相关的字段，即 completeStatus = 1
@@ -27,6 +27,10 @@ class TransportUtil: NSObject {
             if comType == 1 || comType == 2 {   // 来源1 , 2 ， 未接受时 ， 显示 接受 拒绝
                 if driverStatus == 4 {  // 当driverStatus == 4 时 ， 已接受，显示 配载
                     return .unAssemble_comType_1_2_toAssemble
+                }
+                // 无车报价，在司机接受前，应该可以指派，已指派，不可指派
+                if driverStatus == 5 && (info.carrierType ?? 0) == 1 {
+                    return .unAssemble_designated
                 }
                 // 承运人 和司机 不是同一个人时，不能去接受 拒绝
                 if driverIsSelf == true {
@@ -49,7 +53,8 @@ class TransportUtil: NSObject {
         if completeStatus == 2 { // 未完成
             // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派
             if transportStatus == 1 {
-                if (info.carrierType ?? 0) == 1 {
+                //
+                if (info.carrierType ?? 0) == 1 && (driverStatus == 4) {
                     return .notDone_canEditAssemble
                 }
                 return .notDone_willTransport

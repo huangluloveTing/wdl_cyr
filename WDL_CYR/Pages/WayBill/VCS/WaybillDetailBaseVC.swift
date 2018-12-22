@@ -23,18 +23,18 @@ enum WaybillDisplayMode {
     case unassemble_show_1_Assemble    //未配载，显示配载的情况，即订单来源为 1 的情况
     case unassemble_show_2_Assemble    //未配载，显示配载的情况，即订单来源为 2 的情况
     case unassemble_assembled           // 未配载司机可以接受的运单
-    case unassemble_showSpecial         //未配载，运单来源为3 的情况
-    case unassemble_showDesignate       //未指派，运单来源为4 的情况
-    case doing_showWillTransport        //未完成，待起运
-    case doing_showTransporting         //未完成，运输中
-    case doing_showWillSign             //未完成，待签收
+    case unassemble_showSpecial         // 未配载，运单来源为3 的情况
+    case unassemble_showDesignate       // 未指派，运单来源为4 的情况
+    case doing_showWillTransport        // 未完成，待起运
+    case doing_showTransporting         // 未完成，运输中
+    case doing_showWillSign             // 未完成，待签收
     case doing_driverBreak              // 司机违约 （不能进入详情）
     case doing_carrierBreak             // 承运人违约，显示修改配载
     case doing_canEditAssemble          // 待起运可修改配载
     case done_notCommentForDriver       // 已完成，未评价（司机）
     case done_notCommentForCarrier      // 已完成，未评价(承运人)
-    case done_commentOne                //已完成，一个评价
-    case done_commentAll                //已完成，互评
+    case done_commentOne                // 已完成，一个评价
+    case done_commentAll                // 已完成，互评
 }
 
 class WaybillDetailBaseVC: NormalBaseVC {

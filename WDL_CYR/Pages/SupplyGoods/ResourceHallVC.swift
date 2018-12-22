@@ -260,7 +260,7 @@ extension ResourceHallVC {
         resource.rate = 5
         resource.consignorName = hall.companyName
         resource.resource = hall
-        
+        resource.attention = hall.shipperCode.count > 0
         self.toResouceDetail(resource: resource)
     }
     
@@ -273,6 +273,7 @@ extension ResourceHallVC {
         resource.rate = 5
         resource.consignorName = hall.consignorName
         resource.resource = hall
+        resource.attention = hall.shipperCode.count > 0
         self.toChooseOfferType(resource: resource)
     }
 }

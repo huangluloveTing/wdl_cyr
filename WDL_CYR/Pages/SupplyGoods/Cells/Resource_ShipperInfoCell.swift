@@ -32,9 +32,10 @@ class Resource_ShipperInfoCell: BaseCell {
 }
 
 extension Resource_ShipperInfoCell {
-    func showInfo(name:String? , dealNum:Int , rate:Float) -> Void {
+    func showInfo(name:String? , dealNum:Int , rate:Float , foucs:Bool) -> Void {
         self.shipperNameLabel.text = name
         self.dealTotalLabel?.text = String(dealNum) + "笔"
         self.rateLabel.text = Util.floatPoint(num: 0, floatValue: rate) + "分"
+        self.focusShipperButton.isHidden = foucs;
     }
 }

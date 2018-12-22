@@ -675,8 +675,10 @@ extension WayBillBaseVC {
         case .notDone_breakContractForDriver:
             return breakContractForDriverCell(info: info, tableView: tableView)
         case .notDone_canEditAssemble:
-            return unAssembleToAssembleCell(info: info, tableView: tableView)
-        case .notDone_willSign , .notDone_transporting , .notDone_willTransport:
+            return breakContractForCarrierCell(info: info, tableView: tableView)
+//        case :
+//            return unAssembleToAssembleCell(info: info, tableView: tableView)
+        case .notDone_willTransport,.notDone_willSign , .notDone_transporting:
             return noHandleCell(info: info, tableView: tableView)
         default:
             return noHandleCell(info: info, tableView: tableView)
