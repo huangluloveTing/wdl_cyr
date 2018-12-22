@@ -177,6 +177,7 @@ extension OfferWithTruckVC {
                     )
                 })
             }, onError: { [weak self](error) in
+                
                 self?.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)

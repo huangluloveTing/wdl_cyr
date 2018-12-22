@@ -260,7 +260,6 @@ extension ResourceHallVC {
         resource.rate = 5
         resource.consignorName = hall.companyName
         resource.resource = hall
-        
         self.toResouceDetail(resource: resource)
     }
     

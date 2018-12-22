@@ -130,7 +130,7 @@ extension MessageDetailVC{
                     return
                 }
                 info.msgStatus = 3
-                self?.markMessegeRequest(model: info)
+                self?.applyRequest(model: info)
             }else {
                 //接受
                 guard var info = self?.currentInfo else {
@@ -138,32 +138,28 @@ extension MessageDetailVC{
                     return
                 }
                 info.msgStatus = 2
-                self?.markMessegeRequest(model: info)
-                
+                self?.applyRequest(model: info)
             }
-            
             //跳转消息中心
             self?.pop(animated: true)
-       
-            
         }
         
     }
     
     
-//    //接受或拒绝（0：未读， 1=已读 2=接受 3=拒绝）
-//    func markMessegeRequest(model: MessageQueryBean){
-//
-//        BaseApi.request(target: API.markHasSeenMessage(model),  type: BaseResponseModel<AnyObject>.self)
-//            .retry(5)
-//            .subscribe(onNext: { (_) in
-//                print("接受和拒绝成功")
-//            }, onError: { (error) in
-//                //                self.showFail(fail: error.localizedDescription, complete: nil)
-//
-//            })
-//            .disposed(by: dispose)
-//    }
+    //申请接受或拒绝
+    func applyRequest(model: MessageQueryBean){
+
+        BaseApi.request(target: API.applyAcceptOrRefuseMessage(model),  type: BaseResponseModel<AnyObject>.self)
+         
+            .subscribe(onNext: { (_) in
+                print("承运人申请接受和拒绝成功")
+            }, onError: { (error) in
+                self.showFail(fail: error.localizedDescription, complete: nil)
+                
+            })
+            .disposed(by: dispose)
+    }
     
 }
 
@@ -208,7 +204,6 @@ extension MessageDetailVC{
     func markMessegeRequest(model: MessageQueryBean){
         
         BaseApi.request(target: API.markHasSeenMessage(model),  type: BaseResponseModel<AnyObject>.self)
-            .retry(5)
             .subscribe(onNext: { (_) in
                 print("接受和拒绝成功")
             }, onError: { (error) in

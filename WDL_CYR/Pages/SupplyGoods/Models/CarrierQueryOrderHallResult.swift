@@ -55,7 +55,10 @@ struct CarrierQueryOrderHallResult : HandyJSON {
     var refercneceTotalPrice : Float = 0 // (number): 参考总价 ,
     var refercneceUnitPrice : Float = 0 // (number): 参考单价 ,
     var remark : String = "" //(string, optional),
-    var shipperCode : String = "" // (string): 字段不为空表示关注 ,
+    
+    var shipperCode : String = "" // (string): 字段不为空表示托运人关注 ,
+    var followLine : Bool = true;//关注路线true ，未关注false
+    
     var startAddress : String = "" //  (string, optional),
     var startCity : String = ""  //(string): 发货地市 ,
     var startDistrict : String = "" // (string): 发货区 ,
