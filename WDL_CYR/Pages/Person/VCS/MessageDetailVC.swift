@@ -64,8 +64,13 @@ extension MessageDetailVC : UITableViewDelegate , UITableViewDataSource {
             title = "报价消息"
          
         }
-        if info?.msgType == 3 { // 运单信息
-            title = "运单信息"
+        if info?.msgType == 3 ||  info?.msgType == 4 { // 运单信息
+            if info?.msgType == 3 {
+                title = "运单信息"
+            }
+            if info?.msgType == 4 {
+                title = "承运人申请消息"
+            }
             if self.currentInfo?.msgStatus == 2 ||  self.currentInfo?.msgStatus == 3 {
                 wayCell.acceptBtn.isHidden = true
                 wayCell.refuseBtn.isHidden = true
@@ -79,13 +84,20 @@ extension MessageDetailVC : UITableViewDelegate , UITableViewDataSource {
                 
             }
             wayCell.showDetalMessageInfo(title: title ?? "", content: info?.msgInfo, time: info?.createTime)
-            self.quoteBtnClick(cell: wayCell)
+            if info?.msgType == 3 {
+                //运单消息接受拒绝按钮的点击事件
+                self.quoteBtnClick(cell: wayCell)
+            }
+            if info?.msgType == 4 {
+                //承运人申请消息接受拒绝按钮的点击事件
+                self.chenyunApplyListBtnClick(cell: wayCell)
+            }
+            
             return wayCell
         }
        //报价或系统cell，只读
         cell.showDetalMessageInfo(title: title ?? "", content: info?.msgInfo, time: info?.createTime)
         
-     
         
         return cell
     }
@@ -100,6 +112,54 @@ extension MessageDetailVC : UITableViewDelegate , UITableViewDataSource {
     
     
     
+    
+}
+
+//MARK:运单信息逻辑处理
+extension MessageDetailVC{
+    
+    
+    func  chenyunApplyListBtnClick(cell: MessageDetailAcceptCell) {
+        //cell按钮点击跳转事件
+        
+        cell.buttonClosure = { [weak self] (sender) in
+            if sender.tag == 44 {
+                //拒绝
+                guard var info = self?.currentInfo else {
+                    self?.showFail(fail: "没有获取到申请数据", complete: nil)
+                    return
+                }
+                info.msgStatus = 3
+                self?.applyRequest(model: info)
+            }else {
+                //接受
+                guard var info = self?.currentInfo else {
+                    self?.showFail(fail: "没有获取到申请数据", complete: nil)
+                    return
+                }
+                info.msgStatus = 2
+                self?.applyRequest(model: info)
+            }
+            //跳转消息中心
+            self?.pop(animated: true)
+        }
+        
+    }
+    
+    
+    //申请接受或拒绝
+    func applyRequest(model: MessageQueryBean){
+
+        BaseApi.request(target: API.applyAcceptOrRefuseMessage(model),  type: BaseResponseModel<AnyObject>.self)
+         
+            .subscribe(onNext: { (_) in
+                print("承运人申请接受和拒绝成功")
+            }, onError: { (error) in
+                self.showFail(fail: error.localizedDescription, complete: nil)
+                
+            })
+            .disposed(by: dispose)
+    }
     
 }
 
@@ -130,8 +190,6 @@ extension MessageDetailVC{
             
             }
             
-        
-            
             //跳转运单页面
             let tab =  UIApplication.shared.keyWindow?.rootViewController as! RootTabBarVC
             self?.pop(toRootViewControllerAnimation: false)
@@ -146,7 +204,6 @@ extension MessageDetailVC{
     func markMessegeRequest(model: MessageQueryBean){
         
         BaseApi.request(target: API.markHasSeenMessage(model),  type: BaseResponseModel<AnyObject>.self)
-            .retry(5)
             .subscribe(onNext: { (_) in
                 print("接受和拒绝成功")
             }, onError: { (error) in
@@ -155,9 +212,5 @@ extension MessageDetailVC{
             })
             .disposed(by: dispose)
     }
-  
-    
-   
-   
     
 }

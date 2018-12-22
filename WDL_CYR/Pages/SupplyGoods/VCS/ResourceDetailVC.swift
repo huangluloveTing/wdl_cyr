@@ -80,7 +80,6 @@ extension ResourceDetailVC {
         let endCity = self.resource?.resource?.endCity ?? ""
         self.showLoading(title: "", canInterface: true)
         BaseApi.request(target: API.addFollowLine(startProvince, startCity, endProvince, endCity), type: BaseResponseModel<String>.self)
-            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: nil)
             }, onError: { [weak self](error) in
@@ -137,6 +136,12 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
         if section == 1 {
             //货源信息
             let cell = self.dequeueReusableCell(className: Resource_GoodsInfoCell.self, for: tableView)
+            //关注按钮
+            if self.resource?.resource?.followLine == true {
+                cell.focusLineButton.isHidden = true
+            }else {
+                cell.focusLineButton.isHidden = false
+            }
             let start = (self.resource?.resource?.startProvince ?? "") + (self.resource?.resource?.startCity ?? "") + (self.resource?.resource?.startDistrict ?? "")
             let end = (self.resource?.resource?.endProvince ?? "") + (self.resource?.resource?.endCity ?? "") + (self.resource?.resource?.endDistrict ?? "")
             let loadTime = self.resource?.resource?.loadingTime ?? 0
@@ -166,13 +171,20 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
         }
         //托运人信息
         let cell = self.dequeueReusableCell(className: Resource_ShipperInfoCell.self, for: tableView)
-//        cell.showInfo(name: self.resource?.carrierName,
-//                      dealNum: self.resource?.dealCount ?? 0,
-//                      rate: self.resource?.rate ?? 0)
         let info = WDLCoreManager.shared().userInfo
         cell.showInfo(name: self.resource?.consignorName,
                       dealNum: info?.dealCount ?? 0,
-                      rate: info?.growupScore ?? 0 ,foucs:self.resource?.attention ?? false)
+                      rate: info?.growupScore ?? 0 ,
+                      foucs:self.resource?.attention ?? false)
+        
+        //关注按钮
+        //   var shipperCode : String = "" // (string): 字段不为空表示托运人关注 ,
+       // var followLine : Bool = true;//关注路线true ，未关注false
+        if self.resource?.resource?.shipperCode != "" {
+            cell.focusShipperButton.isHidden = true
+        }else {
+            cell.focusShipperButton.isHidden = false
+        }
         return cell
     }
     

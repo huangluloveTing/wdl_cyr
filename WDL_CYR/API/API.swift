@@ -58,6 +58,8 @@ enum API {
     case findDriverInformation(String)                            // 获取我的司机
     case uploadImage(UIImage , UploadImagTypeMode)   // 上传图片
     case markHasSeenMessage(MessageQueryBean)                     // 标记查看过的消息
+    case applyAcceptOrRefuseMessage(MessageQueryBean)                     // 接受或拒绝承运人的邀请
+    
     case dealDetail(ZbnCashFlow)                     //交易明细
 //    case returnMoney(String, String)   //退余额
     case returnMoney(ZbnCashFlow)   //退余额
@@ -77,6 +79,8 @@ enum API {
 // PATH
 func apiPath(api:API) -> String {
     switch api {
+    case .applyAcceptOrRefuseMessage(_):
+        return "/message/handleCarrierInvite"
     case .getMessageNum():
         return "/message/messageNumber"
     case .rechargeMoney(_):
@@ -205,7 +209,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .markHasSeenMessage(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
-        
+    case .applyAcceptOrRefuseMessage(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .getMainMessage(let model):
         return .requestParameters(parameters: model.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     case .registerSms(let phpne):
