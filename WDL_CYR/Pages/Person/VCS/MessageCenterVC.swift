@@ -139,7 +139,7 @@ extension MessageCenterVC : UITableViewDelegate , UITableViewDataSource {
         let info = self.hallLists[indexPath.row]
         var icon:UIImage? = nil
         var title:String? = ""
-      
+
         if info.msgType == 1 { //系统消息
             icon = icons[2]
             title = "系统消息"
@@ -152,6 +152,11 @@ extension MessageCenterVC : UITableViewDelegate , UITableViewDataSource {
             icon = icons[1]
             title = "运单消息"
         }
+        
+        if info.msgType == 4 { // 驾驶员申请消息
+            icon = icons[1]
+            title = "驾驶员申请消息"
+        }
         //消息状态： 0=未读 1=已读 2=接受 3=拒绝
         if info.msgStatus == 0 {
            cell.indicView.isHidden = false
@@ -159,10 +164,13 @@ extension MessageCenterVC : UITableViewDelegate , UITableViewDataSource {
            cell.indicView.isHidden = true
         }
         cell.showInfo(icon: icon ?? icons[0], title: title ?? "", content: info.msgInfo, time: info.createTime)
+        
+        
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.hallLists.count
+     
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -182,6 +190,10 @@ extension MessageCenterVC : UITableViewDelegate , UITableViewDataSource {
         }
         if info.msgType == 3 { // 运单信息
            self.wayBillsMessages(info: info)
+        }
+        
+        if info.msgType == 4 { // 承运人申请消息
+            self.chenyunrenApplyMessages(info: info)
         }
     }
     
@@ -209,6 +221,14 @@ extension MessageCenterVC {
         self.push(vc: vc, animated: true, title: "消息详情")
     }
     
+    
+    // 承运人申请消息详情
+    func chenyunrenApplyMessages(info: MessageQueryBean) -> Void {
+        let vc = MessageDetailVC()
+        vc.currentMsgType = 4
+        vc.currentInfo = info
+        self.push(vc: vc, animated: true, title: "承运人申请消息详情")
+    }
     // 去系统信息
     func systermMessages(info: MessageQueryBean) -> Void {
         let vc = MessageDetailVC()
