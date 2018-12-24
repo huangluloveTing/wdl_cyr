@@ -170,9 +170,9 @@ extension AppDelegate {
                         
                     } else {
                         self?.uploadLocationInterval()
+                        // 定位失败，十分钟后又 定位
+                        WDLCoreManager.shared().locationInterval = 10 * 3600
                     }
-                    // 定位失败，十分钟后又 定位
-                    WDLCoreManager.shared().locationInterval = 10 * 3600
                     break
                 default:
                     WDLCoreManager.shared().locationInterval = 10 * 3600
