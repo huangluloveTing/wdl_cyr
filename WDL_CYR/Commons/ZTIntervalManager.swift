@@ -19,7 +19,7 @@ class ZTIntervalManager : NSObject {
     private var closure:ZTIntervalClosure?
     
     private var cacheTime : TimeInterval?
-    private var timeInterval  = 30 * 3600
+    private var timeInterval : TimeInterval  = 30 * 3600
     
     public var intervalTimeClosure : ZTIntervalTimeClosure?
     
@@ -34,6 +34,7 @@ class ZTIntervalManager : NSObject {
             if let timeClosure = self.intervalTimeClosure {
                 self.timeInterval = timeClosure()
             }
+            assert(self.timeInterval >= 0 , "传入的间隔不能小于0")
             let currentTime = Date().timeIntervalSince1970
             if cacheTime == nil || cacheTime == 0 {
                 closure()
@@ -54,7 +55,6 @@ class ZTIntervalManager : NSObject {
     static public func instance(closure:ZTIntervalClosure?) -> ZTIntervalManager {
         let manager = intervalManager;
         manager.closure = closure
-        assert(timeInterval >= 0 , "传入的间隔不能小于0")
         return intervalManager;
     }
     
