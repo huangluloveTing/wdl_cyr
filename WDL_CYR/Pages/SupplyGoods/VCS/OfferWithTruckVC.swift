@@ -177,8 +177,13 @@ extension OfferWithTruckVC {
                     )
                 })
             }, onError: { [weak self](error) in
+                let newError = error as! CustomerError
+                if newError._code == 5 {
+                    print("充值")
+                }else{
+                    self?.showFail(fail: error.localizedDescription, complete: nil)
+                }
                 
-                self?.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)
     }
