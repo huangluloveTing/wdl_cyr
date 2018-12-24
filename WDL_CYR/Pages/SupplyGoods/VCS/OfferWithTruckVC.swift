@@ -177,10 +177,41 @@ extension OfferWithTruckVC {
                     )
                 })
             }, onError: { [weak self](error) in
+                let cusError = error as! CustomerError
+                switch cusError {
+                case .businessError(let message, let code):
+                    if code == 5 {
+                        //充值
+                        self?.hiddenToast()
+                        //提示去充值
+                        self?.chargeAlert(message: message ?? "")
+                    } else {
+                        self?.showFail(fail: message, complete: nil)
+                    }
+                    break
+                default:
+                    self?.showFail(fail: error.localizedDescription, complete: nil)
+                }
                 
-                self?.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)
+    }
+    
+    //去充值
+    func chargeAlert(message: String){
+        let alertVC = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
+            
+        }
+        let sureAction = UIAlertAction(title: "去充值", style: .destructive) { (_) in
+            let rechargeVC = RechargeInlineVC()
+            self.pushToVC(vc: rechargeVC, title: nil)
+        }
+        
+        alertVC.addAction(cancelAction)
+        alertVC.addAction(sureAction)
+        self.present(alertVC, animated: true, completion: nil)
     }
     
     func canCommitOffer() -> Bool {
