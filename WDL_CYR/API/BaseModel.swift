@@ -49,7 +49,7 @@ struct BasePageModel<T:Any> : HandyJSON {
 
 public enum CustomerError : Error{
     case paramError(String?)
-    case businessError(String?)
+    case businessError(String? , Int?)
     case netError(String?)
     case httpFailed(String? , Int)
     case serialDataError(String?)
