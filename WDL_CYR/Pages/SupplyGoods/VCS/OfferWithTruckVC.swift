@@ -164,9 +164,9 @@ extension OfferWithTruckVC {
         commit.infoFee = self.carrierInfo?.singleTimeFee
         self.showLoading(title: "正在提交", complete: nil)
         BaseApi.request(target: API.addOffer(commit), type: BaseResponseModel<String>.self)
-            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: {
+                
                     if let callBack = self?.callBack {
                         var newResource = self?.resource?.resource
                         newResource?.isOffer = "OK"
