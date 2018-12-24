@@ -14,10 +14,14 @@ class ZTIntervalManager : NSObject {
     
     typealias ZTIntervalClosure = () -> ()
     
+    typealias ZTIntervalTimeClosure = () -> (TimeInterval)
+    
     private var closure:ZTIntervalClosure?
     
-    private var interval : TimeInterval = 30
     private var cacheTime : TimeInterval?
+    private var timeInterval  = 30 * 3600
+    
+    public var intervalTimeClosure : ZTIntervalTimeClosure?
     
     lazy private var linkDisplay : CADisplayLink = {
         var linker =  CADisplayLink(target: self, selector: #selector(dispathIntervalHandler))
@@ -27,12 +31,15 @@ class ZTIntervalManager : NSObject {
     
     @objc func dispathIntervalHandler() -> Void {
         if let closure = self.closure {
+            if let timeClosure = self.intervalTimeClosure {
+                self.timeInterval = timeClosure()
+            }
             let currentTime = Date().timeIntervalSince1970
             if cacheTime == nil || cacheTime == 0 {
                 closure()
                 cacheTime = currentTime
             }
-            if (currentTime - cacheTime!) >= interval {
+            if (currentTime - cacheTime!) >= self.timeInterval {
                 closure()
                 cacheTime = currentTime
             }
@@ -44,9 +51,8 @@ class ZTIntervalManager : NSObject {
         self.linkDisplay.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
     }
     
-    static public func instance(timeInterval:TimeInterval , closure:ZTIntervalClosure?) -> ZTIntervalManager {
+    static public func instance(closure:ZTIntervalClosure?) -> ZTIntervalManager {
         let manager = intervalManager;
-        manager.interval = timeInterval
         manager.closure = closure
         assert(timeInterval >= 0 , "传入的间隔不能小于0")
         return intervalManager;

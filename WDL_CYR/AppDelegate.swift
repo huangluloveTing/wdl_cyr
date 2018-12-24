@@ -143,11 +143,12 @@ extension AppDelegate {
     
     // 对于app 在某个间隔时间上传地址经纬度
     func uploadLocationInterval() -> Void {
-        let interval = WDLCoreManager.shared().locationInterval
+        self.intervalManager?.intervalTimeClosure = {
+            return WDLCoreManager.shared().locationInterval
+        }
         let userInfo = WDLCoreManager.shared().userInfo
-        self.intervalManager = nil
         if userInfo != nil || userInfo?.token != nil {
-            self.intervalManager = ZTIntervalManager.instance(timeInterval: interval, closure: {[weak self] in
+            self.intervalManager = ZTIntervalManager.instance(closure: {[weak self] in
                 self?.locationUser()
             })
         }
@@ -158,6 +159,7 @@ extension AppDelegate {
         self.locationManager.startLocation(result: { [weak self](location, error) in
             if error == nil {
                 WDLCoreManager.shared().currentLocation = location
+                WDLCoreManager.shared().locationInterval = 30 * 3600
                 self?.uploadUserLocation(location: location!)
             } else {
                 switch error! {
@@ -167,9 +169,9 @@ extension AppDelegate {
                         //TODO:
                         
                     } else {
-                        WDLCoreManager.shared().locationInterval = 10 * 3600
                         self?.uploadLocationInterval()
                     }
+                    WDLCoreManager.shared().locationInterval = 10 * 3600
                     break
                 default:
                     WDLCoreManager.shared().locationInterval = 10 * 3600
