@@ -147,11 +147,11 @@ extension AppDelegate {
             return WDLCoreManager.shared().locationInterval
         }
         let userInfo = WDLCoreManager.shared().userInfo
-        if userInfo != nil || userInfo?.token != nil {
-            self.intervalManager = ZTIntervalManager.instance(closure: {[weak self] in
+        self.intervalManager = ZTIntervalManager.instance(closure: {[weak self] in
+            if userInfo != nil || userInfo?.token != nil {
                 self?.locationUser()
-            })
-        }
+            }
+        })
     }
     
     // 定位

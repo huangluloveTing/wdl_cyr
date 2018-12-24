@@ -52,6 +52,7 @@ let GAODE_MAP_KEY = "e92fcf715abc96978e4fd84dec0c1a78"
 //极光推送的key
 let JPushAppKey = "db2771dd3e1276628b07fe23"
 let JPushMasterSecret = "2a32fcb079991db342500952"
+
 #endif
 
 //MARK: - 通知中心
