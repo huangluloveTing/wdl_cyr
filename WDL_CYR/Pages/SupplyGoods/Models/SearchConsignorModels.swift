@@ -62,7 +62,7 @@ struct ZbnTransportCapacity : HandyJSON {
     var vehicleType :String = "" // (string): 车辆类型 ,
     var vehicleVolume : String = "" // (string): 体积 ,
     var vehicleWeight : String = "" // (string): 载重 ,
-    var vehicleWidth :String = "" // (string): 车宽
+    var vehicleWidth : String = "" // (string): 车宽
 }
 
 //报价时，获取承运人保证金、服务费等信息

@@ -98,6 +98,8 @@
 		701F10E8217F06E400693936 /* OfferBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10E7217F06E400693936 /* OfferBaseVC.swift */; };
 		701F10EA217F082300693936 /* OfferResultModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F10E9217F082300693936 /* OfferResultModels.swift */; };
 		70220E63219AB2F8005D9645 /* WaybillDisplayStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70220E62219AB2F8005D9645 /* WaybillDisplayStatus.swift */; };
+		702E778821D0AC680050D544 /* ZTLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E778721D0AC680050D544 /* ZTLocationManager.swift */; };
+		702E778A21D0B3910050D544 /* ZTIntervalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702E778921D0B3910050D544 /* ZTIntervalManager.swift */; };
 		7039671B21830E2300CE34B7 /* DropInputDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7039671A21830E2300CE34B7 /* DropInputDateView.swift */; };
 		7039671D21830F6E00CE34B7 /* DropInputDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7039671C21830F6E00CE34B7 /* DropInputDateView.xib */; };
 		7039BF3721B26529001A7E3C /* BaseVC+task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7039BF3621B26529001A7E3C /* BaseVC+task.swift */; };
@@ -500,6 +502,8 @@
 		701F10E7217F06E400693936 /* OfferBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferBaseVC.swift; sourceTree = "<group>"; };
 		701F10E9217F082300693936 /* OfferResultModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferResultModels.swift; sourceTree = "<group>"; };
 		70220E62219AB2F8005D9645 /* WaybillDisplayStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillDisplayStatus.swift; sourceTree = "<group>"; };
+		702E778721D0AC680050D544 /* ZTLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTLocationManager.swift; sourceTree = "<group>"; };
+		702E778921D0B3910050D544 /* ZTIntervalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTIntervalManager.swift; sourceTree = "<group>"; };
 		7039671A21830E2300CE34B7 /* DropInputDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropInputDateView.swift; sourceTree = "<group>"; };
 		7039671C21830F6E00CE34B7 /* DropInputDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropInputDateView.xib; sourceTree = "<group>"; };
 		7039BF3621B26529001A7E3C /* BaseVC+task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseVC+task.swift"; sourceTree = "<group>"; };
@@ -1578,6 +1582,8 @@
 				70CF4F55214B410F0051A7CA /* DropViewManage.swift */,
 				7092932921AF9614005E8DA6 /* TransportUtil.swift */,
 				70A21D7921BA6AE5001D5ECC /* WDLNotificationManager.swift */,
+				702E778721D0AC680050D544 /* ZTLocationManager.swift */,
+				702E778921D0B3910050D544 /* ZTIntervalManager.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -1874,7 +1880,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/LBPhotoBrowser/test/LBPhotoBrowser/LBPhotoBrowser.bundle",
@@ -1893,7 +1899,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2000,6 +2006,7 @@
 				70ED02072195509C001DB4D1 /* WaybillInputAssembleAmountCell.swift in Sources */,
 				70CF4FC4214B41120051A7CA /* MyButton.swift in Sources */,
 				183FD2F021B4FCE80069D50F /* AlertManager.swift in Sources */,
+				702E778821D0AC680050D544 /* ZTLocationManager.swift in Sources */,
 				70140886219422CE000D5CB1 /* WayBillReceiptItem.swift in Sources */,
 				70CF4FB5214B41120051A7CA /* BaseVC+Empty.swift in Sources */,
 				70CF4FC6214B41120051A7CA /* BaseBean.swift in Sources */,
@@ -2094,6 +2101,7 @@
 				70CF4F6D214B41110051A7CA /* GSDealedCell.swift in Sources */,
 				70CF4F7F214B41120051A7CA /* PersonalInfoHeader.swift in Sources */,
 				706488F9215B458D00F53BFC /* FocusResourceVC.swift in Sources */,
+				702E778A21D0B3910050D544 /* ZTIntervalManager.swift in Sources */,
 				701F10EA217F082300693936 /* OfferResultModels.swift in Sources */,
 				704DD0A4215CEC8400E6AD6F /* OfferDealVC.swift in Sources */,
 				785CE9222186FA1B00EEDE43 /* WayBillPageBean.swift in Sources */,

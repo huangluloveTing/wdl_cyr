@@ -133,3 +133,9 @@ struct ZbnCashFlow : HandyJSON {
     var transportNo : String?   //(string): 运单号
 }
 
+struct CarrierPositionVo : HandyJSON {
+    var carrierId : String? // (string): 承运人ID ,
+    var latitude : Float? // (number): 经度 ,
+    var longitude : Float? // (number): 经度
+}
+

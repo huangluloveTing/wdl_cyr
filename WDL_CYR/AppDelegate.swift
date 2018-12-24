@@ -11,6 +11,9 @@ import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    private var intervalManager:ZTIntervalManager?
+    private var locationManager:ZTLocationManager = ZTLocationManager.init()
 
     let dispose = DisposeBag()
     
@@ -24,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configIQKeyboard()
         self.configGAODEMap()
         self.configHUD()
+        self.uploadLocationInterval()
         
         //通过这个获取registrationID 发送消息
         JPUSHService.registrationIDCompletionHandler { (resCode, registrationID) in
@@ -137,5 +141,57 @@ extension AppDelegate {
         window?.makeKeyAndVisible()
     }
     
+    // 对于app 在某个间隔时间上传地址经纬度
+    func uploadLocationInterval() -> Void {
+        let interval = WDLCoreManager.shared().locationInterval
+        let userInfo = WDLCoreManager.shared().userInfo
+        self.intervalManager = nil
+        if userInfo != nil || userInfo?.token != nil {
+            self.intervalManager = ZTIntervalManager.instance(timeInterval: interval, closure: {[weak self] in
+                self?.locationUser()
+            })
+        }
+    }
+    
+    // 定位
+    func locationUser() -> Void {
+        self.locationManager.startLocation(result: { [weak self](location, error) in
+            if error == nil {
+                WDLCoreManager.shared().currentLocation = location
+                self?.uploadUserLocation(location: location!)
+            } else {
+                switch error! {
+                case .businessError(_, let code):
+                    if code == ZTLocationManager.NoLocationAuthCode {
+                        // 无定位权限时
+                        //TODO:
+                        
+                    } else {
+                        WDLCoreManager.shared().locationInterval = 10 * 3600
+                        self?.uploadLocationInterval()
+                    }
+                    break
+                default:
+                    WDLCoreManager.shared().locationInterval = 10 * 3600
+                    self?.uploadLocationInterval()
+                }
+            }
+        }, isContinue: false)
+    }
+    
+    // 上传经纬度
+    func uploadUserLocation(location:CLLocationCoordinate2D) -> Void {
+        let info =  WDLCoreManager.shared().userInfo
+        var positionVC = CarrierPositionVo()
+        positionVC.latitude = Float(location.latitude)
+        positionVC.longitude = Float(location.longitude)
+        positionVC.carrierId = info?.id
+        BaseApi.request(target: API.positionCarrier(positionVC), type: BaseResponseModel<String>.self)
+            .retry(10)
+            .subscribe(onNext: { (data) in
+                print(data)
+            })
+            .disposed(by: dispose)
+    }
  }
 

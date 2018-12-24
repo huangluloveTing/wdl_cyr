@@ -22,6 +22,7 @@
                 <outlet property="ownTextField" destination="v8l-j1-aCY" id="eup-i7-xZy"/>
                 <outlet property="registerTextField" destination="9kK-Sk-r9a" id="HFJ-eZ-APl"/>
                 <outlet property="useTypeTextField" destination="5Pk-zj-sYz" id="PSv-br-PTo"/>
+                <outlet property="vehichleWidthTextField" destination="Zrf-Fd-4JX" id="ERd-Y9-NgV"/>
                 <outlet property="vehicleEnginNoTextField" destination="6co-db-1Sa" id="FKr-vB-kjl"/>
                 <outlet property="vehicleIdTextField" destination="MGd-ve-tvV" id="rRS-L0-OVI"/>
                 <outlet property="vehicleImageView" destination="8TU-80-lbh" id="QHu-M7-OwJ"/>

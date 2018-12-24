@@ -29,8 +29,10 @@ struct LoginInfo : HandyJSON {
 
 class WDLCoreManager: NSObject {
     
+    public var locationInterval:TimeInterval = 30 * 3600 // 30秒定位一次
     private var _regions:[RegionModel]?
     private var _userInfo:ZbnCarrierInfo?
+    public var currentLocation:CLLocationCoordinate2D? // 当前定位
     
     public var regionAreas:[RegionModel]? {
         set {

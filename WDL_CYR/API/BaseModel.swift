@@ -62,7 +62,7 @@ extension CustomerError:LocalizedError {
         switch self {
         case .paramError(let message):
             return message
-        case .businessError(let message):
+        case .businessError(let message , _):
             return message
         case .netError(let message):
             return message
