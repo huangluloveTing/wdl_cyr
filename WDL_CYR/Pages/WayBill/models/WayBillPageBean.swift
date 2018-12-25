@@ -185,4 +185,6 @@ struct ZbnEvaluate  : HandyJSON {
 struct OrderHallReturnVo : HandyJSON {
     var imageUrl:[String] = []   // 回单图片地址 ,
     var transportNo : String = "" //(string): 运单编码省
+    var latitude : String = "" //(string): 经度
+    var longitude : String = "" //(string): 纬度
 }

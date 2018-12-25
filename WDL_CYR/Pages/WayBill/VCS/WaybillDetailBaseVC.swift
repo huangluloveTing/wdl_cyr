@@ -48,6 +48,8 @@ class WaybillDetailBaseVC: NormalBaseVC {
     private var currentInfo:TransactionInformation?
     
     private var showBottom:Bool = false
+    //定位对象
+    private var locationManager:ZTLocationManager = ZTLocationManager.init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -793,9 +795,9 @@ extension WaybillDetailBaseVC {
         let hallId = self.waybillInfo?.hallId ?? ""
         halllReturnVo.imageUrl = returnImgList
         halllReturnVo.transportNo = transportNo
+    
         self.showLoading()
         BaseApi.request(target: API.addOrderHallReturn(halllReturnVo), type: BaseResponseModel<String>.self)
-            .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: {
                     self?.loadDetailData(hallId: hallId)
@@ -806,6 +808,7 @@ extension WaybillDetailBaseVC {
             .disposed(by: dispose)
     }
 }
+
 
 //MARK: - 获取运单详情
 extension WaybillDetailBaseVC {
@@ -911,4 +914,35 @@ extension WaybillDetailBaseVC {
             self.currentTableView?.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH, height: 60))
         }
     }
+    
+    // 定位
+    func locationUser(model: OrderHallReturnVo) -> Void {
+//        self.locationManager.startLocation(result: { [weak self](location, error) in
+//            if error == nil {
+//                let newLocation = location as! CLLocationCoordinate2D
+//                let latitude = Float(newLocation.latitude)
+//                let longtitude = Float(newLocation.longitude)
+//                model.latitude = latitude
+//                model.longitude = longitude
+//            } else {
+//                switch error! {
+//                case .businessError(_, let code):
+//                    if code == ZTLocationManager.NoLocationAuthCode {
+//                        // 无定位权限时
+//                        //TODO:
+//                        self?.showAlert(title: "提示", message: "当前无定位权限，请前往设置将改app的定位权限打开", closure: nil)
+//                    } else {
+//                        // 定位失败，传入的目的地进行反编码
+//                        
+//                    }
+//                    break
+//                default:
+//                  print("其他错误")
+//                }
+//            }
+//            }, isContinue: false)
+    }
+
+    
+    
 }

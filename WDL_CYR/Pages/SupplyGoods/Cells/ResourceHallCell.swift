@@ -64,6 +64,7 @@ extension ResourceHallCell {
     func showInfo(info:ResourceHallUIModel?) -> Void {
         self.info = info
         self.startLabel.text = info?.start
+        self.endLabel.text = info?.end
         //货源编号
         self.goodCodeId.text = "货源编号：" +  (info?.id ?? "")
         self.truckDescLabel.text = info?.truckInfo

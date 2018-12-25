@@ -72,7 +72,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="成都市新都区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H99-2d-38V">
-                        <rect key="frame" x="173" y="40" width="285.5" height="20.5"/>
+                        <rect key="frame" x="169" y="40" width="289.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -96,7 +96,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_to" translatesAutoresizingMaskIntoConstraints="NO" id="gEg-YS-fOC">
-                        <rect key="frame" x="129" y="39.5" width="34" height="22"/>
+                        <rect key="frame" x="129" y="45.5" width="30" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="1aq-N4-Cyt"/>
+                            <constraint firstAttribute="height" constant="10" id="die-U9-YBk"/>
+                        </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KaX-fB-s5S">
                         <rect key="frame" x="15" y="245.5" width="30" height="30"/>

@@ -214,7 +214,7 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
         let goodsInfo = Util.contact(strs: [String(format: "%.f", hall.goodsWeight)+"吨" , hall.vehicleLength , hall.vehicleType , hall.packageType], seperate: " | ")
         
         //参考价是否可见  var refercnecePriceIsVisable : String = "" // (string, optional), 参考价是否可见，1=可见 2，不可见
-        
+        print("\(hall.endProvince),\(hall.endCity)")
         let uiModel = ResourceHallUIModel(id: hall.id,start: hall.startProvince + hall.startCity,
                                           end: hall.endProvince + hall.endCity,
                                           truckInfo: truckInfo,
