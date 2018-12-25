@@ -166,9 +166,14 @@ extension AppDelegate {
                 case .businessError(_, let code):
                     if code == ZTLocationManager.NoLocationAuthCode {
                         // 无定位权限时
-                        //TODO:
-                        SVProgressHUD.showError(withStatus: "当前无定位权限，请前往设置将改app的定位权限打开")
-                        SVProgressHUD.dismiss()
+                        
+                        let alertController = UIAlertController(title: "提示",
+                                                                message: "当前无定位权限，请前往设置打开该app的定位", preferredStyle: .alert)
+                        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+                      
+                        alertController.addAction(cancelAction)
+                       
+                        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
                     } else {
                         self?.uploadLocationInterval()
                         // 定位失败，十分钟后又 定位

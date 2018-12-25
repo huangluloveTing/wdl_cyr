@@ -38,12 +38,14 @@ class ResourceDetailVC: NormalBaseVC {
     
     }
     //MARK: route
-    override func routeName(routeName: String, dataInfo: Any?) {
+    override func routeName(routeName: String, dataInfo: Any?,sender: Any?) {
         if routeName == "\(Resource_GoodsInfoCell.self)" {
-            self.toFocusLine() // 关注线路
+            let btn = sender as! UIButton
+            self.toFocusLine(sender: btn) // 关注线路
         }
         if routeName == "\(Resource_ShipperInfoCell.self)" {
-            self.toFocusCarrier() // 关注托运人
+            let btn = sender as! UIButton
+            self.toFocusCarrier(sender: btn) // 关注托运人
         }
     }
 }
@@ -73,7 +75,7 @@ extension ResourceDetailVC {
     }
     
     // 关注线路
-    func toFocusLine() -> Void {
+    func toFocusLine(sender: UIButton) -> Void {
         let startProvince = self.resource?.resource?.startProvince ?? ""
         let startCity = self.resource?.resource?.startCity ?? ""
         let endProvince = self.resource?.resource?.endProvince ?? ""
@@ -82,6 +84,7 @@ extension ResourceDetailVC {
         BaseApi.request(target: API.addFollowLine(startProvince, startCity, endProvince, endCity), type: BaseResponseModel<String>.self)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: nil)
+                sender.isHidden = true
             }, onError: { [weak self](error) in
                 self?.showFail(fail: error.localizedDescription, complete: nil)
             })
@@ -89,7 +92,7 @@ extension ResourceDetailVC {
     }
     
     // 关注托运人
-    func toFocusCarrier() -> Void {
+    func toFocusCarrier(sender: UIButton) -> Void {
         var query = AddShipperQueryModel()
         query.shipperId = self.resource?.resource?.consignorNo ?? ""
         query.shipperType = self.resource?.resource?.consignorType ?? ""
@@ -98,6 +101,7 @@ extension ResourceDetailVC {
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: nil)
+                sender.isHidden = true
             }, onError: { (error) in
                 self.showFail(fail: error.localizedDescription, complete: nil)
             })
@@ -136,12 +140,8 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
         if section == 1 {
             //货源信息
             let cell = self.dequeueReusableCell(className: Resource_GoodsInfoCell.self, for: tableView)
-            //关注按钮
-            if self.resource?.resource?.followLine == true {
-                cell.focusLineButton.isHidden = true
-            }else {
-                cell.focusLineButton.isHidden = false
-            }
+         
+            
             let start = (self.resource?.resource?.startProvince ?? "") + (self.resource?.resource?.startCity ?? "") + (self.resource?.resource?.startDistrict ?? "")
             let end = (self.resource?.resource?.endProvince ?? "") + (self.resource?.resource?.endCity ?? "") + (self.resource?.resource?.endDistrict ?? "")
             let loadTime = self.resource?.resource?.loadingTime ?? 0
@@ -156,6 +156,17 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
             let vWidth = "车宽" + (self.resource?.resource?.vehicleWidth ?? "")
             let comLW = vLength + "." + vWidth
             let summary =  Util.contact(strs: [goodWt, vtype, vPackage, comLW], seperate: " | ")
+            //关注路线按钮
+            // var followLine : Bool = true;//关注路线true ，未关注false
+
+            var isFoucePath : Bool = false
+            if self.resource?.resource?.followLine == true {
+                //关注
+                isFoucePath = true
+            }else {
+                //未关注
+                isFoucePath = false
+            }
             //货源编码
             let goodCode = self.resource?.resource?.id ?? ""
             cell.showInfo(start: start,
@@ -166,25 +177,31 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
                           goodsSumm: summary,
                           remark: remark,
                           goodCode:goodCode,
-                          foucs: self.resource?.attention ?? false)
+                          foucs:isFoucePath)
             return cell
         }
         //托运人信息
         let cell = self.dequeueReusableCell(className: Resource_ShipperInfoCell.self, for: tableView)
         let info = WDLCoreManager.shared().userInfo
+
+        
+        //关注托运人按钮
+        //   var shipperCode : String = "" // (string): 字段不为空表示托运人关注 ,
+     
+        var isFoucePer : Bool = false
+        if self.resource?.resource?.shipperCode != "" {
+            //关注
+            isFoucePer = true
+        }else {
+            //未关注
+            isFoucePer = false
+        }
         cell.showInfo(name: self.resource?.consignorName,
                       dealNum: info?.dealCount ?? 0,
                       rate: info?.growupScore ?? 0 ,
-                      foucs:self.resource?.attention ?? false)
+                      foucs:isFoucePer)
         
-        //关注按钮
-        //   var shipperCode : String = "" // (string): 字段不为空表示托运人关注 ,
-       // var followLine : Bool = true;//关注路线true ，未关注false
-        if self.resource?.resource?.shipperCode != "" {
-            cell.focusShipperButton.isHidden = true
-        }else {
-            cell.focusShipperButton.isHidden = false
-        }
+       
         return cell
     }
     

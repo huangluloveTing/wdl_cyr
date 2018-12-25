@@ -85,7 +85,18 @@ extension OfferNoTruckVC {
         BaseApi.request(target: API.addOffer(commit), type: BaseResponseModel<String>.self)
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
-                self?.showSuccess(success: data.message, complete: {
+            
+                self?.hiddenToast()
+                let time = Util.dateFormatter(date: self?.resource?.resource?.loadingTime ?? 0 / 1000, formatter: "MM月dd日")
+                
+                let message = "你已成功报价，若成交请注意装货时间为\(time)，请注意装货时间哦!"
+                
+                
+                let alertController = UIAlertController(title: "提示",
+                                                        message: message, preferredStyle: .alert)
+                
+                
+                let cancelAction = UIAlertAction(title: "确认", style: UIAlertActionStyle.default, handler: { (_) in
                     if let callBack = self?.callBack {
                         var newResource = self?.resource?.resource
                         newResource?.isOffer = "OK"
@@ -93,6 +104,12 @@ extension OfferNoTruckVC {
                     }
                     self?.pop()
                 })
+                
+                alertController.addAction(cancelAction)
+                
+                self?.present(alertController, animated: true, completion: nil)
+                
+                
                 }, onError: { [weak self](error) in
                     let cusError = error as! CustomerError
                     switch cusError {

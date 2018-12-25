@@ -100,7 +100,7 @@ class WayBillBaseVC: MainBaseVC {
 
 //MARK: - event chain
 extension WayBillBaseVC {
-    override func routeName(routeName: String, dataInfo: Any?) {
+    override func routeName(routeName: String, dataInfo: Any?,sender:Any?) {
         let cell = dataInfo as? WaybillBaseCell
         let indexPath = self.currentTableView.indexPath(for: cell!)
         // 拒绝

@@ -32,7 +32,7 @@ class Resource_GoodsInfoCell: BaseCell {
     }
     
     @IBAction func focusLineHandle(_ sender: Any) {
-        self.routeName(routeName: "\(Resource_GoodsInfoCell.self)", dataInfo: nil)
+        self.routeName(routeName: "\(Resource_GoodsInfoCell.self)", dataInfo: nil,sender: sender)
     }
 }
 //货源详情- 货源信息

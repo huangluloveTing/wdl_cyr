@@ -27,7 +27,7 @@ class InviteDriverCell: BaseCell {
     }
     
     @IBAction func addHandle(_ sender: Any) {
-        self.routeName(routeName: "\(InviteDriverCell.self)", dataInfo: self)
+        self.routeName(routeName: "\(InviteDriverCell.self)", dataInfo: self,sender: sender)
     }
 }
 

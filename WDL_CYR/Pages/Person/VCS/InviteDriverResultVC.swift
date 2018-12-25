@@ -102,7 +102,7 @@ extension InviteDriverResultVC {
 }
 
 extension InviteDriverResultVC {
-    override func routeName(routeName: String, dataInfo: Any?) {
+    override func routeName(routeName: String, dataInfo: Any?,sender:Any?) {
         if routeName == "\(DriverInviteFailCell.self)" {
             tapInviteHandle()
         }

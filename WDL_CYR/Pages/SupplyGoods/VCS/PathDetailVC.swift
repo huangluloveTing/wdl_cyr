@@ -4,7 +4,7 @@
 //
 //  Created by 黄露 on 2018/10/18.
 //  Copyright © 2018年 yinli. All rights reserved.
-//
+//  关注路线详情页
 
 import UIKit
 
@@ -30,6 +30,10 @@ class PathDetailVC: AttentionDetailBaseVC {
         let items = self.lineHall.hall.map { (res) -> ResourceHallUIModel in
             let truckInfo = Util.dateFormatter(date: res.loadingTime/1000, formatter: "MM-dd") + " 装货 " + res.goodsType
             let goodsInfo = Util.contact(strs: [String(format: "%.f", res.goodsWeight)+"吨" , res.vehicleLength , res.vehicleType , res.packageType], seperate: " | ")
+            
+            //关注按钮
+            //   var shipperCode : String = "" // (string): 字段不为空表示托运人关注 ,
+            // var followLine : Bool = true;//关注路线true ，未关注false
             let model = ResourceHallUIModel(id: res.id,start: res.startProvince + res.startCity,
                                             end: res.endProvince + res.endCity,
                                             truckInfo: truckInfo,
@@ -42,7 +46,9 @@ class PathDetailVC: AttentionDetailBaseVC {
                                             reportNum: res.offerNumber,
                                             refercneceUnitPrice: res.refercneceUnitPrice,
                                             refercnecePriceIsVisable: res.refercnecePriceIsVisable,
-                                            isOffer:(res.isOffer != nil && (res.isOffer)!.count > 0))
+                                            isOffer:(res.isOffer != nil && (res.isOffer)!.count > 0),
+                                            shipperCode:res.shipperCode,
+                                            followLine:res.followLine)
             return model
         }
         self.refresh(items: items)

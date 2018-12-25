@@ -820,8 +820,8 @@ extension WaybillDetailBaseVC {
                 case .businessError(_, let code):
                     if code == ZTLocationManager.NoLocationAuthCode {
                         // 无定位权限时
-                        //TODO:
-                        self?.showAlert(title: "提示", message: "当前无定位权限，请前往设置将改app的定位权限打开", closure: nil)
+                 
+                        self?.showAlert(title: "提示", message: "当前无定位权限，请前往设置打开该app的定位", closure: nil)
                         
                     } else {
                         // 定位失败，传入的目的地进行反编码
@@ -967,7 +967,7 @@ extension WaybillDetailBaseVC {
 
 //MARK: - event
 extension WaybillDetailBaseVC {
-    override func routeName(routeName: String, dataInfo: Any?) {
+    override func routeName(routeName: String, dataInfo: Any?,sender: Any?) {
         if routeName == WAYBILL_HANDLE_NAME {
             self.handleAction()
         }

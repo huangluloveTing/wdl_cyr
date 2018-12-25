@@ -27,7 +27,7 @@ class Resource_ShipperInfoCell: BaseCell {
         // Configure the view for the selected state
     }
     @IBAction func focusShipperHandle(_ sender: Any) {
-        self.routeName(routeName: "\(Resource_ShipperInfoCell.self)", dataInfo: nil)
+        self.routeName(routeName: "\(Resource_ShipperInfoCell.self)", dataInfo: nil, sender: sender)
     }
 }
 

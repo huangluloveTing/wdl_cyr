@@ -34,6 +34,6 @@ class PaymentCommitCell: BaseCell {
     }
     
     func toCommitPay() -> Void {
-        self.routeName(routeName: TOPAYMENT_ROUTERNAME, dataInfo: nil)
+        self.routeName(routeName: TOPAYMENT_ROUTERNAME, dataInfo: nil,sender: nil)
     }
 }
