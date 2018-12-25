@@ -808,7 +808,7 @@ extension WaybillDetailBaseVC {
         self.locationManager.startLocation(result: { [weak self](location, error) in
             if error == nil {
                 //获取当前经纬度
-                let newLocation = location as! CLLocationCoordinate2D
+                let newLocation = location!
                 let latitude = Float(newLocation.latitude)
                 let longtitude = Float(newLocation.longitude)
                 self?.halllReturnVo.latitude = latitude
@@ -863,7 +863,7 @@ extension WaybillDetailBaseVC {
                 print("地理编码错误")
             }
      
-     }
+    }
     
     }
     
