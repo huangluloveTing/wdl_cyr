@@ -48,6 +48,9 @@ class WaybillDetailBaseVC: NormalBaseVC {
     private var currentInfo:TransactionInformation?
     
     private var showBottom:Bool = false
+    //申请签收的请求参数
+    private var halllReturnVo = OrderHallReturnVo()
+    
     //定位对象
     private var locationManager:ZTLocationManager = ZTLocationManager.init()
 
@@ -791,22 +794,96 @@ extension WaybillDetailBaseVC {
             return imgReturn.returnBillUrl ?? ""
         }
         let transportNo = self.currentInfo?.transportNo ?? ""
-        var halllReturnVo = OrderHallReturnVo()
         let hallId = self.waybillInfo?.hallId ?? ""
-        halllReturnVo.imageUrl = returnImgList
-        halllReturnVo.transportNo = transportNo
+        self.halllReturnVo.imageUrl = returnImgList
+        self.halllReturnVo.transportNo = transportNo
+        //获取定位
+        self.locationUser(hallId: hallId)
+        
+       
+    }
     
+    // 定位
+    func locationUser(hallId:String) -> Void {
+        self.locationManager.startLocation(result: { [weak self](location, error) in
+            if error == nil {
+                //获取当前经纬度
+                let newLocation = location as! CLLocationCoordinate2D
+                let latitude = Float(newLocation.latitude)
+                let longtitude = Float(newLocation.longitude)
+                self?.halllReturnVo.latitude = latitude
+                self?.halllReturnVo.longitude = longtitude
+                //签收请求
+                self?.signForRequest(hallId: hallId)
+            } else {
+                switch error! {
+                case .businessError(_, let code):
+                    if code == ZTLocationManager.NoLocationAuthCode {
+                        // 无定位权限时
+                        //TODO:
+                        self?.showAlert(title: "提示", message: "当前无定位权限，请前往设置将改app的定位权限打开", closure: nil)
+                        
+                    } else {
+                        // 定位失败，传入的目的地进行反编码
+                         let takeGoodAddress = Util.contact(strs: [self?.currentInfo?.endProvince ?? "" , self?.currentInfo?.endCity ?? "" , self?.currentInfo?.endAddress ?? ""])
+                        self?.geoCode(addressStr: takeGoodAddress)
+                    }
+                    //签收请求
+                    self?.signForRequest(hallId: hallId)
+                    break
+                default:
+                    print("其他错误")
+                    //签收请求
+                    self?.signForRequest(hallId: hallId)
+                }
+             }
+            }, isContinue: false)
+        
+    }
+    
+ 
+    // 地理编码  地址->经纬度
+    func geoCode(addressStr: String){
+        let geoCoder:CLGeocoder = CLGeocoder()
+        
+        geoCoder.geocodeAddressString(addressStr) { (pls: [CLPlacemark]?, error: Error?)  in
+            if error == nil {
+                print("地理编码成功")
+                guard let plsResult = pls else {return}
+                let firstPL = plsResult.first
+               
+                
+                let latitude = Float(firstPL?.location?.coordinate.latitude ?? 0.0)
+                let longtitude = Float(firstPL?.location?.coordinate.longitude ?? 0.0)
+                
+                self.halllReturnVo.latitude = latitude
+                self.halllReturnVo.longitude = longtitude
+               
+            }else {
+                print("地理编码错误")
+            }
+     
+     }
+    
+    }
+    
+    //申请签收请求
+    func signForRequest(hallId:String){
         self.showLoading()
-        BaseApi.request(target: API.addOrderHallReturn(halllReturnVo), type: BaseResponseModel<String>.self)
+        BaseApi.request(target: API.addOrderHallReturn(self.halllReturnVo), type: BaseResponseModel<String>.self)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: {
                     self?.loadDetailData(hallId: hallId)
                 })
-            }, onError: { (error) in
-                self.showFail(fail: error.localizedDescription, complete: nil)
+                }, onError: { (error) in
+                    self.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)
     }
+    
+
+        
+        
 }
 
 
@@ -914,35 +991,7 @@ extension WaybillDetailBaseVC {
             self.currentTableView?.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH, height: 60))
         }
     }
-    
-    // 定位
-    func locationUser(model: OrderHallReturnVo) -> Void {
-//        self.locationManager.startLocation(result: { [weak self](location, error) in
-//            if error == nil {
-//                let newLocation = location as! CLLocationCoordinate2D
-//                let latitude = Float(newLocation.latitude)
-//                let longtitude = Float(newLocation.longitude)
-//                model.latitude = latitude
-//                model.longitude = longitude
-//            } else {
-//                switch error! {
-//                case .businessError(_, let code):
-//                    if code == ZTLocationManager.NoLocationAuthCode {
-//                        // 无定位权限时
-//                        //TODO:
-//                        self?.showAlert(title: "提示", message: "当前无定位权限，请前往设置将改app的定位权限打开", closure: nil)
-//                    } else {
-//                        // 定位失败，传入的目的地进行反编码
-//                        
-//                    }
-//                    break
-//                default:
-//                  print("其他错误")
-//                }
-//            }
-//            }, isContinue: false)
-    }
-
+ 
     
     
 }
