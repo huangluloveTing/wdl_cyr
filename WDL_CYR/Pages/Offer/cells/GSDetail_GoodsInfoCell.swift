@@ -10,7 +10,8 @@ import UIKit
 
 class GSDetail_GoodsInfoCell: BaseCell {
 
-    
+    //货源编号
+    @IBOutlet weak var goodCode: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
@@ -45,6 +46,9 @@ extension GSDetail_GoodsInfoCell {
         self.referenceUnitLabel.text = Util.floatPoint(num: 2, floatValue: info.referenceUnitPrice)+"元/吨"
         self.referenceTotalLabel.text = Util.floatPoint(num: 2, floatValue: info.referenceTotalPrice) + "元"
         self.remarkLabel.text = info.remark ?? " "
+        
+        //货源编号
+        self.goodCode.text = "货源编号：" +  (info.id ?? "")
     }
 }
 

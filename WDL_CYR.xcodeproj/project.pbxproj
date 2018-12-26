@@ -36,6 +36,8 @@
 		183FD32821B52B4C0069D50F /* MessageDetailAcceptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183FD32721B52B4C0069D50F /* MessageDetailAcceptCell.xib */; };
 		183FD32B21B644BE0069D50F /* ReturnMoneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183FD32921B644BE0069D50F /* ReturnMoneyVC.swift */; };
 		183FD32C21B644BE0069D50F /* ReturnMoneyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183FD32A21B644BE0069D50F /* ReturnMoneyVC.xib */; };
+		18B142BC21D3145800E46F43 /* FirstAddDriverListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B142BB21D3145800E46F43 /* FirstAddDriverListVC.swift */; };
+		18B142BE21D3148200E46F43 /* FirstAddDriverListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B142BD21D3148200E46F43 /* FirstAddDriverListVC.xib */; };
 		18E3810021B66F6500FF6544 /* PayHtmlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */; };
 		18E3810221B7A7BA00FF6544 /* AppDelegate+jpush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3810121B7A7BA00FF6544 /* AppDelegate+jpush.swift */; };
 		18E3810621C382E200FF6544 /* InviteAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E3810421C382E100FF6544 /* InviteAlertView.xib */; };
@@ -438,6 +440,8 @@
 		183FD32921B644BE0069D50F /* ReturnMoneyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnMoneyVC.swift; sourceTree = "<group>"; };
 		183FD32A21B644BE0069D50F /* ReturnMoneyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReturnMoneyVC.xib; sourceTree = "<group>"; };
 		18AEF43021AFE21F00FE2468 /* WDL_CYR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WDL_CYR.entitlements; sourceTree = "<group>"; };
+		18B142BB21D3145800E46F43 /* FirstAddDriverListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAddDriverListVC.swift; sourceTree = "<group>"; };
+		18B142BD21D3148200E46F43 /* FirstAddDriverListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstAddDriverListVC.xib; sourceTree = "<group>"; };
 		18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayHtmlVC.swift; sourceTree = "<group>"; };
 		18E3810121B7A7BA00FF6544 /* AppDelegate+jpush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+jpush.swift"; sourceTree = "<group>"; };
 		18E3810421C382E100FF6544 /* InviteAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteAlertView.xib; sourceTree = "<group>"; };
@@ -1234,6 +1238,8 @@
 				70D8BC0C2166E99C000522E0 /* PaymentTypeVC.swift */,
 				70D8BC0D2166E99C000522E0 /* PaymentTypeVC.xib */,
 				18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */,
+				18B142BB21D3145800E46F43 /* FirstAddDriverListVC.swift */,
+				18B142BD21D3148200E46F43 /* FirstAddDriverListVC.xib */,
 				70D8BC18216724CE000522E0 /* TransportCapacityVC.swift */,
 				70D8BC19216724CE000522E0 /* TransportCapacityVC.xib */,
 				70D8BC2421673955000522E0 /* TransactionDetailsVC.swift */,
@@ -1788,6 +1794,7 @@
 				70CF4F94214B41120051A7CA /* XIBViews.xib in Resources */,
 				70CF4F81214B41120051A7CA /* PersonalVC.xib in Resources */,
 				70648902215B5F5A00F53BFC /* FocusEmptyView.xib in Resources */,
+				18B142BE21D3148200E46F43 /* FirstAddDriverListVC.xib in Resources */,
 				7014087221940A76000D5CB1 /* WayBillToCommentCell.xib in Resources */,
 				700347702193D98500DDEE55 /* WaybillGoodsInfoCell.xib in Resources */,
 				70D8BC33216748E5000522E0 /* AuthenIndividualInfoVC.xib in Resources */,
@@ -2096,6 +2103,7 @@
 				70CF4FD3214B41120051A7CA /* DropViewManage.swift in Sources */,
 				704DD0A0215CEC6600E6AD6F /* OfferNotDoneVC.swift in Sources */,
 				70CF4F98214B41120051A7CA /* OneChooseInputView.swift in Sources */,
+				18B142BC21D3145800E46F43 /* FirstAddDriverListVC.swift in Sources */,
 				7044A04321C0FA50007A963F /* MoreScreenSelectionVC.swift in Sources */,
 				701F10D1217D54B200693936 /* ChooseDriverCell.swift in Sources */,
 				70CF4F6D214B41110051A7CA /* GSDealedCell.swift in Sources */,

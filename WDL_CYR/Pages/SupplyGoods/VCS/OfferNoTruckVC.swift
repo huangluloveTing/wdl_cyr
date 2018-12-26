@@ -87,7 +87,8 @@ extension OfferNoTruckVC {
             .subscribe(onNext: { [weak self](data) in
             
                 self?.hiddenToast()
-                let time = Util.dateFormatter(date: self?.resource?.resource?.loadingTime ?? 0 / 1000, formatter: "MM月dd日")
+            
+                let time = Util.dateFormatter(date:  (self?.resource?.resource?.loadingTime ?? 0)/1000, formatter: "MM月dd日")
                 
                 let message = "你已成功报价，若成交请注意装货时间为\(time)，请注意装货时间哦!"
                 

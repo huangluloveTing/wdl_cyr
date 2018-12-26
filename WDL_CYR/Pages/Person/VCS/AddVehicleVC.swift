@@ -51,7 +51,10 @@ class AddVehicleVC: NormalBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //获取车辆类型
         self.loadVehicleType()
+        //获取使用性质
+        self.loadType()
     }
 
     override func currentConfig() {
@@ -63,7 +66,15 @@ class AddVehicleVC: NormalBaseVC {
     @IBAction func commitHandle(_ sender: Any) {
         commitVehicleInfo()
     }
+    
+    //选择所有人
+    
+    @IBAction func choiceAllDriverClick(_ sender: UIButton) {
+        self.toAllPeople()
+    }
+    
     override func bindViewModel() {
+        
         self.registerTextField.datePickerInput(mode: .date, dateFormatter: "yyyy-MM-dd", skip: 1)
             .asObservable()
             .subscribe(onNext: { [weak self](date) in
@@ -93,11 +104,7 @@ class AddVehicleVC: NormalBaseVC {
                 self?.currentCommitItem?.vehicleType = text
             })
             .disposed(by: dispose)
-        self.ownTextField.rx.text.orEmpty.asObservable()
-            .subscribe(onNext: { [weak self](text) in
-                self?.currentCommitItem?.belongToCarrier = text
-            })
-            .disposed(by: dispose)
+       
         self.addressTextField.rx.text.orEmpty.asObservable()
             .subscribe(onNext: { [weak self](text) in
                 self?.currentCommitItem?.address = text
@@ -161,7 +168,7 @@ extension AddVehicleVC {
             return false
         }
         if (self.currentCommitItem?.belongToCarrier.count ?? 0) <= 0 {
-            self.showWarn(warn: "请输入车辆所有人", complete: nil)
+            self.showWarn(warn: "请选择所有人的驾驶员", complete: nil)
             return false
         }
         if (self.currentCommitItem?.address.count ?? 0) <= 0 {
@@ -169,7 +176,7 @@ extension AddVehicleVC {
             return false
         }
         if (self.currentCommitItem?.useProperty.count ?? 0) <= 0 {
-            self.showWarn(warn: "请输入使用性质", complete: nil)
+            self.showWarn(warn: "请选择使用性质", complete: nil)
             return false
         }
         if (self.currentCommitItem?.engineNumber.count ?? 0) <= 0 {
@@ -297,6 +304,27 @@ extension AddVehicleVC {
             })
             .disposed(by: dispose)
     }
+    
+    //MARK: - 推送所有人页面（驾驶员）
+    @objc func toAllPeople() -> Void {
+        let driverChooseVC = OfferChooseDriverVC()
+        driverChooseVC.searchResultClosure = { [weak self] (capacity) in
+      
+            self?.currentCommitItem?.driverId = capacity.driverId
+            self?.currentCommitItem?.driverName = capacity.driverName
+            self?.currentCommitItem?.driverPhone = capacity.driverPhone
+            self?.currentCommitItem?.belongToCarrier = capacity.driverName
+            self?.ownTextField.text = capacity.driverName
+        }
+        self.pushToVC(vc: driverChooseVC, title: "承运人")
+    }
+    //MARK: - 获取使用性质
+    func loadType() -> Void {
+
+        self.useTypeTextField.oneChooseInputView(titles: ["营运货车","非营运","营运挂车","营运特种车"]).disposed(by: self.dispose)
+    }
+    
+    
 }
 
 extension AddVehicleVC {
@@ -308,9 +336,9 @@ extension AddVehicleVC {
         }
         self.vehicleNoTextField.titleTextField(title: "  车辆号码")
         self.vehicleTypeTextField.titleTextField(title: "  车辆类型" , indicator: true)
-        self.ownTextField.titleTextField(title: "  所有人")
+        self.ownTextField.titleTextField(title: "  所有人", indicator: true)
         self.addressTextField.titleTextField(title: "  住址")
-        self.useTypeTextField.titleTextField(title: "  使用性质")
+        self.useTypeTextField.titleTextField(title: "  使用性质", indicator: true)
         self.vehicleIdTextField.titleTextField(title: "  车辆识别代码")
         self.vehicleEnginNoTextField.titleTextField(title: "  发动机号码")
         
@@ -360,6 +388,7 @@ extension AddVehicleVC {
         self.useTypeTextField.text = self.currentCommitItem?.useProperty
         self.vehicleIdTextField.text = self.currentCommitItem?.vehicleIdCode
         self.vehicleEnginNoTextField.text = self.currentCommitItem?.engineNumber
+
         
         if (self.currentCommitItem?.registrationDate ?? 0) > 0 {
             self.registerTextField.text = Util.dateFormatter(date: (self.currentCommitItem?.registrationDate ?? 0) / 1000, formatter: "yyyy-MM-dd")

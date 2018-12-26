@@ -95,6 +95,9 @@ extension OfferDealVC {
             self?.tableView.reloadData()
         }
     }
+    
+    
+    
 }
 
 // UITableViewDelegate , UITableViewDataSource
@@ -132,6 +135,10 @@ extension OfferDealVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.heightForRow(at: indexPath)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        registerSearchBar()
+    }
 }
 
 extension OfferDealVC {
@@ -140,5 +147,12 @@ extension OfferDealVC {
             self.currentSearchContent = searchBar.text
             self.tableView.beginRefresh()
         }
+    }
+    
+    /**
+     * 关闭j搜索键盘
+     */
+    func registerSearchBar() -> Void {
+        self.searchBar?.resignFirstResponder()
     }
 }

@@ -99,6 +99,7 @@ class GSDetailVC: GSDetailBaseVC {
         info.referenceUnitPrice = self.offer?.refercneceUnitPrice ?? 0
         info.referenceTotalPrice = self.offer?.refercneceTotalPrice ?? 0
         info.remark  = self.offer?.remark ?? " "
+        info.id = self.offer?.id ?? ""
         return info
     }
     
