@@ -170,14 +170,14 @@ extension AppDelegate {
                         SVProgressHUD.showError(withStatus: "当前无定位权限，请前往设置将改app的定位权限打开")
                         SVProgressHUD.dismiss()
                     } else {
-                        self?.uploadLocationInterval()
+//                        self?.uploadLocationInterval()
                         // 定位失败，十分钟后又 定位
                         WDLCoreManager.shared().locationInterval = 10 * 3600
                     }
                     break
                 default:
                     WDLCoreManager.shared().locationInterval = 10 * 3600
-                    self?.uploadLocationInterval()
+//                    self?.uploadLocationInterval()
                 }
             }
         }, isContinue: false)

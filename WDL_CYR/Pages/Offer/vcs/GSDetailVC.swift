@@ -54,7 +54,7 @@ class GSDetailVC: GSDetailBaseVC {
     
     // 竞标中 竞标中的倒计时
     override func bidding_timer() -> TimeInterval {
-        return self.offer?.surplusTurnoverTime ?? 0
+        return (self.offer?.autoTimeInterval ?? 0) * 3600
     }
     
     // 已驳回 驳回原因
