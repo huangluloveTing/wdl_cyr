@@ -14,6 +14,7 @@ import Alamofire
 enum API {
     case getMessageNum() //消息个数
     case login(String , String)     // 登录接口
+    case getAutoDealTimer(String)     // 查询货源自动成交时间
     case register(String , String , String , String) // 注册
     case registerSms(String)        // 获取验证码
     case loadTaskInfo()             // 获取省市区
@@ -80,6 +81,9 @@ enum API {
 // PATH
 func apiPath(api:API) -> String {
     switch api {
+    case .getAutoDealTimer(_):
+        return "/offer/queryHallSurplusTime"
+        
     case .applyAcceptOrRefuseMessage(_):
         return "/message/handleCarrierInvite"
     case .getMessageNum():
@@ -203,7 +207,8 @@ func apiTask(api:API) -> Task {
     switch api {
     case .getMessageNum():
         return .requestPlain
-
+    case .getAutoDealTimer(let hallId):
+        return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["hallId":hallId])
     case .returnMoney(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .dealDetail(let query):
@@ -368,6 +373,7 @@ func apiTask(api:API) -> Task {
 func apiMethod(api:API) -> Moya.Method {
     switch api {
     case .getCreateHallDictionary(),
+         .getAutoDealTimer(_),
          .registerSms(_) ,
          .getMessageNum(),
          .selectZbnConsignor(_),

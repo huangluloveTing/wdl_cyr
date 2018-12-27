@@ -21,8 +21,10 @@ class OfferDealTimerCell: BaseCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerHandler), userInfo: nil, repeats: true)
+       
     }
 
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -35,6 +37,7 @@ class OfferDealTimerCell: BaseCell {
             return
         }
         
+        self.cuntDownTime = self.cuntDownTime - 1;
         let ti = NSInteger(self.cuntDownTime)
         let seconds = ti % 60
         let minus = (ti / 60) % 60

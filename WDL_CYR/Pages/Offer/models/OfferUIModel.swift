@@ -65,3 +65,5 @@ struct OfferInfoModel {
     var dealPossible:String = ""  // 成交可能性
     var showOffer:Bool = true
 }
+
+
