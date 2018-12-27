@@ -395,6 +395,8 @@ extension WayBillBaseVC {
         //self.queryBean.carrierId = WDLCoreManager.shared().userInfo?.carrierNo ?? ""
         // 顶部3个按钮状态 1：未配载，2 ：未完成， 3：完成 ,
         self.queryBean.completeStatus = status
+        self.queryBean.pageNum = 1
+        self.queryBean.pageSize = self.currentPageSize
         // 未配载
         // 运单状态： -1 不限 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收
         self.queryBean.transportStatus = transportStatus

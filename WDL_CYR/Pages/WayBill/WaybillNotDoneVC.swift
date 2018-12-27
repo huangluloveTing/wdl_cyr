@@ -101,11 +101,7 @@ extension WaybillNotDoneVC {
     func loadDoingDatas(refresh:Bool) -> Void {
         self.loadWayBillUnCompletedData(transportStatus: self.currentStatus, startTime: self.currentStartTime, endTime: self.currentEndTime, search: "") { (info) in
             self.endRefresh()
-            if refresh == true {
-                self.refreshContents(items: info?.list ?? [])
-            } else {
-                self.addContentItems(items: info?.list ?? [])
-            }
+            self.refreshContents(items: info?.list ?? [])
             if self.currentDataSource.count >= (info?.total ?? 0)  {
                 self.endRefreshAndNoMoreData()
             } else {
