@@ -34,11 +34,13 @@ class OfferDealTimerCell: BaseCell {
             self.timerDisplay(hours: 0, minus: 0, second: 0)
             return
         }
-        let second = self.cuntDownTime / 1000
-        let hours = floor(second / Double(3600))
-        let minus = floor((second - hours * 3600) / 60)
-        let seconds = second - (hours * 3600 + minus * 60)
-        self.timerDisplay(hours: hours, minus: minus, second: seconds)
+        
+        let ti = NSInteger(self.cuntDownTime)
+        let seconds = ti % 60
+        let minus = (ti / 60) % 60
+        let hours = ti / 3600
+
+        self.timerDisplay(hours: Double(hours), minus: Double(minus), second: Double(seconds))
     
     }
     
