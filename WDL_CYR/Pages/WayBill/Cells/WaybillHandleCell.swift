@@ -22,7 +22,7 @@ class WaybillHandleCell: BaseCell {
         super.awakeFromNib()
         handleButton.rx.tap.asObservable()
             .subscribe(onNext: { [weak self]() in
-                self?.routeName(routeName: WAYBILL_HANDLE_NAME, dataInfo: nil)
+                self?.routeName(routeName: WAYBILL_HANDLE_NAME, dataInfo: nil,sender: nil)
             })
             .disposed(by: dispose)
     }

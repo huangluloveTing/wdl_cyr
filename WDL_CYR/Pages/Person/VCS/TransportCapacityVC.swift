@@ -145,7 +145,7 @@ extension TransportCapacityVC {
     func toEditTruck(index:Int) -> Void {
         let addVC = AddVehicleVC()
         addVC.currentCommitItem = self.vehicleLists[index]
-        self.pushToVC(vc: addVC, title: "添加车辆")
+        self.pushToVC(vc: addVC, title: "修改车辆")
     }
 }
 
@@ -252,7 +252,7 @@ extension TransportCapacityVC {
 
 //MARK: - control chain router
 extension TransportCapacityVC {
-    override func routeName(routeName: String, dataInfo: Any?) {
+    override func routeName(routeName: String, dataInfo: Any?,sender: Any?) {
         if routeName == TOEDIT_TRANSPORT {
             let cell = dataInfo as? BaseCell
             if cell != nil {

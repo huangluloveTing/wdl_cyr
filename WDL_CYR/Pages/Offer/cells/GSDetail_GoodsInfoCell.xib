@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  竞价中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHO-cE-qJF">
-                        <rect key="frame" x="93.5" y="19" width="50.5" height="17"/>
+                        <rect key="frame" x="225" y="19" width="50.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.023529411760000001" green="0.75294117650000003" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -139,6 +139,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="货源编号：（888）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJI-W2-aoi">
+                        <rect key="frame" x="93.5" y="19" width="126.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.023529411760000001" green="0.75294117650000003" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="6Cx-04-AJf" secondAttribute="bottom" constant="15" id="5ry-aS-KOf"/>
@@ -158,14 +164,15 @@
                     <constraint firstItem="jHz-Nd-LQ5" firstAttribute="leading" secondItem="wWU-bW-6ma" secondAttribute="trailing" constant="5" id="KMh-0C-Hxh"/>
                     <constraint firstItem="6Cx-04-AJf" firstAttribute="leading" secondItem="NnG-4X-zre" secondAttribute="trailing" constant="5" id="LRH-nY-Kx1"/>
                     <constraint firstItem="IZd-U5-5KE" firstAttribute="leading" secondItem="xe5-uP-OHd" secondAttribute="trailing" constant="5" id="Lcs-0z-XIU"/>
+                    <constraint firstItem="uHO-cE-qJF" firstAttribute="leading" secondItem="bJI-W2-aoi" secondAttribute="trailing" constant="5" id="M5v-0v-zbJ"/>
                     <constraint firstItem="Frp-0e-I5T" firstAttribute="top" secondItem="Kc9-iS-Is0" secondAttribute="bottom" constant="8" id="Nmi-1N-hpV"/>
                     <constraint firstItem="NnG-4X-zre" firstAttribute="leading" secondItem="wWU-bW-6ma" secondAttribute="leading" id="Nya-fo-4dU"/>
                     <constraint firstItem="xe5-uP-OHd" firstAttribute="leading" secondItem="Frp-0e-I5T" secondAttribute="leading" id="OkN-9o-AzI"/>
                     <constraint firstItem="6Cx-04-AJf" firstAttribute="top" secondItem="NnG-4X-zre" secondAttribute="top" id="PKJ-bN-Ehm"/>
                     <constraint firstItem="ilr-Hm-XQH" firstAttribute="top" secondItem="wWU-bW-6ma" secondAttribute="bottom" constant="8" id="QGZ-vW-ee8"/>
-                    <constraint firstItem="uHO-cE-qJF" firstAttribute="leading" secondItem="dbs-g9-hal" secondAttribute="trailing" constant="5" id="QTZ-of-LXw"/>
                     <constraint firstItem="K95-rU-R0G" firstAttribute="leading" secondItem="Kc9-iS-Is0" secondAttribute="trailing" constant="5" id="QpN-gx-XiO"/>
                     <constraint firstItem="TIV-vb-0nC" firstAttribute="top" secondItem="dbs-g9-hal" secondAttribute="bottom" constant="10" id="RB1-J2-AFy"/>
+                    <constraint firstItem="bJI-W2-aoi" firstAttribute="bottom" secondItem="dbs-g9-hal" secondAttribute="bottom" id="S6x-UG-CMt"/>
                     <constraint firstItem="xe5-uP-OHd" firstAttribute="height" secondItem="TIV-vb-0nC" secondAttribute="height" id="S7h-iw-PgK"/>
                     <constraint firstItem="GXw-Pd-XYO" firstAttribute="centerY" secondItem="0Am-id-cSn" secondAttribute="centerY" id="TJu-4c-KmW"/>
                     <constraint firstItem="0Am-id-cSn" firstAttribute="top" secondItem="ilr-Hm-XQH" secondAttribute="bottom" constant="8" id="TYW-qh-xVK"/>
@@ -190,6 +197,7 @@
                     <constraint firstItem="9ln-QB-OFd" firstAttribute="leading" secondItem="GXw-Pd-XYO" secondAttribute="trailing" constant="50" id="qpr-xt-DiQ"/>
                     <constraint firstItem="9ln-QB-OFd" firstAttribute="centerY" secondItem="GXw-Pd-XYO" secondAttribute="centerY" id="s94-3F-jFw"/>
                     <constraint firstItem="VeO-nM-b8L" firstAttribute="leading" secondItem="Frp-0e-I5T" secondAttribute="trailing" constant="5" id="vOA-9i-qlU"/>
+                    <constraint firstItem="bJI-W2-aoi" firstAttribute="leading" secondItem="dbs-g9-hal" secondAttribute="trailing" constant="5" id="vpz-Kd-YrQ"/>
                     <constraint firstItem="dbs-g9-hal" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="w1I-GV-ZC1"/>
                     <constraint firstItem="0Am-id-cSn" firstAttribute="leading" secondItem="ilr-Hm-XQH" secondAttribute="leading" id="xAA-so-qpG"/>
                 </constraints>
@@ -197,6 +205,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="endLabel" destination="K95-rU-R0G" id="lMJ-eT-V7x"/>
+                <outlet property="goodCode" destination="bJI-W2-aoi" id="pey-4a-njr"/>
                 <outlet property="goodsNameLabel" destination="IZd-U5-5KE" id="EwX-GX-XzB"/>
                 <outlet property="goodsSummerLabel" destination="8Pu-l1-AfI" id="Bfh-2E-0Y4"/>
                 <outlet property="goodsTypeLabel" destination="jHz-Nd-LQ5" id="3Kq-fn-kH6"/>

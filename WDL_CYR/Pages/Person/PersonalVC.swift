@@ -98,7 +98,7 @@ extension PersonalVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(PersonalInfoHeader.self)") as! PersonalInfoHeader
-            cell.showCarrierInfo(name: self.carrierInfo?.carrierName ,
+            cell.showCarrierInfo(name: self.carrierInfo?.companyAbbreviation ,
                                  auth: self.carrierInfo?.isAuth == .authed ,
                                  money: self.carrierBondInfo?.useableMoney,
                                  logo: self.carrierInfo?.headPortrait)
@@ -207,8 +207,11 @@ extension PersonalVC {
     
     // 我的运力
     func toTransportCapacity() -> Void {
+        
         let tansportCapacityVC = TransportCapacityVC()
         self.pushToVC(vc: tansportCapacityVC, title: nil)
+        
+      
     }
     
     // 去我的认证

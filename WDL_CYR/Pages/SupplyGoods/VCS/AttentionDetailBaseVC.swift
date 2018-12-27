@@ -81,6 +81,8 @@ extension AttentionDetailBaseVC : UITableViewDelegate , UITableViewDataSource {
         cell.offerClosure = {[weak self] () in
             self?.toOfferAtIndex(index: indexPath.section)
         }
+        
+      
         return cell
     }
     

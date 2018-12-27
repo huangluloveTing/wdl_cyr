@@ -30,6 +30,9 @@ struct ResourceHallUIModel {
     var refercneceUnitPrice : Float = 0 // (number): 参考单价 ,
     var refercnecePriceIsVisable: Int = 1 // 参考价是否可见 1=可见 2=不可见
     var isOffer:Bool = false        // 是否已报价
+    
+    var shipperCode : String = "" // (string): 字段不为空表示托运人关注 ,
+    var followLine : Bool = true;//关注路线true ，未关注false
 }
 
 struct ResourceDetailUIModel {

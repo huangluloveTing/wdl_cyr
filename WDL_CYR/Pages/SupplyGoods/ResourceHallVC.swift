@@ -227,7 +227,9 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
                                           reportNum: hall.offerNumber,
                                           refercneceUnitPrice: hall.refercneceUnitPrice,
                                           refercnecePriceIsVisable: hall.refercnecePriceIsVisable,
-                                          isOffer:hall.isOffer != nil && (hall.isOffer)!.count > 0)
+                                          isOffer:hall.isOffer != nil && (hall.isOffer)!.count > 0,
+                                          shipperCode:hall.shipperCode,
+                                          followLine:hall.followLine)
         cell.showInfo(info: uiModel)
         cell.offerClosure = {[weak self] in
             self?.toOffer(index: indexPath.section)

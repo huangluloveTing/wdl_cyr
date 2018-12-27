@@ -16,6 +16,7 @@ struct OfferWithTruckDriverModel {
     var phone:String = "" // 手机号码
     var type:Int = 0        // 承运人 类型  1=司机 2=承运人 ,
     var driverId:String = ""
+    var driverPhone: String = ""//司机联系方式
 }
 
 // 有车报价 ， 车辆 model

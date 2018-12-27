@@ -27,10 +27,10 @@ class TransportTruckCell: BaseCell {
     }
     
     @IBAction func toEditAction(_ sender: Any) {
-        self.routeName(routeName: TOEDIT_TRANSPORT, dataInfo: self)
+        self.routeName(routeName: TOEDIT_TRANSPORT, dataInfo: self,sender: nil)
     }
     @IBAction func toDeleteAction(_ sender: Any) {
-        self.routeName(routeName: TODELE_TRANSPORT, dataInfo: self)
+        self.routeName(routeName: TODELE_TRANSPORT, dataInfo: self,sender: nil)
     }
 }
 

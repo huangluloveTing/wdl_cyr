@@ -4,7 +4,7 @@
 //
 //  Created by 黄露 on 2018/10/18.
 //  Copyright © 2018年 yinli. All rights reserved.
-//
+//  关注托运人详情
 
 import UIKit
 
@@ -43,7 +43,9 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
                                             reportNum: res.offerNumber,
                                             refercneceUnitPrice:res.refercneceUnitPrice ,
                                             refercnecePriceIsVisable: res.refercnecePriceIsVisable,
-                                            isOffer:(res.isOffer != nil  && (res.isOffer)!.count > 0))
+                                            isOffer:(res.isOffer != nil  && (res.isOffer)!.count > 0),
+                                            shipperCode:res.shipperCode,
+                                            followLine:res.followLine)
             
             
             

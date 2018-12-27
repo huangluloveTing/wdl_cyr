@@ -55,32 +55,32 @@ extension WaybillBaseCell {
     
     // 点击拒绝
     func rejectWaybill<T>(param:T) -> Void {
-        self.routeName(routeName: EVENT_NAME_REJECT, dataInfo: param)
+        self.routeName(routeName: EVENT_NAME_REJECT, dataInfo: param,sender: nil)
     }
     
     // 点击接受
     func receiveWaybill<T>(param:T) -> Void {
-        self.routeName(routeName: EVENT_NAME_RECEIVE, dataInfo: param)
+        self.routeName(routeName: EVENT_NAME_RECEIVE, dataInfo: param,sender: nil)
     }
     
     // 点击指派
     func toDesignateWaybill<T>(param:T) -> Void {
-        self.routeName(routeName: EVENT_NAME_DESIGNATE, dataInfo: param)
+        self.routeName(routeName: EVENT_NAME_DESIGNATE, dataInfo: param,sender: nil)
     }
     
     // 点击配载
     func toAssembleWaybill<T>(param:T) -> Void {
-        self.routeName(routeName: EVENT_NAME_ASSEMBLE, dataInfo: param)
+        self.routeName(routeName: EVENT_NAME_ASSEMBLE, dataInfo: param,sender: nil)
     }
     
     // 点击继续运输
     func toContinueTransformWaybill<T>(param:T) -> Void {
-        self.routeName(routeName: EVENT_NAME_CONTINUETRANSPORT, dataInfo: param)
+        self.routeName(routeName: EVENT_NAME_CONTINUETRANSPORT, dataInfo: param,sender: nil)
     }
     
     // 点击取消运输
     func toCancelTransformWaybill<T>(param:T) -> Void {
-        self.routeName(routeName: EVENT_NAME_CANCELTRANSPORT, dataInfo: param)
+        self.routeName(routeName: EVENT_NAME_CANCELTRANSPORT, dataInfo: param,sender: nil)
     }
 }
 

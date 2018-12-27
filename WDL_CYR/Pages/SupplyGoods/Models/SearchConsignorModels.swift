@@ -34,6 +34,7 @@ struct QueryZbnTransportCapacity : HandyJSON {
 
 // 搜索 车辆 和 承运人的返回数据 模型
 struct ZbnTransportCapacity : HandyJSON {
+  
     var address : String = "" // (string): 地址 ,
     var belongToCarrier : String = "" // (string): 所属承运人 ,
     var capacityType : Int = 1 // (integer): 运力类型 1=司机 2=承运人 ,

@@ -38,6 +38,7 @@ struct OfferUIModel {
     var reportStatus:WDLOfferDealStatus = .reject // 报价状态
 //    var designateStatus : Int = 0 // 指派状态
     var avatorURL:String = ""//头像
+    var id:String = ""
     
 }
 
@@ -53,6 +54,7 @@ struct GSInfoModel {
     var referenceUnitPrice:Float = 0
     var referenceTotalPrice:Float = 0
     var remark:String?
+    var id:String?
 }
 
 // 报价信息

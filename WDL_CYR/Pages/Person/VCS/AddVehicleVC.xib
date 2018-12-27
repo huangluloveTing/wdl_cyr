@@ -64,7 +64,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v8l-j1-aCY">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择驾驶员" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v8l-j1-aCY">
                                     <rect key="frame" x="0.0" y="111" width="566" height="50"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -84,7 +84,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Pk-zj-sYz">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择使用性质" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Pk-zj-sYz">
                                     <rect key="frame" x="0.0" y="212" width="566" height="50"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -283,6 +283,12 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhw-1e-vos">
+                                    <rect key="frame" x="100" y="110.5" width="466" height="51"/>
+                                    <connections>
+                                        <action selector="choiceAllDriverClick:" destination="-1" eventType="touchUpInside" id="c2N-sf-XFI"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -304,6 +310,7 @@
                                 <constraint firstItem="tak-f9-XjK" firstAttribute="leading" secondItem="jCn-rV-JPk" secondAttribute="leading" id="ATK-GU-bO2"/>
                                 <constraint firstAttribute="trailing" secondItem="Zrf-Fd-4JX" secondAttribute="trailing" id="AWp-ld-2kb"/>
                                 <constraint firstAttribute="trailing" secondItem="tak-f9-XjK" secondAttribute="trailing" id="Ews-qf-tHE"/>
+                                <constraint firstItem="bhw-1e-vos" firstAttribute="top" secondItem="aSj-C8-lhV" secondAttribute="bottom" id="GSL-xQ-MaB"/>
                                 <constraint firstItem="bBA-bn-1GB" firstAttribute="top" secondItem="jCn-rV-JPk" secondAttribute="top" constant="10" id="GTa-YJ-oAi"/>
                                 <constraint firstAttribute="trailing" secondItem="k0i-B0-IVr" secondAttribute="trailing" id="IaD-mA-8MT"/>
                                 <constraint firstItem="H9a-qZ-64f" firstAttribute="leading" secondItem="jCn-rV-JPk" secondAttribute="leading" id="KwX-ND-Q1T"/>
@@ -313,6 +320,7 @@
                                 <constraint firstItem="5Pk-zj-sYz" firstAttribute="leading" secondItem="jCn-rV-JPk" secondAttribute="leading" id="Rlw-Cn-9D2"/>
                                 <constraint firstAttribute="trailing" secondItem="pUf-pg-bge" secondAttribute="trailing" id="SnY-aj-HxF"/>
                                 <constraint firstItem="pUf-pg-bge" firstAttribute="top" secondItem="9kK-Sk-r9a" secondAttribute="bottom" constant="0.5" id="TBT-DG-JeS"/>
+                                <constraint firstItem="bhw-1e-vos" firstAttribute="leading" secondItem="jCn-rV-JPk" secondAttribute="leading" constant="100" id="VfI-gA-96d"/>
                                 <constraint firstItem="k0i-B0-IVr" firstAttribute="top" secondItem="H9a-qZ-64f" secondAttribute="bottom" constant="10" id="alB-Gc-2Jy"/>
                                 <constraint firstAttribute="trailing" secondItem="V9V-m3-ylk" secondAttribute="trailing" id="b6s-7k-JbR"/>
                                 <constraint firstAttribute="trailing" secondItem="nWI-mt-bTU" secondAttribute="trailing" id="cDW-be-q88"/>
@@ -328,8 +336,10 @@
                                 <constraint firstItem="nWI-mt-bTU" firstAttribute="leading" secondItem="jCn-rV-JPk" secondAttribute="leading" id="nay-KM-MX5"/>
                                 <constraint firstItem="nWI-mt-bTU" firstAttribute="top" secondItem="k0i-B0-IVr" secondAttribute="bottom" constant="0.5" id="ndi-SX-b89"/>
                                 <constraint firstItem="MGd-ve-tvV" firstAttribute="top" secondItem="5Pk-zj-sYz" secondAttribute="bottom" constant="0.5" id="nuk-UO-gxi"/>
+                                <constraint firstItem="tak-f9-XjK" firstAttribute="top" secondItem="bhw-1e-vos" secondAttribute="bottom" id="oID-qT-k4G"/>
                                 <constraint firstItem="Zrf-Fd-4JX" firstAttribute="top" secondItem="nWI-mt-bTU" secondAttribute="bottom" constant="1" id="q72-m8-FNC"/>
                                 <constraint firstItem="H9a-qZ-64f" firstAttribute="top" secondItem="pUf-pg-bge" secondAttribute="bottom" constant="0.5" id="qmB-sT-jum"/>
+                                <constraint firstAttribute="trailing" secondItem="bhw-1e-vos" secondAttribute="trailing" id="uBC-CZ-QBP"/>
                                 <constraint firstItem="6co-db-1Sa" firstAttribute="top" secondItem="MGd-ve-tvV" secondAttribute="bottom" constant="0.5" id="uFp-E3-RcS"/>
                                 <constraint firstItem="V9V-m3-ylk" firstAttribute="top" secondItem="oBN-Ci-0pN" secondAttribute="bottom" constant="10" id="yde-ID-5LX"/>
                             </constraints>
