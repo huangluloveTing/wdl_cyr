@@ -9,7 +9,7 @@
 import UIKit
 
 class FirstAddDriverListVC: NormalBaseVC {
-    public var currentCommitItem:ZbnTransportCapacity? // 当前提交车辆编辑提交数据
+    public var currentCommitItem:ZbnTransportCapacity? // 当前提交司机编辑提交数据
     
     public var editStatus:Bool = false
     

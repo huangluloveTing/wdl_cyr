@@ -101,7 +101,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9V-m3-ylk">
-                                    <rect key="frame" x="0.0" y="505.5" width="566" height="250"/>
+                                    <rect key="frame" x="0.0" y="505" width="566" height="250"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="附件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xga-y2-ZDK">
                                             <rect key="frame" x="10" y="17" width="31" height="18"/>
@@ -157,7 +157,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入驾驶证档案编号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBN-Ci-0pN">
-                                    <rect key="frame" x="0.0" y="455" width="566" height="50"/>
+                                    <rect key="frame" x="0.0" y="454.5" width="566" height="50"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="Adt-Nu-Amx"/>
@@ -273,7 +273,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="pUf-pg-bge" secondAttribute="trailing" id="46f-1H-903"/>
                                 <constraint firstItem="tak-f9-XjK" firstAttribute="top" secondItem="v8l-j1-aCY" secondAttribute="bottom" constant="0.5" id="6yZ-DE-6ax"/>
@@ -295,7 +295,7 @@
                                 <constraint firstItem="k0i-B0-IVr" firstAttribute="top" secondItem="pUf-pg-bge" secondAttribute="bottom" constant="0.5" id="Vy2-n7-oV5"/>
                                 <constraint firstItem="bBA-bn-1GB" firstAttribute="top" secondItem="jCn-rV-JPk" secondAttribute="top" id="Xic-cO-Gb7"/>
                                 <constraint firstItem="Zrf-Fd-4JX" firstAttribute="leading" secondItem="jCn-rV-JPk" secondAttribute="leading" id="ZHO-7c-MJc"/>
-                                <constraint firstItem="oBN-Ci-0pN" firstAttribute="top" secondItem="Zrf-Fd-4JX" secondAttribute="bottom" constant="1" id="cR6-YU-JE9"/>
+                                <constraint firstItem="oBN-Ci-0pN" firstAttribute="top" secondItem="Zrf-Fd-4JX" secondAttribute="bottom" constant="0.5" id="cR6-YU-JE9"/>
                                 <constraint firstItem="Zrf-Fd-4JX" firstAttribute="top" secondItem="cTp-J6-Sxh" secondAttribute="bottom" constant="0.5" id="f21-dz-c2j"/>
                                 <constraint firstAttribute="trailing" secondItem="tak-f9-XjK" secondAttribute="trailing" id="gZA-Yi-ubb"/>
                                 <constraint firstAttribute="trailing" secondItem="oBN-Ci-0pN" secondAttribute="trailing" id="gwb-ZU-qER"/>
