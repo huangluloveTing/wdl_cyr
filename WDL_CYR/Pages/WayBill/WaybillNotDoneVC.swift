@@ -48,7 +48,7 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
     }
     
     override func footerLoadMore() {
-        self.loadDoingDatas(refresh: true)
+        self.loadDoingDatas(refresh: false)
     }
     
     override func didReceiveMemoryWarning() {

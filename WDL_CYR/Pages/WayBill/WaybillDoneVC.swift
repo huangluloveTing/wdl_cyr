@@ -74,6 +74,10 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
         self.loadDoneDatas(refresh: true)
     }
     
+    override func footerLoadMore() {
+        self.loadDoneDatas(refresh: false)
+    }
+    
     override func curreenStatusTitles() -> [String] {
         return ["全部","已签收"]
     }

@@ -70,7 +70,7 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
     }
     
     override func footerLoadMore() {
-        self.loadUnAssembleDatas(refresh: true)
+        self.loadUnAssembleDatas(refresh: false)
     }
     
     override func curreenStatusTitles() -> [String] {

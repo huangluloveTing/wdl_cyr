@@ -317,11 +317,11 @@ extension WayBillBaseVC {
     // 配置 刷新
     func configHeaderAndFooterRefresh() -> Void {
         self.currentTableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {[weak self] in
-            self?.currentPageSize += 20
+            self?.currentPageSize = 20
             self?.headerRefresh()
         })
         self.currentTableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {[weak self] in
-            self?.currentPageSize = 20
+            self?.currentPageSize += 20
             self?.footerLoadMore()
         })
     }
