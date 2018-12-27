@@ -59,11 +59,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b23-Et-TBt">
                         <rect key="frame" x="365" y="12" width="70" height="30"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-b1-RvA">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-b1-RvA">
                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                 <state key="normal" image="我的动力-编辑"/>
                                 <connections>
-                                    <action selector="toEditAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5a0-Kj-WKA"/>
+                                    <action selector="toEditAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HAE-0o-NgG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCZ-nG-xQr">
@@ -121,6 +121,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="editButton" destination="Gaa-b1-RvA" id="Grj-2I-hdc"/>
                 <outlet property="editView" destination="b23-Et-TBt" id="Xwb-n1-TyG"/>
                 <outlet property="idCardLabel" destination="pXE-Hq-rUH" id="sjk-Qc-eIU"/>
                 <outlet property="phoneNumLabel" destination="Joo-ag-84x" id="grQ-p7-lGN"/>

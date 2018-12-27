@@ -14,8 +14,8 @@ let TOEDIT_TRANSPORT = "TOEDIT_TRANSPORT"  // 去编辑
 let TODELE_TRANSPORT = "TODELE_TRANSPORT"  // 去删除
 
 enum TransportCapacityShowType { // 当前展示的信息 ， 驾驶员 ， 车辆
-    case Driver
-    case Truck
+    case Driver //驾驶员
+    case Truck //车辆
 }
 
 class TransportCapacityVC: NormalBaseVC {
@@ -88,11 +88,17 @@ extension TransportCapacityVC {
         default:
             let cell = self.dequeueReusableCell(className: TransportDriverCell.self, for: self.tableView)
             let info = self.driverLists[indexPath.section]
+            //通过审核状态来展示或隐藏编辑按钮
             let canEdit = showCapacityStatus(info: info)
+            var showEdit: Bool = false
+            if info.driverId == info.belongToCarrier {
+                //自己作为司机，展示编辑按钮和删除按钮
+                showEdit = true
+            }
             cell.toShowInfo(driverName: info.driverName,
                             idCard: info.driverId,
                             phoneNum: info.driverPhone,
-                            canEdit: canEdit)
+                            canEdit: canEdit, showEdit:showEdit)
             return cell
         }
     }
@@ -133,12 +139,22 @@ extension TransportCapacityVC {
     }
     // 添加驾驶员
     func toAddDriver() -> Void {
-        toAddDriverPage()
+        if self.driverLists.count == 0{
+            //如果没有任何驾驶员，需要添加自己成为驾驶员
+            let addVC = FirstAddDriverListVC()
+            self.pushToVC(vc: addVC, title: "添加驾驶员")
+        }else{
+            
+            toAddDriverPage()
+        }
+        
     }
     
     //MARK: - 编辑司机
     func toEditDriver(index:Int) -> Void  {
-        
+        let addVC = FirstAddDriverListVC()
+        addVC.currentCommitItem = self.driverLists[index]
+        self.pushToVC(vc: addVC, title: "修改驾驶员")
     }
     
     //MARK: - 编辑车辆
@@ -395,9 +411,11 @@ extension TransportCapacityVC {
     
     //MARK: - 是否显示司机 和 车辆的 状态(即是否显示 编辑）
     func showCapacityStatus(info:ZbnTransportCapacity?) -> Bool {
+        //审核状态
         if info?.status == 1{
             return false
         }
+        
         return true
     }
 }
