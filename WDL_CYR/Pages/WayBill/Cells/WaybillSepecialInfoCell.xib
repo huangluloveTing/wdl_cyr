@@ -39,18 +39,25 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成都市新都区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApO-7r-Fc5">
                         <rect key="frame" x="30" y="82" width="92" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="glZ-c9-c8m"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="河南省郑州市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZz-US-b24">
-                        <rect key="frame" x="176" y="82" width="92" height="18"/>
+                        <rect key="frame" x="176" y="82" width="381" height="18"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" image="right_to" translatesAutoresizingMaskIntoConstraints="NO" id="TOw-Zi-5g8">
-                        <rect key="frame" x="132" y="80" width="34" height="22"/>
+                        <rect key="frame" x="132" y="84.5" width="34" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="34" id="DcB-W0-Yr3"/>
+                            <constraint firstAttribute="height" constant="13" id="E1t-uP-Z2y"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-02-11 装货 | 30吨 |" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P57-MY-yXC">
                         <rect key="frame" x="30" y="110" width="149" height="16"/>
@@ -183,6 +190,7 @@
                     <constraint firstItem="Q64-1n-dzV" firstAttribute="centerY" secondItem="IQN-Rk-Cqm" secondAttribute="centerY" id="iC3-yb-YOd"/>
                     <constraint firstAttribute="trailing" secondItem="aXr-wB-LO5" secondAttribute="trailing" constant="15" id="iPB-6O-AYW"/>
                     <constraint firstItem="aXr-wB-LO5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="iUm-zh-Ofe"/>
+                    <constraint firstAttribute="trailing" secondItem="xZz-US-b24" secondAttribute="trailing" constant="30" id="j7F-aX-Usd"/>
                     <constraint firstAttribute="trailing" secondItem="0jB-HP-pnb" secondAttribute="trailing" constant="30" id="nj0-7s-Fgj"/>
                     <constraint firstItem="xZz-US-b24" firstAttribute="leading" secondItem="TOw-Zi-5g8" secondAttribute="trailing" constant="10" id="nrU-3n-tlL"/>
                     <constraint firstItem="xZz-US-b24" firstAttribute="centerY" secondItem="TOw-Zi-5g8" secondAttribute="centerY" id="oLt-A2-Hj0"/>

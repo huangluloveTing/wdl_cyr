@@ -9,7 +9,8 @@
 import UIKit
 
 class Offer_DoneCell: BaseCell {
-    
+    //货源编号
+    @IBOutlet weak var goodCode: UILabel!
     @IBOutlet weak var unitPriceLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
@@ -46,5 +47,7 @@ extension Offer_DoneCell {
         self.typeLabel.text = (info?.isSelf ?? false) ? "【自营】" : ""
         self.companyLabel.text = info?.company
         self.offerDesignateStyle(designate: info?.reportStatus.rawValue, to: self.designateLabel)
+        //货源编号
+        self.goodCode.text = "货源编号：" +  (info?.id ?? "")
     }
 }

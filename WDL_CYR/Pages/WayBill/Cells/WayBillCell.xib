@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="329" id="KGk-i7-Jjw" customClass="WayBillCell" customModule="WDL_TYR" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="329" id="KGk-i7-Jjw" customClass="WayBillCell" customModule="WDL_CYR" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="403" height="329"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -26,19 +26,22 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="运输中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5D-kV-t7Y">
-                        <rect key="frame" x="336" y="40" width="37" height="14.5"/>
+                        <rect key="frame" x="336" y="39.5" width="37" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成都市新都区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biz-1q-TW5">
                         <rect key="frame" x="30" y="68.5" width="104" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="104" id="Wbj-We-xJC"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="河南省新乡市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8a-jA-cxP">
-                        <rect key="frame" x="171" y="68.5" width="104" height="21"/>
+                        <rect key="frame" x="188" y="68.5" width="185" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -74,7 +77,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_to" translatesAutoresizingMaskIntoConstraints="NO" id="UV6-BJ-eqR">
-                        <rect key="frame" x="144" y="73.5" width="17" height="11"/>
+                        <rect key="frame" x="144" y="72.5" width="34" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="Aem-KR-qZK"/>
+                            <constraint firstAttribute="width" constant="34" id="oKp-EB-0Gu"/>
+                        </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5G-zA-OSC">
                         <rect key="frame" x="15" y="160.5" width="373" height="1"/>
@@ -84,13 +91,13 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="黄大炜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yL8-1B-qlO">
-                        <rect key="frame" x="84.5" y="238.5" width="37" height="14.5"/>
+                        <rect key="frame" x="84.5" y="238" width="37" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="13256789876" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzR-s4-xDO">
-                        <rect key="frame" x="151.5" y="238.5" width="79.5" height="14.5"/>
+                        <rect key="frame" x="151.5" y="238" width="79.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -132,6 +139,7 @@
                     <constraint firstItem="biz-1q-TW5" firstAttribute="top" secondItem="Ik3-u0-qwm" secondAttribute="bottom" constant="15" id="tvD-A5-f70"/>
                     <constraint firstItem="Ik3-u0-qwm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="uMn-nx-ajM"/>
                     <constraint firstItem="yzR-s4-xDO" firstAttribute="leading" secondItem="yL8-1B-qlO" secondAttribute="trailing" constant="30" id="uzP-c7-om7"/>
+                    <constraint firstAttribute="trailing" secondItem="M8a-jA-cxP" secondAttribute="trailing" constant="30" id="vuy-Fd-fLz"/>
                     <constraint firstItem="Kf1-wx-k4c" firstAttribute="leading" secondItem="hy1-0k-fse" secondAttribute="trailing" constant="5" id="yG4-SB-b6U"/>
                 </constraints>
             </tableViewCellContentView>
@@ -140,6 +148,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="right_to" width="17" height="11"/>
+        <image name="right_to" width="34" height="22"/>
     </resources>
 </document>

@@ -139,21 +139,38 @@ extension TransportCapacityVC {
     }
     // 添加驾驶员
     func toAddDriver() -> Void {
-        if self.driverLists.count == 0{
-            //如果没有任何驾驶员，需要添加自己成为驾驶员
-            let addVC = FirstAddDriverListVC()
-            self.pushToVC(vc: addVC, title: "添加驾驶员")
-        }else{
-            
-            toAddDriverPage()
-        }
+        //验证是否添加自己为司机数
+        self.identiferOwnAsDriver()
         
+    }
+    //MARK: - 验证是否添加自己为司机数
+    func identiferOwnAsDriver() -> Void {
+   
+        BaseApi.request(target: API.identiferIsAddOwnAsDriver(), type: BaseResponseModel<Any>.self)
+            .subscribe(onNext: { [weak self](data) in
+                let isIden = data.data as? Bool
+                if isIden == false {
+                    //如果没有任何驾驶员，需要添加自己成为驾驶员
+                    let addVC = FirstAddDriverListVC()
+                    addVC.isEidt = false//不是修改，是新添加
+                    self?.pushToVC(vc: addVC, title: "添加驾驶员")
+                }else{
+                    
+                    self?.toAddDriverPage()
+                }
+        
+                }, onError: { [weak self](error) in
+                 
+                    self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
     }
     
     //MARK: - 编辑司机
     func toEditDriver(index:Int) -> Void  {
         let addVC = FirstAddDriverListVC()
         addVC.currentCommitItem = self.driverLists[index]
+        addVC.isEidt = true//修改
         self.pushToVC(vc: addVC, title: "修改驾驶员")
     }
     
@@ -163,6 +180,8 @@ extension TransportCapacityVC {
         addVC.currentCommitItem = self.vehicleLists[index]
         self.pushToVC(vc: addVC, title: "修改车辆")
     }
+    
+    
 }
 
 

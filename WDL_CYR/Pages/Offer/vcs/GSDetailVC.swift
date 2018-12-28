@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import HandyJSON
 class GSDetailVC: GSDetailBaseVC {
 
     @IBOutlet weak var tableView: UITableView!
@@ -34,16 +34,22 @@ class GSDetailVC: GSDetailBaseVC {
     }
     //MARK: 获取距离下次成交时间的请求
     func getAutoTime() -> Void {
-       
+   
         BaseApi.request(target: API.getAutoDealTimer(offer?.hallId ?? ""), type: BaseResponseModel<Any>.self)
         
             .subscribe(onNext: {(data) in
-                let dic = data.data as! Dictionary<String, Any>
-                
-                let time = (dic["surplusTurnoverTime"] ?? 0) as! TimeInterval
-                print("自动成交时间：\(String(describing: time))")
-                self.autoTime = time
-              
+                if (data.data != nil) {
+                    let dic = data.data as! Dictionary<String, Any>
+                    let str = dic["surplusTurnoverTime"]  as? TimeInterval
+                    
+                    if (str != nil) {
+                    let time = (dic["surplusTurnoverTime"] ?? 0) as! TimeInterval
+
+                    self.autoTime = time
+                    }
+                }
+
+                print("时间：\(String(describing: data.data))")
                 }, onError: { [weak self](error) in
                 self?.showFail(fail: error.localizedDescription, complete: nil)
             })

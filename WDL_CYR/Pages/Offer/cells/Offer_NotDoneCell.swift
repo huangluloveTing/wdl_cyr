@@ -9,7 +9,8 @@
 import UIKit
 
 class Offer_NotDoneCell: BaseCell {
-
+    //货源编号
+    @IBOutlet weak var goodCode: UILabel!
     @IBOutlet weak var avatorImageView: UIImageView!
     @IBOutlet weak var attentionButton: UIButton!
     @IBOutlet weak var companyLabel: UILabel!
@@ -51,5 +52,8 @@ extension Offer_NotDoneCell {
         self.offerStatusStyle(status: info?.reportStatus, to: self.statusLabel)
         //公司头像
         self.toAddImageForImageView(imageUrl: info?.avatorURL, imageView: self.avatorImageView)
+        
+        //货源编号
+        self.goodCode.text = "货源编号：" +  (info?.id ?? "")
     }
 }
