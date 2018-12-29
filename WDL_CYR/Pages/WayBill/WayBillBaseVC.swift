@@ -234,7 +234,18 @@ extension WayBillBaseVC {
         let mode = WayBillSourceTypeMode(rawValue: info.comeType ?? 1)
 //        tranInfo?.dealUnitPrice = tranInfo?.dealUnitPrice ?? 0
 //        tranInfo?.dealTotalPrice = tranInfo?.dealTotalPrice ?? 0
-        self.toAssemblePage(info: tranInfo , mode: mode ?? .planAssemble)
+        if info.comeType == 1 {
+            self.toAssemblePage(info: tranInfo , mode: mode ?? .driverAssemble)
+        }
+        if info.comeType == 2 {
+            self.toAssemblePage(info: tranInfo , mode: mode ?? .carrierAssemble)
+        }
+        if info.comeType == 3 {
+            self.toAssemblePage(info: tranInfo , mode: mode ?? .planAssemble)
+        }
+        if info.comeType == 4 {
+            self.toAssemblePage(info: tranInfo , mode: mode ?? .carrierAssemble)
+        }
     }
     
     //MARK: - 继续运输

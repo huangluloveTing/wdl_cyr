@@ -25,11 +25,11 @@ class TransportUtil: NSObject {
         
         if completeStatus == 1 { // 未配载
             if comType == 1 || comType == 2 {   // 来源1 , 2 ， 未接受时 ， 显示 接受 拒绝
-                if driverStatus == 4 {  // 当driverStatus == 4 时 ， 已接受，显示 配载
+                 if driverStatus == 4 {  // 当driverStatus == 4 时 ， 已接受，显示 配载
                     return .unAssemble_comType_1_2_toAssemble
                 }
                 // 无车报价，在司机接受前，应该可以指派，已指派，不可指派
-                if driverStatus == 5 && (info.carrierType ?? 0) == 1 {
+                if driverStatus == 5  {
                     return .unAssemble_designated
                 }
                 // 承运人 和司机 不是同一个人时，不能去接受 拒绝
@@ -53,8 +53,8 @@ class TransportUtil: NSObject {
         if completeStatus == 2 { // 未完成
             // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派
             if transportStatus == 1 || transportStatus == 0 {
-                //
-                if (info.carrierType ?? 0) == 1 && (driverStatus == 4) {
+                // 已配载的运单，可以继续配载
+                if driverStatus == 4 {
                     return .notDone_canEditAssemble
                 }
                 return .notDone_willTransport
