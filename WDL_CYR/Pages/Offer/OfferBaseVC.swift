@@ -149,6 +149,7 @@ extension OfferBaseVC {
             offer.possible = result.offerPossibility
             offer.unitPrice = result.quotedPrice
             offer.totalPrice = result.totalPrice
+            offer.id = result.id//货源编号
             offer.start = Util.contact(strs: [result.startProvince , result.startCity])
             offer.end = Util.contact(strs: [result.endProvince , result.endCity])
             let loadTime = Util.dateFormatter(date: result.loadingTime/1000, formatter: "yyyy-MM-dd") + " 装货 "

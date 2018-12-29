@@ -60,8 +60,7 @@ class ReturnMoneyVC: NormalBaseVC {
                 }
                 self?.showSuccess(success: nil)
                 let paymentVC = PayHtmlVC()
-                //                let dic = data.data as? Dictionary<String, Any>
-                //                paymentVC.htmlString = dic?["data"] as? String
+              
                 paymentVC.htmlString = data.data! as? String
                 self?.pushToVC(vc: paymentVC, title: "退款")
                 },onError: {[weak self] (error) in

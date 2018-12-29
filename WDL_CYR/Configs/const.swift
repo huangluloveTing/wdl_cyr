@@ -24,7 +24,7 @@ let DEBUG_PASSWORD = ""
 #if DEBUG
 
 //测试内网
-//let HOST = "http://172.16.8.52:8081/zbn-web"
+let HOST = "http://172.16.8.52:8081/zbn-web"
 //本地测试
 //liaobing
 //let HOST = "http://172.16.59.47:8081/zbn-web"
@@ -34,7 +34,6 @@ let DEBUG_PASSWORD = ""
 //let HOST = "http://221.193.233.227:8010/zbn-web"
 let HOST = "http://182.150.21.104:58092/zbn-web"
 let GAODE_MAP_KEY = "8e99eeada50ef322b5c993eb92acffd6"
-
 //极光推送的key
 let JPushAppKey = "db2771dd3e1276628b07fe23"
 let JPushMasterSecret = "2a32fcb079991db342500952"
@@ -51,9 +50,7 @@ let GAODE_MAP_KEY = "e92fcf715abc96978e4fd84dec0c1a78"
 //极光推送的key
 let JPushAppKey = "db2771dd3e1276628b07fe23"
 let JPushMasterSecret = "2a32fcb079991db342500952"
-
 #endif
-
 //MARK: - 通知中心
 let PUSH_MESSAGE_VALUE = "PUSH_MESSAGE_VALUE"  // 消息推送通知
 

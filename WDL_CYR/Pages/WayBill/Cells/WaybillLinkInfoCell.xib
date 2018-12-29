@@ -129,6 +129,7 @@
                     <constraint firstItem="OWX-LL-RXH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="5xg-ob-Jv2"/>
                     <constraint firstItem="L08-QW-nhV" firstAttribute="centerY" secondItem="VhC-dv-agc" secondAttribute="centerY" id="86G-o7-7z9"/>
                     <constraint firstItem="iW6-8P-35a" firstAttribute="leading" secondItem="5U6-vy-aO7" secondAttribute="trailing" constant="10" id="Agl-Wx-TW0"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="L08-QW-nhV" secondAttribute="trailing" constant="10" id="BDR-b9-0FT"/>
                     <constraint firstItem="A4C-iC-QIX" firstAttribute="leading" secondItem="OWX-LL-RXH" secondAttribute="leading" id="Czc-rQ-HJI"/>
                     <constraint firstItem="rTx-ed-zh2" firstAttribute="leading" secondItem="BXk-F3-GqV" secondAttribute="trailing" constant="10" id="HTD-Hs-Ljl"/>
                     <constraint firstItem="wj5-kG-x8T" firstAttribute="centerY" secondItem="Bbq-Lh-5UQ" secondAttribute="centerY" id="Jc6-8u-eK9"/>
@@ -157,6 +158,9 @@
                     <constraint firstItem="A4C-iC-QIX" firstAttribute="top" secondItem="HzK-5M-k3y" secondAttribute="bottom" constant="10" id="uVi-an-jNf"/>
                     <constraint firstItem="6bI-L6-C3X" firstAttribute="centerY" secondItem="HzK-5M-k3y" secondAttribute="centerY" id="uq8-lx-Mu5"/>
                     <constraint firstItem="Dov-oi-UOT" firstAttribute="leading" secondItem="OWX-LL-RXH" secondAttribute="leading" id="uzA-B1-A4e"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PZ5-sX-8yt" secondAttribute="trailing" constant="10" id="vhK-oS-1vG"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6bI-L6-C3X" secondAttribute="trailing" constant="10" id="x4P-6t-pIk"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wj5-kG-x8T" secondAttribute="trailing" constant="10" id="yU7-wq-Qyp"/>
                     <constraint firstItem="HzK-5M-k3y" firstAttribute="leading" secondItem="OWX-LL-RXH" secondAttribute="leading" id="yZp-3R-Tbh"/>
                 </constraints>
             </tableViewCellContentView>

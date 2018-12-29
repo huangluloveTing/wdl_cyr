@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import HandyJSON
 class GSDetailVC: GSDetailBaseVC {
 
     @IBOutlet weak var tableView: UITableView!
@@ -17,19 +17,44 @@ class GSDetailVC: GSDetailBaseVC {
     
     
     public var offer:OfferOrderHallResultApp?
-    
+    //自动成交时间
+    private var autoTime: TimeInterval!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView()
         self.configCurrentHallStatus()
         self.loadOffer()
+       // 获取距离下次成交时间的请求
+        getAutoTime()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    //MARK: 获取距离下次成交时间的请求
+    func getAutoTime() -> Void {
+   
+        BaseApi.request(target: API.getAutoDealTimer(offer?.hallId ?? ""), type: BaseResponseModel<Any>.self)
+        
+            .subscribe(onNext: {(data) in
+                if (data.data != nil) {
+                    let dic = data.data as! Dictionary<String, Any>
+                    let str = dic["surplusTurnoverTime"]  as? TimeInterval
+                    
+                    if (str != nil) {
+                    let time = (dic["surplusTurnoverTime"] ?? 0) as! TimeInterval
+
+                    self.autoTime = time
+                    }
+                }
+
+                print("时间：\(String(describing: data.data))")
+                }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
+    }
     
     //MARK: overrride
     // 取消报价
@@ -54,7 +79,7 @@ class GSDetailVC: GSDetailBaseVC {
     
     // 竞标中 竞标中的倒计时
     override func bidding_timer() -> TimeInterval {
-        return (self.offer?.autoTimeInterval ?? 0) * 3600
+        return self.autoTime ?? 0
     }
     
     // 已驳回 驳回原因
