@@ -46,10 +46,8 @@ class FirstAddDriverListVC: NormalBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //修改是传id
+        //新添加
         if isEidt == false {
-            //新添加
-            self.currentCommitItem?.id = ""
             //默认选中男
             self.sexClick(self.manBtn)
         }
@@ -65,11 +63,39 @@ class FirstAddDriverListVC: NormalBaseVC {
     }
     //提交
     @IBAction func commitHandle(_ sender: Any) {
-        commitVehicleInfo()
+        //新添加
+        if isEidt == false {
+            //新添加
+            self.currentCommitItem?.id = ""
+          
+            //提交请求
+            commitAddNewDriverInfo()
+        }else{
+            //提交请求
+            commitEditDriverInfo()
+        }
+        
     }
     
-    //MARK: - 提交驾驶员信息
-    func commitVehicleInfo() -> Void {
+    
+    //MARK: - 添加新的做自己提交驾驶员信息
+    func commitAddNewDriverInfo() -> Void {
+        if commitIsOk() == true {
+            self.showLoading()
+            BaseApi.request(target: API.addDriverOwn((self.currentCommitItem)!), type: BaseResponseModel<String>.self)
+                .subscribe(onNext: { [weak self](data) in
+                    self?.showSuccess(success: data.message, complete: {
+                        self?.pop()
+                    })
+                    } ,onError: {[weak self] (error) in
+                        self?.showFail(fail: error.localizedDescription, complete: nil)
+                })
+                .disposed(by: dispose)
+        }
+    }
+    
+    //MARK: - 修改编辑提交驾驶员信息
+    func commitEditDriverInfo() -> Void {
         if commitIsOk() == true {
             self.showLoading()
             BaseApi.request(target: API.editOrModifyDriverOwn((self.currentCommitItem)!), type: BaseResponseModel<String>.self)

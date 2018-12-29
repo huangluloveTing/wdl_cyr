@@ -57,7 +57,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUk-Vi-ACv">
-                        <rect key="frame" x="411" y="16" width="20" height="22"/>
+                        <rect key="frame" x="391" y="6" width="40" height="42"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="42" id="LRO-J9-QaQ"/>
+                            <constraint firstAttribute="width" constant="40" id="WPJ-wB-pzd"/>
+                        </constraints>
                         <state key="normal" image="承运人-未选中"/>
                         <state key="selected" image="承运人-选中"/>
                         <connections>
