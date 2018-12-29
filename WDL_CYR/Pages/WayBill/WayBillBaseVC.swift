@@ -41,6 +41,8 @@ enum CurrentTransportTab : Int{ // 当前运单的状态
 /// 未接受
 class WayBillBaseVC: MainBaseVC {
     
+    public var addDrop:Bool = false;
+    
     private var currentTableView:UITableView!
     
     private var currentSearchBar : UISearchBar?

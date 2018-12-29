@@ -12,6 +12,8 @@ import RxCocoa
 
 class OfferBaseVC: MainBaseVC {
     
+    public var addDrop:Bool = false
+    
     public let NotDoneStatus = ["不限","竞价中","已驳回","未成交","已取消"]
     
     private var baseTableView:UITableView?

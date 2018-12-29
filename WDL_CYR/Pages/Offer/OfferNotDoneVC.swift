@@ -95,7 +95,10 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.configDropView(dropView: self.dropHintView)
+        if !addDrop {
+            self.configDropView(dropView: self.dropHintView)
+            addDrop = true;
+        }
     }
 }
 

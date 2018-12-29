@@ -10,6 +10,8 @@ import UIKit
 
 class TransactionDetailsVC: NormalBaseVC {
     
+    private var droped:Bool = false;
+    
     let messageStatus:[String] = ["全部","服务费扣除","服务费退回","违约金扣除",
                                   "违约金退回","充值","平台充值","保证金冻结",
                                   "保证金释放","退还保证金"]
@@ -90,7 +92,10 @@ class TransactionDetailsVC: NormalBaseVC {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        toConfigDropView(dropView: dropView)
+        if !droped {
+            droped = true
+            toConfigDropView(dropView: dropView)
+        }
     }
 }
 

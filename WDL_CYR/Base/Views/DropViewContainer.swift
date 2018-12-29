@@ -70,6 +70,10 @@ class DropViewContainer: UIView {
         })
         return view
     }()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
 }
 
 extension DropViewContainer {

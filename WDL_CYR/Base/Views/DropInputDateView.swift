@@ -12,6 +12,8 @@ import RxCocoa
 
 class DropInputDateView : UIView {
     
+    private var currentSize: CGSize?
+    
     private let dispose = DisposeBag()
     
     typealias DropInputDateViewClosure = (TimeInterval? , TimeInterval? , Bool) -> ()
@@ -45,6 +47,11 @@ class DropInputDateView : UIView {
         if let closure = self.dropInputClosure {
             closure(self.startTime , self.endTime , false)
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.frame = CGRect(origin: CGPoint.zero, size: currentSize!);
     }
 }
 
@@ -131,6 +138,7 @@ extension DropInputDateView {
         let size = dropView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         dropView.zt_width = IPHONE_WIDTH
         dropView.zt_height = size.height
+        dropView.currentSize = CGSize(width: IPHONE_WIDTH, height: size.height);
         return dropView
     }
     

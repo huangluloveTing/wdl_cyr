@@ -33,9 +33,13 @@ class TransportUtil: NSObject {
                     return .unAssemble_designated
                 }
                 // 承运人 和司机 不是同一个人时，不能去接受 拒绝
-                if driverIsSelf == true {
+                if  driverIsSelf == true && comType == 1 {
                     return .unAssemble_comType_1_2_noAccept
                 }
+                if comType != 1 {
+                    return .unAssemble_comType_1_2_noAccept
+                }
+                
                 return .unAssemble_comType_1_2_self // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
             }
             if comType == 3 {  // 来源3 ， 未接受时 ， 显示 接受 拒绝

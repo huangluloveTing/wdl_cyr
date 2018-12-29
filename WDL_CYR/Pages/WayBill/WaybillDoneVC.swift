@@ -84,7 +84,10 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.toConfigDropView(dropView: self.dropView)
+        if !addDrop {
+            toConfigDropView(dropView: self.dropView)
+            addDrop = true;
+        }
     }
     
     override func currentSearch(text: String) {
