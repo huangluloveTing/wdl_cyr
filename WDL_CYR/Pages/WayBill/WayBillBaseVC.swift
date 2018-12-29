@@ -246,7 +246,7 @@ extension WayBillBaseVC {
             self.toAssemblePage(info: tranInfo , mode: mode ?? .planAssemble)
         }
         if info.comeType == 4 {
-            self.toAssemblePage(info: tranInfo , mode: mode ?? .carrierAssemble)
+            self.toAssemblePage(info: tranInfo , mode: .carrierAssemble)
         }
     }
     
