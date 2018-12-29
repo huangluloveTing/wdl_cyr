@@ -12,6 +12,7 @@ import Moya
 import Alamofire
 
 enum API {
+    case addDriverOwn(ZbnTransportCapacity) //添加司机自己
     case editOrModifyDriverOwn(ZbnTransportCapacity) //编辑司机(修改自己)
     case identiferIsAddOwnAsDriver() //验证是否已经添加自己为司机
     case getMessageNum() //消息个数
@@ -87,6 +88,8 @@ func apiPath(api:API) -> String {
         return "/offer/queryHallSurplusTime"
     case .editOrModifyDriverOwn(_):
         return "/transportCapacity/updateDriverOfMy"
+    case .addDriverOwn(_):
+        return "/transportCapacity/addDriverOfMy"
     case .identiferIsAddOwnAsDriver():
         return "/transportCapacity/validateIsOrAddDriverOfMy"
     case .applyAcceptOrRefuseMessage(_):
@@ -215,6 +218,8 @@ func apiTask(api:API) -> Task {
     case .identiferIsAddOwnAsDriver():
         return .requestPlain
     case .editOrModifyDriverOwn(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
+    case .addDriverOwn(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .getAutoDealTimer(let hallId):
         return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["hallId":hallId])

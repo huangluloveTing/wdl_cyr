@@ -9,7 +9,7 @@
 import UIKit
 
 class PersonalInfoHeader: BaseCell {
-
+    //公司名字
     @IBOutlet weak var carrierNameLabel: UILabel!
     @IBOutlet weak var authButton: UIButton!
     @IBOutlet weak var moneyLabel: UILabel!

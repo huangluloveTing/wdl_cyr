@@ -48,6 +48,7 @@ extension OfferSearchTruckCell {
         self.weightLabel.text = weight
         self.checkButton.isSelected = check ?? false
         self.checkButton.isUserInteractionEnabled = true
+        //是否正在运输
         if transporting == true {
             self.checkButton.isUserInteractionEnabled = false
         }

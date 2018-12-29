@@ -98,7 +98,15 @@ extension PersonalVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(PersonalInfoHeader.self)") as! PersonalInfoHeader
-            cell.showCarrierInfo(name: self.carrierInfo?.companyAbbreviation ,
+            var name: String = ""
+            if (carrierInfo?.carrierType == 1) {
+                //个人
+                name = self.carrierInfo?.carrierName ?? "";
+            } else {
+                //公司
+                name = self.carrierInfo?.companyAbbreviation ?? ""
+            }
+            cell.showCarrierInfo(name: name ,
                                  auth: self.carrierInfo?.isAuth == .authed ,
                                  money: self.carrierBondInfo?.useableMoney,
                                  logo: self.carrierInfo?.headPortrait)

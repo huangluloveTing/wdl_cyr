@@ -153,6 +153,7 @@ extension TransportCapacityVC {
                     //如果没有任何驾驶员，需要添加自己成为驾驶员
                     let addVC = FirstAddDriverListVC()
                     addVC.isEidt = false//不是修改，是新添加
+                    addVC.currentCommitItem = ZbnTransportCapacity()
                     self?.pushToVC(vc: addVC, title: "添加驾驶员")
                 }else{
                     
