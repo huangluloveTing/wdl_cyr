@@ -29,10 +29,10 @@ let DEBUG_PASSWORD = ""
 //liaobing
 //let HOST = "http://172.16.59.47:8081/zbn-web"
 //zhaoxiaoyang
-let HOST = "http://172.16.8.52:8081/zbn-web"
+//let HOST = "http://172.16.8.52:8081/zbn-web"
 //五得利
 //let HOST = "http://221.193.233.227:8010/zbn-web"
-//let HOST = "http://182.150.21.104:58092/zbn-web"
+let HOST = "http://182.150.21.104:58092/zbn-web"
 let GAODE_MAP_KEY = "8e99eeada50ef322b5c993eb92acffd6"
 //极光推送的key
 let JPushAppKey = "db2771dd3e1276628b07fe23"
@@ -41,11 +41,11 @@ let JPushMasterSecret = "2a32fcb079991db342500952"
 //liaobing
 //let HOST = "http://172.16.59.47:8081/zbn-web"
 //外网测试
-//let HOST = "http://182.150.21.104:58092/zbn-web"
+let HOST = "http://182.150.21.104:58092/zbn-web"
 //zhaoxiaoyang
 //let HOST = "http://172.16.8.52:8081/zbn-web"
 //五得利
-let HOST = "http://221.193.233.227:8010/zbn-web"
+//let HOST = "http://221.193.233.227:8010/zbn-web"
 let GAODE_MAP_KEY = "e92fcf715abc96978e4fd84dec0c1a78"
 //极光推送的key
 let JPushAppKey = "db2771dd3e1276628b07fe23"

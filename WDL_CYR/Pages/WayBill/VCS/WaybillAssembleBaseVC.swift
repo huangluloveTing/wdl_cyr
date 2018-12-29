@@ -249,7 +249,7 @@ extension WaybillAssembleBaseVC {
                 self.toChooseDriver(indexPath: indexPath)
             }
             if indexPath.row == 1 {
-                self.toChooseDriver(indexPath: indexPath)
+                self.toChooseVehicle(indexPath: indexPath)
             }
         }
         if self.currentDisplayMode == .planAssemble {
@@ -257,7 +257,7 @@ extension WaybillAssembleBaseVC {
                 self.toChooseDriver(indexPath: indexPath)
             }
             if indexPath.row == 1 {
-                self.toChooseDriver(indexPath: indexPath)
+                self.toChooseVehicle(indexPath: indexPath)
             }
         }
     }

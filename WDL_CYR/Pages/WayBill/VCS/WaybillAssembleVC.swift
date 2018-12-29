@@ -64,9 +64,9 @@ class WaybillAssembleVC: WaybillAssembleBaseVC {
             return
         }
         if self.currentDisplayMode == .carrierAssemble || self.currentDisplayMode == .planAssemble {
-            self.toChooseTruck { [weak self](ca) in
+            self.toChooseDriver(title: "选择驾驶员", closure: { [weak self](ca) in
                 self?.toChooseDriverResultHandle(indexPath: indexPath, capacity: ca)
-            }
+            })
         }
     }
     
