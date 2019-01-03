@@ -19,14 +19,14 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
     
     @IBOutlet weak var dropView: DropHintView!
     @IBOutlet weak var tableView: UITableView!
-    
     private var currentStatus:Int = -1
     private var currentStartTime:TimeInterval?
     private var currentEndTime:TimeInterval?
     
     func willShow() {
-      
+     print("未配载willshow")
     }
+ 
     
     func didShow() {
         

@@ -23,7 +23,7 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
     private var currentEndTime:TimeInterval?
     
     func willShow() {
-       
+      print("未完成willshow")
     }
     
     func didShow() {
@@ -38,11 +38,7 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
         self.loadDoingDatas(refresh: false)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super .viewWillAppear(animated)
-        self.tableView.beginRefresh()
-    }
-    
+
     override func headerRefresh() {
         self.loadDoingDatas(refresh: true)
     }

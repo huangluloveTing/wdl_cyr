@@ -22,17 +22,14 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
     private var currentEndTime:TimeInterval?
     
     func willShow() {
-      
+        print("完成willshow")
     }
     
     func didShow() {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tableView.beginRefresh()
-    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +37,8 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
         self.setCurrentTabStatus(tab: .Done)
         self.configTableView(tableView: tableView)
         self.configHeaderAndFooterRefresh()
+        self.loadDoneDatas(refresh: false)
+        
     }
 
     override func didReceiveMemoryWarning() {
