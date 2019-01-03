@@ -12,13 +12,15 @@ import Moya
 import Alamofire
 
 enum API {
+    
+    case forgetPassword(ForgetPasswordModel) //忘记密码
     case addDriverOwn(ZbnTransportCapacity) //添加司机自己
     case editOrModifyDriverOwn(ZbnTransportCapacity) //编辑司机(修改自己)
     case identiferIsAddOwnAsDriver() //验证是否已经添加自己为司机
     case getMessageNum() //消息个数
     case login(String , String)     // 登录接口
     case getAutoDealTimer(String)     // 查询货源自动成交时间
-    case register(String , String , String , String) // 注册
+    case register(String , String , String , String, String) // 注册
     case registerSms(String)        // 获取验证码
     case loadTaskInfo()             // 获取省市区
     case getCreateHallDictionary()  // 获取数据字典
@@ -90,6 +92,8 @@ func apiPath(api:API) -> String {
         return "/transportCapacity/updateDriverOfMy"
     case .addDriverOwn(_):
         return "/transportCapacity/addDriverOfMy"
+    case .forgetPassword(_):
+        return "/carrier/forgetPassWord"
     case .identiferIsAddOwnAsDriver():
         return "/transportCapacity/validateIsOrAddDriverOfMy"
     case .applyAcceptOrRefuseMessage(_):
@@ -114,7 +118,7 @@ func apiPath(api:API) -> String {
         return "/followShipper/cacleFollow"
     case .login(_, _):
         return "/carrier/login"
-    case .register(_, _, _, _):
+    case .register(_, _, _, _, _):
         return "/carrier/carrierRegister"
     case .registerSms(_):
         return "/carrier/carrierRegisterSms"
@@ -221,6 +225,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .addDriverOwn(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
+    case .forgetPassword(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .getAutoDealTimer(let hallId):
         return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["hallId":hallId])
     case .returnMoney(let query):
@@ -243,8 +249,8 @@ func apiTask(api:API) -> Task {
         
     
         
-    case .register(let pwd, let phone, let vcode, let vpwd):
-        return .requestParameters(parameters: ["password": pwd,"phone": phone,"verificationCode": vcode,"verificationPassword": vpwd], encoding: JSONEncoding.default)
+    case .register(let pwd, let phone, let vcode, let vpwd,let adPhone):
+        return .requestParameters(parameters: ["password": pwd,"phone": phone,"verificationCode": vcode,"verificationPassword": vpwd,"refereePhone": adPhone], encoding: JSONEncoding.default)
         
     case .updatePassword(let model):
         return .requestParameters(parameters: model.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)

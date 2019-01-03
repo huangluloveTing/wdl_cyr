@@ -114,15 +114,17 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
         placeView.dropClosure = { [weak self](province , city , strict) in
             self?.startModel.province = province
             self?.startModel.city = city
+          
             let title = (city?.title != nil || city?.title.count ?? 0 > 0) ? city?.title : province?.title
             self?.startButton.setTitle(title, for: .normal)
         }
         placeView.decideClosure = { [weak self](sure) in
             if sure == true {
                 let title = (self?.startModel.city?.title != nil || self?.startModel.city?.title.count ?? 0 > 0) ? self?.startModel.city?.title : self?.startModel.province?.title
-                self?.startButton.setTitle(title, for: .normal)
-                self?.query.startCity = self?.startModel.city?.title
-                self?.query.startProvince = self?.startModel.province?.title
+                    self?.startButton.setTitle(title, for: .normal)
+                    self?.query.startCity = Util.mapSpecialStrToNil(str: self?.startModel.city?.title)
+                    self?.query.startProvince = Util.mapSpecialStrToNil(str: self?.startModel.province?.title)
+                
             } else {
                 self?.startModel = SupplyPlaceModel()
                 self?.startButton.setTitle("发货地", for: .normal)
@@ -150,14 +152,14 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
         placeView.decideClosure = { [weak self](sure) in
             if sure == true {
                 let title = (self?.endModel.city?.title != nil || self?.endModel.city?.title.count ?? 0 > 0) ? self?.endModel.city?.title : self?.endModel.province?.title
-                self?.query.endCity = self?.endModel.city?.title
-                self?.query.endProvince = self?.endModel.province?.title
-                self?.endButton.setTitle(title, for: .normal)
+                    self?.query.endCity = Util.mapSpecialStrToNil(str: self?.endModel.city?.title)
+                    self?.query.endProvince = Util.mapSpecialStrToNil(str: self?.endModel.province?.title)
+                    self?.endButton.setTitle(title, for: .normal)
             } else {
                 self?.endModel = SupplyPlaceModel()
-                self?.query.endCity = self?.endModel.city?.title
-                self?.query.endProvince = self?.endModel.province?.title
-                self?.endButton.setTitle("发货地", for: .normal)
+                self?.query.endCity = ""
+                self?.query.endProvince = ""
+                self?.endButton.setTitle("收货地", for: .normal)
             }
             self?.tableView.beginRefresh()
             self?.endPlaceChooseView.hiddenDropView()
@@ -248,7 +250,14 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
 extension ResourceHallVC {
     //MARK:
     func initialProinve() -> [PlaceChooiceItem] {
-        return Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [])
+//        return Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [])
+        
+        var items = Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [])
+        let all = PlaceChooiceItem(title: "不限", id: "", selected: false, subItems: nil, level: 0)
+        items.insert(all, at: 0)
+        return items
+        
+        
     }
     
     // 去货源详情
@@ -355,7 +364,7 @@ extension ResourceHallVC {
     func configTableViewUIModels(select:MoreChooseItems?) {
         if let select = select {
             var consig = MoreScreenSelectionItem()
-            consig.title = "托运人名称"
+            consig.title = "请选择自营发货始发公司名称"
             consig.type = .input
             var inputItem = MoreScreenInputItem()
             inputItem.placeholder = "请输入货主名称"

@@ -16,6 +16,14 @@ class Util {
     }
     
     
+    // 根据数据，当为指定字符时，c转为 nil
+    static func mapSpecialStrToNil(str:String?) -> String? {
+        if str == "全国" || str == "不限" || str == "无包装" {
+            return nil
+        }
+        return str
+    }
+    
     // 隐藏电话号码
     static func formatterPhone(phone:String) -> String {
         let count = phone.count
