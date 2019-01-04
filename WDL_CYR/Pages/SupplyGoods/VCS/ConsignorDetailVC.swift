@@ -23,14 +23,29 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
     override func pageTitle() -> String? {
         return self.followShipper.consignorName
     }
+    // 获取关注的托运人下面的货源
+ 
+    func getFouceCarrierById(code: String) -> Void {
+        //托运人编码
+        var cancelQuery = CancerFouceCarrier()
+        cancelQuery.code = code
+        self.showLoading()
+        BaseApi.request(target: API.getFoucesOrderById(cancelQuery), type: BaseResponseModel<Any>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess()
+           
+                }, onError: { [weak self](error) in
+                    self?.showFail(fail: error.localizedDescription)
+            })
+            .disposed(by: dispose)
+    }
     
     func configResourceInfos() -> [ResourceHallUIModel] {
         let items = self.followShipper.hall.map { (res) -> ResourceHallUIModel in
             let truckInfo = Util.dateFormatter(date: res.loadingTime/1000, formatter: "MM-dd") + " 装货 " + res.goodsType
             let goodsInfo = Util.contact(strs: [String(format: "%.f", res.goodsWeight)+"吨" , res.vehicleLength , res.vehicleType , res.packageType], seperate: " | ")
             
-            
-            print("======\(res.companyLogo)")
+           
             let model = ResourceHallUIModel(id: res.id,start: res.startProvince + res.startCity,
                                             end: res.endProvince + res.endCity,
                                             truckInfo: truckInfo,
@@ -102,4 +117,7 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
         self.followShipper.hall = newHalls
         self.configResources()
     }
+    
+   
+    
 }

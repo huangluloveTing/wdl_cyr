@@ -51,7 +51,9 @@ class FirstAddDriverListVC: NormalBaseVC {
             //默认选中男
             self.sexClick(self.manBtn)
         }
-        
+        self.nameTextField.text =  WDLCoreManager.shared().userInfo?.carrierName
+        self.currentCommitItem?.driverName = WDLCoreManager.shared().userInfo?.carrierName ?? ""
+        self.nameTextField.isEnabled = false
     }
     
     override func currentConfig() {

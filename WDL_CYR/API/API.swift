@@ -29,6 +29,7 @@ enum API {
     case ownOrderHall(GoodsSupplyQueryBean)     // 我的关注的货源接口
     case findAllOrderHall(GoodsSupplyQueryBean) // 获取货源大厅数据
     case findOrderByFollowShipper()         //查询我已经关注托运人线下的货源信息
+    
     case addFollowLine(String,String,String,String) //添加关注线路
     case findOrderByFollowLine()            //查询我已经关注线路线下的货源信息
     case selectZbnConsignor(String)         //获取所有的未关注运人信息
@@ -52,6 +53,8 @@ enum API {
     case assemblePlanWaybill([WaybillAssembleCommitModel]) // 多车配载
     case createEvaluate(ZbnEvaluateVo)      // 提交评价
     case cancelFouceCarrier(CancerFouceCarrier)      //通过关注托运人的编码，取消关注
+      case getFoucesLineOrderById(CancerFouceCarrier)      //关注的路线下的对应的货源订单
+    case getFoucesOrderById(CancerFouceCarrier)      //关注的托运下的对应的货源订单
     case cancelFoucePath(String)       // 取消线路的关注
     case cancelOffer(String , String)                        // 取消报价
     case findCapacityByDriverNameOrPhone(String)            // 根据驾驶员姓名/电话查询驾驶员信息
@@ -116,6 +119,10 @@ func apiPath(api:API) -> String {
         return "/followLine/cancelFollowLine"
     case .cancelFouceCarrier(_):
         return "/followShipper/cacleFollow"
+    case .getFoucesOrderById(_):
+        return "/followShipper/findOrderHallByFollowShipperId"
+    case .getFoucesLineOrderById(_):
+        return "/followShipper/findOrderHallByFollowLineId"
     case .login(_, _):
         return "/carrier/login"
     case .register(_, _, _, _, _):
@@ -135,7 +142,7 @@ func apiPath(api:API) -> String {
     case .findOrderByFollowShipper():
         return "/followShipper/findOrderByFollowShipper"
     case .findOrderByFollowLine():
-        return "/followLine/findOrderByFollowLine"
+        return "/followLine/findOrderByFollowLineApp"
     case .addFollowLine(_, _, _, _):
         return "/followLine/addFollowLine"
     case .selectZbnConsignor(_):
@@ -329,10 +336,12 @@ func apiTask(api:API) -> Task {
     case .cancelFouceCarrier(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
       
-    
+    case .getFoucesOrderById(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .getOtherOfferByOrderHallId(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
-        
+    case .getFoucesLineOrderById(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
 //    case .getOtherOfferByOrderHallId(let hallId):
 //        return .requestParameters(parameters: ["hallId": hallId], encoding: JSONEncoding.default)
     case .cancelOffer(let hallId , let offerId):
