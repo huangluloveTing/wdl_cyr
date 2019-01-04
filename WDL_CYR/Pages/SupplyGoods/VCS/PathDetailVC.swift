@@ -17,8 +17,33 @@ class PathDetailVC: AttentionDetailBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.defineTableView(tableView: self.tableView)
-        self.configResources()
+       
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+         self.getFouceLineCarrierById()//数据请求刷新
+    }
+    
+    
+    // 获取关注的托运人下面的货源
+    func getFouceLineCarrierById() -> Void {
+        //托运人编码
+        var cancelQuery = CancerFouceCarrier()
+        cancelQuery.code = self.lineHall.lineCode ?? ""
+        self.showLoading()
+        BaseApi.request(target: API.getFoucesLineOrderById(cancelQuery), type:
+            BaseResponseModel<PageInfo<CarrierQueryOrderHallResult>>.self)
+            .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess()
+                self?.lineHall.hall = data.data?.list ?? []
+                self?.configResources()
+                }, onError: { [weak self](error) in
+                    self?.showFail(fail: error.localizedDescription)
+            })
+            .disposed(by: dispose)
+    }
+    
     
     override func pageTitle() -> String? {
         let start = (self.lineHall.startProvince ?? "") + (self.lineHall.startCity ?? "")

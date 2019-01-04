@@ -17,7 +17,10 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.defineTableView(tableView: tableView)
-        self.configResources()
+    
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
         self.getFouceCarrierById()//数据请求
     }
     
@@ -30,11 +33,12 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
         var cancelQuery = CancerFouceCarrier()
         cancelQuery.code = self.followShipper.consignorId
         self.showLoading()
-        BaseApi.request(target: API.getFoucesOrderById(cancelQuery), type: BaseResponseModel<CarrierQueryOrderHallResult>.self)
+        BaseApi.request(target: API.getFoucesOrderById(cancelQuery), type:
+            BaseResponseModel<PageInfo<CarrierQueryOrderHallResult>>.self)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess()
-                print("tesett:\(String(describing: data.data))")
-//                self?.followShipper.hall = data.data
+                self?.followShipper.hall = data.data?.list ?? []
+                self?.configResources()
                 }, onError: { [weak self](error) in
                     self?.showFail(fail: error.localizedDescription)
             })
