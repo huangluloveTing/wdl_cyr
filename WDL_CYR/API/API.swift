@@ -122,7 +122,7 @@ func apiPath(api:API) -> String {
     case .getFoucesOrderById(_):
         return "/followShipper/findOrderHallByFollowShipperId"
     case .getFoucesLineOrderById(_):
-        return "/followShipper/findOrderHallByFollowLineId"
+        return "/followLine/findOrderHallByFollowLineId"
     case .login(_, _):
         return "/carrier/login"
     case .register(_, _, _, _, _):
