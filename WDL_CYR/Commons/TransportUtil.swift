@@ -28,13 +28,13 @@ class TransportUtil: NSObject {
                  if driverStatus == 4 {  // 当driverStatus == 4 时 ， 已接受，显示 配载
                     return .unAssemble_comType_1_2_toAssemble
                 }
-                // 无车报价，在司机接受前，应该可以指派，已指派，不可指派
-                if driverStatus == 5  {
-                    return .unAssemble_designated
-                }
                 // 承运人 和司机 不是同一个人时，不能去接受 拒绝
                 if  driverIsSelf == true && comType == 1 {
                     return .unAssemble_comType_1_2_noAccept
+                }
+                // 无车报价，在司机接受前，应该可以指派，已指派，不可指派
+                if driverStatus == 5  {
+                    return .unAssemble_designated
                 }
                 if comType != 1 {
                     return .unAssemble_comType_1_2_noAccept

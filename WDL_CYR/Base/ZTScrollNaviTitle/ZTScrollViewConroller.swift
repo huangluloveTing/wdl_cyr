@@ -119,11 +119,13 @@ extension ZTScrollViewConroller : UICollectionViewDelegate , UICollectionViewDat
         let front = self.subItems![index]
         if self.currentFrontView == nil {
             self.currentFrontView = front.viewController
+            self.currentFrontView?.didShow()
             return
         }
         if (self.currentFrontView! as! UIViewController) != (front.viewController as! UIViewController) {
             self.currentFrontView?.willDisappear()
             self.currentFrontView = front.viewController
+            self.currentFrontView?.didShow()
         }
     }
 }

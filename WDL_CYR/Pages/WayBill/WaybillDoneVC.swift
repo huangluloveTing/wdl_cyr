@@ -21,11 +21,10 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
     private var currentStartTime:TimeInterval?
     private var currentEndTime:TimeInterval?
     
-    func willShow() {
-    
-    }
-    
     func didShow() {
+        self.beginRefresh()
+    }
+    func willShow() {
         
     }
     

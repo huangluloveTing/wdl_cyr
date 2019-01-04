@@ -11,6 +11,10 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
+    func willShow() {
+        
+    }
+    
     
     func willDisappear() {
         self.dropView.hiddenDropView()
@@ -24,14 +28,11 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
     private var currentStartTime:TimeInterval?
     private var currentEndTime:TimeInterval?
     
-    func willShow() {
-        
+    func didShow() {
+        self.beginRefresh()
     }
     
-    func didShow() {
-        
-    }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.addSearchBar(to: self.tableView, placeHolder: "搜索托运人/承运人/姓名/电话号码")
