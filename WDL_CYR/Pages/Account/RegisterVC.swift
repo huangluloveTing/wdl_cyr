@@ -22,6 +22,10 @@ class RegisterVC: BaseVC {
     @IBOutlet weak var verifyTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     
+    
+    //推荐人信息非必填
+    @IBOutlet weak var recommendField: UITextField!
+    
     var registerInfo = RegisterVModel()
     
     override func viewDidLoad() {
@@ -46,6 +50,13 @@ class RegisterVC: BaseVC {
                 self.registerInfo.phone = text
             })
             .disposed(by: dispose)
+         //推荐人信息非必填
+        self.recommendField.rx.text.orEmpty
+            .subscribe(onNext: { (text) in
+                self.registerInfo.refereePhone = text
+            })
+            .disposed(by: dispose)
+        
         
         self.verifyTextField.rx.text.orEmpty
             .subscribe(onNext: { (text) in
@@ -112,9 +123,18 @@ extension RegisterVC {
     
     func toRegisterAccount() {
         if !isPhone(phone: self.registerInfo.phone) {
-            self.showWarn(warn: "手机号码不正确")
+            self.showWarn(warn: "注册手机号码不正确")
             return
         }
+        
+        if self.recommendField.text?.length ?? 0 > 0{
+            if !isPhone(phone: self.registerInfo.refereePhone) {
+                self.showWarn(warn: "推荐人手机号码不正确")
+                return
+            }
+        }
+      
+      
         if self.registerInfo.veryCode?.count == 0 {
             self.showWarn(warn: "请填写验证码")
             return
@@ -133,7 +153,7 @@ extension RegisterVC {
         }
         
         self.showLoading(title: "正在提交", complete: nil)
-        BaseApi.request(target: API.register(self.registerInfo.pwd!, self.registerInfo.phone!, self.registerInfo.veryCode!, self.registerInfo.confirmPwd!), type: BaseResponseModel<AnyObject>.self)
+        BaseApi.request(target: API.register(self.registerInfo.pwd!, self.registerInfo.phone!, self.registerInfo.veryCode!, self.registerInfo.confirmPwd!,self.registerInfo.refereePhone), type: BaseResponseModel<AnyObject>.self)
             .retry(5)
             .subscribe(onNext: { (model) in
                 self.showSuccess(success: "注册成功", complete: {[weak self] in
@@ -184,4 +204,5 @@ class RegisterVModel: NSObject {
     var pwd:String?
     var confirmPwd:String?
     var readedProtocol:Bool? // 是否阅读协议
+    var refereePhone:String = ""//推荐人信息非必填
 }

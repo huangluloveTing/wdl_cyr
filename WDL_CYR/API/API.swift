@@ -12,13 +12,15 @@ import Moya
 import Alamofire
 
 enum API {
+    
+    case forgetPassword(ForgetPasswordModel) //忘记密码
     case addDriverOwn(ZbnTransportCapacity) //添加司机自己
     case editOrModifyDriverOwn(ZbnTransportCapacity) //编辑司机(修改自己)
     case identiferIsAddOwnAsDriver() //验证是否已经添加自己为司机
     case getMessageNum() //消息个数
     case login(String , String)     // 登录接口
     case getAutoDealTimer(String)     // 查询货源自动成交时间
-    case register(String , String , String , String) // 注册
+    case register(String , String , String , String, String) // 注册
     case registerSms(String)        // 获取验证码
     case loadTaskInfo()             // 获取省市区
     case getCreateHallDictionary()  // 获取数据字典
@@ -27,6 +29,7 @@ enum API {
     case ownOrderHall(GoodsSupplyQueryBean)     // 我的关注的货源接口
     case findAllOrderHall(GoodsSupplyQueryBean) // 获取货源大厅数据
     case findOrderByFollowShipper()         //查询我已经关注托运人线下的货源信息
+    
     case addFollowLine(String,String,String,String) //添加关注线路
     case findOrderByFollowLine()            //查询我已经关注线路线下的货源信息
     case selectZbnConsignor(String)         //获取所有的未关注运人信息
@@ -50,6 +53,8 @@ enum API {
     case assemblePlanWaybill([WaybillAssembleCommitModel]) // 多车配载
     case createEvaluate(ZbnEvaluateVo)      // 提交评价
     case cancelFouceCarrier(CancerFouceCarrier)      //通过关注托运人的编码，取消关注
+      case getFoucesLineOrderById(CancerFouceCarrier)      //关注的路线下的对应的货源订单
+    case getFoucesOrderById(CancerFouceCarrier)      //关注的托运下的对应的货源订单
     case cancelFoucePath(String)       // 取消线路的关注
     case cancelOffer(String , String)                        // 取消报价
     case findCapacityByDriverNameOrPhone(String)            // 根据驾驶员姓名/电话查询驾驶员信息
@@ -90,6 +95,8 @@ func apiPath(api:API) -> String {
         return "/transportCapacity/updateDriverOfMy"
     case .addDriverOwn(_):
         return "/transportCapacity/addDriverOfMy"
+    case .forgetPassword(_):
+        return "/carrier/forgetPassWord"
     case .identiferIsAddOwnAsDriver():
         return "/transportCapacity/validateIsOrAddDriverOfMy"
     case .applyAcceptOrRefuseMessage(_):
@@ -112,9 +119,13 @@ func apiPath(api:API) -> String {
         return "/followLine/cancelFollowLine"
     case .cancelFouceCarrier(_):
         return "/followShipper/cacleFollow"
+    case .getFoucesOrderById(_):
+        return "/followShipper/findOrderHallByFollowShipperId"
+    case .getFoucesLineOrderById(_):
+        return "/followShipper/findOrderHallByFollowLineId"
     case .login(_, _):
         return "/carrier/login"
-    case .register(_, _, _, _):
+    case .register(_, _, _, _, _):
         return "/carrier/carrierRegister"
     case .registerSms(_):
         return "/carrier/carrierRegisterSms"
@@ -131,7 +142,7 @@ func apiPath(api:API) -> String {
     case .findOrderByFollowShipper():
         return "/followShipper/findOrderByFollowShipper"
     case .findOrderByFollowLine():
-        return "/followLine/findOrderByFollowLine"
+        return "/followLine/findOrderByFollowLineApp"
     case .addFollowLine(_, _, _, _):
         return "/followLine/addFollowLine"
     case .selectZbnConsignor(_):
@@ -221,6 +232,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .addDriverOwn(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
+    case .forgetPassword(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .getAutoDealTimer(let hallId):
         return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["hallId":hallId])
     case .returnMoney(let query):
@@ -243,8 +256,8 @@ func apiTask(api:API) -> Task {
         
     
         
-    case .register(let pwd, let phone, let vcode, let vpwd):
-        return .requestParameters(parameters: ["password": pwd,"phone": phone,"verificationCode": vcode,"verificationPassword": vpwd], encoding: JSONEncoding.default)
+    case .register(let pwd, let phone, let vcode, let vpwd,let adPhone):
+        return .requestParameters(parameters: ["password": pwd,"phone": phone,"verificationCode": vcode,"verificationPassword": vpwd,"refereePhone": adPhone], encoding: JSONEncoding.default)
         
     case .updatePassword(let model):
         return .requestParameters(parameters: model.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
@@ -323,10 +336,12 @@ func apiTask(api:API) -> Task {
     case .cancelFouceCarrier(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
       
-    
+    case .getFoucesOrderById(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .getOtherOfferByOrderHallId(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
-        
+    case .getFoucesLineOrderById(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
 //    case .getOtherOfferByOrderHallId(let hallId):
 //        return .requestParameters(parameters: ["hallId": hallId], encoding: JSONEncoding.default)
     case .cancelOffer(let hallId , let offerId):

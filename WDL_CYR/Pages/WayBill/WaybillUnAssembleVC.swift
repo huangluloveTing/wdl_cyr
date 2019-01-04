@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
+    
     func willShow() {
         
     }
@@ -23,7 +24,6 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
     
     @IBOutlet weak var dropView: DropHintView!
     @IBOutlet weak var tableView: UITableView!
-    
     private var currentStatus:Int = -1
     private var currentStartTime:TimeInterval?
     private var currentEndTime:TimeInterval?

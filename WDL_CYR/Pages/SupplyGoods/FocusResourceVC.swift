@@ -207,21 +207,12 @@ extension FocusResourceVC : UITableViewDelegate , UITableViewDataSource {
         if displayType == .focusPerson {
             //关注托运人跳转详情页
             let shipper = self.list_tyr[indexPath.row]
-            if shipper.hall.count == 0 {
-                self.showWarn(warn: "当前关注的托运人没有任何货源数据！", complete: nil)
-            }else{
-                self.toAttentionConsignorDetail(consignor: shipper)
-            }
-            
+            self.toAttentionConsignorDetail(consignor: shipper)
         }
         else {
             //关注路线跳转详情页
             let line = self.list_path[indexPath.row]
-            if line.hall.count == 0 {
-                self.showWarn(warn: "当前关注的路线没有任何货源数据！", complete: nil)
-            }else{
-                self.toAttentionLineDetail(info: line)
-            }
+            self.toAttentionLineDetail(info: line)
             
         }
     }
@@ -291,7 +282,7 @@ extension FocusResourceVC {
     
     
     
-    // 获取关注的托运人的货源
+    // 获取关注的托运人
     func loadResourceByAttentionCarrier() -> Void {
         self.showLoading()
         BaseApi.request(target: API.findOrderByFollowShipper(), type: BaseResponseModel<[FollowShipperOrderHall]>.self)
@@ -306,7 +297,7 @@ extension FocusResourceVC {
             .disposed(by: dispose)
     }
     
-    // 获取关注的线路的货源
+    // 获取关注的线路
     func loadResourceByAttentionPath() -> Void {
         self.showLoading()
         BaseApi.request(target: API.findOrderByFollowLine(), type: BaseResponseModel<[FollowFocusLineOrderHallResult]>.self)

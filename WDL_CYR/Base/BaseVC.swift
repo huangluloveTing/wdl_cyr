@@ -258,7 +258,7 @@ extension BaseVC : UISearchBarDelegate {
 
 // 添加导航栏上面的 选项卡
 extension BaseVC {
-    
+    //添加顶部的tab事件
     func addNaviSelectTitles(titles:[String]) {
         let naviTitle = ZTScrollNaviBarView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 120, height: 44))
         naviTitle.updateTitles(titles: titles)

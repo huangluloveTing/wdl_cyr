@@ -14,6 +14,7 @@ class Resource_ShipperInfoCell: BaseCell {
     @IBOutlet weak var focusShipperButton: UIButton!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var dealTotalLabel: UILabel!
+    //托运人名称
     @IBOutlet weak var shipperNameLabel: UILabel!
     
     override func awakeFromNib() {
@@ -32,10 +33,18 @@ class Resource_ShipperInfoCell: BaseCell {
 }
 
 extension Resource_ShipperInfoCell {
-    func showInfo(name:String? , dealNum:Int , rate:Float , foucs:Bool) -> Void {
-        self.shipperNameLabel.text = name
+    func showInfo(name:String? , dealNum:Int , rate:Float , foucs:Bool, isOffer: Bool = true) -> Void {
+        
         self.dealTotalLabel?.text = String(dealNum) + "笔"
         self.rateLabel.text = Util.floatPoint(num: 0, floatValue: rate) + "分"
         self.focusShipperButton.isHidden = foucs;
+        
+        if isOffer == false {
+            //没有报价
+            self.shipperNameLabel.text = "*****公司"
+        }else{
+            //报价
+            self.shipperNameLabel.text = name
+        }
     }
 }

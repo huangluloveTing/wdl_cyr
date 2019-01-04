@@ -199,7 +199,8 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
         cell.showInfo(name: self.resource?.consignorName,
                       dealNum: info?.dealCount ?? 0,
                       rate: info?.growupScore ?? 0 ,
-                      foucs:isFoucePer)
+                      foucs:isFoucePer,
+                      isOffer:self.resource?.isOffer ?? true)
         
        
         return cell

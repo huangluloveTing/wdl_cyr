@@ -70,7 +70,7 @@ extension ResourceHallCell {
         self.truckDescLabel.text = info?.truckInfo
         self.goodsDescLabel.text = info?.goodsInfo
         self.typeLabel.text = (info?.isSelf ?? false) ? "" : "【自营】"
-        self.tyNameLabel.text = info?.company
+        
         self.attentionButton.isSelected = info?.isAttention ?? false
         self.unitPriceLabel.text = String(format: "%.f",  info?.refercneceUnitPrice ?? 0)
         self.reportNumLabel.text = String(format: "%d人报价", info?.reportNum ?? 0)
@@ -88,11 +88,15 @@ extension ResourceHallCell {
             unitTitleLab.isHidden = true
             perNumTitleLab.isHidden = true
         }
-        
+        //是否报价
         self.reportButton.isSelected = info?.isOffer ?? false
         if info?.isOffer == true {
+            //报价
             self.reportButton.backgroundColor = UIColor(hex: "D3D3D3")
+            self.tyNameLabel.text = info?.company
         } else {
+            //未报价
+            self.tyNameLabel.text = "*****公司"
             self.reportButton.backgroundColor = UIColor(hex: "06C06F")
         }
     }
