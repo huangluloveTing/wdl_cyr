@@ -252,7 +252,7 @@ extension ResourceHallVC {
     func initialProinve() -> [PlaceChooiceItem] {
 //        return Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [])
         
-        var items = Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [])
+        var items = Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [] ,noLimit: true)
         let all = PlaceChooiceItem(title: "不限", id: "", selected: false, subItems: nil, level: 0)
         items.insert(all, at: 0)
         return items

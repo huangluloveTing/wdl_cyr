@@ -76,15 +76,18 @@ class Util {
         return (dateTime?.timeIntervalSince1970 ?? 0) * 1000
     }
     
-    static func configServerRegions(regions:[RegionModel]) -> [PlaceChooiceItem] {
+    static func configServerRegions(regions:[RegionModel] , noLimit:Bool = false) -> [PlaceChooiceItem] {
         var items:[PlaceChooiceItem] = []
         for model_1 in regions {
             var item_1 = PlaceChooiceItem(title: model_1.label ?? "", id: model_1.value ?? "", selected: false, subItems: nil, level: 0)
             if let children = model_1.children {
-                let sub_items_1 = self.configServerRegions(regions: children)
+                let sub_items_1 = self.configServerRegions(regions: children , noLimit: noLimit)
                 item_1.subItems = sub_items_1
             }
             items.append(item_1)
+        }
+        if noLimit == true {
+            items.insert(PlaceChooiceItem(title: "不限", id: "", selected: false, subItems: nil, level: 0), at: 0)
         }
         return items
     }
