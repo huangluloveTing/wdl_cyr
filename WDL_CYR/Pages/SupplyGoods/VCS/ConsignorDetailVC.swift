@@ -18,22 +18,23 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
         super.viewDidLoad()
         self.defineTableView(tableView: tableView)
         self.configResources()
+        self.getFouceCarrierById()//数据请求
     }
     
     override func pageTitle() -> String? {
         return self.followShipper.consignorName
     }
     // 获取关注的托运人下面的货源
- 
-    func getFouceCarrierById(code: String) -> Void {
+    func getFouceCarrierById() -> Void {
         //托运人编码
         var cancelQuery = CancerFouceCarrier()
-        cancelQuery.code = code
+        cancelQuery.code = self.followShipper.consignorId
         self.showLoading()
-        BaseApi.request(target: API.getFoucesOrderById(cancelQuery), type: BaseResponseModel<Any>.self)
+        BaseApi.request(target: API.getFoucesOrderById(cancelQuery), type: BaseResponseModel<CarrierQueryOrderHallResult>.self)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess()
-           
+                print("tesett:\(String(describing: data.data))")
+//                self?.followShipper.hall = data.data
                 }, onError: { [weak self](error) in
                     self?.showFail(fail: error.localizedDescription)
             })
