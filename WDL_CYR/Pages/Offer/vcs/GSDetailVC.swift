@@ -119,7 +119,7 @@ class GSDetailVC: GSDetailBaseVC {
         info.loadTime = self.offer?.loadingTime ?? 0
         info.goodsName = self.offer?.goodsName ?? ""
         info.goodsType = self.offer?.goodsType ?? ""
-        let weight = Util.floatPoint(num: 1, floatValue: self.offer?.goodsWeight ?? 0)
+        let weight = Util.floatPoint(num: 3, floatValue: self.offer?.goodsWeight ?? 0)
         info.goodsSummer = Util.concatSeperateStr(seperete: "| " , strs: weight,self.offer?.vehicleType,self.offer?.packageType,self.offer?.vehicleLength,self.offer?.vehicleWidth)
         info.referenceUnitPrice = self.offer?.refercneceUnitPrice ?? 0
         info.referenceTotalPrice = self.offer?.refercneceTotalPrice ?? 0

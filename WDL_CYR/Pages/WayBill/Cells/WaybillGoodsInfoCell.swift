@@ -52,7 +52,7 @@ extension WaybillGoodsInfoCell {
         self.endLabel.text = end
         self.goodsTypeLabel.text = goodsType
         self.loadTimeLabel.text = Util.dateFormatter(date: loadTime ?? 0, formatter: "yyyy-MM-dd")
-        self.goodsWeightLabel.text = Util.floatPoint(num: 2, floatValue: weight ?? 0) + "吨"
+        self.goodsWeightLabel.text = Util.floatPoint(num: 3, floatValue: weight ?? 0) + "吨"
         self.packageTypeLabel.text = pacakge
         self.lengthLabel.text = length
         self.vehicleTypeLabel.text = vehicleType
