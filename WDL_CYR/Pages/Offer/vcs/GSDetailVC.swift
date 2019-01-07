@@ -24,9 +24,14 @@ class GSDetailVC: GSDetailBaseVC {
         super.viewDidLoad()
         self.configTableView()
         self.configCurrentHallStatus()
-        self.loadOffer()
-       // 获取距离下次成交时间的请求
-        getAutoTime()
+//        self.loadOffer()
+//       // 获取距离下次成交时间的请求
+//        getAutoTime()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.beginRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -158,6 +163,16 @@ extension GSDetailVC {
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = .none
+        self.tableView.pullRefresh()
+        self.tableView.refreshState.distinctUntilChanged()
+            .filter { (state) -> Bool in
+                return state != TableViewState.EndRefresh
+            }
+            .subscribe(onNext: { [weak self](state) in
+                self?.loadOffer()
+                self?.getAutoTime()
+            })
+            .disposed(by: dispose)
     }
     
     // 当前的 货源状态
@@ -191,12 +206,13 @@ extension GSDetailVC {
     func loadOffer() -> Void {
         let hallId = self.offer?.id ?? ""
         self.offer?.hallId = hallId
-        self.loadOtherInfo(model: self.offer) { (offers, error) in
+        self.loadOtherInfo(model: self.offer) { [weak self](offers, error) in
             guard let others = offers else {
                 return
             }
-            self.offerLists = others
-            self.tableView.reloadData()
+            self?.offerLists = others
+            self?.tableView.reloadData()
+            self?.tableView.endRefresh()
         }
     }
     

@@ -22,11 +22,13 @@ class WayBillDetailVC: WaybillDetailBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView(tableView: tableView)
-        self.loadDetailData(hallId: self.waybillInfo?.hallId ?? "")
+//        self.loadDetailData(hallId: self.waybillInfo?.hallId ?? "")
+        self.configRefresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tableView.beginRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +37,19 @@ class WayBillDetailVC: WaybillDetailBaseVC {
     
     override func currentConfig() {
         
+    }
+    
+    
+    func configRefresh() -> Void {
+        self.tableView.pullRefresh()
+        self.tableView.refreshState.distinctUntilChanged().asObservable()
+            .filter { (state) -> Bool in
+                return state != TableViewState.EndRefresh
+            }
+            .subscribe(onNext: { [weak self](state) in
+                self?.loadDetailData(hallId: self?.waybillInfo?.hallId ?? "")
+            })
+            .disposed(by: dispose)
     }
     
     

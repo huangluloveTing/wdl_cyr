@@ -895,10 +895,12 @@ extension WaybillDetailBaseVC {
         BaseApi.request(target: API.queryTransportDetail(hallId), type: BaseResponseModel<TransactionInformation>.self)
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
+                self?.currentTableView?.endRefresh()
                 self?.hiddenToast()
                 self?.currrentEvaluatedStatus(info: data.data)
                 self?.showCurrentPageInfo(info: data.data)
             }, onError: { [weak self](error) in
+                self?.currentTableView?.endRefresh()
                 self?.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)

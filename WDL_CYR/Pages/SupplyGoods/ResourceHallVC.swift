@@ -252,11 +252,8 @@ extension ResourceHallVC {
     func initialProinve() -> [PlaceChooiceItem] {
 //        return Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [])
         
-        var items = Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [] ,noLimit: true)
-
+        let items = Util.configServerRegions(regions: WDLCoreManager.shared().regionAreas ?? [] ,noLimit: true)
         return items
-        
-        
     }
     
     // 去货源详情
