@@ -41,6 +41,7 @@ extension GSDetail_GoodsInfoCell {
         self.endLabel.text = info.end
         self.loadTimeLabel.text = Util.dateFormatter(date: info.loadTime / 1000, formatter: "yyyy-MM-dd")
         self.goodsNameLabel.text = info.goodsName
+   
         self.goodsTypeLabel.text = info.goodsType
         self.goodsSummerLabel.text = info.goodsSummer
         self.referenceUnitLabel.text = Util.floatPoint(num: 2, floatValue: info.referenceUnitPrice)+"元/吨"

@@ -212,8 +212,8 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(ResourceHallCell.self)") as! ResourceHallCell
         let hall = self.hallLists[indexPath.section]
         
-        let truckInfo = Util.dateFormatter(date: hall.loadingTime/1000, formatter: "MM-dd") + " 装货 " + hall.goodsType
-        let goodsInfo = Util.contact(strs: [String(format: "%.f", hall.goodsWeight)+"吨" , hall.vehicleLength , hall.vehicleType , hall.packageType], seperate: " | ")
+        let truckInfo = Util.dateFormatter(date: hall.loadingTime/1000, formatter: "yyyy-MM-dd") + " 装货 " + hall.goodsType
+        let goodsInfo = Util.contact(strs: [String(format: "%.3f", hall.goodsWeight)+"吨" , hall.vehicleLength , hall.vehicleType , hall.packageType], seperate: " | ")
         
         //参考价是否可见  var refercnecePriceIsVisable : String = "" // (string, optional), 参考价是否可见，1=可见 2，不可见
         print("\(hall.endProvince),\(hall.endCity)")

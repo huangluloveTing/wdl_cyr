@@ -149,7 +149,7 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
             let goodsType = self.resource?.resource?.goodsType
             let remark = self.resource?.resource?.remark ?? " "
             //货品简介
-            let goodWt = String(format: "%.1f吨", self.resource?.resource?.goodsWeight ?? 0.0)
+            let goodWt = String(format: "%.3f吨", self.resource?.resource?.goodsWeight ?? 0.0)
             let vtype = self.resource?.resource?.vehicleType ?? ""
             let vPackage = self.resource?.resource?.packageType ?? ""
             let vLength = "车长" + (self.resource?.resource?.vehicleLength ?? "")

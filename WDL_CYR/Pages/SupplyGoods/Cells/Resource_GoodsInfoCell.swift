@@ -14,7 +14,7 @@ class Resource_GoodsInfoCell: BaseCell {
     @IBOutlet weak var remarkLabel: UILabel!
     @IBOutlet weak var goodsSumLabel: UILabel!
     @IBOutlet weak var goodsTypeLabel: UILabel!
-    @IBOutlet weak var goodsNameLabel: UILabel!
+//    @IBOutlet weak var goodsNameLabel: UILabel!
     @IBOutlet weak var loadTimeLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
@@ -49,7 +49,7 @@ extension Resource_GoodsInfoCell {
         self.startLabel.text = start
         self.endLabel.text = end
         self.loadTimeLabel.text = Util.dateFormatter(date: loadTime / 1000, formatter: "yyyy-MM-dd")
-        self.goodsNameLabel.text = goodsName
+//        self.goodsNameLabel.text = goodsName
         self.goodsSumLabel.text = goodsSumm
         self.goodsTypeLabel.text = goodsType
         self.remarkLabel.text = remark

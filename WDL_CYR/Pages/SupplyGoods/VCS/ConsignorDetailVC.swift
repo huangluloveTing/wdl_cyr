@@ -48,7 +48,7 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
     func configResourceInfos() -> [ResourceHallUIModel] {
         let items = self.followShipper.hall.map { (res) -> ResourceHallUIModel in
             let truckInfo = Util.dateFormatter(date: res.loadingTime/1000, formatter: "MM-dd") + " 装货 " + res.goodsType
-            let goodsInfo = Util.contact(strs: [String(format: "%.f", res.goodsWeight)+"吨" , res.vehicleLength , res.vehicleType , res.packageType], seperate: " | ")
+            let goodsInfo = Util.contact(strs: [String(format: "%.3f", res.goodsWeight)+"吨" , res.vehicleLength , res.vehicleType , res.packageType], seperate: " | ")
             
            
             let model = ResourceHallUIModel(id: res.id,start: res.startProvince + res.startCity,
