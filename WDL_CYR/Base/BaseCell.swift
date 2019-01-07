@@ -135,8 +135,23 @@ extension BaseCell {
         }
     }
     
-    //TODO: 货源详情中，货源状态
+    // 货源详情中，货源状态
     func gsStatus(status:SourceStatus , to label:UILabel) -> Void {
-        
+        switch status {
+        case .bidding:
+            label.text = "竞价中"
+        case .canceled:
+             label.text = "已取消"
+        case .notDeal:
+            label.text = "未上架"
+        case .rejected:
+            label.text = "已驳回"
+        case .other:
+            label.text = ""
+        case .dealed:
+            label.text = "已完成"
+        case .willDesignate:
+            label.text = "待指派"
+        }
     }
 }

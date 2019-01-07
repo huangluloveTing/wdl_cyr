@@ -13,7 +13,6 @@ import Foundation
 //}
 
 // 货源状态
-//报价的成交状态 0=驳回 1=竞价中 2=成交 3=已取消 ,
 enum SourceStatus : Int {
     case bidding = 1 //  竞价中
     case rejected = 0   //  已驳回
@@ -44,6 +43,7 @@ struct OfferUIModel {
 
 // 货源信息
 struct GSInfoModel {
+    var reportStatus:WDLOfferDealStatus = .reject // 报价状态
     var status:SourceStatus = .other
     var start:String = ""
     var end:String = ""

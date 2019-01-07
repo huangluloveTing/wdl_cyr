@@ -36,7 +36,9 @@ class GSDetail_GoodsInfoCell: BaseCell {
 extension GSDetail_GoodsInfoCell {
     
     func showGoodsInfo(info:GSInfoModel) -> Void {
-        self.gsStatus(status: info.status, to: self.statusLabel)
+//        self.gsStatus(status: info.status, to: self.statusLabel)
+        
+        self.offerStatusStyle(status: info.reportStatus, to: self.statusLabel)//报价状态
         self.startLabel.text = info.start
         self.endLabel.text = info.end
         self.loadTimeLabel.text = Util.dateFormatter(date: info.loadTime / 1000, formatter: "yyyy-MM-dd")

@@ -15,6 +15,7 @@ class GSDetailVC: GSDetailBaseVC {
     private var currentStatus:SourceStatus = .other // 判断当前的报价状态
     private var offerLists:[ZbnOfferModel] = []     // 报价数据
     
+    private var quoteStatus: Int = 0 //货源状态
     
     public var offer:OfferOrderHallResultApp?
     //自动成交时间
@@ -45,8 +46,11 @@ class GSDetailVC: GSDetailBaseVC {
             .subscribe(onNext: {(data) in
                 if (data.data != nil) {
                     let dic = data.data as! Dictionary<String, Any>
+                    //自动成交时间
                     let str = dic["surplusTurnoverTime"]  as? TimeInterval
-                    
+                    //竞价状态
+                    let quoteStatus = dic["isDeal"] as? Int
+                    self.quoteStatus = quoteStatus ?? 0
                     if (str != nil) {
                     let time = (dic["surplusTurnoverTime"] ?? 0) as! TimeInterval
 
@@ -130,6 +134,25 @@ class GSDetailVC: GSDetailBaseVC {
         info.referenceTotalPrice = self.offer?.refercneceTotalPrice ?? 0
         info.remark  = self.offer?.remark ?? " "
         info.id = self.offer?.id ?? ""
+        //报价的成交状态
+
+    
+        if self.quoteStatus == 0 {
+            info.reportStatus = .reject
+        }else if (self.quoteStatus == 1){
+            info.reportStatus = .inbinding
+        }else if (self.quoteStatus == 2){
+            info.reportStatus = .deal
+        }else if (self.quoteStatus == 3){
+            info.reportStatus = .done
+        }else if (self.quoteStatus == 4){
+            info.reportStatus = .willDesignate
+        }else if (self.quoteStatus == 5){
+            info.reportStatus = .canceled
+        }else{
+            info.reportStatus = .notDone
+        }
+
         return info
     }
     

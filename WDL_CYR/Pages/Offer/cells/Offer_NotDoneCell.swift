@@ -21,7 +21,7 @@ class Offer_NotDoneCell: BaseCell {
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!//状态
     @IBOutlet weak var posibleLabel: UILabel!
     
     
@@ -49,7 +49,7 @@ extension Offer_NotDoneCell {
         self.typeLabel.text = (info?.isSelf ?? false) ? "【自营】" : ""
         self.companyLabel.text = info?.company
         self.attentionButton.isSelected = info?.isAttention ?? false
-        self.offerStatusStyle(status: info?.reportStatus, to: self.statusLabel)
+        self.offerStatusStyle(status: info?.reportStatus, to: self.statusLabel)//报价状态
         //公司头像
         self.toAddImageForImageView(imageUrl: info?.avatorURL, imageView: self.avatorImageView)
         
