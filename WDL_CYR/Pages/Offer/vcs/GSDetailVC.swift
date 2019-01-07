@@ -56,11 +56,15 @@ class GSDetailVC: GSDetailBaseVC {
 
                     self.autoTime = time
                     }
+                    
+                   
                 }
-
+                self.tableView.reloadData()
+                self.tableView.endRefresh()
                 print("时间：\(String(describing: data.data))")
                 }, onError: { [weak self](error) in
                 self?.showFail(fail: error.localizedDescription, complete: nil)
+                    self?.tableView.endRefresh()
             })
             .disposed(by: dispose)
     }
@@ -135,8 +139,6 @@ class GSDetailVC: GSDetailBaseVC {
         info.remark  = self.offer?.remark ?? " "
         info.id = self.offer?.id ?? ""
         //报价的成交状态
-
-    
         if self.quoteStatus == 0 {
             info.reportStatus = .reject
         }else if (self.quoteStatus == 1){
@@ -152,7 +154,10 @@ class GSDetailVC: GSDetailBaseVC {
         }else{
             info.reportStatus = .notDone
         }
-
+        //更新界面状态
+        self.offer?.dealStatus  = info.reportStatus
+        self.configCurrentHallStatus()
+        
         return info
     }
     
@@ -195,6 +200,7 @@ extension GSDetailVC {
                 self?.loadOffer()
                 self?.getAutoTime()
             })
+        
             .disposed(by: dispose)
     }
     

@@ -106,7 +106,7 @@ extension BaseCell {
             label.text = "已取消"
             break
         case .notDone:
-            label.text = "未完成"
+            label.text = "未成交"
             break
         }
     }
