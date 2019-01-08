@@ -136,7 +136,7 @@ extension AppDelegate {
             .subscribe(onNext: { (model) in
                 let upModel = model.data
                 print("更新数据：\(String(describing: upModel))")
-//                if upModel?.softwareType == 2 && upModel?.terminalType == 1{
+                if upModel?.softwareType == 2 && upModel?.terminalType == 1{
 
                     //判断需不需要更新(CFBundleVersion:对应配置的build 不是version: 1.1.0)
                     let infoDic: Dictionary = Bundle.main.infoDictionary ?? Dictionary()
@@ -144,17 +144,17 @@ extension AppDelegate {
                     let loccationVison = Int(str) ?? 0
                     let nowVison: Int = upModel?.versionCode ?? 0
 
-//                    if (loccationVison < nowVison) {
-//                        if upModel?.must == 1{
-//                            //强制更新
+                    if (loccationVison < nowVison) {
+                        if upModel?.must == 1{
+                            //强制更新
                             self.showCusAlert(title: "重要提示", content:upModel?.content ?? "有新版本啦，为不影响您的使用，快去appStore升级吧！" , isMust: true)
-//                        }else{
-//                            //自由更新
-//                            self.showCusAlert(title: "重要提示", content:upModel?.content ?? "有新版本啦，快去appStore升级吧！" , isMust: false)
-//                        }
-//                    }
+                        }else{
+                            //自由更新
+                            self.showCusAlert(title: "重要提示", content:upModel?.content ?? "有新版本啦，快去appStore升级吧！" , isMust: false)
+                        }
+                    }
 
-//                }
+                }
             }).disposed(by: dispose)
     }
     
