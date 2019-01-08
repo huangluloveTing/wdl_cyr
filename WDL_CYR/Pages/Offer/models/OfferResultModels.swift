@@ -18,6 +18,7 @@ enum WDLOfferDealStatus : Int , HandyJSONEnum {
     case willDesignate = 4 // 待指派
     case canceled = 5      // 已取消
     case notDone = 6       // 未完成
+    
 }
 
 struct OfferOrderHallResultApp : HandyJSON {

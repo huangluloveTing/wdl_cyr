@@ -24,10 +24,11 @@ class GSDetailVC: GSDetailBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView()
-        self.configCurrentHallStatus()
+//        self.configCurrentHallStatus()
 //        self.loadOffer()
 //       // 获取距离下次成交时间的请求
 //        getAutoTime()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,8 +58,9 @@ class GSDetailVC: GSDetailBaseVC {
                     self.autoTime = time
                     }
                     
-                   
                 }
+                _ = self.goodsSupplyInfo()
+              
                 self.tableView.reloadData()
                 self.tableView.endRefresh()
                 print("时间：\(String(describing: data.data))")
@@ -224,6 +226,14 @@ extension GSDetailVC {
             break
         case .willDesignate:
             self.currentStatus = .willDesignate
+          
+            self.showAlert(title: "提示", message: "当前报价已完成，请在报价已完成列表查看") { (index) in
+                if index == 1 {
+                    //确定
+                    self.pop(animated: true)
+                }
+            }
+            
             break
         }
     }
