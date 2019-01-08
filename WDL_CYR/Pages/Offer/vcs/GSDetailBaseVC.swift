@@ -100,7 +100,7 @@ class GSDetailBaseVC: NormalBaseVC {
     
     //MARK: - 是否获取其他人的x报价信息
     /// - 若货源信息是由TMS经销商来源
-    /// - 有明报显示 ，暗报不显示其他人报价
+    /// - 有明报显示 ，暗报不显示其他人的名字用“*****”价格
     /// - 若货源信息是由第三方发布的都可见
     func showOtherOfferInfo() -> Bool { return true }
 }
@@ -153,9 +153,9 @@ extension GSDetailBaseVC {
     
     func bidding_numberRwos(at section:Int , for tableView:UITableView) -> Int {
         if section == 1 {
-            if showOtherOfferInfo() == true {
+//            if showOtherOfferInfo() == true {
                 return 2
-            }
+//            }
         }
         return  1
     }

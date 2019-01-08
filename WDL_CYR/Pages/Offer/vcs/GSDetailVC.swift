@@ -119,10 +119,12 @@ class GSDetailVC: GSDetailBaseVC {
     
     /// 其他人的报价信息
     override func otherOfferInfo() -> [OfferInfoModel]? {
-        if showOtherOfferInfo() == true {
+        //明报
+//        if showOtherOfferInfo() == true {
             return self.otherOfferUIModels()
-        }
-        return nil
+//        }
+        //暗报
+//        return nil
     }
     
     /// 货源信息
@@ -170,7 +172,7 @@ class GSDetailVC: GSDetailBaseVC {
     override func showOtherOfferInfo() -> Bool {
         //MARK: - 是否获取其他人的x报价信息
         /// - 若货源信息是由TMS经销商来源
-        /// - 有明报显示 ，暗报不显示其他人报价
+        /// - 有明报显示 ，暗报“**”金额其他人报价
         /// - 若货源信息是由第三方发布的都可见
         if self.offer?.sourceType == 2 && self.offer?.offerType == 2 { // 不显示其他人报价
             return false
@@ -214,6 +216,12 @@ extension GSDetailVC {
             break
         case .deal,.done:
             self.currentStatus = .dealed
+            self.showAlert(title: "提示", message: "当前报价已完成，请在报价已完成列表查看") { (index) in
+                if index == 1 {
+                    //确定
+                    self.pop(animated: true)
+                }
+            }
             break
         case .inbinding:
             self.currentStatus = .bidding
@@ -237,6 +245,9 @@ extension GSDetailVC {
             break
         }
     }
+    
+    
+    
 }
 
 extension GSDetailVC {
@@ -261,10 +272,17 @@ extension GSDetailVC {
         let uiModels = self.offerLists.map { (model) -> OfferInfoModel in
             var info = OfferInfoModel()
             info.offerName = model.carrierName
+            info.dealPossible = model.offerPossibility
             info.offerUnitPrice = model.quotedPrice
             info.offerTotalPrice = model.totalPrice
-            info.dealPossible = model.offerPossibility
-//            info.showOffer = model
+           
+            if showOtherOfferInfo() == true {
+                //明报
+                info.showOffer = true
+            }else {
+                //暗报
+                info.showOffer = false
+            }
             return info
         }
         return uiModels

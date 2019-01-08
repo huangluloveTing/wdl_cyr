@@ -38,6 +38,8 @@ extension GSDetail_OfferInfoCell {
 //            self.otherReportLabel.text = ""
             return;
         }
+        
+    
 //        self.otherNumLabel.text = "已有"+String(otherOffers!.count)+"位承运人报价"
 //        self.otherReportLabel.attributedText = self.configOtherReport(offers: otherOffers!)
     }
