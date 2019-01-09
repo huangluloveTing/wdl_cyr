@@ -12,7 +12,7 @@ import UIKit
 class RechargeInlineVC: NormalBaseVC {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    private var indicatorMoneyLab: UILabel?//提示的最低金额
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,20 +43,23 @@ extension RechargeInlineVC {
         //添加提示
         self.addIndicator()
         
+        //请求提示数据
+        self.getIndicator()
     }
     func addIndicator(){
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH, height: 60));
         footerView.backgroundColor = UIColor.clear
         
         let label = UILabel()
-        label.text = "根据您的认真信息：您最低充值金额为1200元\n可报价次数：1次"
         label.frame = CGRect(x: 30, y: 0, width: IPHONE_WIDTH - 60, height: 60)
         label.textAlignment = .left
         label.numberOfLines = 0
         label.textColor = UIColor.orange
         label.font = UIFont.systemFont(ofSize: 15)
         footerView.addSubview(label)
+        self.indicatorMoneyLab = label
         self.tableView.tableFooterView = footerView
+        
         
     }
     
@@ -98,23 +101,27 @@ extension RechargeInlineVC {
 
     }
     
-//    //获取提示语的信息内容
-//    func getIndicator() -> Void {
-//
-//
-//        BaseApi.request(target: API.rechargeMoney(_), type: BaseResponseModel<Any
-//            >.self)
-//            .subscribe(onNext: { [weak self](data) in
-//
-//                print("充值的网页: \(String(describing: data.data))")
-//
-//
-//                },onError: {[weak self] (error) in
-//                    self?.showFail(fail: error.localizedDescription)
-//            })
-//            .disposed(by: dispose)
-//
-//    }
+    //获取提示语的信息内容
+    func getIndicator() -> Void {
+
+
+        BaseApi.request(target: API.getIndicatorMoney(), type: BaseResponseModel<Any
+            >.self)
+            .subscribe(onNext: { [weak self](data) in
+
+                let money = data.data as? Float
+                
+                guard money != nil else{
+                    self?.indicatorMoneyLab?.text = "根据您的认真信息：您最低充值金额为0元"
+                    return
+                }
+                self?.indicatorMoneyLab?.text = "根据您的认真信息：您最低充值金额为\(String(describing: money!))元"
+                },onError: {[weak self] (error) in
+                    self?.showFail(fail: error.localizedDescription)
+            })
+            .disposed(by: dispose)
+
+    }
     
 }
 
