@@ -38,6 +38,8 @@
 		183FD32C21B644BE0069D50F /* ReturnMoneyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183FD32A21B644BE0069D50F /* ReturnMoneyVC.xib */; };
 		18B142BC21D3145800E46F43 /* FirstAddDriverListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B142BB21D3145800E46F43 /* FirstAddDriverListVC.swift */; };
 		18B142BE21D3148200E46F43 /* FirstAddDriverListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B142BD21D3148200E46F43 /* FirstAddDriverListVC.xib */; };
+		18BD10D121E5D4A400048D42 /* BoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BD10D021E5D4A400048D42 /* BoutCell.xib */; };
+		18BD10D321E5D4D200048D42 /* BoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD10D221E5D4D200048D42 /* BoutCell.swift */; };
 		18E3810021B66F6500FF6544 /* PayHtmlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */; };
 		18E3810221B7A7BA00FF6544 /* AppDelegate+jpush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3810121B7A7BA00FF6544 /* AppDelegate+jpush.swift */; };
 		18E3810621C382E200FF6544 /* InviteAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E3810421C382E100FF6544 /* InviteAlertView.xib */; };
@@ -442,6 +444,8 @@
 		18AEF43021AFE21F00FE2468 /* WDL_CYR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WDL_CYR.entitlements; sourceTree = "<group>"; };
 		18B142BB21D3145800E46F43 /* FirstAddDriverListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAddDriverListVC.swift; sourceTree = "<group>"; };
 		18B142BD21D3148200E46F43 /* FirstAddDriverListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstAddDriverListVC.xib; sourceTree = "<group>"; };
+		18BD10D021E5D4A400048D42 /* BoutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoutCell.xib; sourceTree = "<group>"; };
+		18BD10D221E5D4D200048D42 /* BoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoutCell.swift; sourceTree = "<group>"; };
 		18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayHtmlVC.swift; sourceTree = "<group>"; };
 		18E3810121B7A7BA00FF6544 /* AppDelegate+jpush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+jpush.swift"; sourceTree = "<group>"; };
 		18E3810421C382E100FF6544 /* InviteAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteAlertView.xib; sourceTree = "<group>"; };
@@ -1182,6 +1186,8 @@
 				183FD31D21B526AF0069D50F /* MessageDetailCell.xib */,
 				183FD32521B52B210069D50F /* MessageDetailAcceptCell.swift */,
 				183FD32721B52B4C0069D50F /* MessageDetailAcceptCell.xib */,
+				18BD10D221E5D4D200048D42 /* BoutCell.swift */,
+				18BD10D021E5D4A400048D42 /* BoutCell.xib */,
 				70CF4EE0214B410C0051A7CA /* PersonalExcuteCell.swift */,
 				70CF4EE2214B410C0051A7CA /* PersonalExcuteCell.xib */,
 				70CF4EE3214B410C0051A7CA /* PersonalInfoHeader.swift */,
@@ -1772,6 +1778,7 @@
 				70D8BC132166EA6A000522E0 /* PaymentCell.xib in Resources */,
 				70CF4EA9214B409E0051A7CA /* Main.storyboard in Resources */,
 				70EA7358215DFE720020B8C3 /* OfferDealTimerCell.xib in Resources */,
+				18BD10D121E5D4A400048D42 /* BoutCell.xib in Resources */,
 				70CF4F79214B41110051A7CA /* DropPlaceView.xib in Resources */,
 				7003D94221B7CAAC00BD07FC /* AddVehicleVC.xib in Resources */,
 				70140885219422CE000D5CB1 /* WayBillReceiptItem.xib in Resources */,
@@ -2043,6 +2050,7 @@
 				704129A92179B7980078A46F /* OfferInputCell.swift in Sources */,
 				70CF4FCD214B41120051A7CA /* BageView.swift in Sources */,
 				701F10D4217D8F0000693936 /* OfferSearchBaseVC.swift in Sources */,
+				18BD10D321E5D4D200048D42 /* BoutCell.swift in Sources */,
 				70ED01FC21953562001DB4D1 /* WaybillAssembleBaseVC.swift in Sources */,
 				70CF4F5F214B41110051A7CA /* Response+serial.swift in Sources */,
 				18E3810721C382E200FF6544 /* InviteAlertView.swift in Sources */,

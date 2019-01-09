@@ -38,8 +38,26 @@ extension RechargeInlineVC {
     func configTabView() -> Void {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.tableFooterView = UIView()
         self.tableView.separatorStyle = .none
+        
+        //添加提示
+        self.addIndicator()
+        
+    }
+    func addIndicator(){
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH, height: 60));
+        footerView.backgroundColor = UIColor.clear
+        
+        let label = UILabel()
+        label.text = "根据您的认真信息：您最低充值金额为1200元\n可报价次数：1次"
+        label.frame = CGRect(x: 30, y: 0, width: IPHONE_WIDTH - 60, height: 60)
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.textColor = UIColor.orange
+        label.font = UIFont.systemFont(ofSize: 15)
+        footerView.addSubview(label)
+        self.tableView.tableFooterView = footerView
+        
     }
     
     func registerAllCells() -> Void {
@@ -79,6 +97,25 @@ extension RechargeInlineVC {
             .disposed(by: dispose)
 
     }
+    
+//    //获取提示语的信息内容
+//    func getIndicator() -> Void {
+//
+//
+//        BaseApi.request(target: API.rechargeMoney(_), type: BaseResponseModel<Any
+//            >.self)
+//            .subscribe(onNext: { [weak self](data) in
+//
+//                print("充值的网页: \(String(describing: data.data))")
+//
+//
+//                },onError: {[weak self] (error) in
+//                    self?.showFail(fail: error.localizedDescription)
+//            })
+//            .disposed(by: dispose)
+//
+//    }
+    
 }
 
 extension RechargeInlineVC : UITableViewDelegate , UITableViewDataSource {
