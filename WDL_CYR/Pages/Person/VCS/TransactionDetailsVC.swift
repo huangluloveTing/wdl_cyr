@@ -43,11 +43,8 @@ class TransactionDetailsVC: NormalBaseVC {
         if sure == true {
             self.qeury.startTime = startTime
             self.qeury.endTime = endTime
-        } else {
-            self.qeury.startTime = nil
-            self.qeury.endTime = nil
+            self.tableView.beginRefresh()
         }
-        self.tableView.beginRefresh()
         self.dropView.hiddenDropView()
     }
     

@@ -81,10 +81,6 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
             self.startTime = startTime
             self.endTime = endTime
             self.tableView.beginRefresh()
-        } else {
-            self.startTime = nil
-            self.endTime = nil
-            self.tableView.beginRefresh()
         }
         self.dropHintView.hiddenDropView()
     }

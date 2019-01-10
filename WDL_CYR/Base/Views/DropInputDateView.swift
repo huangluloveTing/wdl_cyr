@@ -48,6 +48,14 @@ class DropInputDateView : UIView {
             closure(self.startTime , self.endTime , false)
         }
     }
+    @IBAction func deleteAction(_ sender: Any) {
+        let ob = Observable.just("").asObservable()
+            .share(replay: 1)
+        self.startTime = nil
+        self.endTime = nil
+        ob.bind(to: self.startTextField.rx.text).disposed(by: dispose)
+        ob.bind(to: self.endTextField.rx.text).disposed(by: dispose)
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
