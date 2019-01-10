@@ -12,7 +12,8 @@ import Moya
 import Alamofire
 
 enum API {
-    
+    case getIndicatorMoney() //获取最低报价金额
+    case updateSoftWare(UpdateSoftWareModel) //更新软件
     case forgetPassword(ForgetPasswordModel) //忘记密码
     case addDriverOwn(ZbnTransportCapacity) //添加司机自己
     case editOrModifyDriverOwn(ZbnTransportCapacity) //编辑司机(修改自己)
@@ -97,12 +98,16 @@ func apiPath(api:API) -> String {
         return "/transportCapacity/addDriverOfMy"
     case .forgetPassword(_):
         return "/carrier/forgetPassWord"
+    case .updateSoftWare(_):
+        return "/app/common/getApkVersion"
     case .identiferIsAddOwnAsDriver():
         return "/transportCapacity/validateIsOrAddDriverOfMy"
     case .applyAcceptOrRefuseMessage(_):
         return "/message/handleCarrierInvite"
     case .getMessageNum():
         return "/message/messageNumber"
+    case .getIndicatorMoney():
+        return "/wallet/miniNumCash"
     case .rechargeMoney(_):
         return "/wallet/addCash"
     case .dealDetail(_):
@@ -226,6 +231,8 @@ func apiTask(api:API) -> Task {
     switch api {
     case .getMessageNum():
         return .requestPlain
+    case .getIndicatorMoney():
+        return .requestPlain
     case .identiferIsAddOwnAsDriver():
         return .requestPlain
     case .editOrModifyDriverOwn(let query):
@@ -233,6 +240,8 @@ func apiTask(api:API) -> Task {
     case .addDriverOwn(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .forgetPassword(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
+    case .updateSoftWare(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .getAutoDealTimer(let hallId):
         return .requestCompositeParameters(bodyParameters: [String:String](), bodyEncoding: JSONEncoding.default, urlParameters: ["hallId":hallId])

@@ -15,6 +15,7 @@ class GSDetailVC: GSDetailBaseVC {
     private var currentStatus:SourceStatus = .other // 判断当前的报价状态
     private var offerLists:[ZbnOfferModel] = []     // 报价数据
     
+    private var quoteStatus: Int = 0 //货源状态
     
     public var offer:OfferOrderHallResultApp?
     //自动成交时间
@@ -23,10 +24,11 @@ class GSDetailVC: GSDetailBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configTableView()
-        self.configCurrentHallStatus()
+//        self.configCurrentHallStatus()
 //        self.loadOffer()
 //       // 获取距离下次成交时间的请求
 //        getAutoTime()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,18 +47,26 @@ class GSDetailVC: GSDetailBaseVC {
             .subscribe(onNext: {(data) in
                 if (data.data != nil) {
                     let dic = data.data as! Dictionary<String, Any>
+                    //自动成交时间
                     let str = dic["surplusTurnoverTime"]  as? TimeInterval
-                    
+                    //竞价状态
+                    let quoteStatus = dic["isDeal"] as? Int
+                    self.quoteStatus = quoteStatus ?? 0
                     if (str != nil) {
                     let time = (dic["surplusTurnoverTime"] ?? 0) as! TimeInterval
 
                     self.autoTime = time
                     }
+                    
                 }
-
+                _ = self.goodsSupplyInfo()
+              
+                self.tableView.reloadData()
+                self.tableView.endRefresh()
                 print("时间：\(String(describing: data.data))")
                 }, onError: { [weak self](error) in
                 self?.showFail(fail: error.localizedDescription, complete: nil)
+                    self?.tableView.endRefresh()
             })
             .disposed(by: dispose)
     }
@@ -109,10 +119,12 @@ class GSDetailVC: GSDetailBaseVC {
     
     /// 其他人的报价信息
     override func otherOfferInfo() -> [OfferInfoModel]? {
-        if showOtherOfferInfo() == true {
+        //明报
+//        if showOtherOfferInfo() == true {
             return self.otherOfferUIModels()
-        }
-        return nil
+//        }
+        //暗报
+//        return nil
     }
     
     /// 货源信息
@@ -130,6 +142,26 @@ class GSDetailVC: GSDetailBaseVC {
         info.referenceTotalPrice = self.offer?.refercneceTotalPrice ?? 0
         info.remark  = self.offer?.remark ?? " "
         info.id = self.offer?.id ?? ""
+        //报价的成交状态
+        if self.quoteStatus == 0 {
+            info.reportStatus = .reject
+        }else if (self.quoteStatus == 1){
+            info.reportStatus = .inbinding
+        }else if (self.quoteStatus == 2){
+            info.reportStatus = .deal
+        }else if (self.quoteStatus == 3){
+            info.reportStatus = .done
+        }else if (self.quoteStatus == 4){
+            info.reportStatus = .willDesignate
+        }else if (self.quoteStatus == 5){
+            info.reportStatus = .canceled
+        }else{
+            info.reportStatus = .notDone
+        }
+        //更新界面状态
+        self.offer?.dealStatus  = info.reportStatus
+        self.configCurrentHallStatus()
+        
         return info
     }
     
@@ -140,7 +172,7 @@ class GSDetailVC: GSDetailBaseVC {
     override func showOtherOfferInfo() -> Bool {
         //MARK: - 是否获取其他人的x报价信息
         /// - 若货源信息是由TMS经销商来源
-        /// - 有明报显示 ，暗报不显示其他人报价
+        /// - 有明报显示 ，暗报“**”金额其他人报价
         /// - 若货源信息是由第三方发布的都可见
         if self.offer?.sourceType == 2 && self.offer?.offerType == 2 { // 不显示其他人报价
             return false
@@ -172,6 +204,7 @@ extension GSDetailVC {
                 self?.loadOffer()
                 self?.getAutoTime()
             })
+        
             .disposed(by: dispose)
     }
     
@@ -183,6 +216,12 @@ extension GSDetailVC {
             break
         case .deal,.done:
             self.currentStatus = .dealed
+            self.showAlert(title: "提示", message: "当前报价已完成，请在报价已完成列表查看") { (index) in
+                if index == 1 {
+                    //确定
+                    self.pop(animated: true)
+                }
+            }
             break
         case .inbinding:
             self.currentStatus = .bidding
@@ -195,9 +234,20 @@ extension GSDetailVC {
             break
         case .willDesignate:
             self.currentStatus = .willDesignate
+          
+            self.showAlert(title: "提示", message: "当前报价已完成，请在报价已完成列表查看") { (index) in
+                if index == 1 {
+                    //确定
+                    self.pop(animated: true)
+                }
+            }
+            
             break
         }
     }
+    
+    
+    
 }
 
 extension GSDetailVC {
@@ -222,10 +272,17 @@ extension GSDetailVC {
         let uiModels = self.offerLists.map { (model) -> OfferInfoModel in
             var info = OfferInfoModel()
             info.offerName = model.carrierName
+            info.dealPossible = model.offerPossibility
             info.offerUnitPrice = model.quotedPrice
             info.offerTotalPrice = model.totalPrice
-            info.dealPossible = model.offerPossibility
-//            info.showOffer = model
+           
+            if showOtherOfferInfo() == true {
+                //明报
+                info.showOffer = true
+            }else {
+                //暗报
+                info.showOffer = false
+            }
             return info
         }
         return uiModels
