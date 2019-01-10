@@ -65,6 +65,7 @@ class ZTScrollViewConroller: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = self.horiScrolEnable()
         collectionView.register(UINib.init(nibName: "\(ZTScrollItemCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(ZTScrollItemCell.self)")
+        collectionView.backgroundColor = UIColor.white
         return collectionView
     }()
     

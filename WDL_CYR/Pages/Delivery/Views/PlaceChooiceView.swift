@@ -10,6 +10,10 @@ import UIKit
 
 class PlaceChooiceView: UIView  , UICollectionViewDataSource, UICollectionViewDelegate {
     
+    private var selectHeader:DeliveryPlaceTabHeader?
+    
+    private var currentTabIndex:Int = 0
+    
     // 选择的省市区
     private var provinceItem:PlaceChooiceItem?
     private var cityItem:PlaceChooiceItem?
@@ -109,13 +113,18 @@ class PlaceChooiceView: UIView  , UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headr = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "\(DeliveryPlaceTabHeader.self)", for: indexPath) as! DeliveryPlaceTabHeader
-        
-        headr.backgroundColor = UIColor.white
-        headr.tabTapClosure = { index in
-            self.tapTab(index: index)
+        if selectHeader == nil {
+            let headr = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "\(DeliveryPlaceTabHeader.self)", for: indexPath) as! DeliveryPlaceTabHeader
+            
+            headr.backgroundColor = UIColor.white
+            headr.tabTapClosure = { [weak self] index in
+                self?.tapTab(index: index)
+                self?.currentTabIndex = index
+            }
+            selectHeader = headr
         }
-        return headr
+        selectHeader?.selectedIndex(index: self.currentTabIndex)
+        return selectHeader!
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -154,14 +163,20 @@ class PlaceChooiceView: UIView  , UICollectionViewDataSource, UICollectionViewDe
                 self.cityTapIndex = 0
                 self.strictTapIndex = 0
                 self.updateCollectionWhenTap(tabIndex: self.tabIndex, row: row)
+                selectHeader?.tapTab(index: 1)
             }
+            self.getSelectedArea()
+            return
         }
         if self.tabIndex == 1 {
             if self.cityTapIndex != row {
                 self.cityTapIndex = row
                 self.strictTapIndex = 0
                 self.updateCollectionWhenTap(tabIndex: self.tabIndex, row: row)
+                selectHeader?.tapTab(index: 2)
             }
+            self.getSelectedArea()
+            return
         }
         if self.tabIndex == 2 {
             if self.strictTapIndex != row {
@@ -169,9 +184,8 @@ class PlaceChooiceView: UIView  , UICollectionViewDataSource, UICollectionViewDe
                 self.updateCollectionWhenTap(tabIndex: self.tabIndex, row: row)
                 self.strictItem = self.currentShowItems[self.strictTapIndex]
             }
+            self.getSelectedArea()
         }
-        
-        self.getSelectedArea()
     }
     
     private func updateCollectionWhenTap(tabIndex:Int , row:Int) {
