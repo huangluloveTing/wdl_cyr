@@ -24,12 +24,11 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
     func didShow() {
         self.beginRefresh()
     }
+    
     func willShow() {
         
     }
     
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.addSearchBar(to: self.tableView, placeHolder: "搜索托运人/承运人/姓名/电话号码")

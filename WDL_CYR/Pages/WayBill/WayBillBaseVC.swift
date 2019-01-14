@@ -370,9 +370,10 @@ extension WayBillBaseVC {
     
     // begin refresh
     func beginRefresh() -> Void {
-        if let header = self.currentTableView.mj_header {
-            header.beginRefreshing()
+        guard let header = self.currentTableView.mj_header else {
+            return
         }
+        header.beginRefreshing()
     }
 }
 

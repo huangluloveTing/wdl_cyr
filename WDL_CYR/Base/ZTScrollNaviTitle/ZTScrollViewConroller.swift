@@ -21,8 +21,18 @@ class ZTScrollViewConroller: UIViewController {
     func scrollSubItems(items:[ZTScrollItem]) -> Void {
         self.subItems = items
         self.currentFrontView = items.first?.viewController
+        self.addAllSubVC()
         self.collectionView.reloadData()
         self.configNaviSelectTitle()
+    }
+    
+    //MARK: - 添加首所有的子视图控制器
+    func addAllSubVC() -> Void {
+        self.subItems?.forEach({ (item) in
+            if let vc = item.viewController as? UIViewController {
+                self.addChildViewController(vc)
+            }
+        })
     }
 
     override func viewDidLoad() {
@@ -94,16 +104,18 @@ extension ZTScrollViewConroller : UICollectionViewDelegate , UICollectionViewDat
         if vc != nil {
             contentView?.addSubview((vc?.view)!)
             vc?.view.frame = (contentView?.bounds)!
-            self.addChildViewController(vc!)
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        decideCurrentFront(index: indexPath.row)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.collectionView {
             let offset = scrollView.contentOffset.x
             let index = round(offset / scrollView.zt_width)
-            decideCurrentFront(index: Int(index))
             if self.isTapTab == true {
                 return
             }
@@ -155,8 +167,8 @@ extension ZTScrollViewConroller {
 extension ZTScrollViewConroller {
     
     private func scrollCollectionView(index:Int) {
-        let offset = CGPoint(x: CGFloat(index) * self.collectionView.zt_width, y: 0)
-        self.collectionView.setContentOffset(offset, animated: true)
+//        let offset = CGPoint(x: CGFloat(index) * self.collectionView.zt_width, y: 0)
+        self.collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     
