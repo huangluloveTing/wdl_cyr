@@ -112,10 +112,10 @@ extension RechargeInlineVC {
                 let money = data.data as? Float
                 
                 guard money != nil else{
-                    self?.indicatorMoneyLab?.text = "根据您的认真信息：您最低充值金额为0元"
+                    self?.indicatorMoneyLab?.text = "根据您的认证信息：您最低充值金额为0元"
                     return
                 }
-                self?.indicatorMoneyLab?.text = "根据您的认真信息：您最低充值金额为\(String(describing: money!))元"
+                self?.indicatorMoneyLab?.text = "根据您的认证信息：您最低充值金额为\(String(describing: money!))元"
                 },onError: {[weak self] (error) in
                     self?.showFail(fail: error.localizedDescription)
             })

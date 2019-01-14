@@ -58,7 +58,8 @@ extension OfferWithTruckVC {
         self.loadCarrierInfo(hallId: hallId) { [weak self](info, error) in
             if let error = error {
                 self?.showFail(fail: error.localizedDescription, complete: {
-                    self?.pop()
+
+                   self?.pop()
                 })
                 return
             }
@@ -182,8 +183,10 @@ extension OfferWithTruckVC {
                         callBack(.refresh(newResource))
                     }
                     
-                    self?.pop(toRootViewControllerAnimation: true
-                    )
+                    self?.pop(toRootViewControllerAnimation: false)
+                    
+                    let  rootVC = UIApplication.shared.keyWindow?.rootViewController as? RootTabBarVC
+                    rootVC?.selectedIndex = 1
                 })
                 
                 alertController.addAction(cancelAction)

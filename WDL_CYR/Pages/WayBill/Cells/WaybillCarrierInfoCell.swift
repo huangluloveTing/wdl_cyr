@@ -210,8 +210,8 @@ extension WaybillCarrierInfoCell {
         
         let weight = (info?.goodsWeight ?? "") + "吨"
         self.truckInfoLabel.text = Util.contact(strs: [weight , info?.vehicleLength ?? "" , info?.vehicleType ?? "" , info?.packageType ?? ""], seperate: " | ")
-        self.unitPriceLabel.text = String(info?.refercneceUnitPrice ?? 0) + "元"
-        self.totalPriceLabel.text = String(info?.refercneceTotalPrice ?? 0) + "元"
+        self.unitPriceLabel.text = String(info?.dealUnitPrice ?? 0) + "元"
+        self.totalPriceLabel.text = String(info?.dealTotalPrice ?? 0) + "元"
         self.waybillNoLabel.text = info?.transportNo
         self.dealTimeLabel.text = Util.dateFormatter(date: (info?.createTime ?? 0)/1000, formatter: "yyyy-MM-dd HH:mm:ss")
     }

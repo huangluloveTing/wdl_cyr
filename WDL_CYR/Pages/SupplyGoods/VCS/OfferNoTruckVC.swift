@@ -103,7 +103,10 @@ extension OfferNoTruckVC {
                         newResource?.isOffer = "OK"
                         callBack(.refresh(newResource))
                     }
-                    self?.pop()
+                    self?.pop(toRootViewControllerAnimation: false)
+                    
+                    let  rootVC = UIApplication.shared.keyWindow?.rootViewController as? RootTabBarVC
+                    rootVC?.selectedIndex = 1
                 })
                 
                 alertController.addAction(cancelAction)

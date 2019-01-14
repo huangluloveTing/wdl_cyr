@@ -21,10 +21,7 @@ class OfferContainerVC: ZTScrollViewConroller {
         self.setTitleTintColor(color: UIColor.white, state: .selected)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+  
 }
 
 extension OfferContainerVC {
