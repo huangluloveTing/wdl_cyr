@@ -18,7 +18,8 @@ enum OfferSearchStyle {
 class OfferSearchBaseVC: NormalBaseVC {
     
     typealias OfferSearchResultClosure<T> = (T) -> ()
-    
+    //用于区别是我的运力还是其他主页跳转的页面，接口会有所不同
+    public var isTransportVC:Bool = true
     private var baseTableView:UITableView!
     private var currentList:[OfferSearchUIModel] = []
     public var currentStyle:OfferSearchStyle? = .driverSearch
@@ -124,16 +125,34 @@ extension OfferSearchBaseVC {
     
     // 搜索车辆
     func search(text:String) -> Observable<BaseResponseModel<[ZbnTransportCapacity]>> {
-        return BaseApi.request(target: API.findCapacityByName(text), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
-            .retry()
+        if isTransportVC == true {
+            //运力
+            return BaseApi.request(target: API.findCapacityByName(text), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+                .asObservable()
+        }
+        //其他获取
+        var model = OtherPageGotCarOrDriver()
+        model.vehicleNo = text
+        return BaseApi.request(target: API.findCarrierCarByNo(model), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
             .asObservable()
+        
     }
     
     // 搜索司机
     func searchDirver(text:String) -> Observable<BaseResponseModel<[ZbnTransportCapacity]>> {
-        return BaseApi.request(target: API.findCapacityByDriverNameOrPhone(text), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
-            .retry()
+      
+        if isTransportVC == true {
+            //运力
+            return BaseApi.request(target: API.findCapacityByDriverNameOrPhone(text), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+                .asObservable()
+        }
+        //其他界面获取
+        var model = OtherPageGotCarOrDriver()
+        model.driverName = text
+        return BaseApi.request(target: API.findCarrierByDriverName(model), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
             .asObservable()
+        
+       
     }
     
     

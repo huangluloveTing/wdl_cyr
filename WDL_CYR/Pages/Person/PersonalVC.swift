@@ -247,7 +247,7 @@ extension PersonalVC {
     // 获取承运人保证金数据
     func loadCarrierBoundMoney() -> Void {
         self.loadCarrierBoundTask().asObservable()
-            .retry()
+            .retry(2)
             .subscribe(onNext: { (data) in
                 WDLCoreManager.shared().bondInfo = data.data
                 self.carrierBondInfo = data.data

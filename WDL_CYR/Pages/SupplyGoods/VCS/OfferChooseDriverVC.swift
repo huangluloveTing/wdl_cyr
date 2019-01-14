@@ -15,6 +15,7 @@ class OfferChooseDriverVC: OfferSearchBaseVC {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    
     private var lists:[ZbnTransportCapacity] = []
     
     public var searchResultClosure:OfferSearchResultClosure<ZbnTransportCapacity>?

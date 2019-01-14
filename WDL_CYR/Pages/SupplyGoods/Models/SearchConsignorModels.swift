@@ -32,6 +32,13 @@ struct QueryZbnTransportCapacity : HandyJSON {
     var vehicleNo : String? // (string): 车牌号 ,
 }
 
+
+// 搜索 车辆 和 承运人的返回数据 模型
+struct OtherPageGotCarOrDriver : HandyJSON {
+    var driverName : String = "" // (string): 司机姓名 ,
+     var vehicleNo : String = "" // (string): 车牌号 ,
+}
+
 // 搜索 车辆 和 承运人的返回数据 模型
 struct ZbnTransportCapacity : HandyJSON {
   

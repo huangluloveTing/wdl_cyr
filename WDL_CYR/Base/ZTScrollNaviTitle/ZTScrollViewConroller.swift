@@ -11,7 +11,7 @@ import UIKit
 class ZTScrollViewConroller: UIViewController {
     
     private var subItems:[ZTScrollItem]?
-    private var naviSelectView:ZTScrollNaviBarView?
+//    private var naviSelectView:ZTScrollNaviBarView?
     
     private var currentFrontView:ZTScrollViewControllerType?
     
@@ -46,6 +46,10 @@ class ZTScrollViewConroller: UIViewController {
         }
         
         self.view.addSubview(self.collectionView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.addNaviSelectView()
     }
 
@@ -79,8 +83,17 @@ class ZTScrollViewConroller: UIViewController {
         return collectionView
     }()
     
+    private lazy var naviSelectView :ZTScrollNaviBarView = {
+        let naviTitle = ZTScrollNaviBarView()
+        naviTitle.tapClosure = { (index) in
+            self.isTapTab = true
+            self.scrollCollectionView(index: index)
+        }
+        return naviTitle
+    }()
+    
     func setTitleTintColor(color:UIColor , state:UIControlState) -> Void {
-        self.naviSelectView?.setHeaderTintColor(color: color, state: state)
+        self.naviSelectView.setHeaderTintColor(color: color, state: state)
     }
     
     //MARK: - 是否启用横向滚动
@@ -119,7 +132,7 @@ extension ZTScrollViewConroller : UICollectionViewDelegate , UICollectionViewDat
             if self.isTapTab == true {
                 return
             }
-            self.naviSelectView?.toSelected(index: Int(index))
+            self.naviSelectView.toSelected(index: Int(index))
         }
     }
     
@@ -146,20 +159,15 @@ extension ZTScrollViewConroller : UICollectionViewDelegate , UICollectionViewDat
 // navi titles
 extension ZTScrollViewConroller {
     private func addNaviSelectView() {
-        let naviTitle = ZTScrollNaviBarView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 120, height: 44))
-        self.naviSelectView = naviTitle
-        self.naviSelectView?.tapClosure = { (index) in
-            self.isTapTab = true
-            self.scrollCollectionView(index: index)
-        }
-        self.navigationItem.titleView = naviTitle
+        self.naviSelectView.frame = CGRect(x: 60 * IPHONE_RATE, y: 0, width: IPHONE_WIDTH - 60 * IPHONE_RATE * 2, height: 44)
+        self.navigationItem.titleView = self.naviSelectView
     }
     
     private func configNaviSelectTitle() {
         let titles = self.subItems?.map({ (item) -> String in
             return item.title
         })
-        self.naviSelectView?.updateTitles(titles: titles!)
+        self.naviSelectView.updateTitles(titles: titles!)
     }
 }
 

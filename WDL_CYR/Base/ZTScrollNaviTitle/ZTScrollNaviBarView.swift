@@ -43,12 +43,12 @@ class ZTScrollNaviBarView: UIView {
         hotiView.dataSource = self
         hotiView.selectionIndicatorAnimationMode = .noBounce
         hotiView.backgroundColor = UIColor.clear
+        self.addSubview(hotiView)
         return hotiView
     }()
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.addSubview(self.titleView)
         self.titleView.frame = self.bounds
         self.titleView.selectedButtonIndex = self.currentSelectedIndex
     }

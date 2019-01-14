@@ -13,6 +13,7 @@ extension BaseVC {
     // 驾驶员选择
     func toChooseDriver(title:String? , closure:((ZbnTransportCapacity) -> ())? = nil) -> Void {
         let driverChooseVC = OfferChooseDriverVC()
+        driverChooseVC.isTransportVC = false
         driverChooseVC.searchResultClosure = closure
         self.pushToVC(vc: driverChooseVC, title: title)
     }
@@ -20,6 +21,7 @@ extension BaseVC {
     // 车辆选择
     func toChooseTruck(closure:((ZbnTransportCapacity) -> ())?) -> Void {
         let truckVC = OfferChooseTruckVC()
+        truckVC.isTransportVC = false
         truckVC.searchResultClosure = closure
         self.pushToVC(vc: truckVC, title: "选择车辆")
     }

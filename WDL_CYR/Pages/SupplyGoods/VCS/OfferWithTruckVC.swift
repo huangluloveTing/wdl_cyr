@@ -103,6 +103,7 @@ extension OfferWithTruckVC {
     // 驾驶员选择
     func toChooseDriver() -> Void {
         let driverChooseVC = OfferChooseDriverVC()
+        driverChooseVC.isTransportVC = false
         driverChooseVC.searchResultClosure = { [weak self] (capacity) in
             var driver = OfferWithTruckDriverModel()
             driver.driverName = capacity.driverName
@@ -119,6 +120,7 @@ extension OfferWithTruckVC {
     // 车辆选择
     func toChooseTruck() -> Void {
         let truckVC = OfferChooseTruckVC()
+        truckVC.isTransportVC = false
         truckVC.searchResultClosure = {[weak self] (capacity) in
             var truck = OfferWithTruckModel()
             truck.truckLength = capacity.vehicleLength
@@ -182,9 +184,7 @@ extension OfferWithTruckVC {
                         newResource?.isOffer = "OK"
                         callBack(.refresh(newResource))
                     }
-                    
                     self?.pop(toRootViewControllerAnimation: false)
-                    
                     let  rootVC = UIApplication.shared.keyWindow?.rootViewController as? RootTabBarVC
                     rootVC?.selectedIndex = 1
                 })
