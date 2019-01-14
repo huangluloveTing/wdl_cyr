@@ -84,7 +84,7 @@ extension WDLCoreManager {
     func loadCarrierInfo(closure:((ZbnCarrierInfo?) -> ())? = nil) -> Void {
         let _ = BaseApi.request(target: API.getCarrierInformation(), type: BaseResponseModel<ZbnCarrierInfo>.self)
             .throttle(2, scheduler: MainScheduler.instance)
-            .retry()
+            .retry(2)
             .subscribe(onNext: { (data) in
                 let token = self.userInfo?.token
                 var info = data.data
@@ -102,7 +102,7 @@ extension WDLCoreManager {
     
     public func loadUnReadMessage(closure:((Int)->())?) {
         let _ = BaseApi.request(target: API.getMessageNum(), type: BaseResponseModel<Int>.self)
-            .retry()
+            .retry(2)
             .subscribe(onNext: { (data) in
                 self.unreadMessageCount = data.data ?? 0
                 if let closure = closure {
@@ -113,7 +113,7 @@ extension WDLCoreManager {
     
     public func loadAreas(closure:(([RegionModel])->())? = nil) {
        let _ = BaseApi.request(target: API.loadTaskInfo(), type: BaseResponseModel<[RegionModel]>.self)
-            .retry()
+            .retry(2)
             .subscribe(onNext: { [weak self](data) in
                 self?.regionAreas = data.data ?? []
                 if let closure = closure {

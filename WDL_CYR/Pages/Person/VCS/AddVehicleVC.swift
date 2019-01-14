@@ -296,7 +296,6 @@ extension AddVehicleVC {
     //MARK: - 获取车辆类型
     func loadVehicleType() -> Void {
         BaseApi.request(target: API.dictionaryEntityByCode(BasicDictionaryKeyMode.VehicleType), type: BaseResponseModel<HallModels>.self)
-            .retry()
             .subscribe(onNext: { [weak self](data) in
                 self?.typeModels = data.data
                 self?.vehicleTypeTextField.oneChooseInputView(titles: self?.toConfigVehicleTypeData())
