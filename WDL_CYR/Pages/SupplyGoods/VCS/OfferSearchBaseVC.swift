@@ -131,7 +131,9 @@ extension OfferSearchBaseVC {
                 .asObservable()
         }
         //其他获取
-        return BaseApi.request(target: API.findCarrierCarByNo(text), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+        var model = ZbnTransportCapacity()
+        model.vehicleNo = text
+        return BaseApi.request(target: API.findCarrierCarByNo(model), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
             .asObservable()
         
     }
@@ -147,7 +149,9 @@ extension OfferSearchBaseVC {
                 .asObservable()
         }
         //其他界面获取
-        return BaseApi.request(target: API.findCarrierByDriverName(text), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+        var model = ZbnTransportCapacity()
+        model.driverName = text
+        return BaseApi.request(target: API.findCarrierByDriverName(model), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
             .asObservable()
         
        

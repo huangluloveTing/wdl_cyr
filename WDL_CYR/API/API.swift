@@ -59,10 +59,10 @@ enum API {
     case cancelFoucePath(String)       // 取消线路的关注
     case cancelOffer(String , String)                        // 取消报价
     case findCapacityByDriverNameOrPhone(String)            // 根据驾驶员姓名/电话查询驾驶员信息
-    case findCarrierByDriverName(String)            // 报价配载界面根据驾驶员姓名/电话查询驾驶员信息
+    case findCarrierByDriverName(ZbnTransportCapacity)            // 报价配载界面根据驾驶员姓名/电话查询驾驶员信息
     case addDriverWithPhone(String)            // 我的运力添加驾驶员下一步后进行搜索的接口
    
-    case findCarrierCarByNo(String)                         //获取运力车辆
+    case findCarrierCarByNo(ZbnTransportCapacity)                         //获取运力车辆
     
     case findCapacityByName(String)                         //获取运力车辆
     case getCarrierInformation()                            // 获取登陆承运人信息
@@ -363,14 +363,14 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["hallId": hallId , "id":offerId], encoding: JSONEncoding.default)
     case .findCapacityByDriverNameOrPhone(let nameOrPhone):
         return .requestParameters(parameters: ["nameOrPhone" : nameOrPhone], encoding: URLEncoding.default)
-    case .findCarrierByDriverName(let name):
-        return .requestParameters(parameters: ["driverName" : name], encoding: URLEncoding.default)
+    case .findCarrierByDriverName(let query):
+        return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
         
     case .addDriverWithPhone(let phone):
       
         return .requestParameters(parameters: ["phone" : phone], encoding: URLEncoding.default)
-    case .findCarrierCarByNo(let no):
-        return .requestParameters(parameters: ["vehicleNo" : no], encoding: URLEncoding.default)
+    case .findCarrierCarByNo(let query):
+        return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     case .findCapacityByName(let name):
         return .requestParameters(parameters: ["name" : name], encoding: URLEncoding.default)
     case .getCarrierInformation():
