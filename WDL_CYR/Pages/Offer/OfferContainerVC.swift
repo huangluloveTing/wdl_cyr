@@ -20,7 +20,8 @@ class OfferContainerVC: ZTScrollViewConroller {
         self.setTitleTintColor(color: UIColor.white.withAlphaComponent(0.7), state: .normal)
         self.setTitleTintColor(color: UIColor.white, state: .selected)
     }
-
+    
+  
   
 }
 
@@ -29,7 +30,6 @@ extension OfferContainerVC {
     func addSubController() -> Void {
         let notDoneVC = OfferNotDoneVC()
         let dealVC = OfferDealVC()
-        
         let subItem1 = ZTScrollItem(viewController: notDoneVC, title: "未完成")
         let subItem2 = ZTScrollItem(viewController: dealVC, title: "已完成")
         self.scrollSubItems(items: [subItem1 , subItem2])
