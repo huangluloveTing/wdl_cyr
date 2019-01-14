@@ -14,6 +14,7 @@ class TransportUtil: NSObject {
     static func configWaybillDisplayStatus(info:WayBillInfoBean) -> WaybillDisplayStatus {
         let transportStatus = info.transportStatus ?? 0 // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派
         let comType = info.comeType ?? 1         // 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
+        let sourceType = info.sourceType ?? 1
         let driverStatus = info.driverStatus ?? 0 // 司机状态 0=未配载 1=TMS指派 (只要生成定单，就表明一定是已指派)2=无车竞价待指派 3=拒绝指派 4=接受指派 5=已配载 6=已违约 7=违约继续承运 8=违约放弃承运 ,
 //        let role = info.role            // 1 承运人 ，2 司机
         let evalate = (info.evaluateCode != nil)
@@ -25,6 +26,11 @@ class TransportUtil: NSObject {
         
         if completeStatus == 1 { // 未配载
             if comType == 1 || comType == 2 {   // 来源1 , 2 ， 未接受时 ， 显示 接受 拒绝
+                if comType == 2 {
+                    if transportStatus == 0 {
+//                        return
+                    }
+                }
                  if driverStatus == 4 {  // 当driverStatus == 4 时 ， 已接受，显示 配载
                     return .unAssemble_comType_1_2_toAssemble
                 }
@@ -59,6 +65,12 @@ class TransportUtil: NSObject {
             if transportStatus == 1 || transportStatus == 0 {
                 // 已配载的运单，可以继续配载
                 if driverStatus == 4 {
+                    if sourceType == 2 { // tms 运单，只有待办单才能修改配载
+                        if transportStatus == 0 {
+                            return .notDone_canEditAssemble
+                        }
+                        return .notDone_willTransport
+                    }
                     return .notDone_canEditAssemble
                 }
                 return .notDone_willTransport

@@ -55,7 +55,7 @@ struct WayBillInfoBean : HandyJSON {
     var packageType : String? //  (string): 包装类型 ,（无包装）
     var refercneceTotalPrice : Float? //  (number): 参考总价 ,
     var refercneceUnitPrice : Float? //(number): 参考单价 ,
-    
+    var sourceType : Int? // (integer): 货源来源 1:来至ZBN，2:来至TMS , 3:来自SAP
     var transportNo : String? // (string): 运单号 ,
     var transportStatus : Int? // (integer): 运单状态 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派 ,
     var evaluateCode :String? //  (string): 不为空，表示承运人已经评价 ,
