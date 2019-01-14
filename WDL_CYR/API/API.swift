@@ -59,9 +59,12 @@ enum API {
     case cancelFoucePath(String)       // 取消线路的关注
     case cancelOffer(String , String)                        // 取消报价
     case findCapacityByDriverNameOrPhone(String)            // 根据驾驶员姓名/电话查询驾驶员信息
-    
+    case findCarrierByDriverName(String)            // 报价配载界面根据驾驶员姓名/电话查询驾驶员信息
     case addDriverWithPhone(String)            // 我的运力添加驾驶员下一步后进行搜索的接口
-    case findCapacityByName(String)                         //
+   
+    case findCarrierCarByNo(String)                         //获取运力车辆
+    
+    case findCapacityByName(String)                         //获取运力车辆
     case getCarrierInformation()                            // 获取登陆承运人信息
     case zbnBondInformation()                               // 获取承运人保证金数据
     case findCarInformation(String)                               // 获取我的车辆
@@ -184,11 +187,14 @@ func apiPath(api:API) -> String {
         return "/offer/cancelOffer"
     case .findCapacityByDriverNameOrPhone(_):
         return "/transportCapacity/findDriverInformation"
-    
+    case .findCarrierByDriverName(_):
+        return "/transportCapacity/findTransportCapacity"
     case .addDriverWithPhone(_):
     
         return "/transportCapacity/findDriverByPhone"
         
+    case .findCarrierCarByNo(_):
+        return "/transportCapacity/findVehicleformation"
     case .findCapacityByName(_):
         return "/transportCapacity/findCarInformation"
     case .getCarrierInformation():
@@ -357,12 +363,14 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["hallId": hallId , "id":offerId], encoding: JSONEncoding.default)
     case .findCapacityByDriverNameOrPhone(let nameOrPhone):
         return .requestParameters(parameters: ["nameOrPhone" : nameOrPhone], encoding: URLEncoding.default)
- 
+    case .findCarrierByDriverName(let name):
+        return .requestParameters(parameters: ["driverName" : name], encoding: URLEncoding.default)
         
     case .addDriverWithPhone(let phone):
       
         return .requestParameters(parameters: ["phone" : phone], encoding: URLEncoding.default)
-        
+    case .findCarrierCarByNo(let no):
+        return .requestParameters(parameters: ["vehicleNo" : no], encoding: URLEncoding.default)
     case .findCapacityByName(let name):
         return .requestParameters(parameters: ["name" : name], encoding: URLEncoding.default)
     case .getCarrierInformation():
