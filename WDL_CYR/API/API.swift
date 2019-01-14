@@ -59,11 +59,9 @@ enum API {
     case cancelFoucePath(String)       // 取消线路的关注
     case cancelOffer(String , String)                        // 取消报价
     case findCapacityByDriverNameOrPhone(String)            // 根据驾驶员姓名/电话查询驾驶员信息
-    case findCarrierByDriverName(ZbnTransportCapacity)            // 报价配载界面根据驾驶员姓名/电话查询驾驶员信息
+    case findCarrierByDriverName(OtherPageGotCarOrDriver)            // 报价配载界面根据驾驶员姓名/电话查询驾驶员信息
+    case findCarrierCarByNo(OtherPageGotCarOrDriver)                         //获取运力车辆
     case addDriverWithPhone(String)            // 我的运力添加驾驶员下一步后进行搜索的接口
-   
-    case findCarrierCarByNo(ZbnTransportCapacity)                         //获取运力车辆
-    
     case findCapacityByName(String)                         //获取运力车辆
     case getCarrierInformation()                            // 获取登陆承运人信息
     case zbnBondInformation()                               // 获取承运人保证金数据
