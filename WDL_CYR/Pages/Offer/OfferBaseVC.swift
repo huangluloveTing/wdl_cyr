@@ -34,7 +34,9 @@ class OfferBaseVC: MainBaseVC {
     }
     
     override func bindViewModel() {
+      
     }
+    
     
     // override
     func headerRefresh() -> Void {} // 下拉刷新
