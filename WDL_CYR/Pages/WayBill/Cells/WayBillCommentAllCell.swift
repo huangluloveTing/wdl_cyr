@@ -33,7 +33,7 @@ class WayBillCommentAllCell: BaseCell {
         self.toMeServiceStarView = XHStarRateView(frame: (self.toMeServiceRateView.bounds))
         self.toMeServiceStarView?.onlyShow = true
         self.toMeLogicRateView.addSubview(self.toMeLogicStarView!)
-        self.toMeServiceRateView.addSubview(self.myServiceCommentStarView!)
+        self.toMeServiceRateView.addSubview(self.toMeLogicStarView!)
         
         self.myLogicCommentStarView = XHStarRateView(frame: self.myRateView.bounds)
         self.myLogicCommentStarView?.onlyShow = true
