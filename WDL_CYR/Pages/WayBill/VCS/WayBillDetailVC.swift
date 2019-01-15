@@ -116,18 +116,18 @@ class WayBillDetailVC: WaybillDetailBaseVC {
             mode == .doing_carrierBreak ||
             mode == .doing_canEditAssemble {
             let tranInfo = TransactionInformation.deserialize(from: self.waybillInfo?.toJSON())
-            let mode = WayBillSourceTypeMode(rawValue: self.waybillInfo?.comeType ?? 1)
+//            let mode = WayBillSourceTypeMode(rawValue: self.waybillInfo?.comeType ?? 1)
             if self.waybillInfo?.comeType == 1 {
-                self.toAssemblePage(info: tranInfo , mode: mode ?? .driverAssemble)
+                self.toAssemblePage(info: tranInfo , mode:.driverAssemble)
             }
             if self.waybillInfo?.comeType == 2 {
-                self.toAssemblePage(info: tranInfo , mode: mode ?? .carrierAssemble)
+                self.toAssemblePage(info: tranInfo , mode:.carrierAssemble)
             }
             if self.waybillInfo?.comeType == 3 {
-                self.toAssemblePage(info: tranInfo , mode: mode ?? .planAssemble)
+                self.toAssemblePage(info: tranInfo , mode: .planAssemble)
             }
             if self.waybillInfo?.comeType == 4 {
-                self.toAssemblePage(info: tranInfo , mode: mode ?? .carrierAssemble)
+                self.toAssemblePage(info: tranInfo , mode: .carrierAssemble)
             }
         }
     }
