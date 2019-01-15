@@ -11,6 +11,8 @@ import RxCocoa
 import RxSwift
 
 class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
+  
+    
     func willDisappear() {
         
         self.dropHintView.hiddenDropView()
@@ -25,10 +27,11 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     private var dealStatus:WDLOfferDealStatus?
     
     func willShow() {
-        
+
     }
-    
+
     func didShow() {
+
         
     }
     
@@ -38,6 +41,7 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
         self.configTableView()
         self.tableView.beginRefresh()
     }
+   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

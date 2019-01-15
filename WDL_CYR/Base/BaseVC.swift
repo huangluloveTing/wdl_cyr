@@ -260,12 +260,18 @@ extension BaseVC : UISearchBarDelegate {
 extension BaseVC {
     //添加顶部的tab事件
     func addNaviSelectTitles(titles:[String]) {
-        let naviTitle = ZTScrollNaviBarView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 120, height: 44))
+       
+        
+//        let naviTitle = ZTScrollNaviBarView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 120, height: 44))
+        
+         let naviTitle = ZTScrollNaviBarView(frame:CGRect(x: 60 * IPHONE_RATE, y: 0, width: IPHONE_WIDTH - 60 * IPHONE_RATE * 2, height: 44))
+        
         naviTitle.updateTitles(titles: titles)
         naviTitle.tapClosure = { [weak self](index) in
             self?.tapNaviHandler(index: index)
         }
-        self.navigationItem.titleView = naviTitle
+        self.navigationController?.navigationBar.addSubview(naviTitle)
+//        self.navigationItem.titleView = naviTitle
     }
     
     @objc func tapNaviHandler(index:Int) -> Void {
