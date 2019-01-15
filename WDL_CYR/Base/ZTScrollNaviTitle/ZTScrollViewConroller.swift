@@ -52,6 +52,8 @@ class ZTScrollViewConroller: UIViewController {
         super.viewWillAppear(animated)
         self.addNaviSelectView()
     }
+    
+   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -161,7 +163,8 @@ extension ZTScrollViewConroller {
     private func addNaviSelectView() {
         self.naviSelectView.frame = CGRect(x: 60 * IPHONE_RATE, y: 0, width: IPHONE_WIDTH - 60 * IPHONE_RATE * 2, height: 44)
         
-        self.navigationItem.titleView = self.naviSelectView
+        self.navigationController?.navigationBar.addSubview(self.naviSelectView)
+//        self.navigationItem.titleView = self.naviSelectView
     }
     
     private func configNaviSelectTitle() {
