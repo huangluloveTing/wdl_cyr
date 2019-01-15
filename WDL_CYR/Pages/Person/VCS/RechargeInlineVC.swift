@@ -133,8 +133,18 @@ extension RechargeInlineVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(InLineMoneyCell.self)") as! InLineMoneyCell
-        cell.rechargeClosure = {[weak self] (selectMoney , inputMoney) in
-            self?.toRecharge(num: inputMoney ?? selectMoney)
+        cell.rechargeClosure = {[weak self] (selectMoney , inputMoney, isInput) in
+            if isInput == true {
+                if inputMoney == 0 {
+                   self?.showFail(fail: "还没有输入有效金额", complete: nil)
+                }else{
+                    self?.toRecharge(num: inputMoney ?? 0)
+                }
+                
+            }else{
+                self?.toRecharge(num:selectMoney)
+            }
+            
             
         }
         return cell
