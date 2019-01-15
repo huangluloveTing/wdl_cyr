@@ -128,12 +128,14 @@ extension OfferSearchBaseVC {
         if isTransportVC == true {
             //运力
             return BaseApi.request(target: API.findCapacityByName(text), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+                .retry(2)
                 .asObservable()
         }
         //其他获取
-        var model = ZbnTransportCapacity()
+        var model = OtherPageGotCarOrDriver()
         model.vehicleNo = text
         return BaseApi.request(target: API.findCarrierCarByNo(model), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+            .retry(2)
             .asObservable()
         
     }
@@ -141,17 +143,17 @@ extension OfferSearchBaseVC {
     // 搜索司机
     func searchDirver(text:String) -> Observable<BaseResponseModel<[ZbnTransportCapacity]>> {
       
-        
-        
         if isTransportVC == true {
             //运力
             return BaseApi.request(target: API.findCapacityByDriverNameOrPhone(text), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+                .retry(2)
                 .asObservable()
         }
         //其他界面获取
-        var model = ZbnTransportCapacity()
+        var model = OtherPageGotCarOrDriver()
         model.driverName = text
         return BaseApi.request(target: API.findCarrierByDriverName(model), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
+            .retry(2)
             .asObservable()
         
        
