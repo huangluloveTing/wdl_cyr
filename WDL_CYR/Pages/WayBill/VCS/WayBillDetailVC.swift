@@ -119,16 +119,21 @@ class WayBillDetailVC: WaybillDetailBaseVC {
 //            let mode = WayBillSourceTypeMode(rawValue: self.waybillInfo?.comeType ?? 1)
             if self.waybillInfo?.comeType == 1 {
                 self.toAssemblePage(info: tranInfo , mode:.driverAssemble)
+                return
             }
             if self.waybillInfo?.comeType == 2 {
                 self.toAssemblePage(info: tranInfo , mode:.carrierAssemble)
+                return
             }
             if self.waybillInfo?.comeType == 3 {
                 self.toAssemblePage(info: tranInfo , mode: .planAssemble)
+                return
             }
             if self.waybillInfo?.comeType == 4 {
                 self.toAssemblePage(info: tranInfo , mode: .carrierAssemble)
+                return
             }
+            self.toAssemblePage(info: tranInfo , mode: .carrierAssemble)
         }
     }
 }

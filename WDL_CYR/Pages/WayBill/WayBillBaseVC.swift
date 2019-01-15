@@ -238,16 +238,21 @@ extension WayBillBaseVC {
 //        tranInfo?.dealTotalPrice = tranInfo?.dealTotalPrice ?? 0
         if info.comeType == 1 {
             self.toAssemblePage(info: tranInfo , mode: mode ?? .driverAssemble)
+            return
         }
         if info.comeType == 2 {
             self.toAssemblePage(info: tranInfo , mode: mode ?? .carrierAssemble)
+            return
         }
         if info.comeType == 3 {
             self.toAssemblePage(info: tranInfo , mode: mode ?? .planAssemble)
+            return
         }
         if info.comeType == 4 {
             self.toAssemblePage(info: tranInfo , mode: .carrierAssemble)
+            return
         }
+        self.toAssemblePage(info: tranInfo , mode: .carrierAssemble)
     }
     
     //MARK: - 继续运输
