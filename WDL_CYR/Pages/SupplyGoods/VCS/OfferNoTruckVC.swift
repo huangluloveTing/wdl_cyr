@@ -104,7 +104,7 @@ extension OfferNoTruckVC {
                         callBack(.refresh(newResource))
                     }
                    
-                    self?.pop(toRootViewControllerAnimation: true)
+                    self?.pop(toRootViewControllerAnimation: false)
 
                     let  rootVC = UIApplication.shared.keyWindow?.rootViewController as? RootTabBarVC
                     rootVC?.selectedIndex = 1

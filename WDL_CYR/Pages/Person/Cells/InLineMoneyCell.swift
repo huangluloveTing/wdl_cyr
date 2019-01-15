@@ -18,7 +18,8 @@ class InLineMoneyCell: BaseCell {
     private var opitionIndex:Int = 0
     private var inputRechargeMoney:Float? = 0
     
-    typealias InLineReChargeClosure = (_ select:Float , _ input:Float?) -> ()
+    //判断是输入还是点击
+    typealias InLineReChargeClosure = (_ select:Float , _ input:Float?, _ isInput: Bool?) -> ()
     
     @IBOutlet weak var optionalView: ZTTagView!
     @IBOutlet weak var inputChargeNumTextField: UITextField!
@@ -29,9 +30,10 @@ class InLineMoneyCell: BaseCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.sureChargeButton.addBorder(color: nil, width: 0, radius: 4)
+        //选择金额
         self.configTagView(tagView: self.optionalView)
         self.optionalView.preference_maxWidth = IPHONE_WIDTH
-        self.optionalView.showTags(self.getTagOptionals())
+        self.optionalView.showTags(self.getTagOptionals(index: 0))
         self.initailAndBind()
     }
 
@@ -54,20 +56,20 @@ class InLineMoneyCell: BaseCell {
     
     func sureTapAction() -> Void {
         if let closure = self.rechargeClosure  {
-            closure(Float(OptionalChargeMoneys[self.opitionIndex]) , self.inputRechargeMoney)
+            closure(Float(OptionalChargeMoneys[self.opitionIndex]) , self.inputRechargeMoney, true)
         }
     }
 }
 
 extension InLineMoneyCell {
-    func getTagOptionals(index:Int = 0) -> [ZTTagItem] {
+    func getTagOptionals(index:Int) -> [ZTTagItem] {
         let tags = OptionalChargeMoneys.enumerated().map { (eIndex, money) -> ZTTagItem in
             let text = String(format: "%d元", money)
             let item = ZTTagItem()
             item.isCheck = false
-            if eIndex == index {
-                item.isCheck = true
-            }
+//            if eIndex == index {
+//                item.isCheck = true
+//            } //不要默认选中
             item.title = text
             return item
         }
@@ -84,6 +86,10 @@ extension InLineMoneyCell {
     func tagView(_ tagView: ZTTagView!, didTap index: Int) {
         tagView.showTags(self.getTagOptionals(index: index))
         self.opitionIndex = index
+        
+        if let closure = self.rechargeClosure  {
+            closure(Float(OptionalChargeMoneys[self.opitionIndex]) , self.inputRechargeMoney, false)
+        }
     }
     
     override func tagView(_ tagView: ZTTagView!, backgroundColorFor state: UIControlState, at index: Int) -> UIColor! {
