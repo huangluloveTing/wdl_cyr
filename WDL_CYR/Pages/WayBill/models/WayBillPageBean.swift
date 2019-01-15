@@ -159,6 +159,7 @@ struct ZbnTransportReturn : HandyJSON { // 回单信息 ,
     var id : String? // (string, optional),
     var returnBillUrl : String? // (string): 回单存储路径 ,
     var startTime : TimeInterval? // (string): 开始时间 ,
+    var createTime : TimeInterval? // (string): 创建时间 ,
     var transportNo : String? // (string, optional)
 }
 
