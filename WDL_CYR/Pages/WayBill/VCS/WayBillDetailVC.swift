@@ -24,11 +24,11 @@ class WayBillDetailVC: WaybillDetailBaseVC {
         self.configTableView(tableView: tableView)
 //        self.loadDetailData(hallId: self.waybillInfo?.hallId ?? "")
         self.configRefresh()
+        self.tableView.beginRefresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.beginRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,14 +42,14 @@ class WayBillDetailVC: WaybillDetailBaseVC {
     
     func configRefresh() -> Void {
         self.tableView.pullRefresh()
-        self.tableView.refreshState.distinctUntilChanged().asObservable()
-            .filter { (state) -> Bool in
-                return state != TableViewState.EndRefresh
-            }
-            .subscribe(onNext: { [weak self](state) in
-                self?.loadDetailData(hallId: self?.waybillInfo?.hallId ?? "")
-            })
-            .disposed(by: dispose)
+    self.tableView.refreshState.distinctUntilChanged().asObservable()
+        .filter { (state) -> Bool in
+            return state != TableViewState.EndRefresh
+        }
+        .subscribe(onNext: { [weak self](state) in
+            self?.loadDetailData(hallId: self?.waybillInfo?.hallId ?? "")
+        })
+        .disposed(by: dispose)
     }
     
     

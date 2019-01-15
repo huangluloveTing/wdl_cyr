@@ -764,7 +764,7 @@ extension WaybillDetailBaseVC {
         returnModel.returnBillUrl = imgURL
         list.append(returnModel)
         self.currentInfo?.returnList = list
-        self.currentTableView?.reloadData()
+        self.reloadTableView()
     }
     
     //MARK: - 当前运单角色
