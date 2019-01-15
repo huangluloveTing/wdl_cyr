@@ -67,7 +67,7 @@ extension WayBillReceiptCell : UICollectionViewDelegate , UICollectionViewDataSo
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(WayBillReceiptItem.self)", for: indexPath) as! WayBillReceiptItem
         let receipt = self.receiptList![indexPath.row]
-        cell.showReceipt(imageUrl: receipt.returnBillUrl, time: receipt.startTime)
+        cell.showReceipt(imageUrl: receipt.returnBillUrl, time: receipt.createTime)
         return cell
     }
     
