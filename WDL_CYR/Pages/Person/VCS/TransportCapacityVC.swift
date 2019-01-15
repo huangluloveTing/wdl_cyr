@@ -43,6 +43,12 @@ class TransportCapacityVC: NormalBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.toReloadSearch()
+        self.currentConfig()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.removeNaviTitle()
     }
     
     override func currentConfig() {

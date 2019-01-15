@@ -50,13 +50,13 @@ class ZTScrollViewConroller: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.naviSelectView.isHidden = false
+       
         self.addNaviSelectView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.naviSelectView.isHidden = true
+        self.naviSelectView.removeFromSuperview()
     }
    
 

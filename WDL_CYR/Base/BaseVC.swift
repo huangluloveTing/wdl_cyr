@@ -27,6 +27,8 @@ class BaseVC: UIViewController {
     public var callBack:((CallbackMode) -> ())?
     
     public let dispose = DisposeBag()
+    
+    public var naviTitleView = ZTScrollNaviBarView(frame: CGRect(x: 60 * IPHONE_RATE, y: 0, width: IPHONE_WIDTH - 60 * IPHONE_RATE * 2, height: 44))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -262,16 +264,23 @@ extension BaseVC {
     func addNaviSelectTitles(titles:[String]) {
        
         
-        let naviTitle = ZTScrollNaviBarView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 120, height: 44))
-       
+//        let naviTitle = ZTScrollNaviBarView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 120, height: 44))
+//         let naviTitle = ZTScrollNaviBarView(frame: CGRect(x: 60 * IPHONE_RATE, y: 0, width: IPHONE_WIDTH - 60 * IPHONE_RATE * 2, height: 44))
+        self.naviTitleView.backgroundColor = UIColor.clear
         
-        naviTitle.updateTitles(titles: titles)
-        naviTitle.tapClosure = { [weak self](index) in
+        self.naviTitleView.updateTitles(titles: titles)
+        self.naviTitleView.tapClosure = { [weak self](index) in
             self?.tapNaviHandler(index: index)
         }
-//        self.navigationController?.navigationBar.addSubview(naviTitle)
-        self.navigationItem.titleView = naviTitle
+        self.navigationController?.navigationBar.addSubview(self.naviTitleView)
+      
+//        self.navigationItem.titleView = naviTitle
     }
+    
+     func removeNaviTitle() {
+        self.naviTitleView.removeFromSuperview()
+    }
+    
     
     @objc func tapNaviHandler(index:Int) -> Void {
         
