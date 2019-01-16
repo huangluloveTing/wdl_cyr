@@ -100,7 +100,9 @@ extension OfferBaseVC {
     func toWaybillPage(index:Int) -> Void {
         let info = self.currentPageInfo?.list![index]
         if info?.transportOrderAppResult != nil {
-            self.transportBillDetailPage(info: (info?.transportOrderAppResult)!)
+            var wayInfo = info?.transportOrderAppResult
+            wayInfo?.sourceType = info?.sourceType
+            self.transportBillDetailPage(info: wayInfo!)
         }
     }
 }
