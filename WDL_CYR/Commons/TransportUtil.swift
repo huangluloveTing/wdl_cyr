@@ -73,6 +73,9 @@ class TransportUtil: NSObject {
                     }
                     return .notDone_canEditAssemble
                 }
+                if transportStatus == 0 && sourceType == 2{
+                    return .unAssemble_comType_1_2_toAssemble;
+                }
                 return .notDone_willTransport
             }
             if transportStatus == 2 {
