@@ -875,6 +875,7 @@ extension WaybillDetailBaseVC {
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: {
                     self?.loadDetailData(hallId: hallId)
+                    self?.pop()
                 })
                 }, onError: { (error) in
                     self.showFail(fail: error.localizedDescription, complete: nil)
