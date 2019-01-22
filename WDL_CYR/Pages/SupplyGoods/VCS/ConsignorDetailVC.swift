@@ -51,7 +51,8 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
             let goodsInfo = Util.contact(strs: [String(format: "%.3f", res.goodsWeight)+"吨" , res.vehicleLength , res.vehicleType , res.packageType], seperate: " | ")
             
            
-            let model = ResourceHallUIModel(id: res.id,start: res.startProvince + res.startCity,
+            let model = ResourceHallUIModel(id: res.id,
+                                            start: res.startProvince + res.startCity,
                                             end: res.endProvince + res.endCity,
                                             truckInfo: truckInfo,
                                             goodsInfo: goodsInfo,
@@ -65,7 +66,8 @@ class ConsignorDetailVC: AttentionDetailBaseVC {
                                             refercnecePriceIsVisable: res.refercnecePriceIsVisable,
                                             isOffer:(res.isOffer != nil  && (res.isOffer)!.count > 0),
                                             shipperCode:res.shipperCode,
-                                            followLine:res.followLine)
+                                            followLine:res.followLine,
+                                            showCommitPrice: res.bidPriceWay == 1)
             
             
             

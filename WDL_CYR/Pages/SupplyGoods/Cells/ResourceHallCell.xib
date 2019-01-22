@@ -81,7 +81,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAA-Dz-UMD">
-                        <rect key="frame" x="15" y="75.5" width="35.5" height="17"/>
+                        <rect key="frame" x="15" y="75.5" width="443.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -152,6 +152,7 @@
                     <constraint firstItem="fbJ-bV-fzZ" firstAttribute="leading" secondItem="Rls-1x-SOa" secondAttribute="trailing" id="Cth-v8-NOg"/>
                     <constraint firstItem="cAA-Dz-UMD" firstAttribute="leading" secondItem="X8G-61-xDe" secondAttribute="leading" id="ESp-ms-ep0"/>
                     <constraint firstItem="LeD-eI-gkb" firstAttribute="leading" secondItem="H99-2d-38V" secondAttribute="trailing" constant="10" id="FMm-qs-Src"/>
+                    <constraint firstItem="LeD-eI-gkb" firstAttribute="leading" secondItem="cAA-Dz-UMD" secondAttribute="trailing" constant="10" id="GSj-yx-9Dg"/>
                     <constraint firstItem="bXz-ig-KL0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="HfK-iq-wlX"/>
                     <constraint firstItem="LeD-eI-gkb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="JXO-XK-Ldp"/>
                     <constraint firstAttribute="bottom" secondItem="Yrc-XS-7Pg" secondAttribute="bottom" constant="30" id="K8v-s1-vlg"/>

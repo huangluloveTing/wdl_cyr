@@ -88,6 +88,9 @@ extension ResourceHallCell {
             unitTitleLab.isHidden = true
             perNumTitleLab.isHidden = true
         }
+        
+        self.reportButton.isHidden = !(info?.showCommitPrice ?? false)
+        
         //是否报价
         self.reportButton.isSelected = info?.isOffer ?? false
         if info?.isOffer == true {

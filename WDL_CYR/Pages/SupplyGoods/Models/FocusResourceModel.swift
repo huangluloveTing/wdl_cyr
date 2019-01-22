@@ -33,6 +33,7 @@ struct ResourceHallUIModel {
     
     var shipperCode : String = "" // (string): 字段不为空表示托运人关注 ,
     var followLine : Bool = true;//关注路线true ，未关注false
+    var showCommitPrice: Bool = false; // 是否显示报价按钮
 }
 
 struct ResourceDetailUIModel {

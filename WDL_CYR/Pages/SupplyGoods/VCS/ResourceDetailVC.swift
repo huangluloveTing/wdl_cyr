@@ -28,12 +28,13 @@ class ResourceDetailVC: NormalBaseVC {
             //不为空表示是已经报价
            self.bottomButtom(titles: [], targetView: self.tableView)
       
-        }else{
-    
-            self.bottomButtom(titles: ["我要报价"], targetView: self.tableView) { [weak self](_) in
-            self?.toReportPrice()
         }
-        
+        else{
+            if self.resource?.resource?.bidPriceWay == 1 {
+                self.bottomButtom(titles: ["我要报价"], targetView: self.tableView) { [weak self](_) in
+                    self?.toReportPrice()
+                }
+            }
         }
     
     }

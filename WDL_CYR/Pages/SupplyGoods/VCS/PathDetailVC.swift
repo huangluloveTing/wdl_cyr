@@ -73,7 +73,8 @@ class PathDetailVC: AttentionDetailBaseVC {
                                             refercnecePriceIsVisable: res.refercnecePriceIsVisable,
                                             isOffer:(res.isOffer != nil && (res.isOffer)!.count > 0),
                                             shipperCode:res.shipperCode,
-                                            followLine:res.followLine)
+                                            followLine:res.followLine ,
+                                            showCommitPrice : res.bidPriceWay == 1)
             return model
         }
         self.refresh(items: items)

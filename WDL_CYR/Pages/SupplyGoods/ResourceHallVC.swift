@@ -217,7 +217,8 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
         
         //参考价是否可见  var refercnecePriceIsVisable : String = "" // (string, optional), 参考价是否可见，1=可见 2，不可见
         print("\(hall.endProvince),\(hall.endCity)")
-        let uiModel = ResourceHallUIModel(id: hall.id,start: hall.startProvince + hall.startCity,
+        let uiModel = ResourceHallUIModel(id: hall.id,
+                                          start: hall.startProvince + hall.startCity,
                                           end: hall.endProvince + hall.endCity,
                                           truckInfo: truckInfo,
                                           goodsInfo: goodsInfo,
@@ -231,7 +232,8 @@ extension ResourceHallVC : UITableViewDelegate , UITableViewDataSource {
                                           refercnecePriceIsVisable: hall.refercnecePriceIsVisable,
                                           isOffer:hall.isOffer != nil && (hall.isOffer)!.count > 0,
                                           shipperCode:hall.shipperCode,
-                                          followLine:hall.followLine)
+                                          followLine:hall.followLine,
+                                          showCommitPrice:hall.bidPriceWay == 1)
         cell.showInfo(info: uiModel)
         cell.offerClosure = {[weak self] in
             self?.toOffer(index: indexPath.section)

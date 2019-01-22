@@ -50,11 +50,11 @@ extension Resource_GoodsInfoCell {
         self.endLabel.text = end
         self.loadTimeLabel.text = Util.dateFormatter(date: loadTime / 1000, formatter: "yyyy-MM-dd")
 //        self.goodsNameLabel.text = goodsName
-        self.goodsSumLabel.text = goodsSumm
-        self.goodsTypeLabel.text = goodsType
-        self.remarkLabel.text = remark
+        self.goodsSumLabel.text = goodsSumm ?? " "
+        self.goodsTypeLabel.text = goodsType ?? " "
+        self.remarkLabel.text = remark ?? " "
         //货源编号
-        self.goodCodeId.text = "货源编号：" + (goodCode ?? "")
+        self.goodCodeId.text = "货源编号：" + (goodCode ?? " ")
         self.focusLineButton.isHidden = foucs;
     }
 }
