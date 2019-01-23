@@ -66,22 +66,22 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="成都市新都区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8G-61-xDe">
-                        <rect key="frame" x="15" y="40" width="104" height="20.5"/>
+                        <rect key="frame" x="15" y="40" width="112" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="104" id="noi-8B-wbt"/>
+                            <constraint firstAttribute="width" constant="112" id="noi-8B-wbt"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="成都市新都区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H99-2d-38V">
-                        <rect key="frame" x="169" y="40" width="289.5" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="成都市新都区" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H99-2d-38V">
+                        <rect key="frame" x="177" y="40" width="291.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAA-Dz-UMD">
-                        <rect key="frame" x="15" y="75.5" width="443.5" height="17"/>
+                        <rect key="frame" x="15" y="78" width="443.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_to" translatesAutoresizingMaskIntoConstraints="NO" id="gEg-YS-fOC">
-                        <rect key="frame" x="129" y="45.5" width="30" height="10"/>
+                        <rect key="frame" x="137" y="44" width="30" height="10"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="1aq-N4-Cyt"/>
                             <constraint firstAttribute="height" constant="10" id="die-U9-YBk"/>
@@ -125,14 +125,14 @@
                         </state>
                         <state key="selected" title="已关注" image="attention"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WD0-sf-joY">
-                        <rect key="frame" x="15" y="102.5" width="453.5" height="128"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WD0-sf-joY">
+                        <rect key="frame" x="15" y="105" width="453.5" height="125.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="货源编号：0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXz-ig-KL0">
-                        <rect key="frame" x="15" y="10" width="81" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="货源编号：09999999999999999999999999999999999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXz-ig-KL0">
+                        <rect key="frame" x="15" y="10" width="378.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="aY8-2E-ij1"/>
                         </constraints>
@@ -147,11 +147,12 @@
                     <constraint firstItem="bXz-ig-KL0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="3KL-Gs-pkp"/>
                     <constraint firstItem="Ynd-do-by8" firstAttribute="leading" secondItem="rAc-gT-FfG" secondAttribute="trailing" id="4is-Av-yIC"/>
                     <constraint firstItem="fhh-14-Vja" firstAttribute="leading" secondItem="LeD-eI-gkb" secondAttribute="trailing" id="5rh-D1-3JA"/>
+                    <constraint firstItem="cAA-Dz-UMD" firstAttribute="top" secondItem="X8G-61-xDe" secondAttribute="bottom" constant="20" id="6kV-pf-Blj"/>
                     <constraint firstItem="Yrc-XS-7Pg" firstAttribute="top" secondItem="3ZT-kx-9Xu" secondAttribute="bottom" constant="15" id="8jt-K4-Pvt"/>
                     <constraint firstAttribute="trailing" secondItem="fbJ-bV-fzZ" secondAttribute="trailing" constant="10" id="8sm-94-hgl"/>
                     <constraint firstItem="fbJ-bV-fzZ" firstAttribute="leading" secondItem="Rls-1x-SOa" secondAttribute="trailing" id="Cth-v8-NOg"/>
                     <constraint firstItem="cAA-Dz-UMD" firstAttribute="leading" secondItem="X8G-61-xDe" secondAttribute="leading" id="ESp-ms-ep0"/>
-                    <constraint firstItem="LeD-eI-gkb" firstAttribute="leading" secondItem="H99-2d-38V" secondAttribute="trailing" constant="10" id="FMm-qs-Src"/>
+                    <constraint firstItem="LeD-eI-gkb" firstAttribute="leading" secondItem="H99-2d-38V" secondAttribute="trailing" id="FMm-qs-Src"/>
                     <constraint firstItem="LeD-eI-gkb" firstAttribute="leading" secondItem="cAA-Dz-UMD" secondAttribute="trailing" constant="10" id="GSj-yx-9Dg"/>
                     <constraint firstItem="bXz-ig-KL0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="HfK-iq-wlX"/>
                     <constraint firstItem="LeD-eI-gkb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="JXO-XK-Ldp"/>
@@ -159,7 +160,6 @@
                     <constraint firstAttribute="bottom" secondItem="LeD-eI-gkb" secondAttribute="bottom" id="LnB-dV-0z0"/>
                     <constraint firstAttribute="trailing" secondItem="Yrc-XS-7Pg" secondAttribute="trailing" constant="10" id="LwA-zu-cgi"/>
                     <constraint firstItem="Rls-1x-SOa" firstAttribute="top" secondItem="fhh-14-Vja" secondAttribute="bottom" constant="5" id="MNR-RH-3oV"/>
-                    <constraint firstItem="H99-2d-38V" firstAttribute="centerY" secondItem="X8G-61-xDe" secondAttribute="centerY" id="NmF-bb-Pk8"/>
                     <constraint firstItem="WD0-sf-joY" firstAttribute="top" secondItem="cAA-Dz-UMD" secondAttribute="bottom" constant="10" id="RqG-fa-25q"/>
                     <constraint firstAttribute="trailing" secondItem="LeD-eI-gkb" secondAttribute="trailing" constant="94" id="THX-6N-v8t"/>
                     <constraint firstItem="fhh-14-Vja" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="X6a-2l-mII"/>
@@ -168,9 +168,9 @@
                     <constraint firstItem="X8G-61-xDe" firstAttribute="top" secondItem="bXz-ig-KL0" secondAttribute="bottom" constant="10" id="ZLr-1s-2aC"/>
                     <constraint firstItem="3ZT-kx-9Xu" firstAttribute="centerX" secondItem="Yrc-XS-7Pg" secondAttribute="centerX" id="b8S-vH-ggS"/>
                     <constraint firstItem="gEg-YS-fOC" firstAttribute="leading" secondItem="X8G-61-xDe" secondAttribute="trailing" constant="10" id="baM-hx-cxI"/>
+                    <constraint firstItem="H99-2d-38V" firstAttribute="top" secondItem="bXz-ig-KL0" secondAttribute="bottom" constant="10" id="dQz-4n-EWp"/>
                     <constraint firstItem="X8G-61-xDe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="f93-N2-goI"/>
                     <constraint firstItem="LeD-eI-gkb" firstAttribute="leading" secondItem="bVv-nb-JZZ" secondAttribute="trailing" constant="30" id="fAs-qY-AFN"/>
-                    <constraint firstItem="cAA-Dz-UMD" firstAttribute="top" secondItem="X8G-61-xDe" secondAttribute="bottom" constant="15" id="fJ5-fl-dyR"/>
                     <constraint firstItem="Ynd-do-by8" firstAttribute="centerY" secondItem="KaX-fB-s5S" secondAttribute="centerY" id="fOV-mg-nBu"/>
                     <constraint firstItem="bVv-nb-JZZ" firstAttribute="centerY" secondItem="Ynd-do-by8" secondAttribute="centerY" id="gD4-TA-1s1"/>
                     <constraint firstItem="KaX-fB-s5S" firstAttribute="top" secondItem="WD0-sf-joY" secondAttribute="bottom" constant="15" id="gbK-se-R2i"/>
