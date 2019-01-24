@@ -152,6 +152,11 @@ extension GSDetailBaseVC {
     }
     
     func bidding_numberRwos(at section:Int , for tableView:UITableView) -> Int {
+        if section == 0 {
+            if self.goodsSupplyInfo()?.dealWay == 2 {
+                return 0
+            }
+        }
         if section == 1 {
 //            if showOtherOfferInfo() == true {
                 return 2

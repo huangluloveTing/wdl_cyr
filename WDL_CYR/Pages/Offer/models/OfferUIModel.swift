@@ -55,6 +55,7 @@ struct GSInfoModel {
     var referenceTotalPrice:Float = 0
     var remark:String?
     var id:String?
+    var dealWay:Int? // 成交方式 1=自动 2=手动
 }
 
 // 报价信息
