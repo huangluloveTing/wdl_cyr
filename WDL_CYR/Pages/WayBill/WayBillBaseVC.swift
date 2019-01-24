@@ -330,6 +330,7 @@ extension WayBillBaseVC {
         self.currentTableView.separatorStyle = .none
         self.currentTableView.backgroundColor = UIColor(hex: COLOR_BACKGROUND)
         self.registerAllCells(for: tableView)
+        self.currentTableView.initEstmatedHeights()
     }
     
     // 配置 刷新
@@ -527,6 +528,11 @@ extension WayBillBaseVC {
 extension WayBillBaseVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        tableView.removeCacheHeights(withIndexPaths: [indexPath])
+        return tableView.heightForRow(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
