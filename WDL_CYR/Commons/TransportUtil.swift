@@ -23,7 +23,12 @@ class TransportUtil: NSObject {
         
         // 当前承运人和司机是否是同一个
         let driverIsSelf = WDLCoreManager.shared().userInfo?.id == info.driverId
-        
+        if driverStatus ==  6 {
+            if driverIsSelf == true {
+                return .notDone_breakContractForDriver
+            }
+            return .notDone_breakContractForCarrier
+        }
         if completeStatus == 1 { // 未配载
             if comType == 1 || comType == 2 {   // 来源1 , 2 ， 未接受时 ， 显示 接受 拒绝
                 if comType == 2 {
