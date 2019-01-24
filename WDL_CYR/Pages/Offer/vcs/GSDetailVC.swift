@@ -49,6 +49,7 @@ class GSDetailVC: GSDetailBaseVC {
                     let dic = data.data as! Dictionary<String, Any>
                     //自动成交时间
                     let str = dic["surplusTurnoverTime"]  as? TimeInterval
+                  
                     //竞价状态
                     let quoteStatus = dic["isDeal"] as? Int
                     self.quoteStatus = quoteStatus ?? 0
