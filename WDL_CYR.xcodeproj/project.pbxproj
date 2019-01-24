@@ -140,6 +140,8 @@
 		7047769521B0CD0000628C6F /* ZbnCarrierInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047769421B0CD0000628C6F /* ZbnCarrierInfo.swift */; };
 		7047769821B0CE6200628C6F /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047769621B0CE6200628C6F /* UserStore.swift */; };
 		7047769921B0CE6200628C6F /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047769721B0CE6200628C6F /* UserDefault.swift */; };
+		7047AB4421F99525007ED0AA /* WaybillRealTransCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047AB4221F99525007ED0AA /* WaybillRealTransCell.swift */; };
+		7047AB4521F99525007ED0AA /* WaybillRealTransCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7047AB4321F99525007ED0AA /* WaybillRealTransCell.xib */; };
 		704DD087215BB55E00E6AD6F /* AddLinesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DD085215BB55E00E6AD6F /* AddLinesVC.swift */; };
 		704DD088215BB55E00E6AD6F /* AddLinesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704DD086215BB55E00E6AD6F /* AddLinesVC.xib */; };
 		704DD08A215C9A8200E6AD6F /* FocusResourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704DD089215C9A8200E6AD6F /* FocusResourceModel.swift */; };
@@ -548,6 +550,8 @@
 		7047769421B0CD0000628C6F /* ZbnCarrierInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZbnCarrierInfo.swift; sourceTree = "<group>"; };
 		7047769621B0CE6200628C6F /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		7047769721B0CE6200628C6F /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		7047AB4221F99525007ED0AA /* WaybillRealTransCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillRealTransCell.swift; sourceTree = "<group>"; };
+		7047AB4321F99525007ED0AA /* WaybillRealTransCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillRealTransCell.xib; sourceTree = "<group>"; };
 		704DD085215BB55E00E6AD6F /* AddLinesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinesVC.swift; sourceTree = "<group>"; };
 		704DD086215BB55E00E6AD6F /* AddLinesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddLinesVC.xib; sourceTree = "<group>"; };
 		704DD089215C9A8200E6AD6F /* FocusResourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusResourceModel.swift; sourceTree = "<group>"; };
@@ -1346,6 +1350,8 @@
 				70ED02062195509C001DB4D1 /* WaybillInputAssembleAmountCell.xib */,
 				70ED02092195513C001DB4D1 /* WaybillMultiRemailInfoCell.swift */,
 				70ED020A2195513C001DB4D1 /* WaybillMultiRemailInfoCell.xib */,
+				7047AB4221F99525007ED0AA /* WaybillRealTransCell.swift */,
+				7047AB4321F99525007ED0AA /* WaybillRealTransCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1766,6 +1772,7 @@
 				7014086F2193F988000D5CB1 /* WaybillHandleCell.xib in Resources */,
 				183FD2F521B4FD200069D50F /* ModifyPhoneVC.xib in Resources */,
 				704DD0A5215CEC8400E6AD6F /* OfferDealVC.xib in Resources */,
+				7047AB4521F99525007ED0AA /* WaybillRealTransCell.xib in Resources */,
 				70140888219422CE000D5CB1 /* WayBillReceiptCell.xib in Resources */,
 				183FD31221B518770069D50F /* ModifyBankSetVC.xib in Resources */,
 				7003D93621B7A25200BD07FC /* DriverInviteFailCell.xib in Resources */,
@@ -1894,7 +1901,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/LBPhotoBrowser/test/LBPhotoBrowser/LBPhotoBrowser.bundle",
@@ -1913,7 +1920,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2114,6 +2121,7 @@
 				18B142BC21D3145800E46F43 /* FirstAddDriverListVC.swift in Sources */,
 				7044A04321C0FA50007A963F /* MoreScreenSelectionVC.swift in Sources */,
 				701F10D1217D54B200693936 /* ChooseDriverCell.swift in Sources */,
+				7047AB4421F99525007ED0AA /* WaybillRealTransCell.swift in Sources */,
 				70CF4F6D214B41110051A7CA /* GSDealedCell.swift in Sources */,
 				70CF4F7F214B41120051A7CA /* PersonalInfoHeader.swift in Sources */,
 				706488F9215B458D00F53BFC /* FocusResourceVC.swift in Sources */,

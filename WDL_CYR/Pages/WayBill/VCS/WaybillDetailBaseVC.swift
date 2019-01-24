@@ -111,6 +111,11 @@ class WaybillDetailBaseVC: NormalBaseVC {
     
     // 点击添加回执单
     func clickAddReturn() -> Void {}
+    
+    // 是否显示实发吨数
+    func showRealTone() -> Bool {
+        return true
+    }
 }
 
 //MARK: - config tableView
@@ -135,6 +140,7 @@ extension WaybillDetailBaseVC {
         currentTableView?.registerCell(nib: WayBillToCommentCell.self)
         currentTableView?.registerCell(nib: WayBillCommentAllCell.self)
         currentTableView?.registerCell(nib: WayBillOneCommentCell.self)
+        currentTableView?.registerCell(nib: WaybillRealTransCell.self)
     }
     
     //MARK: - 配置当前页面的展示模式
@@ -420,6 +426,9 @@ extension WaybillDetailBaseVC {
     
     func unAssembleToDesignateRows(section:Int) -> Int {
         if section == 0 {
+            if self.showRealTone() == true {
+                return 4
+            }
             return 3
         }
         return 1
@@ -436,14 +445,25 @@ extension WaybillDetailBaseVC {
             if row == 1 {
                 return waybillLinkInfoCell(tableView: tableView)
             }
-            if row == 2 {
-                return waybillHandleCell(tableView: tableView, handleName: "配载")
+            if row == 2 && showRealTone() == true {
+                return self.currentRealCell(tableView: tableView, indexPath: indexPath)
             }
+            return waybillHandleCell(tableView: tableView, handleName: "配载")
         }
         if section == 1 {
+            if row == 1 {
+                
+            }
             return waybillDealInfoCell(tableView: tableView)
         }
         return waybillGoodsInfoCell(tableView: tableView)
+    }
+    
+    // 实发金额数据
+    func currentRealCell(tableView:UITableView , indexPath:IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(nib: WaybillRealTransCell.self)
+        cell.showRealTone(tone: self.waybillInfo?.transportWeightReal ?? 0)
+        return cell
     }
     
     // 当运单来源为 1，2 时 ， 对应的cell
@@ -457,9 +477,10 @@ extension WaybillDetailBaseVC {
             if row == 1 {
                 return waybillLinkInfoCell(tableView: tableView)
             }
-            if row == 2 {
-                return waybillHandleCell(tableView: tableView, handleName: "修改配载")
+            if row == 2 && showRealTone() == true {
+                return currentRealCell(tableView:tableView , indexPath:indexPath)
             }
+            return waybillHandleCell(tableView: tableView, handleName: "修改配载")
         }
         if section == 1 {
             return waybillDealInfoCell(tableView: tableView)
@@ -478,9 +499,10 @@ extension WaybillDetailBaseVC {
             if row == 1 {
                 return waybillLinkInfoCell(tableView: tableView)
             }
-            if row == 2 {
-                return waybillHandleCell(tableView: tableView, handleName: "指派")
+            if row == 2 && showRealTone() == true {
+                return self.currentRealCell(tableView: tableView, indexPath: indexPath)
             }
+            return waybillHandleCell(tableView: tableView, handleName: "指派")
         }
         if section == 1 {
             return waybillDealInfoCell(tableView: tableView)
@@ -498,6 +520,9 @@ extension WaybillDetailBaseVC {
     
     func unAssembleSepecialToDesignateRows(section:Int) -> Int {
         if section == 0 {
+            if self.showRealTone() == true {
+                return 4
+            }
             return 3
         }
         return 1
@@ -513,9 +538,10 @@ extension WaybillDetailBaseVC {
             if row == 1 {
                 return waybillLinkInfoCell(tableView: tableView)
             }
-            if row == 2 {
-                return waybillHandleCell(tableView: tableView, handleName: "配载")
+            if row == 2 && self.showRealTone() == true {
+                return currentRealCell(tableView: tableView, indexPath: indexPath)
             }
+            return waybillHandleCell(tableView: tableView, handleName: "配载")
         }
         return waybillGoodsInfoCell(tableView: tableView)
     }
@@ -531,6 +557,9 @@ extension WaybillDetailBaseVC {
     
     func notDoneWillStartRow(section:Int) -> Int {
         if section == 0 {
+            if self.showRealTone() == true {
+                return 3
+            }
             return 2
         }
         return 1
@@ -539,6 +568,9 @@ extension WaybillDetailBaseVC {
     //MARK: - 待起运可以 修改配载的
     func notDoneWillStartCanEditRow(section:Int) -> Int {
         if section == 0 {
+            if self.showRealTone() == true {
+                return 4
+            }
             return 3
         }
         return 1
@@ -554,6 +586,7 @@ extension WaybillDetailBaseVC {
             if row == 1 {
                 return waybillLinkInfoCell(tableView: tableView)
             }
+            return currentRealCell(tableView:tableView , indexPath:indexPath)
         }
         if  section == 1  {
             return  waybillDealInfoCell(tableView: tableView)
@@ -571,6 +604,9 @@ extension WaybillDetailBaseVC {
     
     func notDoneTransportingRow(section:Int) -> Int {
         if section == 0 {
+            if self.showRealTone() == true {
+                return 3
+            }
             return 2
         }
         return 1
@@ -586,6 +622,7 @@ extension WaybillDetailBaseVC {
             if row == 1 {
                 return waybillLinkInfoCell(tableView: tableView)
             }
+            return currentRealCell(tableView:tableView , indexPath:indexPath)
         }
         if  section == 1  {
             return  waybillDealInfoCell(tableView: tableView)
@@ -609,6 +646,9 @@ extension WaybillDetailBaseVC {
     
     func notDoneWillSignRow(section:Int) -> Int {
         if section == 0 {
+            if self.showRealTone() == true {
+                return 3
+            }
             return 2
         }
         return 1
@@ -624,6 +664,7 @@ extension WaybillDetailBaseVC {
             if row == 1 {
                 return waybillLinkInfoCell(tableView: tableView)
             }
+            return currentRealCell(tableView:tableView , indexPath:indexPath)
         }
         if  section == 1  {
             return  waybillDealInfoCell(tableView: tableView)
@@ -644,6 +685,9 @@ extension WaybillDetailBaseVC {
     
     func notDoneNotStartRow(section:Int) -> Int {
         if section == 0 {
+            if self.showRealTone() == true {
+                return 4
+            }
             return 3
         }
         return 1
@@ -659,9 +703,10 @@ extension WaybillDetailBaseVC {
             if row == 1 {
                 return waybillLinkInfoCell(tableView: tableView)
             }
-            if row == 2 {
-                return waybillHandleCell(tableView: tableView, handleName: "修改配载")
+            if row == 2 && showRealTone() == true {
+                return self.currentRealCell(tableView: tableView, indexPath: indexPath)
             }
+            return waybillHandleCell(tableView: tableView, handleName: "修改配载")
         }
         if  section == 1  {
             return  waybillDealInfoCell(tableView: tableView)
@@ -679,6 +724,9 @@ extension WaybillDetailBaseVC {
     
     func doneCommentedRows(section:Int) -> Int {
         if section == 0 {
+            if self.showRealTone() == true {
+                return 3
+            }
             return 2
         }
         return 1
@@ -694,6 +742,7 @@ extension WaybillDetailBaseVC {
             if row == 1 {
                 return waybillLinkInfoCell(tableView: tableView)
             }
+            return currentRealCell(tableView:tableView, indexPath:indexPath)
         }
         if section == 1 {
             return waybillDealInfoCell(tableView: tableView)
@@ -730,6 +779,9 @@ extension WaybillDetailBaseVC {
     
     func doneToCommentRow(section:Int) -> Int {
         if section == 0 {
+            if self.showRealTone() == true {
+                return 3
+            }
             return 2
         }
         return 1
@@ -745,6 +797,7 @@ extension WaybillDetailBaseVC {
             if row == 1 {
                 return waybillLinkInfoCell(tableView: tableView)
             }
+            return currentRealCell(tableView:tableView, indexPath:indexPath)
         }
         return waybillToCommentCell(tableView: tableView)
     }

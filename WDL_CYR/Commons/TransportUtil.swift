@@ -59,7 +59,7 @@ class TransportUtil: NSObject {
             }
         }
         
-        // 未配载，只需判断配置相关的字段，即 completeStatus = 1
+        //
         if completeStatus == 2 { // 未完成
             // 运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 7=TMS指派 8=拒绝指派
             if transportStatus == 1 || transportStatus == 0 {

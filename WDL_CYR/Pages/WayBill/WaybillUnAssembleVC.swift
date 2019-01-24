@@ -115,6 +115,8 @@ extension WaybillUnAssembleVC {
     }
     
     func combineUnAssembleRequest() -> Void {
+//        transportStatus: self.currentStatus, startTime: self.currentStartTime, endTime: self.currentEndTime, search: ""
+        configRequestParams(status: 1, transportStatus: self.currentStatus, search: self.queryBean.searchWord, startTime:self.currentStartTime , endTime: self.currentEndTime)
         Observable.zip(self.loadTransportPlan() , self.loadUnAssembleDatas())
             .asObservable()
             .subscribe(onNext: { [weak self](res1, res2) in
@@ -137,7 +139,7 @@ extension WaybillUnAssembleVC {
             newInfo.hallId = info.id
             newPlans.append(newInfo)
         }
-        newPlans.append(contentsOf: plans)
+        newPlans.append(contentsOf: normals)
         self.refreshContents(items: newPlans);
     }
 }

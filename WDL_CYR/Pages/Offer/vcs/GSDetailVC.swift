@@ -159,7 +159,7 @@ class GSDetailVC: GSDetailBaseVC {
             info.reportStatus = .notDone
         }
         //更新界面状态
-        self.offer?.dealStatus  = info.reportStatus
+        info.dealWay = self.offer?.dealWay
         self.configCurrentHallStatus()
         
         return info
