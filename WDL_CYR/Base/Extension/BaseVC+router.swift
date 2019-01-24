@@ -153,8 +153,8 @@ extension BaseVC {
             print("未接受不 跳转")
                 return
         case .unAssemble_comType_3_noAccept:
-            detailVC.currentShowMode(mode: .unassemble_showSpecial)
-            break
+            self.toGoodsDetail(hallId: info.hallId ?? "")
+            return
         case .notDone_canEditAssemble:
             detailVC.currentShowMode(mode: .doing_canEditAssemble)
             break
@@ -190,6 +190,15 @@ extension BaseVC {
         if self.navigationController != nil && (self.navigationController?.viewControllers.count)! > 1 && (self.navigationController?.viewControllers .index(of: self))! > 0 {
             self.navigationController?.popViewController(animated: animated)
         }
+    }
+    
+    func toGoodsDetail(hallId:String) -> Void {
+        let resouce = ResourceDetailVC()
+        resouce.requestNewData = true;
+        var re = ResourceDetailUIModel()
+        re.id = hallId
+        resouce.resource = re
+        self.pushWhenPushedHiddenBottomTabbar(toVC: resouce, animation: true)
     }
 }
 

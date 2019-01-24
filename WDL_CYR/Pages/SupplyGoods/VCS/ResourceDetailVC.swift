@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import RxSwift
 
 class ResourceDetailVC: NormalBaseVC {
+    
+    public var requestNewData:Bool? //是否请求数据
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,7 +22,9 @@ class ResourceDetailVC: NormalBaseVC {
         super.viewDidLoad()
         self.configSubViews()
         self.registerAllCells()
-       
+        if self.requestNewData == true {
+            self.requestDetail(hallId: resource?.id ?? "")
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -209,5 +214,34 @@ extension ResourceDetailVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
+    }
+}
+
+
+extension ResourceDetailVC {
+    func requestDetail(hallId:String) -> Void {
+        var query = OrderHallOfferQueryModel()
+        query.hallId = hallId
+        self.showLoading()
+        BaseApi.request(target: API.getOfferByOrderHallId(query), type: BaseResponseModel<OrderAndOfferResult>.self)
+            .retry(5)
+            .subscribe(onNext: { [weak self](result) in
+                self?.configUIModel(result: (result.data)!)
+            }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription, complete: {
+                    self?.pop()
+                })
+            })
+            .disposed(by: dispose)
+    }
+    
+    func configUIModel(result:OrderAndOfferResult) -> Void {
+        self.hiddenToast()
+        var uiModel = ResourceDetailUIModel()
+        uiModel.resource = CarrierQueryOrderHallResult.deserialize(from: result.zbnOrderHall?.toJSON())
+        uiModel.id = result.zbnOrderHall?.hallId ?? ""
+        uiModel.refercneceUnitPrice = 0
+        self.resource = uiModel
+        self.tableView.reloadData()
     }
 }
