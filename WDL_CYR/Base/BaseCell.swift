@@ -78,6 +78,8 @@ extension BaseCell {
     func toAddImageForImageView(imageUrl:String? , imageView:UIImageView) -> Void {
         let resource = URL(string: imageUrl ?? "")
         let image = Image.init(named: "AppIcon")
+        imageView.layer.masksToBounds = true;
+        imageView.layer.cornerRadius = imageView.size.width / 2.0
         imageView.kf.setImage(with: resource, placeholder: image)
     }
 }
