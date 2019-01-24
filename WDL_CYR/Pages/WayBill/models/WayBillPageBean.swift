@@ -70,6 +70,19 @@ struct WayBillInfoBean : HandyJSON {
     var shipperCode : String? // (string): 不为空表示已经关注 ,
     var transportId : String? //  (string): 运单id ,
     var vehicleWidth : String? // (string): 车宽
+    var startDistrict : String = ""
+    var endDistrict : String = ""
+    var startCity : String = ""
+    var endProvince : String = ""
+    var endCity : String = ""
+    var startProvince : String = ""
+    var id : String = ""
+//    startDistrict": "滨海新区",
+//    "endDistrict": "大观区",
+//    "startProvince": "天津",
+//    "startCity": "天津市",
+//    "endProvince": "安徽省",
+//    "endCity": "安庆市",
 }
 
 

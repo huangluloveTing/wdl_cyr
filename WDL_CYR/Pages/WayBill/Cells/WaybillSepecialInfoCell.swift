@@ -41,7 +41,7 @@ class WaybillSepecialInfoCell: WaybillBaseCell {
     }
     
     @IBAction func assembleAction(_ sender: Any) {
-        
+        self.toAssembleWaybill(param: self)
     }
     
 }
@@ -49,8 +49,9 @@ class WaybillSepecialInfoCell: WaybillBaseCell {
 extension WaybillSepecialInfoCell {
     //设置cell的值
     func contentInfo(info:WayBillInfoBean?) {
+        self.desiginLabel.text = ""
         //货源编号
-        self.goodCodeId.text = "货源编号：" + (info?.hallId ?? "")
+        self.goodCodeId.text = "货源编号：" + (info?.hallId ?? "无")
         self.toAddImageForImageView(imageUrl: info?.companyLogo, imageView: self.avatorImageView)
         self.typeLabel.text = "【自营】运输计划"
         self.startLabel.text = info?.origin
@@ -58,6 +59,6 @@ extension WaybillSepecialInfoCell {
         let time = Util.dateFormatter(date: Double(info?.loadingTime ?? "0") ?? 0, formatter: "yyyy-MM-dd") + "  装货"
         let weight = (info?.goodsWeight ?? "") + "吨"
         self.goodsInfoLabel.text = Util.contact(strs: [time , weight], seperate: " | ")
-        self.timeLabel.text = Util.dateFormatter(date: (info?.createTime ?? 0) / 1000, formatter: "yyyy-MM-dd HH:mm:ss")
+        self.timeLabel.text = Util.contact(strs: ["成交时间:",Util.dateFormatter(date: (info?.createTime ?? 0) / 1000, formatter: "yyyy-MM-dd HH:mm:ss")])
     }
 }

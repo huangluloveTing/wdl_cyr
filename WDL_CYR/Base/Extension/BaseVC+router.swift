@@ -130,27 +130,34 @@ extension BaseVC {
             break
         case .notDone_transporting :
             detailVC.currentShowMode(mode: .doing_showTransporting)
+            break
         case .notDone_willTransport:
             detailVC.currentShowMode(mode: .doing_showWillTransport)
+            break
         case .notDone_willSign:
             detailVC.currentShowMode(mode: .doing_showWillSign)
+            break
         case .notDone_breakContractForDriver:
             print("已违约的司机 跳转 未实现")
             return
         case .notDone_breakContractForCarrier:
             detailVC.currentShowMode(mode: .doing_carrierBreak)
+            break
         case .done(let mode):
             detailVC.currentShowMode(mode: .done_notCommentForCarrier)
             if mode == .noComment {
                 self.toCommentVC(hallId: info.hallId ?? "")
                 return
             }
-      case .unAssemble_comType_1_2_noAccept ,
-           .unAssemble_comType_3_noAccept:
+        case .unAssemble_comType_1_2_noAccept:
             print("未接受不 跳转")
-            return
+                return
+        case .unAssemble_comType_3_noAccept:
+            detailVC.currentShowMode(mode: .unassemble_showSpecial)
+            break
         case .notDone_canEditAssemble:
             detailVC.currentShowMode(mode: .doing_canEditAssemble)
+            break
         default:
             detailVC.currentShowMode(mode: .doing_showWillSign)
         }

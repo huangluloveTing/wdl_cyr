@@ -37,7 +37,8 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
         super.viewDidLoad()
 //        self.addSearchBar(to: self.tableView, placeHolder: "搜索托运人/承运人/姓名/电话号码")
         self.configTableView(tableView: self.tableView)
-        self.loadUnAssembleDatas(refresh: true)
+//        self.loadUnAssembleDatas(refresh: true)
+        combineUnAssembleRequest()
         self.setCurrentTabStatus(tab: .UnAssemble)
         self.configHeaderAndFooterRefresh()
     }
@@ -63,11 +64,13 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
     }
     
     override func headerRefresh() {
-        self.loadUnAssembleDatas(refresh: true)
+//        self.loadUnAssembleDatas(refresh: true)
+        combineUnAssembleRequest()
     }
     
     override func footerLoadMore() {
-        self.loadUnAssembleDatas(refresh: false)
+//        self.loadUnAssembleDatas(refresh: false)
+        combineUnAssembleRequest()
     }
     
     override func curreenStatusTitles() -> [String] {
@@ -95,15 +98,46 @@ extension WaybillUnAssembleVC
 }
 
 extension WaybillUnAssembleVC {
-    func loadUnAssembleDatas(refresh:Bool) -> Void {
-        self.loadUnAssembleData(transportStatus: self.currentStatus, startTime: self.currentStartTime, endTime: self.currentEndTime, search: "") { (info) in
-            self.endRefresh()
-            self.refreshContents(items: info?.list ?? [])
-            if self.currentDataSource.count >= (info?.total ?? 0)  {
-                self.endRefreshAndNoMoreData()
-            } else {
-                self.resetFooter()
+    func loadUnAssembleDatas() -> Observable<[WayBillInfoBean]> {
+        return BaseApi.request(target: API.ownTransportPage(self.queryBean), type: BaseResponseModel<WayBillPageBean>.self)
+            .retry(5)
+            .map { (res) -> [WayBillInfoBean] in
+                return res.data?.list ?? []
             }
+    }
+    
+    func loadTransportPlan() -> Observable<[WayBillInfoBean]> {
+        return BaseApi.request(target: API.findTransportByTransportStatus(self.queryBean), type: BaseResponseModel<WayBillPageBean>.self)
+            .retry(5)
+            .map { (res) -> [WayBillInfoBean] in
+                return res.data?.list ?? []
+            }
+    }
+    
+    func combineUnAssembleRequest() -> Void {
+        Observable.zip(self.loadTransportPlan() , self.loadUnAssembleDatas())
+            .asObservable()
+            .subscribe(onNext: { [weak self](res1, res2) in
+                self?.combineUnassembleResult(normals: res2, plans: res1)
+                }, onError: { [weak self](error) in
+                    self?.endRefresh()
+                    self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
+    }
+    
+    func combineUnassembleResult(normals:[WayBillInfoBean] , plans:[WayBillInfoBean]) -> Void {
+        self.endRefresh()
+        var newPlans:[WayBillInfoBean] = []
+        for info in plans {
+            var newInfo = info;
+            newInfo.comeType = 3;
+            newInfo.origin = Util.contact(strs: [info.startProvince , info.startCity , info.startDistrict], seperate: "-")
+            newInfo.destination = Util.contact(strs: [info.endProvince , info.endCity , info.endDistrict], seperate: "-")
+            newInfo.hallId = info.id
+            newPlans.append(newInfo)
         }
+        newPlans.append(contentsOf: plans)
+        self.refreshContents(items: newPlans);
     }
 }

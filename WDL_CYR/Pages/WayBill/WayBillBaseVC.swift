@@ -413,17 +413,8 @@ extension WayBillBaseVC {
         //self.queryBean.token = WDLCoreManager.shared().userInfo?.token ?? ""
         //self.queryBean.carrierId = WDLCoreManager.shared().userInfo?.carrierNo ?? ""
         // 顶部3个按钮状态 1：未配载，2 ：未完成， 3：完成 ,
-        self.queryBean.completeStatus = status
-        self.queryBean.pageNum = 1
-        self.queryBean.pageSize = self.currentPageSize
-        // 未配载
-        // 运单状态： -1 不限 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收
-        self.queryBean.transportStatus = transportStatus
-        //搜索字段
-        //开始结束时间
-        self.queryBean.startTime = startTime
-        self.queryBean.endTime = endTime
         
+        configRequestParams(status: status, transportStatus: transportStatus, search: search, startTime: startTime, endTime: endTime)
         BaseApi.request(target: API.ownTransportPage(self.queryBean), type: BaseResponseModel<WayBillPageBean>.self)
             .retry(5)
             .subscribe(onNext: {[weak self](data) in
@@ -436,6 +427,24 @@ extension WayBillBaseVC {
                 self?.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)
+    }
+    
+    //MARK: - 组装参数信息
+    func configRequestParams(status:Int ,
+                             transportStatus:Int = -1 ,
+                             search:String? = nil ,
+                             startTime:TimeInterval? = nil ,
+                             endTime:TimeInterval? = nil) -> Void {
+        self.queryBean.completeStatus = status
+        self.queryBean.pageNum = 1
+        self.queryBean.pageSize = self.currentPageSize
+        // 未配载
+        // 运单状态： -1 不限 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收
+        self.queryBean.transportStatus = transportStatus
+        //搜索字段
+        //开始结束时间
+        self.queryBean.startTime = startTime
+        self.queryBean.endTime = endTime
     }
     
     //MARK: - 获取未配载的信息

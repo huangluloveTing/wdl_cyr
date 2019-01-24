@@ -319,8 +319,8 @@ extension WaybillDetailBaseVC {
                       consignee: self.currentInfo?.consigneeName,
                       rePhone: self.currentInfo?.consigneePhone,
                       carrier: self.currentInfo?.carrierName,
-                      driver: self.currentInfo?.driverName,
-                      vehicleNo: self.currentInfo?.vehicleNo)
+                      driver: self.currentInfo?.driverName ?? "无",
+                      vehicleNo: self.currentInfo?.vehicleNo ?? "无")
         return cell
     }
     

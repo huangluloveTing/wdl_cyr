@@ -85,6 +85,7 @@ enum API {
     case getCarrierHallDictionary()
     case updateReturnImg(String , String)   // 上传回单
     case positionCarrier(CarrierPositionVo) // 上传承运人的经纬度
+    case findTransportByTransportStatus(QuerytTransportListBean) // 获取运输计划运单
 }
 
 
@@ -227,6 +228,8 @@ func apiPath(api:API) -> String {
         return "/carrierTransport/updateReturnImg"
     case .positionCarrier(_):
         return "/carrierTransport/positionCarrier"
+    case .findTransportByTransportStatus(_):
+        return "/carrierTransport/findTransportByTransportStatus"
     }
 }
 
@@ -266,8 +269,8 @@ func apiTask(api:API) -> Task {
         
     case .findCarrierInfoFee(let id):
         return .requestCompositeParameters(bodyParameters: [String:Any](), bodyEncoding: JSONEncoding.default, urlParameters: ["hallId": id])
-        
-    
+    case .findTransportByTransportStatus(let query):
+        return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
         
     case .register(let pwd, let phone, let vcode, let vpwd,let adPhone):
         return .requestParameters(parameters: ["password": pwd,"phone": phone,"verificationCode": vcode,"verificationPassword": vpwd,"refereePhone": adPhone], encoding: JSONEncoding.default)

@@ -201,6 +201,7 @@ extension WaybillCarrierInfoCell {
         self.goodCodeId.text = "货源编号：" + (info?.hallId ?? "")
         self.waybillInfo = info
         self.configStatus(status: (info?.transportStatus)!, statusLabel: self.statusLabel ,comment: info?.evaluateCode)
+        self .toAddImageForImageView(imageUrl: info?.companyLogo, imageView: self.avatorImageView)
         self.toShowWaybillStatusSign(status: (info?.transportStatus)!, for: self.statusImageView)
         self.showFirstLineInfo(info: info, tyLabel: desiginNameLabel, middleLabel: desiginTypeLabel, lastLabel: waybillTypeDescLabel)
         self.startLabel.text = info?.origin

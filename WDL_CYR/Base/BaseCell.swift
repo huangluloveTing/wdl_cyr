@@ -77,7 +77,8 @@ extension BaseCell {
 extension BaseCell {
     func toAddImageForImageView(imageUrl:String? , imageView:UIImageView) -> Void {
         let resource = URL(string: imageUrl ?? "")
-        imageView.kf.setImage(with: (resource))
+        let image = Image.init(named: "AppIcon")
+        imageView.kf.setImage(with: resource, placeholder: image)
     }
 }
 
