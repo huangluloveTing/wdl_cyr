@@ -156,6 +156,7 @@ extension ForgetPwdVC {
             .take(RxTimeInterval(dueTime), scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] (time) in
                 self?.sendCodeButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+                self?.sendCodeButton.isEnabled = false
                 self?.sendCodeButton.setTitle(String(format: "%ds", (60 - time)), for: UIControlState.normal)
                 }, onCompleted: { [weak self] in
                     self?.sendCodeButton.isEnabled = true

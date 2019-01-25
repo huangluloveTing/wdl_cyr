@@ -71,6 +71,7 @@ class ModifyPhoneVC: NormalBaseVC {
             .take(RxTimeInterval(dueTime), scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] (time) in
                 self?.verifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+                self?.verifyButton.isEnabled = false
                 self?.verifyButton.setTitle(String(format: "%ds", (60 - time)), for: UIControlState.normal)
                 }, onCompleted: { [weak self] in
                     self?.verifyButton.isEnabled = true
@@ -82,9 +83,11 @@ class ModifyPhoneVC: NormalBaseVC {
 
     
     func obtainVerifyCode(phone:String) -> Void {
+        self.showLoading()
         BaseApi.request(target: API.registerSms(phone), type: BaseResponseModel<String>.self)
-            .retry(5)
+            .retry(2)
             .subscribe(onNext: { [weak self](data) in
+                self?.showSuccess()
                 self?.timedownVeryCodeButton()
             }, onError: { (error) in
                 self.showFail(fail: error.localizedDescription, complete: nil)
