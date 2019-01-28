@@ -53,6 +53,9 @@ class WaybillCarrierInfoCell: WaybillBaseCell {
         if self.currentStatus == .doing {   // 取消运输
             self.toCancelTransformWaybill(param: self)
         }
+        if self.currentStatus == .breakTask {
+            self.toCancelTransformWaybill(param: self)
+        }
     }
     
     @IBAction func twoHandle_second_action(_ sender: Any) {
@@ -63,6 +66,9 @@ class WaybillCarrierInfoCell: WaybillBaseCell {
         // 未完成的情况
         if self.currentStatus == .doing {   // 继续运输
             self.toContinueTransformWaybill(param: self)
+        }
+        if self.currentStatus == .breakTask {
+            self.toContinueTransportForBreak(param: self)
         }
     }
     
@@ -155,7 +161,7 @@ extension WaybillCarrierInfoCell {
             self.showInfoWillDesigned(info: info)
             break;
         case .notDone_breakContractForCarrier:
-            showInfoDoingBreakContract(info: info)
+            showInfoPlanBreakNormal(info: info)
             break
         case .notDone_breakContractForDriver:
             showInfoDoingDriverBreakContract(info: info)
@@ -273,6 +279,15 @@ extension WaybillCarrierInfoCell {
         self.oneHandleView.isHidden = true
         self.twoHandleButton_1.setTitle("取消运输", for: .normal)
         self.twoHandleButton_2.setTitle("继续运输", for: .normal)
+    }
+    
+    // 显示已违约的运输计划
+    func showInfoPlanBreakNormal(info:WayBillInfoBean?) -> Void {
+        self.showInfo(info: info)
+        self.twoHandleView.isHidden = false
+        self.oneHandleView.isHidden = true
+        self.twoHandleButton_1.setTitle("放弃承运", for: .normal)
+        self.twoHandleButton_2.setTitle("继续承运", for: .normal)
     }
     
     // 显示可以修改配载 -- 待起运

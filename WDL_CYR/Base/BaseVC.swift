@@ -28,6 +28,10 @@ class BaseVC: UIViewController {
     
     public let dispose = DisposeBag()
     
+    private var badgeValueView:BageView? // 消息图标
+    
+    var numString: String? //消息个数
+    
     public var naviTitleView = ZTScrollNaviBarView(frame: CGRect(x: 60 * IPHONE_RATE, y: 0, width: IPHONE_WIDTH - 60 * IPHONE_RATE * 2, height: 44))
 
     override func viewDidLoad() {
@@ -85,6 +89,37 @@ class BaseVC: UIViewController {
     func receiveMessageResultHandler() -> Void {
         
     }
+    
+    //MARK: - q点击消息
+    func tapMessageHandle() -> Void {
+        self.toMessageCenter()
+    }
+    
+    //MARK: - 更新消息
+    func updateUnreadMessageCount() -> Void {
+        let count = self.messageBadgeValue()
+        self.badgeValueView?.badgeLabel.isHidden = false
+        if Int(count) == 0 {
+            self.badgeValueView?.badgeLabel.isHidden = true
+        }
+        self.badgeValueView?.badgeValue(text: count)
+    }
+
+    //MARK: - 当前消息个数
+    func messageBadgeValue() -> String {
+        return self.numString ?? "0"
+    }
+    
+    //获取消息个数
+    func getMessageNumRequest() -> Void {
+        WDLCoreManager.shared().loadUnReadMessage(closure: { [weak self](count) in
+            //消息个数
+            let numString = String(format: "%ld", count)
+            self?.numString = numString
+            //设置ui
+            self?.updateUnreadMessageCount()
+        })
+    }
 }
 
 // 跳转新页面
@@ -134,10 +169,14 @@ extension BaseVC {
     func addMessageRihgtItem() {
         let rightBadgeView = BageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         rightBadgeView.bgImage(image: #imageLiteral(resourceName: "message"))
-        rightBadgeView.badgeValue(text: "99")
+        
         rightBadgeView.textFont()
         rightBadgeView.badgeColor(color: UIColor.white)
         rightBadgeView.bgColor(bgColor: UIColor.clear)
+        self.badgeValueView = rightBadgeView
+        self.badgeValueView?.singleTap(closure: { [weak self](view) in
+            self?.tapMessageHandle()
+        })
         self.addRightBarbuttonItem(with: rightBadgeView)
     }
     

@@ -19,6 +19,7 @@ class ResourceContainerVC: ZTScrollViewConroller {
         self.wr_setNavBarTitleColor(UIColor.white)
         self.setTitleTintColor(color: UIColor.white.withAlphaComponent(0.7), state: .normal)
         self.setTitleTintColor(color: UIColor.white, state: .selected)
+        self.addMessageRihgtItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +27,10 @@ class ResourceContainerVC: ZTScrollViewConroller {
         
     }
 
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getMessageNumRequest()
+    }
     
     //MARK ; - 关闭横向滚动
     override func horiScrolEnable() -> Bool {

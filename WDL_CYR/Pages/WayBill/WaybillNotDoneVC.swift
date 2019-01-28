@@ -54,11 +54,8 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
     
     // 点击状态
     override func statusChooseHandle(index: Int) {
-        if index == 0 {
-            self.currentStatus = -1
-        }
-//        运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 -1=不限
         self.currentStatus = index - 1
+//        运单状态 1=待起运 0=待办单 2=运输中 3=待签收 4=司机签收 5=经销商或第三方签收 6=TMS签收 -1=不限
         self.beginRefresh()
         self.dropView.currenDropView?.hiddenDropView()
     }

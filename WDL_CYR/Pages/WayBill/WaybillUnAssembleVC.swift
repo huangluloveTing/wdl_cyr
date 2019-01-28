@@ -45,10 +45,7 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
   
     // 点击状态
     override func statusChooseHandle(index: Int) {
-        if index == 0 {
-            self.currentStatus = -1
-        }
-        self.currentStatus = 0
+        self.currentStatus = index - 1
         self.beginRefresh()
         self.dropView.currenDropView?.hiddenDropView()
     }
@@ -98,6 +95,7 @@ extension WaybillUnAssembleVC
 }
 
 extension WaybillUnAssembleVC {
+    // 非运输计划运单列表
     func loadUnAssembleDatas() -> Observable<[WayBillInfoBean]> {
         return BaseApi.request(target: API.ownTransportPage(self.queryBean), type: BaseResponseModel<WayBillPageBean>.self)
             .retry(5)
@@ -106,6 +104,7 @@ extension WaybillUnAssembleVC {
             }
     }
     
+    // 运输计划运单列表
     func loadTransportPlan() -> Observable<[WayBillInfoBean]> {
         return BaseApi.request(target: API.findTransportByTransportStatus(self.queryBean), type: BaseResponseModel<WayBillPageBean>.self)
             .retry(5)

@@ -17,17 +17,20 @@ import UIKit
 //let NoPromise_ToCancelTrans = "NoPromise_ToCancelTrans" // 违约取消运输
 //let NoPromise_ToContinue    = "NoPromise_ToContinue"    // 违约继续运输
 
-let EVENT_NAME_REJECT = "EVENT_NAME_REJECT"                     // 拒绝
-let EVENT_NAME_RECEIVE = "EVENT_NAME_RECEIVE"                   // 接受
-let EVENT_NAME_CANCELTRANSPORT = "EVENT_NAME_CANCELTRANSPORT"   // 取消运输
-let EVENT_NAME_CONTINUETRANSPORT = "EVENT_NAME_CONTINUETRANSPORT"   // 继续运输
-let EVENT_NAME_DESIGNATE = "EVENT_NAME_DESIGNATE"               // 指派
-let EVENT_NAME_ASSEMBLE = "EVENT_NAME_ASSEMBLE"                 // 指派
+let EVENT_NAME_REJECT = "EVENT_NAME_REJECT"                      // 拒绝
+let EVENT_NAME_RECEIVE = "EVENT_NAME_RECEIVE"                    // 接受
+let EVENT_NAME_CANCELTRANSPORT = "EVENT_NAME_CANCELTRANSPORT"    // 取消运输
+let EVENT_NAME_CONTINUETRANSPORT = "EVENT_NAME_CONTINUETRANSPORT"// 继续运输
+let EVENT_NAME_DESIGNATE = "EVENT_NAME_DESIGNATE"                // 指派
+let EVENT_NAME_ASSEMBLE = "EVENT_NAME_ASSEMBLE"                  // 配载
+let EVENT_NAME_CONTINUEFORBREAK = "EVENT_NAME_CONTINUEFORBREAK"  // 违约继续承运
+let EVENT_NAME_CANCELFORBREAK = "EVENT_NAME_CANCELFORBREAK"      // 违约取消承运
 
 enum CurrentStatus : Int{
     case unassemble = 1
     case doing = 2
     case done = 3
+    case breakTask
 }
 
 enum OneHandleStatus {
@@ -81,6 +84,15 @@ extension WaybillBaseCell {
     // 点击取消运输
     func toCancelTransformWaybill<T>(param:T) -> Void {
         self.routeName(routeName: EVENT_NAME_CANCELTRANSPORT, dataInfo: param,sender: nil)
+    }
+    
+    // 违约继续承运
+    func toContinueTransportForBreak<T>(param:T) -> Void {
+        self.routeName(routeName: EVENT_NAME_CONTINUEFORBREAK, dataInfo: param)
+    }
+    // 违约取消承运
+    func toCancelTransportForBreak<T>(param:T) -> Void {
+        self.routeName(routeName: EVENT_NAME_CANCELFORBREAK, dataInfo: param)
     }
 }
 

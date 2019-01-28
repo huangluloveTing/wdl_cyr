@@ -37,6 +37,15 @@ class OfferBaseVC: MainBaseVC {
       
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.shared().isEnabled = false;
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.shared().isEnabled = true;
+    }
     
     // override
     func headerRefresh() -> Void {} // 下拉刷新

@@ -26,6 +26,7 @@ struct WaybillAssembleCommitModel : HandyJSON {
     var ordNo : String? // (string): 订单号 ,
     var transportNo : String? // (string): 运单ID ,
     var vehicleNo : String? // (string): 车牌号
+    var id:String?
 }
 
 struct WaybillAssembleUIModel {

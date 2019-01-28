@@ -20,7 +20,7 @@ enum TransportCapacityShowType { // 当前展示的信息 ， 驾驶员 ， 车�
 
 class TransportCapacityVC: NormalBaseVC {
     
-    private var showType:TransportCapacityShowType = .Truck
+    private var showType:TransportCapacityShowType = .Driver
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var bottomView: UIView!
@@ -51,22 +51,21 @@ class TransportCapacityVC: NormalBaseVC {
         self.removeNaviTitle()
     }
     
+    @IBAction func bottomAction(_ sender: Any) {
+        bottomButtonHandle()
+    }
+    
     override func currentConfig() {
         self.bottomView.shadow(color: UIColor(hex: "BBBBBB"), offset: CGSize(width: 0, height: -3), opacity: 0.5, radius: 2)
-        self.addNaviSelectTitles(titles: ["车辆","驾驶员"])
-        self.addButton.rx.tap.asObservable()
-            .subscribe(onNext: { [weak self]() in
-                self?.bottomButtonHandle()
-            })
-            .disposed(by: dispose)
+        self.addNaviSelectTitles(titles: ["驾驶员","车辆"])
         self.emptyTitle(title: "暂无信息", to: self.tableView)
     }
     
     override func tapNaviHandler(index: Int) {
         if index == 0 {
-            self.showType = .Truck
-        } else {
             self.showType = .Driver
+        } else {
+            self.showType = .Truck
         }
         self.toReloadSearch()
         self.toReloadBottom()

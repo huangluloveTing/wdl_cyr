@@ -16,11 +16,7 @@ enum AlertVCMode {
 extension BaseVC {
     
     public func showAlert(title:String? = "" , message:String? = "", closure:((Int) -> ())? = { (index) in }) {
-        let _ = UIAlertView.show(withTitle: title, message: message, cancelButtonTitle: "取消", otherButtonTitles: ["确定"]) { (alert, index) in
-            if let closure = closure {
-                closure(index)
-            }
-        }
+        showAlert(items: ["取消","确定"], title: title, message: message, showCancel: false, closure:closure , mode: .alert)
     }
     
     

@@ -45,12 +45,11 @@ class WaybillDoneVC: WayBillBaseVC , ZTScrollViewControllerType {
     
     // 点击状态
     override func statusChooseHandle(index: Int) {
+        self.currentStatus = 6
         if index == 0 {
             self.currentStatus = -1
         }
-        self.currentStatus = 6
         self.beginRefresh()
-        
     }
     
     // 选择时间

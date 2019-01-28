@@ -38,6 +38,10 @@ class WaybillChangeLoadTimeView: UIView {
         }
         return super.hitTest(point, with: event)
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
 }
 
 extension WaybillChangeLoadTimeView {

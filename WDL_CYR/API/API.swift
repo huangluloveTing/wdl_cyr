@@ -86,6 +86,7 @@ enum API {
     case updateReturnImg(String , String)   // 上传回单
     case positionCarrier(CarrierPositionVo) // 上传承运人的经纬度
     case findTransportByTransportStatus(QuerytTransportListBean) // 获取运输计划运单
+//    case transportPlanAcceptRefuse(ZbnTransportVehicle) // 接受还是拒绝y承运
 }
 
 

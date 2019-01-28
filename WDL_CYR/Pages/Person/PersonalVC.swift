@@ -202,11 +202,6 @@ extension PersonalVC {
         self.push(vc: settingVC, title: "个人设置")
     }
     
-    //MARK: - 去消息中心
-    func toMessageCenter() -> Void {
-        let messageCenter = MessageCenterVC()
-        self.push(vc: messageCenter, title: "消息中心")
-    }
     // 钱包
     func toWalletVC() -> Void {
         let walletVC = WalletVC()

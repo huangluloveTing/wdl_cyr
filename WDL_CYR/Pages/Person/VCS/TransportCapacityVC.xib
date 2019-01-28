@@ -37,6 +37,9 @@
                             <state key="normal" title="添加车辆">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="bottomAction:" destination="-1" eventType="touchUpInside" id="IeP-1f-NjJ"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

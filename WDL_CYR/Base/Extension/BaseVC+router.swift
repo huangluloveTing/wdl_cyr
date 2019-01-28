@@ -170,6 +170,12 @@ extension BaseVC {
         
         self.pushToVC(vc: addDriver, title: "添加驾驶员")
     }
+    
+    //MARK: - 去消息中心
+    func toMessageCenter() -> Void {
+        let messageCenter = MessageCenterVC()
+        self.push(vc: messageCenter, title: "消息中心")
+    }
 }
 
 extension BaseVC {

@@ -72,6 +72,16 @@ class WayBillBaseVC: MainBaseVC {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.shared().isEnabled = false;
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.shared().isEnabled = true;
+    }
+    
     //MARK: - Handles
     // 刷新的回调
     func headerRefresh() -> Void {}
@@ -128,6 +138,12 @@ extension WayBillBaseVC {
         // 指派
         if routeName == EVENT_NAME_DESIGNATE {
             self.toDesiginWaybill(indexPath: indexPath)
+        }
+        if routeName == EVENT_NAME_CANCELFORBREAK {
+            self.toCancelTransportForBreak(indexPath: indexPath)
+        }
+        if routeName == EVENT_NAME_CONTINUEFORBREAK {
+            self.toContinueTransportForBreak(indexPath: indexPath)
         }
     }
 }
@@ -199,6 +215,20 @@ extension WayBillBaseVC {
         let info = self.dataSource[indexPath.row]
         transportBillDetailPage(info: info)
     }
+    
+    // 违约继续承运
+    func toContinueTransportForBreak(indexPath:IndexPath?) -> Void {
+        self.toContinueTransport(indexPath: indexPath)
+    }
+    
+    // 违约取消承运
+    func toCancelTransportForBreak(indexPath:IndexPath?) -> Void {
+        showAlert(title: "提示", message: "确定要取消承运？") { [weak self](index) in
+            if index == 1 {
+                self?.cancelTransportHandle(indexPath: indexPath)
+            }
+        }
+    }
 }
 
 //MARK: - bussiness
@@ -232,7 +262,8 @@ extension WayBillBaseVC {
     
     //MARK: - 配载
     func assembleTransportHandle(info:WayBillInfoBean) -> Void {
-        let tranInfo = TransactionInformation.deserialize(from: info.toJSON())
+        var tranInfo = TransactionInformation.deserialize(from: info.toJSON())
+        tranInfo?.id = (info.id == nil || info.id == "") ? info.id : (info.hallId ?? "")
         let mode = WayBillSourceTypeMode(rawValue: info.comeType ?? 1)
 //        tranInfo?.dealUnitPrice = tranInfo?.dealUnitPrice ?? 0
 //        tranInfo?.dealTotalPrice = tranInfo?.dealTotalPrice ?? 0
@@ -263,10 +294,12 @@ extension WayBillBaseVC {
     }
     
     //MARK: -  取消运输
-    func cancelTransportHandle(indexPath:IndexPath) -> Void {
-        let info = self.dataSource[indexPath.row]
-        self.cancelTransport(transportNo: info.transportNo ?? "") { (data) in
-            self.deleteCurrentWaybill(indexPath: indexPath)
+    func cancelTransportHandle(indexPath:IndexPath?) -> Void {
+        if let indexPath = indexPath {
+            let info = self.dataSource[indexPath.row]
+            self.cancelTransport(transportNo: info.transportNo ?? "") { (data) in
+                self.deleteCurrentWaybill(indexPath: indexPath)
+            }
         }
     }
     
@@ -473,9 +506,11 @@ extension WayBillBaseVC {
                          loadingTime:TimeInterval? = nil ,
                          hallId:String? ,
                          closure:((Any) -> ())?){
+        self.showLoading()
         BaseApi.request(target:  API.carrierAllButtonAcceptTransportState(status, loadingTime, transportNo , hallId), type: BaseResponseModel<Any>.self)
             .retry(5)
             .subscribe(onNext: { (model) in
+                self.hiddenToast()
                 if let closure = closure {
                     closure(model)
                 }
@@ -522,6 +557,10 @@ extension WayBillBaseVC {
             })
             .disposed(by: dispose)
     }
+    
+//    func breakTransportToHandle(continue:Bool,) -> <#return type#> {
+//        <#function body#>
+//    }
 }
 
 //MARK: - UITableViewDelegate , UITableViewDataSource
@@ -763,7 +802,8 @@ extension WayBillBaseVC {
     // breakContractForCarrier
     func breakContractForCarrierCell(info:WayBillInfoBean? ,tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WaybillCarrierInfoCell.self)
-        cell.showInfoDoingBreakContract(info: info)
+        cell.showWaybillInfo(info: info)
+        cell.currentStatus = .breakTask
         return cell
     }
     

@@ -19,6 +19,12 @@ class WayBillContainerVC: ZTScrollViewConroller  {
         self.setTitleTintColor(color: UIColor.white.withAlphaComponent(0.7), state: .normal)
         self.setTitleTintColor(color: UIColor.white, state: .selected)
         self.addWaybillVCs()
+        self.addMessageRihgtItem()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getMessageNumRequest()
     }
 
     override func didReceiveMemoryWarning() {

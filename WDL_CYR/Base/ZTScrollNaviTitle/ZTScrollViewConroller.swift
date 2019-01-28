@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ZTScrollViewConroller: UIViewController {
+class ZTScrollViewConroller: BaseVC {
     
     private var subItems:[ZTScrollItem]?
 //    private var naviSelectView:ZTScrollNaviBarView?
@@ -40,7 +40,7 @@ class ZTScrollViewConroller: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         self.tabBarController?.tabBar.isTranslucent = false
         if #available(iOS 11.0, *) {
-            self.collectionView.contentInsetAdjustmentBehavior = .never
+            self.collectionView.contentInsetAdjustmentBehavior = .scrollableAxes
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
