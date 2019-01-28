@@ -47,8 +47,8 @@ extension ResourceContainerVC {
         
         let subItem1 = ZTScrollItem(viewController: focus, title: "关注货源")
         let subItem2 = ZTScrollItem(viewController: resourceHall, title: "货源大厅")
-        self.scrollSubItems(items: [subItem1 , subItem2])
-
+//        self.scrollSubItems(items: [subItem1 , subItem2])
+        self.scrollSubItems(items: [subItem2 , subItem1])
     }
     
 }

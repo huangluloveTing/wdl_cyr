@@ -56,7 +56,8 @@ extension WaybillSepecialInfoCell {
         self.typeLabel.text = "【自营】运输计划"
         self.startLabel.text = info?.origin
         self.endLabel.text = info?.destination
-        let time = Util.dateFormatter(date: Double(info?.loadingTime ?? "0") ?? 0, formatter: "yyyy-MM-dd") + "  装货"
+        let time = Util.dateFormatter(date: (Double(info?.loadingTime ?? "0") ?? 0)/1000, formatter: "yyyy-MM-dd") + "  装货"
+        
         let weight = (info?.goodsWeight ?? "") + "吨"
         self.goodsInfoLabel.text = Util.contact(strs: [time , weight], seperate: " | ")
         self.timeLabel.text = Util.contact(strs: ["成交时间:",Util.dateFormatter(date: (info?.createTime ?? 0) / 1000, formatter: "yyyy-MM-dd HH:mm:ss")])

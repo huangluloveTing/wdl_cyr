@@ -186,6 +186,7 @@ extension RegisterVC {
             .take(RxTimeInterval(dueTime), scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] (time) in
                 self?.verifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+                self?.verifyButton.isEnabled = false
                 self?.verifyButton.setTitle(String(format: "%ds", (dueTime - time)), for: UIControlState.normal)
                 }, onCompleted: { [weak self] in
                     self?.verifyButton.isEnabled = true

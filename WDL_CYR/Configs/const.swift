@@ -23,7 +23,7 @@ let DEBUG_PASSWORD = ""
 
 #if DEBUG
 //测试内网
-//let HOST = "http://172.16.8.52:8081/zbn-web"
+let HOST = "http://172.16.8.52:8081/zbn-web"
 //本地测试
 //liaobing
 //let HOST = "http://172.16.59.47:8081/zbn-web"
