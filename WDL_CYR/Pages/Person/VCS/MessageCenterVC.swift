@@ -96,7 +96,7 @@ extension MessageCenterVC {
             .retry(2)
             .subscribe(onNext: { [weak self](data) in
                 self?.tableView.endRefresh()
-                self?.showSuccess(success: nil)
+                self?.hiddenToast()
                 self?.configNetDataToUI(lists: data.data?.list ?? [])
                 if (data.data?.list?.count ?? 0) >= (data.data?.total ?? 0) {
                     self?.tableView.noMore()
@@ -121,8 +121,9 @@ extension MessageCenterVC {
             .retry(5)
             .subscribe(onNext: { (_) in
                 print("标记成功")
-            }, onError: { (error) in
                 
+            }, onError: { (error) in
+             
             })
             .disposed(by: dispose)
     }

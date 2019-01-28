@@ -106,6 +106,7 @@ extension WaybillUnAssembleVC {
     
     // 运输计划运单列表
     func loadTransportPlan() -> Observable<[WayBillInfoBean]> {
+        self.queryBean.transportStatus = -1
         return BaseApi.request(target: API.findTransportByTransportStatus(self.queryBean), type: BaseResponseModel<WayBillPageBean>.self)
             .retry(5)
             .map { (res) -> [WayBillInfoBean] in

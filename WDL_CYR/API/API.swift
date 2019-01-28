@@ -165,8 +165,12 @@ func apiPath(api:API) -> String {
         return "/offer/addOffer"
     case .selectOwnOffer(_):
         return "/offer/selectOwnOfferApp"
+//    case .getOfferByOrderHallId(_):
+//        return "/orderHall/findOrderHallAndOffer"
+        
     case .getOfferByOrderHallId(_):
-        return "/orderHall/findOrderHallAndOffer"
+        return "/carrierOrderHall/findPlanHallDetails"
+        
     case .ownTransportPage(_):
         return "/carrierTransport/findCarrierTransportList"
     case .carrierAllButtonAcceptTransportState(_):
