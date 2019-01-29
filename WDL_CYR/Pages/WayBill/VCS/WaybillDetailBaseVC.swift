@@ -947,7 +947,8 @@ extension WaybillDetailBaseVC {
     
     func loadDetailData(hallId:String) -> Void {
         self.showLoading()
-        BaseApi.request(target: API.queryTransportDetail(hallId), type: BaseResponseModel<TransactionInformation>.self)
+        let transportNo = self.currentInfo?.transportNo ?? ""
+        BaseApi.request(target: API.queryTransportDetail(hallId,transportNo), type: BaseResponseModel<TransactionInformation>.self)
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.currentTableView?.endRefresh()

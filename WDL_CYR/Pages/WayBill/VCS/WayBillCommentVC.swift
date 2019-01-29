@@ -20,7 +20,7 @@ class WayBillCommentVC: BaseVC  {
     private var pageInfo:TransactionInformation?
     
     public var hallId:String?
-    
+    public var transportNo: String?
     // 提交信息
     private var commitModel:WaybillCommitModel = WaybillCommitModel()
     
@@ -119,7 +119,7 @@ extension WayBillCommentVC : UITableViewDelegate , UITableViewDataSource {
 extension WayBillCommentVC {
     func loadDetailData(hallId:String) -> Void {
         self.showLoading()
-        BaseApi.request(target: API.queryTransportDetail(hallId), type: BaseResponseModel<TransactionInformation>.self)
+        BaseApi.request(target: API.queryTransportDetail(hallId,transportNo ?? ""), type: BaseResponseModel<TransactionInformation>.self)
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.hiddenToast()
