@@ -852,13 +852,13 @@ extension WaybillDetailBaseVC {
         self.halllReturnVo.imageUrl = returnImgList
         self.halllReturnVo.transportNo = transportNo
         //获取定位
-        self.locationUser(hallId: hallId)
+        self.locationUser(hallId: hallId,transportNo:transportNo)
         
        
     }
     
     // 定位
-    func locationUser(hallId:String) -> Void {
+    func locationUser(hallId:String,transportNo:String) -> Void {
         self.locationManager.startLocation(result: { [weak self](location, error) in
             if error == nil {
                 //获取当前经纬度
@@ -868,7 +868,7 @@ extension WaybillDetailBaseVC {
                 self?.halllReturnVo.latitude = latitude
                 self?.halllReturnVo.longitude = longtitude
                 //签收请求
-                self?.signForRequest(hallId: hallId)
+                self?.signForRequest(hallId: hallId,transportNo:transportNo)
             } else {
                 switch error! {
                 case .businessError(_, let code):
@@ -883,12 +883,12 @@ extension WaybillDetailBaseVC {
                         self?.geoCode(addressStr: takeGoodAddress)
                     }
                     //签收请求
-                    self?.signForRequest(hallId: hallId)
+                    self?.signForRequest(hallId: hallId, transportNo: transportNo)
                     break
                 default:
                     print("其他错误")
                     //签收请求
-                    self?.signForRequest(hallId: hallId)
+                    self?.signForRequest(hallId: hallId,transportNo: transportNo)
                 }
              }
             }, isContinue: false)
@@ -922,12 +922,12 @@ extension WaybillDetailBaseVC {
     }
     
     //申请签收请求
-    func signForRequest(hallId:String){
+    func signForRequest(hallId:String,transportNo:String){
         self.showLoading()
         BaseApi.request(target: API.addOrderHallReturn(self.halllReturnVo), type: BaseResponseModel<String>.self)
             .subscribe(onNext: { [weak self](data) in
                 self?.showSuccess(success: data.message, complete: {
-                    self?.loadDetailData(hallId: hallId)
+                    self?.loadDetailData(hallId: hallId,transportNo:transportNo)
                     self?.pop()
                 })
                 }, onError: { (error) in
@@ -945,9 +945,10 @@ extension WaybillDetailBaseVC {
 //MARK: - 获取运单详情
 extension WaybillDetailBaseVC {
     
-    func loadDetailData(hallId:String) -> Void {
+    func loadDetailData(hallId:String,transportNo:String) -> Void {
         self.showLoading()
-        BaseApi.request(target: API.queryTransportDetail(hallId), type: BaseResponseModel<TransactionInformation>.self)
+   
+        BaseApi.request(target: API.queryTransportDetail(hallId,transportNo), type: BaseResponseModel<TransactionInformation>.self)
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.currentTableView?.endRefresh()

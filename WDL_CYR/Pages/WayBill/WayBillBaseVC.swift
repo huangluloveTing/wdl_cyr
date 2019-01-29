@@ -275,6 +275,7 @@ extension WayBillBaseVC {
             self.toAssemblePage(info: tranInfo , mode: mode ?? .carrierAssemble)
             return
         }
+        //运输计划
         if info.comeType == 3 {
             self.toAssemblePage(info: tranInfo , mode: mode ?? .planAssemble)
             return

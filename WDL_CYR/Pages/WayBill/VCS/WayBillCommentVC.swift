@@ -20,7 +20,7 @@ class WayBillCommentVC: BaseVC  {
     private var pageInfo:TransactionInformation?
     
     public var hallId:String?
-    
+    public var transportNo: String?
     // 提交信息
     private var commitModel:WaybillCommitModel = WaybillCommitModel()
     
@@ -29,7 +29,7 @@ class WayBillCommentVC: BaseVC  {
         self.registerCells()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.loadDetailData(hallId: self.hallId!)
+        self.loadDetailData(hallId: self.hallId!, transportNo:self.transportNo ?? "")
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,9 +117,9 @@ extension WayBillCommentVC : UITableViewDelegate , UITableViewDataSource {
 
 
 extension WayBillCommentVC {
-    func loadDetailData(hallId:String) -> Void {
+    func loadDetailData(hallId:String,transportNo:String?) -> Void {
         self.showLoading()
-        BaseApi.request(target: API.queryTransportDetail(hallId), type: BaseResponseModel<TransactionInformation>.self)
+        BaseApi.request(target: API.queryTransportDetail(hallId,transportNo ?? ""), type: BaseResponseModel<TransactionInformation>.self)
             .retry(5)
             .subscribe(onNext: { [weak self](data) in
                 self?.hiddenToast()

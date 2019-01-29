@@ -97,9 +97,10 @@ extension BaseVC {
     }
     
     // 跳转到 评价 页面
-    func toCommentVC(hallId:String) -> Void {
+    func toCommentVC(hallId:String,transportNo: String) -> Void {
         let commentVC = WayBillCommentVC()
         commentVC.hallId = hallId
+        commentVC.transportNo = transportNo
         self.pushToVC(vc: commentVC, title: "评价")
     }
     
@@ -146,7 +147,7 @@ extension BaseVC {
         case .done(let mode):
             detailVC.currentShowMode(mode: .done_notCommentForCarrier)
             if mode == .noComment {
-                self.toCommentVC(hallId: info.hallId ?? "")
+                self.toCommentVC(hallId: info.hallId ?? "",transportNo: info.transportNo ?? "")
                 return
             }
         case .unAssemble_comType_1_2_noAccept:

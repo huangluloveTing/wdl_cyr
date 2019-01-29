@@ -17,12 +17,21 @@ class RechargeInlineVC: NormalBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.addNaviSelectTitles(titles: ["在线充值","线下充值"])
-        self.addNaviSelectTitles(titles: ["在线充值"])
+        
         self.configTabView()
         self.registerAllCells()
        
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.addNaviSelectTitles(titles: ["在线充值"])
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.removeNaviTitle()//移除标题
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     
