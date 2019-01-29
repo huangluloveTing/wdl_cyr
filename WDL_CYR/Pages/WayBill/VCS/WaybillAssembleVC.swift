@@ -181,7 +181,7 @@ extension WaybillAssembleVC {
             }
             break
         case .assembled:
-            self.bottomButtom(titles: [""], targetView: self.tableView)
+            self.bottomButtom(titles: [], targetView: self.tableView)
             break;
         default:
             self.bottomButtom(titles: ["申请配载"], targetView: self.tableView) { (index) in

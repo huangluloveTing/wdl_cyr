@@ -188,7 +188,7 @@ extension WaybillAssembleBaseVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if self.currentDisplayMode == .assembled {
-            return 30
+            return 10
         }
         return 0.01
     }
