@@ -750,7 +750,7 @@ extension WayBillBaseVC {
         case .notDone_breakContractForDriver:
             return breakContractForDriverCell(info: info, tableView: tableView)
         case .notDone_canEditAssemble:
-            return breakContractForCarrierCell(info: info, tableView: tableView)
+            return canAsseembleForCarrierCell(info: info, tableView: tableView)
 //        case :
 //            return unAssembleToAssembleCell(info: info, tableView: tableView)
         case .notDone_willTransport,.notDone_willSign , .notDone_transporting:
@@ -804,6 +804,13 @@ extension WayBillBaseVC {
         let cell = tableView.dequeueReusableCell(nib: WaybillCarrierInfoCell.self)
         cell.showWaybillInfo(info: info)
         cell.currentStatus = .breakTask
+        return cell
+    }
+    
+    // notDone canAsseemble
+    func canAsseembleForCarrierCell(info:WayBillInfoBean? ,tableView:UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(nib: WaybillCarrierInfoCell.self)
+        cell.showCanEditInfo(info: info)
         return cell
     }
     
