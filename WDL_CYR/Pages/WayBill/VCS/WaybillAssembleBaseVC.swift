@@ -14,9 +14,30 @@ enum WayBillSourceTypeMode : Int  {
     case carrierAssemble  = 2   // 承运人配载 对应 运单 来源 为 2
     case planAssemble   = 3     // 运输计划配载 对应运单来源 为 3
     case designate  = 4         // 指派 对应 运单来源为 4
+    case assembled   = 5        // 已配置的运输计划
 }
 
 struct WaybillAssembleCommitModel : HandyJSON {
+//    carrierId = 27562554804;
+//    carrierName = \"\\U53f8\\U673a\\U4e94\\U53f7\";
+//    createTime = 1548725992673;
+//    driverId = 28087845383;
+//    driverName = \"\\U53f8\\U673a\\U516b\\U53f7\";
+//    driverPhone = \"<null>\";
+//    endTime = \"<null>\";
+//    hallId = \"<null>\";
+//    id = d89b48b7;
+//    isAccepted = 0;
+//    loadWeight = \"2.1\";
+//    oldVehicleNo = \"<null>\";
+//    opType = \"<null>\";
+//    ordNo = T19012800043;
+//    pageNum = 0;
+//    pageSize = 0;
+//    startTime = \"<null>\";
+//    token = \"<null>\";
+//    transportNo = \"<null>\";
+//    vehicleNo = \"\\U9ed1G99988\";
     var carrierId : String? // (string): 承运人ID ,
     var carrierName : String? // (string): 承运人姓名 ,
     var driverId : String? // (string): 司机ID ,
@@ -116,6 +137,8 @@ extension WaybillAssembleBaseVC : UITableViewDelegate , UITableViewDataSource {
         switch self.currentDisplayMode {
         case .driverAssemble , .carrierAssemble:
             return singleAssembleSection()
+        case .assembled:
+            return multAssembleSections() + 1
         default:
             return multAssembleSections()
         }
@@ -126,6 +149,11 @@ extension WaybillAssembleBaseVC : UITableViewDelegate , UITableViewDataSource {
         switch self.currentDisplayMode {
         case .driverAssemble , .carrierAssemble:
             return singleAssembleRows(section: section)
+        case .assembled:
+            if section == 0 {
+                return 1;
+            }
+            return 3;
         default:
             return multAssemRows(section: section)
         }
@@ -137,6 +165,8 @@ extension WaybillAssembleBaseVC : UITableViewDelegate , UITableViewDataSource {
             return singleAssembleForDriverCells(tableView:tableView ,indexPath:indexPath)
         case .carrierAssemble:
             return singleAssembleForCarrierCells(tableView:tableView , indexPath: indexPath)
+        case .assembled:
+            return assembledPlanCells(tableView: tableView, indexPath:indexPath)
         default:
             return multiAssembleCell(indexPath: indexPath, tableView: tableView)
         }
@@ -157,6 +187,9 @@ extension WaybillAssembleBaseVC : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if self.currentDisplayMode == .assembled {
+            return 30
+        }
         return 0.01
     }
     
@@ -225,6 +258,37 @@ extension WaybillAssembleBaseVC {
             cell.showInfo(title: "承运数量", content: Util.floatPoint(num: 0, floatValue: info.carrierNum ?? 0), hight: false)
         }
         return cell
+    }
+    
+    
+    //MARK: - 已配置运输计划
+    func assembledPlanCells(tableView:UITableView , indexPath:IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(nib: WaybillAssembleContentCell.self)
+        let row = indexPath.row
+        cell.accessoryType = .none
+        if indexPath.section == 0 {
+            cell.showInfo(title: "承运总吨数", content: Util.floatPoint(num: 2, floatValue: getTotalCarrierTone()), hight: true)
+            return cell
+        }
+        let info = currentAssembleModels[indexPath.section - 1]
+        if row == 0 {
+            cell.showInfo(title: "驾驶员", content: info.driverName, hight: true)
+        }
+        if row == 1 {
+            cell.showInfo(title: "车牌号", content: info.vehicleNo, hight: true)
+        }
+        if row == 2 {
+            cell.showInfo(title: "分配吨数", content: Util.floatPoint(num: 2, floatValue: info.disVolumn ?? 0), hight: true)
+        }
+        return cell
+    }
+    
+    func getTotalCarrierTone() -> Float {
+        var count : Float = 0
+        for info in currentAssembleModels {
+            count += (info.disVolumn ?? 0)
+        }
+        return count
     }
     
     func singleAssembleSection() -> Int {

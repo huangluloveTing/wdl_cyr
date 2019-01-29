@@ -87,6 +87,7 @@ enum API {
     case positionCarrier(CarrierPositionVo) // 上传承运人的经纬度
     case findTransportByTransportStatus(QuerytTransportListBean) // 获取运输计划运单
 //    case transportPlanAcceptRefuse(ZbnTransportVehicle) // 接受还是拒绝y承运
+    case getTransportVehicleList(String) // 查询配置计划
 }
 
 
@@ -235,6 +236,8 @@ func apiPath(api:API) -> String {
         return "/carrierTransport/positionCarrier"
     case .findTransportByTransportStatus(_):
         return "/carrierTransport/findTransportByTransportStatus"
+    case .getTransportVehicleList(_):
+        return "/carrierTransport/getTransportVehicleList"
     }
 }
 
@@ -417,6 +420,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: ["returnBillUrl":imgUrl , "transportNo" : transportNo] , encoding: JSONEncoding.default)
     case .positionCarrier(let vo):
         return .requestParameters(parameters: vo.toJSON() ?? Dictionary() , encoding: JSONEncoding.default)
+    case .getTransportVehicleList(let orderNo):
+        return .requestParameters(parameters: ["orderNo":orderNo], encoding: URLEncoding.default)
     }
   
 }
@@ -442,7 +447,8 @@ func apiMethod(api:API) -> Moya.Method {
          .addDriver(_),
          .findDriverInformation(_),
          .dictionaryEntityByCode(_),
-         .getCarrierHallDictionary():
+         .getCarrierHallDictionary(),
+         .getTransportVehicleList(_):
         return .get
     default:
         return .post

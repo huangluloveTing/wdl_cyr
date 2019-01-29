@@ -20,6 +20,7 @@ class WaybillAssembleVC: WaybillAssembleBaseVC {
         super.viewDidLoad()
         configTableView(tableView: tableView)
         self.configToDisplay()
+        loadAssembleDetail(orderNo: pageInfo?.ordNo ?? "")
     }
     
     override func zt_rightBarButtonAction(_ sender: UIBarButtonItem!) {
@@ -179,6 +180,9 @@ extension WaybillAssembleVC {
                 self.commitAssemble()
             }
             break
+        case .assembled:
+            self.bottomButtom(titles: ["申请配载"], targetView: self.tableView)
+            break;
         default:
             self.bottomButtom(titles: ["申请配载"], targetView: self.tableView) { (index) in
                 self.commitAssemble()
@@ -268,6 +272,37 @@ extension WaybillAssembleVC {
                     self.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)
+    }
+    
+    
+    func loadAssembleDetail(orderNo:String) -> Void {
+        self.showLoading()
+        BaseApi.request(target: API.getTransportVehicleList(orderNo), type: BaseResponseModel<[WaybillAssembleCommitModel]>.self)
+            .retry(5)
+            .subscribe(onNext: { [weak self](res) in
+                self?.handleAssembleResult(results: res.data ?? [])
+            }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
+            })
+            .disposed(by: dispose)
+    }
+    
+    func handleAssembleResult(results:[WaybillAssembleCommitModel]) -> Void {
+        hiddenToast()
+        if results.count > 0 {
+            self.addRightBarbuttonItem(withTitle: "")
+            self.bottomButtom(titles: [], targetView: self.tableView)
+            self.currentDisplayMode = .assembled;
+            var models : [WaybillAssembleUIModel] = []
+            for res in results {
+                var model = WaybillAssembleUIModel()
+                model.driverName = res.driverName
+                model.vehicleNo = res.vehicleNo
+                model.disVolumn = res.loadWeight
+                models.append(model)
+            }
+            self.configUIModel(models: models)
+        }
     }
 }
 
