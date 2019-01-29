@@ -29,7 +29,7 @@ class WayBillCommentVC: BaseVC  {
         self.registerCells()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.loadDetailData(hallId: self.hallId!)
+        self.loadDetailData(hallId: self.hallId!, transportNo:self.transportNo ?? "")
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,7 +117,7 @@ extension WayBillCommentVC : UITableViewDelegate , UITableViewDataSource {
 
 
 extension WayBillCommentVC {
-    func loadDetailData(hallId:String) -> Void {
+    func loadDetailData(hallId:String,transportNo:String?) -> Void {
         self.showLoading()
         BaseApi.request(target: API.queryTransportDetail(hallId,transportNo ?? ""), type: BaseResponseModel<TransactionInformation>.self)
             .retry(5)

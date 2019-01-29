@@ -46,8 +46,8 @@ class WayBillDetailVC: WaybillDetailBaseVC {
         .filter { (state) -> Bool in
             return state != TableViewState.EndRefresh
         }
-        .subscribe(onNext: { [weak self](state) in
-            self?.loadDetailData(hallId: self?.waybillInfo?.hallId ?? "")
+        .subscribe({ [weak self](state) in
+            self?.loadDetailData(hallId: self?.waybillInfo?.hallId ?? "",transportNo: self?.waybillInfo?.transportNo ?? "")
         })
         .disposed(by: dispose)
     }
@@ -105,7 +105,7 @@ class WayBillDetailVC: WaybillDetailBaseVC {
                 let hallId = self?.waybillInfo?.hallId ?? ""
                 self?.toDesignate(phone: phone, transportNo: code , hallId: hallId, closure: {
                     self?.showSuccess(success: "指派成功", complete: {
-                        self?.loadDetailData(hallId: hallId)
+                        self?.loadDetailData(hallId: hallId,transportNo:self?.waybillInfo?.transportNo ?? "")
                     })
                 })
             })

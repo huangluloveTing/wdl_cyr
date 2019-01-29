@@ -338,7 +338,7 @@ func apiTask(api:API) -> Task {
         }
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     case .queryTransportDetail(let hallId,let  transportNo):
-        return .requestParameters(parameters: ["hallId":hallId, " transportNo":  transportNo], encoding: URLEncoding.default)
+        return .requestParameters(parameters: ["hallId":hallId, "transportNo":  transportNo], encoding: URLEncoding.default)
         
     case .designateWaybill(let phone, let transportNo , let hallId):
         return .requestParameters(parameters: [  "phone": phone,"transportId": transportNo , "hallId" : hallId], encoding: JSONEncoding.default)
