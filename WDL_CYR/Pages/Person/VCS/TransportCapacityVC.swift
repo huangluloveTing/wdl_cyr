@@ -362,7 +362,7 @@ extension TransportCapacityVC {
     func loadVichelCapacity(search:String) -> Void {
         self.tableView.removeCacheHeights()
         BaseApi.request(target: API.findCarInformation(search), type: BaseResponseModel<[ZbnTransportCapacity]>.self)
-            .retry(10)
+            .retry(2)
             .subscribe(onNext: { [weak self](data) in
                 self?.tableView.endRefresh()
                 self?.vehicleLists = data.data ?? []
