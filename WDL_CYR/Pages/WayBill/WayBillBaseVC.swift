@@ -795,7 +795,7 @@ extension WayBillBaseVC {
     // breakContractForDriver
     func breakContractForDriverCell(info:WayBillInfoBean? , tableView:UITableView) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: WaybillCarrierInfoCell.self)
-        cell.showInfoAcceptAndReject(info: info)
+        cell.showInfoPlanBreakNormal(info: info)
         return cell
     }
     
