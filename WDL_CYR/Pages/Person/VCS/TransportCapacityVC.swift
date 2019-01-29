@@ -277,13 +277,13 @@ extension TransportCapacityVC {
         self.tableView.removeCacheHeights()
         self.tableView.reloadData()
         if index == 0 {
-            if self.vehicleLists.count <= 0 {
+            if self.driverLists.count <= 0 {
                 self.tableView.beginRefresh()
                 return
             }
         }
         if index == 1 {
-            if self.driverLists.count <= 0 {
+            if self.vehicleLists.count <= 0 {
                 self.tableView.beginRefresh()
                 return
             }
