@@ -36,14 +36,16 @@ class WayBillContainerVC: ZTScrollViewConroller  {
 extension WayBillContainerVC {
     
     func addWaybillVCs() -> Void {
+        let planVC = WaybillPlanVC()
         let unassemble = WaybillUnAssembleVC()
         let notDoneVC = WaybillNotDoneVC()
         let doneVC = WaybillDoneVC()
         
+        let subItem0 = ZTScrollItem(viewController: planVC, title: "运输计划")
         let subItem1 = ZTScrollItem(viewController: unassemble, title: "未配载")
         let subItem2 = ZTScrollItem(viewController: notDoneVC, title: "未完成")
         let subItem3 = ZTScrollItem(viewController: doneVC, title: "已完成")
-        self.scrollSubItems(items: [subItem1 , subItem2 , subItem3])
+        self.scrollSubItems(items: [subItem0, subItem1 , subItem2 , subItem3])
     }
     
     

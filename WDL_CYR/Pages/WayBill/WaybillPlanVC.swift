@@ -1,16 +1,15 @@
 //
-//  WaybillUnAssembleVC.swift
+//  WaybillPlanVC.swift
 //  WDL_CYR
 //
-//  Created by 黄露 on 2018/9/30.
-//  Copyright © 2018年 yingli. All rights reserved.
+//  Created by 黄露 on 2019/1/29.
+//  Copyright © 2019 yinli. All rights reserved.
 //
 
 import UIKit
 import RxSwift
-import RxCocoa
-import RxDataSources
-class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
+
+class WaybillPlanVC: WayBillBaseVC , ZTScrollViewControllerType {
     
     func willShow() {
         
@@ -35,14 +34,12 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.addSearchBar(to: self.tableView, placeHolder: "搜索托运人/承运人/姓名/电话号码")
         self.configTableView(tableView: self.tableView)
-//        self.loadUnAssembleDatas(refresh: true)
-        combineUnAssembleRequest()
+        loadTransportPlan()
         self.setCurrentTabStatus(tab: .UnAssemble)
         self.configHeaderAndFooterRefresh()
     }
-  
+    
     // 点击状态
     override func statusChooseHandle(index: Int) {
         self.currentStatus = index - 1
@@ -56,22 +53,22 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
             self.currentStartTime = startTime
             self.currentEndTime = endTime
             self.beginRefresh()
-        } 
+        }
         self.dropView.currenDropView?.hiddenDropView()
     }
     
     override func headerRefresh() {
-//        self.loadUnAssembleDatas(refresh: true)
-        combineUnAssembleRequest()
+        //        self.loadUnAssembleDatas(refresh: true)
+        loadTransportPlan()
     }
     
     override func footerLoadMore() {
-//        self.loadUnAssembleDatas(refresh: false)
-        combineUnAssembleRequest()
+        //        self.loadUnAssembleDatas(refresh: false)
+        loadTransportPlan()
     }
     
     override func curreenStatusTitles() -> [String] {
-        return ["不限","待办单"]
+        return ["不限"]
     }
     
     override func viewDidLayoutSubviews() {
@@ -89,49 +86,27 @@ class WaybillUnAssembleVC: WayBillBaseVC , ZTScrollViewControllerType {
     }
 }
 
-//MARK: - load data
-extension WaybillUnAssembleVC
-{
-}
 
-extension WaybillUnAssembleVC {
-    // 非运输计划运单列表
-    func loadUnAssembleDatas() -> Observable<[WayBillInfoBean]> {
-        return BaseApi.request(target: API.ownTransportPage(self.queryBean), type: BaseResponseModel<WayBillPageBean>.self)
-            .retry(5)
-            .map { (res) -> [WayBillInfoBean] in
-                return res.data?.list ?? []
-            }
-    }
-    
+extension WaybillPlanVC {
     // 运输计划运单列表
-    func loadTransportPlan() -> Observable<[WayBillInfoBean]> {
+    func loadTransportPlan() -> Void {
+         configRequestParams(status: 1, transportStatus: self.currentStatus, search: self.queryBean.searchWord, startTime:self.currentStartTime , endTime: self.currentEndTime)
         self.queryBean.transportStatus = -1
-        return BaseApi.request(target: API.findTransportByTransportStatus(self.queryBean), type: BaseResponseModel<WayBillPageBean>.self)
+        BaseApi.request(target: API.findTransportByTransportStatus(self.queryBean), type: BaseResponseModel<WayBillPageBean>.self)
             .retry(5)
-            .map { (res) -> [WayBillInfoBean] in
-                return res.data?.list ?? []
-            }
-    }
-    
-    func combineUnAssembleRequest() -> Void {
-//        self.loadTransportPlan() ,
-//        transportStatus: self.currentStatus, startTime: self.currentStartTime, endTime: self.currentEndTime, search: ""
-        configRequestParams(status: 1, transportStatus: self.currentStatus, search: self.queryBean.searchWord, startTime:self.currentStartTime , endTime: self.currentEndTime)
-        self.loadUnAssembleDatas().asObservable()
-            .asObservable()
-            .subscribe(onNext: { [weak self](res2) in
-                self?.combineUnassembleResult(normals: res2, plans: [])
-                }, onError: { [weak self](error) in
-                    self?.endRefresh()
-                    self?.showFail(fail: error.localizedDescription, complete: nil)
+            .subscribe(onNext: { [weak self](res) in
+                self?.handlePlanTransports(result: res.data)
+            }, onError: { [weak self](error) in
+                self?.showFail(fail: error.localizedDescription, complete: nil)
             })
             .disposed(by: dispose)
     }
     
-    func combineUnassembleResult(normals:[WayBillInfoBean] , plans:[WayBillInfoBean]) -> Void {
+    
+    func handlePlanTransports(result:WayBillPageBean?) -> Void {
         self.endRefresh()
-        var newPlans:[WayBillInfoBean] = []
+        let plans:[WayBillInfoBean] = result?.list ?? []
+        var newPlans: [WayBillInfoBean] = []
         for info in plans {
             var newInfo = info;
             newInfo.comeType = 3;
@@ -140,7 +115,11 @@ extension WaybillUnAssembleVC {
             newInfo.hallId = info.id
             newPlans.append(newInfo)
         }
-        newPlans.append(contentsOf: normals)
         self.refreshContents(items: newPlans);
+        if self.currentDataSource.count >= (result?.total ?? 0)  {
+            self.endRefreshAndNoMoreData()
+        } else {
+            self.resetFooter()
+        }
     }
 }

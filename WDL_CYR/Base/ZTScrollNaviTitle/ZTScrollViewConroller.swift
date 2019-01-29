@@ -166,7 +166,7 @@ extension ZTScrollViewConroller : UICollectionViewDelegate , UICollectionViewDat
 // navi titles
 extension ZTScrollViewConroller {
     private func addNaviSelectView() {
-        self.naviSelectView.frame = CGRect(x: 60 * IPHONE_RATE, y: 0, width: IPHONE_WIDTH - 60 * IPHONE_RATE * 2, height: 44)
+        self.naviSelectView.frame = CGRect(x: 40 * IPHONE_RATE, y: 0, width: IPHONE_WIDTH - 40 * IPHONE_RATE * 2, height: 44)
         
         self.navigationController?.navigationBar.addSubview(self.naviSelectView)
 //        self.navigationItem.titleView = self.naviSelectView

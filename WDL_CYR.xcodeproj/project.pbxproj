@@ -168,6 +168,8 @@
 		70648908215B6BE400F53BFC /* FocusPersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70648906215B6BE400F53BFC /* FocusPersonCell.xib */; };
 		7064890B215B87E300F53BFC /* FocusLinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70648909215B87E300F53BFC /* FocusLinesCell.swift */; };
 		7064890C215B87E300F53BFC /* FocusLinesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7064890A215B87E300F53BFC /* FocusLinesCell.xib */; };
+		706C304B21FFEECE002F8871 /* WaybillPlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706C304921FFEECE002F8871 /* WaybillPlanVC.swift */; };
+		706C304C21FFEECE002F8871 /* WaybillPlanVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 706C304A21FFEECE002F8871 /* WaybillPlanVC.xib */; };
 		70727FDE21B8EBA600912C6C /* WayBillStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70727FDD21B8EBA600912C6C /* WayBillStatusView.swift */; };
 		70727FE021B8FA9A00912C6C /* PictureBroweManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70727FDF21B8FA9A00912C6C /* PictureBroweManager.swift */; };
 		70727FE321B93F7D00912C6C /* IndividualAuthedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70727FE121B93F7D00912C6C /* IndividualAuthedVC.swift */; };
@@ -578,6 +580,8 @@
 		70648906215B6BE400F53BFC /* FocusPersonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusPersonCell.xib; sourceTree = "<group>"; };
 		70648909215B87E300F53BFC /* FocusLinesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusLinesCell.swift; sourceTree = "<group>"; };
 		7064890A215B87E300F53BFC /* FocusLinesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusLinesCell.xib; sourceTree = "<group>"; };
+		706C304921FFEECE002F8871 /* WaybillPlanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillPlanVC.swift; sourceTree = "<group>"; };
+		706C304A21FFEECE002F8871 /* WaybillPlanVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillPlanVC.xib; sourceTree = "<group>"; };
 		70727FDD21B8EBA600912C6C /* WayBillStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WayBillStatusView.swift; sourceTree = "<group>"; };
 		70727FDF21B8FA9A00912C6C /* PictureBroweManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureBroweManager.swift; sourceTree = "<group>"; };
 		70727FE121B93F7D00912C6C /* IndividualAuthedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualAuthedVC.swift; sourceTree = "<group>"; };
@@ -1298,6 +1302,8 @@
 				70D8BBD321605141000522E0 /* WaybillNotDoneVC.xib */,
 				70D8BBD621605153000522E0 /* WaybillDoneVC.swift */,
 				70D8BBD721605153000522E0 /* WaybillDoneVC.xib */,
+				706C304921FFEECE002F8871 /* WaybillPlanVC.swift */,
+				706C304A21FFEECE002F8871 /* WaybillPlanVC.xib */,
 			);
 			path = WayBill;
 			sourceTree = "<group>";
@@ -1780,6 +1786,7 @@
 				70648908215B6BE400F53BFC /* FocusPersonCell.xib in Resources */,
 				70CF4FA7214B41120051A7CA /* bad_star@2x.png in Resources */,
 				70CF4F9B214B41120051A7CA /* DeliveryVC.xib in Resources */,
+				706C304C21FFEECE002F8871 /* WaybillPlanVC.xib in Resources */,
 				70CF4F89214B41120051A7CA /* WayBillDetailVC.xib in Resources */,
 				70EA7368215E0AE00020B8C3 /* GSDetail_rejectCell.xib in Resources */,
 				70D8BC132166EA6A000522E0 /* PaymentCell.xib in Resources */,
@@ -2032,6 +2039,7 @@
 				70CF4FB5214B41120051A7CA /* BaseVC+Empty.swift in Sources */,
 				70CF4FC6214B41120051A7CA /* BaseBean.swift in Sources */,
 				70727FDE21B8EBA600912C6C /* WayBillStatusView.swift in Sources */,
+				706C304B21FFEECE002F8871 /* WaybillPlanVC.swift in Sources */,
 				70CF4F93214B41120051A7CA /* DeliveryModels.swift in Sources */,
 				70F40F28214B5BCC0054A175 /* ZTScrollNaviBarView.swift in Sources */,
 				70EA734B215DB2CB0020B8C3 /* Offer_NotDoneCell.swift in Sources */,

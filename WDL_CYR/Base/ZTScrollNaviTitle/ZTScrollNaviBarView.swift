@@ -34,8 +34,8 @@ class ZTScrollNaviBarView: UIView {
         hotiView.showsEdgeFadeEffect = true
         hotiView.setTitleColor(UIColor(hex: COLOR_BUTTON), for: .selected)
         hotiView.setTitleColor(UIColor(hex: TEXTFIELD_TITLECOLOR), for: .normal)
-        hotiView.setTitleFont(UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.regular), for: .normal)
-        hotiView.setTitleFont(UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium), for: .selected)
+        hotiView.setTitleFont(UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.regular), for: .normal)
+        hotiView.setTitleFont(UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium), for: .selected)
         hotiView.selectionIndicatorHeight = 3
         hotiView.selectionIndicatorColor = UIColor(hex: COLOR_BUTTON)
         hotiView.bottomTrimHidden = true
