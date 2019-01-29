@@ -61,6 +61,14 @@ struct ForgetPasswordModel : HandyJSON {
     var verificationPassword:String = "" // (string): 确认密码
    
 }
+//支付账号
+struct PayAccountModel : HandyJSON {
+    
+    var carrierId:String = ""
+    var payAccount:String = ""
+
+}
+
 
 //软件更新
 struct UpdateSoftWareModel : HandyJSON {

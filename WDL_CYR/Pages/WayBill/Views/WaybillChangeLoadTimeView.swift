@@ -89,6 +89,8 @@ extension WaybillChangeLoadTimeView {
     func textInputView() -> UIDatePicker {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
+        //将日期选择器区域设置为中文，则选择器日期显示为中文
+        datePicker.locale = Locale(identifier: "zh-Hans")
         datePicker.rx.date.asObservable()
             .distinctUntilChanged()
             .skip(1)
