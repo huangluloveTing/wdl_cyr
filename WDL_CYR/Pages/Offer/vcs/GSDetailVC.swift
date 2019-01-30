@@ -141,6 +141,7 @@ class GSDetailVC: GSDetailBaseVC {
         info.goodsSummer = Util.concatSeperateStr(seperete: "| " , strs: weight + "吨",self.offer?.vehicleType,self.offer?.packageType,self.offer?.vehicleLength,self.offer?.vehicleWidth)
         info.referenceUnitPrice = self.offer?.refercneceUnitPrice ?? 0
         info.referenceTotalPrice = self.offer?.refercneceTotalPrice ?? 0
+        info.refercnecePriceIsVisable = self.offer?.refercnecePriceIsVisable ?? 0
         info.remark  = self.offer?.remark ?? " "
         info.id = self.offer?.id ?? ""
         //报价的成交状态

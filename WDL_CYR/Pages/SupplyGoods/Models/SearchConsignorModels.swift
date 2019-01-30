@@ -47,7 +47,8 @@ struct ZbnTransportCapacity : HandyJSON {
     var capacityType : Int = 1 // (integer): 运力类型 1=司机 2=承运人 ,
     var createTime : TimeInterval = 0 // (string): 创建时间 ,
     var dealCount : Int = 0 // (integer): 历史成交笔数 ,
-    var driverId : String = "" // (string): 身份证 ,
+    var idCard : String = "" // (string):身份证 ,
+    var driverId : String = "" // (string):
     var gender : String = "1" //"1" 男 "0" 女
     var driverName : String = "" // (string): 司机姓名 ,
     var birdthDay : TimeInterval = 0  // (string): 生日 ,

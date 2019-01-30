@@ -45,7 +45,7 @@ extension InviteDriverResultVC : UITableViewDelegate , UITableViewDataSource {
         }
         let info = self.currentTransCapacities[indexPath.row]
         let cell = tableView.dequeueReusableCell(className: InviteDriverCell.self)
-        cell.showInfo(name: info.driverName, phone: info.driverPhone, idCard: info.driverId)
+        cell.showInfo(name: info.driverName, phone: info.driverPhone, idCard: info.idCard)
         return cell
         
     }

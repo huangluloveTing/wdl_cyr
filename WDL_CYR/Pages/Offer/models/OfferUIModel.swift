@@ -56,6 +56,9 @@ struct GSInfoModel {
     var remark:String?
     var id:String?
     var dealWay:Int? // 成交方式 1=自动 2=手动
+    // 参考价是否可见 1=可见 2=不可见
+    var refercnecePriceIsVisable : Int = 0
+    
 }
 
 // 报价信息
