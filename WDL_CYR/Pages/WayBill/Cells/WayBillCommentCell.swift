@@ -47,8 +47,9 @@ extension WayBillCommentCell {
         self.cyNameLabel.text = cyName
         self.driverNameLabel.text = driver
         self.truckInfoLabel.text = truckInfo
-        self.timeLabel.text = Util.dateFormatter(date: dealTime ?? 0, formatter: "MM-dd HH:mm")
-        self.offerTimeLabel.text = Util.dateFormatter(date: offerTime ?? 0, formatter: "MM-dd HH:mm")
+        self.timeLabel.text = Util.dateFormatter(date:(dealTime ?? 0) / 1000, formatter: "yyyy-MM-dd HH:mm")
+        
+        self.offerTimeLabel.text = Util.dateFormatter(date: (offerTime ?? 0)/1000, formatter: "yyyy-MM-dd HH:mm")
         self.wayBillStatus?.status = .Done
 
     }

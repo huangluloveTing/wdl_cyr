@@ -46,10 +46,16 @@ extension GSDetail_GoodsInfoCell {
    
         self.goodsTypeLabel.text = info.goodsType
         self.goodsSummerLabel.text = info.goodsSummer
-        self.referenceUnitLabel.text = Util.floatPoint(num: 2, floatValue: info.referenceUnitPrice)+"元/吨"
-        self.referenceTotalLabel.text = Util.floatPoint(num: 2, floatValue: info.referenceTotalPrice) + "元"
+        if info.refercnecePriceIsVisable == 1{
+            //可见
+            self.referenceUnitLabel.text = Util.floatPoint(num: 2, floatValue: info.referenceUnitPrice)+"元/吨"
+            self.referenceTotalLabel.text = Util.floatPoint(num: 2, floatValue: info.referenceTotalPrice) + "元"
+        }else {
+            //2 不可见
+            self.referenceUnitLabel.text = "****"+"元/吨"
+            self.referenceTotalLabel.text = "****" + "元"
+        }
         self.remarkLabel.text = info.remark ?? " "
-        
         //货源编号
         self.goodCode.text = "货源编号：" +  (info.id ?? "")
     }

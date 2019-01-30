@@ -101,7 +101,7 @@ extension TransportCapacityVC {
                 showEdit = true
             }
             cell.toShowInfo(driverName: info.driverName,
-                            idCard: info.driverId,
+                            idCard: info.idCard,
                             phoneNum: info.driverPhone,
                             canEdit: canEdit, showEdit:showEdit)
             return cell

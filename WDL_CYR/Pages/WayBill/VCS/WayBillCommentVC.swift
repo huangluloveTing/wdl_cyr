@@ -84,8 +84,8 @@ extension WayBillCommentVC : UITableViewDelegate , UITableViewDataSource {
                               cyName: self.pageInfo?.carrierName,
                               driver: self.pageInfo?.driverName,
                               truckInfo: truckInfo,
-                              dealTime: (self.pageInfo?.dealTime) ?? 0 / 1000,
-                              offerTime: (self.pageInfo?.publishTime ?? 0) / 1000)
+                              dealTime: (self.pageInfo?.dealTime ?? 0),
+                              offerTime: (self.pageInfo?.publishTime ?? 0))
             return cell
         }
         
