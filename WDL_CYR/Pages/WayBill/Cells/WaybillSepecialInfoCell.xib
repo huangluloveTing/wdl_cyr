@@ -87,6 +87,9 @@
                                 <state key="normal" title="拒绝">
                                     <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="rejectAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="E3c-NN-hiW"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OnV-D8-Xff">
                                 <rect key="frame" x="278.5" y="0.0" width="0.5" height="50"/>
@@ -101,6 +104,9 @@
                                 <state key="normal" title="接受">
                                     <color key="titleColor" red="0.023529411760000001" green="0.75294117650000003" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="acceptAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ny0-gL-aYQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

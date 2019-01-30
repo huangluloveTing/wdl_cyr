@@ -20,6 +20,7 @@ enum WaybillDisplayStatus {
     case unAssemble_comType_1_2_noAccept    // 运单来源为1、2 时 的未接受的运单
     case unAssemble_comType_1_2_self        // 运单来源为1、2 时 的未接受的承运人指派给别的司机的
     case unAssemble_designated              // 运单来源为1、2 时 的运单已指派出去，且不能进行操作
+    case unAssemble_comType_3_handled       // 运单来源为 3 时 的已处理的计划
     case unAssemble_comType_3_noAccept      // 运单来源为 3 时 的未接受的运单
     case unAssemble_comType_1_2_toAssemble  // 运单来源为1、2 时 的待配载的运单
     case unAssemble_comType_3_toAssemble    // 运单来源为 3 时 的待配载的运单

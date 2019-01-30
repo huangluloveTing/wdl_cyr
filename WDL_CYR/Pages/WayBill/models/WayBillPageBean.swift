@@ -78,6 +78,7 @@ struct WayBillInfoBean : HandyJSON {
     var startProvince : String = ""
     var id : String = ""
     var transportWeightReal: Float = 0
+    var isAccepted : Int? // 1 接受，2 拒绝
 //    startDistrict": "滨海新区",
 //    "endDistrict": "大观区",
 //    "startProvince": "天津",

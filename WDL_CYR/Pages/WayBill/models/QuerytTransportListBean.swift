@@ -42,3 +42,10 @@ struct ZbnEvaluateVo : HandyJSON {
     var serviceAttitudeScore : Int = 5 // (integer): 服务态度 ,
     var transportNo : String = "" // (string): 运单号
 }
+
+
+struct RejectAcceptTransportPlan : HandyJSON {
+    var carrierId : String? //
+    var isAccepted : Bool? //
+    var ordNo : String? //
+}

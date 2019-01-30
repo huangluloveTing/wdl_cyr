@@ -157,6 +157,8 @@
 		7059F3F42192E7580053F1DE /* WaybillChangeLoadTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7059F3F32192E7580053F1DE /* WaybillChangeLoadTimeView.xib */; };
 		705BA5B62192A774007B10C8 /* OfferSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705BA5B42192A774007B10C8 /* OfferSearchCell.swift */; };
 		705BA5B72192A774007B10C8 /* OfferSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705BA5B52192A774007B10C8 /* OfferSearchCell.xib */; };
+		706464DE220162DE00578780 /* WaybillSpecialNoHandleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706464DC220162DE00578780 /* WaybillSpecialNoHandleCell.swift */; };
+		706464DF220162DE00578780 /* WaybillSpecialNoHandleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 706464DD220162DE00578780 /* WaybillSpecialNoHandleCell.xib */; };
 		706488F9215B458D00F53BFC /* FocusResourceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706488F7215B458D00F53BFC /* FocusResourceVC.swift */; };
 		706488FA215B458D00F53BFC /* FocusResourceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 706488F8215B458D00F53BFC /* FocusResourceVC.xib */; };
 		706488FD215B45BB00F53BFC /* ResourceHallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706488FB215B45BB00F53BFC /* ResourceHallVC.swift */; };
@@ -569,6 +571,8 @@
 		7059F3F32192E7580053F1DE /* WaybillChangeLoadTimeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillChangeLoadTimeView.xib; sourceTree = "<group>"; };
 		705BA5B42192A774007B10C8 /* OfferSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSearchCell.swift; sourceTree = "<group>"; };
 		705BA5B52192A774007B10C8 /* OfferSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferSearchCell.xib; sourceTree = "<group>"; };
+		706464DC220162DE00578780 /* WaybillSpecialNoHandleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillSpecialNoHandleCell.swift; sourceTree = "<group>"; };
+		706464DD220162DE00578780 /* WaybillSpecialNoHandleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillSpecialNoHandleCell.xib; sourceTree = "<group>"; };
 		706488F7215B458D00F53BFC /* FocusResourceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusResourceVC.swift; sourceTree = "<group>"; };
 		706488F8215B458D00F53BFC /* FocusResourceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusResourceVC.xib; sourceTree = "<group>"; };
 		706488FB215B45BB00F53BFC /* ResourceHallVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceHallVC.swift; sourceTree = "<group>"; };
@@ -1358,6 +1362,8 @@
 				70ED020A2195513C001DB4D1 /* WaybillMultiRemailInfoCell.xib */,
 				7047AB4221F99525007ED0AA /* WaybillRealTransCell.swift */,
 				7047AB4321F99525007ED0AA /* WaybillRealTransCell.xib */,
+				706464DC220162DE00578780 /* WaybillSpecialNoHandleCell.swift */,
+				706464DD220162DE00578780 /* WaybillSpecialNoHandleCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1844,6 +1850,7 @@
 				7003D93E21B7A42200BD07FC /* InviteDriverResultVC.xib in Resources */,
 				183FD2FB21B4FF090069D50F /* GSConfirmDealView.xib in Resources */,
 				700347682193D95600DDEE55 /* WaybillLinkInfoCell.xib in Resources */,
+				706464DF220162DE00578780 /* WaybillSpecialNoHandleCell.xib in Resources */,
 				70D8BC2F2167405F000522E0 /* MyAuthenVC.xib in Resources */,
 				183FD2F621B4FD200069D50F /* ModityPasswordVC.xib in Resources */,
 				700F69D221A29F8900B5666B /* WayBillCommentVC.xib in Resources */,
@@ -2140,6 +2147,7 @@
 				70CF4F85214B41120051A7CA /* WayBillCell.swift in Sources */,
 				704DD09D215CEBFE00E6AD6F /* OfferContainerVC.swift in Sources */,
 				701F10E6217EB7DE00693936 /* OfferQueryModels.swift in Sources */,
+				706464DE220162DE00578780 /* WaybillSpecialNoHandleCell.swift in Sources */,
 				70CF4F5B214B41110051A7CA /* images.swift in Sources */,
 				7064890B215B87E300F53BFC /* FocusLinesCell.swift in Sources */,
 				70CF4FC2214B41120051A7CA /* UITextField+Extension.swift in Sources */,

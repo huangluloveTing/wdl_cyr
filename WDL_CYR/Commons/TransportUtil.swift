@@ -54,10 +54,13 @@ class TransportUtil: NSObject {
                 return .unAssemble_comType_1_2_self // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
             }
             if comType == 3 {  // 来源3 ， 未接受时 ， 显示 接受 拒绝
-                if driverStatus == 4 {  // 当driverStatus == 4 时 ， 已接受，显示 配载
+                if driverIsSelf == true {  // 当driverStatus == 4 时 ， 已接受，显示 配载
                     return .unAssemble_comType_3_toAssemble
                 }
-                return .unAssemble_comType_3_noAccept // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
+                if driverIsSelf == false && (info.isAccepted == 0 || info.isAccepted == nil) {
+                    return .unAssemble_comType_3_noAccept // 未配载，订单状态 就是 待办单 transportStatus = 0
+                }
+                return .unAssemble_comType_3_handled
             }
             if comType == 4 {  // 来源 4 ， 显示 指派
                 return .unAssemble_comType_4_toDesignate // 未配载，订单状态 就是 待办单 transportStatus = 0 ，

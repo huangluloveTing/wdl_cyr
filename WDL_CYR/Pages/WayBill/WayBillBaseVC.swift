@@ -145,6 +145,12 @@ extension WayBillBaseVC {
         if routeName == EVENT_NAME_CONTINUEFORBREAK {
             self.toContinueTransportForBreak(indexPath: indexPath)
         }
+        if routeName == EVENT_NAME_ACCEPTPLAN {
+            self.acceptTransportPlan(indexPath: indexPath)
+        }
+        if routeName == EVENT_NAME_REJECTPLAN {
+            self.rejectTransportPlan(indexPath: indexPath)
+        }
     }
 }
 
@@ -234,6 +240,44 @@ extension WayBillBaseVC {
 //MARK: - bussiness
 extension WayBillBaseVC {
     
+    //MARK: - 拒绝运输计划
+    func rejectTransportPlan(indexPath:IndexPath?) -> Void {
+        self.showAlert(title: nil, message: "确定拒绝该运输计划？") {[weak self] (index) in
+            if index == 1 {
+                self?.acceptRejectHandle(indexPath: indexPath, accept: false)
+            }
+        }
+    }
+    
+    //MARK: - 接受运输计划
+    func acceptTransportPlan(indexPath:IndexPath?) -> Void {
+        self.showAlert(title: nil, message: "确定接受该运输计划？") {[weak self] (index) in
+            if index == 1 {
+                self?.acceptRejectHandle(indexPath: indexPath, accept: true)
+            }
+        }
+    }
+    
+    //MARK: - 拒绝或者接受运输计划
+    func acceptRejectHandle(indexPath:IndexPath? , accept:Bool) -> Void {
+        guard let index = indexPath else {
+            return
+        }
+        let info = self.dataSource[index.row]
+        self.showLoading()
+        acceptOrRejectTransport(accept: accept, info: info) {[weak self](success, error) in
+            self?.hiddenToast()
+            if success == true {
+                var currentInfo = self?.dataSource[index.row];
+                currentInfo?.isAccepted = accept == true ? 1 : 2;
+                self?.dataSource[index.row] = currentInfo!
+                self?.refreshContents(items: self?.dataSource ?? [])
+            } else {
+                self?.showFail(fail: error?.localizedDescription, complete: nil)
+            }
+        }
+    }
+    
     //MARK: - 拒绝
     func rejectTransportHandle(indexPath:IndexPath) -> Void {
         let info = self.dataSource[indexPath.row]
@@ -263,7 +307,7 @@ extension WayBillBaseVC {
     //MARK: - 配载
     func assembleTransportHandle(info:WayBillInfoBean) -> Void {
         var tranInfo = TransactionInformation.deserialize(from: info.toJSON())
-        tranInfo?.id = (info.id == nil || info.id == "") ? info.id : (info.hallId ?? "")
+        tranInfo?.id = (info.id == "") ? info.id : (info.hallId ?? "")
         let mode = WayBillSourceTypeMode(rawValue: info.comeType ?? 1)
 //        tranInfo?.dealUnitPrice = tranInfo?.dealUnitPrice ?? 0
 //        tranInfo?.dealTotalPrice = tranInfo?.dealTotalPrice ?? 0
@@ -354,6 +398,7 @@ extension WayBillBaseVC {
         tableView.registerCell(nib: WaybillSepecialInfoCell.self)
         tableView.registerCell(nib: WaybillNoHandleCell.self)
         tableView.registerCell(nib: OfferSearchCell.self)
+        tableView.registerCell(nib: WaybillSpecialNoHandleCell.self)
     }
     
     // 配置当前tableView
@@ -559,9 +604,24 @@ extension WayBillBaseVC {
             .disposed(by: dispose)
     }
     
-//    func breakTransportToHandle(continue:Bool,) -> <#return type#> {
-//        <#function body#>
-//    }
+    //MARK: - 接受或者拒绝运输计划
+    func acceptOrRejectTransport(accept: Bool , info:WayBillInfoBean? , closure:((Bool, Error?) -> Void)?) -> Void {
+        var bean = RejectAcceptTransportPlan()
+        bean.ordNo = info?.ordNo
+        bean.isAccepted = accept
+        BaseApi.request(target: API.transportPlanAcceptRefuse(bean), type: BaseResponseModel<String>.self)
+            .retry(5)
+            .subscribe(onNext: { (res) in
+                if let closure = closure {
+                    closure(true , nil)
+                }
+            }, onError: { (error) in
+                if let closure = closure {
+                    closure(false , error)
+                }
+            })
+            .disposed(by: dispose)
+    }
 }
 
 //MARK: - UITableViewDelegate , UITableViewDataSource
@@ -738,12 +798,12 @@ extension WayBillBaseVC {
                 return showUnAssembleOneHandleCell(info: info, indexPath: indexPath, tableView: tableView)
             }
             return noHandleCell(info: info, tableView: tableView)
-        case .unAssemble_comType_3_noAccept:
+        case .unAssemble_comType_3_noAccept , .unAssemble_comType_3_toAssemble:
             return unAssembleSepecialCell(info: info, indexPath: indexPath, tableView: tableView)
         case .unAssemble_comType_1_2_toAssemble:
             return unAssembleToAssembleCell(info: info, tableView: tableView)
-        case .unAssemble_comType_3_toAssemble:
-            return showUnAssembleTwoHandlesCellNoTruckInfo(info: info, indexPath: indexPath, tableView: tableView)
+        case .unAssemble_comType_3_handled:
+            return specialHandleCell(info: info, tableView: tableView)
         case .unAssemble_comType_4_toDesignate:
             return showUnAssembleOneHandleCell(info: info, indexPath: indexPath, tableView: tableView)
         case .notDone_breakContractForCarrier:
@@ -823,6 +883,12 @@ extension WayBillBaseVC {
     // some other
     func doneCommentedCell(info:WayBillInfoBean , tableView:UITableView) -> UITableViewCell {
         return noHandleCell(info:info , tableView:tableView)
+    }
+    
+    func specialHandleCell(info:WayBillInfoBean , tableView:UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(nib: WaybillSpecialNoHandleCell.self)
+        cell.contentInfo(info: info)
+        return cell
     }
 }
 

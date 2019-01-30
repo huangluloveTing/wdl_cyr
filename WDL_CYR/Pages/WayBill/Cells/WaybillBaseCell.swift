@@ -25,6 +25,8 @@ let EVENT_NAME_DESIGNATE = "EVENT_NAME_DESIGNATE"                // 指派
 let EVENT_NAME_ASSEMBLE = "EVENT_NAME_ASSEMBLE"                  // 配载
 let EVENT_NAME_CONTINUEFORBREAK = "EVENT_NAME_CONTINUEFORBREAK"  // 违约继续承运
 let EVENT_NAME_CANCELFORBREAK = "EVENT_NAME_CANCELFORBREAK"      // 违约取消承运
+let EVENT_NAME_REJECTPLAN = "EVENT_NAME_REJECTPLAN"              // 拒绝运输计划
+let EVENT_NAME_ACCEPTPLAN = "EVENT_NAME_ACCEPTPLAN"              // 接受运输计划
 
 enum CurrentStatus : Int{
     case unassemble = 1

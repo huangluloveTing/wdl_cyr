@@ -88,6 +88,7 @@ enum API {
     case findTransportByTransportStatus(QuerytTransportListBean) // 获取运输计划运单
 //    case transportPlanAcceptRefuse(ZbnTransportVehicle) // 接受还是拒绝y承运
     case getTransportVehicleList(String) // 查询配置计划
+    case transportPlanAcceptRefuse(RejectAcceptTransportPlan)
 }
 
 
@@ -238,6 +239,8 @@ func apiPath(api:API) -> String {
         return "/carrierTransport/findTransportByTransportStatus"
     case .getTransportVehicleList(_):
         return "/carrierTransport/getTransportVehicleList"
+    case .transportPlanAcceptRefuse(_):
+        return "/carrierTransport/transportPlanAcceptRefuse"
     }
 }
 
@@ -422,6 +425,8 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: vo.toJSON() ?? Dictionary() , encoding: JSONEncoding.default)
     case .getTransportVehicleList(let orderNo):
         return .requestParameters(parameters: ["orderNo":orderNo], encoding: URLEncoding.default)
+    case .transportPlanAcceptRefuse(let query):
+        return .requestParameters(parameters: query.toJSON() ?? Dictionary(), encoding: JSONEncoding.default)
     }
   
 }
