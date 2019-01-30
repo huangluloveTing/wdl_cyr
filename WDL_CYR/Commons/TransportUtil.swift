@@ -29,6 +29,7 @@ class TransportUtil: NSObject {
             }
             return .notDone_breakContractForCarrier
         }
+        let isCarrier = info.carrierId == WDLCoreManager.shared().userInfo?.id
         if completeStatus == 1 { // 未配载
             if comType == 1 || comType == 2 {   // 来源1 , 2 ， 未接受时 ， 显示 接受 拒绝
                 if comType == 2 {
@@ -54,7 +55,7 @@ class TransportUtil: NSObject {
                 return .unAssemble_comType_1_2_self // 未配载，订单状态 就是 待办单 transportStatus = 0 ，
             }
             if comType == 3 {  // 来源3 ， 未接受时 ， 显示 接受 拒绝
-                if driverIsSelf == true {  // 当driverStatus == 4 时 ， 已接受，显示 配载
+                if isCarrier == true {  // 当driverStatus == 4 时 ， 已接受，显示 配载
                     return .unAssemble_comType_3_toAssemble
                 }
                 if driverIsSelf == false && (info.isAccepted == 0 || info.isAccepted == nil) {
