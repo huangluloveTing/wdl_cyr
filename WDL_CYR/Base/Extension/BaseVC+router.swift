@@ -117,8 +117,7 @@ extension BaseVC {
                 detailVC.currentShowMode(mode: .unassemble_showDesignate)
                 break
             }
-        case .unAssemble_comType_3_toAssemble:
-            detailVC.currentShowMode(mode: .unassemble_showSpecial)
+//            detailVC.currentShowMode(mode: .unassemble_showSpecial)
             break
         case .unAssemble_comType_1_2_toAssemble:
             if info.comeType == 1 {
@@ -153,7 +152,7 @@ extension BaseVC {
         case .unAssemble_comType_1_2_noAccept:
             print("未接受不 跳转")
                 return
-        case .unAssemble_comType_3_noAccept:
+        case .unAssemble_comType_3_noAccept,.unAssemble_comType_3_toAssemble,.unAssemble_comType_3_handled:
             self.toGoodsDetail(hallId: info.hallId ?? "")
             return
         case .notDone_canEditAssemble:
