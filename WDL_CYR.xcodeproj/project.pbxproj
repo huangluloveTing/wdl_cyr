@@ -40,6 +40,8 @@
 		18B142BE21D3148200E46F43 /* FirstAddDriverListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B142BD21D3148200E46F43 /* FirstAddDriverListVC.xib */; };
 		18BD10D121E5D4A400048D42 /* BoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BD10D021E5D4A400048D42 /* BoutCell.xib */; };
 		18BD10D321E5D4D200048D42 /* BoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD10D221E5D4D200048D42 /* BoutCell.swift */; };
+		18C92D162200302B002F50C2 /* PayAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C92D142200302B002F50C2 /* PayAccountVC.swift */; };
+		18C92D172200302B002F50C2 /* PayAccountVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C92D152200302B002F50C2 /* PayAccountVC.xib */; };
 		18E3810021B66F6500FF6544 /* PayHtmlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */; };
 		18E3810221B7A7BA00FF6544 /* AppDelegate+jpush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3810121B7A7BA00FF6544 /* AppDelegate+jpush.swift */; };
 		18E3810621C382E200FF6544 /* InviteAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E3810421C382E100FF6544 /* InviteAlertView.xib */; };
@@ -452,6 +454,8 @@
 		18B142BD21D3148200E46F43 /* FirstAddDriverListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstAddDriverListVC.xib; sourceTree = "<group>"; };
 		18BD10D021E5D4A400048D42 /* BoutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoutCell.xib; sourceTree = "<group>"; };
 		18BD10D221E5D4D200048D42 /* BoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoutCell.swift; sourceTree = "<group>"; };
+		18C92D142200302B002F50C2 /* PayAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayAccountVC.swift; sourceTree = "<group>"; };
+		18C92D152200302B002F50C2 /* PayAccountVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayAccountVC.xib; sourceTree = "<group>"; };
 		18E380FF21B66F6500FF6544 /* PayHtmlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayHtmlVC.swift; sourceTree = "<group>"; };
 		18E3810121B7A7BA00FF6544 /* AppDelegate+jpush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+jpush.swift"; sourceTree = "<group>"; };
 		18E3810421C382E100FF6544 /* InviteAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteAlertView.xib; sourceTree = "<group>"; };
@@ -1241,6 +1245,8 @@
 				183FD2EA21B4FC500069D50F /* PersonSettingVC.xib */,
 				70D8BBFC2165B1F8000522E0 /* WalletVC.swift */,
 				70D8BBFD2165B1F8000522E0 /* WalletVC.xib */,
+				18C92D142200302B002F50C2 /* PayAccountVC.swift */,
+				18C92D152200302B002F50C2 /* PayAccountVC.xib */,
 				183FD32921B644BE0069D50F /* ReturnMoneyVC.swift */,
 				183FD32A21B644BE0069D50F /* ReturnMoneyVC.xib */,
 				183FD2FD21B50DD90069D50F /* BankCardVC.swift */,
@@ -1822,6 +1828,7 @@
 				70CF4F81214B41120051A7CA /* PersonalVC.xib in Resources */,
 				70648902215B5F5A00F53BFC /* FocusEmptyView.xib in Resources */,
 				18B142BE21D3148200E46F43 /* FirstAddDriverListVC.xib in Resources */,
+				18C92D172200302B002F50C2 /* PayAccountVC.xib in Resources */,
 				7014087221940A76000D5CB1 /* WayBillToCommentCell.xib in Resources */,
 				700347702193D98500DDEE55 /* WaybillGoodsInfoCell.xib in Resources */,
 				70D8BC33216748E5000522E0 /* AuthenIndividualInfoVC.xib in Resources */,
@@ -1915,7 +1922,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/LBPhotoBrowser/test/LBPhotoBrowser/LBPhotoBrowser.bundle",
@@ -1934,7 +1941,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDL_CYR/Pods-WDL_CYR-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2047,6 +2054,7 @@
 				70CF4FC6214B41120051A7CA /* BaseBean.swift in Sources */,
 				70727FDE21B8EBA600912C6C /* WayBillStatusView.swift in Sources */,
 				706C304B21FFEECE002F8871 /* WaybillPlanVC.swift in Sources */,
+				18C92D162200302B002F50C2 /* PayAccountVC.swift in Sources */,
 				70CF4F93214B41120051A7CA /* DeliveryModels.swift in Sources */,
 				70F40F28214B5BCC0054A175 /* ZTScrollNaviBarView.swift in Sources */,
 				70EA734B215DB2CB0020B8C3 /* Offer_NotDoneCell.swift in Sources */,

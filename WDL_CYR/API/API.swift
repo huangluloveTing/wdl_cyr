@@ -12,6 +12,9 @@ import Moya
 import Alamofire
 
 enum API {
+    
+    
+    case payAccountWallet(PayAccountModel)     // 钱包支付账号绑定
     case getIndicatorMoney() //获取最低报价金额
     case updateSoftWare(UpdateSoftWareModel) //更新软件
     case forgetPassword(ForgetPasswordModel) //忘记密码
@@ -135,6 +138,10 @@ func apiPath(api:API) -> String {
         return "/followLine/findOrderHallByFollowLineId"
     case .login(_, _):
         return "/carrier/login"
+        
+    case .payAccountWallet(_):
+        return "/bond/updateBondPayAccount"
+        
     case .register(_, _, _, _, _):
         return "/carrier/carrierRegister"
     case .registerSms(_):
@@ -267,6 +274,10 @@ func apiTask(api:API) -> Task {
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .dealDetail(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
+        
+    case .payAccountWallet(let query):
+        return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
+        
     case .rechargeMoney(let query):
         return .requestParameters(parameters: query.toJSON() ?? [String:String](), encoding: JSONEncoding.default)
     case .markHasSeenMessage(let query):

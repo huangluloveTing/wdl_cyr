@@ -267,7 +267,7 @@ extension WaybillAssembleBaseVC {
         let row = indexPath.row
         cell.accessoryType = .none
         if indexPath.section == 0 {
-            cell.showInfo(title: "承运总吨数", content: Util.floatPoint(num: 2, floatValue: getTotalCarrierTone()), hight: true)
+            cell.showInfo(title: "承运总吨数", content: Util.floatPoint(num: 3, floatValue: getTotalCarrierTone()), hight: true)
             return cell
         }
         let info = currentAssembleModels[indexPath.section - 1]
@@ -278,7 +278,7 @@ extension WaybillAssembleBaseVC {
             cell.showInfo(title: "车牌号", content: info.vehicleNo, hight: true)
         }
         if row == 2 {
-            cell.showInfo(title: "分配吨数", content: Util.floatPoint(num: 2, floatValue: info.disVolumn ?? 0), hight: true)
+            cell.showInfo(title: "分配吨数", content: Util.floatPoint(num: 3, floatValue: info.disVolumn ?? 0), hight: true)
         }
         return cell
     }

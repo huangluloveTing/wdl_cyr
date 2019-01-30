@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-let Wallet_Titles = ["交易明细","银行卡设置","修改支付密码"]
+let Wallet_Titles = ["交易明细","支付账号","修改支付密码"]
 
 class WalletVC: NormalBaseVC {
     //可支配余额
@@ -67,7 +67,7 @@ extension WalletVC : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,8 +91,8 @@ extension WalletVC : UITableViewDataSource , UITableViewDelegate {
         }
         
         if indexPath.row == 1 {
-            //银行卡设置
-            self.toBankSet()
+            //支付账号
+            self.toPayAccount()
         }
         if indexPath.row == 2 {
             //修改支付密码
@@ -104,6 +104,12 @@ extension WalletVC : UITableViewDataSource , UITableViewDelegate {
 // handles
 extension WalletVC {
     
+    //支付账号
+    func toPayAccount() -> Void {
+        let bankVC = PayAccountVC()
+        self.pushToVC(vc: bankVC, title: "支付账号")
+        
+    }
     //银行卡设置
     func toBankSet() -> Void {
         let bankVC = BankCardVC()
