@@ -37,6 +37,7 @@ extension WaybillDealInfoCell {
         self.unitPriceLabel.text = Util.floatPoint(num: 2, floatValue: unit ?? 0) + "元/吨"
         self.totalPriceLabel.text = Util.floatPoint(num: 2, floatValue: total ?? 0) + "元"
         self.serviceFeeLabel.text = Util.floatPoint(num: 2, floatValue: serviceFee ?? 0) + "元"
-        self.transportCapacityLabel.text = Util.floatPoint(num: 2, floatValue: capacity ?? 0) + "吨"
+        self.transportCapacityLabel.text = Util.floatPoint(num: 3, floatValue: capacity ?? 0) + "吨"
     }
+    
 }

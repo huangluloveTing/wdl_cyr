@@ -344,7 +344,7 @@ extension WaybillDetailBaseVC {
                       unit: Float(self.currentInfo?.dealUnitPrice ?? 0),
                       total: Float(self.currentInfo?.dealTotalPrice ?? 0),
                       serviceFee: self.currentInfo?.infoFee,
-                      capacity: self.currentInfo?.goodsWeight)
+                      capacity: self.currentInfo?.transportWeight)
         return cell
     }
     
