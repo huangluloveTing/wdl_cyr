@@ -261,6 +261,10 @@ extension WaybillAssembleVC {
             }
             commitModels.append(assemble.commitModel)
         }
+        if getTotalCarrierTone() <  self.pageInfo?.goodsWeight ?? 0 {
+            self.showWarn(warn: "还有未分配的吨数，请完成", complete: nil)
+            return
+        }
         self.showLoading()
         BaseApi.request(target: API.assemblePlanWaybill(commitModels), type: BaseResponseModel<String>.self)
             .retry(5)

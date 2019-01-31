@@ -46,6 +46,6 @@ struct ZbnEvaluateVo : HandyJSON {
 
 struct RejectAcceptTransportPlan : HandyJSON {
     var carrierId : String? //
-    var isAccepted : Bool? //
+    var isAccepted : Int? //
     var ordNo : String? //
 }

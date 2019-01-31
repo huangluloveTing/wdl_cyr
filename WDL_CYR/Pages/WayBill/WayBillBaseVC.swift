@@ -265,7 +265,7 @@ extension WayBillBaseVC {
         }
         let info = self.dataSource[index.row]
         self.showLoading()
-        acceptOrRejectTransport(accept: accept, info: info) {[weak self](success, error) in
+        acceptOrRejectTransport(accept: accept == true ? 1 : 2, info: info) {[weak self](success, error) in
             self?.hiddenToast()
             if success == true {
                 var currentInfo = self?.dataSource[index.row];
@@ -605,7 +605,7 @@ extension WayBillBaseVC {
     }
     
     //MARK: - 接受或者拒绝运输计划
-    func acceptOrRejectTransport(accept: Bool , info:WayBillInfoBean? , closure:((Bool, Error?) -> Void)?) -> Void {
+    func acceptOrRejectTransport(accept: Int , info:WayBillInfoBean? , closure:((Bool, Error?) -> Void)?) -> Void {
         var bean = RejectAcceptTransportPlan()
         bean.ordNo = info?.ordNo
         bean.isAccepted = accept
