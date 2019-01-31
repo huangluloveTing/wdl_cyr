@@ -107,7 +107,7 @@ extension OfferWithTruckVC {
         driverChooseVC.searchResultClosure = { [weak self] (capacity) in
             var driver = OfferWithTruckDriverModel()
             driver.driverName = capacity.driverName
-            driver.idCard = capacity.driverId
+            driver.idCard = capacity.idCard
             driver.phone = capacity.driverPhone
             driver.type = capacity.capacityType
             driver.driverId = capacity.driverId
