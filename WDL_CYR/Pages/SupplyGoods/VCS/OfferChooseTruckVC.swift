@@ -76,7 +76,7 @@ extension OfferChooseTruckVC {
         let uiModels = self.lists.map { (capacity) -> OfferSearchUIModel in
             var model = OfferSearchUIModel()
             model.driverName = capacity.driverName
-            model.idCard = capacity.driverId
+            model.idCard = capacity.idCard
             model.phone = capacity.driverPhone
             model.type = capacity.vehicleType
             model.length = capacity.vehicleLength

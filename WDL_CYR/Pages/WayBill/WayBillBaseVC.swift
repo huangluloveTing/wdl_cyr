@@ -242,7 +242,7 @@ extension WayBillBaseVC {
     
     //MARK: - 拒绝运输计划
     func rejectTransportPlan(indexPath:IndexPath?) -> Void {
-        self.showAlert(title: nil, message: "确定拒绝该运输计划？") {[weak self] (index) in
+        self.showAlert(title: nil, message: "确定拒绝该指派任务？") {[weak self] (index) in
             if index == 1 {
                 self?.acceptRejectHandle(indexPath: indexPath, accept: false)
             }
@@ -251,7 +251,7 @@ extension WayBillBaseVC {
     
     //MARK: - 接受运输计划
     func acceptTransportPlan(indexPath:IndexPath?) -> Void {
-        self.showAlert(title: nil, message: "确定接受该运输计划？") {[weak self] (index) in
+        self.showAlert(title: nil, message: "确定接受该指派任务？") {[weak self] (index) in
             if index == 1 {
                 self?.acceptRejectHandle(indexPath: indexPath, accept: true)
             }

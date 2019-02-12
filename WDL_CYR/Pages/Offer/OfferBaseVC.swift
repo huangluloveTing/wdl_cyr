@@ -168,6 +168,11 @@ extension OfferBaseVC {
             offer.start = Util.contact(strs: [result.startProvince , result.startCity])
             offer.end = Util.contact(strs: [result.endProvince , result.endCity])
             let loadTime = Util.dateFormatter(date: result.loadingTime/1000, formatter: "yyyy-MM-dd") + " 装货 "
+            
+            //报价时间
+            let quoteTime = result.offerTime
+            offer.offerTime = quoteTime
+            
             let weight = String(result.goodsWeight) + "吨"
             let length = result.vehicleLength
             let type = result.vehicleType

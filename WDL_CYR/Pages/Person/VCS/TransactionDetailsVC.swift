@@ -12,9 +12,13 @@ class TransactionDetailsVC: NormalBaseVC {
     
     private var droped:Bool = false;
     
-    let messageStatus:[String] = ["全部","服务费扣除","服务费退回","违约金扣除",
-                                  "违约金退回","充值","平台充值","保证金冻结",
-                                  "保证金释放","退还保证金"]
+    
+    /*1=充值 2=退钱  3=信息费扣除  4=信息费退回   5=违约金扣除 6=违约金退回  7=保证金扣除 8=保证金退回 9=保证金释放  10=平台充值
+     11=信息费冻结  12 信息费解除冻结  13= 保证金冻结  14=保证金解除冻结*/
+    let messageStatus:[String] = ["全部","充值","退钱","信息费扣除",
+                                  "信息费退回","违约金扣除","违约金退回 ","保证金扣除",
+                                  "保证金退回","保证金释放 ","平台充值","信息费冻结 ","信息费解除冻结",
+                                  "保证金冻结","保证金解除冻结"]
     
     @IBOutlet weak var dropView: DropHintView!
     private var qeury = ZbnCashFlow()
@@ -49,40 +53,16 @@ class TransactionDetailsVC: NormalBaseVC {
     }
     
     override func statusChooseHandle(index: Int) {
-//      flowType   1=充值 2=退钱 3=信息费扣除 4=信息费退回 5=违约金扣除 6=违约金退回 7=保证金扣除 8=保证金退回 9=保证金释放 10=平台充值 ,
-//        ["全部","服务费扣除","服务费退回","违约金扣除",
-//         "违约金退回","充值","平台充值","保证金冻结",
-//         "保证金释放","退还保证金"]
+//      flowType
+        /*1=充值 2=退钱  3=信息费扣除  4=信息费退回   5=违约金扣除 6=违约金退回  7=保证金扣除 8=保证金退回 9=保证金释放  10=平台充值
+         11=信息费冻结  12 信息费解除冻结  13= 保证金冻结  14=保证金解除冻结*/
+        
         if index == 0 {
             self.qeury.flowType = nil
+        }else{
+            self.qeury.flowType = index
         }
-        if index == 1 {
-            self.qeury.flowType = 3
-        }
-        if index == 2 {
-            self.qeury.flowType = 4
-        }
-        if index == 3 {
-            self.qeury.flowType = 5
-        }
-        if index == 4 {
-            self.qeury.flowType = 6
-        }
-        if index == 5 {
-            self.qeury.flowType = 1
-        }
-        if index == 6 {
-            self.qeury.flowType = 10
-        }
-        if index == 7 {
-            self.qeury.flowType = 7
-        }
-        if index == 8 {
-            self.qeury.flowType = 9
-        }
-        if index == 9 {
-            self.qeury.flowType = 8
-        }
+
         self.tableView.beginRefresh()
         self.dropView.hiddenDropView()
     }

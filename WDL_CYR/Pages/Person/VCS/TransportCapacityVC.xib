@@ -34,7 +34,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qlc-YY-zkr">
                             <rect key="frame" x="15" y="10" width="345" height="40"/>
                             <color key="backgroundColor" red="0.17647058823529413" green="0.74509803921568629" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="添加车辆">
+                            <state key="normal" title="添加驾驶员">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>

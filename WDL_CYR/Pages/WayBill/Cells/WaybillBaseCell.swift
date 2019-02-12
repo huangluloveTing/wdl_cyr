@@ -133,7 +133,7 @@ extension WaybillBaseCell {
         }
     }
     
-    // 4种类型判断展示 comeType: 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= 个人指派（按照rp顺序）,
+    // 4种类型判断展示 comeType: 运单来源 1=其他承运人指派 2=tms指派 3=运输计划（指派任务） 4= 个人指派（按照rp顺序）,
     //TODO: - 根据订单来源，展示 托运人 信息 ， 是否自营，是否是运输计划 指定等信息
     func showFirstLineInfo(info:WayBillInfoBean? ,
                            tyLabel:UILabel ,
@@ -151,7 +151,7 @@ extension WaybillBaseCell {
             lastLabel.text = "指定你的"
         }
         if info?.comeType == 3 { //tms指派
-            middleLabel.text = "【自营】运输计划"
+            middleLabel.text = "【自营】指派任务"
             middleLabel.textColor = UIColor(hex: "06C06F")
             lastLabel.text = "指定你的"
         }

@@ -36,7 +36,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ho5-k5-uVx">
                             <rect key="frame" x="0.0" y="0.0" width="426" height="683.5"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的认证-身份证人像页" translatesAutoresizingMaskIntoConstraints="NO" id="lon-81-KKE">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的认证-身份证" translatesAutoresizingMaskIntoConstraints="NO" id="lon-81-KKE">
                                     <rect key="frame" x="20" y="321" width="183" height="130.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="lon-81-KKE" secondAttribute="height" multiplier="14:10" id="zWB-Nq-29g"/>
@@ -85,7 +85,7 @@
                                         <constraint firstAttribute="height" constant="1" id="4mW-eb-ePT"/>
                                     </constraints>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的认证-身份证" translatesAutoresizingMaskIntoConstraints="NO" id="4Y0-M5-7xd">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的认证-身份证人像页" translatesAutoresizingMaskIntoConstraints="NO" id="4Y0-M5-7xd">
                                     <rect key="frame" x="223" y="321" width="183" height="130.5"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="法人姓名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FK7-Wo-jCq">

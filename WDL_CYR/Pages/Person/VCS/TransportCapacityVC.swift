@@ -37,6 +37,7 @@ class TransportCapacityVC: NormalBaseVC {
         super.viewDidLoad()
         self.configSearchBar()
         self.configTableView()
+        
         tableView.beginRefresh()
     }
     

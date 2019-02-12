@@ -166,11 +166,11 @@ extension AuthenEnterpriseVC {
     func uploadCardImageResult(imgUrl:String , mode:AuthEnterpriseImageMode) -> Void {
         switch mode {
         case .FrontImage:
-            Util.showImage(imageView: self.frontImageView, imageUrl: imgUrl, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
+            Util.showImage(imageView: self.frontImageView, imageUrl: imgUrl, placeholder: UIImage.init(named: "我的认证-身份证")!)
             self.zbnCarrierInfo?.idCardFrontage = imgUrl
             break
         case .OppositeImage:
-            Util.showImage(imageView: self.backImageView, imageUrl: imgUrl, placeholder: UIImage.init(named: "我的认证-身份证")!)
+            Util.showImage(imageView: self.backImageView, imageUrl: imgUrl, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
             self.zbnCarrierInfo?.idCardOpposite = imgUrl
             break
         default:
@@ -235,8 +235,8 @@ extension AuthenEnterpriseVC {
         self.businesslicenseLabel.text = info?.businessLicenseNo
         self.addressTextField.text = info?.address
         self.mobileTextField.text = info?.cellPhone
-        Util.showImage(imageView: self.frontImageView, imageUrl: info?.idCardFrontage, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
+        Util.showImage(imageView: self.frontImageView, imageUrl: info?.idCardFrontage, placeholder: UIImage.init(named: "我的认证-身份证")!)
         Util.showImage(imageView: self.backImageView, imageUrl: info?.idCardOpposite, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
-        Util.showImage(imageView: self.handImageView, imageUrl: info?.idCardHandheld, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
+        Util.showImage(imageView: self.handImageView, imageUrl: info?.idCardHandheld, placeholder: UIImage.init(named: "我的认证- 手持身份证")!)
     }
 }
