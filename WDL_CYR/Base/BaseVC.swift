@@ -30,6 +30,8 @@ class BaseVC: UIViewController {
     
     private var badgeValueView:BageView? // 消息图标
     
+    private var naviSearchBar: UISearchBar?
+    
     var numString: String? //消息个数
     
     public var naviTitleView = ZTScrollNaviBarView(frame: CGRect(x: 60 * IPHONE_RATE, y: 0, width: IPHONE_WIDTH - 60 * IPHONE_RATE * 2, height: 44))
@@ -70,6 +72,10 @@ class BaseVC: UIViewController {
     // 搜索框的当前的输入内容回调，可重写
     func searchBarInput(search:String) -> Void {
         print("current search content : " + search)
+    }
+    
+    func searchBarClickSearchHandle(text:String) -> Void {
+        print("search bar click search : " + text)
     }
     
     //MARK: - callBack
@@ -151,6 +157,7 @@ extension BaseVC {
         let searchBar = MySearchBar(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 70, height: 44))
         searchBar.contentInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 0)
         searchBar.barStyle = UIBarStyle.default
+        searchBar.delegate = self
         searchBar.rx.text.orEmpty
             .skip(1)
             .share(replay: 1)
@@ -163,6 +170,7 @@ extension BaseVC {
         searchBar.placeholder = placeholer
         contentView.backgroundColor = UIColor.clear
         self.navigationItem.titleView = contentView
+        self.naviSearchBar = searchBar
     }
     
     // 添加头部信息
@@ -295,6 +303,10 @@ extension BaseVC : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchBar.frame)
     }
+    
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        searchBarClickSearchHandle(text: searchBar.text ?? "")
+//    }
 }
 
 // 添加导航栏上面的 选项卡

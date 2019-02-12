@@ -24,11 +24,15 @@ class ResearchConsignorVC: NormalBaseVC {
 
     // 搜索框输入内容
     override func searchBarInput(search: String) {
-        self.searchConsignors(input: search)
+        
     }
     
     override func zt_rightBarButtonAction(_ sender: UIBarButtonItem!) {
         self.pop()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchConsignors(input: searchBar.text ?? "")
     }
 }
 
