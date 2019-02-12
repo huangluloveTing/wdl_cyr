@@ -57,6 +57,7 @@ class AuthenEnterpriseVC: NormalBaseVC {
     override func bindViewModel() {
         toInitInputInfo()
         if self.zbnCarrierInfo == nil {
+            self.zbnCarrierInfo = ZbnCarrierInfo()
             self.zbnCarrierInfo?.carrierType = 2
         }
         self.enterpriseNameTextField.rx.text.orEmpty.asObservable()
@@ -98,7 +99,9 @@ class AuthenEnterpriseVC: NormalBaseVC {
     
     //提交申请
     @IBAction func applyClick(_ sender: UIButton) {
-        self.applyRequest()
+        if inputCarrerInfoIsOk() == true {
+            self.applyRequest()
+        }
     }
     
 }
