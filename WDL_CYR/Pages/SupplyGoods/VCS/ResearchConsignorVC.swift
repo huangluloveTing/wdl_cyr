@@ -18,7 +18,6 @@ class ResearchConsignorVC: NormalBaseVC {
         self.fd_interactivePopDisabled = true
         self.addResearchBar()
         self.configTableView()
-        self.searchBarInput(search: "")
         self.registerAllComponents()
     }
 

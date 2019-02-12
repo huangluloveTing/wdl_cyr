@@ -116,7 +116,7 @@ extension WaybillCarrierInfoCell {
 //        case 1:
 //            //1：未配载
 //            //info.comeType
-//            //4种类型判断展示 comeType: 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= 个人指派（按照rp顺序）,
+//            //4种类型判断展示 comeType: 运单来源 1=其他承运人指派 2=tms指派 3=运输计划（指派任务） 4= 个人指派（按照rp顺序）,
 //            //driverStatus : Int? // (integer): 当前司机是否接受过改订单  4=接受，接受指派隐藏按钮，否则为没有进行过任何操作，显示两个按钮
 //            if info?.driverStatus == 4 {
 //                self.showInfoWillDesigned(info: info)
@@ -231,7 +231,7 @@ extension WaybillCarrierInfoCell {
         self.showInfo(info: info)
         self.twoHandleView.isHidden = true
         self.oneHandleView.isHidden = false
-        self.oneHandleButton.setTitle("配载", for: .normal)
+        self.oneHandleButton.setTitle("请配载车辆", for: .normal)
     }
     
     // 待指派的显示
@@ -239,7 +239,7 @@ extension WaybillCarrierInfoCell {
         self.showInfo(info: info)
         self.twoHandleView.isHidden = true
         self.oneHandleView.isHidden = false
-        self.oneHandleButton.setTitle("指派", for: .normal)
+        self.oneHandleButton.setTitle("请指派驾驶员", for: .normal)
     }
     
     // 待接受与拒绝的显示

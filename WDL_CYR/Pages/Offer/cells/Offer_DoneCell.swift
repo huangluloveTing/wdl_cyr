@@ -21,7 +21,8 @@ class Offer_DoneCell: BaseCell {
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var designateLabel: UILabel!
     @IBOutlet weak var avatorImageView: UIImageView!
-    
+    //报价时间
+    @IBOutlet weak var quoteTimeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -49,5 +50,8 @@ extension Offer_DoneCell {
         self.offerDesignateStyle(designate: info?.reportStatus.rawValue, to: self.designateLabel)
         //货源编号
         self.goodCode.text = "货源编号：" +  (info?.id ?? "")
+        //报价时间
+        let qutoTime = Util.dateFormatter(date:  (info?.offerTime ?? 0)/1000, formatter: "yyyy-MM-dd HH:mm:ss")
+        self.quoteTimeLabel.text = "报价时间：" + qutoTime
     }
 }

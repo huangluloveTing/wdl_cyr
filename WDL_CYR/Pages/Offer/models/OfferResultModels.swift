@@ -105,7 +105,7 @@ struct OfferOrderHallResultApp : HandyJSON {
     // 可能性 高中低
     var offerPossibility : String = ""
     // 报价时间
-    var offerTime : String = ""
+    var offerTime : TimeInterval = 0
     // 报价类型[1：明报，2：暗报]
     var offerType : Int = 0
     // 报价方式[1：有车报价 2：无车报价]

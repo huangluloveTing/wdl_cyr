@@ -337,6 +337,7 @@ extension FocusResourceVC {
     // emptyView button Handle
     func toAddAction() -> Void {
         switch self.displayType {
+            //关注托运人
         case .focusPerson:
             self.toResearchConsignor()
             break

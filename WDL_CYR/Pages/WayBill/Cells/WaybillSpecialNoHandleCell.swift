@@ -43,7 +43,7 @@ extension WaybillSpecialNoHandleCell {
         //货源编号
         self.goodCodeId.text = "货源编号：" + (info?.hallId ?? "无")
         self.toAddImageForImageView(imageUrl: info?.companyLogo, imageView: self.avatorImageView)
-        self.typeLabel.text = "【自营】运输计划"
+        self.typeLabel.text = "【自营】指派任务"
         self.startLabel.text = info?.origin
         self.endLabel.text = info?.destination
         let time = Util.dateFormatter(date: (Double(info?.loadingTime ?? "0") ?? 0)/1000, formatter: "yyyy-MM-dd") + "  装货"

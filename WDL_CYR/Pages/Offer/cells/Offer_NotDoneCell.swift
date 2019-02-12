@@ -23,7 +23,9 @@ class Offer_NotDoneCell: BaseCell {
     @IBOutlet weak var unitLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!//状态
     @IBOutlet weak var posibleLabel: UILabel!
+    //报价时间
     
+    @IBOutlet weak var quoteTimeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,6 +52,9 @@ extension Offer_NotDoneCell {
         self.companyLabel.text = info?.company
         self.attentionButton.isSelected = info?.isAttention ?? false
         self.offerStatusStyle(status: info?.reportStatus, to: self.statusLabel)//报价状态
+        //报价时间
+        let qutoTime = Util.dateFormatter(date:  (info?.offerTime ?? 0)/1000, formatter: "yyyy-MM-dd HH:mm:ss")
+        self.quoteTimeLabel.text = "报价时间：" + qutoTime
         //公司头像
         self.toAddImageForImageView(imageUrl: info?.avatorURL, imageView: self.avatorImageView)
         

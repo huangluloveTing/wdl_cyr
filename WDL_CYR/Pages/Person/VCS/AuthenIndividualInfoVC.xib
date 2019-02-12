@@ -84,7 +84,7 @@
                                         <constraint firstAttribute="height" constant="0.5" id="LDE-dQ-la2"/>
                                     </constraints>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的认证-身份证" translatesAutoresizingMaskIntoConstraints="NO" id="BQA-jO-Ed8">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的认证-身份证人像页" translatesAutoresizingMaskIntoConstraints="NO" id="BQA-jO-Ed8">
                                     <rect key="frame" x="214.5" y="275.5" width="174.5" height="124.5"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的认证- 手持身份证" translatesAutoresizingMaskIntoConstraints="NO" id="BJ8-Nb-2ee">
@@ -114,7 +114,7 @@
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的认证-身份证人像页" translatesAutoresizingMaskIntoConstraints="NO" id="aKX-c0-2p8">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的认证-身份证" translatesAutoresizingMaskIntoConstraints="NO" id="aKX-c0-2p8">
                                     <rect key="frame" x="20" y="275.5" width="174.5" height="124.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="aKX-c0-2p8" secondAttribute="height" multiplier="14:10" id="0gP-wD-Uez"/>

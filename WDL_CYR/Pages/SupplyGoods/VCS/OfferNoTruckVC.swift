@@ -88,9 +88,9 @@ extension OfferNoTruckVC {
             
                 self?.hiddenToast()
             
-                let time = Util.dateFormatter(date:  (self?.resource?.resource?.loadingTime ?? 0)/1000, formatter: "MM月dd日")
+                let time = Util.dateFormatter(date:  (self?.resource?.resource?.loadingTime ?? 0)/1000, formatter: "yyyy年MM月dd日")
                 
-                let message = "你已成功报价，若成交请注意装货时间为\(time)，请注意装货时间哦!"
+                let message = "您已成功报价，请在【报价-未完成】界面查看您的报价状态，如若成交，请在\(time)准时提货，预期提货是会产生罚款的哦！"
                 
                 
                 let alertController = UIAlertController(title: "提示",

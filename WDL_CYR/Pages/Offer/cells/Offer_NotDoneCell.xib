@@ -87,7 +87,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="30吨 | 1方 | 高栏车 | 无包装 " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLk-EV-zEF">
-                        <rect key="frame" x="30" y="176" width="396" height="85.5"/>
+                        <rect key="frame" x="30" y="176" width="396" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="报价时间： 2222-01-01  33:33:33" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6l-kb-710">
+                        <rect key="frame" x="30" y="203" width="416" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -190,6 +196,7 @@
                     <constraint firstItem="7ee-MT-yza" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="Ffy-vB-Add"/>
                     <constraint firstItem="r5h-gT-7Kw" firstAttribute="leading" secondItem="eon-gr-Ukr" secondAttribute="trailing" constant="10" id="Gqu-3Z-feG"/>
                     <constraint firstItem="fcl-bm-0Uq" firstAttribute="centerY" secondItem="xHd-MI-CXE" secondAttribute="centerY" id="IpN-KT-ZSe"/>
+                    <constraint firstItem="Q6l-kb-710" firstAttribute="top" secondItem="VLk-EV-zEF" secondAttribute="bottom" constant="10" id="JeM-rx-DmB"/>
                     <constraint firstItem="Vk9-gQ-g57" firstAttribute="leading" secondItem="c4b-72-7Jr" secondAttribute="trailing" constant="10" id="Mhy-aq-zR7"/>
                     <constraint firstItem="wqs-yQ-OXt" firstAttribute="top" secondItem="zE5-Wm-9KT" secondAttribute="bottom" constant="8" id="O6s-4W-JMx"/>
                     <constraint firstItem="0Qk-nG-AmL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7ee-MT-yza" secondAttribute="trailing" constant="10" id="PV3-X8-sad"/>
@@ -206,10 +213,11 @@
                     <constraint firstItem="Vk9-gQ-g57" firstAttribute="centerY" secondItem="c4b-72-7Jr" secondAttribute="centerY" id="bi1-Nq-mL8"/>
                     <constraint firstItem="AUJ-Pj-P7z" firstAttribute="leading" secondItem="xHd-MI-CXE" secondAttribute="leading" id="dB7-fa-IzH"/>
                     <constraint firstItem="AUJ-Pj-P7z" firstAttribute="top" secondItem="xHd-MI-CXE" secondAttribute="bottom" constant="10" id="dBk-ew-oyh"/>
+                    <constraint firstAttribute="trailing" secondItem="Q6l-kb-710" secondAttribute="trailing" constant="10" id="dm8-CJ-dRb"/>
+                    <constraint firstItem="eon-gr-Ukr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Q6l-kb-710" secondAttribute="bottom" constant="10" id="fzn-fk-ANm"/>
                     <constraint firstItem="gka-Cj-dJU" firstAttribute="top" secondItem="wqs-yQ-OXt" secondAttribute="bottom" constant="10" id="gch-9g-cXt"/>
                     <constraint firstItem="ZFq-3E-DD8" firstAttribute="top" secondItem="7ee-MT-yza" secondAttribute="bottom" constant="10" id="h36-xn-5lw"/>
                     <constraint firstItem="FdU-bu-BQ8" firstAttribute="leading" secondItem="wqs-yQ-OXt" secondAttribute="trailing" constant="5" id="jH8-Mm-Sdm"/>
-                    <constraint firstItem="eon-gr-Ukr" firstAttribute="top" secondItem="VLk-EV-zEF" secondAttribute="bottom" constant="10" id="jol-2T-X0D"/>
                     <constraint firstAttribute="trailing" secondItem="0Qk-nG-AmL" secondAttribute="trailing" constant="40" id="lQm-by-9Kk"/>
                     <constraint firstItem="agY-RG-NX1" firstAttribute="leading" secondItem="zE5-Wm-9KT" secondAttribute="trailing" constant="5" id="oly-qO-NIi"/>
                     <constraint firstAttribute="trailing" secondItem="gka-Cj-dJU" secondAttribute="trailing" constant="15" id="pxO-Sk-njr"/>
@@ -222,6 +230,7 @@
                     <constraint firstItem="xc9-dM-c19" firstAttribute="leading" secondItem="fcl-bm-0Uq" secondAttribute="trailing" id="woB-fr-CDL"/>
                     <constraint firstItem="93C-a4-p0P" firstAttribute="centerY" secondItem="3Oa-lp-OBM" secondAttribute="centerY" id="xbP-pM-w18"/>
                     <constraint firstItem="xc9-dM-c19" firstAttribute="trailing" secondItem="0Qk-nG-AmL" secondAttribute="trailing" id="yUr-Tq-7sR"/>
+                    <constraint firstItem="Q6l-kb-710" firstAttribute="leading" secondItem="VLk-EV-zEF" secondAttribute="leading" id="ytR-BT-vfo"/>
                     <constraint firstItem="0Qk-nG-AmL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="zV7-ES-oRc"/>
                 </constraints>
             </tableViewCellContentView>
@@ -234,6 +243,7 @@
                 <outlet property="goodCode" destination="7ee-MT-yza" id="i5A-bU-rps"/>
                 <outlet property="goodsInfoLabel" destination="VLk-EV-zEF" id="U1P-QS-QcA"/>
                 <outlet property="posibleLabel" destination="agY-RG-NX1" id="eHx-jn-Odv"/>
+                <outlet property="quoteTimeLabel" destination="Q6l-kb-710" id="IFk-W8-e2e"/>
                 <outlet property="startLabel" destination="xHd-MI-CXE" id="mhw-2w-pXV"/>
                 <outlet property="statusLabel" destination="0Qk-nG-AmL" id="6Vi-l7-CeL"/>
                 <outlet property="totalLabel" destination="93C-a4-p0P" id="NNP-e9-rBj"/>
@@ -241,7 +251,7 @@
                 <outlet property="typeLabel" destination="r5h-gT-7Kw" id="UoA-d4-jR4"/>
                 <outlet property="unitLabel" destination="FdU-bu-BQ8" id="PLa-xj-Zsm"/>
             </connections>
-            <point key="canvasLocation" x="153" y="113"/>
+            <point key="canvasLocation" x="152" y="112.89355322338831"/>
         </tableViewCell>
     </objects>
     <resources>

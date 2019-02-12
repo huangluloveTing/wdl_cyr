@@ -41,7 +41,7 @@ extension WayBillContainerVC {
         let notDoneVC = WaybillNotDoneVC()
         let doneVC = WaybillDoneVC()
         
-        let subItem0 = ZTScrollItem(viewController: planVC, title: "运输计划")
+        let subItem0 = ZTScrollItem(viewController: planVC, title: "指派任务")
         let subItem1 = ZTScrollItem(viewController: unassemble, title: "未配载")
         let subItem2 = ZTScrollItem(viewController: notDoneVC, title: "未完成")
         let subItem3 = ZTScrollItem(viewController: doneVC, title: "已完成")

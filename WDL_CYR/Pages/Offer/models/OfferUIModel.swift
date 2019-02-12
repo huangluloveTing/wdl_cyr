@@ -38,6 +38,8 @@ struct OfferUIModel {
 //    var designateStatus : Int = 0 // 指派状态
     var avatorURL:String = ""//头像
     var id:String = ""
+    // 报价时间
+    var offerTime : TimeInterval = 0
     
 }
 
