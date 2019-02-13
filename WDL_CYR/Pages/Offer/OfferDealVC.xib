@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="56" width="375" height="611"/>
                     <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
-                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Q67-Yl-8Ab">
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="搜索托运人名称/企业名称" translatesAutoresizingMaskIntoConstraints="NO" id="Q67-Yl-8Ab">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>

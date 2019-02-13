@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OfferNotDoneVC" customModule="WDL_CYR" customModuleProvider="target">
             <connections>
                 <outlet property="dropHintView" destination="JpP-JJ-vNf" id="aqB-je-Ri6"/>
+                <outlet property="searchBar" destination="J0a-e3-xG6" id="fGJ-3L-tIL"/>
                 <outlet property="tableView" destination="0es-J6-YjO" id="vMv-SC-2sa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,17 +30,24 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0es-J6-YjO">
-                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                    <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                     <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="搜索托运人名称/企业名称" translatesAutoresizingMaskIntoConstraints="NO" id="J0a-e3-xG6">
+                    <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="J0a-e3-xG6" secondAttribute="trailing" id="3Q7-dA-eNe"/>
                 <constraint firstItem="JpP-JJ-vNf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7UG-iO-vli"/>
-                <constraint firstItem="0es-J6-YjO" firstAttribute="top" secondItem="JpP-JJ-vNf" secondAttribute="bottom" id="Hra-gn-E6B"/>
+                <constraint firstItem="J0a-e3-xG6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="I0i-vb-Nx0"/>
                 <constraint firstAttribute="bottom" secondItem="0es-J6-YjO" secondAttribute="bottom" id="Jlb-DS-9Jl"/>
                 <constraint firstAttribute="trailing" secondItem="JpP-JJ-vNf" secondAttribute="trailing" id="Qfa-Pj-Kgh"/>
+                <constraint firstItem="0es-J6-YjO" firstAttribute="top" secondItem="J0a-e3-xG6" secondAttribute="bottom" id="S4b-Ac-Sdz"/>
                 <constraint firstAttribute="trailing" secondItem="0es-J6-YjO" secondAttribute="trailing" id="TyU-CW-LdX"/>
+                <constraint firstItem="J0a-e3-xG6" firstAttribute="top" secondItem="JpP-JJ-vNf" secondAttribute="bottom" id="uZd-qi-avx"/>
                 <constraint firstItem="0es-J6-YjO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uo1-kJ-ca8"/>
                 <constraint firstItem="JpP-JJ-vNf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="waV-BR-e6w"/>
             </constraints>
