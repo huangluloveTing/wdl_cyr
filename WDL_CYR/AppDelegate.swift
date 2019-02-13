@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initJPush(lanchOptions: launchOptions)
         //注册设备
         registerJPush()
-        
         self.configIQKeyboard()
         self.configGAODEMap()
         self.configHUD()

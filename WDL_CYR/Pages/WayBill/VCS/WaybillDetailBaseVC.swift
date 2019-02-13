@@ -532,15 +532,19 @@ extension WaybillDetailBaseVC {
         let section = indexPath.section
         let row = indexPath.row
         if section == 0 {
+            
             if row == 0 {
                 return waybillStatusCell(tableView: tableView)
             }
+            
             if row == 1 {
                 return waybillLinkInfoCell(tableView: tableView)
             }
+            
             if row == 2 && self.showRealTone() == true {
                 return currentRealCell(tableView: tableView, indexPath: indexPath)
             }
+            
             return waybillHandleCell(tableView: tableView, handleName: "配载")
         }
         return waybillGoodsInfoCell(tableView: tableView)

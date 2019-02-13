@@ -48,6 +48,29 @@ class ResourceHallVC: MainBaseVC , ZTScrollViewControllerType {
         self.loadAllMoreData()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //需要下拉刷新
+        
+        //判断未认证认证弹框
+        if WDLCoreManager.shared().userInfo?.isAuth == .unAuth {
+            
+            self.showIdentiferAlert()
+        }
+        
+    }
+    func showIdentiferAlert(){
+        showAlert(title: "提示", message: "你还未认证，请立即认证，否则无法对页面其他功能进行操作，点击确认，进入认证页面") { [weak self](index) in
+            if index == 1 {
+                //跳转认证页面
+                
+                // "未认证"
+                let mvc = MyAuthenVC()
+                self?.pushToVC(vc: mvc, title: "认证")
+            }
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
