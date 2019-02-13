@@ -40,12 +40,14 @@ extension WayBillContainerVC {
         let unassemble = WaybillUnAssembleVC()
         let notDoneVC = WaybillNotDoneVC()
         let doneVC = WaybillDoneVC()
+        let breakVC = WaybillBreakVC()
         
         let subItem0 = ZTScrollItem(viewController: planVC, title: "指派任务")
         let subItem1 = ZTScrollItem(viewController: unassemble, title: "未配载")
         let subItem2 = ZTScrollItem(viewController: notDoneVC, title: "未完成")
         let subItem3 = ZTScrollItem(viewController: doneVC, title: "已完成")
-        self.scrollSubItems(items: [subItem0, subItem1 , subItem2 , subItem3])
+        let subItem4 = ZTScrollItem(viewController: breakVC, title: "已违约")
+        self.scrollSubItems(items: [subItem0, subItem1 , subItem2 , subItem3 ,subItem4])
     }
     
     

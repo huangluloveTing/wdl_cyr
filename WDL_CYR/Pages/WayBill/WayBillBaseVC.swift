@@ -542,6 +542,11 @@ extension WayBillBaseVC {
         loadWayBill(status: 3, transportStatus: transportStatus, search: search, startTime: startTime, endTime: endTime, closure: closure)
     }
     
+    //MARK: - 获取已违约的信息
+    func loadBreakData(transportStatus:Int , startTime:TimeInterval? , endTime:TimeInterval? ,search:String? , closure:((WayBillPageBean?) ->())?) -> Void {
+        loadWayBill(status: 4, transportStatus: transportStatus, search: search, startTime: startTime, endTime: endTime, closure: closure)
+    }
+    
     //MARK: - 承运人操作运单所有涉及的按钮请求（拒绝，接受，取消运输，继续运输）
     //    hallId (string): 货源id ,(只有在操作 - 继续运输 提交时间才将hallid传入)
     //    status (integer): 操作类型（3=拒绝，4=接受，8=取消运输，7=继续运输） ,

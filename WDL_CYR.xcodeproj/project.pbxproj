@@ -322,6 +322,8 @@
 		70CF4FD4214B41120051A7CA /* WDLCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4F57214B41100051A7CA /* WDLCoreDataManager.swift */; };
 		70CF4FD5214B41120051A7CA /* RegisterAgreeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CF4F59214B41110051A7CA /* RegisterAgreeView.xib */; };
 		70CF4FD6214B41120051A7CA /* RegisterAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CF4F5A214B41110051A7CA /* RegisterAgreeView.swift */; };
+		70D3BA022213FEEB00C94B1B /* WaybillBreakVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D3BA002213FEEB00C94B1B /* WaybillBreakVC.swift */; };
+		70D3BA032213FEEB00C94B1B /* WaybillBreakVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D3BA012213FEEB00C94B1B /* WaybillBreakVC.xib */; };
 		70D8BBD021605126000522E0 /* WaybillUnAssembleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BBCE21605126000522E0 /* WaybillUnAssembleVC.swift */; };
 		70D8BBD121605126000522E0 /* WaybillUnAssembleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D8BBCF21605126000522E0 /* WaybillUnAssembleVC.xib */; };
 		70D8BBD421605141000522E0 /* WaybillNotDoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D8BBD221605141000522E0 /* WaybillNotDoneVC.swift */; };
@@ -749,6 +751,8 @@
 		70CF4F57214B41100051A7CA /* WDLCoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDLCoreDataManager.swift; sourceTree = "<group>"; };
 		70CF4F59214B41110051A7CA /* RegisterAgreeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterAgreeView.xib; sourceTree = "<group>"; };
 		70CF4F5A214B41110051A7CA /* RegisterAgreeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterAgreeView.swift; sourceTree = "<group>"; };
+		70D3BA002213FEEB00C94B1B /* WaybillBreakVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillBreakVC.swift; sourceTree = "<group>"; };
+		70D3BA012213FEEB00C94B1B /* WaybillBreakVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillBreakVC.xib; sourceTree = "<group>"; };
 		70D8BBCE21605126000522E0 /* WaybillUnAssembleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillUnAssembleVC.swift; sourceTree = "<group>"; };
 		70D8BBCF21605126000522E0 /* WaybillUnAssembleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaybillUnAssembleVC.xib; sourceTree = "<group>"; };
 		70D8BBD221605141000522E0 /* WaybillNotDoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillNotDoneVC.swift; sourceTree = "<group>"; };
@@ -1314,6 +1318,8 @@
 				70D8BBD721605153000522E0 /* WaybillDoneVC.xib */,
 				706C304921FFEECE002F8871 /* WaybillPlanVC.swift */,
 				706C304A21FFEECE002F8871 /* WaybillPlanVC.xib */,
+				70D3BA002213FEEB00C94B1B /* WaybillBreakVC.swift */,
+				70D3BA012213FEEB00C94B1B /* WaybillBreakVC.xib */,
 			);
 			path = WayBill;
 			sourceTree = "<group>";
@@ -1874,6 +1880,7 @@
 				70CF4FD5214B41120051A7CA /* RegisterAgreeView.xib in Resources */,
 				707B7200216F3C1F000F78F6 /* ResourceDetailVC.xib in Resources */,
 				70CF4F8F214B41120051A7CA /* DeliveryPlaceTabHeader.xib in Resources */,
+				70D3BA032213FEEB00C94B1B /* WaybillBreakVC.xib in Resources */,
 				70D8BC172166EEEE000522E0 /* PaymentCommitCell.xib in Resources */,
 				70CF4FA2214B41120051A7CA /* ForgetPwdVC.xib in Resources */,
 				7059F3F42192E7580053F1DE /* WaybillChangeLoadTimeView.xib in Resources */,
@@ -2058,6 +2065,7 @@
 				70CF4F93214B41120051A7CA /* DeliveryModels.swift in Sources */,
 				70F40F28214B5BCC0054A175 /* ZTScrollNaviBarView.swift in Sources */,
 				70EA734B215DB2CB0020B8C3 /* Offer_NotDoneCell.swift in Sources */,
+				70D3BA022213FEEB00C94B1B /* WaybillBreakVC.swift in Sources */,
 				70CF4FD1214B41120051A7CA /* Util.swift in Sources */,
 				70CF4F62214B41110051A7CA /* API.swift in Sources */,
 				70CF4F66214B41110051A7CA /* GSDetailInfoCell.swift in Sources */,

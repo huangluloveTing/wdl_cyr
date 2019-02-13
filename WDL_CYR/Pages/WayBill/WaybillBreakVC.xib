@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WaybillBreakVC" customModule="WDL_CYR" customModuleProvider="target">
+            <connections>
+                <outlet property="dropView" destination="iFj-Rd-S7O" id="Xeb-sB-0nz"/>
+                <outlet property="tableView" destination="zy6-Ld-SwB" id="7q3-e4-PTv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zy6-Ld-SwB">
+                    <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                    <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFj-Rd-S7O" customClass="DropHintView" customModule="WDL_CYR" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Wwh-0o-KHB"/>
+                    </constraints>
+                </view>
+                <searchBar tag="1005" contentMode="redraw" searchBarStyle="minimal" placeholder="搜索托运人/承运人/姓名/电话号码" translatesAutoresizingMaskIntoConstraints="NO" id="9iS-m3-aLK">
+                    <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="iFj-Rd-S7O" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="038-Io-F4y"/>
+                <constraint firstAttribute="trailing" secondItem="iFj-Rd-S7O" secondAttribute="trailing" id="11e-vq-CVn"/>
+                <constraint firstAttribute="trailing" secondItem="9iS-m3-aLK" secondAttribute="trailing" id="3Yk-i9-ysQ"/>
+                <constraint firstItem="9iS-m3-aLK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CZm-c7-HKN"/>
+                <constraint firstAttribute="bottom" secondItem="zy6-Ld-SwB" secondAttribute="bottom" id="c55-Zj-e6Q"/>
+                <constraint firstItem="zy6-Ld-SwB" firstAttribute="top" secondItem="9iS-m3-aLK" secondAttribute="bottom" id="ld7-RS-zU0"/>
+                <constraint firstAttribute="trailing" secondItem="zy6-Ld-SwB" secondAttribute="trailing" id="ocL-Dl-CQz"/>
+                <constraint firstItem="9iS-m3-aLK" firstAttribute="top" secondItem="iFj-Rd-S7O" secondAttribute="bottom" id="p43-iC-Irh"/>
+                <constraint firstItem="zy6-Ld-SwB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uek-KT-fPi"/>
+                <constraint firstItem="iFj-Rd-S7O" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zs3-t3-KFe"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
