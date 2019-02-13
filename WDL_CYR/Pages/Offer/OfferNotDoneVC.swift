@@ -19,6 +19,13 @@ class OfferNotDoneVC: OfferBaseVC , ZTScrollViewControllerType {
     }
     
     
+    
+    //搜索框
+    @IBOutlet weak var searchBar: UISearchBar!
+ 
+    // 当前的搜索内容
+    private var currentSearchContent:String?
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dropHintView: DropHintView!
     
@@ -113,6 +120,7 @@ extension OfferNotDoneVC {
         self.tableView.estimatedSectionHeaderHeight = 0
         self.tableView.estimatedRowHeight = 0
         self.registerCell(nibName: "\(Offer_NotDoneCell.self)", for: self.tableView)
+        self.searchBar.delegate = self;
     }
 }
 
@@ -126,7 +134,7 @@ extension OfferNotDoneVC {
                            start: self.startTime,
                            end: self.endTime,
                            dealStatus: self.dealStatus?.rawValue,
-                           carrierName: "") { [weak self](res, error) in
+                           carrierName: self.currentSearchContent) { [weak self](res, error) in
             self?.tableView.endRefresh()
             guard let pageInfo = res else {
                 self?.showFail(fail: error?.localizedDescription, complete: nil)
@@ -170,5 +178,29 @@ extension OfferNotDoneVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.heightForRow(at: indexPath)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        registerSearchBar()
+    }
+}
+extension OfferNotDoneVC {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar == self.searchBar {
+            self.currentSearchContent = searchBar.text
+            self.tableView.beginRefresh()
+        }
+    }
+    
+    override func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searchBar == self.searchBar {
+            self.currentSearchContent = searchBar.text
+        }
+    }
+    /**
+     * 关闭j搜索键盘
+     */
+    func registerSearchBar() -> Void {
+        self.searchBar?.resignFirstResponder()
     }
 }

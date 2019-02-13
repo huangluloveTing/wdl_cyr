@@ -11,7 +11,7 @@ import UIKit
 class OfferDealVC: OfferBaseVC , ZTScrollViewControllerType {
     func willDisappear() {
     }
-    
+    //搜索框
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
@@ -149,6 +149,11 @@ extension OfferDealVC {
         }
     }
     
+    override func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searchBar == self.searchBar {
+            self.currentSearchContent = searchBar.text
+        }
+    }
     /**
      * 关闭j搜索键盘
      */
