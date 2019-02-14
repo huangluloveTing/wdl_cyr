@@ -13,6 +13,8 @@ class ResearchConsignorVC: NormalBaseVC {
     @IBOutlet weak var tableView: UITableView!
     private var consignors:[ConsignorFollowShipper]?
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fd_interactivePopDisabled = true
@@ -69,7 +71,13 @@ extension ResearchConsignorVC {
             .retry(3)
             .subscribe(onNext: { [weak self](data) in
                 self?.consignors = data.data ?? []
-                self?.toRenderTableView()
+                if self?.consignors?.count == 0 {
+                    self?.tableView.isHidden = true
+                }else{
+                    self?.tableView.isHidden = false
+                    self?.toRenderTableView()
+                }
+                
             })
             .disposed(by: dispose)
     }
@@ -98,12 +106,13 @@ extension ResearchConsignorVC {
     }
 }
 
-
+//MARK:tabaleview delegate
 extension ResearchConsignorVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.consignors?.count ?? 0
     }
+    //cell 赋值
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(nib: ConsignorResearchCell.self)
         let consignor = self.consignors![indexPath.row]

@@ -28,7 +28,7 @@ class IndividualAuthedVC: NormalBaseVC {
         Util.showImage(imageView: self.frontImageView, imageUrl: info?.idCardFrontage, placeholder: self.frontImageView.image!)
         Util.showImage(imageView: self.oppositeImageView, imageUrl: info?.idCardOpposite, placeholder: self.oppositeImageView.image!)
         self.nameLabel.text = info?.carrierName ?? " "
-        self.phoneLabel.text = info?.cellPhone ?? " "
+        self.phoneLabel.text = info?.legalPersonPhone ?? " "
         self.idCardLabel.text = info?.idCard ?? " "
     }
     

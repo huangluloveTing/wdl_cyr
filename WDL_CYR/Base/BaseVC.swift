@@ -153,8 +153,8 @@ extension BaseVC {
     
     // 添加头部搜索条
     func addNaviHeader(placeholer:String = "搜索我的运单(运单号、承运人、车牌号、线路)") {
-        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 70, height: 44))
-        let searchBar = MySearchBar(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 70, height: 44))
+        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 90, height: 44))
+        let searchBar = MySearchBar(frame: CGRect(x: 0, y: 0, width: IPHONE_WIDTH - 90, height: 44))
         searchBar.contentInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 0)
         searchBar.barStyle = UIBarStyle.default
         searchBar.delegate = self

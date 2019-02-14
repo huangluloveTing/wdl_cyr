@@ -119,6 +119,7 @@ class FocusResourceVC: MainBaseVC , ZTScrollViewControllerType {
         self.toTapHeader(index: 1)
         self.tableView.reloadData()
     }
+    //关注里面添加按钮
     @IBAction func addLinesAction(_ sender: Any) {
         self.toAddAction()
     }

@@ -53,7 +53,7 @@ class AuthenIndividualInfoVC: NormalBaseVC {
             .disposed(by: dispose)
         self.mobileTextField.rx.text.orEmpty.asObservable()
             .subscribe(onNext: { [weak self](text) in
-                self?.zbnCarrierInfo?.cellPhone = text
+                self?.zbnCarrierInfo?.legalPersonPhone = text
             })
             .disposed(by: dispose)
         self.IDCardTextField.rx.text.orEmpty.asObservable()
@@ -95,7 +95,7 @@ extension AuthenIndividualInfoVC{
             self.showWarn(warn: "请填写姓名", complete: nil)
             return false
         }
-        if (self.zbnCarrierInfo?.cellPhone?.count ?? 0) <= 0 {
+        if (self.zbnCarrierInfo?.legalPersonPhone?.count ?? 0) <= 0 {
             self.showWarn(warn: "请填写手机号码", complete: nil)
             return false
         }
@@ -182,7 +182,7 @@ extension AuthenIndividualInfoVC {
         let info = self.zbnCarrierInfo
         self.nameTextField.text = info?.carrierName
         self.IDCardTextField.text = info?.idCard
-        self.mobileTextField.text = info?.cellPhone
+        self.mobileTextField.text = info?.legalPersonPhone
         Util.showImage(imageView: self.frontImageView, imageUrl: info?.idCardFrontage, placeholder: UIImage.init(named: "我的认证-身份证")!)
         Util.showImage(imageView: self.backImageView, imageUrl: info?.idCardOpposite, placeholder: UIImage.init(named: "我的认证-身份证人像页")!)
         Util.showImage(imageView: self.handImageView, imageUrl: info?.idCardHandheld, placeholder: UIImage.init(named: "我的认证- 手持身份证")!)

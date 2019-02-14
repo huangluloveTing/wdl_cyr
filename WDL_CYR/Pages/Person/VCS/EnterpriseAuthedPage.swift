@@ -38,7 +38,7 @@ class EnterpriseAuthedPage: NormalBaseVC {
         self.idCardLabel.text = info?.idCard ?? " "
         self.licenseLabel.text = info?.businessLicenseNo ?? " "
         self.addressLabel.text = info?.address ?? " "
-        self.phoneLabel.text = info?.cellPhone ?? " "
+        self.phoneLabel.text = info?.legalPersonPhone ?? " "
     }
     
     override func zt_rightBarButtonAction(_ sender: UIBarButtonItem!) {
