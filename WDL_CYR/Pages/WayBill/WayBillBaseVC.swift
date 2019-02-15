@@ -282,7 +282,9 @@ extension WayBillBaseVC {
     func rejectTransportHandle(indexPath:IndexPath) -> Void {
         let info = self.dataSource[indexPath.row]
         self.rejectTransportHandle(transportNo: info.transportNo ?? "") { (data) in
+            self.currentTableView.beginRefresh()
             self.deleteCurrentWaybill(indexPath: indexPath)
+           
         }
     }
     
@@ -290,7 +292,9 @@ extension WayBillBaseVC {
     func receiveTransportHandle(indexPath:IndexPath) -> Void {
         let info = self.dataSource[indexPath.row]
         self.receiveTransport(transportNo: info.transportNo ?? "") { (data) in
+            self.currentTableView.beginRefresh()
             self.convertWaybillToDesignate(indexPath: indexPath)
+           
         }
     }
     
@@ -354,12 +358,14 @@ extension WayBillBaseVC {
         info.driverStatus = 4
         self.dataSource[indexPath.row] = info
         self.currentTableView.reloadRows(at: [indexPath], with: .none)
+       
     }
     
     //MARK: - 点击 拒绝 或者 取消运输，删除对应的运单信息
     func deleteCurrentWaybill(indexPath:IndexPath) -> Void {
         self.dataSource.remove(at: indexPath.row)
         self.currentTableView.deleteRows(at: [indexPath], with: .none)
+       
     }
 }
 
@@ -565,6 +571,7 @@ extension WayBillBaseVC {
                 if let closure = closure {
                     closure(model)
                 }
+                
             }, onError: { (error) in
                 self.showFail(fail: error.localizedDescription, complete: nil)
             })

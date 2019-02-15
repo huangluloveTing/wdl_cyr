@@ -13,7 +13,6 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
         self.dropView.hiddenDropView()
     }
     
-    
     @IBOutlet weak var dropView: DropHintView!
     @IBOutlet weak var tableView: UITableView!
 //    var dataSource: [WayBillInfoBean]?

@@ -150,9 +150,11 @@ extension BaseVC {
                 return
             }
         case .unAssemble_comType_1_2_noAccept:
-            print("未接受不 跳转")
-                return
-        case .unAssemble_comType_3_noAccept,.unAssemble_comType_3_toAssemble,.unAssemble_comType_3_handled:
+//            print("未接受不 跳转")
+            detailVC.currentShowMode(mode: .doing_showWillSign)
+//            return
+            break
+    case .unAssemble_comType_3_noAccept,.unAssemble_comType_3_toAssemble,.unAssemble_comType_3_handled:
             self.toGoodsDetail(hallId: info.hallId ?? "")
             return
         case .notDone_canEditAssemble:
