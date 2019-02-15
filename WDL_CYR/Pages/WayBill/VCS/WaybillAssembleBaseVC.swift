@@ -48,6 +48,8 @@ struct WaybillAssembleCommitModel : HandyJSON {
     var transportNo : String? // (string): 运单ID ,
     var vehicleNo : String? // (string): 车牌号
     var hallId:String?
+//    var unit:Float? //报价
+//    var total:Float? //总价
 }
 
 struct WaybillAssembleUIModel {
@@ -229,7 +231,7 @@ extension WaybillAssembleBaseVC {
             cell.showInfo(title: "总价", content: Util.floatPoint(num: 2, floatValue: info.total ?? 0), hight: false)
         }
         if row == 4 {
-            cell.showInfo(title: "承运数量", content: Util.floatPoint(num: 0, floatValue: info.carrierNum ?? 0), hight: false)
+            cell.showInfo(title: "承运数量", content: Util.floatPoint(num: 3, floatValue: info.carrierNum ?? 0), hight: false)
         }
         return cell
     }
@@ -255,7 +257,7 @@ extension WaybillAssembleBaseVC {
             cell.showInfo(title: "总价", content: Util.floatPoint(num: 2, floatValue: info.total ?? 0), hight: false)
         }
         if row == 4 {
-            cell.showInfo(title: "承运数量", content: Util.floatPoint(num: 0, floatValue: info.carrierNum ?? 0), hight: false)
+            cell.showInfo(title: "承运数量", content: Util.floatPoint(num: 3, floatValue: info.carrierNum ?? 0), hight: false)
         }
         return cell
     }

@@ -36,6 +36,7 @@ struct WayBillInfoBean : HandyJSON {
     var driverName : String? // (string): 司机姓名 ,
     var dealTotalPrice : Float = 0 // (number): 成交总价 ,
     var dealUnitPrice : Float = 0  // (number): 成交单价 ,
+   
     var completeStatus:Int = 1 //运单状态 1：未配载，2 ：未完成， 3：完成 ,
     var carrierId : String? // (string): 承运人id ,
     var comeType  : Int? = 1 // (integer): 运单来源 1=其他承运人指派 2=tms指派 3=运输计划 4= ,
@@ -104,6 +105,8 @@ struct TransactionInformation : HandyJSON {
     var dealTime : TimeInterval? // (string): 成交时间 ,
     var dealTotalPrice : CGFloat? // (number): 成交总价 ,
     var dealUnitPrice : CGFloat? // (number): 成交单价 ,
+    
+    
     var dealWay : Int?          // (integer): 成交方式 1=自动 2=手动 ,
     var driverName : String?    // (string): 司机姓名 ,
     var driverPhone : String?   // (string): 司机手机号 ,

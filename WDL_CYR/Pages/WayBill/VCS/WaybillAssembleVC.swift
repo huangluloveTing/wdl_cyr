@@ -123,6 +123,7 @@ extension WaybillAssembleVC {
         model.carrierNum = pageInfo?.goodsWeight
         model.remainNum = pageInfo?.goodsWeight
         model.lastRemain = pageInfo?.goodsWeight
+       
         self.configUIModel(models: [model])
     }
     
@@ -303,8 +304,11 @@ extension WaybillAssembleVC {
                 model.driverName = res.driverName
                 model.vehicleNo = res.vehicleNo
                 model.disVolumn = res.loadWeight
+//                model.unit = res.unit
+//                model.total = res.total
                 models.append(model)
             }
+            //传值
             self.configUIModel(models: models)
         }
     }

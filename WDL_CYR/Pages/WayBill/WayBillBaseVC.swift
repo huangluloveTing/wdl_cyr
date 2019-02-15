@@ -310,11 +310,15 @@ extension WayBillBaseVC {
     
     //MARK: - 配载
     func assembleTransportHandle(info:WayBillInfoBean) -> Void {
+        
         var tranInfo = TransactionInformation.deserialize(from: info.toJSON())
+        //在转的过程中因为一个是float 一个是CGFloat 。类型不一致导致不能传值，所以为了不影响其他，单独转换
+        tranInfo?.dealTotalPrice = CGFloat(info.dealTotalPrice)
+        tranInfo?.dealUnitPrice = CGFloat(info.dealUnitPrice)
+        
         tranInfo?.id = (info.id == "") ? info.id : (info.hallId ?? "")
         let mode = WayBillSourceTypeMode(rawValue: info.comeType ?? 1)
-//        tranInfo?.dealUnitPrice = tranInfo?.dealUnitPrice ?? 0
-//        tranInfo?.dealTotalPrice = tranInfo?.dealTotalPrice ?? 0
+
         if info.comeType == 1 {
             self.toAssemblePage(info: tranInfo , mode: mode ?? .driverAssemble)
             return

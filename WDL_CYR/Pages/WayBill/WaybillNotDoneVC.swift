@@ -88,11 +88,12 @@ class WaybillNotDoneVC: WayBillBaseVC , ZTScrollViewControllerType{
 }
 
 extension WaybillNotDoneVC {
-    
+    //获取未完成信息的数据  （waybillbasevc）
     func loadDoingDatas(refresh:Bool) -> Void {
         self.loadWayBillUnCompletedData(transportStatus: self.currentStatus, startTime: self.currentStartTime, endTime: self.currentEndTime, search: "") { (info) in
             self.endRefresh()
             self.refreshContents(items: info?.list ?? [])
+            
             if self.currentDataSource.count >= (info?.total ?? 0)  {
                 self.endRefreshAndNoMoreData()
             } else {

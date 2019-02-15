@@ -115,8 +115,16 @@ class WayBillDetailVC: WaybillDetailBaseVC {
             mode == .unassemble_show_2_Assemble ||
             mode == .doing_carrierBreak ||
             mode == .doing_canEditAssemble {
-            let tranInfo = TransactionInformation.deserialize(from: self.waybillInfo?.toJSON())
+            var tranInfo = TransactionInformation.deserialize(from: self.waybillInfo?.toJSON())
+            
 //            let mode = WayBillSourceTypeMode(rawValue: self.waybillInfo?.comeType ?? 1)
+            
+            //在转的过程中因为一个是float 一个是CGFloat 。类型不一致导致不能传值，所以为了不影响其他，单独转换
+            tranInfo?.dealTotalPrice = CGFloat(self.waybillInfo?.dealTotalPrice ?? 0)
+            tranInfo?.dealUnitPrice = CGFloat(self.waybillInfo?.dealUnitPrice ?? 0)
+            
+            
+            
             if self.waybillInfo?.comeType == 1 {
                 self.toAssemblePage(info: tranInfo , mode:.driverAssemble)
                 return
@@ -130,6 +138,7 @@ class WayBillDetailVC: WaybillDetailBaseVC {
                 return
             }
             if self.waybillInfo?.comeType == 4 {
+                //修改配载
                 self.toAssemblePage(info: tranInfo , mode: .carrierAssemble)
                 return
             }
