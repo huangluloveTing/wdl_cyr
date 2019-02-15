@@ -304,8 +304,7 @@ extension WaybillAssembleVC {
                 model.driverName = res.driverName
                 model.vehicleNo = res.vehicleNo
                 model.disVolumn = res.loadWeight
-//                model.unit = res.unit
-//                model.total = res.total
+
                 models.append(model)
             }
             //传值

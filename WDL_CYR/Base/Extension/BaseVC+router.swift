@@ -155,6 +155,7 @@ extension BaseVC {
 //            return
             break
     case .unAssemble_comType_3_noAccept,.unAssemble_comType_3_toAssemble,.unAssemble_comType_3_handled:
+        //跳转货源列表- 运输计划 指派任务
             self.toGoodsDetail(hallId: info.hallId ?? "")
             return
         case .notDone_canEditAssemble:
@@ -199,13 +200,14 @@ extension BaseVC {
             self.navigationController?.popViewController(animated: animated)
         }
     }
-    
+    //从运输计划（指派任务）跳转到货源详情
     func toGoodsDetail(hallId:String) -> Void {
         let resouce = ResourceDetailVC()
         resouce.requestNewData = true;
         var re = ResourceDetailUIModel()
         re.id = hallId
         resouce.resource = re
+        resouce.title = "货源详情"
         self.pushWhenPushedHiddenBottomTabbar(toVC: resouce, animation: true)
     }
 }

@@ -251,13 +251,13 @@ extension WaybillAssembleBaseVC {
             cell.accessoryType = .disclosureIndicator
         }
         if row == 2 {
-            cell.showInfo(title: "报价", content: Util.floatPoint(num: 2, floatValue: info.unit ?? 0), hight: false)
+            cell.showInfo(title: "报价(元/吨)", content: Util.floatPoint(num: 2, floatValue: info.unit ?? 0), hight: false)
         }
         if row == 3 {
-            cell.showInfo(title: "总价", content: Util.floatPoint(num: 2, floatValue: info.total ?? 0), hight: false)
+            cell.showInfo(title: "总价(元)", content: Util.floatPoint(num: 2, floatValue: info.total ?? 0), hight: false)
         }
         if row == 4 {
-            cell.showInfo(title: "承运数量", content: Util.floatPoint(num: 3, floatValue: info.carrierNum ?? 0), hight: false)
+            cell.showInfo(title: "承运数量(吨)", content: Util.floatPoint(num: 3, floatValue: info.carrierNum ?? 0), hight: false)
         }
         return cell
     }
